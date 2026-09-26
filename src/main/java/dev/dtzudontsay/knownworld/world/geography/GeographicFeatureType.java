@@ -12,6 +12,11 @@ public enum GeographicFeatureType {
             true
     ),
 
+    MOUNTAIN(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     MOUNTAIN_RANGE(
             FeatureGeometryType.AREA,
             true
