@@ -22,6 +22,11 @@ public enum GeographicFeatureType {
             true
     ),
 
+    VALLEY(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     ISLAND(
             FeatureGeometryType.AREA,
             true
