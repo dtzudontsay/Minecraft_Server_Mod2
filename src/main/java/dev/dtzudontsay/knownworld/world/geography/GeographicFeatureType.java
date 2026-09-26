@@ -12,6 +12,11 @@ public enum GeographicFeatureType {
             true
     ),
 
+    GRASSLAND(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     MOUNTAIN(
             FeatureGeometryType.AREA,
             true
