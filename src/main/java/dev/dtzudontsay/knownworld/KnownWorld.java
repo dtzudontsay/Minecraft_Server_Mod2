@@ -12,6 +12,7 @@ import dev.dtzudontsay.knownworld.world.geography.regions.SouthEssosFeatureRegis
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthWestEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,7 @@ public final class KnownWorld implements ModInitializer {
         SouthEastEssosFeatureRegistry.bootstrap();
 
         SothoryosFeatureRegistry.bootstrap();
+        UlthosFeatureRegistry.bootstrap();
 
         KnownWorldDebugCommand.register();
 

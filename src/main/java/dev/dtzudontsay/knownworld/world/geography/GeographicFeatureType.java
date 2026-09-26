@@ -2,6 +2,11 @@ package dev.dtzudontsay.knownworld.world.geography;
 
 public enum GeographicFeatureType {
 
+    CONTINENT(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     REGION(
             FeatureGeometryType.AREA,
             true
