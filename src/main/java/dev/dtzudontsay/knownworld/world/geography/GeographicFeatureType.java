@@ -37,6 +37,16 @@ public enum GeographicFeatureType {
             true
     ),
 
+    DESERT(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
+    CANYON(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     ISLAND(
             FeatureGeometryType.AREA,
             true
@@ -77,6 +87,11 @@ public enum GeographicFeatureType {
             false
     ),
 
+    SOUND(
+            FeatureGeometryType.AREA,
+            false
+    ),
+
     SEA(
             FeatureGeometryType.AREA,
             false
@@ -110,6 +125,16 @@ public enum GeographicFeatureType {
     WALL(
             FeatureGeometryType.LINE,
             false
+    ),
+
+    FORTRESS_GROUP(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
+    CITY_GROUP(
+            FeatureGeometryType.AREA,
+            true
     ),
 
     CASTLE(
