@@ -1,28 +1,119 @@
 package dev.dtzudontsay.knownworld.debug;
 
+import com.mojang.brigadier.context.CommandContext;
+import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
+import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
+import dev.dtzudontsay.knownworld.world.geography.WorldDefinition;
+import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
+import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.phys.Vec3;
 
 public final class KnownWorldDebugCommand {
+
     private KnownWorldDebugCommand() {
     }
 
     public static void register() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
-                dispatcher.register(
-                        Commands.literal("knownworld")
-                                .then(Commands.literal("status")
-                                        .executes(context -> {
-                                            context.getSource().sendSuccess(
-                                                    () -> Component.literal(
-                                                            "Known World loaded | Minecraft 26.3 | Fabric | 1 block = 1 metre"
-                                                    ),
-                                                    false
-                                            );
-                                            return 1;
-                                        }))
-                )
+        CommandRegistrationCallback.EVENT.register(
+                (dispatcher, registryAccess, environment) ->
+                        dispatcher.register(
+                                Commands.literal("knownworld")
+                                        .then(
+                                                Commands.literal("status")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeStatus
+                                                        )
+                                        )
+                                        .then(
+                                                Commands.literal("geo")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeGeo
+                                                        )
+                                        )
+                        )
         );
+    }
+
+    private static int executeStatus(
+            CommandContext<CommandSourceStack> context
+    ) {
+        GeographicDataManager data =
+                GeographicDataManager.getInstance();
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "%s | Dataset: %s"
+                                .formatted(
+                                        WorldDefinition.PROJECT_NAME,
+                                        data.datasetState()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Primary canon: %s | Horizontal scale: %.1f m/block"
+                                .formatted(
+                                        data.primaryCanon(),
+                                        WorldDefinition.HORIZONTAL_METRES_PER_BLOCK
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeGeo(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CommandSourceStack source =
+                context.getSource();
+
+        Vec3 position =
+                source.getPosition();
+
+        WorldCoordinate coordinate =
+                WorldProjection.fromMinecraft(
+                        position.x,
+                        position.z
+                );
+
+        TerrainSample terrain =
+                GeographicDataManager
+                        .getInstance()
+                        .sample(coordinate);
+
+        source.sendSuccess(
+                () -> Component.literal(
+                        "Minecraft X %.2f Z %.2f | East %.2f m North %.2f m"
+                                .formatted(
+                                        position.x,
+                                        position.z,
+                                        coordinate.eastMetres(),
+                                        coordinate.northMetres()
+                                )
+                ),
+                false
+        );
+
+        source.sendSuccess(
+                () -> Component.literal(
+                        "Region: %s | Elevation: %.1f m | Data: %s"
+                                .formatted(
+                                        terrain.region(),
+                                        terrain.elevationMetres(),
+                                        terrain.dataSource()
+                                )
+                ),
+                false
+        );
+
+        return 1;
     }
 }
