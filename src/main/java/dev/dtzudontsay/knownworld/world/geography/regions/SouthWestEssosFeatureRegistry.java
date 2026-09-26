@@ -213,6 +213,12 @@ public final class SouthWestEssosFeatureRegistry {
         );
 
         add(
+                "sea_of_sighs",
+                "The Sea of Sighs",
+                GeographicFeatureType.SEA
+        );
+
+        add(
                 "the_smoking_sea",
                 "The Smoking Sea",
                 GeographicFeatureType.SEA
