@@ -5,6 +5,7 @@ import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthWestEssosFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.geography.regions.SouthEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthWestEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegistry;
@@ -29,6 +30,7 @@ public final class KnownWorld implements ModInitializer {
         SouthWestEssosFeatureRegistry.bootstrap();
         NorthWestEssosFeatureRegistry.bootstrap();
         NorthEssosFeatureRegistry.bootstrap();
+        SouthEssosFeatureRegistry.bootstrap();
 
         KnownWorldDebugCommand.register();
 
