@@ -15,6 +15,8 @@ import dev.dtzudontsay.knownworld.world.geography.calibration.CalibrationRegistr
 import dev.dtzudontsay.knownworld.world.geography.calibration.CalibrationResult;
 import dev.dtzudontsay.knownworld.world.geography.calibration.DistanceCalibrationAnchor;
 import dev.dtzudontsay.knownworld.world.geography.calibration.MasterMapCalibration;
+import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocation;
+import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocationRegistry;
 import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
@@ -82,6 +84,26 @@ public final class KnownWorldDebugCommand {
                                                                         )
                                                         )
                                         )
+
+                                        .then(
+                                                Commands.literal("locations")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeLocations
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("locate")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "id",
+                                                                                StringArgumentType.word()
+                                                                        )
+                                                                        .executes(
+                                                                                KnownWorldDebugCommand::executeLocate
+                                                                        )
+                                                        )
+                                        )
                         )
         );
     }
@@ -105,10 +127,11 @@ public final class KnownWorldDebugCommand {
 
         context.getSource().sendSuccess(
                 () -> Component.literal(
-                        "Primary canon: %s | Horizontal scale: %.1f m/block"
+                        "Primary canon: %s | Canon scale: %.1f m/block | Minecraft world scale: %.2f"
                                 .formatted(
                                         data.primaryCanon(),
-                                        WorldDefinition.HORIZONTAL_METRES_PER_BLOCK
+                                        WorldDefinition.HORIZONTAL_METRES_PER_BLOCK,
+                                        WorldDefinition.MINECRAFT_WORLD_SCALE
                                 )
                 ),
                 false
@@ -371,6 +394,115 @@ public final class KnownWorldDebugCommand {
                                 .formatted(
                                         feature.confidence(),
                                         feature.sourceNote()
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeLocations(
+            CommandContext<CommandSourceStack> context
+    ) {
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Fixed geographic feature locations: %d"
+                                .formatted(
+                                        FeatureLocationRegistry.locationCount()
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeLocate(
+            CommandContext<CommandSourceStack> context
+    ) {
+        String id =
+                StringArgumentType.getString(
+                        context,
+                        "id"
+                );
+
+        Optional<GeographicFeature> featureResult =
+                GeographicFeatureRegistry.get(id);
+
+        if (featureResult.isEmpty()) {
+            context.getSource().sendFailure(
+                    Component.literal(
+                            "Unknown geographic feature id: " + id
+                    )
+            );
+
+            return 0;
+        }
+
+        Optional<FeatureLocation> locationResult =
+                FeatureLocationRegistry.get(id);
+
+        if (locationResult.isEmpty()) {
+            context.getSource().sendFailure(
+                    Component.literal(
+                            "Feature exists but has no fixed location yet: "
+                                    + id
+                    )
+            );
+
+            return 0;
+        }
+
+        GeographicFeature feature =
+                featureResult.get();
+
+        FeatureLocation location =
+                locationResult.get();
+
+        WorldCoordinate world =
+                location.worldCoordinate();
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "%s [%s]"
+                                .formatted(
+                                        feature.displayName(),
+                                        feature.id()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Master pixel: X %.2f Y %.2f"
+                                .formatted(
+                                        location.masterMapCoordinate().pixelX(),
+                                        location.masterMapCoordinate().pixelY()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Canonical world: East %.0f m | North %.0f m"
+                                .formatted(
+                                        world.eastMetres(),
+                                        world.northMetres()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Minecraft: X %.0f | Z %.0f | World scale %.2f"
+                                .formatted(
+                                        location.minecraftX(),
+                                        location.minecraftZ(),
+                                        WorldDefinition.MINECRAFT_WORLD_SCALE
                                 )
                 ),
                 false
