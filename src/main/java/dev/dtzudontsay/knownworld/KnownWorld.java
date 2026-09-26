@@ -4,6 +4,7 @@ import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.geography.regions.SouthWestEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegistry;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ public final class KnownWorld implements ModInitializer {
         NorthFeatureRegistry.bootstrap();
         SouthFeatureRegistry.bootstrap();
         SummerIslesFeatureRegistry.bootstrap();
+        SouthWestEssosFeatureRegistry.bootstrap();
 
         KnownWorldDebugCommand.register();
 

@@ -27,6 +27,11 @@ public enum GeographicFeatureType {
             true
     ),
 
+    FIELD(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     ISLAND(
             FeatureGeometryType.AREA,
             true
@@ -48,6 +53,11 @@ public enum GeographicFeatureType {
     ),
 
     COAST(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
+    SHORE(
             FeatureGeometryType.AREA,
             true
     ),
@@ -103,6 +113,16 @@ public enum GeographicFeatureType {
     ),
 
     CITY(
+            FeatureGeometryType.POINT,
+            true
+    ),
+
+    TOWN(
+            FeatureGeometryType.POINT,
+            true
+    ),
+
+    RUINED_CITY(
             FeatureGeometryType.POINT,
             true
     ),
