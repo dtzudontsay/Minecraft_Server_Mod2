@@ -45,9 +45,8 @@ public final class NorthEastEssosFeatureRegistry {
         add(
                 "plains_of_the_jogos_nhai",
                 "Plains of the Jogos Nhai",
-                GeographicFeatureType.REGION
+                GeographicFeatureType.PLAINS
         );
-
         add(
                 "nefer",
                 "Nefer",

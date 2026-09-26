@@ -22,6 +22,11 @@ public enum GeographicFeatureType {
             true
     ),
 
+    PLAINS(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     MOUNTAIN(
             FeatureGeometryType.AREA,
             true
@@ -93,6 +98,11 @@ public enum GeographicFeatureType {
     ),
 
     BAY(
+            FeatureGeometryType.AREA,
+            false
+    ),
+
+    GULF(
             FeatureGeometryType.AREA,
             false
     ),

@@ -121,7 +121,7 @@ public final class NorthWestEssosFeatureRegistry {
         add(
                 "the_flatlands",
                 "The Flatlands",
-                GeographicFeatureType.REGION
+                GeographicFeatureType.PLAINS
         );
 
         add(

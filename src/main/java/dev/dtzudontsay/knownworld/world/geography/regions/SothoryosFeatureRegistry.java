@@ -75,7 +75,7 @@ public final class SothoryosFeatureRegistry {
         add(
                 "sothoryos",
                 "Sothoryos",
-                GeographicFeatureType.REGION
+                GeographicFeatureType.CONTINENT
         );
 
         add(

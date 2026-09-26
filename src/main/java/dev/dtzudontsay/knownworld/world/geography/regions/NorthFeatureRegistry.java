@@ -49,7 +49,7 @@ public final class NorthFeatureRegistry {
         add(
                 "frozen_shore",
                 "The Frozen Shore",
-                GeographicFeatureType.COAST
+                GeographicFeatureType.SHORE
         );
 
         add(
@@ -121,7 +121,7 @@ public final class NorthFeatureRegistry {
         add(
                 "stony_shore",
                 "Stony Shore",
-                GeographicFeatureType.COAST
+                GeographicFeatureType.REGION
         );
 
         add(
@@ -133,7 +133,7 @@ public final class NorthFeatureRegistry {
         add(
                 "barrowtown",
                 "Barrowtown",
-                GeographicFeatureType.SETTLEMENT
+                GeographicFeatureType.TOWN
         );
 
         add(
@@ -151,7 +151,7 @@ public final class NorthFeatureRegistry {
         add(
                 "cape_kraken",
                 "Cape Kraken",
-                GeographicFeatureType.PENINSULA
+                GeographicFeatureType.CAPE
         );
 
         add(

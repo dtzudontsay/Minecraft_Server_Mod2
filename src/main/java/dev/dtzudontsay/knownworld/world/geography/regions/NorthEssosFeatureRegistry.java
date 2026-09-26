@@ -149,7 +149,7 @@ public final class NorthEssosFeatureRegistry {
         add(
                 "the_dothraki_sea",
                 "The Dothraki Sea",
-                GeographicFeatureType.REGION
+                GeographicFeatureType.GRASSLAND
         );
 
         /*

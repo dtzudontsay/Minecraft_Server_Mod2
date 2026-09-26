@@ -167,13 +167,13 @@ public final class SouthEssosFeatureRegistry {
         add(
                 "great_sand_sea",
                 "Great Sand Sea",
-                GeographicFeatureType.REGION
+                GeographicFeatureType.DESERT
         );
 
         add(
                 "the_red_waste",
                 "The Red Waste",
-                GeographicFeatureType.REGION
+                GeographicFeatureType.DESERT
         );
 
         add(
@@ -247,7 +247,7 @@ public final class SouthEssosFeatureRegistry {
         add(
                 "ghiscar",
                 "Ghiscar",
-                GeographicFeatureType.PENINSULA
+                GeographicFeatureType.REGION
         );
 
         add(

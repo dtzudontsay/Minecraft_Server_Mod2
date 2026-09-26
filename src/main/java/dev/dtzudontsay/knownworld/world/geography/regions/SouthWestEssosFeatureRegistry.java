@@ -267,7 +267,7 @@ public final class SouthWestEssosFeatureRegistry {
         add(
                 "gulf_of_grief",
                 "Gulf of Grief",
-                GeographicFeatureType.BAY
+                GeographicFeatureType.GULF
         );
 
         add(
