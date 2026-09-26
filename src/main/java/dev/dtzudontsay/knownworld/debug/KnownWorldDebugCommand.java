@@ -8,6 +8,7 @@ import dev.dtzudontsay.knownworld.world.geography.FeatureGeometryType;
 import dev.dtzudontsay.knownworld.world.geography.GeographicBounds;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeature;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.geography.MapCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldDefinition;
 import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
@@ -17,6 +18,9 @@ import dev.dtzudontsay.knownworld.world.geography.calibration.DistanceCalibratio
 import dev.dtzudontsay.knownworld.world.geography.calibration.MasterMapCalibration;
 import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocation;
 import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocationRegistry;
+import dev.dtzudontsay.knownworld.world.geography.zones.MapZoneDefinition;
+import dev.dtzudontsay.knownworld.world.geography.zones.MapZoneId;
+import dev.dtzudontsay.knownworld.world.geography.zones.MapZoneRegistry;
 import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
@@ -101,6 +105,26 @@ public final class KnownWorldDebugCommand {
                                                                         )
                                                                         .executes(
                                                                                 KnownWorldDebugCommand::executeLocate
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("zones")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeZones
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("zone")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "id",
+                                                                                StringArgumentType.word()
+                                                                        )
+                                                                        .executes(
+                                                                                KnownWorldDebugCommand::executeZone
                                                                         )
                                                         )
                                         )
@@ -503,6 +527,148 @@ public final class KnownWorldDebugCommand {
                                         location.minecraftX(),
                                         location.minecraftZ(),
                                         WorldDefinition.MINECRAFT_WORLD_SCALE
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeZones(
+            CommandContext<CommandSourceStack> context
+    ) {
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Regional map zones registered: %d / %d"
+                                .formatted(
+                                        MapZoneRegistry.registeredZoneCount(),
+                                        MapZoneId.values().length
+                                )
+                ),
+                false
+        );
+
+        for (MapZoneId zoneId : MapZoneId.values()) {
+            boolean registered =
+                    MapZoneRegistry
+                            .get(zoneId)
+                            .isPresent();
+
+            context.getSource().sendSuccess(
+                    () -> Component.literal(
+                            "%s [%s] | %s"
+                                    .formatted(
+                                            zoneId.displayName(),
+                                            zoneId.name(),
+                                            registered
+                                                    ? "REGISTERED"
+                                                    : "PENDING"
+                                    )
+                    ),
+                    false
+            );
+        }
+
+        return 1;
+    }
+
+    private static int executeZone(
+            CommandContext<CommandSourceStack> context
+    ) {
+        String rawId =
+                StringArgumentType.getString(
+                        context,
+                        "id"
+                );
+
+        final MapZoneId zoneId;
+
+        try {
+            zoneId =
+                    MapZoneId.fromCode(rawId);
+        } catch (IllegalArgumentException exception) {
+            context.getSource().sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+
+        Optional<MapZoneDefinition> result =
+                MapZoneRegistry.get(zoneId);
+
+        if (result.isEmpty()) {
+            context.getSource().sendFailure(
+                    Component.literal(
+                            "Map zone exists but is not calibrated yet: "
+                                    + zoneId.name()
+                    )
+            );
+
+            return 0;
+        }
+
+        MapZoneDefinition zone =
+                result.get();
+
+        MapCoordinate upperLeft =
+                zone.toMaster(
+                        new MapCoordinate(
+                                0.0,
+                                0.0
+                        )
+                );
+
+        MapCoordinate lowerRight =
+                zone.toMaster(
+                        new MapCoordinate(
+                                zone.regionalWidthPixels(),
+                                zone.regionalHeightPixels()
+                        )
+                );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "%s [%s]"
+                                .formatted(
+                                        zone.id().displayName(),
+                                        zone.id()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Regional raster: %d x %d px"
+                                .formatted(
+                                        zone.regionalWidthPixels(),
+                                        zone.regionalHeightPixels()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Master upper-left: X %.2f Y %.2f"
+                                .formatted(
+                                        upperLeft.pixelX(),
+                                        upperLeft.pixelY()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Master lower-right: X %.2f Y %.2f"
+                                .formatted(
+                                        lowerRight.pixelX(),
+                                        lowerRight.pixelY()
                                 )
                 ),
                 false
