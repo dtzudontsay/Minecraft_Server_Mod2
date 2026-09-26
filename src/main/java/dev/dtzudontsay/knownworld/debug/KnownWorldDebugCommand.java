@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld.debug;
 
 import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
+import dev.dtzudontsay.knownworld.world.data.MasterMapData;
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldDefinition;
 import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
@@ -32,6 +33,12 @@ public final class KnownWorldDebugCommand {
                                                 Commands.literal("geo")
                                                         .executes(
                                                                 KnownWorldDebugCommand::executeGeo
+                                                        )
+                                        )
+                                        .then(
+                                                Commands.literal("map")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeMap
                                                         )
                                         )
                         )
@@ -109,6 +116,41 @@ public final class KnownWorldDebugCommand {
                                         terrain.region(),
                                         terrain.elevationMetres(),
                                         terrain.dataSource()
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeMap(
+            CommandContext<CommandSourceStack> context
+    ) {
+        MasterMapData map =
+                MasterMapData.getInstance();
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Master map: %s | %d x %d px"
+                                .formatted(
+                                        map.sourceName(),
+                                        map.imageWidthPixels(),
+                                        map.imageHeightPixels()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Anchors: %d | Outside generation: %s | Boundary: %s"
+                                .formatted(
+                                        map.anchorCount(),
+                                        map.allowsGenerationOutsideMap()
+                                                ? "ALLOWED"
+                                                : "DISABLED",
+                                        map.outerBoundaryMode()
                                 )
                 ),
                 false
