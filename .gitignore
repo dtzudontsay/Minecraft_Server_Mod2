@@ -1,0 +1,21 @@
+# Gradle / Fabric Loom
+.gradle/
+build/
+run/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Java
+*.class
+
+# Minecraft runtime
+logs/
+crash-reports/
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
