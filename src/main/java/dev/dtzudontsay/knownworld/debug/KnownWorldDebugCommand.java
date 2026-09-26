@@ -5,11 +5,16 @@ import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
 import dev.dtzudontsay.knownworld.world.data.MasterMapData;
 import dev.dtzudontsay.knownworld.world.geography.FeatureGeometryType;
+import dev.dtzudontsay.knownworld.world.geography.GeographicBounds;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeature;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldDefinition;
 import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
+import dev.dtzudontsay.knownworld.world.geography.calibration.CalibrationRegistry;
+import dev.dtzudontsay.knownworld.world.geography.calibration.CalibrationResult;
+import dev.dtzudontsay.knownworld.world.geography.calibration.DistanceCalibrationAnchor;
+import dev.dtzudontsay.knownworld.world.geography.calibration.MasterMapCalibration;
 import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
@@ -48,6 +53,13 @@ public final class KnownWorldDebugCommand {
                                                 Commands.literal("map")
                                                         .executes(
                                                                 KnownWorldDebugCommand::executeMap
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("calibration")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeCalibration
                                                         )
                                         )
 
@@ -180,6 +192,77 @@ public final class KnownWorldDebugCommand {
                                                 ? "ALLOWED"
                                                 : "DISABLED",
                                         map.outerBoundaryMode()
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeCalibration(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CalibrationResult result =
+                MasterMapCalibration.result();
+
+        DistanceCalibrationAnchor anchor =
+                CalibrationRegistry.primaryAnchor();
+
+        GeographicBounds bounds =
+                MasterMapCalibration.worldBounds();
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Calibration: %s | Anchor: %s"
+                                .formatted(
+                                        result.status(),
+                                        anchor.displayName()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Anchor pixels: %.2f px | Canon distance: %.1f m"
+                                .formatted(
+                                        anchor.pixelDistance(),
+                                        anchor.canonicalDistanceMetres()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Scale: %.2f m/px"
+                                .formatted(
+                                        result.metresPerPixel()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "World rectangle: %.1f km x %.1f km"
+                                .formatted(
+                                        result.worldWidthMetres() / 1000.0,
+                                        result.worldHeightMetres() / 1000.0
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Bounds E/W: %.0f to %.0f m | N/S: %.0f to %.0f m"
+                                .formatted(
+                                        bounds.minEastMetres(),
+                                        bounds.maxEastMetres(),
+                                        bounds.minNorthMetres(),
+                                        bounds.maxNorthMetres()
                                 )
                 ),
                 false
