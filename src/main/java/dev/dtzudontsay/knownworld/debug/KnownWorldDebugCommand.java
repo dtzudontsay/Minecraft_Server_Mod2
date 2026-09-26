@@ -1,8 +1,12 @@
 package dev.dtzudontsay.knownworld.debug;
 
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
 import dev.dtzudontsay.knownworld.world.data.MasterMapData;
+import dev.dtzudontsay.knownworld.world.geography.FeatureGeometryType;
+import dev.dtzudontsay.knownworld.world.geography.GeographicFeature;
+import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldDefinition;
 import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
@@ -12,6 +16,8 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.Optional;
 
 public final class KnownWorldDebugCommand {
 
@@ -23,22 +29,45 @@ public final class KnownWorldDebugCommand {
                 (dispatcher, registryAccess, environment) ->
                         dispatcher.register(
                                 Commands.literal("knownworld")
+
                                         .then(
                                                 Commands.literal("status")
                                                         .executes(
                                                                 KnownWorldDebugCommand::executeStatus
                                                         )
                                         )
+
                                         .then(
                                                 Commands.literal("geo")
                                                         .executes(
                                                                 KnownWorldDebugCommand::executeGeo
                                                         )
                                         )
+
                                         .then(
                                                 Commands.literal("map")
                                                         .executes(
                                                                 KnownWorldDebugCommand::executeMap
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("features")
+                                                        .executes(
+                                                                KnownWorldDebugCommand::executeFeatures
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("feature")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "id",
+                                                                                StringArgumentType.word()
+                                                                        )
+                                                                        .executes(
+                                                                                KnownWorldDebugCommand::executeFeature
+                                                                        )
                                                         )
                                         )
                         )
@@ -151,6 +180,114 @@ public final class KnownWorldDebugCommand {
                                                 ? "ALLOWED"
                                                 : "DISABLED",
                                         map.outerBoundaryMode()
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeFeatures(
+            CommandContext<CommandSourceStack> context
+    ) {
+        int total =
+                GeographicFeatureRegistry.getFeatureCount();
+
+        long points =
+                GeographicFeatureRegistry.countByGeometryType(
+                        FeatureGeometryType.POINT
+                );
+
+        long lines =
+                GeographicFeatureRegistry.countByGeometryType(
+                        FeatureGeometryType.LINE
+                );
+
+        long areas =
+                GeographicFeatureRegistry.countByGeometryType(
+                        FeatureGeometryType.AREA
+                );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Geographic features loaded: %d"
+                                .formatted(total)
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "POINT: %d | LINE: %d | AREA: %d"
+                                .formatted(
+                                        points,
+                                        lines,
+                                        areas
+                                )
+                ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeFeature(
+            CommandContext<CommandSourceStack> context
+    ) {
+        String id =
+                StringArgumentType.getString(
+                        context,
+                        "id"
+                );
+
+        Optional<GeographicFeature> result =
+                GeographicFeatureRegistry.get(id);
+
+        if (result.isEmpty()) {
+            context.getSource().sendFailure(
+                    Component.literal(
+                            "Unknown geographic feature id: " + id
+                    )
+            );
+
+            return 0;
+        }
+
+        GeographicFeature feature =
+                result.get();
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "%s [%s]"
+                                .formatted(
+                                        feature.displayName(),
+                                        feature.id()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Type: %s | Geometry: %s | Entry title: %s"
+                                .formatted(
+                                        feature.type(),
+                                        feature.geometryType(),
+                                        feature.showEntryTitle()
+                                                ? "YES"
+                                                : "NO"
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Confidence: %s | Source: %s"
+                                .formatted(
+                                        feature.confidence(),
+                                        feature.sourceNote()
                                 )
                 ),
                 false
