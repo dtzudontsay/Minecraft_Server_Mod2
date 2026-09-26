@@ -37,6 +37,11 @@ public enum GeographicFeatureType {
             true
     ),
 
+    CAPE(
+            FeatureGeometryType.AREA,
+            true
+    ),
+
     COAST(
             FeatureGeometryType.AREA,
             true
@@ -52,12 +57,32 @@ public enum GeographicFeatureType {
             false
     ),
 
+    SEA(
+            FeatureGeometryType.AREA,
+            false
+    ),
+
+    LAKE(
+            FeatureGeometryType.AREA,
+            false
+    ),
+
+    STRAIT(
+            FeatureGeometryType.AREA,
+            false
+    ),
+
     RIVER(
             FeatureGeometryType.LINE,
             false
     ),
 
     ROAD(
+            FeatureGeometryType.LINE,
+            false
+    ),
+
+    PASS(
             FeatureGeometryType.LINE,
             false
     ),
