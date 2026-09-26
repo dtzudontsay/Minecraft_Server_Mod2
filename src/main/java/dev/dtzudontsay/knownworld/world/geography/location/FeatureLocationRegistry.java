@@ -12,27 +12,13 @@ public final class FeatureLocationRegistry {
             new LinkedHashMap<>();
 
     static {
-        register(
-                new FeatureLocation(
-                        "castle_black",
-                        new MapCoordinate(
-                                406.45,
-                                221.56
-                        ),
-                        "Measured from marked 2048x1357 Known World master map."
-                )
-        );
-
-        register(
-                new FeatureLocation(
-                        "winterfell",
-                        new MapCoordinate(
-                                348.54,
-                                350.20
-                        ),
-                        "Measured from marked 2048x1357 Known World master map."
-                )
-        );
+        /*
+         * Castle Black and Winterfell are no longer stored here.
+         *
+         * Their more accurate positions now come from the
+         * high-resolution North Westeros regional map through
+         * RegionalFeatureLocationRegistry.
+         */
 
         register(
                 new FeatureLocation(
@@ -87,7 +73,7 @@ public final class FeatureLocationRegistry {
     ) {
         if (LOCATIONS.containsKey(location.featureId())) {
             throw new IllegalStateException(
-                    "Duplicate feature location: "
+                    "Duplicate master feature location: "
                             + location.featureId()
             );
         }

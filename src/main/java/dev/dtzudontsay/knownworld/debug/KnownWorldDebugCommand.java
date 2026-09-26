@@ -18,6 +18,9 @@ import dev.dtzudontsay.knownworld.world.geography.calibration.DistanceCalibratio
 import dev.dtzudontsay.knownworld.world.geography.calibration.MasterMapCalibration;
 import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocation;
 import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocationRegistry;
+import dev.dtzudontsay.knownworld.world.geography.location.FeatureLocationResolver;
+import dev.dtzudontsay.knownworld.world.geography.location.RegionalFeatureLocation;
+import dev.dtzudontsay.knownworld.world.geography.location.RegionalFeatureLocationRegistry;
 import dev.dtzudontsay.knownworld.world.geography.zones.MapZoneDefinition;
 import dev.dtzudontsay.knownworld.world.geography.zones.MapZoneId;
 import dev.dtzudontsay.knownworld.world.geography.zones.MapZoneRegistry;
@@ -431,8 +434,19 @@ public final class KnownWorldDebugCommand {
     ) {
         context.getSource().sendSuccess(
                 () -> Component.literal(
-                        "Fixed geographic feature locations: %d"
+                        "Resolved geographic feature locations: %d"
                                 .formatted(
+                                        FeatureLocationResolver.resolvedLocationCount()
+                                )
+                ),
+                false
+        );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Regional high-resolution: %d | Master fallback: %d"
+                                .formatted(
+                                        RegionalFeatureLocationRegistry.locationCount(),
                                         FeatureLocationRegistry.locationCount()
                                 )
                 ),
@@ -465,7 +479,7 @@ public final class KnownWorldDebugCommand {
         }
 
         Optional<FeatureLocation> locationResult =
-                FeatureLocationRegistry.get(id);
+                FeatureLocationResolver.resolve(id);
 
         if (locationResult.isEmpty()) {
             context.getSource().sendFailure(
@@ -487,6 +501,10 @@ public final class KnownWorldDebugCommand {
         WorldCoordinate world =
                 location.worldCoordinate();
 
+        boolean regional =
+                FeatureLocationResolver
+                        .usesRegionalSource(id);
+
         context.getSource().sendSuccess(
                 () -> Component.literal(
                         "%s [%s]"
@@ -497,6 +515,37 @@ public final class KnownWorldDebugCommand {
                 ),
                 false
         );
+
+        context.getSource().sendSuccess(
+                () -> Component.literal(
+                        "Location source: %s"
+                                .formatted(
+                                        regional
+                                                ? "REGIONAL_HIGH_RES"
+                                                : "MASTER_MAP"
+                                )
+                ),
+                false
+        );
+
+        if (regional) {
+            RegionalFeatureLocation regionalLocation =
+                    RegionalFeatureLocationRegistry
+                            .get(id)
+                            .orElseThrow();
+
+            context.getSource().sendSuccess(
+                    () -> Component.literal(
+                            "Regional zone: %s | Pixel X %.2f Y %.2f"
+                                    .formatted(
+                                            regionalLocation.zoneId(),
+                                            regionalLocation.regionalMapCoordinate().pixelX(),
+                                            regionalLocation.regionalMapCoordinate().pixelY()
+                                    )
+                    ),
+                    false
+            );
+        }
 
         context.getSource().sendSuccess(
                 () -> Component.literal(
