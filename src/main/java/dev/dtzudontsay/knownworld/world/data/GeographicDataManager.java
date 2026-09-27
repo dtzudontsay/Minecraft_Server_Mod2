@@ -11,30 +11,41 @@ public final class GeographicDataManager {
     private static final GeographicDataManager INSTANCE =
             new GeographicDataManager();
 
-    private final TerrainProvider terrainProvider;
+    private final RasterTerrainProvider terrainProvider;
 
     private GeographicDataManager() {
-        this.terrainProvider =
+
+        terrainProvider =
                 new RasterTerrainProvider();
     }
 
     public static GeographicDataManager getInstance() {
+
         return INSTANCE;
     }
 
     public TerrainSample sample(
             WorldCoordinate coordinate
     ) {
+
         return terrainProvider.sample(
                 coordinate
         );
     }
 
+    public boolean hasCanonicalElevationData() {
+
+        return terrainProvider
+                .hasCanonicalElevationData();
+    }
+
     public String datasetState() {
+
         return WorldDefinition.DATASET_STATE;
     }
 
     public String primaryCanon() {
+
         return WorldDefinition.PRIMARY_CANON;
     }
 }
