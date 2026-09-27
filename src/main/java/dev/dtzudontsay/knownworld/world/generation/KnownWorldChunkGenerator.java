@@ -8,6 +8,7 @@ import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSample;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
+import dev.dtzudontsay.knownworld.world.terrain.surface.KnownWorldSurfaceResolver;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.WorldGenRegion;
@@ -27,25 +28,13 @@ import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
-    /*
-     * Must match:
-     *
-     * data/knownworld/dimension_type/known_world.json
-     *
-     * min_y  = -64
-     * height = 2096
-     *
-     * Therefore:
-     *
-     * lowest block = -64
-     * highest block = 2031
-     */
     public static final int MIN_Y =
             -64;
 
@@ -59,6 +48,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
     public static final int SEA_LEVEL =
             63;
+
 
     public static final MapCodec<KnownWorldChunkGenerator> CODEC =
             RecordCodecBuilder.mapCodec(
@@ -78,6 +68,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                                     )
             );
 
+
     private static final BlockState AIR =
             Blocks.AIR.defaultBlockState();
 
@@ -87,33 +78,35 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
     private static final BlockState STONE =
             Blocks.STONE.defaultBlockState();
 
-    private static final BlockState DIRT =
-            Blocks.DIRT.defaultBlockState();
-
-    private static final BlockState GRASS =
-            Blocks.GRASS_BLOCK.defaultBlockState();
-
-    private static final BlockState SAND =
-            Blocks.SAND.defaultBlockState();
-
     private static final BlockState GRAVEL =
             Blocks.GRAVEL.defaultBlockState();
 
     private static final BlockState WATER =
             Blocks.WATER.defaultBlockState();
 
+
+    private final KnownWorldSurfaceResolver surfaceResolver;
+
+
     public KnownWorldChunkGenerator(
             BiomeSource biomeSource
     ) {
+
         super(
                 biomeSource
         );
+
+        surfaceResolver =
+                new KnownWorldSurfaceResolver();
     }
+
 
     @Override
     protected MapCodec<? extends ChunkGenerator> codec() {
+
         return CODEC;
     }
+
 
     @Override
     public CompletableFuture<ChunkAccess> buildTerrain(
@@ -137,6 +130,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         BlockPos.MutableBlockPos position =
                 new BlockPos.MutableBlockPos();
 
+
         for (
                 int localZ = 0;
                 localZ < 16;
@@ -145,6 +139,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
             int worldZ =
                     startZ + localZ;
+
 
             for (
                     int localX = 0;
@@ -164,10 +159,12 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             }
         }
 
+
         return CompletableFuture.completedFuture(
                 chunk
         );
     }
+
 
     private void generateColumn(
             ChunkAccess chunk,
@@ -182,24 +179,21 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         worldZ + 0.5
                 );
 
+
         if (
                 !geography.insideKnownWorldMap()
         ) {
+
             return;
         }
 
-        WorldCoordinate coordinate =
-                WorldProjection.fromMinecraft(
-                        worldX + 0.5,
-                        worldZ + 0.5
-                );
 
         TerrainSample terrain =
-                GeographicDataManager
-                        .getInstance()
-                        .sample(
-                                coordinate
-                        );
+                sampleTerrain(
+                        worldX,
+                        worldZ
+                );
+
 
         int terrainY =
                 clamp(
@@ -209,6 +203,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         MIN_Y + 1,
                         MAX_Y - 1
                 );
+
 
         if (
                 geography.land()
@@ -235,6 +230,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         }
     }
 
+
     private void generateLandColumn(
             ChunkAccess chunk,
             BlockPos.MutableBlockPos position,
@@ -244,9 +240,14 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             KnownWorldGeoSample geography
     ) {
 
-        boolean beach =
-                geography.coastDistanceMetres()
-                        <= 3_000.0;
+        KnownWorldSurfaceResolver.SurfaceProfile surface =
+                surfaceResolver.resolve(
+                        worldX,
+                        worldZ,
+                        surfaceY,
+                        geography
+                );
+
 
         setBlock(
                 chunk,
@@ -257,6 +258,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 BEDROCK
         );
 
+
         for (
                 int y = MIN_Y + 1;
                 y <= surfaceY;
@@ -265,28 +267,27 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
             BlockState state;
 
+
             if (
-                    y < surfaceY - 3
+                    y < surfaceY - 4
             ) {
 
-                state = STONE;
+                state =
+                        STONE;
 
             } else if (
                     y < surfaceY
             ) {
 
                 state =
-                        beach
-                                ? SAND
-                                : DIRT;
+                        surface.subsurfaceBlock();
 
             } else {
 
                 state =
-                        beach
-                                ? SAND
-                                : GRASS;
+                        surface.topBlock();
             }
+
 
             setBlock(
                     chunk,
@@ -298,6 +299,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             );
         }
     }
+
 
     private void generateOceanColumn(
             ChunkAccess chunk,
@@ -313,6 +315,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         SEA_LEVEL - 4
                 );
 
+
         setBlock(
                 chunk,
                 position,
@@ -322,6 +325,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 BEDROCK
         );
 
+
         for (
                 int y = MIN_Y + 1;
                 y <= floorY;
@@ -330,16 +334,20 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
             BlockState state;
 
+
             if (
                     y < floorY - 3
             ) {
 
-                state = STONE;
+                state =
+                        STONE;
 
             } else {
 
-                state = GRAVEL;
+                state =
+                        GRAVEL;
             }
+
 
             setBlock(
                     chunk,
@@ -350,6 +358,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                     state
             );
         }
+
 
         for (
                 int y = floorY + 1;
@@ -368,6 +377,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         }
     }
 
+
     private static void setBlock(
             ChunkAccess chunk,
             BlockPos.MutableBlockPos position,
@@ -383,12 +393,14 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 z
         );
 
+
         chunk.setBlockState(
                 position,
                 state,
                 0
         );
     }
+
 
     @Override
     public int getBaseHeight(
@@ -405,30 +417,29 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         z + 0.5
                 );
 
+
         if (
                 !geography.insideKnownWorldMap()
         ) {
+
             return MIN_Y;
         }
+
 
         if (
                 !geography.land()
         ) {
+
             return SEA_LEVEL + 1;
         }
 
-        WorldCoordinate coordinate =
-                WorldProjection.fromMinecraft(
-                        x + 0.5,
-                        z + 0.5
-                );
 
         TerrainSample terrain =
-                GeographicDataManager
-                        .getInstance()
-                        .sample(
-                                coordinate
-                        );
+                sampleTerrain(
+                        x,
+                        z
+                );
+
 
         return clamp(
                 (int) Math.round(
@@ -439,6 +450,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         );
     }
 
+
     @Override
     public NoiseColumn getBaseColumn(
             int x,
@@ -447,29 +459,22 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             RandomState randomState
     ) {
 
+        /*
+         * Build this column once.
+         *
+         * The old implementation re-sampled the complete terrain
+         * provider once for every Y value in a 2096-block column.
+         *
+         * That became extremely expensive after procedural mountains
+         * were introduced.
+         */
+
         BlockState[] column =
-                new BlockState[
-                        GENERATION_DEPTH
-                        ];
+                buildColumnStates(
+                        x,
+                        z
+                );
 
-        for (
-                int index = 0;
-                index < column.length;
-                index++
-        ) {
-
-            int y =
-                    MIN_Y + index;
-
-            column[
-                    index
-                    ] =
-                    getBlockState(
-                            x,
-                            y,
-                            z
-                    );
-        }
 
         return new NoiseColumn(
                 MIN_Y,
@@ -477,36 +482,45 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         );
     }
 
-    private BlockState getBlockState(
-            int x,
-            int y,
-            int z
+
+    private BlockState[] buildColumnStates(
+            int worldX,
+            int worldZ
     ) {
+
+        BlockState[] column =
+                new BlockState[
+                        GENERATION_DEPTH
+                        ];
+
+
+        Arrays.fill(
+                column,
+                AIR
+        );
+
 
         KnownWorldGeoSample geography =
                 KnownWorldGeoSampler.sampleMinecraft(
-                        x + 0.5,
-                        z + 0.5
+                        worldX + 0.5,
+                        worldZ + 0.5
                 );
+
 
         if (
                 !geography.insideKnownWorldMap()
         ) {
-            return AIR;
+
+            return column;
         }
 
-        WorldCoordinate coordinate =
-                WorldProjection.fromMinecraft(
-                        x + 0.5,
-                        z + 0.5
-                );
 
         TerrainSample terrain =
-                GeographicDataManager
-                        .getInstance()
-                        .sample(
-                                coordinate
-                        );
+                sampleTerrain(
+                        worldX,
+                        worldZ
+                );
+
 
         int terrainY =
                 clamp(
@@ -517,44 +531,68 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         MAX_Y - 1
                 );
 
-        if (
-                y == MIN_Y
-        ) {
-            return BEDROCK;
-        }
+
+        setArrayState(
+                column,
+                MIN_Y,
+                BEDROCK
+        );
+
 
         if (
                 geography.land()
         ) {
 
-            if (
-                    y > terrainY
+            KnownWorldSurfaceResolver.SurfaceProfile surface =
+                    surfaceResolver.resolve(
+                            worldX,
+                            worldZ,
+                            terrainY,
+                            geography
+                    );
+
+
+            for (
+                    int y = MIN_Y + 1;
+                    y <= terrainY;
+                    y++
             ) {
-                return AIR;
+
+                BlockState state;
+
+
+                if (
+                        y < terrainY - 4
+                ) {
+
+                    state =
+                            STONE;
+
+                } else if (
+                        y < terrainY
+                ) {
+
+                    state =
+                            surface.subsurfaceBlock();
+
+                } else {
+
+                    state =
+                            surface.topBlock();
+                }
+
+
+                setArrayState(
+                        column,
+                        y,
+                        state
+                );
             }
 
-            boolean beach =
-                    geography.coastDistanceMetres()
-                            <= 3_000.0;
 
-            if (
-                    y < terrainY - 3
-            ) {
-                return STONE;
-            }
-
-            if (
-                    y < terrainY
-            ) {
-                return beach
-                        ? SAND
-                        : DIRT;
-            }
-
-            return beach
-                    ? SAND
-                    : GRASS;
+            return column;
         }
+
 
         int floorY =
                 Math.min(
@@ -562,50 +600,134 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         SEA_LEVEL - 4
                 );
 
-        if (
-                y <= floorY - 4
+
+        for (
+                int y = MIN_Y + 1;
+                y <= floorY;
+                y++
         ) {
-            return STONE;
+
+            BlockState state;
+
+
+            if (
+                    y < floorY - 3
+            ) {
+
+                state =
+                        STONE;
+
+            } else {
+
+                state =
+                        GRAVEL;
+            }
+
+
+            setArrayState(
+                    column,
+                    y,
+                    state
+            );
         }
 
-        if (
-                y <= floorY
+
+        for (
+                int y = floorY + 1;
+                y <= SEA_LEVEL;
+                y++
         ) {
-            return GRAVEL;
+
+            setArrayState(
+                    column,
+                    y,
+                    WATER
+            );
         }
 
-        if (
-                y <= SEA_LEVEL
-        ) {
-            return WATER;
-        }
 
-        return AIR;
+        return column;
     }
+
+
+    private static void setArrayState(
+            BlockState[] column,
+            int y,
+            BlockState state
+    ) {
+
+        int index =
+                y - MIN_Y;
+
+
+        if (
+                index < 0
+                        ||
+                        index >= column.length
+        ) {
+
+            return;
+        }
+
+
+        column[
+                index
+                ] =
+                state;
+    }
+
+
+    private TerrainSample sampleTerrain(
+            int worldX,
+            int worldZ
+    ) {
+
+        WorldCoordinate coordinate =
+                WorldProjection.fromMinecraft(
+                        worldX + 0.5,
+                        worldZ + 0.5
+                );
+
+
+        return GeographicDataManager
+                .getInstance()
+                .sample(
+                        coordinate
+                );
+    }
+
 
     @Override
     public int getSeaLevel() {
+
         return SEA_LEVEL;
     }
 
+
     @Override
     public int getMinY() {
+
         return MIN_Y;
     }
 
+
     @Override
     public int getGenDepth() {
+
         return GENERATION_DEPTH;
     }
+
 
     @Override
     public void spawnOriginalMobs(
             WorldGenRegion worldGenRegion
     ) {
+
         /*
          * Disabled during geography testing.
          */
     }
+
 
     @Override
     public void applyBiomeDecoration(
@@ -613,13 +735,14 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             ChunkAccess chunk,
             StructureManager structureManager
     ) {
+
         /*
-         * Intentionally disabled for now.
+         * Intentionally disabled.
          *
-         * No vanilla trees, ores, lakes, flowers, etc. until
-         * geographic terrain generation itself is validated.
+         * Vegetation comes after the terrain/surface layer is stable.
          */
     }
+
 
     @Override
     public void addDebugScreenInfo(
@@ -635,17 +758,22 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         feetPos.getZ() + 0.5
                 );
 
+
         result.add(
                 "Known World: "
-                        + (
-                        geography.insideKnownWorldMap()
-                                ? geography.land()
-                                ? "LAND"
-                                : "OCEAN"
-                                : "OUTSIDE MAP"
-                )
+                        +
+                        (
+                                geography.insideKnownWorldMap()
+                                        ?
+                                        geography.land()
+                                                ? "LAND"
+                                                : "OCEAN"
+                                        :
+                                        "OUTSIDE MAP"
+                        )
         );
     }
+
 
     private static int clamp(
             int value,
