@@ -1,0 +1,28 @@
+{
+  "formatVersion": 1,
+  "width": 9050,
+  "height": 6000,
+  "logicalMasterWidth": 2048,
+  "logicalMasterHeight": 1357,
+  "logicalMetresPerPixel": 6000.69,
+  "metresPerSourcePixelX": 1357.9462011049723,
+  "metresPerSourcePixelZ": 1357.156055,
+  "landMask": {
+    "file": "land_mask.png",
+    "waterValue": 0,
+    "landValue": 255
+  },
+  "coastDistance": {
+    "file": "coast_distance.png",
+    "encoding": "signed_byte_offset_128",
+    "zeroValue": 128,
+    "minimumStoredDistancePixels": -127,
+    "maximumStoredDistancePixels": 127
+  },
+  "coordinateConvention": {
+    "imageX": "west_to_east",
+    "imageY": "north_to_south",
+    "minecraftX": "west_to_east",
+    "minecraftZ": "north_to_south"
+  }
+}
