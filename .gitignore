@@ -19,3 +19,6 @@ crash-reports/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Local source cartography
+/tools/geodata/input/

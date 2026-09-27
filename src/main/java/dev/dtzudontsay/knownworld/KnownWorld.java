@@ -1,7 +1,10 @@
 package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
+import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoData;
+import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthEastEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.NorthFeatureRegistry;
@@ -23,7 +26,9 @@ public final class KnownWorld implements ModInitializer {
             "knownworld";
 
     public static final Logger LOGGER =
-            LoggerFactory.getLogger(MOD_ID);
+            LoggerFactory.getLogger(
+                    MOD_ID
+            );
 
     @Override
     public void onInitialize() {
@@ -42,7 +47,30 @@ public final class KnownWorld implements ModInitializer {
         SothoryosFeatureRegistry.bootstrap();
         UlthosFeatureRegistry.bootstrap();
 
+        /*
+         * Force-load the canonical runtime geography during
+         * startup so missing/corrupt geography resources fail
+         * immediately rather than during world generation.
+         */
+        KnownWorldGeoData geodata =
+                KnownWorldGeoData.getInstance();
+
+        LOGGER.info(
+                "Known World geodata ready: {}x{} px | {} m/px X | {} m/px Z",
+                geodata.width(),
+                geodata.height(),
+                String.format(
+                        "%.2f",
+                        KnownWorldGeoSampler.metresPerRasterPixelX()
+                ),
+                String.format(
+                        "%.2f",
+                        KnownWorldGeoSampler.metresPerRasterPixelY()
+                )
+        );
+
         KnownWorldDebugCommand.register();
+        KnownWorldGeoDebugCommand.register();
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
