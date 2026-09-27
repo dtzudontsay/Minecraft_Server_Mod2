@@ -5,228 +5,183 @@ import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 public final class MountainTerrainGenerator {
 
     /*
-     * ========================================================
-     * DESIGN
-     * ========================================================
+     * ============================================================
+     * PURPOSE
+     * ============================================================
      *
-     * The authored relief raster answers only:
+     * The authored relief raster says WHERE mountain terrain belongs
+     * and roughly how strongly mountainous the location should be.
      *
-     *     "How mountainous is this geographic location?"
+     * It does NOT define final elevation.
      *
-     * It does NOT define the actual mountain surface.
+     * Final mountain geometry is generated here directly from
+     * canonical world coordinates at Minecraft-block scale.
      *
-     * Actual mountains are generated here at Minecraft-scale
-     * coordinates.
+     * No circles.
+     * No elliptical domes.
+     * No one-peak-per-cell system.
      *
-     * Each primary grid cell creates a MASSIF:
+     * Instead:
      *
-     *     main summit
-     *        +
-     *     two connected subsidiary summits
+     *   relief envelope
+     *       +
+     *   domain warping
+     *       +
+     *   broad mountain structure
+     *       +
+     *   major ridges
+     *       +
+     *   secondary ridges
+     *       +
+     *   broken slope detail
      *
-     * Nearby massifs overlap slightly, producing mountain chains,
-     * saddles and passes without creating one continuous plateau.
+     * This is intended to create large Minecraft-style mountain
+     * chains with repeated peaks, valleys, saddles and irregular
+     * faces.
      */
 
 
     /*
-     * ========================================================
-     * PRIMARY MASSIFS
-     * ========================================================
-     *
-     * Much tighter than the previous generator.
-     *
-     * This is intentional.
-     *
-     * A mountain that rises 1000 blocks over a horizontal radius
-     * of only a few thousand blocks actually reads as a mountain
-     * in Minecraft.
+     * ============================================================
+     * RANGE ENVELOPE
+     * ============================================================
      */
 
-    private static final double PRIMARY_SPACING =
-            3_200.0;
+    private static final double RELIEF_ENVELOPE_POWER =
+            0.82;
 
-    private static final double PRIMARY_MIN_RADIUS =
-            2_400.0;
+    /*
+     * There is deliberately almost no generic uplift simply because
+     * a point lies inside a mountain region.
+     *
+     * Otherwise the complete authored region turns into one elevated
+     * tableland again.
+     */
+    private static final double RANGE_BASE_UPLIFT =
+            14.0;
 
-    private static final double PRIMARY_MAX_RADIUS =
-            4_100.0;
 
-    private static final double PRIMARY_MIN_HEIGHT =
+    /*
+     * ============================================================
+     * DOMAIN WARPING
+     * ============================================================
+     *
+     * Straight noise tends to produce obviously procedural,
+     * repetitive ridges.
+     *
+     * These warp fields bend, fork and distort the mountains before
+     * the actual mountain noise is evaluated.
+     */
+
+    private static final double LARGE_WARP_SCALE =
+            11_000.0;
+
+    private static final double LARGE_WARP_AMPLITUDE =
+            2_600.0;
+
+    private static final double MEDIUM_WARP_SCALE =
+            3_800.0;
+
+    private static final double MEDIUM_WARP_AMPLITUDE =
+            850.0;
+
+
+    /*
+     * ============================================================
+     * MOUNTAIN STRUCTURE
+     * ============================================================
+     *
+     * These are actual geographic wavelengths in metres / blocks.
+     *
+     * A strong mountain chain contains structure on all of these
+     * scales simultaneously.
+     */
+
+    private static final double BROAD_STRUCTURE_SCALE =
+            8_500.0;
+
+    private static final double MAJOR_RIDGE_SCALE =
+            3_400.0;
+
+    private static final double SECONDARY_RIDGE_SCALE =
+            1_350.0;
+
+    private static final double LOCAL_RIDGE_SCALE =
             520.0;
 
-    private static final double PRIMARY_MAX_HEIGHT =
-            1_420.0;
+    private static final double FACE_DETAIL_SCALE =
+            190.0;
 
 
     /*
-     * ========================================================
-     * SUBSIDIARY SUMMITS
-     * ========================================================
+     * Maximum vertical contribution.
      *
-     * Every major massif gets two extra summits.
-     *
-     * These prevent the mountain from looking like a single
-     * smooth cone or dome.
+     * With the current custom dimension ceiling near Y=2031 and the
+     * ~66-105 m macro land base, this still leaves useful headroom.
      */
-
-    private static final double SUBPEAK_MIN_DISTANCE =
-            650.0;
-
-    private static final double SUBPEAK_MAX_DISTANCE =
-            1_450.0;
-
-    private static final double SUBPEAK_MIN_HEIGHT_FACTOR =
-            0.48;
-
-    private static final double SUBPEAK_MAX_HEIGHT_FACTOR =
-            0.78;
-
-    private static final double SUBPEAK_MIN_RADIUS_FACTOR =
-            0.48;
-
-    private static final double SUBPEAK_MAX_RADIUS_FACTOR =
-            0.72;
+    private static final double MAX_MOUNTAIN_UPLIFT =
+            1_650.0;
 
 
     /*
-     * ========================================================
-     * SECONDARY MOUNTAINS
-     * ========================================================
-     *
-     * These fill the gaps between the major massifs.
+     * ============================================================
+     * ORDINARY NON-MOUNTAIN TERRAIN
+     * ============================================================
      */
 
-    private static final double SECONDARY_SPACING =
-            1_250.0;
+    private static final double PLAINS_BROAD_SCALE =
+            1_300.0;
 
-    private static final double SECONDARY_MIN_RADIUS =
-            700.0;
-
-    private static final double SECONDARY_MAX_RADIUS =
-            1_500.0;
-
-    private static final double SECONDARY_MIN_HEIGHT =
-            100.0;
-
-    private static final double SECONDARY_MAX_HEIGHT =
-            360.0;
-
-
-    /*
-     * ========================================================
-     * RANGE CONNECTION
-     * ========================================================
-     *
-     * Only a small fraction of the second-strongest mountain is
-     * retained.
-     *
-     * This creates saddles between nearby mountains without
-     * filling the entire region into one raised sheet.
-     */
-
-    private static final double SECOND_PRIMARY_FACTOR =
-            0.10;
-
-
-    /*
-     * There is deliberately almost no generic "mountain floor".
-     *
-     * Previously this helped create the giant raised staircase.
-     */
-
-    private static final double RANGE_FLOOR_MAX =
-            18.0;
-
-
-    /*
-     * The authored mask still progressively reduces mountains
-     * toward the outer edge of the range.
-     */
-
-    private static final double RELIEF_POWER =
-            0.90;
-
-
-    /*
-     * ========================================================
-     * ORDINARY TERRAIN
-     * ========================================================
-     */
-
-    private static final double BROAD_ROLLING_SCALE =
-            1_100.0;
-
-    private static final double BROAD_ROLLING_AMPLITUDE =
-            9.0;
-
-    private static final double SMALL_ROLLING_SCALE =
-            340.0;
-
-    private static final double SMALL_ROLLING_AMPLITUDE =
-            3.5;
-
-
-    /*
-     * ========================================================
-     * MOUNTAIN SURFACE DETAIL
-     * ========================================================
-     *
-     * These do not create the mountains.
-     *
-     * They break mathematically perfect slopes and introduce
-     * shoulders / unevenness to mountain faces.
-     */
-
-    private static final double LARGE_DETAIL_SCALE =
-            620.0;
-
-    private static final double LARGE_DETAIL_AMPLITUDE =
-            24.0;
-
-    private static final double SMALL_DETAIL_SCALE =
-            210.0;
-
-    private static final double SMALL_DETAIL_AMPLITUDE =
+    private static final double PLAINS_BROAD_AMPLITUDE =
             8.0;
 
+    private static final double PLAINS_FINE_SCALE =
+            420.0;
 
-    /*
-     * Very broad modulation changes the character of different
-     * stretches of a mountain range.
-     *
-     * It modifies summit height, not the underlying land height.
-     */
-
-    private static final double RANGE_MODULATION_SCALE =
-            24_000.0;
+    private static final double PLAINS_FINE_AMPLITUDE =
+            3.0;
 
 
     /*
-     * ========================================================
-     * CANONICAL SEEDS
-     * ========================================================
+     * ============================================================
+     * MOUNTAIN FACE BREAKUP
+     * ============================================================
      *
-     * Fixed seeds are intentional.
+     * These values add smaller irregularities AFTER the large
+     * mountain silhouette exists.
      *
-     * The geography should not change just because the player
-     * enters another Minecraft world seed.
+     * They are deliberately much smaller than the mountain height.
+     */
+    private static final double FACE_DETAIL_AMPLITUDE =
+            46.0;
+
+    private static final double LOCAL_RIDGE_DETAIL_AMPLITUDE =
+            82.0;
+
+
+    /*
+     * ============================================================
+     * FIXED CANONICAL SEEDS
+     * ============================================================
      */
 
-    private static final long PRIMARY_SEED =
-            0x41C64E6DL;
+    private static final long WARP_X_SEED =
+            0x32A4D71BL;
 
-    private static final long SECONDARY_SEED =
-            0x9E3779B97F4A7C15L;
+    private static final long WARP_Z_SEED =
+            0x7F4A7C159E3779B9L;
 
-    private static final long ROLLING_SEED =
+    private static final long STRUCTURE_SEED =
             0x632BE59BD9B4E019L;
 
-    private static final long DETAIL_SEED =
+    private static final long RIDGE_SEED =
             0xC6BC279692B5CC83L;
 
-    private static final long MODULATION_SEED =
+    private static final long DETAIL_SEED =
             0x94D049BB133111EBL;
+
+    private static final long PLAINS_SEED =
+            0xD1B54A32D192ED03L;
 
 
     public double sampleLandOffset(
@@ -234,825 +189,604 @@ public final class MountainTerrainGenerator {
             double reliefIntensity
     ) {
 
-        double east =
+        double x =
                 coordinate.eastMetres();
 
-        double north =
+        double z =
                 coordinate.northMetres();
-
-        double rolling =
-                signedNoise(
-                        east,
-                        north,
-                        BROAD_ROLLING_SCALE,
-                        ROLLING_SEED
-                )
-                        * BROAD_ROLLING_AMPLITUDE
-                        +
-                        signedNoise(
-                                east,
-                                north,
-                                SMALL_ROLLING_SCALE,
-                                ROLLING_SEED
-                                        ^ 0x1234ABCDL
-                        )
-                                * SMALL_ROLLING_AMPLITUDE;
 
         double relief =
                 clamp01(
                         reliefIntensity
                 );
 
+        /*
+         * Ordinary terrain continues everywhere, including underneath
+         * mountains. This avoids perfectly flat valleys.
+         */
+        double ordinaryTerrain =
+                sampleOrdinaryTerrain(
+                        x,
+                        z
+                );
+
         if (
                 relief <= 0.001
         ) {
-            return rolling;
+            return ordinaryTerrain;
         }
-
-        /*
-         * Edge taper.
-         *
-         * Strong authored relief:
-         *     full-size mountains.
-         *
-         * Weak relief near range boundary:
-         *     smaller mountains / foothills.
-         */
 
         double envelope =
                 Math.pow(
                         relief,
-                        RELIEF_POWER
+                        RELIEF_ENVELOPE_POWER
                 );
 
         /*
-         * Some stretches of a canonical range naturally become
-         * more dramatic than others.
+         * ------------------------------------------------------------
+         * DOMAIN WARP
+         * ------------------------------------------------------------
          */
 
-        double modulation =
-                0.78
-                        +
-                        valueNoise(
-                                east,
-                                north,
-                                RANGE_MODULATION_SCALE,
-                                MODULATION_SEED
-                        )
-                                * 0.40;
+        double largeWarpX =
+                signedFractalNoise(
+                        x,
+                        z,
+                        LARGE_WARP_SCALE,
+                        WARP_X_SEED,
+                        3
+                )
+                        * LARGE_WARP_AMPLITUDE;
 
-        double primary =
-                sampleMassifField(
-                        east,
-                        north,
-                        envelope
+        double largeWarpZ =
+                signedFractalNoise(
+                        x,
+                        z,
+                        LARGE_WARP_SCALE,
+                        WARP_Z_SEED,
+                        3
+                )
+                        * LARGE_WARP_AMPLITUDE;
+
+        double warpedX =
+                x + largeWarpX;
+
+        double warpedZ =
+                z + largeWarpZ;
+
+        double mediumWarpX =
+                signedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        MEDIUM_WARP_SCALE,
+                        WARP_X_SEED
+                                ^ 0x6A09E667L,
+                        2
+                )
+                        * MEDIUM_WARP_AMPLITUDE;
+
+        double mediumWarpZ =
+                signedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        MEDIUM_WARP_SCALE,
+                        WARP_Z_SEED
+                                ^ 0xBB67AE85L,
+                        2
+                )
+                        * MEDIUM_WARP_AMPLITUDE;
+
+        warpedX +=
+                mediumWarpX;
+
+        warpedZ +=
+                mediumWarpZ;
+
+
+        /*
+         * ------------------------------------------------------------
+         * BROAD MOUNTAIN MASSES
+         * ------------------------------------------------------------
+         *
+         * This says where the large mountain masses are stronger and
+         * weaker.
+         *
+         * Importantly, it is NOT added directly as elevation.
+         */
+
+        double broad =
+                fractalNoise01(
+                        warpedX,
+                        warpedZ,
+                        BROAD_STRUCTURE_SCALE,
+                        STRUCTURE_SEED,
+                        4
                 );
 
-        primary *=
-                modulation;
+        /*
+         * Broader low areas become valleys between major systems.
+         */
+        double broadMass =
+                smoothstep(
+                        0.28,
+                        0.78,
+                        broad
+                );
 
-        double secondary =
-                samplePeakField(
-                        east,
-                        north,
-                        SECONDARY_SPACING,
-                        SECONDARY_MIN_RADIUS,
-                        SECONDARY_MAX_RADIUS,
-                        SECONDARY_MIN_HEIGHT,
-                        SECONDARY_MAX_HEIGHT,
-                        SECONDARY_SEED,
+
+        /*
+         * ------------------------------------------------------------
+         * MAJOR RIDGES
+         * ------------------------------------------------------------
+         */
+
+        double majorRidges =
+                ridgedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        MAJOR_RIDGE_SCALE,
+                        RIDGE_SEED,
+                        4
+                );
+
+        /*
+         * Thresholding is intentional.
+         *
+         * A raw noise field tends to raise everything somewhat.
+         *
+         * Thresholding creates actual low terrain between mountain
+         * ridges.
+         */
+        majorRidges =
+                smoothstep(
+                        0.30,
+                        0.87,
+                        majorRidges
+                );
+
+
+        /*
+         * ------------------------------------------------------------
+         * SECONDARY RIDGES
+         * ------------------------------------------------------------
+         */
+
+        double secondaryRidges =
+                ridgedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        SECONDARY_RIDGE_SCALE,
+                        RIDGE_SEED
+                                ^ 0x510E527FL,
+                        4
+                );
+
+        secondaryRidges =
+                smoothstep(
+                        0.34,
+                        0.90,
+                        secondaryRidges
+                );
+
+
+        /*
+         * ------------------------------------------------------------
+         * LOCAL RIDGES
+         * ------------------------------------------------------------
+         *
+         * This scale is small enough that a player can actually see
+         * terrain shape changing while looking at one mountainside.
+         */
+
+        double localRidges =
+                ridgedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        LOCAL_RIDGE_SCALE,
+                        DETAIL_SEED,
+                        3
+                );
+
+        localRidges =
+                smoothstep(
+                        0.40,
+                        0.92,
+                        localRidges
+                );
+
+
+        /*
+         * ------------------------------------------------------------
+         * BUILD THE MOUNTAIN SILHOUETTE
+         * ------------------------------------------------------------
+         *
+         * Major ridges provide the main summits.
+         *
+         * Secondary ridges split those large forms into multiple
+         * peaks and shoulders.
+         *
+         * Broad structure changes how dramatic each section of the
+         * mountain range becomes.
+         */
+
+        double majorShape =
+                majorRidges
+                        * (
+                        0.52
+                                + broadMass
+                                * 0.48
+                );
+
+        double secondaryShape =
+                secondaryRidges
+                        * 0.32
+                        * (
+                        0.40
+                                + broadMass
+                                * 0.60
+                );
+
+        /*
+         * Multiplying some local ridge structure into the main shape
+         * creates broken summit lines rather than simply stacking
+         * another smooth layer vertically.
+         */
+        double summitBreakup =
+                0.72
+                        + localRidges
+                        * 0.28;
+
+        double mountainShape =
+                (
+                        majorShape
+                                + secondaryShape
+                )
+                        * summitBreakup;
+
+        /*
+         * Normalize useful range.
+         */
+        mountainShape =
+                clamp01(
+                        mountainShape
+                );
+
+        /*
+         * Sharpen mountains without converting them into vertical
+         * spikes.
+         *
+         * Values near zero stay low.
+         * Strong ridge values rise rapidly.
+         */
+        mountainShape =
+                Math.pow(
+                        mountainShape,
                         1.42
                 );
 
+
         /*
-         * Detail affects mountains but does not raise the whole
-         * mountain region.
+         * ------------------------------------------------------------
+         * RANGE-EDGE BEHAVIOUR
+         * ------------------------------------------------------------
+         *
+         * Near the authored range edge:
+         *
+         * - elevation decreases
+         * - ruggedness decreases
+         *
+         * But the local mountain shapes remain mountains rather than
+         * giant landforms squashed vertically.
          */
 
+        double mountainUplift =
+                mountainShape
+                        * MAX_MOUNTAIN_UPLIFT
+                        * envelope;
+
+
+        /*
+         * ------------------------------------------------------------
+         * LOCAL MOUNTAINSIDE DETAIL
+         * ------------------------------------------------------------
+         */
+
+        double localDetail =
+                signedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        LOCAL_RIDGE_SCALE,
+                        DETAIL_SEED
+                                ^ 0x1F83D9ABL,
+                        3
+                )
+                        * LOCAL_RIDGE_DETAIL_AMPLITUDE;
+
+        double faceDetail =
+                signedFractalNoise(
+                        warpedX,
+                        warpedZ,
+                        FACE_DETAIL_SCALE,
+                        DETAIL_SEED
+                                ^ 0x5BE0CD19L,
+                        2
+                )
+                        * FACE_DETAIL_AMPLITUDE;
+
+        /*
+         * Detail should be strongest on actual mountain terrain and
+         * weak inside valleys.
+         */
         double mountainPresence =
-                clamp01(
-                        (
-                                primary
-                                        + secondary
-                        )
-                                / 500.0
+                smoothstep(
+                        0.06,
+                        0.50,
+                        mountainShape
                 );
 
         double detail =
                 (
-                        signedNoise(
-                                east,
-                                north,
-                                LARGE_DETAIL_SCALE,
-                                DETAIL_SEED
-                        )
-                                * LARGE_DETAIL_AMPLITUDE
-                                +
-                                signedNoise(
-                                        east,
-                                        north,
-                                        SMALL_DETAIL_SCALE,
-                                        DETAIL_SEED
-                                                ^ 0x761E37ABL
-                                )
-                                        * SMALL_DETAIL_AMPLITUDE
+                        localDetail
+                                + faceDetail
                 )
                         * mountainPresence
                         * envelope;
 
-        double rangeFloor =
-                envelope
-                        * RANGE_FLOOR_MAX;
 
-        double mountainElevation =
-                envelope
-                        * (
-                        primary
-                                + secondary
-                )
-                        +
-                        rangeFloor
-                        +
-                        detail;
+        /*
+         * Tiny broad uplift only.
+         *
+         * We no longer elevate the complete relief region by hundreds
+         * of blocks.
+         */
+        double rangeBase =
+                RANGE_BASE_UPLIFT
+                        * envelope;
 
-        return rolling
+
+        return ordinaryTerrain
+                + rangeBase
                 + Math.max(
                 0.0,
-                mountainElevation
+                mountainUplift
+                        + detail
         );
     }
 
 
     /*
-     * ========================================================
-     * MASSIF FIELD
-     * ========================================================
-     *
-     * One cell does NOT equal one mountain anymore.
-     *
-     * One cell produces a connected three-summit massif.
+     * ============================================================
+     * ORDINARY TERRAIN
+     * ============================================================
      */
 
-    private static double sampleMassifField(
+    private static double sampleOrdinaryTerrain(
             double x,
-            double z,
-            double envelope
+            double z
     ) {
 
-        int cellX =
-                floorToInt(
-                        x / PRIMARY_SPACING
-                );
+        double broad =
+                signedFractalNoise(
+                        x,
+                        z,
+                        PLAINS_BROAD_SCALE,
+                        PLAINS_SEED,
+                        3
+                )
+                        * PLAINS_BROAD_AMPLITUDE;
 
-        int cellZ =
-                floorToInt(
-                        z / PRIMARY_SPACING
-                );
+        double fine =
+                signedFractalNoise(
+                        x,
+                        z,
+                        PLAINS_FINE_SCALE,
+                        PLAINS_SEED
+                                ^ 0x243F6A88L,
+                        2
+                )
+                        * PLAINS_FINE_AMPLITUDE;
 
-        double highest =
-                0.0;
-
-        double secondHighest =
-                0.0;
-
-        for (
-                int dz = -2;
-                dz <= 2;
-                dz++
-        ) {
-
-            for (
-                    int dx = -2;
-                    dx <= 2;
-                    dx++
-            ) {
-
-                int massifCellX =
-                        cellX + dx;
-
-                int massifCellZ =
-                        cellZ + dz;
-
-                double centreX =
-                        (
-                                massifCellX
-                                        + 0.12
-                                        + random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        1
-                                )
-                                        * 0.76
-                        )
-                                * PRIMARY_SPACING;
-
-                double centreZ =
-                        (
-                                massifCellZ
-                                        + 0.12
-                                        + random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        2
-                                )
-                                        * 0.76
-                        )
-                                * PRIMARY_SPACING;
-
-                double radius =
-                        lerp(
-                                PRIMARY_MIN_RADIUS,
-                                PRIMARY_MAX_RADIUS,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        3
-                                )
-                        );
-
-                double height =
-                        lerp(
-                                PRIMARY_MIN_HEIGHT,
-                                PRIMARY_MAX_HEIGHT,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        4
-                                )
-                        );
-
-                /*
-                 * Near the outer range boundary, reduce actual
-                 * mountain size as well as mountain height.
-                 *
-                 * This is important:
-                 *
-                 * foothills should be genuinely smaller mountains,
-                 * not enormous mountains flattened vertically.
-                 */
-
-                double localRadiusScale =
-                        0.55
-                                + envelope * 0.45;
-
-                radius *=
-                        localRadiusScale;
-
-                double orientation =
-                        random01(
-                                massifCellX,
-                                massifCellZ,
-                                PRIMARY_SEED,
-                                5
-                        )
-                                * Math.PI
-                                * 2.0;
-
-                double aspect =
-                        lerp(
-                                0.58,
-                                0.82,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        6
-                                )
-                        );
-
-                double main =
-                        peakContribution(
-                                x,
-                                z,
-                                centreX,
-                                centreZ,
-                                radius,
-                                radius * aspect,
-                                orientation,
-                                height,
-                                1.34
-                        );
-
-                /*
-                 * Subsidiary peak A.
-                 */
-
-                double subDistanceA =
-                        lerp(
-                                SUBPEAK_MIN_DISTANCE,
-                                SUBPEAK_MAX_DISTANCE,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        7
-                                )
-                        );
-
-                double subAngleA =
-                        orientation
-                                + lerp(
-                                -0.55,
-                                0.55,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        8
-                                )
-                        );
-
-                double subCentreAX =
-                        centreX
-                                + Math.cos(
-                                subAngleA
-                        )
-                                * subDistanceA;
-
-                double subCentreAZ =
-                        centreZ
-                                + Math.sin(
-                                subAngleA
-                        )
-                                * subDistanceA;
-
-                double subHeightA =
-                        height
-                                * lerp(
-                                SUBPEAK_MIN_HEIGHT_FACTOR,
-                                SUBPEAK_MAX_HEIGHT_FACTOR,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        9
-                                )
-                        );
-
-                double subRadiusA =
-                        radius
-                                * lerp(
-                                SUBPEAK_MIN_RADIUS_FACTOR,
-                                SUBPEAK_MAX_RADIUS_FACTOR,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        10
-                                )
-                        );
-
-                double subA =
-                        peakContribution(
-                                x,
-                                z,
-                                subCentreAX,
-                                subCentreAZ,
-                                subRadiusA,
-                                subRadiusA
-                                        * 0.72,
-                                orientation
-                                        + 0.20,
-                                subHeightA,
-                                1.30
-                        );
-
-                /*
-                 * Subsidiary peak B.
-                 *
-                 * Usually placed on the opposite side of the main
-                 * summit so the three peaks read as a ridge.
-                 */
-
-                double subDistanceB =
-                        lerp(
-                                SUBPEAK_MIN_DISTANCE,
-                                SUBPEAK_MAX_DISTANCE,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        11
-                                )
-                        );
-
-                double subAngleB =
-                        orientation
-                                + Math.PI
-                                + lerp(
-                                -0.55,
-                                0.55,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        12
-                                )
-                        );
-
-                double subCentreBX =
-                        centreX
-                                + Math.cos(
-                                subAngleB
-                        )
-                                * subDistanceB;
-
-                double subCentreBZ =
-                        centreZ
-                                + Math.sin(
-                                subAngleB
-                        )
-                                * subDistanceB;
-
-                double subHeightB =
-                        height
-                                * lerp(
-                                SUBPEAK_MIN_HEIGHT_FACTOR,
-                                SUBPEAK_MAX_HEIGHT_FACTOR,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        13
-                                )
-                        );
-
-                double subRadiusB =
-                        radius
-                                * lerp(
-                                SUBPEAK_MIN_RADIUS_FACTOR,
-                                SUBPEAK_MAX_RADIUS_FACTOR,
-                                random01(
-                                        massifCellX,
-                                        massifCellZ,
-                                        PRIMARY_SEED,
-                                        14
-                                )
-                        );
-
-                double subB =
-                        peakContribution(
-                                x,
-                                z,
-                                subCentreBX,
-                                subCentreBZ,
-                                subRadiusB,
-                                subRadiusB
-                                        * 0.72,
-                                orientation
-                                        - 0.20,
-                                subHeightB,
-                                1.30
-                        );
-
-                /*
-                 * Main summit remains dominant.
-                 *
-                 * Subsidiary summits add shoulders and secondary
-                 * peaks rather than simply stacking height.
-                 */
-
-                double massif =
-                        Math.max(
-                                main,
-                                Math.max(
-                                        subA,
-                                        subB
-                                )
-                        );
-
-                /*
-                 * A small amount of the weaker local peaks joins
-                 * the three summits into one climbable massif.
-                 */
-
-                double localSecond =
-                        secondLargest(
-                                main,
-                                subA,
-                                subB
-                        );
-
-                massif +=
-                        localSecond * 0.14;
-
-                if (
-                        massif > highest
-                ) {
-
-                    secondHighest =
-                            highest;
-
-                    highest =
-                            massif;
-
-                } else if (
-                        massif > secondHighest
-                ) {
-
-                    secondHighest =
-                            massif;
-                }
-            }
-        }
-
-        return highest
-                + secondHighest
-                * SECOND_PRIMARY_FACTOR;
+        return broad + fine;
     }
 
 
     /*
-     * ========================================================
-     * SECONDARY PEAK FIELD
-     * ========================================================
+     * ============================================================
+     * RIDGED FRACTAL NOISE
+     * ============================================================
      */
 
-    private static double samplePeakField(
+    private static double ridgedFractalNoise(
             double x,
             double z,
-            double spacing,
-            double minimumRadius,
-            double maximumRadius,
-            double minimumHeight,
-            double maximumHeight,
+            double baseScale,
             long seed,
-            double profilePower
+            int octaves
     ) {
 
-        int cellX =
-                floorToInt(
-                        x / spacing
-                );
-
-        int cellZ =
-                floorToInt(
-                        z / spacing
-                );
-
-        double highest =
+        double sum =
                 0.0;
 
-        double secondHighest =
+        double weight =
+                1.0;
+
+        double totalWeight =
                 0.0;
+
+        double scale =
+                baseScale;
 
         for (
-                int dz = -2;
-                dz <= 2;
-                dz++
+                int octave = 0;
+                octave < octaves;
+                octave++
         ) {
 
-            for (
-                    int dx = -2;
-                    dx <= 2;
-                    dx++
-            ) {
+            double noise =
+                    gradientNoise(
+                            x,
+                            z,
+                            scale,
+                            seed
+                                    + octave
+                                    * 0x9E3779B97F4A7C15L
+                    );
 
-                int peakCellX =
-                        cellX + dx;
+            /*
+             * gradientNoise = approximately -1..1
+             *
+             * Convert into ridge:
+             *
+             *   0 -> ridge crest
+             *  ±1 -> valley
+             */
+            double ridge =
+                    1.0
+                            - Math.abs(
+                            noise
+                    );
 
-                int peakCellZ =
-                        cellZ + dz;
+            ridge =
+                    clamp01(
+                            ridge
+                    );
 
-                double centreX =
-                        (
-                                peakCellX
-                                        + 0.15
-                                        + random01(
-                                        peakCellX,
-                                        peakCellZ,
-                                        seed,
-                                        1
-                                )
-                                        * 0.70
-                        )
-                                * spacing;
+            /*
+             * Sharpen ridge crests.
+             */
+            ridge *=
+                    ridge;
 
-                double centreZ =
-                        (
-                                peakCellZ
-                                        + 0.15
-                                        + random01(
-                                        peakCellX,
-                                        peakCellZ,
-                                        seed,
-                                        2
-                                )
-                                        * 0.70
-                        )
-                                * spacing;
+            sum +=
+                    ridge
+                            * weight;
 
-                double radius =
-                        lerp(
-                                minimumRadius,
-                                maximumRadius,
-                                random01(
-                                        peakCellX,
-                                        peakCellZ,
-                                        seed,
-                                        3
-                                )
-                        );
+            totalWeight +=
+                    weight;
 
-                double aspect =
-                        lerp(
-                                0.58,
-                                0.88,
-                                random01(
-                                        peakCellX,
-                                        peakCellZ,
-                                        seed,
-                                        4
-                                )
-                        );
+            scale *=
+                    0.5;
 
-                double angle =
-                        random01(
-                                peakCellX,
-                                peakCellZ,
-                                seed,
-                                5
-                        )
-                                * Math.PI
-                                * 2.0;
-
-                double height =
-                        lerp(
-                                minimumHeight,
-                                maximumHeight,
-                                random01(
-                                        peakCellX,
-                                        peakCellZ,
-                                        seed,
-                                        6
-                                )
-                        );
-
-                double contribution =
-                        peakContribution(
-                                x,
-                                z,
-                                centreX,
-                                centreZ,
-                                radius,
-                                radius * aspect,
-                                angle,
-                                height,
-                                profilePower
-                        );
-
-                if (
-                        contribution > highest
-                ) {
-
-                    secondHighest =
-                            highest;
-
-                    highest =
-                            contribution;
-
-                } else if (
-                        contribution > secondHighest
-                ) {
-
-                    secondHighest =
-                            contribution;
-                }
-            }
+            weight *=
+                    0.54;
         }
-
-        return highest
-                + secondHighest * 0.08;
-    }
-
-
-    /*
-     * ========================================================
-     * MOUNTAIN PROFILE
-     * ========================================================
-     *
-     * This is one of the biggest differences from the previous
-     * generator.
-     *
-     * DO NOT smoothstep the whole mountain profile.
-     *
-     * smoothstep produced large gentle shoulders and broad contour
-     * terraces.
-     *
-     * Instead:
-     *
-     *     profile = (1 - distance)^power
-     *
-     * gives:
-     *
-     * - a real summit
-     * - strong middle slopes
-     * - a smoothly fading mountain foot
-     *
-     * There is no flat top.
-     */
-
-    private static double peakContribution(
-            double x,
-            double z,
-            double centreX,
-            double centreZ,
-            double majorRadius,
-            double minorRadius,
-            double angle,
-            double height,
-            double profilePower
-    ) {
-
-        double relativeX =
-                x - centreX;
-
-        double relativeZ =
-                z - centreZ;
-
-        double cos =
-                Math.cos(
-                        angle
-                );
-
-        double sin =
-                Math.sin(
-                        angle
-                );
-
-        double rotatedX =
-                relativeX * cos
-                        + relativeZ * sin;
-
-        double rotatedZ =
-                -relativeX * sin
-                        + relativeZ * cos;
-
-        double normalizedX =
-                rotatedX
-                        / majorRadius;
-
-        double normalizedZ =
-                rotatedZ
-                        / minorRadius;
-
-        double distance =
-                Math.sqrt(
-                        normalizedX
-                                * normalizedX
-                                +
-                                normalizedZ
-                                        * normalizedZ
-                );
 
         if (
-                distance >= 1.0
+                totalWeight <= 0.0
         ) {
             return 0.0;
         }
 
-        double profile =
-                1.0 - distance;
-
-        profile =
-                Math.pow(
-                        profile,
-                        profilePower
-                );
-
-        return height
-                * profile;
+        return clamp01(
+                sum
+                        / totalWeight
+        );
     }
 
 
     /*
-     * ========================================================
-     * CONTINUOUS DETAIL NOISE
-     * ========================================================
+     * ============================================================
+     * NORMAL FRACTAL NOISE
+     * ============================================================
      */
 
-    private static double signedNoise(
+    private static double fractalNoise01(
             double x,
             double z,
-            double scale,
-            long seed
+            double baseScale,
+            long seed,
+            int octaves
     ) {
 
-        return valueNoise(
-                x,
-                z,
-                scale,
-                seed
-        )
-                * 2.0
-                - 1.0;
+        double signed =
+                signedFractalNoise(
+                        x,
+                        z,
+                        baseScale,
+                        seed,
+                        octaves
+                );
+
+        return clamp01(
+                signed
+                        * 0.5
+                        + 0.5
+        );
     }
 
-    private static double valueNoise(
+    private static double signedFractalNoise(
+            double x,
+            double z,
+            double baseScale,
+            long seed,
+            int octaves
+    ) {
+
+        double sum =
+                0.0;
+
+        double weight =
+                1.0;
+
+        double totalWeight =
+                0.0;
+
+        double scale =
+                baseScale;
+
+        for (
+                int octave = 0;
+                octave < octaves;
+                octave++
+        ) {
+
+            sum +=
+                    gradientNoise(
+                            x,
+                            z,
+                            scale,
+                            seed
+                                    + octave
+                                    * 0x632BE59BD9B4E019L
+                    )
+                            * weight;
+
+            totalWeight +=
+                    weight;
+
+            scale *=
+                    0.5;
+
+            weight *=
+                    0.52;
+        }
+
+        if (
+                totalWeight <= 0.0
+        ) {
+            return 0.0;
+        }
+
+        return clamp(
+                sum
+                        / totalWeight,
+                -1.0,
+                1.0
+        );
+    }
+
+
+    /*
+     * ============================================================
+     * 2D GRADIENT NOISE
+     * ============================================================
+     *
+     * Unlike interpolated random heights, gradient noise naturally
+     * creates directional slopes and is much better suited to terrain
+     * surfaces.
+     */
+
+    private static double gradientNoise(
             double x,
             double z,
             double scale,
@@ -1081,69 +815,165 @@ public final class MountainTerrainGenerator {
         int z1 =
                 z0 + 1;
 
-        double tx =
-                smootherstep(
-                        scaledX - x0
+        double localX =
+                scaledX - x0;
+
+        double localZ =
+                scaledZ - z0;
+
+        double n00 =
+                gradientDot(
+                        x0,
+                        z0,
+                        localX,
+                        localZ,
+                        seed
                 );
 
-        double tz =
-                smootherstep(
-                        scaledZ - z0
+        double n10 =
+                gradientDot(
+                        x1,
+                        z0,
+                        localX - 1.0,
+                        localZ,
+                        seed
+                );
+
+        double n01 =
+                gradientDot(
+                        x0,
+                        z1,
+                        localX,
+                        localZ - 1.0,
+                        seed
+                );
+
+        double n11 =
+                gradientDot(
+                        x1,
+                        z1,
+                        localX - 1.0,
+                        localZ - 1.0,
+                        seed
+                );
+
+        double fadeX =
+                quinticFade(
+                        localX
+                );
+
+        double fadeZ =
+                quinticFade(
+                        localZ
                 );
 
         double north =
                 lerp(
-                        random01(
-                                x0,
-                                z0,
-                                seed,
-                                21
-                        ),
-                        random01(
-                                x1,
-                                z0,
-                                seed,
-                                21
-                        ),
-                        tx
+                        n00,
+                        n10,
+                        fadeX
                 );
 
         double south =
                 lerp(
-                        random01(
-                                x0,
-                                z1,
-                                seed,
-                                21
-                        ),
-                        random01(
-                                x1,
-                                z1,
-                                seed,
-                                21
-                        ),
-                        tx
+                        n01,
+                        n11,
+                        fadeX
                 );
 
-        return lerp(
-                north,
-                south,
-                tz
+        /*
+         * Approximate normalization for this 2D gradient set.
+         */
+        return clamp(
+                lerp(
+                        north,
+                        south,
+                        fadeZ
+                )
+                        * 1.41421356237,
+                -1.0,
+                1.0
         );
     }
 
 
+    private static double gradientDot(
+            int latticeX,
+            int latticeZ,
+            double offsetX,
+            double offsetZ,
+            long seed
+    ) {
+
+        long hash =
+                hash(
+                        latticeX,
+                        latticeZ,
+                        seed
+                );
+
+        int direction =
+                (int) (
+                        hash & 7L
+                );
+
+        return switch (
+                direction
+                ) {
+
+            case 0 ->
+                    offsetX;
+
+            case 1 ->
+                    -offsetX;
+
+            case 2 ->
+                    offsetZ;
+
+            case 3 ->
+                    -offsetZ;
+
+            case 4 ->
+                    (
+                            offsetX
+                                    + offsetZ
+                    )
+                            * 0.70710678118;
+
+            case 5 ->
+                    (
+                            -offsetX
+                                    + offsetZ
+                    )
+                            * 0.70710678118;
+
+            case 6 ->
+                    (
+                            offsetX
+                                    - offsetZ
+                    )
+                            * 0.70710678118;
+
+            default ->
+                    (
+                            -offsetX
+                                    - offsetZ
+                    )
+                            * 0.70710678118;
+        };
+    }
+
+
     /*
-     * ========================================================
+     * ============================================================
      * HASH
-     * ========================================================
+     * ============================================================
      */
 
-    private static double random01(
+    private static long hash(
             int x,
             int z,
-            long seed,
-            int channel
+            long seed
     ) {
 
         long value =
@@ -1156,25 +986,6 @@ public final class MountainTerrainGenerator {
         value ^=
                 (long) z
                         * 0xC2B2AE3D27D4EB4FL;
-
-        value ^=
-                (long) channel
-                        * 0x165667B19E3779F9L;
-
-        value =
-                mix64(
-                        value
-                );
-
-        return (
-                value >>> 11
-        )
-                * 0x1.0p-53;
-    }
-
-    private static long mix64(
-            long value
-    ) {
 
         value ^=
                 value >>> 30;
@@ -1196,64 +1007,14 @@ public final class MountainTerrainGenerator {
 
 
     /*
-     * ========================================================
+     * ============================================================
      * HELPERS
-     * ========================================================
+     * ============================================================
      */
 
-    private static double secondLargest(
-            double a,
-            double b,
-            double c
-    ) {
-
-        if (
-                a >= b
-        ) {
-
-            if (
-                    b >= c
-            ) {
-                return b;
-            }
-
-            return Math.min(
-                    a,
-                    c
-            );
-        }
-
-        if (
-                a >= c
-        ) {
-            return a;
-        }
-
-        return Math.min(
-                b,
-                c
-        );
-    }
-
-    private static int floorToInt(
+    private static double quinticFade(
             double value
     ) {
-
-        return (
-                int
-                ) Math.floor(
-                value
-        );
-    }
-
-    private static double smootherstep(
-            double value
-    ) {
-
-        value =
-                clamp01(
-                        value
-                );
 
         return value
                 * value
@@ -1268,18 +1029,83 @@ public final class MountainTerrainGenerator {
         );
     }
 
+
+    private static double smoothstep(
+            double edge0,
+            double edge1,
+            double value
+    ) {
+
+        if (
+                edge1 <= edge0
+        ) {
+            return value >= edge1
+                    ? 1.0
+                    : 0.0;
+        }
+
+        double t =
+                (
+                        value - edge0
+                )
+                        / (
+                        edge1 - edge0
+                );
+
+        t =
+                clamp01(
+                        t
+                );
+
+        return t
+                * t
+                * (
+                3.0
+                        - 2.0
+                        * t
+        );
+    }
+
+
+    private static int floorToInt(
+            double value
+    ) {
+
+        return (
+                int
+                ) Math.floor(
+                value
+        );
+    }
+
+
     private static double clamp01(
             double value
     ) {
 
-        return Math.max(
+        return clamp(
+                value,
                 0.0,
+                1.0
+        );
+    }
+
+
+    private static double clamp(
+            double value,
+            double minimum,
+            double maximum
+    ) {
+
+        return Math.max(
+                minimum,
                 Math.min(
-                        1.0,
+                        maximum,
                         value
                 )
         );
     }
+
 
     private static double lerp(
             double start,
