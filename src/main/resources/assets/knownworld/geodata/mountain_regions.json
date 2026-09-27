@@ -1,0 +1,243 @@
+{
+  "defaultMaxSummitY": 1750.0,
+  "regions": [
+    {
+      "id": "frostfangs",
+      "centerX": 350.0,
+      "centerY": 190.0,
+      "radiusX": 105.0,
+      "radiusY": 185.0,
+      "maxSummitY": 1500.0
+    },
+    {
+      "id": "north_western_hills",
+      "centerX": 252.0,
+      "centerY": 378.0,
+      "radiusX": 62.0,
+      "radiusY": 48.0,
+      "maxSummitY": 300.0
+    },
+    {
+      "id": "north_eastern_hills",
+      "centerX": 430.0,
+      "centerY": 382.0,
+      "radiusX": 48.0,
+      "radiusY": 48.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "iron_islands",
+      "centerX": 228.0,
+      "centerY": 558.0,
+      "radiusX": 52.0,
+      "radiusY": 34.0,
+      "maxSummitY": 400.0
+    },
+    {
+      "id": "westerlands",
+      "centerX": 255.0,
+      "centerY": 662.0,
+      "radiusX": 96.0,
+      "radiusY": 96.0,
+      "maxSummitY": 300.0
+    },
+    {
+      "id": "riverlands_hills",
+      "centerX": 286.0,
+      "centerY": 704.0,
+      "radiusX": 34.0,
+      "radiusY": 28.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "vale_mountains",
+      "centerX": 452.0,
+      "centerY": 558.0,
+      "radiusX": 106.0,
+      "radiusY": 88.0,
+      "maxSummitY": 900.0
+    },
+    {
+      "id": "crownlands_hills",
+      "centerX": 382.0,
+      "centerY": 718.0,
+      "radiusX": 34.0,
+      "radiusY": 24.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "tarth",
+      "centerX": 515.0,
+      "centerY": 735.0,
+      "radiusX": 20.0,
+      "radiusY": 34.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "western_red_mountains",
+      "centerX": 275.0,
+      "centerY": 835.0,
+      "radiusX": 58.0,
+      "radiusY": 78.0,
+      "maxSummitY": 500.0
+    },
+    {
+      "id": "central_dorne_hills",
+      "centerX": 398.0,
+      "centerY": 875.0,
+      "radiusX": 38.0,
+      "radiusY": 42.0,
+      "maxSummitY": 100.0
+    },
+    {
+      "id": "eastern_red_mountains",
+      "centerX": 447.0,
+      "centerY": 835.0,
+      "radiusX": 108.0,
+      "radiusY": 78.0,
+      "maxSummitY": 700.0
+    },
+    {
+      "id": "stepstones",
+      "centerX": 552.0,
+      "centerY": 838.0,
+      "radiusX": 52.0,
+      "radiusY": 58.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "summer_isles_north",
+      "centerX": 596.0,
+      "centerY": 1164.0,
+      "radiusX": 22.0,
+      "radiusY": 16.0,
+      "maxSummitY": 100.0
+    },
+    {
+      "id": "summer_isles_south",
+      "centerX": 624.0,
+      "centerY": 1242.0,
+      "radiusX": 68.0,
+      "radiusY": 48.0,
+      "maxSummitY": 300.0
+    },
+
+    {
+      "id": "western_essos_west",
+      "centerX": 652.0,
+      "centerY": 615.0,
+      "radiusX": 96.0,
+      "radiusY": 122.0,
+      "maxSummitY": 300.0
+    },
+    {
+      "id": "western_essos_the_axe",
+      "centerX": 760.0,
+      "centerY": 620.0,
+      "radiusX": 66.0,
+      "radiusY": 116.0,
+      "maxSummitY": 100.0
+    },
+    {
+      "id": "central_essos_west",
+      "centerX": 885.0,
+      "centerY": 700.0,
+      "radiusX": 54.0,
+      "radiusY": 88.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "north_central_essos",
+      "centerX": 1110.0,
+      "centerY": 610.0,
+      "radiusX": 122.0,
+      "radiusY": 108.0,
+      "maxSummitY": 700.0
+    },
+    {
+      "id": "eastern_dothraki_hills",
+      "centerX": 1290.0,
+      "centerY": 748.0,
+      "radiusX": 56.0,
+      "radiusY": 48.0,
+      "maxSummitY": 700.0
+    },
+    {
+      "id": "red_waste_hills",
+      "centerX": 1365.0,
+      "centerY": 820.0,
+      "radiusX": 48.0,
+      "radiusY": 58.0,
+      "maxSummitY": 200.0
+    },
+    {
+      "id": "ghiscar",
+      "centerX": 1120.0,
+      "centerY": 875.0,
+      "radiusX": 158.0,
+      "radiusY": 150.0,
+      "maxSummitY": 400.0
+    },
+    {
+      "id": "valyria",
+      "centerX": 880.0,
+      "centerY": 990.0,
+      "radiusX": 92.0,
+      "radiusY": 142.0,
+      "maxSummitY": 1000.0
+    },
+
+    {
+      "id": "ib",
+      "centerX": 1285.0,
+      "centerY": 365.0,
+      "radiusX": 78.0,
+      "radiusY": 58.0,
+      "maxSummitY": 150.0
+    },
+    {
+      "id": "ib_southern_island",
+      "centerX": 1424.0,
+      "centerY": 438.0,
+      "radiusX": 38.0,
+      "radiusY": 42.0,
+      "maxSummitY": 100.0
+    },
+
+    {
+      "id": "mother_of_mountains",
+      "centerX": 1327.0,
+      "centerY": 629.0,
+      "radiusX": 36.0,
+      "radiusY": 46.0,
+      "maxSummitY": 2000.0,
+      "style": "SINGULAR",
+      "singularMountainRadiusMetres": 9000.0
+    },
+
+    {
+      "id": "bone_mountains",
+      "centerX": 1460.0,
+      "centerY": 750.0,
+      "radiusX": 150.0,
+      "radiusY": 260.0,
+      "maxSummitY": 1500.0
+    },
+    {
+      "id": "far_eastern_range",
+      "centerX": 1935.0,
+      "centerY": 980.0,
+      "radiusX": 145.0,
+      "radiusY": 245.0,
+      "maxSummitY": 1000.0
+    },
+    {
+      "id": "southern_essos_isolated_hills",
+      "centerX": 1405.0,
+      "centerY": 1060.0,
+      "radiusX": 52.0,
+      "radiusY": 52.0,
+      "maxSummitY": 100.0
+    }
+  ]
+}

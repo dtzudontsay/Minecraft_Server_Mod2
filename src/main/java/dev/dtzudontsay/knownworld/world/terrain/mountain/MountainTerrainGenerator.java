@@ -1,62 +1,14 @@
 package dev.dtzudontsay.knownworld.world.terrain.mountain;
 
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
+import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainRegionProfileProvider.MountainProfileSample;
+import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainRegionProfileProvider.MountainStyle;
 
 public final class MountainTerrainGenerator {
-
-    /*
-     * ============================================================
-     * PURPOSE
-     * ============================================================
-     *
-     * The authored relief raster says WHERE mountain terrain belongs
-     * and roughly how strongly mountainous the location should be.
-     *
-     * It does NOT define final elevation.
-     *
-     * Final mountain geometry is generated here directly from
-     * canonical world coordinates at Minecraft-block scale.
-     *
-     * No circles.
-     * No elliptical domes.
-     * No one-peak-per-cell system.
-     *
-     * Instead:
-     *
-     *   relief envelope
-     *       +
-     *   domain warping
-     *       +
-     *   broad mountain structure
-     *       +
-     *   major ridges
-     *       +
-     *   secondary ridges
-     *       +
-     *   broken slope detail
-     *
-     * This is intended to create large Minecraft-style mountain
-     * chains with repeated peaks, valleys, saddles and irregular
-     * faces.
-     */
-
-
-    /*
-     * ============================================================
-     * RANGE ENVELOPE
-     * ============================================================
-     */
 
     private static final double RELIEF_ENVELOPE_POWER =
             0.82;
 
-    /*
-     * There is deliberately almost no generic uplift simply because
-     * a point lies inside a mountain region.
-     *
-     * Otherwise the complete authored region turns into one elevated
-     * tableland again.
-     */
     private static final double RANGE_BASE_UPLIFT =
             14.0;
 
@@ -65,12 +17,6 @@ public final class MountainTerrainGenerator {
      * ============================================================
      * DOMAIN WARPING
      * ============================================================
-     *
-     * Straight noise tends to produce obviously procedural,
-     * repetitive ridges.
-     *
-     * These warp fields bend, fork and distort the mountains before
-     * the actual mountain noise is evaluated.
      */
 
     private static final double LARGE_WARP_SCALE =
@@ -88,13 +34,8 @@ public final class MountainTerrainGenerator {
 
     /*
      * ============================================================
-     * MOUNTAIN STRUCTURE
+     * NORMAL MOUNTAIN STRUCTURE
      * ============================================================
-     *
-     * These are actual geographic wavelengths in metres / blocks.
-     *
-     * A strong mountain chain contains structure on all of these
-     * scales simultaneously.
      */
 
     private static final double BROAD_STRUCTURE_SCALE =
@@ -114,18 +55,8 @@ public final class MountainTerrainGenerator {
 
 
     /*
-     * Maximum vertical contribution.
-     *
-     * With the current custom dimension ceiling near Y=2031 and the
-     * ~66-105 m macro land base, this still leaves useful headroom.
-     */
-    private static final double MAX_MOUNTAIN_UPLIFT =
-            1_650.0;
-
-
-    /*
      * ============================================================
-     * ORDINARY NON-MOUNTAIN TERRAIN
+     * ORDINARY TERRAIN
      * ============================================================
      */
 
@@ -144,24 +75,33 @@ public final class MountainTerrainGenerator {
 
     /*
      * ============================================================
-     * MOUNTAIN FACE BREAKUP
+     * MOTHER OF MOUNTAINS
      * ============================================================
      *
-     * These values add smaller irregularities AFTER the large
-     * mountain silhouette exists.
+     * This is intentionally different from every ordinary range.
      *
-     * They are deliberately much smaller than the mountain height.
+     * The complete configured Mother region suppresses the normal
+     * procedural mountain-chain field.
+     *
+     * Only one mountain is generated around the configured centre.
      */
-    private static final double FACE_DETAIL_AMPLITUDE =
-            46.0;
 
-    private static final double LOCAL_RIDGE_DETAIL_AMPLITUDE =
-            82.0;
+    private static final double SINGULAR_WARP_SCALE =
+            3_200.0;
+
+    private static final double SINGULAR_WARP_AMPLITUDE =
+            650.0;
+
+    private static final double SINGULAR_FACE_SCALE =
+            650.0;
+
+    private static final double SINGULAR_FINE_SCALE =
+            210.0;
 
 
     /*
      * ============================================================
-     * FIXED CANONICAL SEEDS
+     * FIXED SEEDS
      * ============================================================
      */
 
@@ -183,10 +123,54 @@ public final class MountainTerrainGenerator {
     private static final long PLAINS_SEED =
             0xD1B54A32D192ED03L;
 
+    private static final long SINGULAR_SEED =
+            0xA24BAED4963EE407L;
+
 
     public double sampleLandOffset(
             WorldCoordinate coordinate,
-            double reliefIntensity
+            double reliefIntensity,
+            double baseElevation,
+            MountainProfileSample profile
+    ) {
+
+        double ordinaryTerrain =
+                sampleOrdinaryTerrain(
+                        coordinate.eastMetres(),
+                        coordinate.northMetres()
+                );
+
+
+        if (
+                profile.style()
+                        == MountainStyle.SINGULAR
+        ) {
+
+            return sampleSingularMountain(
+                    coordinate,
+                    baseElevation,
+                    ordinaryTerrain,
+                    profile
+            );
+        }
+
+
+        return sampleNormalMountainTerrain(
+                coordinate,
+                reliefIntensity,
+                baseElevation,
+                ordinaryTerrain,
+                profile
+        );
+    }
+
+
+    private double sampleNormalMountainTerrain(
+            WorldCoordinate coordinate,
+            double reliefIntensity,
+            double baseElevation,
+            double ordinaryTerrain,
+            MountainProfileSample profile
     ) {
 
         double x =
@@ -200,21 +184,14 @@ public final class MountainTerrainGenerator {
                         reliefIntensity
                 );
 
-        /*
-         * Ordinary terrain continues everywhere, including underneath
-         * mountains. This avoids perfectly flat valleys.
-         */
-        double ordinaryTerrain =
-                sampleOrdinaryTerrain(
-                        x,
-                        z
-                );
 
         if (
                 relief <= 0.001
         ) {
+
             return ordinaryTerrain;
         }
+
 
         double envelope =
                 Math.pow(
@@ -222,11 +199,6 @@ public final class MountainTerrainGenerator {
                         RELIEF_ENVELOPE_POWER
                 );
 
-        /*
-         * ------------------------------------------------------------
-         * DOMAIN WARP
-         * ------------------------------------------------------------
-         */
 
         double largeWarpX =
                 signedFractalNoise(
@@ -248,13 +220,15 @@ public final class MountainTerrainGenerator {
                 )
                         * LARGE_WARP_AMPLITUDE;
 
+
         double warpedX =
                 x + largeWarpX;
 
         double warpedZ =
                 z + largeWarpZ;
 
-        double mediumWarpX =
+
+        warpedX +=
                 signedFractalNoise(
                         warpedX,
                         warpedZ,
@@ -265,7 +239,7 @@ public final class MountainTerrainGenerator {
                 )
                         * MEDIUM_WARP_AMPLITUDE;
 
-        double mediumWarpZ =
+        warpedZ +=
                 signedFractalNoise(
                         warpedX,
                         warpedZ,
@@ -276,23 +250,6 @@ public final class MountainTerrainGenerator {
                 )
                         * MEDIUM_WARP_AMPLITUDE;
 
-        warpedX +=
-                mediumWarpX;
-
-        warpedZ +=
-                mediumWarpZ;
-
-
-        /*
-         * ------------------------------------------------------------
-         * BROAD MOUNTAIN MASSES
-         * ------------------------------------------------------------
-         *
-         * This says where the large mountain masses are stronger and
-         * weaker.
-         *
-         * Importantly, it is NOT added directly as elevation.
-         */
 
         double broad =
                 fractalNoise01(
@@ -303,9 +260,6 @@ public final class MountainTerrainGenerator {
                         4
                 );
 
-        /*
-         * Broader low areas become valleys between major systems.
-         */
         double broadMass =
                 smoothstep(
                         0.28,
@@ -313,12 +267,6 @@ public final class MountainTerrainGenerator {
                         broad
                 );
 
-
-        /*
-         * ------------------------------------------------------------
-         * MAJOR RIDGES
-         * ------------------------------------------------------------
-         */
 
         double majorRidges =
                 ridgedFractalNoise(
@@ -329,14 +277,6 @@ public final class MountainTerrainGenerator {
                         4
                 );
 
-        /*
-         * Thresholding is intentional.
-         *
-         * A raw noise field tends to raise everything somewhat.
-         *
-         * Thresholding creates actual low terrain between mountain
-         * ridges.
-         */
         majorRidges =
                 smoothstep(
                         0.30,
@@ -344,12 +284,6 @@ public final class MountainTerrainGenerator {
                         majorRidges
                 );
 
-
-        /*
-         * ------------------------------------------------------------
-         * SECONDARY RIDGES
-         * ------------------------------------------------------------
-         */
 
         double secondaryRidges =
                 ridgedFractalNoise(
@@ -369,15 +303,6 @@ public final class MountainTerrainGenerator {
                 );
 
 
-        /*
-         * ------------------------------------------------------------
-         * LOCAL RIDGES
-         * ------------------------------------------------------------
-         *
-         * This scale is small enough that a player can actually see
-         * terrain shape changing while looking at one mountainside.
-         */
-
         double localRidges =
                 ridgedFractalNoise(
                         warpedX,
@@ -395,20 +320,6 @@ public final class MountainTerrainGenerator {
                 );
 
 
-        /*
-         * ------------------------------------------------------------
-         * BUILD THE MOUNTAIN SILHOUETTE
-         * ------------------------------------------------------------
-         *
-         * Major ridges provide the main summits.
-         *
-         * Secondary ridges split those large forms into multiple
-         * peaks and shoulders.
-         *
-         * Broad structure changes how dramatic each section of the
-         * mountain range becomes.
-         */
-
         double majorShape =
                 majorRidges
                         * (
@@ -416,6 +327,7 @@ public final class MountainTerrainGenerator {
                                 + broadMass
                                 * 0.48
                 );
+
 
         double secondaryShape =
                 secondaryRidges
@@ -426,15 +338,12 @@ public final class MountainTerrainGenerator {
                                 * 0.60
                 );
 
-        /*
-         * Multiplying some local ridge structure into the main shape
-         * creates broken summit lines rather than simply stacking
-         * another smooth layer vertically.
-         */
+
         double summitBreakup =
                 0.72
                         + localRidges
                         * 0.28;
+
 
         double mountainShape =
                 (
@@ -443,21 +352,13 @@ public final class MountainTerrainGenerator {
                 )
                         * summitBreakup;
 
-        /*
-         * Normalize useful range.
-         */
+
         mountainShape =
                 clamp01(
                         mountainShape
                 );
 
-        /*
-         * Sharpen mountains without converting them into vertical
-         * spikes.
-         *
-         * Values near zero stay low.
-         * Strong ridge values rise rapidly.
-         */
+
         mountainShape =
                 Math.pow(
                         mountainShape,
@@ -465,33 +366,24 @@ public final class MountainTerrainGenerator {
                 );
 
 
-        /*
-         * ------------------------------------------------------------
-         * RANGE-EDGE BEHAVIOUR
-         * ------------------------------------------------------------
-         *
-         * Near the authored range edge:
-         *
-         * - elevation decreases
-         * - ruggedness decreases
-         *
-         * But the local mountain shapes remain mountains rather than
-         * giant landforms squashed vertically.
-         */
-
-        double mountainUplift =
-                mountainShape
-                        * MAX_MOUNTAIN_UPLIFT
-                        * envelope;
+        double mountainPresence =
+                smoothstep(
+                        0.06,
+                        0.50,
+                        mountainShape
+                );
 
 
         /*
-         * ------------------------------------------------------------
-         * LOCAL MOUNTAINSIDE DETAIL
-         * ------------------------------------------------------------
+         * Detail is now expressed as a FRACTION of the mountain
+         * budget instead of raw blocks.
+         *
+         * This allows a 200-block hill region and a 1500-block
+         * mountain region to use the same natural geometry without
+         * detail accidentally breaking their ceiling.
          */
 
-        double localDetail =
+        double detailFraction =
                 signedFractalNoise(
                         warpedX,
                         warpedZ,
@@ -500,65 +392,255 @@ public final class MountainTerrainGenerator {
                                 ^ 0x1F83D9ABL,
                         3
                 )
-                        * LOCAL_RIDGE_DETAIL_AMPLITUDE;
+                        * 0.055
+                        +
+                        signedFractalNoise(
+                                warpedX,
+                                warpedZ,
+                                FACE_DETAIL_SCALE,
+                                DETAIL_SEED
+                                        ^ 0x5BE0CD19L,
+                                2
+                        )
+                                * 0.028;
 
-        double faceDetail =
-                signedFractalNoise(
-                        warpedX,
-                        warpedZ,
-                        FACE_DETAIL_SCALE,
-                        DETAIL_SEED
-                                ^ 0x5BE0CD19L,
-                        2
-                )
-                        * FACE_DETAIL_AMPLITUDE;
 
-        /*
-         * Detail should be strongest on actual mountain terrain and
-         * weak inside valleys.
-         */
-        double mountainPresence =
-                smoothstep(
-                        0.06,
-                        0.50,
-                        mountainShape
+        double detailedShape =
+                mountainShape
+                        +
+                        detailFraction
+                                * mountainPresence
+                                * (
+                                1.0
+                                        - mountainShape
+                                        * 0.70
+                        );
+
+
+        detailedShape =
+                clamp01(
+                        detailedShape
                 );
 
-        double detail =
-                (
-                        localDetail
-                                + faceDetail
-                )
-                        * mountainPresence
-                        * envelope;
 
-
-        /*
-         * Tiny broad uplift only.
-         *
-         * We no longer elevate the complete relief region by hundreds
-         * of blocks.
-         */
         double rangeBase =
                 RANGE_BASE_UPLIFT
                         * envelope;
 
 
-        return ordinaryTerrain
-                + rangeBase
-                + Math.max(
-                0.0,
-                mountainUplift
-                        + detail
-        );
+        double nonMountainOffset =
+                ordinaryTerrain
+                        + rangeBase;
+
+
+        /*
+         * maxSummitY is ABSOLUTE Minecraft Y.
+         *
+         * We derive the amount of vertical space available above the
+         * local base rather than generating huge terrain and clipping
+         * it afterward.
+         *
+         * This is what prevents flat "cut-off" summits.
+         */
+
+        double mountainBudget =
+                Math.max(
+                        0.0,
+                        profile.maxSummitY()
+                                - baseElevation
+                                - nonMountainOffset
+                );
+
+
+        double mountainUplift =
+                detailedShape
+                        * mountainBudget
+                        * envelope;
+
+
+        return nonMountainOffset
+                + mountainUplift;
     }
 
 
-    /*
-     * ============================================================
-     * ORDINARY TERRAIN
-     * ============================================================
-     */
+    private double sampleSingularMountain(
+            WorldCoordinate coordinate,
+            double baseElevation,
+            double ordinaryTerrain,
+            MountainProfileSample profile
+    ) {
+
+        double radius =
+                profile.singularMountainRadiusMetres();
+
+
+        if (
+                radius <= 0.0
+        ) {
+
+            return ordinaryTerrain;
+        }
+
+
+        double relativeX =
+                coordinate.eastMetres()
+                        - profile.singularCenterEastMetres();
+
+        double relativeZ =
+                coordinate.northMetres()
+                        - profile.singularCenterNorthMetres();
+
+
+        /*
+         * Small coordinate distortion gives the mountain an
+         * irregular footprint rather than a perfect mathematical
+         * cone.
+         */
+
+        double warpedX =
+                relativeX
+                        +
+                        signedFractalNoise(
+                                coordinate.eastMetres(),
+                                coordinate.northMetres(),
+                                SINGULAR_WARP_SCALE,
+                                SINGULAR_SEED,
+                                3
+                        )
+                                * SINGULAR_WARP_AMPLITUDE;
+
+        double warpedZ =
+                relativeZ
+                        +
+                        signedFractalNoise(
+                                coordinate.eastMetres(),
+                                coordinate.northMetres(),
+                                SINGULAR_WARP_SCALE,
+                                SINGULAR_SEED
+                                        ^ 0xB7E15162L,
+                                3
+                        )
+                                * SINGULAR_WARP_AMPLITUDE;
+
+
+        /*
+         * Slightly elliptical but still recognisably one mountain.
+         */
+
+        double normalizedDistance =
+                Math.sqrt(
+                        square(
+                                warpedX
+                                        / radius
+                        )
+                                +
+                                square(
+                                        warpedZ
+                                                / (
+                                                radius
+                                                        * 0.88
+                                        )
+                                )
+                );
+
+
+        if (
+                normalizedDistance >= 1.0
+        ) {
+
+            return ordinaryTerrain;
+        }
+
+
+        double core =
+                1.0
+                        - normalizedDistance;
+
+
+        /*
+         * Close to linear gives the mountain a strong visible rise
+         * from the surrounding terrain.
+         */
+
+        double baseShape =
+                Math.pow(
+                        core,
+                        0.94
+                );
+
+
+        /*
+         * These details alter the flanks and ridges but are tapered
+         * away at both the summit and the outer edge, preserving one
+         * dominant summit.
+         */
+
+        double ridgeDetail =
+                (
+                        ridgedFractalNoise(
+                                coordinate.eastMetres(),
+                                coordinate.northMetres(),
+                                SINGULAR_FACE_SCALE,
+                                SINGULAR_SEED
+                                        ^ 0x243F6A88L,
+                                4
+                        )
+                                - 0.5
+                )
+                        * 0.18;
+
+
+        double fineDetail =
+                signedFractalNoise(
+                        coordinate.eastMetres(),
+                        coordinate.northMetres(),
+                        SINGULAR_FINE_SCALE,
+                        SINGULAR_SEED
+                                ^ 0x85A308D3L,
+                        2
+                )
+                        * 0.055;
+
+
+        double taper =
+                baseShape
+                        * (
+                        1.0
+                                - baseShape
+                );
+
+
+        double finalShape =
+                baseShape
+                        +
+                        (
+                                ridgeDetail
+                                        + fineDetail
+                        )
+                                * taper;
+
+
+        finalShape =
+                clamp01(
+                        finalShape
+                );
+
+
+        double mountainBudget =
+                Math.max(
+                        0.0,
+                        profile.maxSummitY()
+                                - baseElevation
+                                - ordinaryTerrain
+                );
+
+
+        return ordinaryTerrain
+                +
+                finalShape
+                        * mountainBudget;
+    }
+
 
     private static double sampleOrdinaryTerrain(
             double x,
@@ -575,6 +657,7 @@ public final class MountainTerrainGenerator {
                 )
                         * PLAINS_BROAD_AMPLITUDE;
 
+
         double fine =
                 signedFractalNoise(
                         x,
@@ -586,15 +669,11 @@ public final class MountainTerrainGenerator {
                 )
                         * PLAINS_FINE_AMPLITUDE;
 
-        return broad + fine;
+
+        return broad
+                + fine;
     }
 
-
-    /*
-     * ============================================================
-     * RIDGED FRACTAL NOISE
-     * ============================================================
-     */
 
     private static double ridgedFractalNoise(
             double x,
@@ -616,6 +695,7 @@ public final class MountainTerrainGenerator {
         double scale =
                 baseScale;
 
+
         for (
                 int octave = 0;
                 octave < octaves;
@@ -628,34 +708,28 @@ public final class MountainTerrainGenerator {
                             z,
                             scale,
                             seed
-                                    + octave
-                                    * 0x9E3779B97F4A7C15L
+                                    +
+                                    octave
+                                            * 0x9E3779B97F4A7C15L
                     );
 
-            /*
-             * gradientNoise = approximately -1..1
-             *
-             * Convert into ridge:
-             *
-             *   0 -> ridge crest
-             *  ±1 -> valley
-             */
+
             double ridge =
                     1.0
                             - Math.abs(
                             noise
                     );
 
+
             ridge =
                     clamp01(
                             ridge
                     );
 
-            /*
-             * Sharpen ridge crests.
-             */
+
             ridge *=
                     ridge;
+
 
             sum +=
                     ridge
@@ -671,11 +745,14 @@ public final class MountainTerrainGenerator {
                     0.54;
         }
 
+
         if (
                 totalWeight <= 0.0
         ) {
+
             return 0.0;
         }
+
 
         return clamp01(
                 sum
@@ -683,12 +760,6 @@ public final class MountainTerrainGenerator {
         );
     }
 
-
-    /*
-     * ============================================================
-     * NORMAL FRACTAL NOISE
-     * ============================================================
-     */
 
     private static double fractalNoise01(
             double x,
@@ -698,21 +769,19 @@ public final class MountainTerrainGenerator {
             int octaves
     ) {
 
-        double signed =
+        return clamp01(
                 signedFractalNoise(
                         x,
                         z,
                         baseScale,
                         seed,
                         octaves
-                );
-
-        return clamp01(
-                signed
+                )
                         * 0.5
                         + 0.5
         );
     }
+
 
     private static double signedFractalNoise(
             double x,
@@ -734,6 +803,7 @@ public final class MountainTerrainGenerator {
         double scale =
                 baseScale;
 
+
         for (
                 int octave = 0;
                 octave < octaves;
@@ -746,10 +816,12 @@ public final class MountainTerrainGenerator {
                             z,
                             scale,
                             seed
-                                    + octave
-                                    * 0x632BE59BD9B4E019L
+                                    +
+                                    octave
+                                            * 0x632BE59BD9B4E019L
                     )
                             * weight;
+
 
             totalWeight +=
                     weight;
@@ -761,11 +833,14 @@ public final class MountainTerrainGenerator {
                     0.52;
         }
 
+
         if (
                 totalWeight <= 0.0
         ) {
+
             return 0.0;
         }
+
 
         return clamp(
                 sum
@@ -775,16 +850,6 @@ public final class MountainTerrainGenerator {
         );
     }
 
-
-    /*
-     * ============================================================
-     * 2D GRADIENT NOISE
-     * ============================================================
-     *
-     * Unlike interpolated random heights, gradient noise naturally
-     * creates directional slopes and is much better suited to terrain
-     * surfaces.
-     */
 
     private static double gradientNoise(
             double x,
@@ -798,6 +863,7 @@ public final class MountainTerrainGenerator {
 
         double scaledZ =
                 z / scale;
+
 
         int x0 =
                 floorToInt(
@@ -815,11 +881,13 @@ public final class MountainTerrainGenerator {
         int z1 =
                 z0 + 1;
 
+
         double localX =
                 scaledX - x0;
 
         double localZ =
                 scaledZ - z0;
+
 
         double n00 =
                 gradientDot(
@@ -857,6 +925,7 @@ public final class MountainTerrainGenerator {
                         seed
                 );
 
+
         double fadeX =
                 quinticFade(
                         localX
@@ -866,6 +935,7 @@ public final class MountainTerrainGenerator {
                 quinticFade(
                         localZ
                 );
+
 
         double north =
                 lerp(
@@ -881,9 +951,7 @@ public final class MountainTerrainGenerator {
                         fadeX
                 );
 
-        /*
-         * Approximate normalization for this 2D gradient set.
-         */
+
         return clamp(
                 lerp(
                         north,
@@ -912,10 +980,12 @@ public final class MountainTerrainGenerator {
                         seed
                 );
 
+
         int direction =
                 (int) (
                         hash & 7L
                 );
+
 
         return switch (
                 direction
@@ -964,12 +1034,6 @@ public final class MountainTerrainGenerator {
     }
 
 
-    /*
-     * ============================================================
-     * HASH
-     * ============================================================
-     */
-
     private static long hash(
             int x,
             int z,
@@ -979,6 +1043,7 @@ public final class MountainTerrainGenerator {
         long value =
                 seed;
 
+
         value ^=
                 (long) x
                         * 0x9E3779B97F4A7C15L;
@@ -986,6 +1051,7 @@ public final class MountainTerrainGenerator {
         value ^=
                 (long) z
                         * 0xC2B2AE3D27D4EB4FL;
+
 
         value ^=
                 value >>> 30;
@@ -1002,15 +1068,10 @@ public final class MountainTerrainGenerator {
         value ^=
                 value >>> 31;
 
+
         return value;
     }
 
-
-    /*
-     * ============================================================
-     * HELPERS
-     * ============================================================
-     */
 
     private static double quinticFade(
             double value
@@ -1022,7 +1083,8 @@ public final class MountainTerrainGenerator {
                 * (
                 value
                         * (
-                        value * 6.0
+                        value
+                                * 6.0
                                 - 15.0
                 )
                         + 10.0
@@ -1039,23 +1101,32 @@ public final class MountainTerrainGenerator {
         if (
                 edge1 <= edge0
         ) {
+
             return value >= edge1
-                    ? 1.0
-                    : 0.0;
+                    ?
+                    1.0
+                    :
+                    0.0;
         }
+
 
         double t =
                 (
-                        value - edge0
+                        value
+                                - edge0
                 )
-                        / (
-                        edge1 - edge0
-                );
+                        /
+                        (
+                                edge1
+                                        - edge0
+                        );
+
 
         t =
                 clamp01(
                         t
                 );
+
 
         return t
                 * t
@@ -1076,6 +1147,15 @@ public final class MountainTerrainGenerator {
                 ) Math.floor(
                 value
         );
+    }
+
+
+    private static double square(
+            double value
+    ) {
+
+        return value
+                * value;
     }
 
 
@@ -1114,9 +1194,11 @@ public final class MountainTerrainGenerator {
     ) {
 
         return start
-                + (
-                end - start
-        )
-                * factor;
+                +
+                (
+                        end
+                                - start
+                )
+                        * factor;
     }
 }

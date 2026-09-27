@@ -6,6 +6,7 @@ import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.ElevationProvider;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.ElevationSample;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.RasterElevationProvider;
+import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainRegionProfileProvider;
 import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainTerrainGenerator;
 import dev.dtzudontsay.knownworld.world.terrain.relief.ReliefIntensityProvider;
 
@@ -32,11 +33,31 @@ public final class RasterTerrainProvider implements TerrainProvider {
     private static final double FALLBACK_OCEAN_TRANSITION_DISTANCE =
             150_000.0;
 
+
+    /*
+     * Keep a little room between the ordinary local terrain base and
+     * very low configured summit ceilings.
+     *
+     * Example:
+     *
+     *     max Y = 100
+     *
+     * needs ordinary terrain below 100 or there would be no vertical
+     * budget available for the hills at all.
+     */
+
+    private static final double MINIMUM_PROFILE_RELIEF_ROOM =
+            14.0;
+
+
     private final ElevationProvider elevationProvider;
 
     private final ReliefIntensityProvider reliefProvider;
 
+    private final MountainRegionProfileProvider mountainProfileProvider;
+
     private final MountainTerrainGenerator mountainGenerator;
+
 
     public RasterTerrainProvider() {
 
@@ -46,9 +67,13 @@ public final class RasterTerrainProvider implements TerrainProvider {
         reliefProvider =
                 new ReliefIntensityProvider();
 
+        mountainProfileProvider =
+                new MountainRegionProfileProvider();
+
         mountainGenerator =
                 new MountainTerrainGenerator();
     }
+
 
     @Override
     public TerrainSample sample(
@@ -60,9 +85,11 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         coordinate
                 );
 
+
         if (
                 !geography.insideKnownWorldMap()
         ) {
+
             return new TerrainSample(
                     -64.0,
                     "OUTSIDE_KNOWN_WORLD",
@@ -70,10 +97,12 @@ public final class RasterTerrainProvider implements TerrainProvider {
             );
         }
 
+
         ElevationSample canonicalElevation =
                 elevationProvider.sample(
                         coordinate
                 );
+
 
         if (
                 geography.land()
@@ -82,6 +111,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
             double baseElevation;
 
             String source;
+
 
             if (
                     !Double.isNaN(
@@ -109,16 +139,62 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         "CANONICAL_RASTER_FALLBACK";
             }
 
+
+            MountainRegionProfileProvider.MountainProfileSample profile =
+                    mountainProfileProvider.sample(
+                            geography.logicalMapCoordinate()
+                    );
+
+
+            /*
+             * Some of your requested hill regions have an absolute
+             * summit ceiling around Y 100.
+             *
+             * The generic macro land base can itself reach ~105.
+             *
+             * For an explicitly configured low region, lower the
+             * local macro base enough to leave room for the intended
+             * hills instead of immediately violating the ceiling.
+             */
+
+            if (
+                    profile.explicitRegion()
+            ) {
+
+                double highestAllowedBase =
+                        profile.maxSummitY()
+                                - MINIMUM_PROFILE_RELIEF_ROOM;
+
+
+                baseElevation =
+                        Math.min(
+                                baseElevation,
+                                highestAllowedBase
+                        );
+
+
+                baseElevation =
+                        Math.max(
+                                SEA_LEVEL_METRES + 1.0,
+                                baseElevation
+                        );
+            }
+
+
             double reliefIntensity =
                     reliefProvider.sample(
                             coordinate
                     );
 
+
             double proceduralOffset =
                     mountainGenerator.sampleLandOffset(
                             coordinate,
-                            reliefIntensity
+                            reliefIntensity,
+                            baseElevation,
+                            profile
                     );
+
 
             double elevation =
                     Math.max(
@@ -127,17 +203,37 @@ public final class RasterTerrainProvider implements TerrainProvider {
                                     + proceduralOffset
                     );
 
+
+            /*
+             * Safety only.
+             *
+             * The generator already scales itself to the available
+             * vertical budget rather than producing terrain and
+             * chopping it flat.
+             */
+
+            if (
+                    profile.explicitRegion()
+            ) {
+
+                elevation =
+                        Math.min(
+                                elevation,
+                                profile.maxSummitY()
+                        );
+            }
+
+
             return new TerrainSample(
                     elevation,
                     "LAND",
                     source
                             + "+BLOCK_SCALE_TERRAIN"
+                            + "+"
+                            + profile.regionId()
             );
         }
 
-        /*
-         * Ocean does not receive procedural mountain generation.
-         */
 
         if (
                 !Double.isNaN(
@@ -155,6 +251,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
             );
         }
 
+
         return new TerrainSample(
                 sampleFallbackOceanBase(
                         geography
@@ -164,11 +261,13 @@ public final class RasterTerrainProvider implements TerrainProvider {
         );
     }
 
+
     public boolean hasCanonicalElevationData() {
 
         return elevationProvider
                 .hasCanonicalElevationData();
     }
+
 
     private double sampleFallbackLandBase(
             KnownWorldGeoSample geography
@@ -180,16 +279,19 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         geography.coastDistanceMetres()
                 );
 
+
         double factor =
                 clamp01(
                         inlandDistance
                                 / FALLBACK_LAND_TRANSITION_DISTANCE
                 );
 
+
         factor =
                 smoothstep(
                         factor
                 );
+
 
         return lerp(
                 FALLBACK_COASTAL_LAND_HEIGHT,
@@ -197,6 +299,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
                 factor
         );
     }
+
 
     private double sampleFallbackOceanBase(
             KnownWorldGeoSample geography
@@ -208,16 +311,19 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         -geography.coastDistanceMetres()
                 );
 
+
         double factor =
                 clamp01(
                         offshoreDistance
                                 / FALLBACK_OCEAN_TRANSITION_DISTANCE
                 );
 
+
         factor =
                 smoothstep(
                         factor
                 );
+
 
         return lerp(
                 FALLBACK_SHALLOW_OCEAN_FLOOR,
@@ -225,6 +331,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
                 factor
         );
     }
+
 
     private static double clamp01(
             double value
@@ -239,6 +346,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
         );
     }
 
+
     private static double smoothstep(
             double value
     ) {
@@ -252,6 +360,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
         );
     }
 
+
     private static double lerp(
             double start,
             double end,
@@ -259,9 +368,11 @@ public final class RasterTerrainProvider implements TerrainProvider {
     ) {
 
         return start
-                + (
-                end - start
-        )
-                * factor;
+                +
+                (
+                        end
+                                - start
+                )
+                        * factor;
     }
 }
