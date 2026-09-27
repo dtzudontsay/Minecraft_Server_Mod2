@@ -16,6 +16,7 @@ import dev.dtzudontsay.knownworld.world.geography.regions.SouthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthWestEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.terrain.KnownWorldTerrainPrototype;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,9 +49,7 @@ public final class KnownWorld implements ModInitializer {
         UlthosFeatureRegistry.bootstrap();
 
         /*
-         * Force-load the canonical runtime geography during
-         * startup so missing/corrupt geography resources fail
-         * immediately rather than during world generation.
+         * Load runtime geographic raster immediately.
          */
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -69,8 +68,16 @@ public final class KnownWorld implements ModInitializer {
                 )
         );
 
+        /*
+         * Debug commands.
+         */
         KnownWorldDebugCommand.register();
         KnownWorldGeoDebugCommand.register();
+
+        /*
+         * First physical terrain-generation prototype.
+         */
+        KnownWorldTerrainPrototype.register();
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
