@@ -10,6 +10,7 @@ import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
@@ -23,7 +24,6 @@ import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 
@@ -33,14 +33,29 @@ import java.util.concurrent.CompletableFuture;
 
 public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
+    /*
+     * Must match:
+     *
+     * data/knownworld/dimension_type/known_world.json
+     *
+     * min_y  = -64
+     * height = 2096
+     *
+     * Therefore:
+     *
+     * lowest block = -64
+     * highest block = 2031
+     */
     public static final int MIN_Y =
             -64;
 
     public static final int GENERATION_DEPTH =
-            384;
+            2096;
 
     public static final int MAX_Y =
-            MIN_Y + GENERATION_DEPTH - 1;
+            MIN_Y
+                    + GENERATION_DEPTH
+                    - 1;
 
     public static final int SEA_LEVEL =
             63;
@@ -50,7 +65,9 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                     instance ->
                             instance.group(
                                             BiomeSource.CODEC
-                                                    .fieldOf("biome_source")
+                                                    .fieldOf(
+                                                            "biome_source"
+                                                    )
                                                     .forGetter(
                                                             KnownWorldChunkGenerator::getBiomeSource
                                                     )
@@ -165,13 +182,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         worldZ + 0.5
                 );
 
-        /*
-         * Outside the actual Known World master rectangle:
-         * leave the entire column as air.
-         *
-         * This is the first implementation of the hard geographic
-         * boundary rule.
-         */
         if (
                 !geography.insideKnownWorldMap()
         ) {
@@ -453,11 +463,12 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
             column[
                     index
-                    ] = getBlockState(
-                    x,
-                    y,
-                    z
-            );
+                    ] =
+                    getBlockState(
+                            x,
+                            y,
+                            z
+                    );
         }
 
         return new NoiseColumn(

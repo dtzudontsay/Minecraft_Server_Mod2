@@ -1,7 +1,7 @@
 {
   "dimensions": {
     "minecraft:overworld": {
-      "type": "minecraft:overworld",
+      "type": "knownworld:known_world",
       "generator": {
         "type": "knownworld:known_world",
         "biome_source": {

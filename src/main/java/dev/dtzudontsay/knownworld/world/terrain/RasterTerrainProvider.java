@@ -6,18 +6,14 @@ import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.ElevationProvider;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.ElevationSample;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.RasterElevationProvider;
+import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainTerrainGenerator;
+import dev.dtzudontsay.knownworld.world.terrain.relief.ReliefIntensityProvider;
 
 public final class RasterTerrainProvider implements TerrainProvider {
 
     public static final double SEA_LEVEL_METRES =
             63.0;
 
-    /*
-     * TEMPORARY fallback values.
-     *
-     * These remain active only wherever we do not yet possess
-     * trustworthy canonical elevation data.
-     */
     public static final double FALLBACK_COASTAL_LAND_HEIGHT =
             67.0;
 
@@ -38,10 +34,20 @@ public final class RasterTerrainProvider implements TerrainProvider {
 
     private final ElevationProvider elevationProvider;
 
+    private final ReliefIntensityProvider reliefProvider;
+
+    private final MountainTerrainGenerator mountainGenerator;
+
     public RasterTerrainProvider() {
 
         elevationProvider =
                 new RasterElevationProvider();
+
+        reliefProvider =
+                new ReliefIntensityProvider();
+
+        mountainGenerator =
+                new MountainTerrainGenerator();
     }
 
     @Override
@@ -70,67 +76,91 @@ public final class RasterTerrainProvider implements TerrainProvider {
                 );
 
         if (
+                geography.land()
+        ) {
+
+            double baseElevation;
+
+            String source;
+
+            if (
+                    !Double.isNaN(
+                            canonicalElevation.elevationMetres()
+                    )
+            ) {
+
+                baseElevation =
+                        Math.max(
+                                canonicalElevation.elevationMetres(),
+                                SEA_LEVEL_METRES + 1.0
+                        );
+
+                source =
+                        canonicalElevation.source();
+
+            } else {
+
+                baseElevation =
+                        sampleFallbackLandBase(
+                                geography
+                        );
+
+                source =
+                        "CANONICAL_RASTER_FALLBACK";
+            }
+
+            double reliefIntensity =
+                    reliefProvider.sample(
+                            coordinate
+                    );
+
+            double proceduralOffset =
+                    mountainGenerator.sampleLandOffset(
+                            coordinate,
+                            reliefIntensity
+                    );
+
+            double elevation =
+                    Math.max(
+                            SEA_LEVEL_METRES + 1.0,
+                            baseElevation
+                                    + proceduralOffset
+                    );
+
+            return new TerrainSample(
+                    elevation,
+                    "LAND",
+                    source
+                            + "+BLOCK_SCALE_TERRAIN"
+            );
+        }
+
+        /*
+         * Ocean does not receive procedural mountain generation.
+         */
+
+        if (
                 !Double.isNaN(
                         canonicalElevation.elevationMetres()
                 )
         ) {
 
-            double elevation =
-                    canonicalElevation.elevationMetres();
-
-            /*
-             * The land/water mask remains authoritative.
-             *
-             * A future elevation source must never accidentally
-             * turn canonical land into ocean or canonical ocean
-             * into dry land simply because its vertical source
-             * disagrees slightly at a coastline.
-             */
-            if (
-                    geography.land()
-            ) {
-
-                elevation =
-                        Math.max(
-                                elevation,
-                                SEA_LEVEL_METRES + 1.0
-                        );
-
-                return new TerrainSample(
-                        elevation,
-                        "LAND",
-                        canonicalElevation.source()
-                );
-            }
-
-            elevation =
-                    Math.min(
-                            elevation,
-                            SEA_LEVEL_METRES - 1.0
-                    );
-
             return new TerrainSample(
-                    elevation,
+                    Math.min(
+                            canonicalElevation.elevationMetres(),
+                            SEA_LEVEL_METRES - 1.0
+                    ),
                     "OCEAN",
                     canonicalElevation.source()
             );
         }
 
-        /*
-         * No canonical elevation exists here yet.
-         * Preserve today's proven behaviour rather than inventing
-         * topography.
-         */
-        if (
-                geography.land()
-        ) {
-            return sampleFallbackLand(
-                    geography
-            );
-        }
-
-        return sampleFallbackOcean(
-                geography
+        return new TerrainSample(
+                sampleFallbackOceanBase(
+                        geography
+                ),
+                "OCEAN",
+                "CANONICAL_RASTER_FALLBACK"
         );
     }
 
@@ -140,7 +170,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
                 .hasCanonicalElevationData();
     }
 
-    private TerrainSample sampleFallbackLand(
+    private double sampleFallbackLandBase(
             KnownWorldGeoSample geography
     ) {
 
@@ -161,21 +191,14 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         factor
                 );
 
-        double elevation =
-                lerp(
-                        FALLBACK_COASTAL_LAND_HEIGHT,
-                        FALLBACK_MAX_LAND_HEIGHT,
-                        factor
-                );
-
-        return new TerrainSample(
-                elevation,
-                "LAND",
-                "CANONICAL_RASTER_FALLBACK"
+        return lerp(
+                FALLBACK_COASTAL_LAND_HEIGHT,
+                FALLBACK_MAX_LAND_HEIGHT,
+                factor
         );
     }
 
-    private TerrainSample sampleFallbackOcean(
+    private double sampleFallbackOceanBase(
             KnownWorldGeoSample geography
     ) {
 
@@ -196,17 +219,10 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         factor
                 );
 
-        double elevation =
-                lerp(
-                        FALLBACK_SHALLOW_OCEAN_FLOOR,
-                        FALLBACK_DEEP_OCEAN_FLOOR,
-                        factor
-                );
-
-        return new TerrainSample(
-                elevation,
-                "OCEAN",
-                "CANONICAL_RASTER_FALLBACK"
+        return lerp(
+                FALLBACK_SHALLOW_OCEAN_FLOOR,
+                FALLBACK_DEEP_OCEAN_FLOOR,
+                factor
         );
     }
 

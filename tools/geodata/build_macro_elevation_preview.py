@@ -27,11 +27,6 @@ CANONICAL_LAND_MASK_PATH = (
     / "known_world_canonical_land_mask.png"
 )
 
-RELIEF_INTENSITY_PATH = (
-    OUTPUT_DIR
-    / "known_world_relief_intensity.png"
-)
-
 MASTER_ART_PATH = (
     ROOT
     / "input"
@@ -60,40 +55,8 @@ MACRO_ELEVATION_OVERLAY_PATH = (
 )
 
 
-# ------------------------------------------------------------
-# STORAGE FORMAT
-# ------------------------------------------------------------
-#
-# This matches RasterElevationProvider.java exactly:
-#
-#   raw 0     = no-data
-#   raw 1     = -64 metres
-#   raw 65535 = +2048 metres
-#
-# ------------------------------------------------------------
-
 MIN_STORED_ELEVATION_METRES = -64.0
 MAX_STORED_ELEVATION_METRES = 2048.0
-
-
-# ------------------------------------------------------------
-# FIRST-PASS TERRAIN PARAMETERS
-# ------------------------------------------------------------
-#
-# These are deliberately conservative.
-#
-# They are not claims about exact canonical elevations.
-#
-# This stage creates:
-#
-# - coastal-to-inland macro land rise
-# - shallow-to-deep ocean floor
-# - broad mountain/highland elevation from authored relief
-#
-# Rivers, erosion, local hills and small-scale terrain variation
-# come later.
-#
-# ------------------------------------------------------------
 
 SEA_LEVEL_METRES = 63.0
 
@@ -103,12 +66,8 @@ INLAND_BASE_ELEVATION_METRES = 105.0
 SHALLOW_OCEAN_FLOOR_METRES = 52.0
 DEEP_OCEAN_FLOOR_METRES = 34.0
 
-LAND_BASE_TRANSITION_METRES = 120_000.0
-OCEAN_BASE_TRANSITION_METRES = 150_000.0
-
-MAX_RELIEF_ADDITION_METRES = 1_200.0
-
-RELIEF_POWER = 2.0
+LAND_TRANSITION_DISTANCE_METRES = 120_000.0
+OCEAN_TRANSITION_DISTANCE_METRES = 150_000.0
 
 
 def load_json(path):
@@ -129,7 +88,7 @@ def load_json(path):
 def load_binary_mask(path):
     if not path.exists():
         raise FileNotFoundError(
-            f"Missing required mask:\n{path}"
+            f"Missing mask:\n{path}"
         )
 
     image = Image.open(
@@ -138,36 +97,12 @@ def load_binary_mask(path):
         "L"
     )
 
-    values = np.asarray(
-        image,
-        dtype=np.uint8
-    )
-
     return (
-        values >= 128
-    )
-
-
-def load_relief_intensity(path):
-    if not path.exists():
-        raise FileNotFoundError(
-            f"Missing relief intensity raster:\n{path}"
+        np.asarray(
+            image,
+            dtype=np.uint8
         )
-
-    image = Image.open(
-        path
-    )
-
-    values = np.asarray(
-        image,
-        dtype=np.uint16
-    )
-
-    return (
-        values.astype(
-            np.float32
-        )
-        / 65535.0
+        >= 128
     )
 
 
@@ -250,7 +185,7 @@ def build_land_base(
 
     factor = np.clip(
         inland_distance
-        / LAND_BASE_TRANSITION_METRES,
+        / LAND_TRANSITION_DISTANCE_METRES,
         0.0,
         1.0
     )
@@ -261,7 +196,8 @@ def build_land_base(
 
     return (
         COASTAL_LAND_ELEVATION_METRES
-        + (
+        +
+        (
             INLAND_BASE_ELEVATION_METRES
             - COASTAL_LAND_ELEVATION_METRES
         )
@@ -281,7 +217,7 @@ def build_ocean_base(
 
     factor = np.clip(
         offshore_distance
-        / OCEAN_BASE_TRANSITION_METRES,
+        / OCEAN_TRANSITION_DISTANCE_METRES,
         0.0,
         1.0
     )
@@ -292,7 +228,8 @@ def build_ocean_base(
 
     return (
         SHALLOW_OCEAN_FLOOR_METRES
-        + (
+        +
+        (
             DEEP_OCEAN_FLOOR_METRES
             - SHALLOW_OCEAN_FLOOR_METRES
         )
@@ -302,30 +239,9 @@ def build_ocean_base(
     )
 
 
-def build_relief_addition(
-    relief_intensity
-):
-    shaped = np.power(
-        np.clip(
-            relief_intensity,
-            0.0,
-            1.0
-        ),
-        RELIEF_POWER
-    )
-
-    return (
-        shaped
-        * MAX_RELIEF_ADDITION_METRES
-    ).astype(
-        np.float32
-    )
-
-
 def build_macro_elevation(
     canonical_land,
-    coast_distance_metres,
-    relief_intensity
+    coast_distance_metres
 ):
     land_base = build_land_base(
         coast_distance_metres
@@ -335,42 +251,15 @@ def build_macro_elevation(
         coast_distance_metres
     )
 
-    relief_addition = build_relief_addition(
-        relief_intensity
-    )
-
     elevation = ocean_base.copy()
-
-    land_elevation = (
-        land_base
-        + relief_addition
-    )
-
-    land_elevation = np.maximum(
-        land_elevation,
-        SEA_LEVEL_METRES + 1.0
-    )
 
     elevation[
         canonical_land
-    ] = land_elevation[
+    ] = land_base[
         canonical_land
     ]
 
-    elevation[
-        ~canonical_land
-    ] = np.minimum(
-        elevation[
-            ~canonical_land
-        ],
-        SEA_LEVEL_METRES - 1.0
-    )
-
-    return np.clip(
-        elevation,
-        MIN_STORED_ELEVATION_METRES,
-        MAX_STORED_ELEVATION_METRES
-    ).astype(
+    return elevation.astype(
         np.float32
     )
 
@@ -405,22 +294,6 @@ def encode_runtime_elevation(
     )
 
 
-def save_runtime_encoded_elevation(
-    elevation,
-    path
-):
-    encoded = encode_runtime_elevation(
-        elevation
-    )
-
-    Image.fromarray(
-        encoded,
-        mode="I;16"
-    ).save(
-        path
-    )
-
-
 def build_overlay(
     artwork,
     canonical_land,
@@ -433,33 +306,32 @@ def build_overlay(
 
     output = source.copy()
 
-    land_elevation = np.maximum(
-        elevation
-        - SEA_LEVEL_METRES,
-        0.0
-    )
-
-    land_strength = np.clip(
-        land_elevation
-        / 1_200.0,
+    land_factor = np.clip(
+        (
+            elevation
+            - COASTAL_LAND_ELEVATION_METRES
+        )
+        / (
+            INLAND_BASE_ELEVATION_METRES
+            - COASTAL_LAND_ELEVATION_METRES
+        ),
         0.0,
         1.0
     )
 
-    land_strength = np.sqrt(
-        land_strength
-    )
-
-    land_tint = np.zeros_like(
+    tint = np.zeros_like(
         source
     )
 
-    land_tint[:, :, 0] = 255.0
-    land_tint[:, :, 1] = 105.0
-    land_tint[:, :, 2] = 0.0
+    tint[:, :, 0] = 255.0
+    tint[:, :, 1] = 185.0
+    tint[:, :, 2] = 0.0
 
-    land_alpha = (
-        land_strength[
+    alpha = (
+        (
+            0.08
+            + land_factor * 0.22
+        )[
             :,
             :,
             None
@@ -471,75 +343,24 @@ def build_overlay(
         ].astype(
             np.float32
         )
-        * 0.72
     )
 
     output = (
         output
         * (
             1.0
-            - land_alpha
+            - alpha
         )
         +
-        land_tint
-        * land_alpha
-    )
-
-    ocean_depth = np.maximum(
-        SEA_LEVEL_METRES
-        - elevation,
-        0.0
-    )
-
-    ocean_strength = np.clip(
-        ocean_depth
-        / 40.0,
-        0.0,
-        1.0
-    )
-
-    ocean_tint = np.zeros_like(
-        source
-    )
-
-    ocean_tint[:, :, 0] = 0.0
-    ocean_tint[:, :, 1] = 120.0
-    ocean_tint[:, :, 2] = 255.0
-
-    ocean_alpha = (
-        ocean_strength[
-            :,
-            :,
-            None
-        ]
-        * (
-            ~canonical_land
-        )[
-            :,
-            :,
-            None
-        ].astype(
-            np.float32
-        )
-        * 0.38
-    )
-
-    output = (
-        output
-        * (
-            1.0
-            - ocean_alpha
-        )
-        +
-        ocean_tint
-        * ocean_alpha
+        tint
+        * alpha
     )
 
     return Image.fromarray(
         np.clip(
             output,
-            0.0,
-            255.0
+            0,
+            255
         ).astype(
             np.uint8
         ),
@@ -547,112 +368,25 @@ def build_overlay(
     )
 
 
-def print_statistics(
-    canonical_land,
-    relief_intensity,
-    elevation
-):
-    land_values = elevation[
-        canonical_land
-    ]
-
-    ocean_values = elevation[
-        ~canonical_land
-    ]
-
-    relief_land = (
-        canonical_land
-        &
-        (
-            relief_intensity > 0.01
-        )
-    )
-
-    strong_relief_land = (
-        canonical_land
-        &
-        (
-            relief_intensity >= 0.75
-        )
-    )
-
-    print()
-    print(
-        "=" * 70
-    )
-
-    print(
-        "MACRO ELEVATION PREVIEW COMPLETE"
-    )
-
-    print()
-
-    print(
-        f"Land minimum: "
-        f"{float(np.min(land_values)):.1f} m"
-    )
-
-    print(
-        f"Land mean: "
-        f"{float(np.mean(land_values)):.1f} m"
-    )
-
-    print(
-        f"Land maximum: "
-        f"{float(np.max(land_values)):.1f} m"
-    )
-
-    print()
-
-    print(
-        f"Ocean floor minimum: "
-        f"{float(np.min(ocean_values)):.1f} m"
-    )
-
-    print(
-        f"Ocean floor maximum: "
-        f"{float(np.max(ocean_values)):.1f} m"
-    )
-
-    if np.any(
-        relief_land
-    ):
-        relief_values = elevation[
-            relief_land
-        ]
-
-        print()
-
-        print(
-            f"Relief-area mean elevation: "
-            f"{float(np.mean(relief_values)):.1f} m"
-        )
-
-        print(
-            f"Relief-area maximum elevation: "
-            f"{float(np.max(relief_values)):.1f} m"
-        )
-
-    if np.any(
-        strong_relief_land
-    ):
-        strong_values = elevation[
-            strong_relief_land
-        ]
-
-        print(
-            f"Strong-relief mean elevation: "
-            f"{float(np.mean(strong_values)):.1f} m"
-        )
-
-
 def main():
     print(
-        "Known World macro elevation preview builder"
+        "Known World macro BASE elevation builder"
     )
 
     metadata = load_json(
         GEODATA_JSON_PATH
+    )
+
+    width = int(
+        metadata[
+            "width"
+        ]
+    )
+
+    height = int(
+        metadata[
+            "height"
+        ]
     )
 
     metres_x = float(
@@ -676,49 +410,23 @@ def main():
         CANONICAL_LAND_MASK_PATH
     )
 
-    relief_intensity = load_relief_intensity(
-        RELIEF_INTENSITY_PATH
-    )
-
-    coast_distance_raw = load_coast_distance(
+    coast_raw = load_coast_distance(
         COAST_DISTANCE_PATH
     )
 
     expected_shape = (
-        int(
-            metadata[
-                "height"
-            ]
-        ),
-        int(
-            metadata[
-                "width"
-            ]
-        )
+        height,
+        width
     )
 
     if canonical_land.shape != expected_shape:
         raise ValueError(
-            "Canonical land mask dimensions do not match "
-            "geodata metadata.\n"
-            f"Expected: {expected_shape}\n"
-            f"Actual:   {canonical_land.shape}"
+            f"Land mask mismatch: {canonical_land.shape}"
         )
 
-    if relief_intensity.shape != expected_shape:
+    if coast_raw.shape != expected_shape:
         raise ValueError(
-            "Relief intensity dimensions do not match "
-            "geodata metadata.\n"
-            f"Expected: {expected_shape}\n"
-            f"Actual:   {relief_intensity.shape}"
-        )
-
-    if coast_distance_raw.shape != expected_shape:
-        raise ValueError(
-            "Coast-distance dimensions do not match "
-            "geodata metadata.\n"
-            f"Expected: {expected_shape}\n"
-            f"Actual:   {coast_distance_raw.shape}"
+            f"Coast raster mismatch: {coast_raw.shape}"
         )
 
     artwork = Image.open(
@@ -727,73 +435,34 @@ def main():
         "RGB"
     )
 
-    expected_size = (
-        expected_shape[1],
-        expected_shape[0]
-    )
-
-    if artwork.size != expected_size:
+    if artwork.size != (
+        width,
+        height
+    ):
         raise ValueError(
-            "Master artwork dimensions do not match "
-            "geodata metadata.\n"
-            f"Expected: {expected_size}\n"
-            f"Actual:   {artwork.size}"
+            f"Master artwork mismatch: {artwork.size}"
         )
-
-    print(
-        f"Master resolution: "
-        f"{expected_size[0]} x {expected_size[1]}"
-    )
-
-    print(
-        f"Metres per source pixel X: "
-        f"{metres_x:.3f}"
-    )
-
-    print(
-        f"Metres per source pixel Z: "
-        f"{metres_z:.3f}"
-    )
-
-    print(
-        f"Average metres per source pixel: "
-        f"{average_metres_per_pixel:.3f}"
-    )
-
-    print()
-
-    print(
-        f"Land baseline: "
-        f"{COASTAL_LAND_ELEVATION_METRES:.1f} m "
-        f"to {INLAND_BASE_ELEVATION_METRES:.1f} m"
-    )
-
-    print(
-        f"Maximum relief addition: "
-        f"{MAX_RELIEF_ADDITION_METRES:.1f} m"
-    )
-
-    print(
-        f"Ocean floor: "
-        f"{SHALLOW_OCEAN_FLOOR_METRES:.1f} m "
-        f"to {DEEP_OCEAN_FLOOR_METRES:.1f} m"
-    )
 
     coast_distance_metres = (
         decode_coast_distance_metres(
-            coast_distance_raw,
+            coast_raw,
             average_metres_per_pixel
         )
     )
 
     elevation = build_macro_elevation(
         canonical_land,
-        coast_distance_metres,
-        relief_intensity
+        coast_distance_metres
     )
 
-    save_runtime_encoded_elevation(
-        elevation,
+    encoded = encode_runtime_elevation(
+        elevation
+    )
+
+    Image.fromarray(
+        encoded,
+        mode="I;16"
+    ).save(
         MACRO_ELEVATION_PATH
     )
 
@@ -807,13 +476,54 @@ def main():
         MACRO_ELEVATION_OVERLAY_PATH
     )
 
-    print_statistics(
-        canonical_land,
-        relief_intensity,
-        elevation
+    land_values = elevation[
+        canonical_land
+    ]
+
+    ocean_values = elevation[
+        ~canonical_land
+    ]
+
+    print()
+    print(
+        "=" * 70
+    )
+
+    print(
+        "MACRO BASE ELEVATION COMPLETE"
     )
 
     print()
+
+    print(
+        f"Land minimum: "
+        f"{float(np.min(land_values)):.1f} m"
+    )
+
+    print(
+        f"Land mean: "
+        f"{float(np.mean(land_values)):.1f} m"
+    )
+
+    print(
+        f"Land maximum: "
+        f"{float(np.max(land_values)):.1f} m"
+    )
+
+    print()
+
+    print(
+        f"Ocean minimum: "
+        f"{float(np.min(ocean_values)):.1f} m"
+    )
+
+    print(
+        f"Ocean maximum: "
+        f"{float(np.max(ocean_values)):.1f} m"
+    )
+
+    print()
+
     print(
         "Generated:"
     )
@@ -827,14 +537,17 @@ def main():
     )
 
     print()
+
     print(
-        "NOTE:"
+        "IMPORTANT:"
     )
 
     print(
-        "This preview is encoded exactly like the future "
-        "runtime elevation.png, but it has NOT been copied "
-        "into the runtime resource directory."
+        "This raster contains NO mountain geometry."
+    )
+
+    print(
+        "Mountains are now generated at Minecraft block scale."
     )
 
 
