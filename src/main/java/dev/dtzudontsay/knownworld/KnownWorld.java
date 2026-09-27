@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
+import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoData;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
@@ -16,7 +17,6 @@ import dev.dtzudontsay.knownworld.world.geography.regions.SouthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthWestEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
-import dev.dtzudontsay.knownworld.world.terrain.KnownWorldTerrainPrototype;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +34,12 @@ public final class KnownWorld implements ModInitializer {
     @Override
     public void onInitialize() {
 
+        /*
+         * Static world-generation types must exist before a
+         * Known World world preset tries to decode them.
+         */
+        KnownWorldChunkGenerators.register();
+
         NorthFeatureRegistry.bootstrap();
         SouthFeatureRegistry.bootstrap();
         SummerIslesFeatureRegistry.bootstrap();
@@ -48,9 +54,6 @@ public final class KnownWorld implements ModInitializer {
         SothoryosFeatureRegistry.bootstrap();
         UlthosFeatureRegistry.bootstrap();
 
-        /*
-         * Load runtime geographic raster immediately.
-         */
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
 
@@ -68,16 +71,14 @@ public final class KnownWorld implements ModInitializer {
                 )
         );
 
-        /*
-         * Debug commands.
-         */
         KnownWorldDebugCommand.register();
         KnownWorldGeoDebugCommand.register();
 
         /*
-         * First physical terrain-generation prototype.
+         * Do NOT register KnownWorldTerrainPrototype anymore.
+         *
+         * The proper ChunkGenerator replaces it.
          */
-        KnownWorldTerrainPrototype.register();
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
