@@ -15,8 +15,11 @@ import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipMan
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.TitlePersistence;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
+import dev.dtzudontsay.knownworld.simulation.social.authority.AuthorityService;
+import dev.dtzudontsay.knownworld.simulation.social.title.TitleManager;
 import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
 import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -45,6 +48,10 @@ public final class NpcSimulation {
 
     private final NpcAffiliationManager affiliationManager;
 
+    private final TitleManager titleManager;
+
+    private final AuthorityService authorityService;
+
     private final NpcRelationshipManager relationshipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
@@ -70,6 +77,8 @@ public final class NpcSimulation {
     private final NpcActionProcessor actionProcessor;
 
     private final NpcPersistence persistence;
+
+    private final TitlePersistence titlePersistence;
 
     private final NpcActivationManager activationManager;
 
@@ -98,6 +107,19 @@ public final class NpcSimulation {
                         registry,
                         settlementManager,
                         organizationManager
+                );
+
+        this.titleManager =
+                new TitleManager(
+                        registry,
+                        organizationManager,
+                        settlementManager
+                );
+
+        this.authorityService =
+                new AuthorityService(
+                        organizationManager,
+                        titleManager
                 );
 
         this.relationshipManager =
@@ -191,6 +213,11 @@ public final class NpcSimulation {
                 new NpcPersistence(
                         savePath
                 );
+
+        this.titlePersistence =
+                new TitlePersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
@@ -214,12 +241,14 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at tick {} with {} NPCs, {} settlements, {} organizations and {} affiliations.",
+                            "NPC simulation started at tick {} with {} NPCs, {} settlements, {} organizations, {} affiliations, {} titles and {} active title assignments.",
                             simulation.clock.tick(),
                             simulation.registry.size(),
                             simulation.settlementManager.size(),
                             simulation.organizationManager.size(),
-                            simulation.affiliationManager.size()
+                            simulation.affiliationManager.size(),
+                            simulation.titleManager.definitionCount(),
+                            simulation.titleManager.activeAssignmentCount()
                     );
                 }
         );
@@ -323,6 +352,14 @@ public final class NpcSimulation {
         return affiliationManager;
     }
 
+    public TitleManager titles() {
+        return titleManager;
+    }
+
+    public AuthorityService authority() {
+        return authorityService;
+    }
+
     public NpcRelationshipManager relationships() {
         return relationshipManager;
     }
@@ -389,23 +426,14 @@ public final class NpcSimulation {
 
         needManager.update();
 
-        /*
-         * Physiological / autonomous decisions first.
-         */
         decisionService.update(
                 tick
         );
 
-        /*
-         * Normal duties and daily routine second.
-         */
         routineService.update(
                 tick
         );
 
-        /*
-         * Highest-priority goal actually executes last.
-         */
         actionProcessor.update(
                 tick
         );
@@ -430,6 +458,10 @@ public final class NpcSimulation {
                     eventManager
             );
 
+            titlePersistence.save(
+                    titleManager
+            );
+
         } catch (IOException exception) {
 
             KnownWorld.LOGGER.error(
@@ -443,6 +475,10 @@ public final class NpcSimulation {
 
         try {
 
+            /*
+             * Base/social data must load before titles because title
+             * definitions may reference settlements and organizations.
+             */
             persistence.loadInto(
                     clock,
                     registry,
@@ -456,6 +492,10 @@ public final class NpcSimulation {
                     needManager,
                     routineManager,
                     eventManager
+            );
+
+            titlePersistence.loadInto(
+                    titleManager
             );
 
         } catch (IOException exception) {
