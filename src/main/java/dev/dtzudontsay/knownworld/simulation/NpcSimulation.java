@@ -214,9 +214,12 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at tick {} with {} NPCs.",
+                            "NPC simulation started at tick {} with {} NPCs, {} settlements, {} organizations and {} affiliations.",
                             simulation.clock.tick(),
-                            simulation.registry.size()
+                            simulation.registry.size(),
+                            simulation.settlementManager.size(),
+                            simulation.organizationManager.size(),
+                            simulation.affiliationManager.size()
                     );
                 }
         );
@@ -293,6 +296,10 @@ public final class NpcSimulation {
             );
         }
 
+        return instance;
+    }
+
+    public static NpcSimulation getNullable() {
         return instance;
     }
 
@@ -382,14 +389,23 @@ public final class NpcSimulation {
 
         needManager.update();
 
+        /*
+         * Physiological / autonomous decisions first.
+         */
         decisionService.update(
                 tick
         );
 
+        /*
+         * Normal duties and daily routine second.
+         */
         routineService.update(
                 tick
         );
 
+        /*
+         * Highest-priority goal actually executes last.
+         */
         actionProcessor.update(
                 tick
         );
@@ -399,16 +415,12 @@ public final class NpcSimulation {
 
         try {
 
-            /*
-             * Batch 10A:
-             *
-             * Existing simulation state persists normally.
-             * New settlement/social structures are added to
-             * persistence in Batch 10B.
-             */
             persistence.save(
                     clock,
                     registry,
+                    settlementManager,
+                    organizationManager,
+                    affiliationManager,
                     relationshipManager,
                     knowledgeManager,
                     memoryManager,
@@ -434,6 +446,9 @@ public final class NpcSimulation {
             persistence.loadInto(
                     clock,
                     registry,
+                    settlementManager,
+                    organizationManager,
+                    affiliationManager,
                     relationshipManager,
                     knowledgeManager,
                     memoryManager,

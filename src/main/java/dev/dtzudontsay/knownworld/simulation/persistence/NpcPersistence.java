@@ -31,7 +31,17 @@ import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipMan
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoleType;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutine;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
+import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliation;
+import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
+import dev.dtzudontsay.knownworld.simulation.social.Organization;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
 import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
+import dev.dtzudontsay.knownworld.simulation.world.settlement.Settlement;
+import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementId;
+import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementManager;
+import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementType;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -49,7 +59,7 @@ public final class NpcPersistence {
             "KNOWNWORLD_NPCS\t";
 
     private static final int CURRENT_VERSION =
-            7;
+            8;
 
     private static final String FILE_NAME =
             "npcs.tsv";
@@ -76,6 +86,9 @@ public final class NpcPersistence {
     public void save(
             SimulationClock clock,
             NpcRegistry registry,
+            SettlementManager settlements,
+            OrganizationManager organizations,
+            NpcAffiliationManager affiliations,
             NpcRelationshipManager relationships,
             NpcKnowledgeManager knowledge,
             NpcMemoryManager memories,
@@ -115,6 +128,9 @@ public final class NpcPersistence {
 
             writer.newLine();
 
+            /*
+             * NPCs load before any records which reference NPC IDs.
+             */
             for (
                     NpcState npc :
                     registry.all()
@@ -126,10 +142,70 @@ public final class NpcPersistence {
                             )
                             .toList()
             ) {
-
                 writer.write(
                         encodeNpc(
                                 npc
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            /*
+             * Settlements must appear before organizations because an
+             * organization may reference a settlement as its seat.
+             */
+            for (
+                    Settlement settlement :
+                    settlements.all()
+                            .stream()
+                            .sorted(
+                                    Comparator.comparing(
+                                            Settlement::id
+                                    )
+                            )
+                            .toList()
+            ) {
+                writer.write(
+                        encodeSettlement(
+                                settlement
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            /*
+             * Organizations must appear before affiliations because
+             * affiliations validate organization references.
+             */
+            for (
+                    Organization organization :
+                    organizations.all()
+                            .stream()
+                            .sorted(
+                                    Comparator.comparing(
+                                            Organization::id
+                                    )
+                            )
+                            .toList()
+            ) {
+                writer.write(
+                        encodeOrganization(
+                                organization
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            for (
+                    NpcAffiliation affiliation :
+                    affiliations.all()
+            ) {
+                writer.write(
+                        encodeAffiliation(
+                                affiliation
                         )
                 );
 
@@ -141,7 +217,6 @@ public final class NpcPersistence {
                     needs.all()
                             .entrySet()
             ) {
-
                 writer.write(
                         encodeNeeds(
                                 entry.getKey(),
@@ -156,7 +231,6 @@ public final class NpcPersistence {
                     NpcRoutine routine :
                     routines.all()
             ) {
-
                 writer.write(
                         encodeRoutine(
                                 routine
@@ -170,7 +244,6 @@ public final class NpcPersistence {
                     NpcRelationship relationship :
                     relationships.all()
             ) {
-
                 writer.write(
                         encodeRelationship(
                                 relationship
@@ -184,7 +257,6 @@ public final class NpcPersistence {
                     NpcBelief belief :
                     knowledge.all()
             ) {
-
                 writer.write(
                         encodeBelief(
                                 belief
@@ -198,7 +270,6 @@ public final class NpcPersistence {
                     NpcMemory memory :
                     memories.all()
             ) {
-
                 writer.write(
                         encodeMemory(
                                 memory
@@ -212,7 +283,6 @@ public final class NpcPersistence {
                     NpcGoal goal :
                     goals.all()
             ) {
-
                 writer.write(
                         encodeGoal(
                                 goal
@@ -226,7 +296,6 @@ public final class NpcPersistence {
                     WorldEvent event :
                     events.all()
             ) {
-
                 writer.write(
                         encodeEvent(
                                 event
@@ -259,6 +328,9 @@ public final class NpcPersistence {
     public void loadInto(
             SimulationClock clock,
             NpcRegistry registry,
+            SettlementManager settlements,
+            OrganizationManager organizations,
+            NpcAffiliationManager affiliations,
             NpcRelationshipManager relationships,
             NpcKnowledgeManager knowledge,
             NpcMemoryManager memories,
@@ -271,7 +343,6 @@ public final class NpcPersistence {
         if (!Files.exists(
                 file
         )) {
-
             return;
         }
 
@@ -296,12 +367,25 @@ public final class NpcPersistence {
                 );
             }
 
-            int version =
-                    Integer.parseInt(
-                            header.substring(
-                                    HEADER_PREFIX.length()
-                            )
-                    );
+            final int version;
+
+            try {
+
+                version =
+                        Integer.parseInt(
+                                header.substring(
+                                        HEADER_PREFIX.length()
+                                )
+                        );
+
+            } catch (NumberFormatException exception) {
+
+                throw new IOException(
+                        "Invalid NPC save version header: "
+                                + header,
+                        exception
+                );
+            }
 
             if (version < 1
                     || version > CURRENT_VERSION) {
@@ -326,6 +410,9 @@ public final class NpcPersistence {
                     reader,
                     clock,
                     registry,
+                    settlements,
+                    organizations,
+                    affiliations,
                     relationships,
                     knowledge,
                     memories,
@@ -345,20 +432,35 @@ public final class NpcPersistence {
 
         String line;
 
+        int lineNumber =
+                1;
+
         while (
                 (line = reader.readLine())
                         != null
         ) {
+            lineNumber++;
 
             if (line.isBlank()) {
                 continue;
             }
 
-            registry.registerLoaded(
-                    decodeNpcV1(
-                            line
-                    )
-            );
+            try {
+
+                registry.registerLoaded(
+                        decodeNpcV1(
+                                line
+                        )
+                );
+
+            } catch (RuntimeException exception) {
+
+                throw new IOException(
+                        "Invalid version 1 NPC data at line "
+                                + lineNumber,
+                        exception
+                );
+            }
         }
     }
 
@@ -366,6 +468,9 @@ public final class NpcPersistence {
             BufferedReader reader,
             SimulationClock clock,
             NpcRegistry registry,
+            SettlementManager settlements,
+            OrganizationManager organizations,
+            NpcAffiliationManager affiliations,
             NpcRelationshipManager relationships,
             NpcKnowledgeManager knowledge,
             NpcMemoryManager memories,
@@ -378,143 +483,557 @@ public final class NpcPersistence {
 
         String line;
 
+        int lineNumber =
+                1;
+
         while (
                 (line = reader.readLine())
                         != null
         ) {
+            lineNumber++;
 
             if (line.isBlank()) {
                 continue;
             }
 
-            if (line.startsWith(
-                    "CLOCK\t"
-            )) {
+            try {
 
-                if (version >= 6) {
+                if (line.startsWith(
+                        "CLOCK\t"
+                )) {
 
-                    clock.setTick(
-                            Long.parseLong(
-                                    line.substring(
-                                            6
-                                    )
-                            )
-                    );
+                    if (version >= 6) {
+
+                        clock.setTick(
+                                Long.parseLong(
+                                        line.substring(
+                                                "CLOCK\t".length()
+                                        )
+                                )
+                        );
+                    }
+
+                    continue;
                 }
 
-                continue;
-            }
+                if (line.startsWith(
+                        "NPC\t"
+                )) {
 
-            if (line.startsWith(
-                    "NPC\t"
-            )) {
+                    registry.registerLoaded(
+                            decodeNpc(
+                                    line
+                            )
+                    );
 
-                registry.registerLoaded(
-                        decodeNpc(
-                                line
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "SETTLEMENT\t"
                         )
-                );
+                                && version >= 8
+                ) {
 
-            } else if (
-                    line.startsWith(
-                            "NEED\t"
-                    )
-                            && version >= 6
-            ) {
+                    settlements.registerLoaded(
+                            decodeSettlement(
+                                    line
+                            )
+                    );
 
-                decodeNeeds(
-                        line,
-                        needs
-                );
+                    continue;
+                }
 
-            } else if (
-                    line.startsWith(
-                            "ROUTINE\t"
-                    )
-                            && version >= 7
-            ) {
-
-                routines.registerLoaded(
-                        decodeRoutine(
-                                line
+                if (
+                        line.startsWith(
+                                "ORG\t"
                         )
-                );
+                                && version >= 8
+                ) {
 
-            } else if (line.startsWith(
-                    "REL\t"
-            )) {
+                    organizations.registerLoaded(
+                            decodeOrganization(
+                                    line
+                            )
+                    );
 
-                relationships.registerLoaded(
-                        decodeRelationship(
-                                line
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "AFFILIATION\t"
                         )
-                );
+                                && version >= 8
+                ) {
 
-            } else if (line.startsWith(
-                    "BELIEF\t"
-            )) {
+                    affiliations.registerLoaded(
+                            decodeAffiliation(
+                                    line
+                            )
+                    );
 
-                knowledge.registerLoaded(
-                        decodeBelief(
-                                line
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "NEED\t"
                         )
-                );
+                                && version >= 6
+                ) {
 
-            } else if (
-                    line.startsWith(
-                            "MEM\t"
-                    )
-                            && version >= 3
-            ) {
+                    decodeNeeds(
+                            line,
+                            needs
+                    );
 
-                memories.registerLoaded(
-                        decodeMemory(
-                                line
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "ROUTINE\t"
                         )
-                );
+                                && version >= 7
+                ) {
 
-            } else if (
-                    line.startsWith(
-                            "GOAL\t"
-                    )
-                            && version >= 5
-            ) {
+                    routines.registerLoaded(
+                            decodeRoutine(
+                                    line
+                            )
+                    );
 
-                goals.registerLoaded(
-                        decodeGoal(
-                                line
+                    continue;
+                }
+
+                if (line.startsWith(
+                        "REL\t"
+                )) {
+
+                    relationships.registerLoaded(
+                            decodeRelationship(
+                                    line
+                            )
+                    );
+
+                    continue;
+                }
+
+                if (line.startsWith(
+                        "BELIEF\t"
+                )) {
+
+                    knowledge.registerLoaded(
+                            decodeBelief(
+                                    line
+                            )
+                    );
+
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "MEM\t"
                         )
-                );
+                                && version >= 3
+                ) {
 
-            } else if (
-                    line.startsWith(
-                            "EVENT\t"
-                    )
-                            && version >= 4
-            ) {
+                    memories.registerLoaded(
+                            decodeMemory(
+                                    line
+                            )
+                    );
 
-                events.registerLoaded(
-                        decodeEvent(
-                                line
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "GOAL\t"
                         )
+                                && version >= 5
+                ) {
+
+                    goals.registerLoaded(
+                            decodeGoal(
+                                    line
+                            )
+                    );
+
+                    continue;
+                }
+
+                if (
+                        line.startsWith(
+                                "EVENT\t"
+                        )
+                                && version >= 4
+                ) {
+
+                    events.registerLoaded(
+                            decodeEvent(
+                                    line
+                            )
+                    );
+
+                    continue;
+                }
+
+                throw new IllegalArgumentException(
+                        "Unexpected record type"
                 );
 
-            } else {
+            } catch (RuntimeException exception) {
 
                 throw new IOException(
-                        "Unexpected record in version "
+                        "Invalid version "
                                 + version
+                                + " NPC data at line "
+                                + lineNumber
                                 + ": "
-                                + line
+                                + line,
+                        exception
                 );
             }
         }
     }
 
+    // ---------------------------------------------------------------------
+    // Settlement persistence
+    // ---------------------------------------------------------------------
+
+    private static String encodeSettlement(
+            Settlement settlement
+    ) {
+        return String.join(
+                "\t",
+                "SETTLEMENT",
+                Long.toString(
+                        settlement.id()
+                                .value()
+                ),
+                escape(
+                        settlement.name()
+                ),
+                settlement.type()
+                        .name(),
+                escape(
+                        settlement.center()
+                                .dimension()
+                ),
+                Double.toString(
+                        settlement.center()
+                                .x()
+                ),
+                Double.toString(
+                        settlement.center()
+                                .y()
+                ),
+                Double.toString(
+                        settlement.center()
+                                .z()
+                )
+        );
+    }
+
+    private static Settlement decodeSettlement(
+            String line
+    ) {
+        String[] p =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (p.length != 8) {
+            throw new IllegalArgumentException(
+                    "Expected 8 settlement columns, got "
+                            + p.length
+            );
+        }
+
+        return new Settlement(
+                new SettlementId(
+                        Long.parseLong(
+                                p[1]
+                        )
+                ),
+                unescape(
+                        p[2]
+                ),
+                SettlementType.valueOf(
+                        p[3]
+                ),
+                new SimulationPosition(
+                        unescape(
+                                p[4]
+                        ),
+                        Double.parseDouble(
+                                p[5]
+                        ),
+                        Double.parseDouble(
+                                p[6]
+                        ),
+                        Double.parseDouble(
+                                p[7]
+                        )
+                )
+        );
+    }
+
+    // ---------------------------------------------------------------------
+    // Organization persistence
+    // ---------------------------------------------------------------------
+
+    private static String encodeOrganization(
+            Organization organization
+    ) {
+        return String.join(
+                "\t",
+                "ORG",
+                Long.toString(
+                        organization.id()
+                                .value()
+                ),
+                escape(
+                        organization.name()
+                ),
+                organization.type()
+                        .name(),
+                organization.seatSettlement()
+                        == null
+                        ? ""
+                        : Long.toString(
+                        organization.seatSettlement()
+                                .value()
+                )
+        );
+    }
+
+    private static Organization decodeOrganization(
+            String line
+    ) {
+        String[] p =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (p.length != 5) {
+            throw new IllegalArgumentException(
+                    "Expected 5 organization columns, got "
+                            + p.length
+            );
+        }
+
+        SettlementId seat =
+                p[4].isEmpty()
+                        ? null
+                        : new SettlementId(
+                        Long.parseLong(
+                                p[4]
+                        )
+                );
+
+        return new Organization(
+                new OrganizationId(
+                        Long.parseLong(
+                                p[1]
+                        )
+                ),
+                unescape(
+                        p[2]
+                ),
+                OrganizationType.valueOf(
+                        p[3]
+                ),
+                seat
+        );
+    }
+
+    // ---------------------------------------------------------------------
+    // NPC affiliation persistence
+    // ---------------------------------------------------------------------
+
+    private static String encodeAffiliation(
+            NpcAffiliation affiliation
+    ) {
+        return String.join(
+                "\t",
+                "AFFILIATION",
+                Long.toString(
+                        affiliation.owner()
+                                .value()
+                ),
+                affiliation.residenceSettlement()
+                        == null
+                        ? ""
+                        : Long.toString(
+                        affiliation.residenceSettlement()
+                                .value()
+                ),
+                affiliation.household()
+                        == null
+                        ? ""
+                        : Long.toString(
+                        affiliation.household()
+                                .value()
+                ),
+                affiliation.nobleHouse()
+                        == null
+                        ? ""
+                        : Long.toString(
+                        affiliation.nobleHouse()
+                                .value()
+                ),
+                affiliation.faction()
+                        == null
+                        ? ""
+                        : Long.toString(
+                        affiliation.faction()
+                                .value()
+                )
+        );
+    }
+
+    private static NpcAffiliation decodeAffiliation(
+            String line
+    ) {
+        String[] p =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (p.length != 6) {
+            throw new IllegalArgumentException(
+                    "Expected 6 affiliation columns, got "
+                            + p.length
+            );
+        }
+
+        SettlementId residence =
+                p[2].isEmpty()
+                        ? null
+                        : new SettlementId(
+                        Long.parseLong(
+                                p[2]
+                        )
+                );
+
+        OrganizationId household =
+                p[3].isEmpty()
+                        ? null
+                        : new OrganizationId(
+                        Long.parseLong(
+                                p[3]
+                        )
+                );
+
+        OrganizationId nobleHouse =
+                p[4].isEmpty()
+                        ? null
+                        : new OrganizationId(
+                        Long.parseLong(
+                                p[4]
+                        )
+                );
+
+        OrganizationId faction =
+                p[5].isEmpty()
+                        ? null
+                        : new OrganizationId(
+                        Long.parseLong(
+                                p[5]
+                        )
+                );
+
+        return new NpcAffiliation(
+                new NpcId(
+                        Long.parseLong(
+                                p[1]
+                        )
+                ),
+                residence,
+                household,
+                nobleHouse,
+                faction
+        );
+    }
+
+    // ---------------------------------------------------------------------
+    // Needs persistence
+    // ---------------------------------------------------------------------
+
+    private static String encodeNeeds(
+            NpcId npc,
+            NpcNeeds needs
+    ) {
+        return String.join(
+                "\t",
+                "NEED",
+                Long.toString(
+                        npc.value()
+                ),
+                Double.toString(
+                        needs.fatigue()
+                ),
+                Double.toString(
+                        needs.hunger()
+                ),
+                Double.toString(
+                        needs.social()
+                )
+        );
+    }
+
+    private static void decodeNeeds(
+            String line,
+            NpcNeedManager manager
+    ) {
+        String[] p =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (p.length != 5) {
+            throw new IllegalArgumentException(
+                    "Expected 5 need columns, got "
+                            + p.length
+            );
+        }
+
+        manager.registerLoaded(
+                new NpcId(
+                        Long.parseLong(
+                                p[1]
+                        )
+                ),
+                new NpcNeeds(
+                        Double.parseDouble(
+                                p[2]
+                        ),
+                        Double.parseDouble(
+                                p[3]
+                        ),
+                        Double.parseDouble(
+                                p[4]
+                        )
+                )
+        );
+    }
+
+    // ---------------------------------------------------------------------
+    // Routine persistence
+    // ---------------------------------------------------------------------
+
     private static String encodeRoutine(
             NpcRoutine routine
     ) {
-
         SimulationPosition home =
                 routine.homePosition();
 
@@ -592,7 +1111,6 @@ public final class NpcPersistence {
     private static NpcRoutine decodeRoutine(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
@@ -600,7 +1118,6 @@ public final class NpcPersistence {
                 );
 
         if (p.length != 13) {
-
             throw new IllegalArgumentException(
                     "Expected 13 routine columns, got "
                             + p.length
@@ -663,64 +1180,13 @@ public final class NpcPersistence {
         );
     }
 
-    private static String encodeNeeds(
-            NpcId npc,
-            NpcNeeds needs
-    ) {
-
-        return String.join(
-                "\t",
-                "NEED",
-                Long.toString(
-                        npc.value()
-                ),
-                Double.toString(
-                        needs.fatigue()
-                ),
-                Double.toString(
-                        needs.hunger()
-                ),
-                Double.toString(
-                        needs.social()
-                )
-        );
-    }
-
-    private static void decodeNeeds(
-            String line,
-            NpcNeedManager manager
-    ) {
-
-        String[] p =
-                line.split(
-                        "\t",
-                        -1
-                );
-
-        manager.registerLoaded(
-                new NpcId(
-                        Long.parseLong(
-                                p[1]
-                        )
-                ),
-                new NpcNeeds(
-                        Double.parseDouble(
-                                p[2]
-                        ),
-                        Double.parseDouble(
-                                p[3]
-                        ),
-                        Double.parseDouble(
-                                p[4]
-                        )
-                )
-        );
-    }
+    // ---------------------------------------------------------------------
+    // Goal persistence
+    // ---------------------------------------------------------------------
 
     private static String encodeGoal(
             NpcGoal goal
     ) {
-
         SimulationPosition target =
                 goal.targetPosition();
 
@@ -728,13 +1194,17 @@ public final class NpcPersistence {
                 "\t",
                 "GOAL",
                 Long.toString(
-                        goal.id().value()
+                        goal.id()
+                                .value()
                 ),
                 Long.toString(
-                        goal.owner().value()
+                        goal.owner()
+                                .value()
                 ),
-                goal.type().name(),
-                goal.status().name(),
+                goal.type()
+                        .name(),
+                goal.status()
+                        .name(),
                 escape(
                         goal.description()
                 ),
@@ -744,7 +1214,8 @@ public final class NpcPersistence {
                 Long.toString(
                         goal.createdTick()
                 ),
-                goal.targetNpc() == null
+                goal.targetNpc()
+                        == null
                         ? ""
                         : Long.toString(
                         goal.targetNpc()
@@ -770,7 +1241,8 @@ public final class NpcPersistence {
                         : Double.toString(
                         target.z()
                 ),
-                goal.factKey() == null
+                goal.factKey()
+                        == null
                         ? ""
                         : escape(
                         goal.factKey()
@@ -781,12 +1253,18 @@ public final class NpcPersistence {
     private static NpcGoal decodeGoal(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 14) {
+            throw new IllegalArgumentException(
+                    "Expected 14 goal columns, got "
+                            + p.length
+            );
+        }
 
         NpcId targetNpc =
                 p[8].isEmpty()
@@ -815,6 +1293,13 @@ public final class NpcPersistence {
                         )
                 );
 
+        String factKey =
+                p[13].isEmpty()
+                        ? null
+                        : unescape(
+                        p[13]
+                );
+
         return new NpcGoal(
                 new NpcGoalId(
                         Long.parseLong(
@@ -840,21 +1325,20 @@ public final class NpcPersistence {
                 ),
                 targetNpc,
                 targetPosition,
-                p[13].isEmpty()
-                        ? null
-                        : unescape(
-                        p[13]
-                ),
+                factKey,
                 NpcGoalStatus.valueOf(
                         p[4]
                 )
         );
     }
 
+    // ---------------------------------------------------------------------
+    // NPC persistence
+    // ---------------------------------------------------------------------
+
     private static String encodeNpc(
             NpcState npc
     ) {
-
         NpcIdentity identity =
                 npc.identity();
 
@@ -868,7 +1352,8 @@ public final class NpcPersistence {
                 "\t",
                 "NPC",
                 Long.toString(
-                        npc.id().value()
+                        npc.id()
+                                .value()
                 ),
                 escape(
                         identity.givenName()
@@ -876,12 +1361,15 @@ public final class NpcPersistence {
                 escape(
                         identity.familyName()
                 ),
-                identity.sex().name(),
+                identity.sex()
+                        .name(),
                 Integer.toString(
                         identity.birthYear()
                 ),
-                npc.lifeState().name(),
-                npc.simulationLevel().name(),
+                npc.lifeState()
+                        .name(),
+                npc.simulationLevel()
+                        .name(),
                 escape(
                         position.dimension()
                 ),
@@ -918,12 +1406,18 @@ public final class NpcPersistence {
     private static NpcState decodeNpc(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 18) {
+            throw new IllegalArgumentException(
+                    "Expected 18 NPC columns, got "
+                            + p.length
+            );
+        }
 
         return new NpcState(
                 new NpcIdentity(
@@ -991,12 +1485,18 @@ public final class NpcPersistence {
     private static NpcState decodeNpcV1(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 12) {
+            throw new IllegalArgumentException(
+                    "Expected 12 version-1 NPC columns, got "
+                            + p.length
+            );
+        }
 
         return new NpcState(
                 new NpcIdentity(
@@ -1042,18 +1542,23 @@ public final class NpcPersistence {
         );
     }
 
+    // ---------------------------------------------------------------------
+    // Relationship persistence
+    // ---------------------------------------------------------------------
+
     private static String encodeRelationship(
             NpcRelationship relationship
     ) {
-
         return String.join(
                 "\t",
                 "REL",
                 Long.toString(
-                        relationship.subject().value()
+                        relationship.subject()
+                                .value()
                 ),
                 Long.toString(
-                        relationship.target().value()
+                        relationship.target()
+                                .value()
                 ),
                 Double.toString(
                         relationship.affection()
@@ -1076,12 +1581,18 @@ public final class NpcPersistence {
     private static NpcRelationship decodeRelationship(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 8) {
+            throw new IllegalArgumentException(
+                    "Expected 8 relationship columns, got "
+                            + p.length
+            );
+        }
 
         return new NpcRelationship(
                 new NpcId(
@@ -1112,15 +1623,19 @@ public final class NpcPersistence {
         );
     }
 
+    // ---------------------------------------------------------------------
+    // Belief persistence
+    // ---------------------------------------------------------------------
+
     private static String encodeBelief(
             NpcBelief belief
     ) {
-
         return String.join(
                 "\t",
                 "BELIEF",
                 Long.toString(
-                        belief.owner().value()
+                        belief.owner()
+                                .value()
                 ),
                 escape(
                         belief.factKey()
@@ -1131,7 +1646,8 @@ public final class NpcPersistence {
                 Double.toString(
                         belief.confidence()
                 ),
-                belief.sourceNpc() == null
+                belief.sourceNpc()
+                        == null
                         ? ""
                         : Long.toString(
                         belief.sourceNpc()
@@ -1146,12 +1662,18 @@ public final class NpcPersistence {
     private static NpcBelief decodeBelief(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 7) {
+            throw new IllegalArgumentException(
+                    "Expected 7 belief columns, got "
+                            + p.length
+            );
+        }
 
         return new NpcBelief(
                 new NpcId(
@@ -1181,33 +1703,41 @@ public final class NpcPersistence {
         );
     }
 
+    // ---------------------------------------------------------------------
+    // Memory persistence
+    // ---------------------------------------------------------------------
+
     private static String encodeMemory(
             NpcMemory memory
     ) {
-
         return String.join(
                 "\t",
                 "MEM",
                 Long.toString(
-                        memory.id().value()
+                        memory.id()
+                                .value()
                 ),
                 Long.toString(
-                        memory.owner().value()
+                        memory.owner()
+                                .value()
                 ),
-                memory.type().name(),
+                memory.type()
+                        .name(),
                 escape(
                         memory.summary()
                 ),
                 Double.toString(
                         memory.importance()
                 ),
-                memory.relatedNpc() == null
+                memory.relatedNpc()
+                        == null
                         ? ""
                         : Long.toString(
                         memory.relatedNpc()
                                 .value()
                 ),
-                memory.factKey() == null
+                memory.factKey()
+                        == null
                         ? ""
                         : escape(
                         memory.factKey()
@@ -1221,12 +1751,18 @@ public final class NpcPersistence {
     private static NpcMemory decodeMemory(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 9) {
+            throw new IllegalArgumentException(
+                    "Expected 9 memory columns, got "
+                            + p.length
+            );
+        }
 
         return new NpcMemory(
                 new NpcMemoryId(
@@ -1266,31 +1802,40 @@ public final class NpcPersistence {
         );
     }
 
+    // ---------------------------------------------------------------------
+    // World event persistence
+    // ---------------------------------------------------------------------
+
     private static String encodeEvent(
             WorldEvent event
     ) {
-
         return String.join(
                 "\t",
                 "EVENT",
                 Long.toString(
-                        event.id().value()
+                        event.id()
+                                .value()
                 ),
-                event.type().name(),
+                event.type()
+                        .name(),
                 escape(
                         event.summary()
                 ),
                 escape(
-                        event.position().dimension()
+                        event.position()
+                                .dimension()
                 ),
                 Double.toString(
-                        event.position().x()
+                        event.position()
+                                .x()
                 ),
                 Double.toString(
-                        event.position().y()
+                        event.position()
+                                .y()
                 ),
                 Double.toString(
-                        event.position().z()
+                        event.position()
+                                .z()
                 ),
                 Long.toString(
                         event.occurredTick()
@@ -1298,22 +1843,28 @@ public final class NpcPersistence {
                 Double.toString(
                         event.importance()
                 ),
-                event.actorNpc() == null
+                event.actorNpc()
+                        == null
                         ? ""
                         : Long.toString(
-                        event.actorNpc().value()
+                        event.actorNpc()
+                                .value()
                 ),
-                event.subjectNpc() == null
+                event.subjectNpc()
+                        == null
                         ? ""
                         : Long.toString(
-                        event.subjectNpc().value()
+                        event.subjectNpc()
+                                .value()
                 ),
-                event.factKey() == null
+                event.factKey()
+                        == null
                         ? ""
                         : escape(
                         event.factKey()
                 ),
-                event.factValue() == null
+                event.factValue()
+                        == null
                         ? ""
                         : escape(
                         event.factValue()
@@ -1324,12 +1875,18 @@ public final class NpcPersistence {
     private static WorldEvent decodeEvent(
             String line
     ) {
-
         String[] p =
                 line.split(
                         "\t",
                         -1
                 );
+
+        if (p.length != 14) {
+            throw new IllegalArgumentException(
+                    "Expected 14 event columns, got "
+                            + p.length
+            );
+        }
 
         return new WorldEvent(
                 new WorldEventId(
@@ -1390,21 +1947,35 @@ public final class NpcPersistence {
         );
     }
 
+    // ---------------------------------------------------------------------
+    // TSV escaping
+    // ---------------------------------------------------------------------
+
     private static String escape(
             String value
     ) {
-
         return value
-                .replace("\\", "\\\\")
-                .replace("\t", "\\t")
-                .replace("\n", "\\n")
-                .replace("\r", "\\r");
+                .replace(
+                        "\\",
+                        "\\\\"
+                )
+                .replace(
+                        "\t",
+                        "\\t"
+                )
+                .replace(
+                        "\n",
+                        "\\n"
+                )
+                .replace(
+                        "\r",
+                        "\\r"
+                );
     }
 
     private static String unescape(
             String value
     ) {
-
         StringBuilder result =
                 new StringBuilder();
 
@@ -1415,25 +1986,36 @@ public final class NpcPersistence {
                 char character :
                 value.toCharArray()
         ) {
-
             if (escaped) {
 
                 switch (character) {
 
                     case 't' ->
-                            result.append('\t');
+                            result.append(
+                                    '\t'
+                            );
 
                     case 'n' ->
-                            result.append('\n');
+                            result.append(
+                                    '\n'
+                            );
 
                     case 'r' ->
-                            result.append('\r');
+                            result.append(
+                                    '\r'
+                            );
 
                     case '\\' ->
-                            result.append('\\');
+                            result.append(
+                                    '\\'
+                            );
 
                     default -> {
-                        result.append('\\');
+
+                        result.append(
+                                '\\'
+                        );
+
                         result.append(
                                 character
                         );
@@ -1459,7 +2041,9 @@ public final class NpcPersistence {
         }
 
         if (escaped) {
-            result.append('\\');
+            result.append(
+                    '\\'
+            );
         }
 
         return result.toString();
