@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
+import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
@@ -36,15 +37,8 @@ public final class KnownWorld implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        /*
-         * Static world-generation types must exist before a
-         * Known World world preset tries to decode them.
-         */
         KnownWorldChunkGenerators.register();
 
-        /*
-         * Geographic feature registries.
-         */
         NorthFeatureRegistry.bootstrap();
         SouthFeatureRegistry.bootstrap();
         SummerIslesFeatureRegistry.bootstrap();
@@ -59,9 +53,6 @@ public final class KnownWorld implements ModInitializer {
         SothoryosFeatureRegistry.bootstrap();
         UlthosFeatureRegistry.bootstrap();
 
-        /*
-         * Load the raster/geographic world data.
-         */
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
 
@@ -79,32 +70,13 @@ public final class KnownWorld implements ModInitializer {
                 )
         );
 
-        /*
-         * Existing Known World development/debug commands.
-         */
         KnownWorldDebugCommand.register();
         KnownWorldGeoDebugCommand.register();
 
-        /*
-         * Persistent NPC/world simulation.
-         *
-         * The lifecycle handler creates the actual simulation when
-         * a Minecraft server starts and saves it when that server
-         * saves/stops.
-         */
         NpcSimulation.registerLifecycle();
 
-        /*
-         * Temporary development commands for creating and inspecting
-         * persistent simulated people.
-         */
         NpcDebugCommand.register();
-
-        /*
-         * Do NOT register KnownWorldTerrainPrototype anymore.
-         *
-         * The proper ChunkGenerator replaces it.
-         */
+        WorldEventDebugCommand.register();
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
@@ -112,7 +84,7 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World NPC simulation hooks registered."
+                "Known World simulation hooks registered."
         );
     }
 }

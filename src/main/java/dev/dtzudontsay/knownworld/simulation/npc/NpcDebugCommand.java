@@ -7,7 +7,12 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
+import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoal;
+import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalId;
+import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalType;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcBelief;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemory;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
 import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -161,12 +166,12 @@ public final class NpcDebugCommand {
                                                                         .then(
                                                                                 Commands.argument(
                                                                                                 "factKey",
-                                                                                                StringArgumentType.word()
+                                                                                                StringArgumentType.string()
                                                                                         )
                                                                                         .then(
                                                                                                 Commands.argument(
                                                                                                                 "value",
-                                                                                                                StringArgumentType.word()
+                                                                                                                StringArgumentType.string()
                                                                                                         )
                                                                                                         .then(
                                                                                                                 Commands.argument(
@@ -196,6 +201,158 @@ public final class NpcDebugCommand {
                                                                         )
                                                                         .executes(
                                                                                 NpcDebugCommand::executeBeliefs
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("share")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "speaker",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "listener",
+                                                                                                LongArgumentType.longArg(
+                                                                                                        1
+                                                                                                )
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "factKey",
+                                                                                                                StringArgumentType.string()
+                                                                                                        )
+                                                                                                        .executes(
+                                                                                                                NpcDebugCommand::executeShare
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("memories")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                NpcDebugCommand::executeMemories
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("memory_add")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "importance",
+                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                        0.0,
+                                                                                                        1.0
+                                                                                                )
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "summary",
+                                                                                                                StringArgumentType.greedyString()
+                                                                                                        )
+                                                                                                        .executes(
+                                                                                                                NpcDebugCommand::executeMemoryAdd
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("goals")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                NpcDebugCommand::executeGoals
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("goal_travel")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "x",
+                                                                                                DoubleArgumentType.doubleArg()
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "y",
+                                                                                                                DoubleArgumentType.doubleArg()
+                                                                                                        )
+                                                                                                        .then(
+                                                                                                                Commands.argument(
+                                                                                                                                "z",
+                                                                                                                                DoubleArgumentType.doubleArg()
+                                                                                                                        )
+                                                                                                                        .then(
+                                                                                                                                Commands.argument(
+                                                                                                                                                "priority",
+                                                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                                                        0.0,
+                                                                                                                                                        1.0
+                                                                                                                                                )
+                                                                                                                                        )
+                                                                                                                                        .then(
+                                                                                                                                                Commands.argument(
+                                                                                                                                                                "description",
+                                                                                                                                                                StringArgumentType.greedyString()
+                                                                                                                                                        )
+                                                                                                                                                        .executes(
+                                                                                                                                                                NpcDebugCommand::executeGoalTravel
+                                                                                                                                                        )
+                                                                                                                                        )
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("goal_cancel")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "goal",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                NpcDebugCommand::executeGoalCancel
                                                                         )
                                                         )
                                         )
@@ -234,15 +391,236 @@ public final class NpcDebugCommand {
         );
     }
 
+    private static int executeGoalTravel(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcState npc =
+                findNpc(
+                        source,
+                        LongArgumentType.getLong(
+                                context,
+                                "npc"
+                        )
+                );
+
+        if (npc == null) {
+            return 0;
+        }
+
+        double x =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "x"
+                );
+
+        double y =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "y"
+                );
+
+        double z =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "z"
+                );
+
+        double priority =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "priority"
+                );
+
+        String description =
+                StringArgumentType.getString(
+                        context,
+                        "description"
+                );
+
+        NpcSimulation simulation =
+                NpcSimulation.get();
+
+        NpcGoal goal =
+                simulation.goals()
+                        .create(
+                                npc.id(),
+                                NpcGoalType.TRAVEL,
+                                description,
+                                priority,
+                                simulation.serverTickCounter(),
+                                null,
+                                new SimulationPosition(
+                                        npc.position()
+                                                .dimension(),
+                                        x,
+                                        y,
+                                        z
+                                ),
+                                null
+                        );
+
+        simulation.save();
+
+        source.sendSuccess(
+                () ->
+                        Component.literal(
+                                "Created travel goal #"
+                                        + goal.id()
+                                        + " for NPC #"
+                                        + npc.id()
+                                        + " -> "
+                                        + x
+                                        + ", "
+                                        + y
+                                        + ", "
+                                        + z
+                        ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeGoals(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId npc =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "npc"
+                        )
+                );
+
+        try {
+
+            var goals =
+                    NpcSimulation.get()
+                            .goals()
+                            .goalsOf(
+                                    npc
+                            );
+
+            if (goals.isEmpty()) {
+
+                source.sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "NPC #"
+                                                + npc
+                                                + " has no goals."
+                                ),
+                        false
+                );
+
+                return 1;
+            }
+
+            for (NpcGoal goal : goals) {
+
+                source.sendSuccess(
+                        () ->
+                                Component.literal(
+                                        String.format(
+                                                Locale.ROOT,
+                                                "#%s [%s/%s] priority %.2f | %s",
+                                                goal.id(),
+                                                goal.type(),
+                                                goal.status(),
+                                                goal.priority(),
+                                                goal.description()
+                                        )
+                                ),
+                        false
+                );
+            }
+
+            return goals.size();
+
+        } catch (IllegalArgumentException exception) {
+
+            source.sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+    }
+
+    private static int executeGoalCancel(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        NpcGoalId id =
+                new NpcGoalId(
+                        LongArgumentType.getLong(
+                                context,
+                                "goal"
+                        )
+                );
+
+        NpcGoal goal =
+                NpcSimulation.get()
+                        .goals()
+                        .find(
+                                id
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (goal == null) {
+
+            context.getSource()
+                    .sendFailure(
+                            Component.literal(
+                                    "No goal exists with ID "
+                                            + id
+                            )
+                    );
+
+            return 0;
+        }
+
+        goal.cancel();
+
+        NpcSimulation.get()
+                .save();
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "Cancelled goal #"
+                                                + id
+                                ),
+                        false
+                );
+
+        return 1;
+    }
+
     private static int executeCreate(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
         ServerPlayer player;
 
         try {
+
             player =
                     source.getPlayerOrException();
 
@@ -284,6 +662,7 @@ public final class NpcDebugCommand {
         NpcSex sex;
 
         try {
+
             sex =
                     NpcSex.valueOf(
                             sexInput.toUpperCase(
@@ -351,6 +730,7 @@ public final class NpcDebugCommand {
     private static int executeInspect(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -427,6 +807,7 @@ public final class NpcDebugCommand {
     private static int executePersonality(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -470,6 +851,7 @@ public final class NpcDebugCommand {
     private static int executeRelationship(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -490,6 +872,7 @@ public final class NpcDebugCommand {
                 );
 
         try {
+
             NpcRelationship relationship =
                     NpcSimulation.get()
                             .relationships()
@@ -533,6 +916,7 @@ public final class NpcDebugCommand {
     private static int executeRelationshipChange(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -568,6 +952,7 @@ public final class NpcDebugCommand {
                 );
 
         try {
+
             NpcRelationship relationship =
                     NpcSimulation.get()
                             .relationships()
@@ -604,6 +989,7 @@ public final class NpcDebugCommand {
                         );
 
                 default -> {
+
                     source.sendFailure(
                             Component.literal(
                                     "Relationship dimension must be affection, trust, respect, fear or familiarity."
@@ -636,6 +1022,7 @@ public final class NpcDebugCommand {
     private static int executeBelieve(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -666,6 +1053,7 @@ public final class NpcDebugCommand {
                 );
 
         try {
+
             NpcSimulation simulation =
                     NpcSimulation.get();
 
@@ -713,6 +1101,7 @@ public final class NpcDebugCommand {
     private static int executeBeliefs(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -786,11 +1175,212 @@ public final class NpcDebugCommand {
         return beliefs.size();
     }
 
+    private static int executeShare(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId speaker =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "speaker"
+                        )
+                );
+
+        NpcId listener =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "listener"
+                        )
+                );
+
+        String factKey =
+                StringArgumentType.getString(
+                        context,
+                        "factKey"
+                );
+
+        try {
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            NpcBelief received =
+                    simulation.communication()
+                            .shareBelief(
+                                    speaker,
+                                    listener,
+                                    factKey,
+                                    simulation.serverTickCounter()
+                            );
+
+            simulation.save();
+
+            source.sendSuccess(
+                    () ->
+                            Component.literal(
+                                    String.format(
+                                            Locale.ROOT,
+                                            "NPC #%s told NPC #%s: %s = %s | listener confidence %.2f",
+                                            speaker,
+                                            listener,
+                                            received.factKey(),
+                                            received.value(),
+                                            received.confidence()
+                                    )
+                            ),
+                    false
+            );
+
+            return 1;
+
+        } catch (IllegalArgumentException exception) {
+
+            source.sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+    }
+
+    private static int executeMemories(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId npc =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "npc"
+                        )
+                );
+
+        try {
+
+            var memories =
+                    NpcSimulation.get()
+                            .memories()
+                            .memoriesOf(
+                                    npc
+                            );
+
+            if (memories.isEmpty()) {
+
+                source.sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "NPC #"
+                                                + npc
+                                                + " currently has no stored memories."
+                                ),
+                        false
+                );
+
+                return 1;
+            }
+
+            for (NpcMemory memory : memories) {
+
+                source.sendSuccess(
+                        () ->
+                                Component.literal(
+                                        String.format(
+                                                Locale.ROOT,
+                                                "#%s [%s] importance %.2f | %s",
+                                                memory.id(),
+                                                memory.type(),
+                                                memory.importance(),
+                                                memory.summary()
+                                        )
+                                ),
+                        false
+                );
+            }
+
+            return memories.size();
+
+        } catch (IllegalArgumentException exception) {
+
+            source.sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+    }
+
+    private static int executeMemoryAdd(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        NpcId npc =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "npc"
+                        )
+                );
+
+        double importance =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "importance"
+                );
+
+        String summary =
+                StringArgumentType.getString(
+                        context,
+                        "summary"
+                );
+
+        try {
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            simulation.memories()
+                    .remember(
+                            npc,
+                            NpcMemoryType.PERSONAL_EXPERIENCE,
+                            summary,
+                            importance,
+                            null,
+                            null,
+                            simulation.serverTickCounter()
+                    );
+
+            simulation.save();
+
+            return 1;
+
+        } catch (IllegalArgumentException exception) {
+
+            context.getSource()
+                    .sendFailure(
+                            Component.literal(
+                                    exception.getMessage()
+                            )
+                    );
+
+            return 0;
+        }
+    }
+
     private static int executeList(
             CommandContext<CommandSourceStack> context
     ) {
-        CommandSourceStack source =
-                context.getSource();
 
         var npcs =
                 NpcSimulation.get()
@@ -804,44 +1394,23 @@ public final class NpcDebugCommand {
                         )
                         .toList();
 
-        if (npcs.isEmpty()) {
-
-            source.sendSuccess(
-                    () ->
-                            Component.literal(
-                                    "No NPCs exist."
-                            ),
-                    false
-            );
-
-            return 1;
-        }
-
-        source.sendSuccess(
-                () ->
-                        Component.literal(
-                                "NPCs: "
-                                        + npcs.size()
-                        ),
-                false
-        );
-
         for (NpcState npc : npcs) {
 
-            source.sendSuccess(
-                    () ->
-                            Component.literal(
-                                    "#"
-                                            + npc.id()
-                                            + " "
-                                            + npc.identity()
-                                            .fullName()
-                                            + " ["
-                                            + npc.lifeState()
-                                            + "]"
-                            ),
-                    false
-            );
+            context.getSource()
+                    .sendSuccess(
+                            () ->
+                                    Component.literal(
+                                            "#"
+                                                    + npc.id()
+                                                    + " "
+                                                    + npc.identity()
+                                                    .fullName()
+                                                    + " ["
+                                                    + npc.lifeState()
+                                                    + "]"
+                                    ),
+                            false
+                    );
         }
 
         return npcs.size();
@@ -850,42 +1419,41 @@ public final class NpcDebugCommand {
     private static int executeCount(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcSimulation simulation =
                 NpcSimulation.get();
-
-        int total =
-                simulation.registry()
-                        .size();
-
-        long alive =
-                simulation.registry()
-                        .aliveCount();
 
         context.getSource()
                 .sendSuccess(
                         () ->
                                 Component.literal(
                                         "NPC population: "
-                                                + total
-                                                + " total, "
-                                                + alive
-                                                + " alive | "
+                                                + simulation.registry()
+                                                .size()
+                                                + " | relationships "
                                                 + simulation.relationships()
                                                 .size()
-                                                + " relationships | "
+                                                + " | beliefs "
                                                 + simulation.knowledge()
                                                 .size()
-                                                + " beliefs."
+                                                + " | memories "
+                                                + simulation.memories()
+                                                .size()
+                                                + " | goals "
+                                                + simulation.goals()
+                                                .size()
                                 ),
                         false
                 );
 
-        return total;
+        return simulation.registry()
+                .size();
     }
 
     private static int executeSave(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcSimulation.get()
                 .save();
 
@@ -905,6 +1473,7 @@ public final class NpcDebugCommand {
             CommandSourceStack source,
             long rawId
     ) {
+
         NpcId id =
                 new NpcId(
                         rawId

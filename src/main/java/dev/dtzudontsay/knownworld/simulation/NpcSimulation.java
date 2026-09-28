@@ -1,8 +1,14 @@
 package dev.dtzudontsay.knownworld.simulation;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.simulation.event.WorldEventManager;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
+import dev.dtzudontsay.knownworld.simulation.npc.action.NpcActionProcessor;
+import dev.dtzudontsay.knownworld.simulation.npc.communication.NpcCommunicationService;
+import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationService;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -17,6 +23,9 @@ public final class NpcSimulation {
     private static final int ACTIVATION_INTERVAL_TICKS =
             20;
 
+    private static final int ACTION_INTERVAL_TICKS =
+            20;
+
     private static NpcSimulation instance;
 
     private final MinecraftServer server;
@@ -26,6 +35,18 @@ public final class NpcSimulation {
     private final NpcRelationshipManager relationshipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
+
+    private final NpcMemoryManager memoryManager;
+
+    private final NpcGoalManager goalManager;
+
+    private final WorldEventManager eventManager;
+
+    private final NpcCommunicationService communicationService;
+
+    private final NpcObservationService observationService;
+
+    private final NpcActionProcessor actionProcessor;
 
     private final NpcPersistence persistence;
 
@@ -52,6 +73,44 @@ public final class NpcSimulation {
                         registry
                 );
 
+        this.memoryManager =
+                new NpcMemoryManager(
+                        registry
+                );
+
+        this.goalManager =
+                new NpcGoalManager(
+                        registry
+                );
+
+        this.eventManager =
+                new WorldEventManager(
+                        registry
+                );
+
+        this.communicationService =
+                new NpcCommunicationService(
+                        registry,
+                        relationshipManager,
+                        knowledgeManager,
+                        memoryManager
+                );
+
+        this.observationService =
+                new NpcObservationService(
+                        registry,
+                        knowledgeManager,
+                        memoryManager
+                );
+
+        this.actionProcessor =
+                new NpcActionProcessor(
+                        registry,
+                        goalManager,
+                        memoryManager,
+                        eventManager
+                );
+
         this.activationManager =
                 new NpcActivationManager(
                         registry
@@ -59,8 +118,12 @@ public final class NpcSimulation {
 
         Path savePath =
                 server.getServerDirectory()
-                        .resolve("knownworld")
-                        .resolve("npc");
+                        .resolve(
+                                "knownworld"
+                        )
+                        .resolve(
+                                "npc"
+                        );
 
         this.persistence =
                 new NpcPersistence(
@@ -92,10 +155,13 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started with {} NPCs, {} relationships and {} beliefs.",
+                            "NPC simulation started with {} NPCs, {} relationships, {} beliefs, {} memories, {} goals and {} world events.",
                             simulation.registry.size(),
                             simulation.relationshipManager.size(),
-                            simulation.knowledgeManager.size()
+                            simulation.knowledgeManager.size(),
+                            simulation.memoryManager.size(),
+                            simulation.goalManager.size(),
+                            simulation.eventManager.size()
                     );
                 }
         );
@@ -169,6 +235,7 @@ public final class NpcSimulation {
                 instance;
 
         if (simulation == null) {
+
             throw new IllegalStateException(
                     "NPC simulation is not currently running"
             );
@@ -197,6 +264,26 @@ public final class NpcSimulation {
         return knowledgeManager;
     }
 
+    public NpcMemoryManager memories() {
+        return memoryManager;
+    }
+
+    public NpcGoalManager goals() {
+        return goalManager;
+    }
+
+    public WorldEventManager events() {
+        return eventManager;
+    }
+
+    public NpcCommunicationService communication() {
+        return communicationService;
+    }
+
+    public NpcObservationService observation() {
+        return observationService;
+    }
+
     public NpcActivationManager activationManager() {
         return activationManager;
     }
@@ -214,8 +301,20 @@ public final class NpcSimulation {
                         % ACTIVATION_INTERVAL_TICKS
                         == 0
         ) {
+
             activationManager.update(
                     server
+            );
+        }
+
+        if (
+                serverTickCounter
+                        % ACTION_INTERVAL_TICKS
+                        == 0
+        ) {
+
+            actionProcessor.update(
+                    serverTickCounter
             );
         }
     }
@@ -223,10 +322,14 @@ public final class NpcSimulation {
     public void save() {
 
         try {
+
             persistence.save(
                     registry,
                     relationshipManager,
-                    knowledgeManager
+                    knowledgeManager,
+                    memoryManager,
+                    goalManager,
+                    eventManager
             );
 
         } catch (IOException exception) {
@@ -241,10 +344,14 @@ public final class NpcSimulation {
     private void load() {
 
         try {
+
             persistence.loadInto(
                     registry,
                     relationshipManager,
-                    knowledgeManager
+                    knowledgeManager,
+                    memoryManager,
+                    goalManager,
+                    eventManager
             );
 
         } catch (IOException exception) {
