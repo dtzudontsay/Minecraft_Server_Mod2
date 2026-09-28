@@ -2,6 +2,8 @@ package dev.dtzudontsay.knownworld.simulation;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
+import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
+import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -10,11 +12,6 @@ import net.minecraft.server.MinecraftServer;
 import java.io.IOException;
 import java.nio.file.Path;
 
-/**
- * Top-level owner of the persistent NPC simulation.
- *
- * There is one simulation instance for the currently running server.
- */
 public final class NpcSimulation {
 
     private static final int ACTIVATION_INTERVAL_TICKS =
@@ -25,6 +22,10 @@ public final class NpcSimulation {
     private final MinecraftServer server;
 
     private final NpcRegistry registry;
+
+    private final NpcRelationshipManager relationshipManager;
+
+    private final NpcKnowledgeManager knowledgeManager;
 
     private final NpcPersistence persistence;
 
@@ -40,6 +41,16 @@ public final class NpcSimulation {
 
         this.registry =
                 new NpcRegistry();
+
+        this.relationshipManager =
+                new NpcRelationshipManager(
+                        registry
+                );
+
+        this.knowledgeManager =
+                new NpcKnowledgeManager(
+                        registry
+                );
 
         this.activationManager =
                 new NpcActivationManager(
@@ -64,6 +75,7 @@ public final class NpcSimulation {
 
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
+
                     NpcSimulation simulation =
                             new NpcSimulation(
                                     server
@@ -74,24 +86,23 @@ public final class NpcSimulation {
                     instance =
                             simulation;
 
-                    /*
-                     * Perform the first activation calculation
-                     * immediately.
-                     */
                     simulation.activationManager
                             .update(
                                     server
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started with {} NPCs.",
-                            simulation.registry.size()
+                            "NPC simulation started with {} NPCs, {} relationships and {} beliefs.",
+                            simulation.registry.size(),
+                            simulation.relationshipManager.size(),
+                            simulation.knowledgeManager.size()
                     );
                 }
         );
 
         ServerTickEvents.END_SERVER_TICK.register(
                 server -> {
+
                     NpcSimulation simulation =
                             instance;
 
@@ -110,6 +121,7 @@ public final class NpcSimulation {
                         flush,
                         force
                 ) -> {
+
                     NpcSimulation simulation =
                             instance;
 
@@ -124,6 +136,7 @@ public final class NpcSimulation {
 
         ServerLifecycleEvents.SERVER_STOPPING.register(
                 server -> {
+
                     NpcSimulation simulation =
                             instance;
 
@@ -138,6 +151,7 @@ public final class NpcSimulation {
 
         ServerLifecycleEvents.SERVER_STOPPED.register(
                 server -> {
+
                     if (instance != null
                             && instance.server
                             == server) {
@@ -150,6 +164,7 @@ public final class NpcSimulation {
     }
 
     public static NpcSimulation get() {
+
         NpcSimulation simulation =
                 instance;
 
@@ -174,6 +189,14 @@ public final class NpcSimulation {
         return registry;
     }
 
+    public NpcRelationshipManager relationships() {
+        return relationshipManager;
+    }
+
+    public NpcKnowledgeManager knowledge() {
+        return knowledgeManager;
+    }
+
     public NpcActivationManager activationManager() {
         return activationManager;
     }
@@ -182,23 +205,8 @@ public final class NpcSimulation {
         return serverTickCounter;
     }
 
-    /**
-     * Main simulation heartbeat.
-     *
-     * Eventually this becomes the orchestration point for:
-     *
-     * - NPC needs
-     * - goals/actions
-     * - travel
-     * - schedules
-     * - information propagation
-     * - relationships
-     * - settlements
-     * - factions
-     * - armies
-     * - battles
-     */
     private void tick() {
+
         serverTickCounter++;
 
         if (
@@ -213,9 +221,12 @@ public final class NpcSimulation {
     }
 
     public void save() {
+
         try {
             persistence.save(
-                    registry
+                    registry,
+                    relationshipManager,
+                    knowledgeManager
             );
 
         } catch (IOException exception) {
@@ -228,9 +239,12 @@ public final class NpcSimulation {
     }
 
     private void load() {
+
         try {
             persistence.loadInto(
-                    registry
+                    registry,
+                    relationshipManager,
+                    knowledgeManager
             );
 
         } catch (IOException exception) {

@@ -8,6 +8,11 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcLifeState;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
+import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcBelief;
+import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
+import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
+import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
+import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,19 +23,13 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Comparator;
 
-/**
- * Development persistence format for NPC state.
- *
- * Format version 1 is intentionally simple and human-readable.
- *
- * NPCs are stored independently from Minecraft entities so that a
- * simulated person can continue to exist while no physical entity
- * representing that person is loaded.
- */
 public final class NpcPersistence {
 
-    private static final String HEADER =
+    private static final String HEADER_V1 =
             "KNOWNWORLD_NPCS\t1";
+
+    private static final String HEADER_V2 =
+            "KNOWNWORLD_NPCS\t2";
 
     private static final String FILE_NAME =
             "npcs.tsv";
@@ -39,26 +38,25 @@ public final class NpcPersistence {
             "npcs.tsv.tmp";
 
     private final Path directory;
+
     private final Path file;
 
     public NpcPersistence(
             Path directory
     ) {
-        this.directory = directory;
+        this.directory =
+                directory;
+
         this.file =
                 directory.resolve(
                         FILE_NAME
                 );
     }
 
-    /**
-     * Saves the complete NPC registry.
-     *
-     * A temporary file is written first so that a partially written
-     * save is less likely to destroy the previous valid save.
-     */
     public void save(
-            NpcRegistry registry
+            NpcRegistry registry,
+            NpcRelationshipManager relationships,
+            NpcKnowledgeManager knowledge
     ) throws IOException {
 
         Files.createDirectories(
@@ -78,7 +76,7 @@ public final class NpcPersistence {
                         )
         ) {
             writer.write(
-                    HEADER
+                    HEADER_V2
             );
 
             writer.newLine();
@@ -95,8 +93,34 @@ public final class NpcPersistence {
                             .toList()
             ) {
                 writer.write(
-                        encode(
+                        encodeNpcV2(
                                 npc
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            for (
+                    NpcRelationship relationship :
+                    relationships.all()
+            ) {
+                writer.write(
+                        encodeRelationship(
+                                relationship
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            for (
+                    NpcBelief belief :
+                    knowledge.all()
+            ) {
+                writer.write(
+                        encodeBelief(
+                                belief
                         )
                 );
 
@@ -104,12 +128,6 @@ public final class NpcPersistence {
             }
         }
 
-        /*
-         * Prefer an atomic replacement when the underlying file
-         * system supports it.
-         *
-         * Fall back to a normal replacement otherwise.
-         */
         try {
             Files.move(
                     temporary,
@@ -128,14 +146,15 @@ public final class NpcPersistence {
         }
     }
 
-    /**
-     * Loads every persisted NPC into the supplied registry.
-     */
     public void loadInto(
-            NpcRegistry registry
+            NpcRegistry registry,
+            NpcRelationshipManager relationships,
+            NpcKnowledgeManager knowledge
     ) throws IOException {
 
-        if (!Files.exists(file)) {
+        if (!Files.exists(
+                file
+        )) {
             return;
         }
 
@@ -149,49 +168,147 @@ public final class NpcPersistence {
             String header =
                     reader.readLine();
 
-            if (!HEADER.equals(header)) {
+            if (HEADER_V1.equals(
+                    header
+            )) {
+                loadVersion1(
+                        reader,
+                        registry
+                );
+
+                return;
+            }
+
+            if (!HEADER_V2.equals(
+                    header
+            )) {
                 throw new IOException(
                         "Unsupported NPC save format: "
                                 + header
                 );
             }
 
-            String line;
-            int lineNumber = 1;
+            loadVersion2(
+                    reader,
+                    registry,
+                    relationships,
+                    knowledge
+            );
+        }
+    }
 
-            while (
-                    (line = reader.readLine())
-                            != null
-            ) {
-                lineNumber++;
+    private static void loadVersion1(
+            BufferedReader reader,
+            NpcRegistry registry
+    ) throws IOException {
 
-                if (line.isBlank()) {
-                    continue;
-                }
+        String line;
 
-                try {
-                    NpcState npc =
-                            decode(
-                                    line
-                            );
+        int lineNumber =
+                1;
 
-                    registry.registerLoaded(
-                            npc
-                    );
+        while (
+                (line = reader.readLine())
+                        != null
+        ) {
+            lineNumber++;
 
-                } catch (RuntimeException exception) {
+            if (line.isBlank()) {
+                continue;
+            }
 
-                    throw new IOException(
-                            "Invalid NPC data at line "
-                                    + lineNumber,
-                            exception
-                    );
-                }
+            try {
+                registry.registerLoaded(
+                        decodeNpcV1(
+                                line
+                        )
+                );
+
+            } catch (RuntimeException exception) {
+
+                throw new IOException(
+                        "Invalid version 1 NPC data at line "
+                                + lineNumber,
+                        exception
+                );
             }
         }
     }
 
-    private static String encode(
+    private static void loadVersion2(
+            BufferedReader reader,
+            NpcRegistry registry,
+            NpcRelationshipManager relationships,
+            NpcKnowledgeManager knowledge
+    ) throws IOException {
+
+        String line;
+
+        int lineNumber =
+                1;
+
+        /*
+         * NPC records must load before relationships and beliefs
+         * because those systems validate referenced NPC IDs.
+         *
+         * Save() always writes NPC records first.
+         */
+        while (
+                (line = reader.readLine())
+                        != null
+        ) {
+            lineNumber++;
+
+            if (line.isBlank()) {
+                continue;
+            }
+
+            try {
+                if (line.startsWith(
+                        "NPC\t"
+                )) {
+                    registry.registerLoaded(
+                            decodeNpcV2(
+                                    line
+                            )
+                    );
+
+                } else if (line.startsWith(
+                        "REL\t"
+                )) {
+                    relationships.registerLoaded(
+                            decodeRelationship(
+                                    line
+                            )
+                    );
+
+                } else if (line.startsWith(
+                        "BELIEF\t"
+                )) {
+                    knowledge.registerLoaded(
+                            decodeBelief(
+                                    line
+                            )
+                    );
+
+                } else {
+                    throw new IllegalArgumentException(
+                            "Unknown record type"
+                    );
+                }
+
+            } catch (RuntimeException exception) {
+
+                throw new IOException(
+                        "Invalid version 2 NPC data at line "
+                                + lineNumber,
+                        exception
+                );
+            }
+        }
+    }
+
+    private static String encodeNpcV2(
             NpcState npc
     ) {
         NpcIdentity identity =
@@ -200,59 +317,149 @@ public final class NpcPersistence {
         SimulationPosition position =
                 npc.position();
 
+        NpcPersonality personality =
+                npc.personality();
+
         return String.join(
                 "\t",
-
+                "NPC",
                 Long.toString(
                         npc.id().value()
                 ),
-
                 escape(
                         identity.givenName()
                 ),
-
                 escape(
                         identity.familyName()
                 ),
-
                 identity.sex().name(),
-
                 Integer.toString(
                         identity.birthYear()
                 ),
-
                 npc.lifeState().name(),
-
                 npc.simulationLevel().name(),
-
                 escape(
                         position.dimension()
                 ),
-
                 Double.toString(
                         position.x()
                 ),
-
                 Double.toString(
                         position.y()
                 ),
-
                 Double.toString(
                         position.z()
                 ),
-
-                /*
-                 * Reserved extension column.
-                 *
-                 * Keeping this column in format version 1 gives us
-                 * somewhere to add small metadata later without
-                 * immediately changing the entire format.
-                 */
-                ""
+                Double.toString(
+                        personality.courage()
+                ),
+                Double.toString(
+                        personality.ambition()
+                ),
+                Double.toString(
+                        personality.compassion()
+                ),
+                Double.toString(
+                        personality.honor()
+                ),
+                Double.toString(
+                        personality.patience()
+                ),
+                Double.toString(
+                        personality.sociability()
+                )
         );
     }
 
-    private static NpcState decode(
+    private static NpcState decodeNpcV2(
+            String line
+    ) {
+        String[] parts =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (parts.length != 18) {
+            throw new IllegalArgumentException(
+                    "Expected 18 NPC columns, got "
+                            + parts.length
+            );
+        }
+
+        NpcIdentity identity =
+                new NpcIdentity(
+                        new NpcId(
+                                Long.parseLong(
+                                        parts[1]
+                                )
+                        ),
+                        unescape(
+                                parts[2]
+                        ),
+                        unescape(
+                                parts[3]
+                        ),
+                        NpcSex.valueOf(
+                                parts[4]
+                        ),
+                        Integer.parseInt(
+                                parts[5]
+                        )
+                );
+
+        SimulationPosition position =
+                new SimulationPosition(
+                        unescape(
+                                parts[8]
+                        ),
+                        Double.parseDouble(
+                                parts[9]
+                        ),
+                        Double.parseDouble(
+                                parts[10]
+                        ),
+                        Double.parseDouble(
+                                parts[11]
+                        )
+                );
+
+        NpcPersonality personality =
+                new NpcPersonality(
+                        Double.parseDouble(
+                                parts[12]
+                        ),
+                        Double.parseDouble(
+                                parts[13]
+                        ),
+                        Double.parseDouble(
+                                parts[14]
+                        ),
+                        Double.parseDouble(
+                                parts[15]
+                        ),
+                        Double.parseDouble(
+                                parts[16]
+                        ),
+                        Double.parseDouble(
+                                parts[17]
+                        )
+                );
+
+        return new NpcState(
+                identity,
+                position,
+                personality,
+                SimulationLevel.valueOf(
+                        parts[7]
+                ),
+                NpcLifeState.valueOf(
+                        parts[6]
+                )
+        );
+    }
+
+    private static NpcState decodeNpcV1(
             String line
     ) {
         String[] parts =
@@ -268,96 +475,211 @@ public final class NpcPersistence {
             );
         }
 
-        NpcId id =
-                new NpcId(
-                        Long.parseLong(
-                                parts[0]
-                        )
-                );
-
-        String givenName =
-                unescape(
-                        parts[1]
-                );
-
-        String familyName =
-                unescape(
-                        parts[2]
-                );
-
-        NpcSex sex =
-                NpcSex.valueOf(
-                        parts[3]
-                );
-
-        int birthYear =
-                Integer.parseInt(
-                        parts[4]
-                );
-
-        NpcLifeState lifeState =
-                NpcLifeState.valueOf(
-                        parts[5]
-                );
-
-        SimulationLevel simulationLevel =
-                SimulationLevel.valueOf(
-                        parts[6]
-                );
-
-        String dimension =
-                unescape(
-                        parts[7]
-                );
-
-        double x =
-                Double.parseDouble(
-                        parts[8]
-                );
-
-        double y =
-                Double.parseDouble(
-                        parts[9]
-                );
-
-        double z =
-                Double.parseDouble(
-                        parts[10]
-                );
-
-        /*
-         * parts[11] is currently reserved.
-         */
-
         NpcIdentity identity =
                 new NpcIdentity(
-                        id,
-                        givenName,
-                        familyName,
-                        sex,
-                        birthYear
+                        new NpcId(
+                                Long.parseLong(
+                                        parts[0]
+                                )
+                        ),
+                        unescape(
+                                parts[1]
+                        ),
+                        unescape(
+                                parts[2]
+                        ),
+                        NpcSex.valueOf(
+                                parts[3]
+                        ),
+                        Integer.parseInt(
+                                parts[4]
+                        )
                 );
 
         SimulationPosition position =
                 new SimulationPosition(
-                        dimension,
-                        x,
-                        y,
-                        z
+                        unescape(
+                                parts[7]
+                        ),
+                        Double.parseDouble(
+                                parts[8]
+                        ),
+                        Double.parseDouble(
+                                parts[9]
+                        ),
+                        Double.parseDouble(
+                                parts[10]
+                        )
                 );
 
         return new NpcState(
                 identity,
                 position,
-                simulationLevel,
-                lifeState
+                NpcPersonality.NEUTRAL,
+                SimulationLevel.valueOf(
+                        parts[6]
+                ),
+                NpcLifeState.valueOf(
+                        parts[5]
+                )
         );
     }
 
-    /**
-     * Escapes characters that would otherwise interfere with the
-     * tab-separated save format.
-     */
+    private static String encodeRelationship(
+            NpcRelationship relationship
+    ) {
+        return String.join(
+                "\t",
+                "REL",
+                Long.toString(
+                        relationship.subject()
+                                .value()
+                ),
+                Long.toString(
+                        relationship.target()
+                                .value()
+                ),
+                Double.toString(
+                        relationship.affection()
+                ),
+                Double.toString(
+                        relationship.trust()
+                ),
+                Double.toString(
+                        relationship.respect()
+                ),
+                Double.toString(
+                        relationship.fear()
+                ),
+                Double.toString(
+                        relationship.familiarity()
+                )
+        );
+    }
+
+    private static NpcRelationship decodeRelationship(
+            String line
+    ) {
+        String[] parts =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (parts.length != 8) {
+            throw new IllegalArgumentException(
+                    "Expected 8 relationship columns, got "
+                            + parts.length
+            );
+        }
+
+        return new NpcRelationship(
+                new NpcId(
+                        Long.parseLong(
+                                parts[1]
+                        )
+                ),
+                new NpcId(
+                        Long.parseLong(
+                                parts[2]
+                        )
+                ),
+                Double.parseDouble(
+                        parts[3]
+                ),
+                Double.parseDouble(
+                        parts[4]
+                ),
+                Double.parseDouble(
+                        parts[5]
+                ),
+                Double.parseDouble(
+                        parts[6]
+                ),
+                Double.parseDouble(
+                        parts[7]
+                )
+        );
+    }
+
+    private static String encodeBelief(
+            NpcBelief belief
+    ) {
+        return String.join(
+                "\t",
+                "BELIEF",
+                Long.toString(
+                        belief.owner()
+                                .value()
+                ),
+                escape(
+                        belief.factKey()
+                ),
+                escape(
+                        belief.value()
+                ),
+                Double.toString(
+                        belief.confidence()
+                ),
+                belief.sourceNpc() == null
+                        ? ""
+                        : Long.toString(
+                        belief.sourceNpc()
+                                .value()
+                ),
+                Long.toString(
+                        belief.learnedTick()
+                )
+        );
+    }
+
+    private static NpcBelief decodeBelief(
+            String line
+    ) {
+        String[] parts =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (parts.length != 7) {
+            throw new IllegalArgumentException(
+                    "Expected 7 belief columns, got "
+                            + parts.length
+            );
+        }
+
+        NpcId sourceNpc =
+                parts[5].isEmpty()
+                        ? null
+                        : new NpcId(
+                        Long.parseLong(
+                                parts[5]
+                        )
+                );
+
+        return new NpcBelief(
+                new NpcId(
+                        Long.parseLong(
+                                parts[1]
+                        )
+                ),
+                unescape(
+                        parts[2]
+                ),
+                unescape(
+                        parts[3]
+                ),
+                Double.parseDouble(
+                        parts[4]
+                ),
+                sourceNpc,
+                Long.parseLong(
+                        parts[6]
+                )
+        );
+    }
+
     private static String escape(
             String value
     ) {
@@ -380,9 +702,6 @@ public final class NpcPersistence {
                 );
     }
 
-    /**
-     * Reverses {@link #escape(String)}.
-     */
     private static String unescape(
             String value
     ) {
@@ -453,10 +772,6 @@ public final class NpcPersistence {
             }
         }
 
-        /*
-         * Preserve a trailing backslash rather than silently losing
-         * data from a malformed/legacy value.
-         */
         if (escaped) {
             result.append(
                     '\\'

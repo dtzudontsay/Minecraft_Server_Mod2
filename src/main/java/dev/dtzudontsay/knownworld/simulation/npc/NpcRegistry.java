@@ -1,6 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.npc;
 
 import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
+import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,18 +12,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * Canonical runtime registry of all persistent NPCs.
- *
- * This registry owns:
- *
- * - NPC identity allocation
- * - NPC lookup
- * - NPC movement
- * - spatial indexing
- *
- * NPC IDs are never reused.
- */
 public final class NpcRegistry {
 
     private final Map<NpcId, NpcState> npcs =
@@ -40,6 +29,24 @@ public final class NpcRegistry {
             NpcSex sex,
             int birthYear,
             SimulationPosition position
+    ) {
+        return create(
+                givenName,
+                familyName,
+                sex,
+                birthYear,
+                position,
+                NpcPersonality.NEUTRAL
+        );
+    }
+
+    public synchronized NpcState create(
+            String givenName,
+            String familyName,
+            NpcSex sex,
+            int birthYear,
+            SimulationPosition position,
+            NpcPersonality personality
     ) {
         Objects.requireNonNull(
                 givenName,
@@ -61,6 +68,11 @@ public final class NpcRegistry {
                 "position"
         );
 
+        Objects.requireNonNull(
+                personality,
+                "personality"
+        );
+
         NpcId id =
                 allocateId();
 
@@ -76,7 +88,10 @@ public final class NpcRegistry {
         NpcState state =
                 new NpcState(
                         identity,
-                        position
+                        position,
+                        personality,
+                        dev.dtzudontsay.knownworld.simulation.SimulationLevel.DORMANT,
+                        NpcLifeState.ALIVE
                 );
 
         npcs.put(
@@ -92,9 +107,6 @@ public final class NpcRegistry {
         return state;
     }
 
-    /**
-     * Registers an NPC restored from persistence.
-     */
     public synchronized void registerLoaded(
             NpcState npc
     ) {
@@ -164,9 +176,6 @@ public final class NpcRegistry {
         );
     }
 
-    /**
-     * Canonical way to move an NPC in simulation space.
-     */
     public synchronized void move(
             NpcId id,
             SimulationPosition destination
@@ -226,12 +235,6 @@ public final class NpcRegistry {
         );
     }
 
-    /**
-     * Finds living NPCs within a horizontal world-space radius.
-     *
-     * The spatial index first narrows the search to relevant cells.
-     * Exact distance filtering happens afterward.
-     */
     public synchronized List<NpcState> findWithinHorizontalRadius(
             SimulationPosition center,
             double radius

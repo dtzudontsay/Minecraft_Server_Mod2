@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld.simulation.npc;
 
 import dev.dtzudontsay.knownworld.simulation.SimulationLevel;
 import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
+import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
 
 import java.util.Objects;
 
@@ -12,8 +13,12 @@ public final class NpcState {
 
     private final NpcIdentity identity;
 
+    private final NpcPersonality personality;
+
     private SimulationPosition position;
+
     private SimulationLevel simulationLevel;
+
     private NpcLifeState lifeState;
 
     public NpcState(
@@ -23,6 +28,7 @@ public final class NpcState {
         this(
                 identity,
                 position,
+                NpcPersonality.NEUTRAL,
                 SimulationLevel.DORMANT,
                 NpcLifeState.ALIVE
         );
@@ -31,6 +37,7 @@ public final class NpcState {
     public NpcState(
             NpcIdentity identity,
             SimulationPosition position,
+            NpcPersonality personality,
             SimulationLevel simulationLevel,
             NpcLifeState lifeState
     ) {
@@ -44,6 +51,12 @@ public final class NpcState {
                 Objects.requireNonNull(
                         position,
                         "position"
+                );
+
+        this.personality =
+                Objects.requireNonNull(
+                        personality,
+                        "personality"
                 );
 
         this.simulationLevel =
@@ -67,16 +80,14 @@ public final class NpcState {
         return identity.id();
     }
 
+    public NpcPersonality personality() {
+        return personality;
+    }
+
     public SimulationPosition position() {
         return position;
     }
 
-    /**
-     * Package-private on purpose.
-     *
-     * NPC movement must normally go through NpcRegistry so the
-     * spatial index remains synchronized.
-     */
     void setPosition(
             SimulationPosition position
     ) {
@@ -114,10 +125,6 @@ public final class NpcState {
         lifeState =
                 NpcLifeState.DEAD;
 
-        /*
-         * Dead NPC records remain permanently available for history,
-         * genealogy, relationships, inheritance and memories.
-         */
         simulationLevel =
                 SimulationLevel.DORMANT;
     }

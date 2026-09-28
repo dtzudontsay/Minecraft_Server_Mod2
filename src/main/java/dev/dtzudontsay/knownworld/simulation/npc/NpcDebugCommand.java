@@ -1,11 +1,15 @@
 package dev.dtzudontsay.knownworld.simulation.npc;
 
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.LongArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
+import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcBelief;
+import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
+import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -65,6 +69,133 @@ public final class NpcDebugCommand {
                                                                         )
                                                                         .executes(
                                                                                 NpcDebugCommand::executeInspect
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("personality")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "id",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                NpcDebugCommand::executePersonality
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("relationship")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "subject",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "target",
+                                                                                                LongArgumentType.longArg(
+                                                                                                        1
+                                                                                                )
+                                                                                        )
+                                                                                        .executes(
+                                                                                                NpcDebugCommand::executeRelationship
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("relationship_change")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "subject",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "target",
+                                                                                                LongArgumentType.longArg(
+                                                                                                        1
+                                                                                                )
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "dimension",
+                                                                                                                StringArgumentType.word()
+                                                                                                        )
+                                                                                                        .then(
+                                                                                                                Commands.argument(
+                                                                                                                                "amount",
+                                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                                        -2.0,
+                                                                                                                                        2.0
+                                                                                                                                )
+                                                                                                                        )
+                                                                                                                        .executes(
+                                                                                                                                NpcDebugCommand::executeRelationshipChange
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("believe")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "factKey",
+                                                                                                StringArgumentType.word()
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "value",
+                                                                                                                StringArgumentType.word()
+                                                                                                        )
+                                                                                                        .then(
+                                                                                                                Commands.argument(
+                                                                                                                                "confidence",
+                                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                                        0.0,
+                                                                                                                                        1.0
+                                                                                                                                )
+                                                                                                                        )
+                                                                                                                        .executes(
+                                                                                                                                NpcDebugCommand::executeBelieve
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal("beliefs")
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                NpcDebugCommand::executeBeliefs
                                                                         )
                                                         )
                                         )
@@ -199,12 +330,6 @@ public final class NpcDebugCommand {
                                 position
                         );
 
-        /*
-         * Save immediately while the system is under development.
-         *
-         * Later this will be replaced by dirty-state tracking and
-         * scheduled persistence.
-         */
         NpcSimulation.get()
                 .save();
 
@@ -229,36 +354,16 @@ public final class NpcDebugCommand {
         CommandSourceStack source =
                 context.getSource();
 
-        long rawId =
-                LongArgumentType.getLong(
-                        context,
-                        "id"
-                );
-
-        NpcId id =
-                new NpcId(
-                        rawId
-                );
-
         NpcState npc =
-                NpcSimulation.get()
-                        .registry()
-                        .find(
-                                id
+                findNpc(
+                        source,
+                        LongArgumentType.getLong(
+                                context,
+                                "id"
                         )
-                        .orElse(
-                                null
-                        );
+                );
 
         if (npc == null) {
-
-            source.sendFailure(
-                    Component.literal(
-                            "No NPC exists with ID "
-                                    + id
-                    )
-            );
-
             return 0;
         }
 
@@ -317,6 +422,368 @@ public final class NpcDebugCommand {
         );
 
         return 1;
+    }
+
+    private static int executePersonality(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcState npc =
+                findNpc(
+                        source,
+                        LongArgumentType.getLong(
+                                context,
+                                "id"
+                        )
+                );
+
+        if (npc == null) {
+            return 0;
+        }
+
+        NpcPersonality personality =
+                npc.personality();
+
+        source.sendSuccess(
+                () ->
+                        Component.literal(
+                                String.format(
+                                        Locale.ROOT,
+                                        "Personality #%s | courage %.2f | ambition %.2f | compassion %.2f | honor %.2f | patience %.2f | sociability %.2f",
+                                        npc.id(),
+                                        personality.courage(),
+                                        personality.ambition(),
+                                        personality.compassion(),
+                                        personality.honor(),
+                                        personality.patience(),
+                                        personality.sociability()
+                                )
+                        ),
+                false
+        );
+
+        return 1;
+    }
+
+    private static int executeRelationship(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId subject =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "subject"
+                        )
+                );
+
+        NpcId target =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "target"
+                        )
+                );
+
+        try {
+            NpcRelationship relationship =
+                    NpcSimulation.get()
+                            .relationships()
+                            .getOrCreate(
+                                    subject,
+                                    target
+                            );
+
+            source.sendSuccess(
+                    () ->
+                            Component.literal(
+                                    String.format(
+                                            Locale.ROOT,
+                                            "%s -> %s | affection %.2f | trust %.2f | respect %.2f | fear %.2f | familiarity %.2f",
+                                            subject,
+                                            target,
+                                            relationship.affection(),
+                                            relationship.trust(),
+                                            relationship.respect(),
+                                            relationship.fear(),
+                                            relationship.familiarity()
+                                    )
+                            ),
+                    false
+            );
+
+            return 1;
+
+        } catch (IllegalArgumentException exception) {
+
+            source.sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+    }
+
+    private static int executeRelationshipChange(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId subject =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "subject"
+                        )
+                );
+
+        NpcId target =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "target"
+                        )
+                );
+
+        String dimension =
+                StringArgumentType.getString(
+                                context,
+                                "dimension"
+                        )
+                        .toLowerCase(
+                                Locale.ROOT
+                        );
+
+        double amount =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "amount"
+                );
+
+        try {
+            NpcRelationship relationship =
+                    NpcSimulation.get()
+                            .relationships()
+                            .getOrCreate(
+                                    subject,
+                                    target
+                            );
+
+            switch (dimension) {
+
+                case "affection" ->
+                        relationship.changeAffection(
+                                amount
+                        );
+
+                case "trust" ->
+                        relationship.changeTrust(
+                                amount
+                        );
+
+                case "respect" ->
+                        relationship.changeRespect(
+                                amount
+                        );
+
+                case "fear" ->
+                        relationship.changeFear(
+                                amount
+                        );
+
+                case "familiarity" ->
+                        relationship.increaseFamiliarity(
+                                amount
+                        );
+
+                default -> {
+                    source.sendFailure(
+                            Component.literal(
+                                    "Relationship dimension must be affection, trust, respect, fear or familiarity."
+                            )
+                    );
+
+                    return 0;
+                }
+            }
+
+            NpcSimulation.get()
+                    .save();
+
+            return executeRelationship(
+                    context
+            );
+
+        } catch (IllegalArgumentException exception) {
+
+            source.sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+    }
+
+    private static int executeBelieve(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId npc =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "npc"
+                        )
+                );
+
+        String factKey =
+                StringArgumentType.getString(
+                        context,
+                        "factKey"
+                );
+
+        String value =
+                StringArgumentType.getString(
+                        context,
+                        "value"
+                );
+
+        double confidence =
+                DoubleArgumentType.getDouble(
+                        context,
+                        "confidence"
+                );
+
+        try {
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            simulation.knowledge()
+                    .believe(
+                            npc,
+                            factKey,
+                            value,
+                            confidence,
+                            null,
+                            simulation.serverTickCounter()
+                    );
+
+            simulation.save();
+
+            source.sendSuccess(
+                    () ->
+                            Component.literal(
+                                    "NPC #"
+                                            + npc
+                                            + " now believes "
+                                            + factKey
+                                            + " = "
+                                            + value
+                                            + " with confidence "
+                                            + confidence
+                            ),
+                    false
+            );
+
+            return 1;
+
+        } catch (IllegalArgumentException exception) {
+
+            source.sendFailure(
+                    Component.literal(
+                            exception.getMessage()
+                    )
+            );
+
+            return 0;
+        }
+    }
+
+    private static int executeBeliefs(
+            CommandContext<CommandSourceStack> context
+    ) {
+        CommandSourceStack source =
+                context.getSource();
+
+        NpcId npc =
+                new NpcId(
+                        LongArgumentType.getLong(
+                                context,
+                                "npc"
+                        )
+                );
+
+        if (!NpcSimulation.get()
+                .registry()
+                .contains(
+                        npc
+                )) {
+
+            source.sendFailure(
+                    Component.literal(
+                            "Unknown NPC ID: "
+                                    + npc
+                    )
+            );
+
+            return 0;
+        }
+
+        var beliefs =
+                NpcSimulation.get()
+                        .knowledge()
+                        .beliefsOf(
+                                npc
+                        );
+
+        if (beliefs.isEmpty()) {
+
+            source.sendSuccess(
+                    () ->
+                            Component.literal(
+                                    "NPC #"
+                                            + npc
+                                            + " currently has no stored beliefs."
+                            ),
+                    false
+            );
+
+            return 1;
+        }
+
+        for (NpcBelief belief : beliefs) {
+
+            source.sendSuccess(
+                    () ->
+                            Component.literal(
+                                    String.format(
+                                            Locale.ROOT,
+                                            "%s = %s | confidence %.2f | source %s",
+                                            belief.factKey(),
+                                            belief.value(),
+                                            belief.confidence(),
+                                            belief.sourceNpc() == null
+                                                    ? "direct/unknown"
+                                                    : belief.sourceNpc()
+                                                    .toString()
+                                    )
+                            ),
+                    false
+            );
+        }
+
+        return beliefs.size();
     }
 
     private static int executeList(
@@ -402,7 +869,13 @@ public final class NpcDebugCommand {
                                                 + total
                                                 + " total, "
                                                 + alive
-                                                + " alive."
+                                                + " alive | "
+                                                + simulation.relationships()
+                                                .size()
+                                                + " relationships | "
+                                                + simulation.knowledge()
+                                                .size()
+                                                + " beliefs."
                                 ),
                         false
                 );
@@ -426,5 +899,37 @@ public final class NpcDebugCommand {
                 );
 
         return 1;
+    }
+
+    private static NpcState findNpc(
+            CommandSourceStack source,
+            long rawId
+    ) {
+        NpcId id =
+                new NpcId(
+                        rawId
+                );
+
+        NpcState npc =
+                NpcSimulation.get()
+                        .registry()
+                        .find(
+                                id
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (npc == null) {
+
+            source.sendFailure(
+                    Component.literal(
+                            "No NPC exists with ID "
+                                    + id
+                    )
+            );
+        }
+
+        return npc;
     }
 }
