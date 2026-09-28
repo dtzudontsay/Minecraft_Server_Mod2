@@ -5,12 +5,20 @@ import dev.dtzudontsay.knownworld.simulation.event.WorldEventManager;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.action.NpcActionProcessor;
 import dev.dtzudontsay.knownworld.simulation.npc.communication.NpcCommunicationService;
+import dev.dtzudontsay.knownworld.simulation.npc.decision.NpcDecisionService;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
 import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationService;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
+import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
+import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
+import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
+import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
+import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
@@ -20,17 +28,22 @@ import java.nio.file.Path;
 
 public final class NpcSimulation {
 
-    private static final int ACTIVATION_INTERVAL_TICKS =
-            20;
-
-    private static final int ACTION_INTERVAL_TICKS =
+    private static final int UPDATE_INTERVAL_TICKS =
             20;
 
     private static NpcSimulation instance;
 
     private final MinecraftServer server;
 
+    private final SimulationClock clock;
+
     private final NpcRegistry registry;
+
+    private final SettlementManager settlementManager;
+
+    private final OrganizationManager organizationManager;
+
+    private final NpcAffiliationManager affiliationManager;
 
     private final NpcRelationshipManager relationshipManager;
 
@@ -40,11 +53,19 @@ public final class NpcSimulation {
 
     private final NpcGoalManager goalManager;
 
+    private final NpcNeedManager needManager;
+
+    private final NpcRoutineManager routineManager;
+
     private final WorldEventManager eventManager;
 
     private final NpcCommunicationService communicationService;
 
     private final NpcObservationService observationService;
+
+    private final NpcDecisionService decisionService;
+
+    private final NpcRoutineService routineService;
 
     private final NpcActionProcessor actionProcessor;
 
@@ -52,16 +73,32 @@ public final class NpcSimulation {
 
     private final NpcActivationManager activationManager;
 
-    private long serverTickCounter;
-
     private NpcSimulation(
             MinecraftServer server
     ) {
         this.server =
                 server;
 
+        this.clock =
+                new SimulationClock();
+
         this.registry =
                 new NpcRegistry();
+
+        this.settlementManager =
+                new SettlementManager();
+
+        this.organizationManager =
+                new OrganizationManager(
+                        settlementManager
+                );
+
+        this.affiliationManager =
+                new NpcAffiliationManager(
+                        registry,
+                        settlementManager,
+                        organizationManager
+                );
 
         this.relationshipManager =
                 new NpcRelationshipManager(
@@ -80,6 +117,16 @@ public final class NpcSimulation {
 
         this.goalManager =
                 new NpcGoalManager(
+                        registry
+                );
+
+        this.needManager =
+                new NpcNeedManager(
+                        registry
+                );
+
+        this.routineManager =
+                new NpcRoutineManager(
                         registry
                 );
 
@@ -103,10 +150,25 @@ public final class NpcSimulation {
                         memoryManager
                 );
 
+        this.decisionService =
+                new NpcDecisionService(
+                        registry,
+                        needManager,
+                        goalManager
+                );
+
+        this.routineService =
+                new NpcRoutineService(
+                        registry,
+                        routineManager,
+                        goalManager
+                );
+
         this.actionProcessor =
                 new NpcActionProcessor(
                         registry,
                         goalManager,
+                        needManager,
                         memoryManager,
                         eventManager
                 );
@@ -129,9 +191,6 @@ public final class NpcSimulation {
                 new NpcPersistence(
                         savePath
                 );
-
-        this.serverTickCounter =
-                0L;
     }
 
     public static void registerLifecycle() {
@@ -155,13 +214,9 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started with {} NPCs, {} relationships, {} beliefs, {} memories, {} goals and {} world events.",
-                            simulation.registry.size(),
-                            simulation.relationshipManager.size(),
-                            simulation.knowledgeManager.size(),
-                            simulation.memoryManager.size(),
-                            simulation.goalManager.size(),
-                            simulation.eventManager.size()
+                            "NPC simulation started at tick {} with {} NPCs.",
+                            simulation.clock.tick(),
+                            simulation.registry.size()
                     );
                 }
         );
@@ -231,20 +286,13 @@ public final class NpcSimulation {
 
     public static NpcSimulation get() {
 
-        NpcSimulation simulation =
-                instance;
-
-        if (simulation == null) {
+        if (instance == null) {
 
             throw new IllegalStateException(
                     "NPC simulation is not currently running"
             );
         }
 
-        return simulation;
-    }
-
-    public static NpcSimulation getNullable() {
         return instance;
     }
 
@@ -254,6 +302,18 @@ public final class NpcSimulation {
 
     public NpcRegistry registry() {
         return registry;
+    }
+
+    public SettlementManager settlements() {
+        return settlementManager;
+    }
+
+    public OrganizationManager organizations() {
+        return organizationManager;
+    }
+
+    public NpcAffiliationManager affiliations() {
+        return affiliationManager;
     }
 
     public NpcRelationshipManager relationships() {
@@ -270,6 +330,14 @@ public final class NpcSimulation {
 
     public NpcGoalManager goals() {
         return goalManager;
+    }
+
+    public NpcNeedManager needs() {
+        return needManager;
+    }
+
+    public NpcRoutineManager routines() {
+        return routineManager;
     }
 
     public WorldEventManager events() {
@@ -289,46 +357,64 @@ public final class NpcSimulation {
     }
 
     public long serverTickCounter() {
-        return serverTickCounter;
+        return clock.tick();
     }
 
     private void tick() {
 
-        serverTickCounter++;
+        clock.advance();
+
+        long tick =
+                clock.tick();
 
         if (
-                serverTickCounter
-                        % ACTIVATION_INTERVAL_TICKS
-                        == 0
+                tick
+                        % UPDATE_INTERVAL_TICKS
+                        != 0
         ) {
 
-            activationManager.update(
-                    server
-            );
+            return;
         }
 
-        if (
-                serverTickCounter
-                        % ACTION_INTERVAL_TICKS
-                        == 0
-        ) {
+        activationManager.update(
+                server
+        );
 
-            actionProcessor.update(
-                    serverTickCounter
-            );
-        }
+        needManager.update();
+
+        decisionService.update(
+                tick
+        );
+
+        routineService.update(
+                tick
+        );
+
+        actionProcessor.update(
+                tick
+        );
     }
 
     public void save() {
 
         try {
 
+            /*
+             * Batch 10A:
+             *
+             * Existing simulation state persists normally.
+             * New settlement/social structures are added to
+             * persistence in Batch 10B.
+             */
             persistence.save(
+                    clock,
                     registry,
                     relationshipManager,
                     knowledgeManager,
                     memoryManager,
                     goalManager,
+                    needManager,
+                    routineManager,
                     eventManager
             );
 
@@ -346,11 +432,14 @@ public final class NpcSimulation {
         try {
 
             persistence.loadInto(
+                    clock,
                     registry,
                     relationshipManager,
                     knowledgeManager,
                     memoryManager,
                     goalManager,
+                    needManager,
+                    routineManager,
                     eventManager
             );
 

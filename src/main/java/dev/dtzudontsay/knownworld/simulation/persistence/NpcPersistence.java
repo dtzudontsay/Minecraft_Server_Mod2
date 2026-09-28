@@ -23,9 +23,15 @@ import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemory;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryId;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
+import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
+import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeeds;
 import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
+import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoleType;
+import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutine;
+import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
+import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,23 +41,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Comparator;
+import java.util.Map;
 
 public final class NpcPersistence {
 
-    private static final String HEADER_V1 =
-            "KNOWNWORLD_NPCS\t1";
+    private static final String HEADER_PREFIX =
+            "KNOWNWORLD_NPCS\t";
 
-    private static final String HEADER_V2 =
-            "KNOWNWORLD_NPCS\t2";
-
-    private static final String HEADER_V3 =
-            "KNOWNWORLD_NPCS\t3";
-
-    private static final String HEADER_V4 =
-            "KNOWNWORLD_NPCS\t4";
-
-    private static final String HEADER_V5 =
-            "KNOWNWORLD_NPCS\t5";
+    private static final int CURRENT_VERSION =
+            7;
 
     private static final String FILE_NAME =
             "npcs.tsv";
@@ -76,11 +74,14 @@ public final class NpcPersistence {
     }
 
     public void save(
+            SimulationClock clock,
             NpcRegistry registry,
             NpcRelationshipManager relationships,
             NpcKnowledgeManager knowledge,
             NpcMemoryManager memories,
             NpcGoalManager goals,
+            NpcNeedManager needs,
+            NpcRoutineManager routines,
             WorldEventManager events
     ) throws IOException {
 
@@ -101,7 +102,15 @@ public final class NpcPersistence {
                         )
         ) {
             writer.write(
-                    HEADER_V5
+                    HEADER_PREFIX
+                            + CURRENT_VERSION
+            );
+
+            writer.newLine();
+
+            writer.write(
+                    "CLOCK\t"
+                            + clock.tick()
             );
 
             writer.newLine();
@@ -121,6 +130,36 @@ public final class NpcPersistence {
                 writer.write(
                         encodeNpc(
                                 npc
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            for (
+                    Map.Entry<NpcId, NpcNeeds> entry :
+                    needs.all()
+                            .entrySet()
+            ) {
+
+                writer.write(
+                        encodeNeeds(
+                                entry.getKey(),
+                                entry.getValue()
+                        )
+                );
+
+                writer.newLine();
+            }
+
+            for (
+                    NpcRoutine routine :
+                    routines.all()
+            ) {
+
+                writer.write(
+                        encodeRoutine(
+                                routine
                         )
                 );
 
@@ -207,7 +246,7 @@ public final class NpcPersistence {
                     StandardCopyOption.ATOMIC_MOVE
             );
 
-        } catch (IOException atomicMoveFailure) {
+        } catch (IOException exception) {
 
             Files.move(
                     temporary,
@@ -218,11 +257,14 @@ public final class NpcPersistence {
     }
 
     public void loadInto(
+            SimulationClock clock,
             NpcRegistry registry,
             NpcRelationshipManager relationships,
             NpcKnowledgeManager knowledge,
             NpcMemoryManager memories,
             NpcGoalManager goals,
+            NpcNeedManager needs,
+            NpcRoutineManager routines,
             WorldEventManager events
     ) throws IOException {
 
@@ -243,9 +285,34 @@ public final class NpcPersistence {
             String header =
                     reader.readLine();
 
-            if (HEADER_V1.equals(
-                    header
+            if (header == null
+                    || !header.startsWith(
+                    HEADER_PREFIX
             )) {
+
+                throw new IOException(
+                        "Unsupported NPC save format: "
+                                + header
+                );
+            }
+
+            int version =
+                    Integer.parseInt(
+                            header.substring(
+                                    HEADER_PREFIX.length()
+                            )
+                    );
+
+            if (version < 1
+                    || version > CURRENT_VERSION) {
+
+                throw new IOException(
+                        "Unsupported NPC save version: "
+                                + version
+                );
+            }
+
+            if (version == 1) {
 
                 loadVersion1(
                         reader,
@@ -255,81 +322,18 @@ public final class NpcPersistence {
                 return;
             }
 
-            if (HEADER_V2.equals(
-                    header
-            )) {
-
-                loadStructured(
-                        reader,
-                        registry,
-                        relationships,
-                        knowledge,
-                        null,
-                        null,
-                        null,
-                        2
-                );
-
-                return;
-            }
-
-            if (HEADER_V3.equals(
-                    header
-            )) {
-
-                loadStructured(
-                        reader,
-                        registry,
-                        relationships,
-                        knowledge,
-                        memories,
-                        null,
-                        null,
-                        3
-                );
-
-                return;
-            }
-
-            if (HEADER_V4.equals(
-                    header
-            )) {
-
-                loadStructured(
-                        reader,
-                        registry,
-                        relationships,
-                        knowledge,
-                        memories,
-                        null,
-                        events,
-                        4
-                );
-
-                return;
-            }
-
-            if (HEADER_V5.equals(
-                    header
-            )) {
-
-                loadStructured(
-                        reader,
-                        registry,
-                        relationships,
-                        knowledge,
-                        memories,
-                        goals,
-                        events,
-                        5
-                );
-
-                return;
-            }
-
-            throw new IOException(
-                    "Unsupported NPC save format: "
-                            + header
+            loadStructured(
+                    reader,
+                    clock,
+                    registry,
+                    relationships,
+                    knowledge,
+                    memories,
+                    goals,
+                    needs,
+                    routines,
+                    events,
+                    version
             );
         }
     }
@@ -341,155 +345,376 @@ public final class NpcPersistence {
 
         String line;
 
-        int lineNumber =
-                1;
-
         while (
                 (line = reader.readLine())
                         != null
         ) {
 
-            lineNumber++;
-
             if (line.isBlank()) {
                 continue;
             }
 
-            try {
-
-                registry.registerLoaded(
-                        decodeNpcV1(
-                                line
-                        )
-                );
-
-            } catch (RuntimeException exception) {
-
-                throw new IOException(
-                        "Invalid version 1 NPC data at line "
-                                + lineNumber,
-                        exception
-                );
-            }
+            registry.registerLoaded(
+                    decodeNpcV1(
+                            line
+                    )
+            );
         }
     }
 
     private static void loadStructured(
             BufferedReader reader,
+            SimulationClock clock,
             NpcRegistry registry,
             NpcRelationshipManager relationships,
             NpcKnowledgeManager knowledge,
             NpcMemoryManager memories,
             NpcGoalManager goals,
+            NpcNeedManager needs,
+            NpcRoutineManager routines,
             WorldEventManager events,
             int version
     ) throws IOException {
 
         String line;
 
-        int lineNumber =
-                1;
-
         while (
                 (line = reader.readLine())
                         != null
         ) {
 
-            lineNumber++;
-
             if (line.isBlank()) {
                 continue;
             }
 
-            try {
+            if (line.startsWith(
+                    "CLOCK\t"
+            )) {
 
-                if (line.startsWith(
-                        "NPC\t"
-                )) {
+                if (version >= 6) {
 
-                    registry.registerLoaded(
-                            decodeNpc(
-                                    line
+                    clock.setTick(
+                            Long.parseLong(
+                                    line.substring(
+                                            6
+                                    )
                             )
-                    );
-
-                } else if (line.startsWith(
-                        "REL\t"
-                )) {
-
-                    relationships.registerLoaded(
-                            decodeRelationship(
-                                    line
-                            )
-                    );
-
-                } else if (line.startsWith(
-                        "BELIEF\t"
-                )) {
-
-                    knowledge.registerLoaded(
-                            decodeBelief(
-                                    line
-                            )
-                    );
-
-                } else if (
-                        line.startsWith(
-                                "MEM\t"
-                        )
-                                && memories != null
-                ) {
-
-                    memories.registerLoaded(
-                            decodeMemory(
-                                    line
-                            )
-                    );
-
-                } else if (
-                        line.startsWith(
-                                "GOAL\t"
-                        )
-                                && goals != null
-                ) {
-
-                    goals.registerLoaded(
-                            decodeGoal(
-                                    line
-                            )
-                    );
-
-                } else if (
-                        line.startsWith(
-                                "EVENT\t"
-                        )
-                                && events != null
-                ) {
-
-                    events.registerLoaded(
-                            decodeEvent(
-                                    line
-                            )
-                    );
-
-                } else {
-
-                    throw new IllegalArgumentException(
-                            "Unknown record type"
                     );
                 }
 
-            } catch (RuntimeException exception) {
+                continue;
+            }
+
+            if (line.startsWith(
+                    "NPC\t"
+            )) {
+
+                registry.registerLoaded(
+                        decodeNpc(
+                                line
+                        )
+                );
+
+            } else if (
+                    line.startsWith(
+                            "NEED\t"
+                    )
+                            && version >= 6
+            ) {
+
+                decodeNeeds(
+                        line,
+                        needs
+                );
+
+            } else if (
+                    line.startsWith(
+                            "ROUTINE\t"
+                    )
+                            && version >= 7
+            ) {
+
+                routines.registerLoaded(
+                        decodeRoutine(
+                                line
+                        )
+                );
+
+            } else if (line.startsWith(
+                    "REL\t"
+            )) {
+
+                relationships.registerLoaded(
+                        decodeRelationship(
+                                line
+                        )
+                );
+
+            } else if (line.startsWith(
+                    "BELIEF\t"
+            )) {
+
+                knowledge.registerLoaded(
+                        decodeBelief(
+                                line
+                        )
+                );
+
+            } else if (
+                    line.startsWith(
+                            "MEM\t"
+                    )
+                            && version >= 3
+            ) {
+
+                memories.registerLoaded(
+                        decodeMemory(
+                                line
+                        )
+                );
+
+            } else if (
+                    line.startsWith(
+                            "GOAL\t"
+                    )
+                            && version >= 5
+            ) {
+
+                goals.registerLoaded(
+                        decodeGoal(
+                                line
+                        )
+                );
+
+            } else if (
+                    line.startsWith(
+                            "EVENT\t"
+                    )
+                            && version >= 4
+            ) {
+
+                events.registerLoaded(
+                        decodeEvent(
+                                line
+                        )
+                );
+
+            } else {
 
                 throw new IOException(
-                        "Invalid version "
+                        "Unexpected record in version "
                                 + version
-                                + " NPC data at line "
-                                + lineNumber,
-                        exception
+                                + ": "
+                                + line
                 );
             }
         }
+    }
+
+    private static String encodeRoutine(
+            NpcRoutine routine
+    ) {
+
+        SimulationPosition home =
+                routine.homePosition();
+
+        SimulationPosition work =
+                routine.workPosition();
+
+        return String.join(
+                "\t",
+                "ROUTINE",
+                Long.toString(
+                        routine.owner()
+                                .value()
+                ),
+                routine.role()
+                        .name(),
+
+                home == null
+                        ? ""
+                        : escape(
+                        home.dimension()
+                ),
+
+                home == null
+                        ? ""
+                        : Double.toString(
+                        home.x()
+                ),
+
+                home == null
+                        ? ""
+                        : Double.toString(
+                        home.y()
+                ),
+
+                home == null
+                        ? ""
+                        : Double.toString(
+                        home.z()
+                ),
+
+                work == null
+                        ? ""
+                        : escape(
+                        work.dimension()
+                ),
+
+                work == null
+                        ? ""
+                        : Double.toString(
+                        work.x()
+                ),
+
+                work == null
+                        ? ""
+                        : Double.toString(
+                        work.y()
+                ),
+
+                work == null
+                        ? ""
+                        : Double.toString(
+                        work.z()
+                ),
+
+                Integer.toString(
+                        routine.workStartTick()
+                ),
+
+                Integer.toString(
+                        routine.workEndTick()
+                )
+        );
+    }
+
+    private static NpcRoutine decodeRoutine(
+            String line
+    ) {
+
+        String[] p =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        if (p.length != 13) {
+
+            throw new IllegalArgumentException(
+                    "Expected 13 routine columns, got "
+                            + p.length
+            );
+        }
+
+        SimulationPosition home =
+                p[3].isEmpty()
+                        ? null
+                        : new SimulationPosition(
+                        unescape(
+                                p[3]
+                        ),
+                        Double.parseDouble(
+                                p[4]
+                        ),
+                        Double.parseDouble(
+                                p[5]
+                        ),
+                        Double.parseDouble(
+                                p[6]
+                        )
+                );
+
+        SimulationPosition work =
+                p[7].isEmpty()
+                        ? null
+                        : new SimulationPosition(
+                        unescape(
+                                p[7]
+                        ),
+                        Double.parseDouble(
+                                p[8]
+                        ),
+                        Double.parseDouble(
+                                p[9]
+                        ),
+                        Double.parseDouble(
+                                p[10]
+                        )
+                );
+
+        return new NpcRoutine(
+                new NpcId(
+                        Long.parseLong(
+                                p[1]
+                        )
+                ),
+                NpcRoleType.valueOf(
+                        p[2]
+                ),
+                home,
+                work,
+                Integer.parseInt(
+                        p[11]
+                ),
+                Integer.parseInt(
+                        p[12]
+                )
+        );
+    }
+
+    private static String encodeNeeds(
+            NpcId npc,
+            NpcNeeds needs
+    ) {
+
+        return String.join(
+                "\t",
+                "NEED",
+                Long.toString(
+                        npc.value()
+                ),
+                Double.toString(
+                        needs.fatigue()
+                ),
+                Double.toString(
+                        needs.hunger()
+                ),
+                Double.toString(
+                        needs.social()
+                )
+        );
+    }
+
+    private static void decodeNeeds(
+            String line,
+            NpcNeedManager manager
+    ) {
+
+        String[] p =
+                line.split(
+                        "\t",
+                        -1
+                );
+
+        manager.registerLoaded(
+                new NpcId(
+                        Long.parseLong(
+                                p[1]
+                        )
+                ),
+                new NpcNeeds(
+                        Double.parseDouble(
+                                p[2]
+                        ),
+                        Double.parseDouble(
+                                p[3]
+                        ),
+                        Double.parseDouble(
+                                p[4]
+                        )
+                )
+        );
     }
 
     private static String encodeGoal(
@@ -503,17 +728,13 @@ public final class NpcPersistence {
                 "\t",
                 "GOAL",
                 Long.toString(
-                        goal.id()
-                                .value()
+                        goal.id().value()
                 ),
                 Long.toString(
-                        goal.owner()
-                                .value()
+                        goal.owner().value()
                 ),
-                goal.type()
-                        .name(),
-                goal.status()
-                        .name(),
+                goal.type().name(),
+                goal.status().name(),
                 escape(
                         goal.description()
                 ),
@@ -561,82 +782,71 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 14) {
-
-            throw new IllegalArgumentException(
-                    "Expected 14 goal columns, got "
-                            + parts.length
-            );
-        }
-
         NpcId targetNpc =
-                parts[8].isEmpty()
+                p[8].isEmpty()
                         ? null
                         : new NpcId(
                         Long.parseLong(
-                                parts[8]
+                                p[8]
                         )
                 );
 
         SimulationPosition targetPosition =
-                parts[9].isEmpty()
+                p[9].isEmpty()
                         ? null
                         : new SimulationPosition(
                         unescape(
-                                parts[9]
+                                p[9]
                         ),
                         Double.parseDouble(
-                                parts[10]
+                                p[10]
                         ),
                         Double.parseDouble(
-                                parts[11]
+                                p[11]
                         ),
                         Double.parseDouble(
-                                parts[12]
+                                p[12]
                         )
-                );
-
-        String factKey =
-                parts[13].isEmpty()
-                        ? null
-                        : unescape(
-                        parts[13]
                 );
 
         return new NpcGoal(
                 new NpcGoalId(
                         Long.parseLong(
-                                parts[1]
+                                p[1]
                         )
                 ),
                 new NpcId(
                         Long.parseLong(
-                                parts[2]
+                                p[2]
                         )
                 ),
                 NpcGoalType.valueOf(
-                        parts[3]
+                        p[3]
                 ),
                 unescape(
-                        parts[5]
+                        p[5]
                 ),
                 Double.parseDouble(
-                        parts[6]
+                        p[6]
                 ),
                 Long.parseLong(
-                        parts[7]
+                        p[7]
                 ),
                 targetNpc,
                 targetPosition,
-                factKey,
+                p[13].isEmpty()
+                        ? null
+                        : unescape(
+                        p[13]
+                ),
                 NpcGoalStatus.valueOf(
-                        parts[4]
+                        p[4]
                 )
         );
     }
@@ -709,88 +919,71 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 18) {
-
-            throw new IllegalArgumentException(
-                    "Expected 18 NPC columns, got "
-                            + parts.length
-            );
-        }
-
-        NpcIdentity identity =
+        return new NpcState(
                 new NpcIdentity(
                         new NpcId(
                                 Long.parseLong(
-                                        parts[1]
+                                        p[1]
                                 )
                         ),
                         unescape(
-                                parts[2]
+                                p[2]
                         ),
                         unescape(
-                                parts[3]
+                                p[3]
                         ),
                         NpcSex.valueOf(
-                                parts[4]
+                                p[4]
                         ),
                         Integer.parseInt(
-                                parts[5]
+                                p[5]
                         )
-                );
-
-        SimulationPosition position =
+                ),
                 new SimulationPosition(
                         unescape(
-                                parts[8]
+                                p[8]
                         ),
                         Double.parseDouble(
-                                parts[9]
+                                p[9]
                         ),
                         Double.parseDouble(
-                                parts[10]
+                                p[10]
                         ),
                         Double.parseDouble(
-                                parts[11]
+                                p[11]
                         )
-                );
-
-        NpcPersonality personality =
+                ),
                 new NpcPersonality(
                         Double.parseDouble(
-                                parts[12]
+                                p[12]
                         ),
                         Double.parseDouble(
-                                parts[13]
+                                p[13]
                         ),
                         Double.parseDouble(
-                                parts[14]
+                                p[14]
                         ),
                         Double.parseDouble(
-                                parts[15]
+                                p[15]
                         ),
                         Double.parseDouble(
-                                parts[16]
+                                p[16]
                         ),
                         Double.parseDouble(
-                                parts[17]
+                                p[17]
                         )
-                );
-
-        return new NpcState(
-                identity,
-                position,
-                personality,
+                ),
                 SimulationLevel.valueOf(
-                        parts[7]
+                        p[7]
                 ),
                 NpcLifeState.valueOf(
-                        parts[6]
+                        p[6]
                 )
         );
     }
@@ -799,66 +992,52 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 12) {
-
-            throw new IllegalArgumentException(
-                    "Expected 12 columns, got "
-                            + parts.length
-            );
-        }
-
-        NpcIdentity identity =
+        return new NpcState(
                 new NpcIdentity(
                         new NpcId(
                                 Long.parseLong(
-                                        parts[0]
+                                        p[0]
                                 )
                         ),
                         unescape(
-                                parts[1]
+                                p[1]
                         ),
                         unescape(
-                                parts[2]
+                                p[2]
                         ),
                         NpcSex.valueOf(
-                                parts[3]
+                                p[3]
                         ),
                         Integer.parseInt(
-                                parts[4]
+                                p[4]
                         )
-                );
-
-        SimulationPosition position =
+                ),
                 new SimulationPosition(
                         unescape(
-                                parts[7]
+                                p[7]
                         ),
                         Double.parseDouble(
-                                parts[8]
+                                p[8]
                         ),
                         Double.parseDouble(
-                                parts[9]
+                                p[9]
                         ),
                         Double.parseDouble(
-                                parts[10]
+                                p[10]
                         )
-                );
-
-        return new NpcState(
-                identity,
-                position,
+                ),
                 NpcPersonality.NEUTRAL,
                 SimulationLevel.valueOf(
-                        parts[6]
+                        p[6]
                 ),
                 NpcLifeState.valueOf(
-                        parts[5]
+                        p[5]
                 )
         );
     }
@@ -871,12 +1050,10 @@ public final class NpcPersistence {
                 "\t",
                 "REL",
                 Long.toString(
-                        relationship.subject()
-                                .value()
+                        relationship.subject().value()
                 ),
                 Long.toString(
-                        relationship.target()
-                                .value()
+                        relationship.target().value()
                 ),
                 Double.toString(
                         relationship.affection()
@@ -900,45 +1077,37 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 8) {
-
-            throw new IllegalArgumentException(
-                    "Expected 8 relationship columns, got "
-                            + parts.length
-            );
-        }
-
         return new NpcRelationship(
                 new NpcId(
                         Long.parseLong(
-                                parts[1]
+                                p[1]
                         )
                 ),
                 new NpcId(
                         Long.parseLong(
-                                parts[2]
+                                p[2]
                         )
                 ),
                 Double.parseDouble(
-                        parts[3]
+                        p[3]
                 ),
                 Double.parseDouble(
-                        parts[4]
+                        p[4]
                 ),
                 Double.parseDouble(
-                        parts[5]
+                        p[5]
                 ),
                 Double.parseDouble(
-                        parts[6]
+                        p[6]
                 ),
                 Double.parseDouble(
-                        parts[7]
+                        p[7]
                 )
         );
     }
@@ -951,8 +1120,7 @@ public final class NpcPersistence {
                 "\t",
                 "BELIEF",
                 Long.toString(
-                        belief.owner()
-                                .value()
+                        belief.owner().value()
                 ),
                 escape(
                         belief.factKey()
@@ -979,47 +1147,36 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 7) {
-
-            throw new IllegalArgumentException(
-                    "Expected 7 belief columns, got "
-                            + parts.length
-            );
-        }
-
-        NpcId sourceNpc =
-                parts[5].isEmpty()
-                        ? null
-                        : new NpcId(
-                        Long.parseLong(
-                                parts[5]
-                        )
-                );
-
         return new NpcBelief(
                 new NpcId(
                         Long.parseLong(
-                                parts[1]
+                                p[1]
                         )
                 ),
                 unescape(
-                        parts[2]
+                        p[2]
                 ),
                 unescape(
-                        parts[3]
+                        p[3]
                 ),
                 Double.parseDouble(
-                        parts[4]
+                        p[4]
                 ),
-                sourceNpc,
+                p[5].isEmpty()
+                        ? null
+                        : new NpcId(
+                        Long.parseLong(
+                                p[5]
+                        )
+                ),
                 Long.parseLong(
-                        parts[6]
+                        p[6]
                 )
         );
     }
@@ -1032,15 +1189,12 @@ public final class NpcPersistence {
                 "\t",
                 "MEM",
                 Long.toString(
-                        memory.id()
-                                .value()
+                        memory.id().value()
                 ),
                 Long.toString(
-                        memory.owner()
-                                .value()
+                        memory.owner().value()
                 ),
-                memory.type()
-                        .name(),
+                memory.type().name(),
                 escape(
                         memory.summary()
                 ),
@@ -1068,60 +1222,46 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 9) {
-
-            throw new IllegalArgumentException(
-                    "Expected 9 memory columns, got "
-                            + parts.length
-            );
-        }
-
-        NpcId relatedNpc =
-                parts[6].isEmpty()
-                        ? null
-                        : new NpcId(
-                        Long.parseLong(
-                                parts[6]
-                        )
-                );
-
-        String factKey =
-                parts[7].isEmpty()
-                        ? null
-                        : unescape(
-                        parts[7]
-                );
-
         return new NpcMemory(
                 new NpcMemoryId(
                         Long.parseLong(
-                                parts[1]
+                                p[1]
                         )
                 ),
                 new NpcId(
                         Long.parseLong(
-                                parts[2]
+                                p[2]
                         )
                 ),
                 NpcMemoryType.valueOf(
-                        parts[3]
+                        p[3]
                 ),
                 unescape(
-                        parts[4]
+                        p[4]
                 ),
                 Double.parseDouble(
-                        parts[5]
+                        p[5]
                 ),
-                relatedNpc,
-                factKey,
+                p[6].isEmpty()
+                        ? null
+                        : new NpcId(
+                        Long.parseLong(
+                                p[6]
+                        )
+                ),
+                p[7].isEmpty()
+                        ? null
+                        : unescape(
+                        p[7]
+                ),
                 Long.parseLong(
-                        parts[8]
+                        p[8]
                 )
         );
     }
@@ -1134,29 +1274,23 @@ public final class NpcPersistence {
                 "\t",
                 "EVENT",
                 Long.toString(
-                        event.id()
-                                .value()
+                        event.id().value()
                 ),
-                event.type()
-                        .name(),
+                event.type().name(),
                 escape(
                         event.summary()
                 ),
                 escape(
-                        event.position()
-                                .dimension()
+                        event.position().dimension()
                 ),
                 Double.toString(
-                        event.position()
-                                .x()
+                        event.position().x()
                 ),
                 Double.toString(
-                        event.position()
-                                .y()
+                        event.position().y()
                 ),
                 Double.toString(
-                        event.position()
-                                .z()
+                        event.position().z()
                 ),
                 Long.toString(
                         event.occurredTick()
@@ -1167,14 +1301,12 @@ public final class NpcPersistence {
                 event.actorNpc() == null
                         ? ""
                         : Long.toString(
-                        event.actorNpc()
-                                .value()
+                        event.actorNpc().value()
                 ),
                 event.subjectNpc() == null
                         ? ""
                         : Long.toString(
-                        event.subjectNpc()
-                                .value()
+                        event.subjectNpc().value()
                 ),
                 event.factKey() == null
                         ? ""
@@ -1193,88 +1325,68 @@ public final class NpcPersistence {
             String line
     ) {
 
-        String[] parts =
+        String[] p =
                 line.split(
                         "\t",
                         -1
                 );
 
-        if (parts.length != 14) {
-
-            throw new IllegalArgumentException(
-                    "Expected 14 event columns, got "
-                            + parts.length
-            );
-        }
-
-        NpcId actor =
-                parts[10].isEmpty()
-                        ? null
-                        : new NpcId(
-                        Long.parseLong(
-                                parts[10]
-                        )
-                );
-
-        NpcId subject =
-                parts[11].isEmpty()
-                        ? null
-                        : new NpcId(
-                        Long.parseLong(
-                                parts[11]
-                        )
-                );
-
-        String factKey =
-                parts[12].isEmpty()
-                        ? null
-                        : unescape(
-                        parts[12]
-                );
-
-        String factValue =
-                parts[13].isEmpty()
-                        ? null
-                        : unescape(
-                        parts[13]
-                );
-
         return new WorldEvent(
                 new WorldEventId(
                         Long.parseLong(
-                                parts[1]
+                                p[1]
                         )
                 ),
                 WorldEventType.valueOf(
-                        parts[2]
+                        p[2]
                 ),
                 unescape(
-                        parts[3]
+                        p[3]
                 ),
                 new SimulationPosition(
                         unescape(
-                                parts[4]
+                                p[4]
                         ),
                         Double.parseDouble(
-                                parts[5]
+                                p[5]
                         ),
                         Double.parseDouble(
-                                parts[6]
+                                p[6]
                         ),
                         Double.parseDouble(
-                                parts[7]
+                                p[7]
                         )
                 ),
                 Long.parseLong(
-                        parts[8]
+                        p[8]
                 ),
                 Double.parseDouble(
-                        parts[9]
+                        p[9]
                 ),
-                actor,
-                subject,
-                factKey,
-                factValue
+                p[10].isEmpty()
+                        ? null
+                        : new NpcId(
+                        Long.parseLong(
+                                p[10]
+                        )
+                ),
+                p[11].isEmpty()
+                        ? null
+                        : new NpcId(
+                        Long.parseLong(
+                                p[11]
+                        )
+                ),
+                p[12].isEmpty()
+                        ? null
+                        : unescape(
+                        p[12]
+                ),
+                p[13].isEmpty()
+                        ? null
+                        : unescape(
+                        p[13]
+                )
         );
     }
 
@@ -1283,22 +1395,10 @@ public final class NpcPersistence {
     ) {
 
         return value
-                .replace(
-                        "\\",
-                        "\\\\"
-                )
-                .replace(
-                        "\t",
-                        "\\t"
-                )
-                .replace(
-                        "\n",
-                        "\\n"
-                )
-                .replace(
-                        "\r",
-                        "\\r"
-                );
+                .replace("\\", "\\\\")
+                .replace("\t", "\\t")
+                .replace("\n", "\\n")
+                .replace("\r", "\\r");
     }
 
     private static String unescape(
@@ -1312,46 +1412,28 @@ public final class NpcPersistence {
                 false;
 
         for (
-                int index = 0;
-                index < value.length();
-                index++
+                char character :
+                value.toCharArray()
         ) {
-
-            char character =
-                    value.charAt(
-                            index
-                    );
 
             if (escaped) {
 
                 switch (character) {
 
                     case 't' ->
-                            result.append(
-                                    '\t'
-                            );
+                            result.append('\t');
 
                     case 'n' ->
-                            result.append(
-                                    '\n'
-                            );
+                            result.append('\n');
 
                     case 'r' ->
-                            result.append(
-                                    '\r'
-                            );
+                            result.append('\r');
 
                     case '\\' ->
-                            result.append(
-                                    '\\'
-                            );
+                            result.append('\\');
 
                     default -> {
-
-                        result.append(
-                                '\\'
-                        );
-
+                        result.append('\\');
                         result.append(
                                 character
                         );
@@ -1377,10 +1459,7 @@ public final class NpcPersistence {
         }
 
         if (escaped) {
-
-            result.append(
-                    '\\'
-            );
+            result.append('\\');
         }
 
         return result.toString();

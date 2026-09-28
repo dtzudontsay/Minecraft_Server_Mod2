@@ -13,9 +13,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * Persistent goal storage and priority selection.
- */
 public final class NpcGoalManager {
 
     private final NpcRegistry registry;
@@ -123,7 +120,8 @@ public final class NpcGoalManager {
             nextId =
                     Math.max(
                             nextId,
-                            goal.id().value()
+                            goal.id()
+                                    .value()
                                     + 1
                     );
         }
@@ -182,10 +180,6 @@ public final class NpcGoalManager {
         );
     }
 
-    /**
-     * Returns the highest priority non-terminal goal belonging to the
-     * NPC.
-     */
     public synchronized Optional<NpcGoal> currentGoal(
             NpcId owner
     ) {
@@ -208,6 +202,59 @@ public final class NpcGoalManager {
                                 )
                 )
                 .findFirst();
+    }
+
+    public synchronized boolean hasOpenGoalOfType(
+            NpcId owner,
+            NpcGoalType type
+    ) {
+        Objects.requireNonNull(
+                type,
+                "type"
+        );
+
+        return goalsOf(
+                owner
+        )
+                .stream()
+                .anyMatch(
+                        goal ->
+                                goal.type()
+                                        == type
+                                        && !goal.isTerminal()
+                );
+    }
+
+    public synchronized int cancelOpenGoalsOfType(
+            NpcId owner,
+            NpcGoalType type
+    ) {
+        Objects.requireNonNull(
+                type,
+                "type"
+        );
+
+        int cancelled =
+                0;
+
+        for (
+                NpcGoal goal :
+                goalsOf(
+                        owner
+                )
+        ) {
+
+            if (goal.type()
+                    == type
+                    && !goal.isTerminal()) {
+
+                goal.cancel();
+
+                cancelled++;
+            }
+        }
+
+        return cancelled;
     }
 
     public synchronized Collection<NpcGoal> all() {

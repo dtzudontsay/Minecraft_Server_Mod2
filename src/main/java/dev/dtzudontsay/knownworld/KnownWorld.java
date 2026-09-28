@@ -2,6 +2,9 @@ package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
+import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
+import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
+import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
@@ -76,6 +79,9 @@ public final class KnownWorld implements ModInitializer {
         NpcSimulation.registerLifecycle();
 
         NpcDebugCommand.register();
+        NpcNeedsDebugCommand.register();
+        NpcRoutineDebugCommand.register();
+        SocialDebugCommand.register();
         WorldEventDebugCommand.register();
 
         LOGGER.info(

@@ -8,20 +8,13 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoal;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
-import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalType;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
+import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
+import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeeds;
 
 import java.util.Objects;
 
-/**
- * Executes simulation actions derived from current NPC goals.
- *
- * Only abstract travel exists in this first version.
- *
- * PHYSICAL NPC movement will later be delegated to Minecraft entity
- * navigation instead.
- */
 public final class NpcActionProcessor {
 
     private static final double ABSTRACT_TRAVEL_SPEED_PER_SECOND =
@@ -30,9 +23,17 @@ public final class NpcActionProcessor {
     private static final double ARRIVAL_DISTANCE =
             2.0;
 
+    private static final double REST_RECOVERY_PER_SECOND =
+            0.08;
+
+    private static final double REST_COMPLETE_AT =
+            0.20;
+
     private final NpcRegistry registry;
 
     private final NpcGoalManager goals;
+
+    private final NpcNeedManager needs;
 
     private final NpcMemoryManager memories;
 
@@ -41,6 +42,7 @@ public final class NpcActionProcessor {
     public NpcActionProcessor(
             NpcRegistry registry,
             NpcGoalManager goals,
+            NpcNeedManager needs,
             NpcMemoryManager memories,
             WorldEventManager events
     ) {
@@ -56,6 +58,12 @@ public final class NpcActionProcessor {
                         "goals"
                 );
 
+        this.needs =
+                Objects.requireNonNull(
+                        needs,
+                        "needs"
+                );
+
         this.memories =
                 Objects.requireNonNull(
                         memories,
@@ -69,12 +77,6 @@ public final class NpcActionProcessor {
                 );
     }
 
-    /**
-     * Runs one coarse action update.
-     *
-     * Expected cadence:
-     * approximately once per second.
-     */
     public void update(
             long tick
     ) {
@@ -84,12 +86,6 @@ public final class NpcActionProcessor {
                 continue;
             }
 
-            /*
-             * DORMANT NPCs receive no active goal execution.
-             *
-             * They will later receive very coarse long-timescale
-             * simulation instead.
-             */
             if (npc.simulationLevel()
                     == SimulationLevel.DORMANT) {
 
@@ -117,15 +113,81 @@ public final class NpcActionProcessor {
     ) {
         goal.activate();
 
-        if (goal.type()
-                == NpcGoalType.TRAVEL) {
+        switch (goal.type()) {
 
-            processTravel(
-                    npc,
-                    goal,
-                    tick
-            );
+            case TRAVEL ->
+                    processTravel(
+                            npc,
+                            goal,
+                            tick
+                    );
+
+            case REST ->
+                    processRest(
+                            npc,
+                            goal,
+                            tick
+                    );
+
+            case WORK ->
+                    processWork(
+                            npc,
+                            goal
+                    );
+
+            default -> {
+            }
         }
+    }
+
+    /**
+     * Generic work currently has no world-space side effect.
+     *
+     * The goal remains ACTIVE until the routine service cancels it
+     * when the work period ends.
+     *
+     * Later this dispatches to role-specific systems.
+     */
+    private void processWork(
+            NpcState npc,
+            NpcGoal goal
+    ) {
+        /*
+         * Intentionally empty for now.
+         */
+    }
+
+    private void processRest(
+            NpcState npc,
+            NpcGoal goal,
+            long tick
+    ) {
+        NpcNeeds state =
+                needs.getOrCreate(
+                        npc.id()
+                );
+
+        state.reduceFatigue(
+                REST_RECOVERY_PER_SECOND
+        );
+
+        if (state.fatigue()
+                > REST_COMPLETE_AT) {
+
+            return;
+        }
+
+        goal.complete();
+
+        memories.remember(
+                npc.id(),
+                NpcMemoryType.PERSONAL_EXPERIENCE,
+                "Rested and recovered from fatigue.",
+                0.15,
+                null,
+                null,
+                tick
+        );
     }
 
     private void processTravel(
@@ -151,10 +213,6 @@ public final class NpcActionProcessor {
                         destination.dimension()
                 )) {
 
-            /*
-             * Cross-dimension travel requires a portal / route system
-             * later.
-             */
             goal.fail();
 
             return;
@@ -174,7 +232,8 @@ public final class NpcActionProcessor {
                                 + dz * dz
                 );
 
-        if (distance <= ARRIVAL_DISTANCE) {
+        if (distance
+                <= ARRIVAL_DISTANCE) {
 
             registry.move(
                     npc.id(),
@@ -200,26 +259,14 @@ public final class NpcActionProcessor {
                 movementDistance
                         / distance;
 
-        double nextX =
-                current.x()
-                        + dx * scale;
-
-        double nextZ =
-                current.z()
-                        + dz * scale;
-
-        /*
-         * Y stays unchanged for now.
-         *
-         * Later route/path systems will determine terrain elevation,
-         * roads, bridges, ships, mountain passes, etc.
-         */
         SimulationPosition next =
                 new SimulationPosition(
                         current.dimension(),
-                        current.x() + dx * scale,
+                        current.x()
+                                + dx * scale,
                         current.y(),
-                        current.z() + dz * scale
+                        current.z()
+                                + dz * scale
                 );
 
         registry.move(
