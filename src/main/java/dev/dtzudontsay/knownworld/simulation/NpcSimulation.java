@@ -4,6 +4,7 @@ import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
 
 import java.io.IOException;
@@ -16,17 +17,34 @@ import java.nio.file.Path;
  */
 public final class NpcSimulation {
 
+    private static final int ACTIVATION_INTERVAL_TICKS =
+            20;
+
     private static NpcSimulation instance;
 
     private final MinecraftServer server;
+
     private final NpcRegistry registry;
+
     private final NpcPersistence persistence;
+
+    private final NpcActivationManager activationManager;
+
+    private long serverTickCounter;
 
     private NpcSimulation(
             MinecraftServer server
     ) {
-        this.server = server;
-        this.registry = new NpcRegistry();
+        this.server =
+                server;
+
+        this.registry =
+                new NpcRegistry();
+
+        this.activationManager =
+                new NpcActivationManager(
+                        registry
+                );
 
         Path savePath =
                 server.getServerDirectory()
@@ -34,7 +52,12 @@ public final class NpcSimulation {
                         .resolve("npc");
 
         this.persistence =
-                new NpcPersistence(savePath);
+                new NpcPersistence(
+                        savePath
+                );
+
+        this.serverTickCounter =
+                0L;
     }
 
     public static void registerLifecycle() {
@@ -42,11 +65,23 @@ public final class NpcSimulation {
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
                     NpcSimulation simulation =
-                            new NpcSimulation(server);
+                            new NpcSimulation(
+                                    server
+                            );
 
                     simulation.load();
 
-                    instance = simulation;
+                    instance =
+                            simulation;
+
+                    /*
+                     * Perform the first activation calculation
+                     * immediately.
+                     */
+                    simulation.activationManager
+                            .update(
+                                    server
+                            );
 
                     KnownWorld.LOGGER.info(
                             "NPC simulation started with {} NPCs.",
@@ -55,13 +90,33 @@ public final class NpcSimulation {
                 }
         );
 
-        ServerLifecycleEvents.BEFORE_SAVE.register(
-                (server, flush, force) -> {
+        ServerTickEvents.END_SERVER_TICK.register(
+                server -> {
                     NpcSimulation simulation =
                             instance;
 
                     if (simulation != null
-                            && simulation.server == server) {
+                            && simulation.server
+                            == server) {
+
+                        simulation.tick();
+                    }
+                }
+        );
+
+        ServerLifecycleEvents.BEFORE_SAVE.register(
+                (
+                        server,
+                        flush,
+                        force
+                ) -> {
+                    NpcSimulation simulation =
+                            instance;
+
+                    if (simulation != null
+                            && simulation.server
+                            == server) {
+
                         simulation.save();
                     }
                 }
@@ -73,7 +128,9 @@ public final class NpcSimulation {
                             instance;
 
                     if (simulation != null
-                            && simulation.server == server) {
+                            && simulation.server
+                            == server) {
+
                         simulation.save();
                     }
                 }
@@ -82,8 +139,11 @@ public final class NpcSimulation {
         ServerLifecycleEvents.SERVER_STOPPED.register(
                 server -> {
                     if (instance != null
-                            && instance.server == server) {
-                        instance = null;
+                            && instance.server
+                            == server) {
+
+                        instance =
+                                null;
                     }
                 }
         );
@@ -114,10 +174,52 @@ public final class NpcSimulation {
         return registry;
     }
 
+    public NpcActivationManager activationManager() {
+        return activationManager;
+    }
+
+    public long serverTickCounter() {
+        return serverTickCounter;
+    }
+
+    /**
+     * Main simulation heartbeat.
+     *
+     * Eventually this becomes the orchestration point for:
+     *
+     * - NPC needs
+     * - goals/actions
+     * - travel
+     * - schedules
+     * - information propagation
+     * - relationships
+     * - settlements
+     * - factions
+     * - armies
+     * - battles
+     */
+    private void tick() {
+        serverTickCounter++;
+
+        if (
+                serverTickCounter
+                        % ACTIVATION_INTERVAL_TICKS
+                        == 0
+        ) {
+            activationManager.update(
+                    server
+            );
+        }
+    }
+
     public void save() {
         try {
-            persistence.save(registry);
+            persistence.save(
+                    registry
+            );
+
         } catch (IOException exception) {
+
             KnownWorld.LOGGER.error(
                     "Failed to save NPC simulation.",
                     exception
@@ -127,8 +229,12 @@ public final class NpcSimulation {
 
     private void load() {
         try {
-            persistence.loadInto(registry);
+            persistence.loadInto(
+                    registry
+            );
+
         } catch (IOException exception) {
+
             KnownWorld.LOGGER.error(
                     "Failed to load NPC simulation.",
                     exception

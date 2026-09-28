@@ -14,14 +14,25 @@ import java.util.Optional;
 /**
  * Canonical runtime registry of all persistent NPCs.
  *
- * This registry owns NPC identity allocation.
+ * This registry owns:
+ *
+ * - NPC identity allocation
+ * - NPC lookup
+ * - NPC movement
+ * - spatial indexing
+ *
+ * NPC IDs are never reused.
  */
 public final class NpcRegistry {
 
     private final Map<NpcId, NpcState> npcs =
             new LinkedHashMap<>();
 
-    private long nextId = 1L;
+    private final NpcSpatialIndex spatialIndex =
+            new NpcSpatialIndex();
+
+    private long nextId =
+            1L;
 
     public synchronized NpcState create(
             String givenName,
@@ -73,13 +84,16 @@ public final class NpcRegistry {
                 state
         );
 
+        spatialIndex.add(
+                id,
+                position
+        );
+
         return state;
     }
 
     /**
-     * Adds a previously persisted NPC.
-     *
-     * This will matter when save loading is added in the next slice.
+     * Registers an NPC restored from persistence.
      */
     public synchronized void registerLoaded(
             NpcState npc
@@ -89,7 +103,9 @@ public final class NpcRegistry {
                 "npc"
         );
 
-        if (npcs.containsKey(npc.id())) {
+        if (npcs.containsKey(
+                npc.id()
+        )) {
             throw new IllegalStateException(
                     "Duplicate NPC ID: "
                             + npc.id()
@@ -101,11 +117,25 @@ public final class NpcRegistry {
                 npc
         );
 
-        nextId =
-                Math.max(
-                        nextId,
-                        npc.id().value() + 1
-                );
+        spatialIndex.add(
+                npc.id(),
+                npc.position()
+        );
+
+        if (npc.id().value()
+                == Long.MAX_VALUE) {
+
+            nextId =
+                    Long.MAX_VALUE;
+
+        } else {
+            nextId =
+                    Math.max(
+                            nextId,
+                            npc.id().value()
+                                    + 1
+                    );
+        }
     }
 
     public synchronized Optional<NpcState> find(
@@ -124,7 +154,55 @@ public final class NpcRegistry {
     public synchronized boolean contains(
             NpcId id
     ) {
-        return npcs.containsKey(id);
+        Objects.requireNonNull(
+                id,
+                "id"
+        );
+
+        return npcs.containsKey(
+                id
+        );
+    }
+
+    /**
+     * Canonical way to move an NPC in simulation space.
+     */
+    public synchronized void move(
+            NpcId id,
+            SimulationPosition destination
+    ) {
+        Objects.requireNonNull(
+                id,
+                "id"
+        );
+
+        Objects.requireNonNull(
+                destination,
+                "destination"
+        );
+
+        NpcState npc =
+                npcs.get(id);
+
+        if (npc == null) {
+            throw new IllegalArgumentException(
+                    "Unknown NPC ID: "
+                            + id
+            );
+        }
+
+        SimulationPosition previous =
+                npc.position();
+
+        spatialIndex.move(
+                id,
+                previous,
+                destination
+        );
+
+        npc.setPosition(
+                destination
+        );
     }
 
     public synchronized int size() {
@@ -134,7 +212,9 @@ public final class NpcRegistry {
     public synchronized long aliveCount() {
         return npcs.values()
                 .stream()
-                .filter(NpcState::isAlive)
+                .filter(
+                        NpcState::isAlive
+                )
                 .count();
     }
 
@@ -146,6 +226,12 @@ public final class NpcRegistry {
         );
     }
 
+    /**
+     * Finds living NPCs within a horizontal world-space radius.
+     *
+     * The spatial index first narrows the search to relevant cells.
+     * Exact distance filtering happens afterward.
+     */
     public synchronized List<NpcState> findWithinHorizontalRadius(
             SimulationPosition center,
             double radius
@@ -169,32 +255,55 @@ public final class NpcRegistry {
         List<NpcState> result =
                 new ArrayList<>();
 
-        for (NpcState npc : npcs.values()) {
+        for (
+                NpcId id :
+                spatialIndex.queryCandidates(
+                        center,
+                        radius
+                )
+        ) {
+            NpcState npc =
+                    npcs.get(id);
 
-            if (!npc.isAlive()) {
+            if (npc == null
+                    || !npc.isAlive()) {
                 continue;
             }
 
-            if (npc.position()
-                    .horizontalDistanceSquared(center)
-                    <= radiusSquared) {
-
-                result.add(npc);
+            if (
+                    npc.position()
+                            .horizontalDistanceSquared(
+                                    center
+                            )
+                            <= radiusSquared
+            ) {
+                result.add(
+                        npc
+                );
             }
         }
 
-        return List.copyOf(result);
+        return List.copyOf(
+                result
+        );
     }
 
     private NpcId allocateId() {
-        if (nextId == Long.MAX_VALUE) {
+        if (nextId <= 0
+                || nextId == Long.MAX_VALUE) {
+
             throw new IllegalStateException(
                     "NPC ID space exhausted"
             );
         }
 
-        return new NpcId(
-                nextId++
-        );
+        NpcId id =
+                new NpcId(
+                        nextId
+                );
+
+        nextId++;
+
+        return id;
     }
 }

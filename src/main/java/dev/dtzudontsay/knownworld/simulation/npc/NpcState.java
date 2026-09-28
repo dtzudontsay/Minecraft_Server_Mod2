@@ -71,7 +71,13 @@ public final class NpcState {
         return position;
     }
 
-    public void setPosition(
+    /**
+     * Package-private on purpose.
+     *
+     * NPC movement must normally go through NpcRegistry so the
+     * spatial index remains synchronized.
+     */
+    void setPosition(
             SimulationPosition position
     ) {
         this.position =
@@ -100,11 +106,19 @@ public final class NpcState {
     }
 
     public boolean isAlive() {
-        return lifeState == NpcLifeState.ALIVE;
+        return lifeState ==
+                NpcLifeState.ALIVE;
     }
 
     public void markDead() {
-        lifeState = NpcLifeState.DEAD;
-        simulationLevel = SimulationLevel.DORMANT;
+        lifeState =
+                NpcLifeState.DEAD;
+
+        /*
+         * Dead NPC records remain permanently available for history,
+         * genealogy, relationships, inheritance and memories.
+         */
+        simulationLevel =
+                SimulationLevel.DORMANT;
     }
 }
