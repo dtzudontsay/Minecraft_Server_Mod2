@@ -20,6 +20,20 @@ public final class NpcState {
             NpcIdentity identity,
             SimulationPosition position
     ) {
+        this(
+                identity,
+                position,
+                SimulationLevel.DORMANT,
+                NpcLifeState.ALIVE
+        );
+    }
+
+    public NpcState(
+            NpcIdentity identity,
+            SimulationPosition position,
+            SimulationLevel simulationLevel,
+            NpcLifeState lifeState
+    ) {
         this.identity =
                 Objects.requireNonNull(
                         identity,
@@ -33,10 +47,16 @@ public final class NpcState {
                 );
 
         this.simulationLevel =
-                SimulationLevel.DORMANT;
+                Objects.requireNonNull(
+                        simulationLevel,
+                        "simulationLevel"
+                );
 
         this.lifeState =
-                NpcLifeState.ALIVE;
+                Objects.requireNonNull(
+                        lifeState,
+                        "lifeState"
+                );
     }
 
     public NpcIdentity identity() {
@@ -85,19 +105,6 @@ public final class NpcState {
 
     public void markDead() {
         lifeState = NpcLifeState.DEAD;
-
-        /*
-         * Dead people are retained by the registry.
-         *
-         * They remain important for:
-         * - genealogy
-         * - memories
-         * - inheritance
-         * - historical events
-         * - relationships
-         * - dialogue
-         */
-        simulationLevel =
-                SimulationLevel.DORMANT;
+        simulationLevel = SimulationLevel.DORMANT;
     }
 }
