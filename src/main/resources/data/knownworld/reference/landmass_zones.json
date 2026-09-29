@@ -1,0 +1,129 @@
+[
+  {
+    "locationId": "westeros",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Authoring polygon traced from user-marked continental borders on the 2048x1357 Known World master map. Sea portions are intentionally ignored at runtime.",
+    "polygons": [
+      [
+        [57.0, 0.0],
+        [468.0, 0.0],
+        [488.0, 70.0],
+        [520.0, 250.0],
+        [555.0, 460.0],
+        [553.0, 690.0],
+        [531.0, 850.0],
+        [513.0, 945.0],
+        [495.0, 975.0],
+        [470.0, 980.0],
+        [113.0, 980.0],
+        [96.0, 958.0],
+        [86.0, 925.0],
+        [80.0, 700.0],
+        [80.0, 380.0],
+        [80.0, 120.0]
+      ]
+    ]
+  },
+
+  {
+    "locationId": "essos",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Authoring polygon traced from user-marked continental borders on the 2048x1357 Known World master map. Sea portions are intentionally ignored at runtime.",
+    "polygons": [
+      [
+        [468.0, 0.0],
+        [2048.0, 0.0],
+        [2048.0, 1160.0],
+        [2000.0, 1180.0],
+        [1800.0, 1200.0],
+        [1650.0, 1210.0],
+        [1500.0, 1220.0],
+        [1430.0, 1250.0],
+        [1350.0, 1160.0],
+        [1250.0, 1120.0],
+        [1000.0, 1120.0],
+        [800.0, 1120.0],
+        [650.0, 1070.0],
+        [575.0, 1000.0],
+        [520.0, 960.0],
+        [495.0, 975.0],
+        [513.0, 945.0],
+        [531.0, 850.0],
+        [553.0, 690.0],
+        [555.0, 460.0],
+        [520.0, 250.0],
+        [488.0, 70.0]
+      ]
+    ]
+  },
+
+  {
+    "locationId": "summer_isles",
+    "priority": 200,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Top-level island region traced from the user-marked Known World master map. Kept separate from continent classification.",
+    "polygons": [
+      [
+        [113.0, 980.0],
+        [470.0, 980.0],
+        [508.0, 996.0],
+        [545.0, 1040.0],
+        [563.0, 1120.0],
+        [567.0, 1240.0],
+        [540.0, 1330.0],
+        [510.0, 1357.0],
+        [60.0, 1357.0],
+        [55.0, 1160.0],
+        [90.0, 1050.0]
+      ]
+    ]
+  },
+
+  {
+    "locationId": "sothoryos",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Authoring polygon traced from user-marked continental borders on the 2048x1357 Known World master map. Sea portions are intentionally ignored at runtime.",
+    "polygons": [
+      [
+        [470.0, 980.0],
+        [520.0, 960.0],
+        [575.0, 1000.0],
+        [650.0, 1070.0],
+        [800.0, 1120.0],
+        [1000.0, 1120.0],
+        [1250.0, 1120.0],
+        [1350.0, 1160.0],
+        [1430.0, 1250.0],
+        [1440.0, 1357.0],
+        [510.0, 1357.0],
+        [540.0, 1330.0],
+        [567.0, 1240.0],
+        [563.0, 1120.0],
+        [545.0, 1040.0],
+        [508.0, 996.0]
+      ]
+    ]
+  },
+
+  {
+    "locationId": "ulthos",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Authoring polygon traced from user-marked continental borders on the 2048x1357 Known World master map. Sea portions are intentionally ignored at runtime.",
+    "polygons": [
+      [
+        [1430.0, 1250.0],
+        [1500.0, 1220.0],
+        [1650.0, 1210.0],
+        [1800.0, 1200.0],
+        [2000.0, 1180.0],
+        [2048.0, 1160.0],
+        [2048.0, 1357.0],
+        [1440.0, 1357.0]
+      ]
+    ]
+  }
+]

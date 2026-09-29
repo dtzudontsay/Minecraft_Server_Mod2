@@ -34,6 +34,7 @@ import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegi
 import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
+import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,10 +62,6 @@ public final class KnownWorld implements ModInitializer {
 
         /*
          * Bootstrap all previously-authored geographic features.
-         *
-         * The world-reference catalog is deliberately created only
-         * after these registries are populated because it imports
-         * these classified map labels automatically.
          */
         NorthFeatureRegistry.bootstrap();
 
@@ -89,26 +86,23 @@ public final class KnownWorld implements ModInitializer {
         UlthosFeatureRegistry.bootstrap();
 
         /*
-         * Load configurable world-reference behavior first.
-         *
-         * This currently controls things such as:
-         *
-         * - subculture collapsing
-         * - language barriers
-         * - universal Common Tongue mode
+         * Load configurable world-reference behavior.
          */
         WorldReferenceSettings.bootstrap();
 
         /*
-         * Build the hierarchical Known World reference catalog.
-         *
-         * This combines:
-         *
-         * - explicit hierarchical world-reference JSON
-         * - the already-existing classified geographic feature data
-         * - known map-location links
+         * Build hierarchical Known World reference definitions.
          */
         WorldReferenceCatalog.bootstrap();
+
+        /*
+         * Load the broad top-level landmass authoring zones.
+         *
+         * These polygons may extend through the sea.
+         * Actual landmass resolution always additionally checks
+         * KnownWorldGeoSampler, so water has no continent.
+         */
+        LandmassZoneCatalog.bootstrap();
 
         /*
          * Load runtime terrain geography.
@@ -117,11 +111,7 @@ public final class KnownWorld implements ModInitializer {
                 KnownWorldGeoData.getInstance();
 
         /*
-         * Force climate/biome raster validation during startup
-         * rather than waiting until the first chunk requests a biome.
-         *
-         * This keeps biome-data errors visible immediately and
-         * preserves the biome-override initialization work.
+         * Force climate/biome raster validation during startup.
          */
         KnownWorldBiomeRasterData.getInstance();
 
@@ -140,26 +130,21 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features and {} hierarchical/reference locations.",
+                "Known World reference system ready with {} geographic features, {} hierarchical/reference locations and {} landmass zones.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
+                        .size(),
+                LandmassZoneCatalog.get()
                         .size()
         );
 
-        /*
-         * Geography/reference debug tools.
-         */
         KnownWorldDebugCommand.register();
 
         KnownWorldGeoDebugCommand.register();
 
         WorldReferenceDebugCommand.register();
 
-        /*
-         * Simulation lifecycle must be registered before commands
-         * that access NpcSimulation.
-         */
         NpcSimulation.registerLifecycle();
 
         NpcDebugCommand.register();

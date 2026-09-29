@@ -3,8 +3,11 @@ package dev.dtzudontsay.knownworld.debug;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
+import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
+import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneResolver;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -46,6 +49,15 @@ public final class WorldReferenceDebugCommand {
                                                         )
                                                         .executes(
                                                                 WorldReferenceDebugCommand::settings
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "landmass"
+                                                        )
+                                                        .executes(
+                                                                WorldReferenceDebugCommand::landmass
                                                         )
                                         )
 
@@ -156,6 +168,9 @@ public final class WorldReferenceDebugCommand {
                         + " roles="
                         + catalog.roles()
                         .size()
+                        + " landmassZones="
+                        + LandmassZoneCatalog.get()
+                        .size()
         );
 
         return 1;
@@ -175,6 +190,88 @@ public final class WorldReferenceDebugCommand {
                         + settings.languageBarriersEnabled()
                         + " everyoneSpeaksCommonTongue="
                         + settings.everyoneSpeaksCommonTongue()
+        );
+
+        return 1;
+    }
+
+    private static int landmass(
+            CommandContext<CommandSourceStack> context
+    ) {
+        double x =
+                context.getSource()
+                        .getPosition()
+                        .x;
+
+        double z =
+                context.getSource()
+                        .getPosition()
+                        .z;
+
+        var sample =
+                KnownWorldGeoSampler.sampleMinecraft(
+                        x,
+                        z
+                );
+
+        if (!sample.insideKnownWorldMap()) {
+
+            failure(
+                    context,
+                    "Position lies outside the Known World map."
+            );
+
+            return 0;
+        }
+
+        if (!sample.land()) {
+
+            success(
+                    context,
+                    "Landmass: none (water)"
+            );
+
+            return 1;
+        }
+
+        var location =
+                LandmassZoneResolver.resolveMinecraft(
+                                x,
+                                z
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (location == null) {
+
+            success(
+                    context,
+                    "Landmass: unresolved land"
+            );
+
+            return 1;
+        }
+
+        success(
+                context,
+                "Landmass: "
+                        + location.displayName()
+                        + " ["
+                        + location.id()
+                        + "]"
+        );
+
+        success(
+                context,
+                "Master map pixel: "
+                        + String.format(
+                        "%.2f / %.2f",
+                        sample.logicalMapCoordinate()
+                                .pixelX(),
+                        sample.logicalMapCoordinate()
+                                .pixelY()
+                )
         );
 
         return 1;
@@ -273,6 +370,22 @@ public final class WorldReferenceDebugCommand {
                             + location.boundaryMaskId()
             );
         }
+
+        LandmassZoneCatalog.get()
+                .find(
+                        location.id()
+                )
+                .ifPresent(
+                        zone ->
+                                success(
+                                        context,
+                                        "Landmass authoring zone: "
+                                                + zone.polygons()
+                                                .size()
+                                                + " polygon(s), priority="
+                                                + zone.priority()
+                                )
+                );
 
         return 1;
     }
