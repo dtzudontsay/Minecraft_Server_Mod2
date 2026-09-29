@@ -1,0 +1,80 @@
+{
+  "id": "eddard_stark",
+
+  "identity": {
+    "givenName": "Eddard",
+    "familyName": "Stark",
+    "sex": "MALE",
+    "birthYear": 263
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.80,
+    "ambition": -0.30,
+    "compassion": 0.65,
+    "honor": 0.95,
+    "patience": 0.70,
+    "sociability": -0.10
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+
+  "routine": {
+    "role": "LORD",
+    "homeSettlement": "winterfell",
+    "workSettlement": "winterfell",
+    "workStartTick": 5000,
+    "workEndTick": 12000
+  },
+
+  "titles": [
+    "head_house_stark",
+    "lord_of_winterfell",
+    "warden_of_the_north"
+  ],
+
+  "relationships": [
+    {
+      "target": "robert_baratheon",
+      "affection": 0.65,
+      "trust": 0.75,
+      "respect": 0.80,
+      "fear": 0.05,
+      "familiarity": 0.95
+    }
+  ],
+
+  "beliefs": [
+    {
+      "factKey": "person.robert_baratheon.identity",
+      "value": "robert_baratheon",
+      "confidence": 1.0
+    },
+    {
+      "factKey": "house.stark",
+      "value": "house_stark",
+      "confidence": 1.0
+    }
+  ],
+
+  "memories": [
+    {
+      "type": "PERSONAL_EXPERIENCE",
+      "summary": "Robert Baratheon fought beside me during the rebellion.",
+      "importance": 0.90,
+      "relatedNpc": "robert_baratheon"
+    },
+    {
+      "type": "POLITICAL",
+      "summary": "I rule Winterfell and bear responsibility for House Stark and the North.",
+      "importance": 0.95
+    }
+  ]
+}

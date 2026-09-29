@@ -1,0 +1,10 @@
+{
+  "id": "agot_298_ac",
+  "settlements": "settlements.json",
+  "organizations": "organizations.json",
+  "titles": "titles.json",
+  "characters": [
+    "characters/eddard_stark.json",
+    "characters/robert_baratheon.json"
+  ]
+}

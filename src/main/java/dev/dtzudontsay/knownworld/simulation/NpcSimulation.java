@@ -8,6 +8,8 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.action.NpcActionProcessor;
 import dev.dtzudontsay.knownworld.simulation.npc.communication.NpcCommunicationService;
 import dev.dtzudontsay.knownworld.simulation.npc.decision.NpcDecisionService;
+import dev.dtzudontsay.knownworld.simulation.npc.family.CharacterGenerationService;
+import dev.dtzudontsay.knownworld.simulation.npc.family.GenealogyManager;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
@@ -17,6 +19,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipMan
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.GenealogyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.TitlePersistence;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
@@ -57,6 +60,8 @@ public final class NpcSimulation {
 
     private final AuthoredIdRegistry authoredIdRegistry;
 
+    private final GenealogyManager genealogyManager;
+
     private final NpcRelationshipManager relationshipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
@@ -81,11 +86,15 @@ public final class NpcSimulation {
 
     private final NpcActionProcessor actionProcessor;
 
+    private final CharacterGenerationService characterGenerationService;
+
     private final NpcPersistence persistence;
 
     private final TitlePersistence titlePersistence;
 
     private final AuthoredIdPersistence authoredIdPersistence;
+
+    private final GenealogyPersistence genealogyPersistence;
 
     private final NpcActivationManager activationManager;
 
@@ -131,6 +140,11 @@ public final class NpcSimulation {
 
         this.authoredIdRegistry =
                 new AuthoredIdRegistry();
+
+        this.genealogyManager =
+                new GenealogyManager(
+                        registry
+                );
 
         this.relationshipManager =
                 new NpcRelationshipManager(
@@ -205,6 +219,16 @@ public final class NpcSimulation {
                         eventManager
                 );
 
+        this.characterGenerationService =
+                new CharacterGenerationService(
+                        registry,
+                        genealogyManager,
+                        affiliationManager,
+                        relationshipManager,
+                        memoryManager,
+                        eventManager
+                );
+
         this.activationManager =
                 new NpcActivationManager(
                         registry
@@ -233,6 +257,11 @@ public final class NpcSimulation {
                 new AuthoredIdPersistence(
                         savePath
                 );
+
+        this.genealogyPersistence =
+                new GenealogyPersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
@@ -256,9 +285,10 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at tick {} with {} NPCs, {} settlements, {} organizations, {} affiliations, {} titles and scenario '{}'.",
+                            "NPC simulation started at tick {} with {} NPCs, {} genealogy records, {} settlements, {} organizations, {} affiliations, {} titles and scenario '{}'.",
                             simulation.clock.tick(),
                             simulation.registry.size(),
+                            simulation.genealogyManager.size(),
                             simulation.settlementManager.size(),
                             simulation.organizationManager.size(),
                             simulation.affiliationManager.size(),
@@ -334,7 +364,6 @@ public final class NpcSimulation {
     public static NpcSimulation get() {
 
         if (instance == null) {
-
             throw new IllegalStateException(
                     "NPC simulation is not currently running"
             );
@@ -377,6 +406,14 @@ public final class NpcSimulation {
 
     public AuthoredIdRegistry authoredIds() {
         return authoredIdRegistry;
+    }
+
+    public GenealogyManager genealogy() {
+        return genealogyManager;
+    }
+
+    public CharacterGenerationService characterGeneration() {
+        return characterGenerationService;
     }
 
     public NpcRelationshipManager relationships() {
@@ -435,7 +472,6 @@ public final class NpcSimulation {
                         % UPDATE_INTERVAL_TICKS
                         != 0
         ) {
-
             return;
         }
 
@@ -485,6 +521,10 @@ public final class NpcSimulation {
                     authoredIdRegistry
             );
 
+            genealogyPersistence.save(
+                    genealogyManager
+            );
+
         } catch (IOException exception) {
 
             KnownWorld.LOGGER.error(
@@ -521,6 +561,14 @@ public final class NpcSimulation {
                     authoredIdRegistry
             );
 
+            /*
+             * Genealogy loads after NPCs because all genealogy records
+             * reference already-existing persistent NPC IDs.
+             */
+            genealogyPersistence.loadInto(
+                    genealogyManager
+            );
+
             if (shouldBootstrapScenario()) {
 
                 KnownWorld.LOGGER.info(
@@ -550,6 +598,7 @@ public final class NpcSimulation {
                     "Failed to load NPC simulation.",
                     exception
             );
+
         } catch (RuntimeException exception) {
 
             KnownWorld.LOGGER.error(
