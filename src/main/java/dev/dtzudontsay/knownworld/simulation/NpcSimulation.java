@@ -9,9 +9,17 @@ import dev.dtzudontsay.knownworld.simulation.npc.action.NpcActionProcessor;
 import dev.dtzudontsay.knownworld.simulation.npc.communication.NpcCommunicationService;
 import dev.dtzudontsay.knownworld.simulation.npc.decision.NpcDecisionService;
 import dev.dtzudontsay.knownworld.simulation.npc.family.CharacterGenerationService;
+import dev.dtzudontsay.knownworld.simulation.npc.family.DynastyService;
 import dev.dtzudontsay.knownworld.simulation.npc.family.GenealogyManager;
+import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageManager;
+import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageService;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
+import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.FertilityService;
+import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.GeneratedNameService;
+import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.LifeCycleService;
+import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.LifeHistoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.PregnancyManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
 import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationService;
@@ -19,13 +27,23 @@ import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipMan
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.CampaignCalendarPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.ClaimPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.GenealogyPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.LifeHistoryPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.MarriagePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.PregnancyPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.SuccessionPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.TitlePersistence;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
 import dev.dtzudontsay.knownworld.simulation.social.authority.AuthorityService;
+import dev.dtzudontsay.knownworld.simulation.social.succession.ClaimManager;
+import dev.dtzudontsay.knownworld.simulation.social.succession.SuccessionRuleManager;
+import dev.dtzudontsay.knownworld.simulation.social.succession.SuccessionService;
 import dev.dtzudontsay.knownworld.simulation.social.title.TitleManager;
+import dev.dtzudontsay.knownworld.simulation.time.CampaignCalendar;
 import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
 import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -46,6 +64,8 @@ public final class NpcSimulation {
 
     private final SimulationClock clock;
 
+    private final CampaignCalendar campaignCalendar;
+
     private final NpcRegistry registry;
 
     private final SettlementManager settlementManager;
@@ -56,11 +76,23 @@ public final class NpcSimulation {
 
     private final TitleManager titleManager;
 
+    private final SuccessionRuleManager successionRuleManager;
+
+    private final ClaimManager claimManager;
+
     private final AuthorityService authorityService;
 
     private final AuthoredIdRegistry authoredIdRegistry;
 
     private final GenealogyManager genealogyManager;
+
+    private final MarriageManager marriageManager;
+
+    private final DynastyService dynastyService;
+
+    private final LifeHistoryManager lifeHistoryManager;
+
+    private final PregnancyManager pregnancyManager;
 
     private final NpcRelationshipManager relationshipManager;
 
@@ -76,6 +108,12 @@ public final class NpcSimulation {
 
     private final WorldEventManager eventManager;
 
+    private final SuccessionService successionService;
+
+    private final FertilityService fertilityService;
+
+    private final GeneratedNameService generatedNameService;
+
     private final NpcCommunicationService communicationService;
 
     private final NpcObservationService observationService;
@@ -86,7 +124,11 @@ public final class NpcSimulation {
 
     private final NpcActionProcessor actionProcessor;
 
+    private final MarriageService marriageService;
+
     private final CharacterGenerationService characterGenerationService;
+
+    private final LifeCycleService lifeCycleService;
 
     private final NpcPersistence persistence;
 
@@ -95,6 +137,18 @@ public final class NpcSimulation {
     private final AuthoredIdPersistence authoredIdPersistence;
 
     private final GenealogyPersistence genealogyPersistence;
+
+    private final MarriagePersistence marriagePersistence;
+
+    private final CampaignCalendarPersistence campaignCalendarPersistence;
+
+    private final LifeHistoryPersistence lifeHistoryPersistence;
+
+    private final PregnancyPersistence pregnancyPersistence;
+
+    private final SuccessionPersistence successionPersistence;
+
+    private final ClaimPersistence claimPersistence;
 
     private final NpcActivationManager activationManager;
 
@@ -106,6 +160,9 @@ public final class NpcSimulation {
 
         this.clock =
                 new SimulationClock();
+
+        this.campaignCalendar =
+                new CampaignCalendar();
 
         this.registry =
                 new NpcRegistry();
@@ -132,6 +189,17 @@ public final class NpcSimulation {
                         settlementManager
                 );
 
+        this.successionRuleManager =
+                new SuccessionRuleManager(
+                        titleManager
+                );
+
+        this.claimManager =
+                new ClaimManager(
+                        registry,
+                        titleManager
+                );
+
         this.authorityService =
                 new AuthorityService(
                         organizationManager,
@@ -143,6 +211,27 @@ public final class NpcSimulation {
 
         this.genealogyManager =
                 new GenealogyManager(
+                        registry
+                );
+
+        this.marriageManager =
+                new MarriageManager(
+                        registry
+                );
+
+        this.dynastyService =
+                new DynastyService(
+                        marriageManager,
+                        affiliationManager
+                );
+
+        this.lifeHistoryManager =
+                new LifeHistoryManager(
+                        registry
+                );
+
+        this.pregnancyManager =
+                new PregnancyManager(
                         registry
                 );
 
@@ -180,6 +269,26 @@ public final class NpcSimulation {
                 new WorldEventManager(
                         registry
                 );
+
+        this.successionService =
+                new SuccessionService(
+                        registry,
+                        genealogyManager,
+                        titleManager,
+                        successionRuleManager,
+                        claimManager,
+                        eventManager
+                );
+
+        this.fertilityService =
+                new FertilityService(
+                        registry,
+                        lifeHistoryManager,
+                        campaignCalendar
+                );
+
+        this.generatedNameService =
+                new GeneratedNameService();
 
         this.communicationService =
                 new NpcCommunicationService(
@@ -219,14 +328,39 @@ public final class NpcSimulation {
                         eventManager
                 );
 
+        this.marriageService =
+                new MarriageService(
+                        registry,
+                        marriageManager,
+                        relationshipManager,
+                        memoryManager,
+                        eventManager
+                );
+
         this.characterGenerationService =
                 new CharacterGenerationService(
                         registry,
                         genealogyManager,
+                        dynastyService,
                         affiliationManager,
                         relationshipManager,
                         memoryManager,
                         eventManager
+                );
+
+        this.lifeCycleService =
+                new LifeCycleService(
+                        registry,
+                        campaignCalendar,
+                        lifeHistoryManager,
+                        fertilityService,
+                        pregnancyManager,
+                        marriageManager,
+                        characterGenerationService,
+                        generatedNameService,
+                        memoryManager,
+                        eventManager,
+                        successionService
                 );
 
         this.activationManager =
@@ -262,6 +396,36 @@ public final class NpcSimulation {
                 new GenealogyPersistence(
                         savePath
                 );
+
+        this.marriagePersistence =
+                new MarriagePersistence(
+                        savePath
+                );
+
+        this.campaignCalendarPersistence =
+                new CampaignCalendarPersistence(
+                        savePath
+                );
+
+        this.lifeHistoryPersistence =
+                new LifeHistoryPersistence(
+                        savePath
+                );
+
+        this.pregnancyPersistence =
+                new PregnancyPersistence(
+                        savePath
+                );
+
+        this.successionPersistence =
+                new SuccessionPersistence(
+                        savePath
+                );
+
+        this.claimPersistence =
+                new ClaimPersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
@@ -285,15 +449,17 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at tick {} with {} NPCs, {} genealogy records, {} settlements, {} organizations, {} affiliations, {} titles and scenario '{}'.",
-                            simulation.clock.tick(),
+                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations and {} titles.",
+                            simulation.campaignCalendar.year(),
+                            simulation.campaignCalendar.dayOfYear() + 1,
                             simulation.registry.size(),
                             simulation.genealogyManager.size(),
+                            simulation.marriageManager.size(),
+                            simulation.pregnancyManager.size(),
+                            simulation.claimManager.size(),
                             simulation.settlementManager.size(),
                             simulation.organizationManager.size(),
-                            simulation.affiliationManager.size(),
-                            simulation.titleManager.definitionCount(),
-                            simulation.authoredIdRegistry.scenarioId()
+                            simulation.titleManager.definitionCount()
                     );
                 }
         );
@@ -364,6 +530,7 @@ public final class NpcSimulation {
     public static NpcSimulation get() {
 
         if (instance == null) {
+
             throw new IllegalStateException(
                     "NPC simulation is not currently running"
             );
@@ -400,6 +567,18 @@ public final class NpcSimulation {
         return titleManager;
     }
 
+    public SuccessionRuleManager successionRules() {
+        return successionRuleManager;
+    }
+
+    public SuccessionService succession() {
+        return successionService;
+    }
+
+    public ClaimManager claims() {
+        return claimManager;
+    }
+
     public AuthorityService authority() {
         return authorityService;
     }
@@ -410,6 +589,38 @@ public final class NpcSimulation {
 
     public GenealogyManager genealogy() {
         return genealogyManager;
+    }
+
+    public MarriageManager marriages() {
+        return marriageManager;
+    }
+
+    public MarriageService marriageService() {
+        return marriageService;
+    }
+
+    public DynastyService dynasty() {
+        return dynastyService;
+    }
+
+    public LifeHistoryManager lifeHistory() {
+        return lifeHistoryManager;
+    }
+
+    public PregnancyManager pregnancies() {
+        return pregnancyManager;
+    }
+
+    public FertilityService fertility() {
+        return fertilityService;
+    }
+
+    public LifeCycleService lifeCycle() {
+        return lifeCycleService;
+    }
+
+    public CampaignCalendar campaignCalendar() {
+        return campaignCalendar;
     }
 
     public CharacterGenerationService characterGeneration() {
@@ -464,6 +675,16 @@ public final class NpcSimulation {
 
         clock.advance();
 
+        boolean newCampaignDay =
+                campaignCalendar.advanceTick();
+
+        if (newCampaignDay) {
+
+            lifeCycleService.onNewCampaignDay(
+                    clock.tick()
+            );
+        }
+
         long tick =
                 clock.tick();
 
@@ -472,6 +693,7 @@ public final class NpcSimulation {
                         % UPDATE_INTERVAL_TICKS
                         != 0
         ) {
+
             return;
         }
 
@@ -492,6 +714,30 @@ public final class NpcSimulation {
         actionProcessor.update(
                 tick
         );
+    }
+
+    public void advanceCampaignDaysForDebug(
+            int days
+    ) {
+        if (days <= 0) {
+
+            throw new IllegalArgumentException(
+                    "days must be positive"
+            );
+        }
+
+        for (
+                int index = 0;
+                index < days;
+                index++
+        ) {
+
+            campaignCalendar.advanceOneDay();
+
+            lifeCycleService.onNewCampaignDay(
+                    clock.tick()
+            );
+        }
     }
 
     public void save() {
@@ -525,7 +771,33 @@ public final class NpcSimulation {
                     genealogyManager
             );
 
-        } catch (IOException exception) {
+            marriagePersistence.save(
+                    marriageManager
+            );
+
+            campaignCalendarPersistence.save(
+                    campaignCalendar
+            );
+
+            lifeHistoryPersistence.save(
+                    lifeHistoryManager
+            );
+
+            pregnancyPersistence.save(
+                    pregnancyManager
+            );
+
+            successionPersistence.save(
+                    successionRuleManager
+            );
+
+            claimPersistence.save(
+                    claimManager
+            );
+
+        } catch (
+                IOException exception
+        ) {
 
             KnownWorld.LOGGER.error(
                     "Failed to save NPC simulation.",
@@ -538,6 +810,10 @@ public final class NpcSimulation {
 
         try {
 
+            /*
+             * Core NPC/social state must load first because nearly all
+             * later persistence files refer to existing NPC/title IDs.
+             */
             persistence.loadInto(
                     clock,
                     registry,
@@ -561,12 +837,38 @@ public final class NpcSimulation {
                     authoredIdRegistry
             );
 
-            /*
-             * Genealogy loads after NPCs because all genealogy records
-             * reference already-existing persistent NPC IDs.
-             */
             genealogyPersistence.loadInto(
                     genealogyManager
+            );
+
+            marriagePersistence.loadInto(
+                    marriageManager
+            );
+
+            campaignCalendarPersistence.loadInto(
+                    campaignCalendar
+            );
+
+            lifeHistoryPersistence.loadInto(
+                    lifeHistoryManager
+            );
+
+            pregnancyPersistence.loadInto(
+                    pregnancyManager
+            );
+
+            /*
+             * Succession rules require titles to already exist.
+             */
+            successionPersistence.loadInto(
+                    successionRuleManager
+            );
+
+            /*
+             * Claims require both NPCs and titles to already exist.
+             */
+            claimPersistence.loadInto(
+                    claimManager
             );
 
             if (shouldBootstrapScenario()) {
@@ -579,30 +881,35 @@ public final class NpcSimulation {
                         this,
                         authoredIdRegistry
                 );
-
-                save();
-
-            } else if (
-                    authoredIdRegistry.scenarioId()
-                            == null
-            ) {
-
-                KnownWorld.LOGGER.warn(
-                        "Existing NPC simulation data was found without authored scenario metadata. Automatic scenario bootstrap was skipped."
-                );
             }
 
-        } catch (IOException exception) {
+            /*
+             * Old saves only had birthYear.
+             *
+             * This migrates all existing NPCs into the campaign-scale
+             * life-history system.
+             */
+            lifeHistoryManager.ensureAll(
+                    campaignCalendar.daysPerYear()
+            );
+
+            save();
+
+        } catch (
+                IOException exception
+        ) {
 
             KnownWorld.LOGGER.error(
                     "Failed to load NPC simulation.",
                     exception
             );
 
-        } catch (RuntimeException exception) {
+        } catch (
+                RuntimeException exception
+        ) {
 
             KnownWorld.LOGGER.error(
-                    "Failed to bootstrap authored NPC scenario.",
+                    "Failed to initialize NPC simulation.",
                     exception
             );
         }

@@ -4,9 +4,11 @@ import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
+import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
+import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
@@ -46,17 +48,25 @@ public final class KnownWorld implements ModInitializer {
         KnownWorldChunkGenerators.register();
 
         NorthFeatureRegistry.bootstrap();
+
         SouthFeatureRegistry.bootstrap();
+
         SummerIslesFeatureRegistry.bootstrap();
 
         SouthWestEssosFeatureRegistry.bootstrap();
+
         NorthWestEssosFeatureRegistry.bootstrap();
+
         NorthEssosFeatureRegistry.bootstrap();
+
         SouthEssosFeatureRegistry.bootstrap();
+
         NorthEastEssosFeatureRegistry.bootstrap();
+
         SouthEastEssosFeatureRegistry.bootstrap();
 
         SothoryosFeatureRegistry.bootstrap();
+
         UlthosFeatureRegistry.bootstrap();
 
         KnownWorldGeoData geodata =
@@ -77,17 +87,33 @@ public final class KnownWorld implements ModInitializer {
         );
 
         KnownWorldDebugCommand.register();
+
         KnownWorldGeoDebugCommand.register();
 
+        /*
+         * Simulation lifecycle must be registered before the commands
+         * that access NpcSimulation.
+         */
         NpcSimulation.registerLifecycle();
 
         NpcDebugCommand.register();
+
         NpcNeedsDebugCommand.register();
+
         NpcRoutineDebugCommand.register();
+
         SocialDebugCommand.register();
+
         TitleDebugCommand.register();
+
         BootstrapDebugCommand.register();
+
         FamilyDebugCommand.register();
+
+        LifeCycleDebugCommand.register();
+
+        SuccessionDebugCommand.register();
+
         WorldEventDebugCommand.register();
 
         LOGGER.info(

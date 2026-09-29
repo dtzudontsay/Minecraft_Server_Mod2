@@ -8,6 +8,8 @@ import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
+import dev.dtzudontsay.knownworld.simulation.npc.family.DynastyInheritanceRule;
+import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageRecord;
 import dev.dtzudontsay.knownworld.simulation.npc.family.Parentage;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
@@ -71,6 +73,119 @@ public final class FamilyDebugCommand {
 
                                         .then(
                                                 Commands.literal(
+                                                                "spouse"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                FamilyDebugCommand::executeSpouse
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "unions"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                FamilyDebugCommand::executeUnions
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "betroth"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "first",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "second",
+                                                                                                LongArgumentType.longArg(
+                                                                                                        1
+                                                                                                )
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "rule",
+                                                                                                                StringArgumentType.word()
+                                                                                                        )
+                                                                                                        .executes(
+                                                                                                                FamilyDebugCommand::executeBetroth
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "marry"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "first",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "second",
+                                                                                                LongArgumentType.longArg(
+                                                                                                        1
+                                                                                                )
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "rule",
+                                                                                                                StringArgumentType.word()
+                                                                                                        )
+                                                                                                        .executes(
+                                                                                                                FamilyDebugCommand::executeMarry
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "end_union"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                FamilyDebugCommand::executeEndUnion
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
                                                                 "child"
                                                         )
                                                         .then(
@@ -118,13 +233,10 @@ public final class FamilyDebugCommand {
     private static int executeParents(
             CommandContext<CommandSourceStack> context
     ) {
-
         NpcId npc =
-                new NpcId(
-                        LongArgumentType.getLong(
-                                context,
-                                "npc"
-                        )
+                npcArgument(
+                        context,
+                        "npc"
                 );
 
         try {
@@ -141,65 +253,50 @@ public final class FamilyDebugCommand {
 
             if (parentage == null) {
 
-                context.getSource()
-                        .sendSuccess(
-                                () ->
-                                        Component.literal(
-                                                "NPC #"
-                                                        + npc
-                                                        + " has no recorded parentage."
-                                        ),
-                                false
-                        );
+                success(
+                        context,
+                        "NPC #"
+                                + npc
+                                + " has no recorded parentage."
+                );
 
                 return 1;
             }
 
-            context.getSource()
-                    .sendSuccess(
-                            () ->
-                                    Component.literal(
-                                            "NPC #"
-                                                    + npc
-                                                    + " | mother "
-                                                    + formatNpc(
-                                                    parentage.mother()
-                                            )
-                                                    + " | father "
-                                                    + formatNpc(
-                                                    parentage.father()
-                                            )
-                                                    + " | birth tick "
-                                                    + parentage.birthTick()
-                                    ),
-                            false
-                    );
+            success(
+                    context,
+                    "NPC #"
+                            + npc
+                            + " | mother "
+                            + formatNpc(
+                            parentage.mother()
+                    )
+                            + " | father "
+                            + formatNpc(
+                            parentage.father()
+                    )
+                            + " | birth tick "
+                            + parentage.birthTick()
+            );
 
             return 1;
 
-        } catch (IllegalArgumentException exception) {
+        } catch (RuntimeException exception) {
 
-            context.getSource()
-                    .sendFailure(
-                            Component.literal(
-                                    exception.getMessage()
-                            )
-                    );
-
-            return 0;
+            return failure(
+                    context,
+                    exception
+            );
         }
     }
 
     private static int executeChildren(
             CommandContext<CommandSourceStack> context
     ) {
-
         NpcId npc =
-                new NpcId(
-                        LongArgumentType.getLong(
-                                context,
-                                "npc"
-                        )
+                npcArgument(
+                        context,
+                        "npc"
                 );
 
         try {
@@ -213,16 +310,12 @@ public final class FamilyDebugCommand {
 
             if (children.isEmpty()) {
 
-                context.getSource()
-                        .sendSuccess(
-                                () ->
-                                        Component.literal(
-                                                "NPC #"
-                                                        + npc
-                                                        + " has no recorded children."
-                                        ),
-                                false
-                        );
+                success(
+                        context,
+                        "NPC #"
+                                + npc
+                                + " has no recorded children."
+                );
 
                 return 1;
             }
@@ -239,49 +332,351 @@ public final class FamilyDebugCommand {
                                         null
                                 );
 
-                context.getSource()
-                        .sendSuccess(
-                                () ->
-                                        Component.literal(
-                                                "#"
-                                                        + child
-                                                        + " "
-                                                        + (
-                                                        state == null
-                                                                ? "unknown"
-                                                                : state.identity()
-                                                                .fullName()
-                                                )
-                                        ),
-                                false
-                        );
+                success(
+                        context,
+                        "#"
+                                + child
+                                + " "
+                                + (
+                                state == null
+                                        ? "unknown"
+                                        : state.identity()
+                                        .fullName()
+                        )
+                );
             }
 
             return children.size();
 
-        } catch (IllegalArgumentException exception) {
+        } catch (RuntimeException exception) {
 
-            context.getSource()
-                    .sendFailure(
-                            Component.literal(
-                                    exception.getMessage()
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeSpouse(
+            CommandContext<CommandSourceStack> context
+    ) {
+        NpcId npc =
+                npcArgument(
+                        context,
+                        "npc"
+                );
+
+        try {
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            NpcId spouse =
+                    simulation.marriages()
+                            .currentSpouseOf(
+                                    npc
                             )
+                            .orElse(
+                                    null
+                            );
+
+            if (spouse == null) {
+
+                success(
+                        context,
+                        "NPC #"
+                                + npc
+                                + " is not currently married."
+                );
+
+                return 1;
+            }
+
+            NpcState spouseState =
+                    simulation.registry()
+                            .find(
+                                    spouse
+                            )
+                            .orElseThrow();
+
+            success(
+                    context,
+                    "NPC #"
+                            + npc
+                            + " spouse: #"
+                            + spouse
+                            + " "
+                            + spouseState.identity()
+                            .fullName()
+            );
+
+            return 1;
+
+        } catch (RuntimeException exception) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeUnions(
+            CommandContext<CommandSourceStack> context
+    ) {
+        NpcId npc =
+                npcArgument(
+                        context,
+                        "npc"
+                );
+
+        try {
+
+            var unions =
+                    NpcSimulation.get()
+                            .marriages()
+                            .unionsOf(
+                                    npc
+                            );
+
+            if (unions.isEmpty()) {
+
+                success(
+                        context,
+                        "NPC #"
+                                + npc
+                                + " has no union history."
+                );
+
+                return 1;
+            }
+
+            for (
+                    MarriageRecord union :
+                    unions
+            ) {
+
+                success(
+                        context,
+                        "Union #"
+                                + union.id()
+                                + " | "
+                                + union.status()
+                                + " | partner #"
+                                + union.other(
+                                npc
+                        )
+                                + " | "
+                                + union.inheritanceRule()
+                                + " | created "
+                                + union.createdTick()
+                                + " | married "
+                                + (
+                                union.marriedTick()
+                                        == null
+                                        ? "-"
+                                        : union.marriedTick()
+                        )
+                                + " | ended "
+                                + (
+                                union.endedTick()
+                                        == null
+                                        ? "-"
+                                        : union.endedTick()
+                        )
+                );
+            }
+
+            return unions.size();
+
+        } catch (RuntimeException exception) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeBetroth(
+            CommandContext<CommandSourceStack> context
+    ) {
+        NpcId first =
+                npcArgument(
+                        context,
+                        "first"
+                );
+
+        NpcId second =
+                npcArgument(
+                        context,
+                        "second"
+                );
+
+        try {
+
+            DynastyInheritanceRule rule =
+                    ruleArgument(
+                            context
                     );
 
-            return 0;
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            MarriageRecord marriage =
+                    simulation.marriageService()
+                            .betroth(
+                                    first,
+                                    second,
+                                    rule,
+                                    simulation.serverTickCounter()
+                            );
+
+            simulation.save();
+
+            success(
+                    context,
+                    "Created betrothal #"
+                            + marriage.id()
+                            + " between NPC #"
+                            + first
+                            + " and NPC #"
+                            + second
+                            + " ["
+                            + marriage.inheritanceRule()
+                            + "]"
+            );
+
+            return 1;
+
+        } catch (RuntimeException exception) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeMarry(
+            CommandContext<CommandSourceStack> context
+    ) {
+        NpcId first =
+                npcArgument(
+                        context,
+                        "first"
+                );
+
+        NpcId second =
+                npcArgument(
+                        context,
+                        "second"
+                );
+
+        try {
+
+            DynastyInheritanceRule rule =
+                    ruleArgument(
+                            context
+                    );
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            MarriageRecord marriage =
+                    simulation.marriageService()
+                            .marry(
+                                    first,
+                                    second,
+                                    rule,
+                                    simulation.serverTickCounter()
+                            );
+
+            simulation.save();
+
+            success(
+                    context,
+                    "Marriage #"
+                            + marriage.id()
+                            + " | NPC #"
+                            + first
+                            + " + NPC #"
+                            + second
+                            + " ["
+                            + marriage.inheritanceRule()
+                            + "]"
+            );
+
+            return 1;
+
+        } catch (RuntimeException exception) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeEndUnion(
+            CommandContext<CommandSourceStack> context
+    ) {
+        NpcId npc =
+                npcArgument(
+                        context,
+                        "npc"
+                );
+
+        try {
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            boolean ended =
+                    simulation.marriageService()
+                            .endCurrentUnion(
+                                    npc,
+                                    simulation.serverTickCounter()
+                            );
+
+            if (!ended) {
+
+                success(
+                        context,
+                        "NPC #"
+                                + npc
+                                + " has no active union."
+                );
+
+                return 1;
+            }
+
+            simulation.save();
+
+            success(
+                    context,
+                    "Ended current union of NPC #"
+                            + npc
+            );
+
+            return 1;
+
+        } catch (RuntimeException exception) {
+
+            return failure(
+                    context,
+                    exception
+            );
         }
     }
 
     private static int executeChild(
             CommandContext<CommandSourceStack> context
     ) {
-
         NpcId mother =
-                new NpcId(
-                        LongArgumentType.getLong(
-                                context,
-                                "mother"
-                        )
+                npcArgument(
+                        context,
+                        "mother"
                 );
 
         long rawFather =
@@ -359,36 +754,87 @@ public final class FamilyDebugCommand {
 
             simulation.save();
 
-            context.getSource()
-                    .sendSuccess(
-                            () ->
-                                    Component.literal(
-                                            "Generated NPC #"
-                                                    + child.id()
-                                                    + " "
-                                                    + child.identity()
-                                                    .fullName()
-                                                    + " ["
-                                                    + child.identity()
-                                                    .sex()
-                                                    + "]"
-                                    ),
-                            false
-                    );
+            success(
+                    context,
+                    "Generated NPC #"
+                            + child.id()
+                            + " "
+                            + child.identity()
+                            .fullName()
+                            + " ["
+                            + child.identity()
+                            .sex()
+                            + "]"
+            );
 
             return 1;
 
-        } catch (IllegalArgumentException exception) {
+        } catch (RuntimeException exception) {
 
-            context.getSource()
-                    .sendFailure(
-                            Component.literal(
-                                    exception.getMessage()
-                            )
-                    );
-
-            return 0;
+            return failure(
+                    context,
+                    exception
+            );
         }
+    }
+
+    private static DynastyInheritanceRule ruleArgument(
+            CommandContext<CommandSourceStack> context
+    ) {
+        String raw =
+                StringArgumentType.getString(
+                        context,
+                        "rule"
+                );
+
+        return DynastyInheritanceRule.valueOf(
+                raw.toUpperCase(
+                        Locale.ROOT
+                )
+        );
+    }
+
+    private static NpcId npcArgument(
+            CommandContext<CommandSourceStack> context,
+            String name
+    ) {
+        return new NpcId(
+                LongArgumentType.getLong(
+                        context,
+                        name
+                )
+        );
+    }
+
+    private static void success(
+            CommandContext<CommandSourceStack> context,
+            String message
+    ) {
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        message
+                                ),
+                        false
+                );
+    }
+
+    private static int failure(
+            CommandContext<CommandSourceStack> context,
+            RuntimeException exception
+    ) {
+        context.getSource()
+                .sendFailure(
+                        Component.literal(
+                                exception.getMessage() == null
+                                        ? exception.getClass()
+                                        .getSimpleName()
+                                        : exception.getMessage()
+                        )
+                );
+
+        return 0;
     }
 
     private static String formatNpc(

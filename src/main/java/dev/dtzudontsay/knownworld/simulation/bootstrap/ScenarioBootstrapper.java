@@ -18,6 +18,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutine;
 import dev.dtzudontsay.knownworld.simulation.social.Organization;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
+import dev.dtzudontsay.knownworld.simulation.social.succession.SuccessionLaw;
 import dev.dtzudontsay.knownworld.simulation.social.title.TitleDefinition;
 import dev.dtzudontsay.knownworld.simulation.social.title.TitleType;
 import dev.dtzudontsay.knownworld.simulation.world.settlement.Settlement;
@@ -37,8 +38,10 @@ import java.util.Objects;
 /**
  * Builds the authored starting state of a scenario from JSON resources.
  *
- * This only runs when the simulation has no existing persistent world
- * state.
+ * Authored scenario data describes the starting world only.
+ *
+ * Once the simulation begins, runtime state is persisted separately
+ * and is free to diverge from the authored scenario.
  */
 public final class ScenarioBootstrapper {
 
@@ -77,10 +80,9 @@ public final class ScenarioBootstrapper {
         new ScenarioBootstrapper(
                 simulation,
                 ids
-        )
-                .bootstrap(
-                        DEFAULT_SCENARIO
-                );
+        ).bootstrap(
+                DEFAULT_SCENARIO
+        );
     }
 
     private void bootstrap(
@@ -189,7 +191,10 @@ public final class ScenarioBootstrapper {
     private void createSettlements(
             List<SettlementData> data
     ) {
-        for (SettlementData entry : data) {
+        for (
+                SettlementData entry :
+                data
+        ) {
 
             requireText(
                     entry.id,
@@ -236,7 +241,10 @@ public final class ScenarioBootstrapper {
     private void createOrganizations(
             List<OrganizationData> data
     ) {
-        for (OrganizationData entry : data) {
+        for (
+                OrganizationData entry :
+                data
+        ) {
 
             requireText(
                     entry.id,
@@ -280,7 +288,10 @@ public final class ScenarioBootstrapper {
     private void createTitles(
             List<TitleData> data
     ) {
-        for (TitleData entry : data) {
+        for (
+                TitleData entry :
+                data
+        ) {
 
             requireText(
                     entry.id,
@@ -326,13 +337,33 @@ public final class ScenarioBootstrapper {
                     entry.id,
                     title.id()
             );
+
+            SuccessionLaw law =
+                    hasText(
+                            entry.successionLaw
+                    )
+                            ? enumValue(
+                            SuccessionLaw.class,
+                            entry.successionLaw,
+                            "succession law"
+                    )
+                            : SuccessionLaw.NONE;
+
+            simulation.successionRules()
+                    .setLaw(
+                            title.id(),
+                            law
+                    );
         }
     }
 
     private void createCharacters(
             List<CharacterData> characters
     ) {
-        for (CharacterData character : characters) {
+        for (
+                CharacterData character :
+                characters
+        ) {
 
             requireText(
                     character.id,
@@ -340,6 +371,7 @@ public final class ScenarioBootstrapper {
             );
 
             if (character.identity == null) {
+
                 throw new IllegalArgumentException(
                         "Character "
                                 + character.id
@@ -403,7 +435,10 @@ public final class ScenarioBootstrapper {
         long tick =
                 simulation.serverTickCounter();
 
-        for (CharacterData character : characters) {
+        for (
+                CharacterData character :
+                characters
+        ) {
 
             NpcId npc =
                     ids.requireNpc(
@@ -604,7 +639,10 @@ public final class ScenarioBootstrapper {
             return;
         }
 
-        for (String title : titles) {
+        for (
+                String title :
+                titles
+        ) {
 
             simulation.titles()
                     .grant(
@@ -667,7 +705,10 @@ public final class ScenarioBootstrapper {
         NpcKnowledgeManager manager =
                 simulation.knowledge();
 
-        for (BeliefData belief : beliefs) {
+        for (
+                BeliefData belief :
+                beliefs
+        ) {
 
             requireText(
                     belief.factKey,
@@ -711,7 +752,10 @@ public final class ScenarioBootstrapper {
         NpcMemoryManager manager =
                 simulation.memories();
 
-        for (MemoryData memory : memories) {
+        for (
+                MemoryData memory :
+                memories
+        ) {
 
             requireText(
                     memory.type,
@@ -866,6 +910,7 @@ public final class ScenarioBootstrapper {
             String description
     ) {
         if (data == null) {
+
             throw new IllegalArgumentException(
                     description
                             + " is missing"
@@ -907,7 +952,9 @@ public final class ScenarioBootstrapper {
                             )
             );
 
-        } catch (IllegalArgumentException exception) {
+        } catch (
+                IllegalArgumentException exception
+        ) {
 
             throw new IllegalArgumentException(
                     "Unknown "
@@ -932,6 +979,7 @@ public final class ScenarioBootstrapper {
                                         resource
                                 )
         ) {
+
             if (input == null) {
 
                 throw new IOException(
@@ -955,6 +1003,7 @@ public final class ScenarioBootstrapper {
                         );
 
                 if (result == null) {
+
                     throw new IOException(
                             "Scenario JSON produced null: "
                                     + resource
@@ -964,7 +1013,9 @@ public final class ScenarioBootstrapper {
                 return result;
             }
 
-        } catch (JsonParseException exception) {
+        } catch (
+                JsonParseException exception
+        ) {
 
             throw new IOException(
                     "Invalid JSON in scenario resource: "
@@ -1002,6 +1053,7 @@ public final class ScenarioBootstrapper {
         if (child.startsWith(
                 "data/"
         )) {
+
             return child;
         }
 
@@ -1052,6 +1104,7 @@ public final class ScenarioBootstrapper {
         if (!hasText(
                 value
         )) {
+
             throw new IllegalArgumentException(
                     description
                             + " cannot be empty"
@@ -1064,112 +1117,185 @@ public final class ScenarioBootstrapper {
     // ---------------------------------------------------------------------
 
     private static final class ScenarioFile {
+
         String id;
+
         String settlements;
+
         String organizations;
+
         String titles;
+
         List<String> characters;
     }
 
     private static final class SettlementData {
+
         String id;
+
         String name;
+
         String type;
+
         PositionData position;
     }
 
     private static final class OrganizationData {
+
         String id;
+
         String name;
+
         String type;
+
         String seatSettlement;
     }
 
     private static final class TitleData {
+
         String id;
+
         String name;
+
         String type;
+
         int authority;
+
         boolean exclusive;
+
         String organization;
+
         String settlement;
+
+        String successionLaw;
     }
 
     private static final class CharacterData {
+
         String id;
+
         IdentityData identity;
+
         String startingSettlement;
+
         PositionData position;
+
         PersonalityData personality;
+
         SocialData social;
+
         RoutineData routine;
+
         List<String> titles;
+
         List<RelationshipData> relationships;
+
         List<BeliefData> beliefs;
+
         List<MemoryData> memories;
     }
 
     private static final class IdentityData {
+
         String givenName;
+
         String familyName;
+
         String sex;
+
         int birthYear;
     }
 
     private static final class PersonalityData {
+
         Double courage;
+
         Double ambition;
+
         Double compassion;
+
         Double honor;
+
         Double patience;
+
         Double sociability;
     }
 
     private static final class SocialData {
+
         String residence;
+
         String household;
+
         String nobleHouse;
+
         String faction;
     }
 
     private static final class RoutineData {
+
         String role;
+
         String homeSettlement;
+
         PositionData homePosition;
+
         String workSettlement;
+
         PositionData workPosition;
+
         Integer workStartTick;
+
         Integer workEndTick;
     }
 
     private static final class RelationshipData {
+
         String target;
+
         double affection;
+
         double trust;
+
         double respect;
+
         double fear;
+
         double familiarity;
     }
 
     private static final class BeliefData {
+
         String factKey;
+
         String value;
+
         double confidence;
+
         String sourceNpc;
     }
 
     private static final class MemoryData {
+
         String type;
+
         String summary;
+
         double importance;
+
         String relatedNpc;
+
         String factKey;
     }
 
     private static final class PositionData {
+
         String dimension;
+
         double x;
+
         double y;
+
         double z;
     }
 }

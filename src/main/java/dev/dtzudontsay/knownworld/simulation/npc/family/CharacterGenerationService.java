@@ -15,17 +15,10 @@ import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliation;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-/**
- * Runtime generation of new persistent people.
- *
- * Generated characters do NOT require authored JSON files.
- *
- * Once created they are ordinary NPCs and are persisted by the same
- * simulation save system as authored characters.
- */
 public final class CharacterGenerationService {
 
     private static final double PERSONALITY_VARIATION =
@@ -34,6 +27,8 @@ public final class CharacterGenerationService {
     private final NpcRegistry registry;
 
     private final GenealogyManager genealogy;
+
+    private final DynastyService dynasty;
 
     private final NpcAffiliationManager affiliations;
 
@@ -46,6 +41,7 @@ public final class CharacterGenerationService {
     public CharacterGenerationService(
             NpcRegistry registry,
             GenealogyManager genealogy,
+            DynastyService dynasty,
             NpcAffiliationManager affiliations,
             NpcRelationshipManager relationships,
             NpcMemoryManager memories,
@@ -61,6 +57,12 @@ public final class CharacterGenerationService {
                 Objects.requireNonNull(
                         genealogy,
                         "genealogy"
+                );
+
+        this.dynasty =
+                Objects.requireNonNull(
+                        dynasty,
+                        "dynasty"
                 );
 
         this.affiliations =
@@ -116,7 +118,7 @@ public final class CharacterGenerationService {
                 );
 
         String familyName =
-                determineFamilyName(
+                dynasty.familyNameForChild(
                         motherState,
                         fatherState
                 );
@@ -145,6 +147,12 @@ public final class CharacterGenerationService {
         );
 
         initializeFamilyRelationships(
+                child.id(),
+                mother,
+                father
+        );
+
+        initializeSiblingRelationships(
                 child.id(),
                 mother,
                 father
@@ -287,23 +295,6 @@ public final class CharacterGenerationService {
         );
     }
 
-    private String determineFamilyName(
-            NpcState mother,
-            NpcState father
-    ) {
-        if (father != null
-                && !father.identity()
-                .familyName()
-                .isBlank()) {
-
-            return father.identity()
-                    .familyName();
-        }
-
-        return mother.identity()
-                .familyName();
-    }
-
     private void inheritAffiliations(
             NpcId child,
             NpcState mother,
@@ -332,22 +323,10 @@ public final class CharacterGenerationService {
         );
 
         OrganizationId nobleHouse =
-                null;
-
-        if (father != null) {
-
-            nobleHouse =
-                    affiliations.getOrCreate(
-                                    father.id()
-                            )
-                            .nobleHouse();
-        }
-
-        if (nobleHouse == null) {
-
-            nobleHouse =
-                    motherAffiliation.nobleHouse();
-        }
+                dynasty.nobleHouseForChild(
+                        mother,
+                        father
+                );
 
         childAffiliation.setNobleHouse(
                 nobleHouse
@@ -383,6 +362,70 @@ public final class CharacterGenerationService {
         }
     }
 
+    private void initializeSiblingRelationships(
+            NpcId child,
+            NpcId mother,
+            NpcId father
+    ) {
+        List<NpcId> candidates =
+                genealogy.childrenOf(
+                        mother
+                );
+
+        for (NpcId sibling : candidates) {
+
+            if (sibling.equals(
+                    child
+            )) {
+                continue;
+            }
+
+            createSiblingRelationship(
+                    child,
+                    sibling
+            );
+
+            createSiblingRelationship(
+                    sibling,
+                    child
+            );
+        }
+
+        if (father == null) {
+            return;
+        }
+
+        for (
+                NpcId sibling :
+                genealogy.childrenOf(
+                        father
+                )
+        ) {
+
+            if (sibling.equals(
+                    child
+            )) {
+                continue;
+            }
+
+            if (relationships.find(
+                    child,
+                    sibling
+            ).isEmpty()) {
+
+                createSiblingRelationship(
+                        child,
+                        sibling
+                );
+
+                createSiblingRelationship(
+                        sibling,
+                        child
+                );
+            }
+        }
+    }
+
     private void createParentRelationship(
             NpcId parent,
             NpcId child
@@ -413,6 +456,23 @@ public final class CharacterGenerationService {
                         0.20,
                         0.00,
                         1.00
+                )
+        );
+    }
+
+    private void createSiblingRelationship(
+            NpcId subject,
+            NpcId sibling
+    ) {
+        relationships.registerLoaded(
+                new NpcRelationship(
+                        subject,
+                        sibling,
+                        0.30,
+                        0.20,
+                        0.10,
+                        0.00,
+                        0.80
                 )
         );
     }

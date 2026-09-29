@@ -6,7 +6,8 @@
     "authority": 80,
     "exclusive": true,
     "organization": "house_stark",
-    "settlement": "winterfell"
+    "settlement": "winterfell",
+    "successionLaw": "MALE_PREFERENCE_PRIMOGENITURE"
   },
   {
     "id": "lord_of_winterfell",
@@ -14,7 +15,8 @@
     "type": "NOBLE",
     "authority": 70,
     "exclusive": true,
-    "settlement": "winterfell"
+    "settlement": "winterfell",
+    "successionLaw": "MALE_PREFERENCE_PRIMOGENITURE"
   },
   {
     "id": "warden_of_the_north",
@@ -22,6 +24,7 @@
     "type": "OFFICE",
     "authority": 90,
     "exclusive": true,
-    "organization": "the_north"
+    "organization": "the_north",
+    "successionLaw": "NONE"
   }
 ]
