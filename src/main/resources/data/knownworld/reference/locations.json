@@ -193,7 +193,6 @@
     "parentId": "kings_landing",
     "provenance": "CANON"
   },
-
   {
     "id": "dragonstone",
     "displayName": "Dragonstone",
@@ -264,6 +263,28 @@
     "kind": "SETTLEMENT",
     "parentId": "dorne",
     "geographicFeatureId": "sunspear",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "andalos",
+    "displayName": "Andalos",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "disputed_lands",
+    "displayName": "The Disputed Lands",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lands_of_long_summer",
+    "displayName": "Lands of the Long Summer",
+    "kind": "REGION",
+    "parentId": "essos",
     "provenance": "CANON"
   },
 
@@ -455,12 +476,28 @@
     "provenance": "CANON"
   },
   {
+    "id": "orange_emperor_domain",
+    "displayName": "Orange Emperor Domain",
+    "kind": "REALM",
+    "parentId": "essos",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "User-authored simulation territory around Trader Town; exact canonical political status is intentionally not asserted."
+  },
+  {
     "id": "leng",
     "displayName": "Leng",
     "kind": "REALM",
     "parentId": "essos",
     "geographicFeatureId": "leng",
     "provenance": "CANON"
+  },
+  {
+    "id": "moraq_region",
+    "displayName": "Moraq",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "Authoring grouping for the Great Moraq / nearby island area."
   },
   {
     "id": "jogos_nhai",
@@ -513,6 +550,14 @@
   },
 
   {
+    "id": "north_sothoryos",
+    "displayName": "North Sothoryos",
+    "kind": "REGION",
+    "parentId": "sothoryos",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Simulation region for the northern portion visible on the Known World map."
+  },
+  {
     "id": "basilisk_isles",
     "displayName": "Basilisk Isles",
     "kind": "REGION",
@@ -535,5 +580,14 @@
     "parentId": "sothoryos",
     "geographicFeatureId": "yeen",
     "provenance": "CANON"
+  },
+
+  {
+    "id": "northwest_ulthos",
+    "displayName": "Northwest Ulthos",
+    "kind": "REGION",
+    "parentId": "ulthos",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "Simulation geography for the north-western visible portion of Ulthos."
   }
 ]

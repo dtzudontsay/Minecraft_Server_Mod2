@@ -8,6 +8,8 @@ import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneResolver;
+import dev.dtzudontsay.knownworld.world.reference.spatial.TerritoryZoneCatalog;
+import dev.dtzudontsay.knownworld.world.reference.spatial.TerritoryZoneResolver;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -58,6 +60,15 @@ public final class WorldReferenceDebugCommand {
                                                         )
                                                         .executes(
                                                                 WorldReferenceDebugCommand::landmass
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "territory"
+                                                        )
+                                                        .executes(
+                                                                WorldReferenceDebugCommand::territory
                                                         )
                                         )
 
@@ -171,6 +182,9 @@ public final class WorldReferenceDebugCommand {
                         + " landmassZones="
                         + LandmassZoneCatalog.get()
                         .size()
+                        + " territoryZones="
+                        + TerritoryZoneCatalog.get()
+                        .size()
         );
 
         return 1;
@@ -277,6 +291,126 @@ public final class WorldReferenceDebugCommand {
         return 1;
     }
 
+    private static int territory(
+            CommandContext<CommandSourceStack> context
+    ) {
+        double x =
+                context.getSource()
+                        .getPosition()
+                        .x;
+
+        double z =
+                context.getSource()
+                        .getPosition()
+                        .z;
+
+        var sample =
+                KnownWorldGeoSampler.sampleMinecraft(
+                        x,
+                        z
+                );
+
+        if (!sample.insideKnownWorldMap()) {
+
+            failure(
+                    context,
+                    "Position lies outside the Known World map."
+            );
+
+            return 0;
+        }
+
+        if (!sample.land()) {
+
+            success(
+                    context,
+                    "Landmass: none (water)"
+            );
+
+            success(
+                    context,
+                    "Territory: none"
+            );
+
+            return 1;
+        }
+
+        var landmass =
+                LandmassZoneResolver.resolveMinecraft(
+                                x,
+                                z
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (landmass == null) {
+
+            success(
+                    context,
+                    "Landmass: unresolved land"
+            );
+
+            success(
+                    context,
+                    "Territory: unresolved"
+            );
+
+            return 1;
+        }
+
+        success(
+                context,
+                "Landmass: "
+                        + landmass.displayName()
+                        + " ["
+                        + landmass.id()
+                        + "]"
+        );
+
+        var territory =
+                TerritoryZoneResolver.resolveMinecraft(
+                                x,
+                                z
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (territory == null) {
+
+            success(
+                    context,
+                    "Territory: none"
+            );
+
+            return 1;
+        }
+
+        success(
+                context,
+                "Territory: "
+                        + territory.displayName()
+                        + " ["
+                        + territory.id()
+                        + "]"
+        );
+
+        success(
+                context,
+                "Master map pixel: "
+                        + String.format(
+                        "%.2f / %.2f",
+                        sample.logicalMapCoordinate()
+                                .pixelX(),
+                        sample.logicalMapCoordinate()
+                                .pixelY()
+                )
+        );
+
+        return 1;
+    }
+
     private static int location(
             CommandContext<CommandSourceStack> context
     ) {
@@ -362,15 +496,6 @@ public final class WorldReferenceDebugCommand {
                                 )
                 );
 
-        if (location.hasBoundaryMask()) {
-
-            success(
-                    context,
-                    "Boundary mask: "
-                            + location.boundaryMaskId()
-            );
-        }
-
         LandmassZoneCatalog.get()
                 .find(
                         location.id()
@@ -384,6 +509,24 @@ public final class WorldReferenceDebugCommand {
                                                 .size()
                                                 + " polygon(s), priority="
                                                 + zone.priority()
+                                )
+                );
+
+        TerritoryZoneCatalog.get()
+                .find(
+                        location.id()
+                )
+                .ifPresent(
+                        zone ->
+                                success(
+                                        context,
+                                        "Territory authoring zone: "
+                                                + zone.polygons()
+                                                .size()
+                                                + " polygon(s), priority="
+                                                + zone.priority()
+                                                + ", landmass="
+                                                + zone.requiredLandmassId()
                                 )
                 );
 

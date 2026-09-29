@@ -35,6 +35,7 @@ import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
+import dev.dtzudontsay.knownworld.world.reference.spatial.TerritoryZoneCatalog;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,17 +53,10 @@ public final class KnownWorld implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        /*
-         * Register biome source codecs before custom world presets
-         * or chunk generators attempt to decode them.
-         */
         KnownWorldBiomeSources.register();
 
         KnownWorldChunkGenerators.register();
 
-        /*
-         * Bootstrap all previously-authored geographic features.
-         */
         NorthFeatureRegistry.bootstrap();
 
         SouthFeatureRegistry.bootstrap();
@@ -85,34 +79,32 @@ public final class KnownWorld implements ModInitializer {
 
         UlthosFeatureRegistry.bootstrap();
 
-        /*
-         * Load configurable world-reference behavior.
-         */
         WorldReferenceSettings.bootstrap();
 
-        /*
-         * Build hierarchical Known World reference definitions.
-         */
         WorldReferenceCatalog.bootstrap();
 
         /*
-         * Load the broad top-level landmass authoring zones.
+         * Top-level landmass envelopes:
          *
-         * These polygons may extend through the sea.
-         * Actual landmass resolution always additionally checks
-         * KnownWorldGeoSampler, so water has no continent.
+         * Westeros / Essos / Sothoryos / Ulthos / Summer Isles.
+         *
+         * These may extend into sea on the authoring map. Runtime
+         * resolution still requires the terrain sampler to report LAND.
          */
         LandmassZoneCatalog.bootstrap();
 
         /*
-         * Load runtime terrain geography.
+         * Major realm / regional territory layer.
+         *
+         * Every territory is restricted to its parent landmass,
+         * preventing sea-side authoring envelopes from assigning
+         * islands to an unrelated continent.
          */
+        TerritoryZoneCatalog.bootstrap();
+
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
 
-        /*
-         * Force climate/biome raster validation during startup.
-         */
         KnownWorldBiomeRasterData.getInstance();
 
         LOGGER.info(
@@ -130,12 +122,14 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features, {} hierarchical/reference locations and {} landmass zones.",
+                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones and {} territory zones.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
                         .size(),
                 LandmassZoneCatalog.get()
+                        .size(),
+                TerritoryZoneCatalog.get()
                         .size()
         );
 

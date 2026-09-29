@@ -1,0 +1,511 @@
+[
+  {
+    "locationId": "beyond_the_wall",
+    "requiredLandmassId": "westeros",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [55, 0],
+        [470, 0],
+        [470, 155],
+        [445, 185],
+        [390, 220],
+        [330, 235],
+        [250, 245],
+        [180, 238],
+        [130, 220],
+        [95, 180],
+        [70, 110]
+      ]
+    ]
+  },
+  {
+    "locationId": "the_north",
+    "requiredLandmassId": "westeros",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [95, 180],
+        [130, 220],
+        [180, 238],
+        [250, 245],
+        [330, 235],
+        [390, 220],
+        [445, 185],
+        [520, 260],
+        [545, 430],
+        [520, 515],
+        [470, 540],
+        [400, 535],
+        [330, 520],
+        [270, 525],
+        [205, 530],
+        [140, 520],
+        [105, 480],
+        [95, 350]
+      ]
+    ]
+  },
+  {
+    "locationId": "iron_islands",
+    "requiredLandmassId": "westeros",
+    "priority": 200,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Island assignment follows the user-authored sea-side envelope.",
+    "polygons": [
+      [
+        [65, 505],
+        [265, 500],
+        [300, 560],
+        [270, 620],
+        [200, 650],
+        [100, 640],
+        [65, 595]
+      ]
+    ]
+  },
+  {
+    "locationId": "vale",
+    "requiredLandmassId": "westeros",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [385, 495],
+        [520, 500],
+        [550, 550],
+        [545, 645],
+        [500, 690],
+        [445, 680],
+        [405, 640],
+        [385, 570]
+      ]
+    ]
+  },
+  {
+    "locationId": "riverlands",
+    "requiredLandmassId": "westeros",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [245, 540],
+        [390, 525],
+        [430, 570],
+        [420, 650],
+        [375, 690],
+        [300, 675],
+        [255, 630],
+        [240, 580]
+      ]
+    ]
+  },
+  {
+    "locationId": "westerlands",
+    "requiredLandmassId": "westeros",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [170, 605],
+        [275, 610],
+        [315, 670],
+        [300, 745],
+        [245, 785],
+        [180, 760],
+        [145, 700]
+      ]
+    ]
+  },
+  {
+    "locationId": "crownlands",
+    "requiredLandmassId": "westeros",
+    "priority": 130,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [350, 620],
+        [500, 615],
+        [535, 680],
+        [505, 745],
+        [430, 755],
+        [380, 725],
+        [350, 675]
+      ]
+    ]
+  },
+  {
+    "locationId": "the_reach",
+    "requiredLandmassId": "westeros",
+    "priority": 110,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [110, 690],
+        [300, 705],
+        [380, 760],
+        [365, 845],
+        [300, 905],
+        [200, 925],
+        [105, 885],
+        [85, 800]
+      ]
+    ]
+  },
+  {
+    "locationId": "stormlands",
+    "requiredLandmassId": "westeros",
+    "priority": 130,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [350, 715],
+        [520, 715],
+        [555, 790],
+        [520, 855],
+        [450, 880],
+        [390, 840],
+        [350, 790]
+      ]
+    ]
+  },
+  {
+    "locationId": "dorne",
+    "requiredLandmassId": "westeros",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map realm border layer.",
+    "polygons": [
+      [
+        [250, 820],
+        [390, 825],
+        [525, 840],
+        [540, 940],
+        [485, 985],
+        [300, 990],
+        [240, 930]
+      ]
+    ]
+  },
+
+  {
+    "locationId": "andalos",
+    "requiredLandmassId": "essos",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Major western Essosi region traced from the user-authored master map.",
+    "polygons": [
+      [
+        [520, 350],
+        [860, 335],
+        [880, 510],
+        [845, 680],
+        [790, 710],
+        [680, 700],
+        [590, 660],
+        [515, 580]
+      ]
+    ]
+  },
+  {
+    "locationId": "disputed_lands",
+    "requiredLandmassId": "essos",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Traced from the user-authored master-map border around the Disputed Lands.",
+    "polygons": [
+      [
+        [500, 645],
+        [790, 645],
+        [850, 720],
+        [820, 900],
+        [650, 920],
+        [520, 870]
+      ]
+    ]
+  },
+  {
+    "locationId": "lands_of_long_summer",
+    "requiredLandmassId": "essos",
+    "priority": 150,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Valyrian/Lands of the Long Summer area traced from the user-authored master map.",
+    "polygons": [
+      [
+        [735, 805],
+        [930, 805],
+        [995, 900],
+        [955, 1055],
+        [800, 1070],
+        [730, 980]
+      ]
+    ]
+  },
+  {
+    "locationId": "dothraki_sea_region",
+    "requiredLandmassId": "essos",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Major Dothraki Sea territory traced from the user-authored master map.",
+    "polygons": [
+      [
+        [800, 340],
+        [1380, 340],
+        [1430, 480],
+        [1390, 720],
+        [1320, 785],
+        [1140, 795],
+        [950, 765],
+        [835, 690]
+      ]
+    ]
+  },
+  {
+    "locationId": "ghiscar",
+    "requiredLandmassId": "essos",
+    "priority": 130,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Ghiscar area resolved from the printed master-map geography and the authored surrounding borders.",
+    "polygons": [
+      [
+        [860, 745],
+        [1090, 740],
+        [1160, 845],
+        [1100, 1025],
+        [900, 1045],
+        [845, 930]
+      ]
+    ]
+  },
+  {
+    "locationId": "lhazar",
+    "requiredLandmassId": "essos",
+    "priority": 140,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Lhazar area resolved from the printed master-map geography and the authored surrounding borders.",
+    "polygons": [
+      [
+        [1070, 750],
+        [1235, 750],
+        [1285, 875],
+        [1240, 1015],
+        [1110, 1020],
+        [1065, 900]
+      ]
+    ]
+  },
+  {
+    "locationId": "red_waste_region",
+    "requiredLandmassId": "essos",
+    "priority": 130,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Red Waste area resolved from the printed master map and authored surrounding borders.",
+    "polygons": [
+      [
+        [1200, 740],
+        [1435, 730],
+        [1505, 850],
+        [1470, 1005],
+        [1260, 1020],
+        [1195, 900]
+      ]
+    ]
+  },
+  {
+    "locationId": "qarth_region",
+    "requiredLandmassId": "essos",
+    "priority": 180,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Qaathi/Qarth territory resolved from the authored eastern border layer.",
+    "polygons": [
+      [
+        [1310, 930],
+        [1515, 930],
+        [1550, 1035],
+        [1430, 1105],
+        [1310, 1050]
+      ]
+    ]
+  },
+  {
+    "locationId": "ib_region",
+    "requiredLandmassId": "essos",
+    "priority": 220,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Ib and its islands follow the explicit user-authored sea envelope.",
+    "polygons": [
+      [
+        [1180, 210],
+        [1475, 210],
+        [1495, 410],
+        [1410, 455],
+        [1240, 435],
+        [1175, 360]
+      ]
+    ]
+  },
+  {
+    "locationId": "jogos_nhai",
+    "requiredLandmassId": "essos",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Jogos Nhai territory traced from the user-authored master map.",
+    "polygons": [
+      [
+        [1380, 410],
+        [1785, 395],
+        [1845, 555],
+        [1770, 695],
+        [1500, 695],
+        [1395, 610]
+      ]
+    ]
+  },
+  {
+    "locationId": "orange_emperor_domain",
+    "requiredLandmassId": "essos",
+    "priority": 220,
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "User-authored eastern domain around Trader Town. Stored as a mod-authored territory rather than asserted canonical political geography.",
+    "polygons": [
+      [
+        [1410, 580],
+        [1665, 575],
+        [1720, 690],
+        [1660, 785],
+        [1470, 775],
+        [1395, 690]
+      ]
+    ]
+  },
+  {
+    "locationId": "yi_ti",
+    "requiredLandmassId": "essos",
+    "priority": 120,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Golden Empire of Yi Ti area traced from the user-authored master map.",
+    "polygons": [
+      [
+        [1330, 690],
+        [1820, 675],
+        [1900, 835],
+        [1850, 1025],
+        [1680, 1065],
+        [1480, 1045],
+        [1320, 930]
+      ]
+    ]
+  },
+  {
+    "locationId": "mossovy",
+    "requiredLandmassId": "essos",
+    "priority": 130,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Mossovy territory traced from the user-authored master map.",
+    "polygons": [
+      [
+        [1750, 390],
+        [2048, 380],
+        [2048, 750],
+        [1930, 765],
+        [1800, 695]
+      ]
+    ]
+  },
+  {
+    "locationId": "shadow_lands",
+    "requiredLandmassId": "essos",
+    "priority": 150,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Far-eastern Shadow Lands identified from the printed map geography and the user-authored surrounding border.",
+    "polygons": [
+      [
+        [1770, 750],
+        [2048, 710],
+        [2048, 1190],
+        [1870, 1210],
+        [1740, 1100],
+        [1735, 900]
+      ]
+    ]
+  },
+  {
+    "locationId": "moraq_region",
+    "requiredLandmassId": "essos",
+    "priority": 230,
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "User-authored island grouping around the Great Moraq/Leng area. Split into multiple land-target polygons to avoid assigning nearby mainland coast.",
+    "polygons": [
+      [
+        [1360, 945],
+        [1580, 940],
+        [1605, 1170],
+        [1370, 1185]
+      ],
+      [
+        [1600, 900],
+        [1830, 900],
+        [1840, 1160],
+        [1610, 1170]
+      ]
+    ]
+  },
+
+  {
+    "locationId": "summer_isles",
+    "requiredLandmassId": "summer_isles",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Whole Summer Isles top-level island region.",
+    "polygons": [
+      [
+        [250, 970],
+        [560, 970],
+        [610, 1080],
+        [590, 1357],
+        [200, 1357],
+        [190, 1110]
+      ]
+    ]
+  },
+  {
+    "locationId": "north_sothoryos",
+    "requiredLandmassId": "sothoryos",
+    "priority": 100,
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Northern visible Sothoryos region from the user-authored master map.",
+    "polygons": [
+      [
+        [590, 1000],
+        [1460, 1000],
+        [1510, 1357],
+        [560, 1357]
+      ]
+    ]
+  },
+  {
+    "locationId": "northwest_ulthos",
+    "requiredLandmassId": "ulthos",
+    "priority": 100,
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "North-western visible portion of Ulthos, authored for simulation geography.",
+    "polygons": [
+      [
+        [1650, 1140],
+        [2048, 1110],
+        [2048, 1357],
+        [1600, 1357]
+      ]
+    ]
+  }
+]
