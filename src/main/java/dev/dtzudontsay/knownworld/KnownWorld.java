@@ -14,6 +14,8 @@ import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
+import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
+import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeSources;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoData;
@@ -33,20 +35,30 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public final class KnownWorld implements ModInitializer {
 
     public static final String MOD_ID =
             "knownworld";
+
 
     public static final Logger LOGGER =
             LoggerFactory.getLogger(
                     MOD_ID
             );
 
+
     @Override
     public void onInitialize() {
 
+        /*
+         * Register the biome source before the custom chunk
+         * generator/world preset is decoded.
+         */
+        KnownWorldBiomeSources.register();
+
         KnownWorldChunkGenerators.register();
+
 
         NorthFeatureRegistry.bootstrap();
 
@@ -70,8 +82,17 @@ public final class KnownWorld implements ModInitializer {
 
         UlthosFeatureRegistry.bootstrap();
 
+
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
+
+
+        /*
+         * Force climate/biome data validation during startup rather
+         * than waiting until the first chunk requests a biome.
+         */
+        KnownWorldBiomeRasterData.getInstance();
+
 
         LOGGER.info(
                 "Known World geodata ready: {}x{} px | {} m/px X | {} m/px Z",
@@ -87,9 +108,11 @@ public final class KnownWorld implements ModInitializer {
                 )
         );
 
+
         KnownWorldDebugCommand.register();
 
         KnownWorldGeoDebugCommand.register();
+
 
         NpcSimulation.registerLifecycle();
 
@@ -115,10 +138,12 @@ public final class KnownWorld implements ModInitializer {
 
         WorldEventDebugCommand.register();
 
+
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
                 GeographicFeatureRegistry.getFeatureCount()
         );
+
 
         LOGGER.info(
                 "Known World simulation hooks registered."

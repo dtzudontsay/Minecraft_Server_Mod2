@@ -1,0 +1,294 @@
+{
+  "formatVersion": 1,
+  "zeroMeans": "NO_OVERRIDE",
+  "biomes": [
+    {
+      "code": 1,
+      "biome": "minecraft:plains",
+      "name": "Plains",
+      "color": "#FF1744"
+    },
+    {
+      "code": 2,
+      "biome": "minecraft:sunflower_plains",
+      "name": "Sunflower Plains",
+      "color": "#FF6D00"
+    },
+    {
+      "code": 3,
+      "biome": "minecraft:forest",
+      "name": "Forest",
+      "color": "#1B5E20"
+    },
+    {
+      "code": 4,
+      "biome": "minecraft:flower_forest",
+      "name": "Flower Forest",
+      "color": "#AA00FF"
+    },
+    {
+      "code": 5,
+      "biome": "minecraft:birch_forest",
+      "name": "Birch Forest",
+      "color": "#76FF03"
+    },
+    {
+      "code": 6,
+      "biome": "minecraft:old_growth_birch_forest",
+      "name": "Old Growth Birch Forest",
+      "color": "#C6FF00"
+    },
+    {
+      "code": 7,
+      "biome": "minecraft:dark_forest",
+      "name": "Dark Forest",
+      "color": "#004D40"
+    },
+    {
+      "code": 8,
+      "biome": "minecraft:pale_garden",
+      "name": "Pale Garden",
+      "color": "#B0BEC5"
+    },
+    {
+      "code": 9,
+      "biome": "minecraft:cherry_grove",
+      "name": "Cherry Grove",
+      "color": "#FF4081"
+    },
+    {
+      "code": 10,
+      "biome": "minecraft:meadow",
+      "name": "Meadow",
+      "color": "#E040FB"
+    },
+    {
+      "code": 11,
+      "biome": "minecraft:dappled_forest",
+      "name": "Dappled Forest",
+      "color": "#FF8A65"
+    },
+    {
+      "code": 12,
+      "biome": "minecraft:snowy_plains",
+      "name": "Snowy Plains",
+      "color": "#00E5FF"
+    },
+    {
+      "code": 13,
+      "biome": "minecraft:ice_spikes",
+      "name": "Ice Spikes",
+      "color": "#2979FF"
+    },
+    {
+      "code": 14,
+      "biome": "minecraft:taiga",
+      "name": "Taiga",
+      "color": "#00897B"
+    },
+    {
+      "code": 15,
+      "biome": "minecraft:snowy_taiga",
+      "name": "Snowy Taiga",
+      "color": "#4DD0E1"
+    },
+    {
+      "code": 16,
+      "biome": "minecraft:old_growth_pine_taiga",
+      "name": "Old Growth Pine Taiga",
+      "color": "#00695C"
+    },
+    {
+      "code": 17,
+      "biome": "minecraft:old_growth_spruce_taiga",
+      "name": "Old Growth Spruce Taiga",
+      "color": "#2E7D32"
+    },
+    {
+      "code": 18,
+      "biome": "minecraft:grove",
+      "name": "Grove",
+      "color": "#00ACC1"
+    },
+    {
+      "code": 19,
+      "biome": "minecraft:snowy_slopes",
+      "name": "Snowy Slopes",
+      "color": "#82B1FF"
+    },
+    {
+      "code": 20,
+      "biome": "minecraft:frozen_peaks",
+      "name": "Frozen Peaks",
+      "color": "#304FFE"
+    },
+    {
+      "code": 21,
+      "biome": "minecraft:jagged_peaks",
+      "name": "Jagged Peaks",
+      "color": "#651FFF"
+    },
+    {
+      "code": 22,
+      "biome": "minecraft:stony_peaks",
+      "name": "Stony Peaks",
+      "color": "#607D8B"
+    },
+    {
+      "code": 23,
+      "biome": "minecraft:windswept_hills",
+      "name": "Windswept Hills",
+      "color": "#8D6E63"
+    },
+    {
+      "code": 24,
+      "biome": "minecraft:windswept_gravelly_hills",
+      "name": "Windswept Gravelly Hills",
+      "color": "#78909C"
+    },
+    {
+      "code": 25,
+      "biome": "minecraft:windswept_forest",
+      "name": "Windswept Forest",
+      "color": "#33691E"
+    },
+    {
+      "code": 26,
+      "biome": "minecraft:desert",
+      "name": "Desert",
+      "color": "#FFD600"
+    },
+    {
+      "code": 27,
+      "biome": "minecraft:savanna",
+      "name": "Savanna",
+      "color": "#F9A825"
+    },
+    {
+      "code": 28,
+      "biome": "minecraft:savanna_plateau",
+      "name": "Savanna Plateau",
+      "color": "#F57F17"
+    },
+    {
+      "code": 29,
+      "biome": "minecraft:windswept_savanna",
+      "name": "Windswept Savanna",
+      "color": "#E65100"
+    },
+    {
+      "code": 30,
+      "biome": "minecraft:badlands",
+      "name": "Badlands",
+      "color": "#D84315"
+    },
+    {
+      "code": 31,
+      "biome": "minecraft:eroded_badlands",
+      "name": "Eroded Badlands",
+      "color": "#BF360C"
+    },
+    {
+      "code": 32,
+      "biome": "minecraft:wooded_badlands",
+      "name": "Wooded Badlands",
+      "color": "#A1887F"
+    },
+    {
+      "code": 33,
+      "biome": "minecraft:jungle",
+      "name": "Jungle",
+      "color": "#00BFA5"
+    },
+    {
+      "code": 34,
+      "biome": "minecraft:sparse_jungle",
+      "name": "Sparse Jungle",
+      "color": "#69F0AE"
+    },
+    {
+      "code": 35,
+      "biome": "minecraft:bamboo_jungle",
+      "name": "Bamboo Jungle",
+      "color": "#00E676"
+    },
+    {
+      "code": 36,
+      "biome": "minecraft:swamp",
+      "name": "Swamp",
+      "color": "#00C853"
+    },
+    {
+      "code": 37,
+      "biome": "minecraft:mangrove_swamp",
+      "name": "Mangrove Swamp",
+      "color": "#64DD17"
+    },
+    {
+      "code": 38,
+      "biome": "minecraft:beach",
+      "name": "Beach",
+      "color": "#FFEA00"
+    },
+    {
+      "code": 39,
+      "biome": "minecraft:snowy_beach",
+      "name": "Snowy Beach",
+      "color": "#B3E5FC"
+    },
+    {
+      "code": 40,
+      "biome": "minecraft:stony_shore",
+      "name": "Stony Shore",
+      "color": "#546E7A"
+    },
+    {
+      "code": 41,
+      "biome": "minecraft:river",
+      "name": "River",
+      "color": "#00B0FF"
+    },
+    {
+      "code": 42,
+      "biome": "minecraft:frozen_river",
+      "name": "Frozen River",
+      "color": "#40C4FF"
+    },
+    {
+      "code": 43,
+      "biome": "minecraft:mushroom_fields",
+      "name": "Mushroom Fields",
+      "color": "#7C4DFF"
+    },
+    {
+      "code": 44,
+      "biome": "minecraft:nether_wastes",
+      "name": "Nether Wastes",
+      "color": "#B71C1C"
+    },
+    {
+      "code": 45,
+      "biome": "minecraft:soul_sand_valley",
+      "name": "Soul Sand Valley",
+      "color": "#795548"
+    },
+    {
+      "code": 46,
+      "biome": "minecraft:crimson_forest",
+      "name": "Crimson Forest",
+      "color": "#C51162"
+    },
+    {
+      "code": 47,
+      "biome": "minecraft:warped_forest",
+      "name": "Warped Forest",
+      "color": "#00B8D4"
+    },
+    {
+      "code": 48,
+      "biome": "minecraft:basalt_deltas",
+      "name": "Basalt Deltas",
+      "color": "#263238"
+    }
+  ]
+}

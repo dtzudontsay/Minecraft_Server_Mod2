@@ -5,8 +5,7 @@
       "generator": {
         "type": "knownworld:known_world",
         "biome_source": {
-          "type": "minecraft:fixed",
-          "biome": "minecraft:plains"
+          "type": "knownworld:known_world"
         }
       }
     },
