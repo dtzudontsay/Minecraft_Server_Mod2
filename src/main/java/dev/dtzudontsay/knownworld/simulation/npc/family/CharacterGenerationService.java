@@ -9,6 +9,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
 import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileGenerationService;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliation;
@@ -38,6 +39,8 @@ public final class CharacterGenerationService {
 
     private final WorldEventManager events;
 
+    private final CharacterProfileGenerationService profileGeneration;
+
     public CharacterGenerationService(
             NpcRegistry registry,
             GenealogyManager genealogy,
@@ -45,7 +48,8 @@ public final class CharacterGenerationService {
             NpcAffiliationManager affiliations,
             NpcRelationshipManager relationships,
             NpcMemoryManager memories,
-            WorldEventManager events
+            WorldEventManager events,
+            CharacterProfileGenerationService profileGeneration
     ) {
         this.registry =
                 Objects.requireNonNull(
@@ -87,6 +91,12 @@ public final class CharacterGenerationService {
                 Objects.requireNonNull(
                         events,
                         "events"
+                );
+
+        this.profileGeneration =
+                Objects.requireNonNull(
+                        profileGeneration,
+                        "profileGeneration"
                 );
     }
 
@@ -156,6 +166,13 @@ public final class CharacterGenerationService {
                 child.id(),
                 mother,
                 father
+        );
+
+        profileGeneration.createChildProfile(
+                child.id(),
+                mother,
+                father,
+                tick
         );
 
         createBirthMemories(
@@ -372,11 +389,15 @@ public final class CharacterGenerationService {
                         mother
                 );
 
-        for (NpcId sibling : candidates) {
+        for (
+                NpcId sibling :
+                candidates
+        ) {
 
             if (sibling.equals(
                     child
             )) {
+
                 continue;
             }
 
@@ -405,6 +426,7 @@ public final class CharacterGenerationService {
             if (sibling.equals(
                     child
             )) {
+
                 continue;
             }
 

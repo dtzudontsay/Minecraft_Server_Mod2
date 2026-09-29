@@ -19,6 +19,55 @@
     "sociability": -0.10
   },
 
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+
+    "skills": {
+      "martial": 0.80,
+      "diplomacy": 0.58,
+      "stewardship": 0.66,
+      "intrigue": 0.30,
+      "learning": 0.57,
+      "combat": 0.78,
+      "leadership": 0.82
+    },
+
+    "traits": [
+      "honorable",
+      "dutiful",
+      "reserved",
+      "brave",
+      "family_oriented"
+    ],
+
+    "values": {
+      "family": 0.95,
+      "honor": 1.00,
+      "duty": 0.95,
+      "power": 0.20,
+      "wealth": 0.15,
+      "faith": 0.65,
+      "justice": 0.90
+    },
+
+    "motivations": [
+      "Protect House Stark and my family.",
+      "Fulfill my duties to the North.",
+      "Act honorably even when it is personally costly."
+    ],
+
+    "dialogue": {
+      "formality": 0.45,
+      "verbosity": -0.35,
+      "warmth": 0.15,
+      "directness": 0.65,
+      "preferredAddress": "Lord Stark",
+      "guidance": "Speak plainly and with restraint. Avoid boasting. Place duty, family and honor above personal ambition. Be slow to make threats or promises, but take them seriously once made."
+    }
+  },
+
   "social": {
     "residence": "winterfell",
     "household": "stark_household",

@@ -1,6 +1,7 @@
 package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
+import dev.dtzudontsay.knownworld.debug.CharacterProfileDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
@@ -90,10 +91,6 @@ public final class KnownWorld implements ModInitializer {
 
         KnownWorldGeoDebugCommand.register();
 
-        /*
-         * Simulation lifecycle must be registered before the commands
-         * that access NpcSimulation.
-         */
         NpcSimulation.registerLifecycle();
 
         NpcDebugCommand.register();
@@ -113,6 +110,8 @@ public final class KnownWorld implements ModInitializer {
         LifeCycleDebugCommand.register();
 
         SuccessionDebugCommand.register();
+
+        CharacterProfileDebugCommand.register();
 
         WorldEventDebugCommand.register();
 

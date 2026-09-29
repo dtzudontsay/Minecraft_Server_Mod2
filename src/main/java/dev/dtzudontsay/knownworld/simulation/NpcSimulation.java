@@ -23,11 +23,14 @@ import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.PregnancyManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
 import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationService;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileGenerationService;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CampaignCalendarPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.CharacterProfilePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.ClaimPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.GenealogyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.LifeHistoryPersistence;
@@ -94,6 +97,10 @@ public final class NpcSimulation {
 
     private final PregnancyManager pregnancyManager;
 
+    private final CharacterProfileManager profileManager;
+
+    private final CharacterProfileGenerationService profileGenerationService;
+
     private final NpcRelationshipManager relationshipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
@@ -149,6 +156,8 @@ public final class NpcSimulation {
     private final SuccessionPersistence successionPersistence;
 
     private final ClaimPersistence claimPersistence;
+
+    private final CharacterProfilePersistence profilePersistence;
 
     private final NpcActivationManager activationManager;
 
@@ -233,6 +242,17 @@ public final class NpcSimulation {
         this.pregnancyManager =
                 new PregnancyManager(
                         registry
+                );
+
+        this.profileManager =
+                new CharacterProfileManager(
+                        registry
+                );
+
+        this.profileGenerationService =
+                new CharacterProfileGenerationService(
+                        registry,
+                        profileManager
                 );
 
         this.relationshipManager =
@@ -345,7 +365,8 @@ public final class NpcSimulation {
                         affiliationManager,
                         relationshipManager,
                         memoryManager,
-                        eventManager
+                        eventManager,
+                        profileGenerationService
                 );
 
         this.lifeCycleService =
@@ -426,6 +447,11 @@ public final class NpcSimulation {
                 new ClaimPersistence(
                         savePath
                 );
+
+        this.profilePersistence =
+                new CharacterProfilePersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
@@ -449,10 +475,11 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations and {} titles.",
+                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations and {} titles.",
                             simulation.campaignCalendar.year(),
                             simulation.campaignCalendar.dayOfYear() + 1,
                             simulation.registry.size(),
+                            simulation.profileManager.size(),
                             simulation.genealogyManager.size(),
                             simulation.marriageManager.size(),
                             simulation.pregnancyManager.size(),
@@ -549,6 +576,10 @@ public final class NpcSimulation {
 
     public NpcRegistry registry() {
         return registry;
+    }
+
+    public CharacterProfileManager profiles() {
+        return profileManager;
     }
 
     public SettlementManager settlements() {
@@ -795,6 +826,10 @@ public final class NpcSimulation {
                     claimManager
             );
 
+            profilePersistence.save(
+                    profileManager
+            );
+
         } catch (
                 IOException exception
         ) {
@@ -810,10 +845,6 @@ public final class NpcSimulation {
 
         try {
 
-            /*
-             * Core NPC/social state must load first because nearly all
-             * later persistence files refer to existing NPC/title IDs.
-             */
             persistence.loadInto(
                     clock,
                     registry,
@@ -857,18 +888,16 @@ public final class NpcSimulation {
                     pregnancyManager
             );
 
-            /*
-             * Succession rules require titles to already exist.
-             */
             successionPersistence.loadInto(
                     successionRuleManager
             );
 
-            /*
-             * Claims require both NPCs and titles to already exist.
-             */
             claimPersistence.loadInto(
                     claimManager
+            );
+
+            profilePersistence.loadInto(
+                    profileManager
             );
 
             if (shouldBootstrapScenario()) {
@@ -883,15 +912,14 @@ public final class NpcSimulation {
                 );
             }
 
-            /*
-             * Old saves only had birthYear.
-             *
-             * This migrates all existing NPCs into the campaign-scale
-             * life-history system.
-             */
             lifeHistoryManager.ensureAll(
                     campaignCalendar.daysPerYear()
             );
+
+            /*
+             * Migration path for NPCs created before Batch 17.
+             */
+            profileManager.ensureAll();
 
             save();
 

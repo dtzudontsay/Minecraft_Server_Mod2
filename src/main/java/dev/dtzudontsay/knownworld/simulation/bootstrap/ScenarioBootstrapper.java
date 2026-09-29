@@ -12,6 +12,9 @@ import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
 import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSkill;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.DialoguePersona;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoleType;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutine;
@@ -33,16 +36,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
-/**
- * Builds the authored starting state of a scenario from JSON resources.
- *
- * Authored scenario data describes the starting world only.
- *
- * Once the simulation begins, runtime state is persisted separately
- * and is free to diverge from the authored scenario.
- */
 public final class ScenarioBootstrapper {
 
     public static final String DEFAULT_SCENARIO =
@@ -211,14 +207,6 @@ public final class ScenarioBootstrapper {
                     "settlement.type"
             );
 
-            SimulationPosition position =
-                    requirePosition(
-                            entry.position,
-                            "settlement "
-                                    + entry.id
-                                    + " position"
-                    );
-
             Settlement settlement =
                     simulation.settlements()
                             .create(
@@ -228,7 +216,12 @@ public final class ScenarioBootstrapper {
                                             entry.type,
                                             "settlement type"
                                     ),
-                                    position
+                                    requirePosition(
+                                            entry.position,
+                                            "settlement "
+                                                    + entry.id
+                                                    + " position"
+                                    )
                             );
 
             ids.registerSettlement(
@@ -261,11 +254,6 @@ public final class ScenarioBootstrapper {
                     "organization.type"
             );
 
-            SettlementId seat =
-                    optionalSettlement(
-                            entry.seatSettlement
-                    );
-
             Organization organization =
                     simulation.organizations()
                             .create(
@@ -275,7 +263,9 @@ public final class ScenarioBootstrapper {
                                             entry.type,
                                             "organization type"
                                     ),
-                                    seat
+                                    optionalSettlement(
+                                            entry.seatSettlement
+                                    )
                             );
 
             ids.registerOrganization(
@@ -293,31 +283,6 @@ public final class ScenarioBootstrapper {
                 data
         ) {
 
-            requireText(
-                    entry.id,
-                    "title.id"
-            );
-
-            requireText(
-                    entry.name,
-                    "title.name"
-            );
-
-            requireText(
-                    entry.type,
-                    "title.type"
-            );
-
-            OrganizationId organization =
-                    optionalOrganization(
-                            entry.organization
-                    );
-
-            SettlementId settlement =
-                    optionalSettlement(
-                            entry.settlement
-                    );
-
             TitleDefinition title =
                     simulation.titles()
                             .create(
@@ -329,8 +294,12 @@ public final class ScenarioBootstrapper {
                                     ),
                                     entry.authority,
                                     entry.exclusive,
-                                    organization,
-                                    settlement
+                                    optionalOrganization(
+                                            entry.organization
+                                    ),
+                                    optionalSettlement(
+                                            entry.settlement
+                                    )
                             );
 
             ids.registerTitle(
@@ -338,21 +307,18 @@ public final class ScenarioBootstrapper {
                     title.id()
             );
 
-            SuccessionLaw law =
-                    hasText(
-                            entry.successionLaw
-                    )
-                            ? enumValue(
-                            SuccessionLaw.class,
-                            entry.successionLaw,
-                            "succession law"
-                    )
-                            : SuccessionLaw.NONE;
-
             simulation.successionRules()
                     .setLaw(
                             title.id(),
-                            law
+                            hasText(
+                                    entry.successionLaw
+                            )
+                                    ? enumValue(
+                                    SuccessionLaw.class,
+                                    entry.successionLaw,
+                                    "succession law"
+                            )
+                                    : SuccessionLaw.NONE
                     );
         }
     }
@@ -365,11 +331,6 @@ public final class ScenarioBootstrapper {
                 characters
         ) {
 
-            requireText(
-                    character.id,
-                    "character.id"
-            );
-
             if (character.identity == null) {
 
                 throw new IllegalArgumentException(
@@ -378,34 +339,6 @@ public final class ScenarioBootstrapper {
                                 + " has no identity"
                 );
             }
-
-            requireText(
-                    character.identity.givenName,
-                    character.id
-                            + ".identity.givenName"
-            );
-
-            requireText(
-                    character.identity.familyName,
-                    character.id
-                            + ".identity.familyName"
-            );
-
-            requireText(
-                    character.identity.sex,
-                    character.id
-                            + ".identity.sex"
-            );
-
-            SimulationPosition startingPosition =
-                    resolveStartingPosition(
-                            character
-                    );
-
-            NpcPersonality personality =
-                    personalityOf(
-                            character.personality
-                    );
 
             NpcState npc =
                     simulation.registry()
@@ -418,8 +351,12 @@ public final class ScenarioBootstrapper {
                                             "NPC sex"
                                     ),
                                     character.identity.birthYear,
-                                    startingPosition,
-                                    personality
+                                    resolveStartingPosition(
+                                            character
+                                    ),
+                                    personalityOf(
+                                            character.personality
+                                    )
                             );
 
             ids.registerNpc(
@@ -444,6 +381,11 @@ public final class ScenarioBootstrapper {
                     ids.requireNpc(
                             character.id
                     );
+
+            applyProfile(
+                    npc,
+                    character.profile
+            );
 
             applySocial(
                     npc,
@@ -476,6 +418,128 @@ public final class ScenarioBootstrapper {
                     npc,
                     character.memories,
                     tick
+            );
+        }
+    }
+
+    private void applyProfile(
+            NpcId npc,
+            ProfileData data
+    ) {
+        CharacterProfile profile =
+                simulation.profiles()
+                        .getOrCreate(
+                                npc
+                        );
+
+        if (data == null) {
+            return;
+        }
+
+        if (hasText(
+                data.culture
+        )) {
+
+            profile.setCulture(
+                    data.culture
+            );
+        }
+
+        if (hasText(
+                data.religion
+        )) {
+
+            profile.setReligion(
+                    data.religion
+            );
+        }
+
+        if (hasText(
+                data.education
+        )) {
+
+            profile.setEducation(
+                    data.education
+            );
+        }
+
+        if (data.skills != null) {
+
+            for (
+                    Map.Entry<String, Double> entry :
+                    data.skills.entrySet()
+            ) {
+
+                profile.setSkill(
+                        enumValue(
+                                CharacterSkill.class,
+                                entry.getKey(),
+                                "character skill"
+                        ),
+                        entry.getValue()
+                );
+            }
+        }
+
+        if (data.traits != null) {
+
+            for (
+                    String trait :
+                    data.traits
+            ) {
+
+                profile.addTrait(
+                        trait
+                );
+            }
+        }
+
+        if (data.values != null) {
+
+            for (
+                    Map.Entry<String, Double> entry :
+                    data.values.entrySet()
+            ) {
+
+                profile.setValue(
+                        entry.getKey(),
+                        entry.getValue()
+                );
+            }
+        }
+
+        if (data.motivations != null) {
+
+            for (
+                    String motivation :
+                    data.motivations
+            ) {
+
+                profile.addMotivation(
+                        motivation
+                );
+            }
+        }
+
+        if (data.dialogue != null) {
+
+            profile.setDialoguePersona(
+                    new DialoguePersona(
+                            valueOrZero(
+                                    data.dialogue.formality
+                            ),
+                            valueOrZero(
+                                    data.dialogue.verbosity
+                            ),
+                            valueOrZero(
+                                    data.dialogue.warmth
+                            ),
+                            valueOrZero(
+                                    data.dialogue.directness
+                            ),
+                            data.dialogue.preferredAddress,
+                            data.dialogue.guidance
+                    )
             );
         }
     }
@@ -668,21 +732,13 @@ public final class ScenarioBootstrapper {
                 relationships
         ) {
 
-            requireText(
-                    relationship.target,
-                    "relationship.target"
-            );
-
-            NpcId target =
-                    ids.requireNpc(
-                            relationship.target
-                    );
-
             simulation.relationships()
                     .registerLoaded(
                             new NpcRelationship(
                                     subject,
-                                    target,
+                                    ids.requireNpc(
+                                            relationship.target
+                                    ),
                                     relationship.affection,
                                     relationship.trust,
                                     relationship.respect,
@@ -710,31 +766,18 @@ public final class ScenarioBootstrapper {
                 beliefs
         ) {
 
-            requireText(
+            manager.believe(
+                    owner,
                     belief.factKey,
-                    "belief.factKey"
-            );
-
-            requireText(
                     belief.value,
-                    "belief.value"
-            );
-
-            NpcId source =
+                    belief.confidence,
                     hasText(
                             belief.sourceNpc
                     )
                             ? ids.requireNpc(
                             belief.sourceNpc
                     )
-                            : null;
-
-            manager.believe(
-                    owner,
-                    belief.factKey,
-                    belief.value,
-                    belief.confidence,
-                    source,
+                            : null,
                     tick
             );
         }
@@ -757,25 +800,6 @@ public final class ScenarioBootstrapper {
                 memories
         ) {
 
-            requireText(
-                    memory.type,
-                    "memory.type"
-            );
-
-            requireText(
-                    memory.summary,
-                    "memory.summary"
-            );
-
-            NpcId relatedNpc =
-                    hasText(
-                            memory.relatedNpc
-                    )
-                            ? ids.requireNpc(
-                            memory.relatedNpc
-                    )
-                            : null;
-
             manager.remember(
                     owner,
                     enumValue(
@@ -785,7 +809,13 @@ public final class ScenarioBootstrapper {
                     ),
                     memory.summary,
                     memory.importance,
-                    relatedNpc,
+                    hasText(
+                            memory.relatedNpc
+                    )
+                            ? ids.requireNpc(
+                            memory.relatedNpc
+                    )
+                            : null,
                     emptyToNull(
                             memory.factKey
                     ),
@@ -834,13 +864,7 @@ public final class ScenarioBootstrapper {
                 .find(
                         id
                 )
-                .orElseThrow(
-                        () ->
-                                new IllegalStateException(
-                                        "Mapped settlement no longer exists: "
-                                                + authoredSettlement
-                                )
-                )
+                .orElseThrow()
                 .center();
     }
 
@@ -917,15 +941,12 @@ public final class ScenarioBootstrapper {
             );
         }
 
-        String dimension =
+        return new SimulationPosition(
                 hasText(
                         data.dimension
                 )
                         ? data.dimension
-                        : SimulationPosition.OVERWORLD;
-
-        return new SimulationPosition(
-                dimension,
+                        : SimulationPosition.OVERWORLD,
                 data.x,
                 data.y,
                 data.z
@@ -1030,14 +1051,11 @@ public final class ScenarioBootstrapper {
             Class<T[]> type
     ) throws IOException {
 
-        T[] result =
+        return List.of(
                 readJson(
                         resource,
                         type
-                );
-
-        return List.of(
-                result
+                )
         );
     }
 
@@ -1112,10 +1130,6 @@ public final class ScenarioBootstrapper {
         }
     }
 
-    // ---------------------------------------------------------------------
-    // JSON data classes
-    // ---------------------------------------------------------------------
-
     private static final class ScenarioFile {
 
         String id;
@@ -1182,6 +1196,8 @@ public final class ScenarioBootstrapper {
 
         PersonalityData personality;
 
+        ProfileData profile;
+
         SocialData social;
 
         RoutineData routine;
@@ -1219,6 +1235,40 @@ public final class ScenarioBootstrapper {
         Double patience;
 
         Double sociability;
+    }
+
+    private static final class ProfileData {
+
+        String culture;
+
+        String religion;
+
+        String education;
+
+        Map<String, Double> skills;
+
+        List<String> traits;
+
+        Map<String, Double> values;
+
+        List<String> motivations;
+
+        DialogueData dialogue;
+    }
+
+    private static final class DialogueData {
+
+        Double formality;
+
+        Double verbosity;
+
+        Double warmth;
+
+        Double directness;
+
+        String preferredAddress;
+
+        String guidance;
     }
 
     private static final class SocialData {

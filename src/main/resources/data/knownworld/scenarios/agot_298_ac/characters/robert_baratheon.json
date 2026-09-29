@@ -24,6 +24,55 @@
     "sociability": 0.85
   },
 
+  "profile": {
+    "culture": "andal_westerosi",
+    "religion": "faith_of_the_seven",
+    "education": "noble_martial",
+
+    "skills": {
+      "martial": 0.88,
+      "diplomacy": 0.58,
+      "stewardship": 0.25,
+      "intrigue": 0.20,
+      "learning": 0.25,
+      "combat": 0.95,
+      "leadership": 0.82
+    },
+
+    "traits": [
+      "brave",
+      "gregarious",
+      "impatient",
+      "charismatic",
+      "indulgent"
+    ],
+
+    "values": {
+      "family": 0.45,
+      "honor": 0.35,
+      "duty": 0.30,
+      "power": 0.50,
+      "wealth": 0.35,
+      "faith": 0.25,
+      "friendship": 0.80
+    },
+
+    "motivations": [
+      "Enjoy life rather than spend it buried in administration.",
+      "Remain loyal to old friends.",
+      "Avoid being trapped by tedious royal obligations."
+    ],
+
+    "dialogue": {
+      "formality": -0.45,
+      "verbosity": 0.25,
+      "warmth": 0.35,
+      "directness": 0.75,
+      "preferredAddress": "Your Grace",
+      "guidance": "Speak boldly, casually and emotionally. Be comfortable joking, boasting, complaining and speaking bluntly. Show strong affection toward old friends and little patience for tedious political formalities."
+    }
+  },
+
   "relationships": [
     {
       "target": "eddard_stark",
