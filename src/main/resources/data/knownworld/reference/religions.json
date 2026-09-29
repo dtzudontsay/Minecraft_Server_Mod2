@@ -1,0 +1,74 @@
+[
+  {
+    "id": "faith_of_the_seven",
+    "displayName": "Faith of the Seven",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "old_gods",
+    "displayName": "Old Gods of the Forest",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "drowned_god",
+    "displayName": "Drowned God",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "rhllor",
+    "displayName": "R'hllor",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "many_faced_god",
+    "displayName": "Many-Faced God",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "great_stallion",
+    "displayName": "Great Stallion",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "great_shepherd",
+    "displayName": "Great Shepherd",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "moonsingers",
+    "displayName": "Moonsinger Faith",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "black_goat",
+    "displayName": "Black Goat of Qohor",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bearded_priests",
+    "displayName": "Bearded Priests of Norvos",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "naathi_butterfly_god",
+    "displayName": "Lord of Harmony",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "unknown_religion",
+    "displayName": "Unknown Religion",
+    "category": "RELIGION",
+    "provenance": "UNKNOWN"
+  }
+]

@@ -1,0 +1,419 @@
+package dev.dtzudontsay.knownworld.debug;
+
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
+import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
+
+import java.util.stream.Collectors;
+
+public final class WorldReferenceDebugCommand {
+
+    private WorldReferenceDebugCommand() {
+    }
+
+    public static void register() {
+
+        CommandRegistrationCallback.EVENT.register(
+                (
+                        dispatcher,
+                        registryAccess,
+                        environment
+                ) ->
+                        dispatcher.register(
+
+                                Commands.literal(
+                                                "kwref"
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "status"
+                                                        )
+                                                        .executes(
+                                                                WorldReferenceDebugCommand::status
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "settings"
+                                                        )
+                                                        .executes(
+                                                                WorldReferenceDebugCommand::settings
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "location"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "id",
+                                                                                StringArgumentType.word()
+                                                                        )
+                                                                        .executes(
+                                                                                WorldReferenceDebugCommand::location
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "culture"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "id",
+                                                                                StringArgumentType.word()
+                                                                        )
+                                                                        .executes(
+                                                                                WorldReferenceDebugCommand::culture
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "subcultures"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "enabled",
+                                                                                BoolArgumentType.bool()
+                                                                        )
+                                                                        .executes(
+                                                                                WorldReferenceDebugCommand::subcultures
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "languages"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "enabled",
+                                                                                BoolArgumentType.bool()
+                                                                        )
+                                                                        .executes(
+                                                                                WorldReferenceDebugCommand::languages
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "common_tongue"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "everyone",
+                                                                                BoolArgumentType.bool()
+                                                                        )
+                                                                        .executes(
+                                                                                WorldReferenceDebugCommand::commonTongue
+                                                                        )
+                                                        )
+                                        )
+                        )
+        );
+    }
+
+    private static int status(
+            CommandContext<CommandSourceStack> context
+    ) {
+        WorldReferenceCatalog catalog =
+                WorldReferenceCatalog.get();
+
+        success(
+                context,
+                "World references | locations="
+                        + catalog.locations()
+                        .size()
+                        + " cultures="
+                        + catalog.cultures()
+                        .size()
+                        + " religions="
+                        + catalog.religions()
+                        .size()
+                        + " orders="
+                        + catalog.religiousOrders()
+                        .size()
+                        + " languages="
+                        + catalog.languages()
+                        .size()
+                        + " occupations="
+                        + catalog.occupations()
+                        .size()
+                        + " roles="
+                        + catalog.roles()
+                        .size()
+        );
+
+        return 1;
+    }
+
+    private static int settings(
+            CommandContext<CommandSourceStack> context
+    ) {
+        WorldReferenceSettings settings =
+                WorldReferenceSettings.get();
+
+        success(
+                context,
+                "subcultures="
+                        + settings.subculturesEnabled()
+                        + " languageBarriers="
+                        + settings.languageBarriersEnabled()
+                        + " everyoneSpeaksCommonTongue="
+                        + settings.everyoneSpeaksCommonTongue()
+        );
+
+        return 1;
+    }
+
+    private static int location(
+            CommandContext<CommandSourceStack> context
+    ) {
+        String id =
+                StringArgumentType.getString(
+                        context,
+                        "id"
+                );
+
+        WorldReferenceCatalog catalog =
+                WorldReferenceCatalog.get();
+
+        var location =
+                catalog.location(
+                                id
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (location == null) {
+
+            failure(
+                    context,
+                    "Unknown location: "
+                            + id
+            );
+
+            return 0;
+        }
+
+        String hierarchy =
+                catalog.pathToRoot(
+                                location.id()
+                        )
+                        .stream()
+                        .map(
+                                entry ->
+                                        entry.displayName()
+                        )
+                        .collect(
+                                Collectors.joining(
+                                        " > "
+                                )
+                        );
+
+        success(
+                context,
+                location.displayName()
+                        + " | "
+                        + location.kind()
+                        + " | "
+                        + location.provenance()
+        );
+
+        success(
+                context,
+                "Hierarchy: "
+                        + hierarchy
+        );
+
+        catalog.resolvedMapLocation(
+                        location.id()
+                )
+                .ifPresent(
+                        position ->
+                                success(
+                                        context,
+                                        "Map position: "
+                                                + String.format(
+                                                "%.2f, %.2f",
+                                                position.masterMapCoordinate()
+                                                        .pixelX(),
+                                                position.masterMapCoordinate()
+                                                        .pixelY()
+                                        )
+                                                + " | Minecraft X/Z "
+                                                + String.format(
+                                                "%.1f / %.1f",
+                                                position.minecraftX(),
+                                                position.minecraftZ()
+                                        )
+                                )
+                );
+
+        if (location.hasBoundaryMask()) {
+
+            success(
+                    context,
+                    "Boundary mask: "
+                            + location.boundaryMaskId()
+            );
+        }
+
+        return 1;
+    }
+
+    private static int culture(
+            CommandContext<CommandSourceStack> context
+    ) {
+        String id =
+                StringArgumentType.getString(
+                        context,
+                        "id"
+                );
+
+        WorldReferenceCatalog catalog =
+                WorldReferenceCatalog.get();
+
+        var culture =
+                catalog.culture(
+                                id
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (culture == null) {
+
+            failure(
+                    context,
+                    "Unknown culture: "
+                            + id
+            );
+
+            return 0;
+        }
+
+        success(
+                context,
+                culture.displayName()
+                        + " | category="
+                        + culture.category()
+                        + " | effective="
+                        + catalog.effectiveCultureId(
+                        culture.id()
+                )
+        );
+
+        return 1;
+    }
+
+    private static int subcultures(
+            CommandContext<CommandSourceStack> context
+    ) {
+        boolean enabled =
+                BoolArgumentType.getBool(
+                        context,
+                        "enabled"
+                );
+
+        WorldReferenceSettings.get()
+                .setSubculturesEnabled(
+                        enabled
+                );
+
+        success(
+                context,
+                "Subcultures enabled: "
+                        + enabled
+        );
+
+        return 1;
+    }
+
+    private static int languages(
+            CommandContext<CommandSourceStack> context
+    ) {
+        boolean enabled =
+                BoolArgumentType.getBool(
+                        context,
+                        "enabled"
+                );
+
+        WorldReferenceSettings.get()
+                .setLanguageBarriersEnabled(
+                        enabled
+                );
+
+        success(
+                context,
+                "Language barriers enabled: "
+                        + enabled
+        );
+
+        return 1;
+    }
+
+    private static int commonTongue(
+            CommandContext<CommandSourceStack> context
+    ) {
+        boolean everyone =
+                BoolArgumentType.getBool(
+                        context,
+                        "everyone"
+                );
+
+        WorldReferenceSettings.get()
+                .setEveryoneSpeaksCommonTongue(
+                        everyone
+                );
+
+        success(
+                context,
+                "Everyone speaks Common Tongue: "
+                        + everyone
+        );
+
+        return 1;
+    }
+
+    private static void success(
+            CommandContext<CommandSourceStack> context,
+            String message
+    ) {
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        message
+                                ),
+                        false
+                );
+    }
+
+    private static void failure(
+            CommandContext<CommandSourceStack> context,
+            String message
+    ) {
+        context.getSource()
+                .sendFailure(
+                        Component.literal(
+                                message
+                        )
+                );
+    }
+}

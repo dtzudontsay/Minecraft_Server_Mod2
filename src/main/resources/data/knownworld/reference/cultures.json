@@ -1,0 +1,204 @@
+[
+  {
+    "id": "westerosi",
+    "displayName": "Westerosi",
+    "category": "CULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "northman",
+    "displayName": "Northman",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wildling",
+    "displayName": "Free Folk",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "valeman",
+    "displayName": "Valeman",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "riverlander",
+    "displayName": "Riverlander",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "ironborn",
+    "displayName": "Ironborn",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "westerman",
+    "displayName": "Westerman",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "crownlander",
+    "displayName": "Crownlander",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "reachman",
+    "displayName": "Reachman",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "stormlander",
+    "displayName": "Stormlander",
+    "parentId": "westerosi",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "dornish",
+    "displayName": "Dornish",
+    "parentId": "westerosi",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "stony_dornish",
+    "displayName": "Stony Dornish",
+    "parentId": "dornish",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sandy_dornish",
+    "displayName": "Sandy Dornish",
+    "parentId": "dornish",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "salty_dornish",
+    "displayName": "Salty Dornish",
+    "parentId": "dornish",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "valyrian",
+    "displayName": "Valyrian",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "braavosi",
+    "displayName": "Braavosi",
+    "parentId": "valyrian",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "pentoshi",
+    "displayName": "Pentoshi",
+    "parentId": "valyrian",
+    "category": "SUBCULTURE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "volantene",
+    "displayName": "Volantene",
+    "parentId": "valyrian",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lysene",
+    "displayName": "Lysene",
+    "parentId": "valyrian",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "tyroshi",
+    "displayName": "Tyroshi",
+    "parentId": "valyrian",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "myrish",
+    "displayName": "Myrish",
+    "parentId": "valyrian",
+    "category": "SUBCULTURE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "dothraki",
+    "displayName": "Dothraki",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ghiscari",
+    "displayName": "Ghiscari",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lhazareen",
+    "displayName": "Lhazareen",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "qartheen",
+    "displayName": "Qartheen",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ibbenese",
+    "displayName": "Ibbenese",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "summer_islander",
+    "displayName": "Summer Islander",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "naathi",
+    "displayName": "Naathi",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "yi_tish",
+    "displayName": "Yi Ti",
+    "category": "CULTURE",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Simulation label for inhabitants/culture of Yi Ti."
+  },
+  {
+    "id": "jogos_nhai",
+    "displayName": "Jogos Nhai",
+    "category": "CULTURE",
+    "provenance": "CANON"
+  }
+]

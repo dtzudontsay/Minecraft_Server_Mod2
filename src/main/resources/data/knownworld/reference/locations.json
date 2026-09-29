@@ -1,0 +1,539 @@
+[
+  {
+    "id": "known_world",
+    "displayName": "Known World",
+    "kind": "WORLD",
+    "provenance": "CANON",
+    "sourceNote": "Top-level world reference."
+  },
+
+  {
+    "id": "westeros",
+    "displayName": "Westeros",
+    "kind": "CONTINENT",
+    "parentId": "known_world",
+    "geographicFeatureId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "essos",
+    "displayName": "Essos",
+    "kind": "CONTINENT",
+    "parentId": "known_world",
+    "geographicFeatureId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sothoryos",
+    "displayName": "Sothoryos",
+    "kind": "CONTINENT",
+    "parentId": "known_world",
+    "geographicFeatureId": "sothoryos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ulthos",
+    "displayName": "Ulthos",
+    "kind": "CONTINENT",
+    "parentId": "known_world",
+    "geographicFeatureId": "ulthos",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "beyond_the_wall",
+    "displayName": "Beyond the Wall",
+    "kind": "REGION",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_north",
+    "displayName": "The North",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "vale",
+    "displayName": "The Vale of Arryn",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "riverlands",
+    "displayName": "The Riverlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "iron_islands",
+    "displayName": "The Iron Islands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "westerlands",
+    "displayName": "The Westerlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "crownlands",
+    "displayName": "The Crownlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_reach",
+    "displayName": "The Reach",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "stormlands",
+    "displayName": "The Stormlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "dorne",
+    "displayName": "Dorne",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "winterfell",
+    "displayName": "Winterfell",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "geographicFeatureId": "winterfell",
+    "provenance": "CANON"
+  },
+  {
+    "id": "winterfell_great_keep",
+    "displayName": "Great Keep",
+    "kind": "BUILDING",
+    "parentId": "winterfell",
+    "provenance": "CANON"
+  },
+  {
+    "id": "winterfell_godswood",
+    "displayName": "Winterfell Godswood",
+    "kind": "SITE",
+    "parentId": "winterfell",
+    "provenance": "CANON"
+  },
+  {
+    "id": "winterfell_crypts",
+    "displayName": "Crypts of Winterfell",
+    "kind": "SITE",
+    "parentId": "winterfell",
+    "provenance": "CANON"
+  },
+  {
+    "id": "winterfell_training_yard",
+    "displayName": "Winterfell Training Yard",
+    "kind": "SITE",
+    "parentId": "winterfell",
+    "provenance": "CANON"
+  },
+  {
+    "id": "winterfell_stables",
+    "displayName": "Winterfell Stables",
+    "kind": "BUILDING",
+    "parentId": "winterfell",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "castle_black",
+    "displayName": "Castle Black",
+    "kind": "SETTLEMENT",
+    "parentId": "beyond_the_wall",
+    "geographicFeatureId": "castle_black",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "kings_landing",
+    "displayName": "King's Landing",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "geographicFeatureId": "kings_landing",
+    "provenance": "CANON"
+  },
+  {
+    "id": "red_keep",
+    "displayName": "Red Keep",
+    "kind": "BUILDING",
+    "parentId": "kings_landing",
+    "provenance": "CANON"
+  },
+  {
+    "id": "flea_bottom",
+    "displayName": "Flea Bottom",
+    "kind": "DISTRICT",
+    "parentId": "kings_landing",
+    "provenance": "CANON"
+  },
+  {
+    "id": "great_sept_of_baelor",
+    "displayName": "Great Sept of Baelor",
+    "kind": "BUILDING",
+    "parentId": "kings_landing",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "dragonstone",
+    "displayName": "Dragonstone",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "geographicFeatureId": "dragonstone",
+    "provenance": "CANON"
+  },
+  {
+    "id": "riverrun",
+    "displayName": "Riverrun",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "geographicFeatureId": "riverrun",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_eyrie",
+    "displayName": "The Eyrie",
+    "kind": "SETTLEMENT",
+    "parentId": "vale",
+    "geographicFeatureId": "the_eyrie",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pyke",
+    "displayName": "Pyke",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "geographicFeatureId": "pyke",
+    "provenance": "CANON"
+  },
+  {
+    "id": "casterly_rock",
+    "displayName": "Casterly Rock",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "geographicFeatureId": "casterly_rock",
+    "provenance": "CANON"
+  },
+  {
+    "id": "highgarden",
+    "displayName": "Highgarden",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "geographicFeatureId": "highgarden",
+    "provenance": "CANON"
+  },
+  {
+    "id": "oldtown",
+    "displayName": "Oldtown",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "geographicFeatureId": "oldtown",
+    "provenance": "CANON"
+  },
+  {
+    "id": "storms_end",
+    "displayName": "Storm's End",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "geographicFeatureId": "storms_end",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sunspear",
+    "displayName": "Sunspear",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "geographicFeatureId": "sunspear",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "free_cities",
+    "displayName": "Free Cities",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Convenient simulation grouping for the western Free Cities."
+  },
+  {
+    "id": "braavos",
+    "displayName": "Braavos",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "braavos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pentos",
+    "displayName": "Pentos",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "pentos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lorath",
+    "displayName": "Lorath",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "lorath",
+    "provenance": "CANON"
+  },
+  {
+    "id": "norvos",
+    "displayName": "Norvos",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "norvos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "qohor",
+    "displayName": "Qohor",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "qohor",
+    "provenance": "CANON"
+  },
+  {
+    "id": "myr",
+    "displayName": "Myr",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "myr",
+    "provenance": "CANON"
+  },
+  {
+    "id": "tyrosh",
+    "displayName": "Tyrosh",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "tyrosh",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lys",
+    "displayName": "Lys",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "lys",
+    "provenance": "CANON"
+  },
+  {
+    "id": "volantis",
+    "displayName": "Volantis",
+    "kind": "SETTLEMENT",
+    "parentId": "free_cities",
+    "geographicFeatureId": "volantis",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "dothraki_sea_region",
+    "displayName": "Dothraki Sea",
+    "kind": "REGION",
+    "parentId": "essos",
+    "geographicFeatureId": "the_dothraki_sea",
+    "provenance": "CANON"
+  },
+  {
+    "id": "vaes_dothrak",
+    "displayName": "Vaes Dothrak",
+    "kind": "SETTLEMENT",
+    "parentId": "dothraki_sea_region",
+    "geographicFeatureId": "vaes_dothrak",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "lhazar",
+    "displayName": "Lhazar",
+    "kind": "REGION",
+    "parentId": "essos",
+    "geographicFeatureId": "lhazar",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "ghiscar",
+    "displayName": "Ghiscar",
+    "kind": "REGION",
+    "parentId": "essos",
+    "geographicFeatureId": "ghiscar",
+    "provenance": "CANON"
+  },
+  {
+    "id": "slavers_bay_region",
+    "displayName": "Slaver's Bay",
+    "kind": "SUBREGION",
+    "parentId": "ghiscar",
+    "geographicFeatureId": "slavers_bay",
+    "provenance": "CANON"
+  },
+  {
+    "id": "astapor",
+    "displayName": "Astapor",
+    "kind": "SETTLEMENT",
+    "parentId": "slavers_bay_region",
+    "geographicFeatureId": "astapor",
+    "provenance": "CANON"
+  },
+  {
+    "id": "yunkai",
+    "displayName": "Yunkai",
+    "kind": "SETTLEMENT",
+    "parentId": "slavers_bay_region",
+    "geographicFeatureId": "yunkai",
+    "provenance": "CANON"
+  },
+  {
+    "id": "meereen",
+    "displayName": "Meereen",
+    "kind": "SETTLEMENT",
+    "parentId": "slavers_bay_region",
+    "geographicFeatureId": "meereen",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "red_waste_region",
+    "displayName": "The Red Waste",
+    "kind": "REGION",
+    "parentId": "essos",
+    "geographicFeatureId": "the_red_waste",
+    "provenance": "CANON"
+  },
+  {
+    "id": "qarth_region",
+    "displayName": "Qarth and the Qaathi Lands",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "qarth",
+    "displayName": "Qarth",
+    "kind": "SETTLEMENT",
+    "parentId": "qarth_region",
+    "geographicFeatureId": "qarth",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "ib_region",
+    "displayName": "Ib",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "yi_ti",
+    "displayName": "Yi Ti",
+    "kind": "REALM",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "leng",
+    "displayName": "Leng",
+    "kind": "REALM",
+    "parentId": "essos",
+    "geographicFeatureId": "leng",
+    "provenance": "CANON"
+  },
+  {
+    "id": "jogos_nhai",
+    "displayName": "Jogos Nhai",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mossovy",
+    "displayName": "Mossovy",
+    "kind": "REGION",
+    "parentId": "essos",
+    "geographicFeatureId": "mossovy",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "shadow_lands",
+    "displayName": "Shadow Lands",
+    "kind": "REGION",
+    "parentId": "essos",
+    "geographicFeatureId": "the_shadow",
+    "provenance": "CANON"
+  },
+  {
+    "id": "asshai",
+    "displayName": "Asshai",
+    "kind": "SETTLEMENT",
+    "parentId": "shadow_lands",
+    "geographicFeatureId": "asshai",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "summer_isles",
+    "displayName": "Summer Isles",
+    "kind": "REGION",
+    "parentId": "known_world",
+    "geographicFeatureId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "naath",
+    "displayName": "Naath",
+    "kind": "REGION",
+    "parentId": "known_world",
+    "geographicFeatureId": "naath",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "basilisk_isles",
+    "displayName": "Basilisk Isles",
+    "kind": "REGION",
+    "parentId": "sothoryos",
+    "geographicFeatureId": "basilisk_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "gogossos",
+    "displayName": "Gogossos",
+    "kind": "SETTLEMENT",
+    "parentId": "basilisk_isles",
+    "geographicFeatureId": "gogossos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "yeen",
+    "displayName": "Yeen",
+    "kind": "SETTLEMENT",
+    "parentId": "sothoryos",
+    "geographicFeatureId": "yeen",
+    "provenance": "CANON"
+  }
+]

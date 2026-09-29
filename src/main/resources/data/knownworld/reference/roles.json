@@ -1,0 +1,151 @@
+[
+  {
+    "id": "heir",
+    "displayName": "Heir",
+    "category": "SUCCESSION_STATUS",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "ward",
+    "displayName": "Ward",
+    "category": "LEGAL_STATUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "hostage",
+    "displayName": "Hostage",
+    "category": "LEGAL_STATUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bastard",
+    "displayName": "Bastard",
+    "category": "LEGAL_STATUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "legitimized_bastard",
+    "displayName": "Legitimized Bastard",
+    "category": "LEGAL_STATUS",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "sworn_sword",
+    "displayName": "Sworn Sword",
+    "category": "SERVICE_RELATION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sworn_brother",
+    "displayName": "Sworn Brother",
+    "category": "SOCIAL_RELATION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "squire",
+    "displayName": "Squire",
+    "category": "TRAINING_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mentor",
+    "displayName": "Mentor",
+    "category": "SOCIAL_RELATION",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "guardian",
+    "displayName": "Guardian",
+    "category": "LEGAL_RELATION",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "lover",
+    "displayName": "Lover",
+    "category": "ROMANTIC_RELATION",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "betrothed",
+    "displayName": "Betrothed",
+    "category": "ROMANTIC_RELATION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "spouse",
+    "displayName": "Spouse",
+    "category": "KINSHIP_RELATION",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "liege",
+    "displayName": "Liege",
+    "category": "FEUDAL_RELATION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "vassal",
+    "displayName": "Vassal",
+    "category": "FEUDAL_RELATION",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "kingsguard",
+    "displayName": "Kingsguard",
+    "category": "MILITARY_SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "nights_watch",
+    "displayName": "Brother of the Night's Watch",
+    "category": "MILITARY_SERVICE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "small_council_member",
+    "displayName": "Small Council Member",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "hand_of_the_king",
+    "displayName": "Hand of the King",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "master_of_coin",
+    "displayName": "Master of Coin",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "master_of_laws",
+    "displayName": "Master of Laws",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "master_of_ships",
+    "displayName": "Master of Ships",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "master_of_whisperers",
+    "displayName": "Master of Whisperers",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "grand_maester",
+    "displayName": "Grand Maester",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  }
+]

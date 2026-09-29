@@ -1,0 +1,99 @@
+[
+  {
+    "id": "common_tongue",
+    "displayName": "Common Tongue",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "old_tongue",
+    "displayName": "Old Tongue",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "high_valyrian",
+    "displayName": "High Valyrian",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "low_valyrian",
+    "displayName": "Low Valyrian",
+    "parentId": "high_valyrian",
+    "category": "LANGUAGE_FAMILY",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "braavosi_valyrian",
+    "displayName": "Braavosi Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "pentoshi_valyrian",
+    "displayName": "Pentoshi Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "volantene_valyrian",
+    "displayName": "Volantene Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "dothraki",
+    "displayName": "Dothraki",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lhazareen",
+    "displayName": "Lhazareen",
+    "category": "LANGUAGE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "ghiscari",
+    "displayName": "Ghiscari",
+    "category": "LANGUAGE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "qartheen",
+    "displayName": "Qartheen",
+    "category": "LANGUAGE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "ibbenese",
+    "displayName": "Ibbenese",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "summer_tongue",
+    "displayName": "Summer Tongue",
+    "category": "LANGUAGE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "yi_tish",
+    "displayName": "Language of Yi Ti",
+    "category": "LANGUAGE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "Simulation identifier pending a more precise canonical designation."
+  },
+  {
+    "id": "jogos_nhai",
+    "displayName": "Language of the Jogos Nhai",
+    "category": "LANGUAGE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "Simulation identifier pending a more precise canonical designation."
+  }
+]

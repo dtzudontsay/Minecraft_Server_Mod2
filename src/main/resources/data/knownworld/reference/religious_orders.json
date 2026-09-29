@@ -1,0 +1,58 @@
+[
+  {
+    "id": "faith_septon",
+    "displayName": "Septons",
+    "parentId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "faith_septa",
+    "displayName": "Septas",
+    "parentId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "silent_sisters",
+    "displayName": "Silent Sisters",
+    "parentId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "poor_fellows",
+    "displayName": "Poor Fellows",
+    "parentId": "faith_of_the_seven",
+    "category": "MILITANT_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "warriors_sons",
+    "displayName": "Warrior's Sons",
+    "parentId": "faith_of_the_seven",
+    "category": "MILITANT_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "red_priests",
+    "displayName": "Red Priests",
+    "parentId": "rhllor",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "faceless_men",
+    "displayName": "Faceless Men",
+    "parentId": "many_faced_god",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "drowned_men",
+    "displayName": "Drowned Men",
+    "parentId": "drowned_god",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  }
+]

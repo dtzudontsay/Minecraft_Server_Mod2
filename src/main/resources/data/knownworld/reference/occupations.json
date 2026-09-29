@@ -1,0 +1,184 @@
+[
+  {
+    "id": "ruler",
+    "displayName": "Ruler",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "administrator",
+    "displayName": "Administrator",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "courtier",
+    "displayName": "Courtier",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "soldier",
+    "displayName": "Soldier",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "guard",
+    "displayName": "Guard",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "knight",
+    "displayName": "Knight",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "archer",
+    "displayName": "Archer",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sailor",
+    "displayName": "Sailor",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "captain",
+    "displayName": "Captain",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "maester",
+    "displayName": "Maester",
+    "category": "SCHOLARLY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "scholar",
+    "displayName": "Scholar",
+    "category": "SCHOLARLY",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "healer",
+    "displayName": "Healer",
+    "category": "SCHOLARLY",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "septon",
+    "displayName": "Septon",
+    "category": "RELIGIOUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "septa",
+    "displayName": "Septa",
+    "category": "RELIGIOUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "red_priest",
+    "displayName": "Red Priest",
+    "category": "RELIGIOUS",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "merchant",
+    "displayName": "Merchant",
+    "category": "TRADE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "innkeeper",
+    "displayName": "Innkeeper",
+    "category": "TRADE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "blacksmith",
+    "displayName": "Blacksmith",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "armorer",
+    "displayName": "Armorer",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "carpenter",
+    "displayName": "Carpenter",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mason",
+    "displayName": "Mason",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "farmer",
+    "displayName": "Farmer",
+    "category": "AGRICULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "herder",
+    "displayName": "Herder",
+    "category": "AGRICULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "hunter",
+    "displayName": "Hunter",
+    "category": "AGRICULTURE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "servant",
+    "displayName": "Servant",
+    "category": "SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "cook",
+    "displayName": "Cook",
+    "category": "SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "stablehand",
+    "displayName": "Stablehand",
+    "category": "SERVICE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "smuggler",
+    "displayName": "Smuggler",
+    "category": "CRIMINAL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bandit",
+    "displayName": "Bandit",
+    "category": "CRIMINAL",
+    "provenance": "CANON"
+  }
+]
