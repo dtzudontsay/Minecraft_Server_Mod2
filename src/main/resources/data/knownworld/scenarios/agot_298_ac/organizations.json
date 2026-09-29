@@ -1,0 +1,20 @@
+[
+  {
+    "id": "stark_household",
+    "name": "Stark Household",
+    "type": "HOUSEHOLD",
+    "seatSettlement": "winterfell"
+  },
+  {
+    "id": "house_stark",
+    "name": "House Stark",
+    "type": "NOBLE_HOUSE",
+    "seatSettlement": "winterfell"
+  },
+  {
+    "id": "the_north",
+    "name": "The North",
+    "type": "FACTION",
+    "seatSettlement": "winterfell"
+  }
+]

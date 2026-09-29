@@ -1,6 +1,8 @@
 package dev.dtzudontsay.knownworld.simulation;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredIdRegistry;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioBootstrapper;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEventManager;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.action.NpcActionProcessor;
@@ -14,6 +16,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationServi
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
+import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.TitlePersistence;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
@@ -52,6 +55,8 @@ public final class NpcSimulation {
 
     private final AuthorityService authorityService;
 
+    private final AuthoredIdRegistry authoredIdRegistry;
+
     private final NpcRelationshipManager relationshipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
@@ -79,6 +84,8 @@ public final class NpcSimulation {
     private final NpcPersistence persistence;
 
     private final TitlePersistence titlePersistence;
+
+    private final AuthoredIdPersistence authoredIdPersistence;
 
     private final NpcActivationManager activationManager;
 
@@ -121,6 +128,9 @@ public final class NpcSimulation {
                         organizationManager,
                         titleManager
                 );
+
+        this.authoredIdRegistry =
+                new AuthoredIdRegistry();
 
         this.relationshipManager =
                 new NpcRelationshipManager(
@@ -218,6 +228,11 @@ public final class NpcSimulation {
                 new TitlePersistence(
                         savePath
                 );
+
+        this.authoredIdPersistence =
+                new AuthoredIdPersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
@@ -241,14 +256,14 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at tick {} with {} NPCs, {} settlements, {} organizations, {} affiliations, {} titles and {} active title assignments.",
+                            "NPC simulation started at tick {} with {} NPCs, {} settlements, {} organizations, {} affiliations, {} titles and scenario '{}'.",
                             simulation.clock.tick(),
                             simulation.registry.size(),
                             simulation.settlementManager.size(),
                             simulation.organizationManager.size(),
                             simulation.affiliationManager.size(),
                             simulation.titleManager.definitionCount(),
-                            simulation.titleManager.activeAssignmentCount()
+                            simulation.authoredIdRegistry.scenarioId()
                     );
                 }
         );
@@ -360,6 +375,10 @@ public final class NpcSimulation {
         return authorityService;
     }
 
+    public AuthoredIdRegistry authoredIds() {
+        return authoredIdRegistry;
+    }
+
     public NpcRelationshipManager relationships() {
         return relationshipManager;
     }
@@ -462,6 +481,10 @@ public final class NpcSimulation {
                     titleManager
             );
 
+            authoredIdPersistence.save(
+                    authoredIdRegistry
+            );
+
         } catch (IOException exception) {
 
             KnownWorld.LOGGER.error(
@@ -475,10 +498,6 @@ public final class NpcSimulation {
 
         try {
 
-            /*
-             * Base/social data must load before titles because title
-             * definitions may reference settlements and organizations.
-             */
             persistence.loadInto(
                     clock,
                     registry,
@@ -498,12 +517,54 @@ public final class NpcSimulation {
                     titleManager
             );
 
+            authoredIdPersistence.loadInto(
+                    authoredIdRegistry
+            );
+
+            if (shouldBootstrapScenario()) {
+
+                KnownWorld.LOGGER.info(
+                        "No existing NPC simulation state detected. Bootstrapping default authored scenario."
+                );
+
+                ScenarioBootstrapper.bootstrapDefault(
+                        this,
+                        authoredIdRegistry
+                );
+
+                save();
+
+            } else if (
+                    authoredIdRegistry.scenarioId()
+                            == null
+            ) {
+
+                KnownWorld.LOGGER.warn(
+                        "Existing NPC simulation data was found without authored scenario metadata. Automatic scenario bootstrap was skipped."
+                );
+            }
+
         } catch (IOException exception) {
 
             KnownWorld.LOGGER.error(
                     "Failed to load NPC simulation.",
                     exception
             );
+        } catch (RuntimeException exception) {
+
+            KnownWorld.LOGGER.error(
+                    "Failed to bootstrap authored NPC scenario.",
+                    exception
+            );
         }
+    }
+
+    private boolean shouldBootstrapScenario() {
+
+        return authoredIdRegistry.isEmpty()
+                && registry.size() == 0
+                && settlementManager.size() == 0
+                && organizationManager.size() == 0
+                && titleManager.definitionCount() == 0;
     }
 }

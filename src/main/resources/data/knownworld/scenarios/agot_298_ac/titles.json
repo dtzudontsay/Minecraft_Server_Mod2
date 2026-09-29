@@ -1,0 +1,27 @@
+[
+  {
+    "id": "head_house_stark",
+    "name": "Head of House Stark",
+    "type": "NOBLE",
+    "authority": 80,
+    "exclusive": true,
+    "organization": "house_stark",
+    "settlement": "winterfell"
+  },
+  {
+    "id": "lord_of_winterfell",
+    "name": "Lord of Winterfell",
+    "type": "NOBLE",
+    "authority": 70,
+    "exclusive": true,
+    "settlement": "winterfell"
+  },
+  {
+    "id": "warden_of_the_north",
+    "name": "Warden of the North",
+    "type": "OFFICE",
+    "authority": 90,
+    "exclusive": true,
+    "organization": "the_north"
+  }
+]

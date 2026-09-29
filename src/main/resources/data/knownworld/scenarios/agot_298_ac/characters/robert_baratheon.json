@@ -1,0 +1,54 @@
+{
+  "id": "robert_baratheon",
+
+  "identity": {
+    "givenName": "Robert",
+    "familyName": "Baratheon",
+    "sex": "MALE",
+    "birthYear": 262
+  },
+
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
+  },
+
+  "personality": {
+    "courage": 0.90,
+    "ambition": 0.20,
+    "compassion": 0.10,
+    "honor": 0.10,
+    "patience": -0.60,
+    "sociability": 0.85
+  },
+
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.80,
+      "trust": 0.80,
+      "respect": 0.80,
+      "fear": 0.00,
+      "familiarity": 0.95
+    }
+  ],
+
+  "beliefs": [
+    {
+      "factKey": "person.eddard_stark.identity",
+      "value": "eddard_stark",
+      "confidence": 1.0
+    }
+  ],
+
+  "memories": [
+    {
+      "type": "PERSONAL_EXPERIENCE",
+      "summary": "Eddard Stark fought beside me during the rebellion.",
+      "importance": 0.90,
+      "relatedNpc": "eddard_stark"
+    }
+  ]
+}

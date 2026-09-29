@@ -1,5 +1,6 @@
 package dev.dtzudontsay.knownworld;
 
+import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
@@ -84,6 +85,7 @@ public final class KnownWorld implements ModInitializer {
         NpcRoutineDebugCommand.register();
         SocialDebugCommand.register();
         TitleDebugCommand.register();
+        BootstrapDebugCommand.register();
         WorldEventDebugCommand.register();
 
         LOGGER.info(

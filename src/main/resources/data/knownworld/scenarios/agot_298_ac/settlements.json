@@ -1,0 +1,13 @@
+[
+  {
+    "id": "winterfell",
+    "name": "Winterfell",
+    "type": "CASTLE",
+    "position": {
+      "dimension": "minecraft:overworld",
+      "x": 3.5,
+      "y": 106.0,
+      "z": 3.5
+    }
+  }
+]
