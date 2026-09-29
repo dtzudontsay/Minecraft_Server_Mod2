@@ -58,35 +58,31 @@ OUTPUT_LEGEND = (
 )
 
 
-LOGICAL_MASTER_WIDTH =
-        2048.0
-
-LOGICAL_MASTER_HEIGHT =
-        1357.0
+LOGICAL_MASTER_WIDTH = 2048.0
+LOGICAL_MASTER_HEIGHT = 1357.0
 
 
 def find_master_art(
     expected_size
 ):
-
     candidates = []
+
+    if not MASTER_DIR.exists():
+        return None
 
     for path in MASTER_DIR.iterdir():
 
-        if (
-            not path.is_file()
-            or
-            path.suffix.lower()
-            not in (
-                ".png",
-                ".jpg",
-                ".jpeg",
-            )
+        if not path.is_file():
+            continue
+
+        if path.suffix.lower() not in (
+            ".png",
+            ".jpg",
+            ".jpeg",
         ):
             continue
 
         try:
-
             with Image.open(
                 path
             ) as image:
@@ -95,8 +91,7 @@ def find_master_art(
 
                     score = (
                         0
-                        if "master"
-                        in path.name.lower()
+                        if "master" in path.name.lower()
                         else 1
                     )
 
@@ -111,33 +106,26 @@ def find_master_art(
             pass
 
     if not candidates:
-
         return None
 
     candidates.sort(
-        key=lambda value:
-        (
+        key=lambda value: (
             value[0],
             value[1].name,
         )
     )
 
-    return candidates[
-        0
-    ][1]
+    return candidates[0][1]
 
 
 def logical_to_actual_x(
     value,
     width
 ):
-
     return (
         value
-        /
-        LOGICAL_MASTER_WIDTH
-        *
-        width
+        / LOGICAL_MASTER_WIDTH
+        * width
     )
 
 
@@ -145,13 +133,10 @@ def logical_to_actual_y(
     value,
     height
 ):
-
     return (
         value
-        /
-        LOGICAL_MASTER_HEIGHT
-        *
-        height
+        / LOGICAL_MASTER_HEIGHT
+        * height
     )
 
 
@@ -159,13 +144,10 @@ def actual_to_logical_x(
     value,
     width
 ):
-
     return (
         value
-        /
-        width
-        *
-        LOGICAL_MASTER_WIDTH
+        / width
+        * LOGICAL_MASTER_WIDTH
     )
 
 
@@ -173,20 +155,16 @@ def actual_to_logical_y(
     value,
     height
 ):
-
     return (
         value
-        /
-        height
-        *
-        LOGICAL_MASTER_HEIGHT
+        / height
+        * LOGICAL_MASTER_HEIGHT
     )
 
 
 def load_zone_codes(
     zone_id
 ):
-
     path = (
         INPUT_DIR
         / f"{zone_id}_biome_override.png"
@@ -195,30 +173,34 @@ def load_zone_codes(
     if not path.exists():
         return None
 
-    image = Image.open(
+    with Image.open(
         path
-    ).convert(
-        "L"
-    )
-
-    zone = ZONES[
-        zone_id
-    ]
-
-    if image.size != (
-        zone.width,
-        zone.height,
-    ):
-
-        raise ValueError(
-            f"{zone_id.upper()} override "
-            f"resolution mismatch."
+    ) as image:
+        converted = image.convert(
+            "L"
         )
 
-    return np.asarray(
-        image,
-        dtype=np.uint8,
-    )
+        zone = ZONES[
+            zone_id
+        ]
+
+        if converted.size != (
+            zone.width,
+            zone.height,
+        ):
+            raise ValueError(
+                f"{zone_id.upper()} override "
+                f"resolution mismatch.\n"
+                f"Expected: "
+                f"{zone.width} x {zone.height}\n"
+                f"Actual:   "
+                f"{converted.width} x {converted.height}"
+            )
+
+        return np.asarray(
+            converted,
+            dtype=np.uint8,
+        ).copy()
 
 
 def master_bounds(
@@ -226,7 +208,6 @@ def master_bounds(
     master_width,
     master_height
 ):
-
     (
         logical_min_x,
         logical_min_y,
@@ -234,8 +215,7 @@ def master_bounds(
         logical_max_y,
     ) = zone.master_bounds()
 
-    padding =
-            4
+    padding = 4
 
     min_x = max(
         0,
@@ -247,8 +227,7 @@ def master_bounds(
                 )
             )
         )
-        -
-        padding,
+        - padding,
     )
 
     min_y = max(
@@ -261,8 +240,7 @@ def master_bounds(
                 )
             )
         )
-        -
-        padding,
+        - padding,
     )
 
     max_x = min(
@@ -275,8 +253,7 @@ def master_bounds(
                 )
             )
         )
-        +
-        padding,
+        + padding,
     )
 
     max_y = min(
@@ -289,8 +266,7 @@ def master_bounds(
                 )
             )
         )
-        +
-        padding,
+        + padding,
     )
 
     return (
@@ -309,7 +285,6 @@ def merge_zone(
     master_width,
     master_height,
 ):
-
     zone = ZONES[
         zone_id
     ]
@@ -327,13 +302,17 @@ def merge_zone(
 
     determinant = (
         zone.a
-        *
-        zone.e
-        -
-        zone.b
-        *
-        zone.d
+        * zone.e
+        - zone.b
+        * zone.d
     )
+
+    if abs(
+        determinant
+    ) < 1e-12:
+        raise ValueError(
+            f"{zone_id.upper()} transform is not invertible."
+        )
 
     actual_x = np.arange(
         min_x,
@@ -357,17 +336,13 @@ def merge_zone(
         )
     )
 
-    inserted =
-            0
-
-    conflicts =
-            0
+    inserted = 0
+    conflicts = 0
 
     for actual_y in range(
         min_y,
         max_y,
     ):
-
         logical_y = actual_to_logical_y(
             actual_y + 0.5,
             master_height,
@@ -375,34 +350,26 @@ def merge_zone(
 
         px = (
             logical_x
-            -
-            zone.c
+            - zone.c
         )
 
         py = (
             logical_y
-            -
-            zone.f
+            - zone.f
         )
 
         regional_x = (
             zone.e
-            *
-            px
-            -
-            zone.b
-            *
-            py
+            * px
+            - zone.b
+            * py
         ) / determinant
 
         regional_y = (
             -zone.d
-            *
-            px
-            +
-            zone.a
-            *
-            py
+            * px
+            + zone.a
+            * py
         ) / determinant
 
         sample_x = np.rint(
@@ -476,8 +443,7 @@ def merge_zone(
 
         target_x = (
             min_x
-            +
-            positions
+            + positions
         )
 
         edge_distance = np.minimum.reduce(
@@ -497,12 +463,9 @@ def merge_zone(
 
         priority = np.clip(
             edge_distance
-            /
-            normalization
-            *
-            65534.0
-            +
-            1.0,
+            / normalization
+            * 65534.0
+            + 1.0,
             1.0,
             65535.0,
         ).astype(
@@ -574,7 +537,6 @@ def merge_zone(
 def create_preview(
     codes
 ):
-
     preview = np.zeros(
         (
             codes.shape[0],
@@ -597,9 +559,8 @@ def create_preview(
 def create_overlay(
     artwork,
     preview,
-    codes
+    codes,
 ):
-
     source = np.asarray(
         artwork.convert(
             "RGB"
@@ -621,22 +582,18 @@ def create_overlay(
         ].astype(
             np.float32
         )
-        *
-        0.62
+        * 0.62
     )
 
     result = (
         source
-        *
-        (
+        * (
             1.0
-            -
-            alpha
+            - alpha
         )
         +
         target
-        *
-        alpha
+        * alpha
     )
 
     return Image.fromarray(
@@ -652,7 +609,6 @@ def create_overlay(
 
 
 def write_legend():
-
     data = {
         "formatVersion": 1,
         "zeroMeans": "NO_OVERRIDE",
@@ -668,8 +624,7 @@ def write_legend():
                     f"{biome.color[2]:02X}"
                 ),
             }
-            for biome
-            in BIOME_OVERRIDES
+            for biome in BIOME_OVERRIDES
         ],
     }
 
@@ -678,7 +633,6 @@ def write_legend():
         "w",
         encoding="utf-8",
     ) as file:
-
         json.dump(
             data,
             file,
@@ -687,16 +641,22 @@ def write_legend():
 
 
 def main():
-
     print(
         "Known World master biome override merger"
     )
 
-    land_image = Image.open(
+    if not LAND_MASK_PATH.exists():
+        raise FileNotFoundError(
+            f"Missing canonical land mask: "
+            f"{LAND_MASK_PATH}"
+        )
+
+    with Image.open(
         LAND_MASK_PATH
-    ).convert(
-        "L"
-    )
+    ) as image:
+        land_image = image.convert(
+            "L"
+        )
 
     master_width, master_height = (
         land_image.size
@@ -726,12 +686,12 @@ def main():
         dtype=np.uint16,
     )
 
-    loaded =
-            0
+    loaded = 0
 
     for zone_id in ZONE_ORDER:
 
         print()
+
         print(
             f"{zone_id.upper()} - "
             f"{ZONES[zone_id].name}"
@@ -818,11 +778,12 @@ def main():
 
     if master_art_path is not None:
 
-        master_art = Image.open(
+        with Image.open(
             master_art_path
-        ).convert(
-            "RGB"
-        )
+        ) as image:
+            master_art = image.convert(
+                "RGB"
+            )
 
         overlay = create_overlay(
             master_art,
@@ -835,7 +796,8 @@ def main():
         )
 
         print(
-            f"Master artwork: {master_art_path}"
+            f"Master artwork: "
+            f"{master_art_path}"
         )
 
     else:
@@ -848,6 +810,7 @@ def main():
     write_legend()
 
     print()
+
     print(
         "=" * 70
     )
@@ -856,8 +819,11 @@ def main():
         "BIOME OVERRIDE MERGE COMPLETE"
     )
 
+    print()
+
     print(
-        f"Regional masks loaded: {loaded}"
+        f"Regional masks loaded: "
+        f"{loaded}"
     )
 
     print(
@@ -871,6 +837,7 @@ def main():
     )
 
     print()
+
     print(
         "Generated:"
     )
@@ -890,6 +857,11 @@ def main():
     print(
         OUTPUT_LEGEND
     )
+
+    if master_art_path is not None:
+        print(
+            OUTPUT_OVERLAY
+        )
 
 
 if __name__ == "__main__":

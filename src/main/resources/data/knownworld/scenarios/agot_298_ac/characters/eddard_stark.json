@@ -64,7 +64,7 @@
       "warmth": 0.15,
       "directness": 0.65,
       "preferredAddress": "Lord Stark",
-      "guidance": "Speak plainly and with restraint. Avoid boasting. Place duty, family and honor above personal ambition. Be slow to make threats or promises, but take them seriously once made."
+      "guidance": "Speak plainly and with restraint. Avoid boasting. Place duty, family and honor above personal ambition."
     }
   },
 
@@ -91,12 +91,28 @@
 
   "relationships": [
     {
+      "target": "catelyn_stark",
+      "affection": 0.78,
+      "trust": 0.90,
+      "respect": 0.88,
+      "fear": 0.00,
+      "familiarity": 0.98
+    },
+    {
       "target": "robert_baratheon",
       "affection": 0.65,
       "trust": 0.75,
       "respect": 0.80,
       "fear": 0.05,
       "familiarity": 0.95
+    },
+    {
+      "target": "jon_snow",
+      "affection": 0.80,
+      "trust": 0.72,
+      "respect": 0.65,
+      "fear": 0.00,
+      "familiarity": 0.96
     }
   ],
 

@@ -19,12 +19,40 @@
     "successionLaw": "MALE_PREFERENCE_PRIMOGENITURE"
   },
   {
+    "id": "lady_of_winterfell",
+    "name": "Lady of Winterfell",
+    "type": "NOBLE",
+    "authority": 60,
+    "exclusive": true,
+    "settlement": "winterfell",
+    "successionLaw": "NONE"
+  },
+  {
     "id": "warden_of_the_north",
     "name": "Warden of the North",
     "type": "OFFICE",
     "authority": 90,
     "exclusive": true,
     "organization": "the_north",
+    "successionLaw": "NONE"
+  },
+
+  {
+    "id": "king_of_the_seven_kingdoms",
+    "name": "King of the Seven Kingdoms",
+    "type": "ROYAL",
+    "authority": 100,
+    "exclusive": true,
+    "organization": "iron_throne",
+    "successionLaw": "NONE"
+  },
+  {
+    "id": "queen_of_the_seven_kingdoms",
+    "name": "Queen of the Seven Kingdoms",
+    "type": "ROYAL",
+    "authority": 90,
+    "exclusive": true,
+    "organization": "royal_household",
     "successionLaw": "NONE"
   }
 ]

@@ -3,8 +3,23 @@
   "settlements": "settlements.json",
   "organizations": "organizations.json",
   "titles": "titles.json",
+  "parentages": "parentages.json",
+  "marriages": "marriages.json",
+
   "characters": [
     "characters/eddard_stark.json",
-    "characters/robert_baratheon.json"
+    "characters/catelyn_stark.json",
+    "characters/robb_stark.json",
+    "characters/sansa_stark.json",
+    "characters/arya_stark.json",
+    "characters/bran_stark.json",
+    "characters/rickon_stark.json",
+    "characters/jon_snow.json",
+    "characters/theon_greyjoy.json",
+
+    "characters/robert_baratheon.json",
+    "characters/cersei_lannister.json",
+    "characters/jaime_lannister.json",
+    "characters/tyrion_lannister.json"
   ]
 }

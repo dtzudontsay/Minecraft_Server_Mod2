@@ -16,5 +16,37 @@
     "name": "The North",
     "type": "FACTION",
     "seatSettlement": "winterfell"
+  },
+
+  {
+    "id": "house_tully",
+    "name": "House Tully",
+    "type": "NOBLE_HOUSE"
+  },
+  {
+    "id": "house_baratheon",
+    "name": "House Baratheon",
+    "type": "NOBLE_HOUSE"
+  },
+  {
+    "id": "house_lannister",
+    "name": "House Lannister",
+    "type": "NOBLE_HOUSE"
+  },
+  {
+    "id": "house_greyjoy",
+    "name": "House Greyjoy",
+    "type": "NOBLE_HOUSE"
+  },
+
+  {
+    "id": "royal_household",
+    "name": "Royal Household",
+    "type": "HOUSEHOLD"
+  },
+  {
+    "id": "iron_throne",
+    "name": "The Iron Throne",
+    "type": "FACTION"
   }
 ]

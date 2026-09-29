@@ -8,6 +8,7 @@ import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
+import dev.dtzudontsay.knownworld.simulation.npc.family.DynastyInheritanceRule;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
@@ -132,6 +133,32 @@ public final class ScenarioBootstrapper {
                         TitleData[].class
                 );
 
+        List<ParentageData> parentages =
+                hasText(
+                        scenario.parentages
+                )
+                        ? readJsonList(
+                        resolve(
+                                base,
+                                scenario.parentages
+                        ),
+                        ParentageData[].class
+                )
+                        : List.of();
+
+        List<MarriageData> marriages =
+                hasText(
+                        scenario.marriages
+                )
+                        ? readJsonList(
+                        resolve(
+                                base,
+                                scenario.marriages
+                        ),
+                        MarriageData[].class
+                )
+                        : List.of();
+
         List<CharacterData> characters =
                 new ArrayList<>();
 
@@ -170,17 +197,31 @@ public final class ScenarioBootstrapper {
                 characters
         );
 
-        applyCharacterState(
+        applyBasicCharacterState(
+                characters
+        );
+
+        applyParentages(
+                parentages
+        );
+
+        applyMarriages(
+                marriages
+        );
+
+        applyKnowledgeAndRelationships(
                 characters
         );
 
         KnownWorld.LOGGER.info(
-                "Bootstrapped scenario '{}' with {} settlements, {} organizations, {} titles and {} characters.",
+                "Bootstrapped scenario '{}' with {} settlements, {} organizations, {} titles, {} characters, {} parentage records and {} marriages.",
                 scenario.id,
                 settlements.size(),
                 organizations.size(),
                 titles.size(),
-                characters.size()
+                characters.size(),
+                parentages.size(),
+                marriages.size()
         );
     }
 
@@ -283,6 +324,21 @@ public final class ScenarioBootstrapper {
                 data
         ) {
 
+            requireText(
+                    entry.id,
+                    "title.id"
+            );
+
+            requireText(
+                    entry.name,
+                    "title.name"
+            );
+
+            requireText(
+                    entry.type,
+                    "title.type"
+            );
+
             TitleDefinition title =
                     simulation.titles()
                             .create(
@@ -331,6 +387,11 @@ public final class ScenarioBootstrapper {
                 characters
         ) {
 
+            requireText(
+                    character.id,
+                    "character.id"
+            );
+
             if (character.identity == null) {
 
                 throw new IllegalArgumentException(
@@ -339,6 +400,24 @@ public final class ScenarioBootstrapper {
                                 + " has no identity"
                 );
             }
+
+            requireText(
+                    character.identity.givenName,
+                    character.id
+                            + ".identity.givenName"
+            );
+
+            requireText(
+                    character.identity.familyName,
+                    character.id
+                            + ".identity.familyName"
+            );
+
+            requireText(
+                    character.identity.sex,
+                    character.id
+                            + ".identity.sex"
+            );
 
             NpcState npc =
                     simulation.registry()
@@ -366,7 +445,7 @@ public final class ScenarioBootstrapper {
         }
     }
 
-    private void applyCharacterState(
+    private void applyBasicCharacterState(
             List<CharacterData> characters
     ) {
         long tick =
@@ -402,6 +481,24 @@ public final class ScenarioBootstrapper {
                     character.titles,
                     tick
             );
+        }
+    }
+
+    private void applyKnowledgeAndRelationships(
+            List<CharacterData> characters
+    ) {
+        long tick =
+                simulation.serverTickCounter();
+
+        for (
+                CharacterData character :
+                characters
+        ) {
+
+            NpcId npc =
+                    ids.requireNpc(
+                            character.id
+                    );
 
             applyRelationships(
                     npc,
@@ -419,6 +516,101 @@ public final class ScenarioBootstrapper {
                     character.memories,
                     tick
             );
+        }
+    }
+
+    private void applyParentages(
+            List<ParentageData> parentages
+    ) {
+        long tick =
+                simulation.serverTickCounter();
+
+        for (
+                ParentageData parentage :
+                parentages
+        ) {
+
+            requireText(
+                    parentage.child,
+                    "parentage.child"
+            );
+
+            NpcId child =
+                    ids.requireNpc(
+                            parentage.child
+                    );
+
+            NpcId mother =
+                    hasText(
+                            parentage.mother
+                    )
+                            ? ids.requireNpc(
+                            parentage.mother
+                    )
+                            : null;
+
+            NpcId father =
+                    hasText(
+                            parentage.father
+                    )
+                            ? ids.requireNpc(
+                            parentage.father
+                    )
+                            : null;
+
+            simulation.genealogy()
+                    .registerBirth(
+                            child,
+                            mother,
+                            father,
+                            tick
+                    );
+        }
+    }
+
+    private void applyMarriages(
+            List<MarriageData> marriages
+    ) {
+        long tick =
+                simulation.serverTickCounter();
+
+        for (
+                MarriageData marriage :
+                marriages
+        ) {
+
+            requireText(
+                    marriage.first,
+                    "marriage.first"
+            );
+
+            requireText(
+                    marriage.second,
+                    "marriage.second"
+            );
+
+            DynastyInheritanceRule rule =
+                    hasText(
+                            marriage.inheritanceRule
+                    )
+                            ? enumValue(
+                            DynastyInheritanceRule.class,
+                            marriage.inheritanceRule,
+                            "dynasty inheritance rule"
+                    )
+                            : DynastyInheritanceRule.PATRILINEAL;
+
+            simulation.marriageService()
+                    .marry(
+                            ids.requireNpc(
+                                    marriage.first
+                            ),
+                            ids.requireNpc(
+                                    marriage.second
+                            ),
+                            rule,
+                            tick
+                    );
         }
     }
 
@@ -864,7 +1056,13 @@ public final class ScenarioBootstrapper {
                 .find(
                         id
                 )
-                .orElseThrow()
+                .orElseThrow(
+                        () ->
+                                new IllegalStateException(
+                                        "Mapped settlement no longer exists: "
+                                                + authoredSettlement
+                                )
+                )
                 .center();
     }
 
@@ -1140,6 +1338,10 @@ public final class ScenarioBootstrapper {
 
         String titles;
 
+        String parentages;
+
+        String marriages;
+
         List<String> characters;
     }
 
@@ -1182,6 +1384,24 @@ public final class ScenarioBootstrapper {
         String settlement;
 
         String successionLaw;
+    }
+
+    private static final class ParentageData {
+
+        String child;
+
+        String mother;
+
+        String father;
+    }
+
+    private static final class MarriageData {
+
+        String first;
+
+        String second;
+
+        String inheritanceRule;
     }
 
     private static final class CharacterData {
