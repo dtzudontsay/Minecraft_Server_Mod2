@@ -1,0 +1,30 @@
+{
+  "characterRelationships": [
+    {
+      "authoringVersion": 1,
+      "subject": "eddard_stark",
+      "target": "robert_baratheon",
+      "relationshipClass": "DIRECT_CANON",
+      "confidence": "CANON",
+      "affection": 0.78,
+      "trust": 0.74,
+      "respect": 0.8,
+      "fear": 0.02,
+      "familiarity": 1.0,
+      "note": "Raised together as Jon Arryn's wards and fought together in Robert's Rebellion; personal friendship is much stronger than a generic Stark-Baratheon House relation."
+    },
+    {
+      "authoringVersion": 1,
+      "subject": "robert_baratheon",
+      "target": "eddard_stark",
+      "relationshipClass": "DIRECT_CANON",
+      "confidence": "CANON",
+      "affection": 0.84,
+      "trust": 0.82,
+      "respect": 0.82,
+      "fear": 0.01,
+      "familiarity": 1.0,
+      "note": "Robert regards Eddard as a close old friend and foster brother."
+    }
+  ]
+}

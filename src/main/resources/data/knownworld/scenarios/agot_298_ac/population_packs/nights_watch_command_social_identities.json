@@ -159,8 +159,7 @@
           "loyalty": 0.99,
           "roles": [
             "nights_watch",
-            "nights_watch_ranger",
-            "commander_shadow_tower"
+            "nights_watch_ranger"
           ]
         }
       ]
