@@ -7,8 +7,10 @@ import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
 import dev.dtzudontsay.knownworld.world.reference.ReferenceProvenance;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -86,24 +88,9 @@ public final class DynastyManager {
 
         if (existingId != null) {
 
-            Dynasty existing =
-                    require(
-                            existingId
-                    );
-
-            if (!Objects.equals(
-                    existing.organizationId(),
-                    organizationId
-            )) {
-
-                throw new IllegalStateException(
-                        "Authored dynasty "
-                                + key
-                                + " has conflicting organization binding"
-                );
-            }
-
-            return existing;
+            return require(
+                    existingId
+            );
         }
 
         validateOrganizationIfPresent(
@@ -146,6 +133,128 @@ public final class DynastyManager {
         );
 
         return dynasty;
+    }
+
+    /**
+     * Reconciles a persisted authored dynasty against the current
+     * authored reference catalog.
+     *
+     * Static reference metadata is refreshed from the catalog, while
+     * runtime-evolving values are retained.
+     *
+     * Structural relationships are intentionally cleared here and are
+     * rebuilt by DynastyScenarioBootstrapService in its relationship pass.
+     */
+    public synchronized Dynasty reconcileAuthored(
+            String authoredId,
+            String name,
+            DynastyType type,
+            DynastyStatus catalogStatus,
+            OrganizationId organizationId,
+            String homeLocationId,
+            String cultureId,
+            String religionId,
+            Integer foundedYear,
+            Integer extinctYear,
+            boolean activeAtScenarioStart,
+            Set<DynastyContinuity> continuities,
+            String words,
+            String heraldry,
+            double initialPrestige,
+            double initialWealth,
+            double initialMilitaryStrength,
+            ReferenceProvenance provenance,
+            String sourceNote
+    ) {
+
+        String key =
+                normalize(
+                        authoredId
+                );
+
+        DynastyId existingId =
+                authored.get(
+                        key
+                );
+
+        if (existingId == null) {
+
+            return ensureAuthored(
+                    key,
+                    name,
+                    type,
+                    catalogStatus,
+                    organizationId,
+                    homeLocationId,
+                    cultureId,
+                    religionId,
+                    foundedYear,
+                    extinctYear,
+                    activeAtScenarioStart,
+                    continuities,
+                    words,
+                    heraldry,
+                    initialPrestige,
+                    initialWealth,
+                    initialMilitaryStrength,
+                    provenance,
+                    sourceNote
+            );
+        }
+
+        Dynasty existing =
+                require(
+                        existingId
+                );
+
+        validateOrganizationIfPresent(
+                organizationId,
+                type
+        );
+
+        DynastyStatus runtimeStatus =
+                compatibleRuntimeStatus(
+                        existing.status(),
+                        catalogStatus,
+                        activeAtScenarioStart
+                );
+
+        Dynasty replacement =
+                new Dynasty(
+                        existing.id(),
+                        key,
+                        name,
+                        type,
+                        runtimeStatus,
+                        organizationId,
+                        homeLocationId,
+                        cultureId,
+                        religionId,
+                        null,
+                        null,
+                        null,
+                        null,
+                        existing.head(),
+                        existing.heir(),
+                        foundedYear,
+                        extinctYear,
+                        activeAtScenarioStart,
+                        continuities,
+                        words,
+                        heraldry,
+                        existing.prestige(),
+                        existing.wealth(),
+                        existing.militaryStrength(),
+                        provenance,
+                        sourceNote
+                );
+
+        replaceInternal(
+                existing,
+                replacement
+        );
+
+        return replacement;
     }
 
     public synchronized Dynasty createGenerated(
@@ -246,6 +355,85 @@ public final class DynastyManager {
         }
     }
 
+    /**
+     * Removes persisted authored dynasty records which are no longer
+     * present in the current authored reference catalog.
+     *
+     * Generated runtime dynasties are deliberately preserved.
+     */
+    public synchronized int removeAuthoredNotIn(
+            Set<String> retainedAuthoredIds
+    ) {
+
+        Objects.requireNonNull(
+                retainedAuthoredIds,
+                "retainedAuthoredIds"
+        );
+
+        Set<String> normalizedRetained =
+                new LinkedHashSet<>();
+
+        for (
+                String id :
+                retainedAuthoredIds
+        ) {
+
+            normalizedRetained.add(
+                    normalize(
+                            id
+                    )
+            );
+        }
+
+        List<String> stale =
+                new ArrayList<>();
+
+        for (
+                String authoredId :
+                authored.keySet()
+        ) {
+
+            if (!normalizedRetained.contains(
+                    authoredId
+            )) {
+
+                stale.add(
+                        authoredId
+                );
+            }
+        }
+
+        for (
+                String authoredId :
+                stale
+        ) {
+
+            DynastyId dynastyId =
+                    authored.remove(
+                            authoredId
+                    );
+
+            if (dynastyId == null) {
+                continue;
+            }
+
+            Dynasty dynasty =
+                    dynasties.remove(
+                            dynastyId
+                    );
+
+            if (dynasty != null
+                    && dynasty.hasOrganization()) {
+
+                byOrganization.remove(
+                        dynasty.organizationId()
+                );
+            }
+        }
+
+        return stale.size();
+    }
+
     public synchronized Optional<Dynasty> find(
             DynastyId id
     ) {
@@ -302,6 +490,7 @@ public final class DynastyManager {
     ) {
 
         if (organizationId == null) {
+
             return Optional.empty();
         }
 
@@ -314,6 +503,13 @@ public final class DynastyManager {
                 ? Optional.empty()
                 : find(
                 id
+        );
+    }
+
+    public synchronized Set<String> authoredIds() {
+
+        return Set.copyOf(
+                authored.keySet()
         );
     }
 
@@ -431,6 +627,78 @@ public final class DynastyManager {
         return dynasties.size();
     }
 
+    private void replaceInternal(
+            Dynasty previous,
+            Dynasty replacement
+    ) {
+
+        if (!previous.id()
+                .equals(
+                        replacement.id()
+                )) {
+
+            throw new IllegalArgumentException(
+                    "Replacement dynasty must retain numeric ID"
+            );
+        }
+
+        if (!Objects.equals(
+                previous.authoredId(),
+                replacement.authoredId()
+        )) {
+
+            throw new IllegalArgumentException(
+                    "Replacement dynasty must retain authored ID"
+            );
+        }
+
+        if (previous.hasOrganization()) {
+
+            byOrganization.remove(
+                    previous.organizationId()
+            );
+        }
+
+        if (replacement.hasOrganization()) {
+
+            DynastyId existing =
+                    byOrganization.get(
+                            replacement.organizationId()
+                    );
+
+            if (existing != null
+                    && !existing.equals(
+                    replacement.id()
+            )) {
+
+                if (previous.hasOrganization()) {
+
+                    byOrganization.put(
+                            previous.organizationId(),
+                            previous.id()
+                    );
+                }
+
+                throw new IllegalStateException(
+                        "Organization "
+                                + replacement.organizationId()
+                                + " already belongs to dynasty "
+                                + existing
+                );
+            }
+
+            byOrganization.put(
+                    replacement.organizationId(),
+                    replacement.id()
+            );
+        }
+
+        dynasties.put(
+                replacement.id(),
+                replacement
+        );
+    }
+
     private void registerInternal(
             Dynasty dynasty
     ) {
@@ -504,6 +772,7 @@ public final class DynastyManager {
     ) {
 
         if (organizationId == null) {
+
             return;
         }
 
@@ -569,6 +838,39 @@ public final class DynastyManager {
         nextId++;
 
         return id;
+    }
+
+    private static DynastyStatus compatibleRuntimeStatus(
+            DynastyStatus existing,
+            DynastyStatus catalog,
+            boolean activeAtScenarioStart
+    ) {
+
+        if (existing == null) {
+
+            return catalog;
+        }
+
+        if (activeAtScenarioStart
+                && (existing == DynastyStatus.EXTINCT
+                || existing == DynastyStatus.NOT_YET_FOUNDED)) {
+
+            return catalog;
+        }
+
+        if (!activeAtScenarioStart
+                && catalog == DynastyStatus.EXTINCT) {
+
+            return DynastyStatus.EXTINCT;
+        }
+
+        if (!activeAtScenarioStart
+                && catalog == DynastyStatus.NOT_YET_FOUNDED) {
+
+            return DynastyStatus.NOT_YET_FOUNDED;
+        }
+
+        return existing;
     }
 
     private static String normalize(

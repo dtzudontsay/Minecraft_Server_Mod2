@@ -36,7 +36,7 @@ public final class DynastyScenarioBootstrapService {
     private DynastyScenarioBootstrapService() {
     }
 
-    public static void ensureDefault(
+    public static DynastyActivationReport ensureDefault(
             NpcSimulation simulation,
             DynastyManager manager
     ) throws IOException {
@@ -44,10 +44,9 @@ public final class DynastyScenarioBootstrapService {
         List<DynastyData> data =
                 loadCatalog();
 
-        /*
-         * Pass 1:
-         * create reference dynasties and runtime organizations.
-         */
+        Set<String> catalogIds =
+                new LinkedHashSet<>();
+
         for (
                 DynastyData entry :
                 data
@@ -57,6 +56,55 @@ public final class DynastyScenarioBootstrapService {
                     entry.id,
                     "dynasty.id"
             );
+
+            String normalized =
+                    entry.id.trim()
+                            .toLowerCase(
+                                    Locale.ROOT
+                            );
+
+            if (!catalogIds.add(
+                    normalized
+            )) {
+
+                throw new IllegalStateException(
+                        "Duplicate dynasty ID after catalog load: "
+                                + normalized
+                );
+            }
+        }
+
+        int staleRemoved =
+                manager.removeAuthoredNotIn(
+                        catalogIds
+                );
+
+        int newlyCreated =
+                0;
+
+        int reconciled =
+                0;
+
+        int activeCount =
+                0;
+
+        int inactiveCount =
+                0;
+
+        int activeOrganizations =
+                0;
+
+        /*
+         * =========================================================
+         * PASS 1
+         * Reference definitions + scenario activation
+         * =========================================================
+         */
+
+        for (
+                DynastyData entry :
+                data
+        ) {
 
             requireText(
                     entry.name,
@@ -86,8 +134,15 @@ public final class DynastyScenarioBootstrapService {
                     );
 
             validateReferences(
-                    entry
+                    entry,
+                    type,
+                    status
             );
+
+            boolean alreadyExists =
+                    manager.findAuthored(
+                            entry.id
+                    ).isPresent();
 
             OrganizationId organizationId =
                     null;
@@ -101,9 +156,17 @@ public final class DynastyScenarioBootstrapService {
                                 entry.name,
                                 type
                         );
+
+                activeCount++;
+
+                activeOrganizations++;
+
+            } else {
+
+                inactiveCount++;
             }
 
-            manager.ensureAuthored(
+            manager.reconcileAuthored(
                     entry.id,
                     entry.name,
                     type,
@@ -144,13 +207,27 @@ public final class DynastyScenarioBootstrapService {
                     ),
                     entry.sourceNote
             );
+
+            if (alreadyExists) {
+
+                reconciled++;
+
+            } else {
+
+                newlyCreated++;
+            }
         }
 
         /*
-         * Pass 2:
-         * resolve all structural dynasty relationships after the
-         * complete catalog exists.
+         * =========================================================
+         * PASS 2
+         * Structural relationships
+         * =========================================================
+         *
+         * All four relationships are cleared first so stale data from
+         * an older catalog cannot survive unnoticed.
          */
+
         for (
                 DynastyData entry :
                 data
@@ -161,6 +238,26 @@ public final class DynastyScenarioBootstrapService {
                             manager,
                             entry.id
                     );
+
+            manager.setParent(
+                    dynasty.id(),
+                    null
+            );
+
+            manager.setLiege(
+                    dynasty.id(),
+                    null
+            );
+
+            manager.setPredecessor(
+                    dynasty.id(),
+                    null
+            );
+
+            manager.setSuccessor(
+                    dynasty.id(),
+                    null
+            );
 
             if (hasText(
                     entry.parentDynastyId
@@ -216,10 +313,31 @@ public final class DynastyScenarioBootstrapService {
         }
 
         /*
-         * Pass 3:
-         * NPC head/heir references remain deliberately soft while the
-         * named population is still being authored.
+         * =========================================================
+         * PASS 3
+         * Known authored heads and heirs
+         * =========================================================
+         *
+         * References remain soft because the dynasty catalog is being
+         * completed before the named-character catalog.
+         *
+         * If a referenced NPC already exists, it MUST be linked now.
+         * If it does not exist yet, it is counted as unresolved and
+         * later population/character authoring may satisfy it.
          */
+
+        int resolvedHeads =
+                0;
+
+        int unresolvedHeads =
+                0;
+
+        int resolvedHeirs =
+                0;
+
+        int unresolvedHeirs =
+                0;
+
         for (
                 DynastyData entry :
                 data
@@ -231,54 +349,103 @@ public final class DynastyScenarioBootstrapService {
                             entry.id
                     );
 
+            /*
+             * Remove an obsolete persisted authored assignment first.
+             */
+            manager.setHead(
+                    dynasty.id(),
+                    null
+            );
+
+            manager.setHeir(
+                    dynasty.id(),
+                    null
+            );
+
             if (hasText(
                     entry.headNpcId
             )) {
 
-                simulation.authoredIds()
-                        .findNpc(
-                                entry.headNpcId
-                        )
-                        .ifPresent(
-                                npc ->
-                                        manager.setHead(
-                                                dynasty.id(),
-                                                npc
-                                        )
-                        );
+                var head =
+                        simulation.authoredIds()
+                                .findNpc(
+                                        entry.headNpcId
+                                );
+
+                if (head.isPresent()) {
+
+                    manager.setHead(
+                            dynasty.id(),
+                            head.get()
+                    );
+
+                    resolvedHeads++;
+
+                } else {
+
+                    unresolvedHeads++;
+                }
             }
 
             if (hasText(
                     entry.heirNpcId
             )) {
 
-                simulation.authoredIds()
-                        .findNpc(
-                                entry.heirNpcId
-                        )
-                        .ifPresent(
-                                npc ->
-                                        manager.setHeir(
-                                                dynasty.id(),
-                                                npc
-                                        )
-                        );
+                var heir =
+                        simulation.authoredIds()
+                                .findNpc(
+                                        entry.heirNpcId
+                                );
+
+                if (heir.isPresent()) {
+
+                    manager.setHeir(
+                            dynasty.id(),
+                            heir.get()
+                    );
+
+                    resolvedHeirs++;
+
+                } else {
+
+                    unresolvedHeirs++;
+                }
             }
         }
 
-        long active =
-                manager.all()
-                        .stream()
-                        .filter(
-                                Dynasty::activeAtScenarioStart
-                        )
-                        .count();
+        DynastyActivationReport report =
+                new DynastyActivationReport(
+                        data.size(),
+                        newlyCreated,
+                        reconciled,
+                        staleRemoved,
+                        activeCount,
+                        inactiveCount,
+                        activeOrganizations,
+                        resolvedHeads,
+                        unresolvedHeads,
+                        resolvedHeirs,
+                        unresolvedHeirs
+                );
 
         KnownWorld.LOGGER.info(
-                "Dynasty catalog ready with {} dynasties, {} active at scenario start.",
-                manager.size(),
-                active
+                "Dynasty activation complete: catalog={}, new={}, reconciled={}, staleRemoved={}, active={}, inactive={}, organizations={}, heads={}/{}, heirs={}/{}.",
+                report.cataloguedDynasties(),
+                report.newlyCreatedDynasties(),
+                report.reconciledDynasties(),
+                report.stalePersistedDynastiesRemoved(),
+                report.activeDynasties(),
+                report.inactiveDynasties(),
+                report.activeOrganizations(),
+                report.resolvedHeads(),
+                report.resolvedHeads()
+                        + report.unresolvedHeads(),
+                report.resolvedHeirs(),
+                report.resolvedHeirs()
+                        + report.unresolvedHeirs()
         );
+
+        return report;
     }
 
     private static List<DynastyData> loadCatalog()
@@ -597,7 +764,9 @@ public final class DynastyScenarioBootstrapService {
     }
 
     private static void validateReferences(
-            DynastyData data
+            DynastyData data,
+            DynastyType type,
+            DynastyStatus status
     ) {
 
         WorldReferenceCatalog references =
@@ -648,14 +817,6 @@ public final class DynastyScenarioBootstrapService {
             );
         }
 
-        DynastyStatus status =
-                enumValue(
-                        DynastyStatus.class,
-                        data.status,
-                        data.id
-                                + ".status"
-                );
-
         if ((status == DynastyStatus.EXTINCT
                 || status == DynastyStatus.NOT_YET_FOUNDED)
                 && data.activeAtScenarioStart) {
@@ -677,6 +838,23 @@ public final class DynastyScenarioBootstrapService {
                     "Dynasty "
                             + data.id
                             + " has extinctYear before foundedYear"
+            );
+        }
+
+        if (type == DynastyType.CADET_BRANCH
+                && !hasText(
+                data.parentDynastyId
+        )) {
+
+            /*
+             * Some continuity-derived branches may not have a known
+             * genealogical parent in source material.
+             *
+             * We allow that rather than inventing one.
+             */
+            KnownWorld.LOGGER.debug(
+                    "Cadet dynasty {} has no authored parent dynasty.",
+                    data.id
             );
         }
     }

@@ -4,6 +4,9 @@ import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.OrganizationMembershipPersistence;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyActivationReport;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityReport;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyScenarioBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembershipManager;
@@ -25,9 +28,15 @@ public final class SocietyStructureRuntime {
 
     private final OrganizationMembershipManager memberships;
 
+    private final DynastyIntegrityService dynastyIntegrity;
+
     private final DynastyPersistence dynastyPersistence;
 
     private final OrganizationMembershipPersistence membershipPersistence;
+
+    private DynastyActivationReport lastActivationReport;
+
+    private DynastyIntegrityReport lastIntegrityReport;
 
     private SocietyStructureRuntime(
             MinecraftServer server,
@@ -50,6 +59,12 @@ public final class SocietyStructureRuntime {
                 new OrganizationMembershipManager(
                         simulation.registry(),
                         simulation.organizations()
+                );
+
+        this.dynastyIntegrity =
+                new DynastyIntegrityService(
+                        simulation,
+                        dynasties
                 );
 
         Path savePath =
@@ -184,6 +199,24 @@ public final class SocietyStructureRuntime {
         return memberships;
     }
 
+    public DynastyActivationReport lastActivationReport() {
+
+        return lastActivationReport;
+    }
+
+    public DynastyIntegrityReport lastIntegrityReport() {
+
+        return lastIntegrityReport;
+    }
+
+    public DynastyIntegrityReport auditDynasties() {
+
+        lastIntegrityReport =
+                dynastyIntegrity.audit();
+
+        return lastIntegrityReport;
+    }
+
     public void reconcile() {
 
         memberships.ensurePrimaryAffiliations(
@@ -196,27 +229,67 @@ public final class SocietyStructureRuntime {
 
         try {
 
+            /*
+             * 1. Load previously persisted dynasty runtime state.
+             */
             dynastyPersistence.loadInto(
                     dynasties
             );
 
-            DynastyScenarioBootstrapService.ensureDefault(
-                    simulation,
-                    dynasties
-            );
+            /*
+             * 2. Reconcile persistent authored dynasties against the
+             * current complete reference catalog and perform 298 AC
+             * activation.
+             */
+            lastActivationReport =
+                    DynastyScenarioBootstrapService.ensureDefault(
+                            simulation,
+                            dynasties
+                    );
 
+            /*
+             * 3. Load generic organization memberships after all
+             * dynasty organizations are guaranteed to exist.
+             */
             membershipPersistence.loadInto(
                     memberships
             );
 
+            /*
+             * 4. Mirror old primary affiliations into the generic
+             * organization membership system.
+             */
             reconcile();
 
             /*
-             * Dynasty bootstrap may have created newly authored house
-             * organizations on an existing save.
+             * 5. Strict structural dynasty audit.
              *
-             * Persist their organization + authored-ID mappings through
-             * the existing NPC simulation save.
+             * Warnings are allowed.
+             * Structural errors stop initialization.
+             */
+            lastIntegrityReport =
+                    dynastyIntegrity.auditStrict();
+
+            KnownWorld.LOGGER.info(
+                    "Dynasty integrity audit passed: total={}, authored={}, generated={}, active={}, inactive={}, organizations={}, extinct={}, exiled={}, notYetFounded={}, noHead={}, noHeir={}, warnings={}.",
+                    lastIntegrityReport.totalDynasties(),
+                    lastIntegrityReport.authoredDynasties(),
+                    lastIntegrityReport.generatedDynasties(),
+                    lastIntegrityReport.activeAtScenarioStart(),
+                    lastIntegrityReport.inactiveAtScenarioStart(),
+                    lastIntegrityReport.activeRuntimeOrganizations(),
+                    lastIntegrityReport.extinctDynasties(),
+                    lastIntegrityReport.exiledDynasties(),
+                    lastIntegrityReport.notYetFoundedDynasties(),
+                    lastIntegrityReport.dynastiesWithoutHeads(),
+                    lastIntegrityReport.dynastiesWithoutHeirs(),
+                    lastIntegrityReport.warningCount()
+            );
+
+            /*
+             * Dynasty bootstrap may create new organizations and authored
+             * organization mappings. Persist those through the main NPC
+             * simulation.
              */
             simulation.save();
 
