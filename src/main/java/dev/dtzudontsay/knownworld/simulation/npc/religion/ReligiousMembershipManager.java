@@ -2,6 +2,10 @@ package dev.dtzudontsay.knownworld.simulation.npc.religion;
 
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
+import dev.dtzudontsay.knownworld.simulation.social.Organization;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,17 +17,26 @@ public final class ReligiousMembershipManager {
 
     private final NpcRegistry registry;
 
+    private final OrganizationManager organizations;
+
     private final Map<NpcId, ReligiousMembership> memberships =
             new LinkedHashMap<>();
 
     public ReligiousMembershipManager(
-            NpcRegistry registry
+            NpcRegistry registry,
+            OrganizationManager organizations
     ) {
 
         this.registry =
                 Objects.requireNonNull(
                         registry,
                         "registry"
+                );
+
+        this.organizations =
+                Objects.requireNonNull(
+                        organizations,
+                        "organizations"
                 );
     }
 
@@ -45,6 +58,7 @@ public final class ReligiousMembershipManager {
     public synchronized ReligiousMembership join(
             NpcId npc,
             String orderId,
+            OrganizationId organizationId,
             String roleId,
             double commitment
     ) {
@@ -61,10 +75,14 @@ public final class ReligiousMembershipManager {
                         .orElseThrow(
                                 () ->
                                         new IllegalArgumentException(
-                                                "Unknown religious order "
+                                                "Unknown religious institution "
                                                         + orderId
                                         )
                         );
+
+        validateOrganization(
+                organizationId
+        );
 
         ReligiousMembership existing =
                 memberships.get(
@@ -84,6 +102,7 @@ public final class ReligiousMembershipManager {
                 new ReligiousMembership(
                         npc,
                         definition.id(),
+                        organizationId,
                         roleId,
                         commitment,
                         true
@@ -100,6 +119,10 @@ public final class ReligiousMembershipManager {
     public synchronized void leave(
             NpcId npc
     ) {
+
+        validateNpc(
+                npc
+        );
 
         ReligiousMembership membership =
                 memberships.get(
@@ -127,22 +150,83 @@ public final class ReligiousMembershipManager {
                 membership.npc()
         );
 
-        if (ReligiousInstitutionCatalog.get()
-                .find(
-                        membership.orderId()
-                )
-                .isEmpty()) {
+        ReligiousOrderDefinition definition =
+                ReligiousInstitutionCatalog.get()
+                        .find(
+                                membership.orderId()
+                        )
+                        .orElseThrow(
+                                () ->
+                                        new IllegalArgumentException(
+                                                "Unknown religious institution "
+                                                        + membership.orderId()
+                                        )
+                        );
 
-            throw new IllegalArgumentException(
-                    "Unknown religious institution "
-                            + membership.orderId()
-            );
-        }
+        validateOrganization(
+                membership.organizationId()
+        );
 
         memberships.put(
                 membership.npc(),
                 membership
         );
+    }
+
+    public synchronized List<ReligiousMembership> activeForOrder(
+            String orderId
+    ) {
+
+        String normalized =
+                ReligiousInstitutionCatalog.get()
+                        .find(
+                                orderId
+                        )
+                        .orElseThrow(
+                                () ->
+                                        new IllegalArgumentException(
+                                                "Unknown religious institution "
+                                                        + orderId
+                                        )
+                        )
+                        .id();
+
+        return memberships.values()
+                .stream()
+                .filter(
+                        ReligiousMembership::active
+                )
+                .filter(
+                        membership ->
+                                membership.orderId()
+                                        .equals(
+                                                normalized
+                                        )
+                )
+                .toList();
+    }
+
+    public synchronized List<ReligiousMembership> activeForOrganization(
+            OrganizationId organizationId
+    ) {
+
+        validateOrganization(
+                organizationId
+        );
+
+        return memberships.values()
+                .stream()
+                .filter(
+                        ReligiousMembership::active
+                )
+                .filter(
+                        membership ->
+                                membership.organizationId()
+                                        .equals(
+                                                organizationId
+                                        )
+                )
+                .toList();
     }
 
     public synchronized List<ReligiousMembership> all() {
@@ -152,9 +236,19 @@ public final class ReligiousMembershipManager {
         );
     }
 
+    public synchronized int size() {
+
+        return memberships.size();
+    }
+
     private void validateNpc(
             NpcId npc
     ) {
+
+        Objects.requireNonNull(
+                npc,
+                "npc"
+        );
 
         if (!registry.contains(
                 npc
@@ -163,6 +257,40 @@ public final class ReligiousMembershipManager {
             throw new IllegalArgumentException(
                     "Unknown NPC "
                             + npc
+            );
+        }
+    }
+
+    private void validateOrganization(
+            OrganizationId organizationId
+    ) {
+
+        Objects.requireNonNull(
+                organizationId,
+                "organizationId"
+        );
+
+        Organization organization =
+                organizations.find(
+                                organizationId
+                        )
+                        .orElseThrow(
+                                () ->
+                                        new IllegalArgumentException(
+                                                "Unknown organization "
+                                                        + organizationId
+                                        )
+                        );
+
+        if (organization.type()
+                != OrganizationType.RELIGIOUS_ORDER) {
+
+            throw new IllegalArgumentException(
+                    "Organization #"
+                            + organizationId
+                            + " is "
+                            + organization.type()
+                            + ", expected RELIGIOUS_ORDER"
             );
         }
     }

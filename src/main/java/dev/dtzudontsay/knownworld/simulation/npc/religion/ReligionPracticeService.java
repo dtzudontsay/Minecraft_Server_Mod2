@@ -3,6 +3,7 @@ package dev.dtzudontsay.knownworld.simulation.npc.religion;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
+import dev.dtzudontsay.knownworld.simulation.social.Organization;
 
 import java.util.Objects;
 
@@ -20,10 +21,13 @@ public final class ReligionPracticeService {
 
     private final ReligiousMembershipManager memberships;
 
+    private final ReligiousInstitutionRuntimeManager institutions;
+
     public ReligionPracticeService(
             CharacterProfileManager profiles,
             ReligionService religion,
-            ReligiousMembershipManager memberships
+            ReligiousMembershipManager memberships,
+            ReligiousInstitutionRuntimeManager institutions
     ) {
 
         this.profiles =
@@ -42,6 +46,12 @@ public final class ReligionPracticeService {
                 Objects.requireNonNull(
                         memberships,
                         "memberships"
+                );
+
+        this.institutions =
+                Objects.requireNonNull(
+                        institutions,
+                        "institutions"
                 );
     }
 
@@ -103,11 +113,62 @@ public final class ReligionPracticeService {
             );
         }
 
-        return memberships.join(
-                npc,
-                orderId,
-                roleId,
-                0.50
+        ReligiousOrderDefinition definition =
+                ReligiousInstitutionCatalog.get()
+                        .find(
+                                orderId
+                        )
+                        .orElseThrow();
+
+        if (!roleId.isBlank()
+                && !definition.roles()
+                .contains(
+                        roleId
+                )) {
+
+            throw new IllegalArgumentException(
+                    "Role "
+                            + roleId
+                            + " is not valid for "
+                            + orderId
+            );
+        }
+
+        Organization organization =
+                institutions.ensureOrganization(
+                        orderId
+                );
+
+        ReligiousMembership membership =
+                memberships.join(
+                        npc,
+                        orderId,
+                        organization.id(),
+                        roleId,
+                        0.50
+                );
+
+        CharacterProfile profile =
+                profiles.getOrCreate(
+                        npc
+                );
+
+        if (!roleId.isBlank()) {
+
+            profile.addOccupation(
+                    roleId
+            );
+        }
+
+        return membership;
+    }
+
+    public void leaveOrder(
+            NpcId npc
+    ) {
+
+        memberships.leave(
+                npc
         );
     }
 
@@ -116,6 +177,16 @@ public final class ReligionPracticeService {
             String ritualId
     ) {
 
+        String normalized =
+                normalize(
+                        ritualId
+                );
+
+        validateKnownRitualIfMember(
+                npc,
+                normalized
+        );
+
         CharacterProfile profile =
                 profiles.getOrCreate(
                         npc
@@ -123,9 +194,7 @@ public final class ReligionPracticeService {
 
         profile.setValue(
                 RITUAL_PREFIX
-                        + normalize(
-                        ritualId
-                ),
+                        + normalized,
                 1.0
         );
 
@@ -157,6 +226,11 @@ public final class ReligionPracticeService {
             String tabooId
     ) {
 
+        String normalized =
+                normalize(
+                        tabooId
+                );
+
         CharacterProfile profile =
                 profiles.getOrCreate(
                         npc
@@ -164,9 +238,7 @@ public final class ReligionPracticeService {
 
         profile.setValue(
                 TABOO_PREFIX
-                        + normalize(
-                        tabooId
-                ),
+                        + normalized,
                 1.0
         );
 
@@ -180,6 +252,49 @@ public final class ReligionPracticeService {
                         0.08
                 )
         );
+    }
+
+    private void validateKnownRitualIfMember(
+            NpcId npc,
+            String ritualId
+    ) {
+
+        ReligiousMembership membership =
+                memberships.find(
+                                npc
+                        )
+                        .filter(
+                                ReligiousMembership::active
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (membership == null) {
+
+            return;
+        }
+
+        ReligiousOrderDefinition definition =
+                ReligiousInstitutionCatalog.get()
+                        .find(
+                                membership.orderId()
+                        )
+                        .orElseThrow();
+
+        if (!definition.rituals()
+                .isEmpty()
+                && !definition.rituals()
+                .contains(
+                        ritualId
+                )) {
+
+            throw new IllegalArgumentException(
+                    ritualId
+                            + " is not a defined ritual for "
+                            + definition.id()
+            );
+        }
     }
 
     private static double moveToward(

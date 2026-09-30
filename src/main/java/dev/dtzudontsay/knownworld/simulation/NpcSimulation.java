@@ -26,6 +26,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationServi
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileGenerationService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
+import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionRuntimeManager;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousMembershipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
@@ -38,6 +39,7 @@ import dev.dtzudontsay.knownworld.simulation.persistence.LifeHistoryPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.MarriagePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NpcPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.PregnancyPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.ReligiousMembershipPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.SuccessionPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.TitlePersistence;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
@@ -76,6 +78,8 @@ public final class NpcSimulation {
 
     private final OrganizationManager organizationManager;
 
+    private final ReligiousInstitutionRuntimeManager religiousInstitutionManager;
+
     private final NpcAffiliationManager affiliationManager;
 
     private final TitleManager titleManager;
@@ -104,13 +108,6 @@ public final class NpcSimulation {
 
     private final NpcRelationshipManager relationshipManager;
 
-    /*
-     * Batch 18D.2
-     *
-     * Runtime religious-order/clergy membership state.
-     *
-     * Persistence for this manager is added in 18D.3.
-     */
     private final ReligiousMembershipManager religiousMembershipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
@@ -169,11 +166,14 @@ public final class NpcSimulation {
 
     private final CharacterProfilePersistence profilePersistence;
 
+    private final ReligiousMembershipPersistence religiousMembershipPersistence;
+
     private final NpcActivationManager activationManager;
 
     private NpcSimulation(
             MinecraftServer server
     ) {
+
         this.server =
                 server;
 
@@ -192,6 +192,11 @@ public final class NpcSimulation {
         this.organizationManager =
                 new OrganizationManager(
                         settlementManager
+                );
+
+        this.religiousInstitutionManager =
+                new ReligiousInstitutionRuntimeManager(
+                        organizationManager
                 );
 
         this.affiliationManager =
@@ -272,7 +277,8 @@ public final class NpcSimulation {
 
         this.religiousMembershipManager =
                 new ReligiousMembershipManager(
-                        registry
+                        registry,
+                        organizationManager
                 );
 
         this.knowledgeManager =
@@ -467,6 +473,11 @@ public final class NpcSimulation {
                 new CharacterProfilePersistence(
                         savePath
                 );
+
+        this.religiousMembershipPersistence =
+                new ReligiousMembershipPersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
@@ -490,7 +501,7 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations, {} religious memberships and {} titles.",
+                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations, {} religious institutions, {} religious memberships and {} titles.",
                             simulation.campaignCalendar.year(),
                             simulation.campaignCalendar.dayOfYear() + 1,
                             simulation.registry.size(),
@@ -501,8 +512,8 @@ public final class NpcSimulation {
                             simulation.claimManager.size(),
                             simulation.settlementManager.size(),
                             simulation.organizationManager.size(),
-                            simulation.religiousMembershipManager.all()
-                                    .size(),
+                            simulation.religiousInstitutionManager.size(),
+                            simulation.religiousMembershipManager.size(),
                             simulation.titleManager.definitionCount()
                     );
                 }
@@ -605,6 +616,10 @@ public final class NpcSimulation {
 
     public OrganizationManager organizations() {
         return organizationManager;
+    }
+
+    public ReligiousInstitutionRuntimeManager religiousInstitutions() {
+        return religiousInstitutionManager;
     }
 
     public NpcAffiliationManager affiliations() {
@@ -797,6 +812,10 @@ public final class NpcSimulation {
 
         try {
 
+            /*
+             * Base persistence comes first because religious state
+             * references OrganizationIds stored in npcs.tsv.
+             */
             persistence.save(
                     clock,
                     registry,
@@ -852,10 +871,10 @@ public final class NpcSimulation {
                     profileManager
             );
 
-            /*
-             * Religious memberships intentionally become persistent
-             * in Batch 18D.3.
-             */
+            religiousMembershipPersistence.save(
+                    religiousInstitutionManager,
+                    religiousMembershipManager
+            );
 
         } catch (
                 IOException exception
@@ -872,6 +891,9 @@ public final class NpcSimulation {
 
         try {
 
+            /*
+             * Base persistence loads NPCs and organizations first.
+             */
             persistence.loadInto(
                     clock,
                     registry,
@@ -927,6 +949,13 @@ public final class NpcSimulation {
                     profileManager
             );
 
+            /*
+             * Scenario bootstrap must happen BEFORE automatically
+             * creating religious organizations.
+             *
+             * Otherwise those organizations would make a completely
+             * new world look non-empty and prevent scenario bootstrap.
+             */
             if (shouldBootstrapScenario()) {
 
                 KnownWorld.LOGGER.info(
@@ -943,10 +972,24 @@ public final class NpcSimulation {
                     campaignCalendar.daysPerYear()
             );
 
-            /*
-             * Migration path for NPCs created before Batch 17.
-             */
             profileManager.ensureAll();
+
+            /*
+             * Religious state loads only after NPCs and generic
+             * organizations exist.
+             */
+            religiousMembershipPersistence.loadInto(
+                    religiousInstitutionManager,
+                    religiousMembershipManager
+            );
+
+            /*
+             * Every catalogued religious institution receives a real
+             * OrganizationType.RELIGIOUS_ORDER organization.
+             *
+             * Existing persisted bindings win.
+             */
+            religiousInstitutionManager.ensureAll();
 
             save();
 

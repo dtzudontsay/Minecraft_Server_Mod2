@@ -1,12 +1,16 @@
 package dev.dtzudontsay.knownworld.simulation.npc.religion;
 
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public final class ReligiousMembership {
 
     private final NpcId npc;
+
+    private final OrganizationId organizationId;
 
     private String orderId;
 
@@ -19,6 +23,7 @@ public final class ReligiousMembership {
     public ReligiousMembership(
             NpcId npc,
             String orderId,
+            OrganizationId organizationId,
             String roleId,
             double commitment,
             boolean active
@@ -31,15 +36,20 @@ public final class ReligiousMembership {
                 );
 
         this.orderId =
-                normalize(
+                normalizeId(
                         orderId
                 );
 
+        this.organizationId =
+                Objects.requireNonNull(
+                        organizationId,
+                        "organizationId"
+                );
+
         this.roleId =
-                roleId == null
-                        ? ""
-                        : roleId.trim()
-                        .toLowerCase();
+                normalizeOptionalId(
+                        roleId
+                );
 
         setCommitment(
                 commitment
@@ -60,10 +70,15 @@ public final class ReligiousMembership {
     public void setOrderId(
             String orderId
     ) {
+
         this.orderId =
-                normalize(
+                normalizeId(
                         orderId
                 );
+    }
+
+    public OrganizationId organizationId() {
+        return organizationId;
     }
 
     public String roleId() {
@@ -73,11 +88,11 @@ public final class ReligiousMembership {
     public void setRoleId(
             String roleId
     ) {
+
         this.roleId =
-                roleId == null
-                        ? ""
-                        : roleId.trim()
-                        .toLowerCase();
+                normalizeOptionalId(
+                        roleId
+                );
     }
 
     public double commitment() {
@@ -114,11 +129,12 @@ public final class ReligiousMembership {
     public void setActive(
             boolean active
     ) {
+
         this.active =
                 active;
     }
 
-    private static String normalize(
+    private static String normalizeId(
             String value
     ) {
 
@@ -131,6 +147,24 @@ public final class ReligiousMembership {
         }
 
         return value.trim()
-                .toLowerCase();
+                .toLowerCase(
+                        Locale.ROOT
+                );
+    }
+
+    private static String normalizeOptionalId(
+            String value
+    ) {
+
+        if (value == null
+                || value.isBlank()) {
+
+            return "";
+        }
+
+        return value.trim()
+                .toLowerCase(
+                        Locale.ROOT
+                );
     }
 }
