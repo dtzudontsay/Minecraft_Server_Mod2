@@ -1,0 +1,642 @@
+[
+  {
+    "locationId": "beyond_the_wall",
+    "sourceNote": "Free Folk regional simulation profile. Numerical values are mod tuning rather than canonical measurements.",
+    "values": {
+      "TRADITIONALISM": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "PERSONAL_FREEDOM": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "AUTHORITY_RESPECT": { "value": -0.60, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "CLAN_LOYALTY": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "COURTLY": { "value": -0.90, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "RURAL": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "ISOLATIONIST": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "CLAN_BASED": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    },
+    "cultures": {
+      "wildling": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "religions": {
+      "old_gods": { "weight": 0.85, "provenance": "CANON", "confidence": 0.85 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.75, "provenance": "HYBRID_CANON", "confidence": 0.75 },
+      "old_tongue": { "weight": 0.35, "provenance": "HYBRID_CANON", "confidence": 0.55 }
+    }
+  },
+
+  {
+    "locationId": "the_north",
+    "sourceNote": "Northern Westeros regional profile.",
+    "values": {
+      "TRADITIONALISM": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "DUTY": { "value": 0.50, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "HOUSE_LOYALTY": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "HOSPITALITY": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "TRADITIONAL": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "COURTLY": { "value": -0.20, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "RURAL": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "CLAN_BASED": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "cultures": {
+      "northman": { "weight": 0.90, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "religions": {
+      "old_gods": { "weight": 0.85, "provenance": "CANON", "confidence": 0.90 },
+      "faith_of_the_seven": { "weight": 0.15, "provenance": "CANON", "confidence": 0.75 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "iron_islands",
+    "values": {
+      "TRADITIONALISM": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "CLAN_LOYALTY": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "MARTIAL_GLORY": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "PERSONAL_FREEDOM": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.85 },
+      "NAVAL": { "value": 0.95, "provenance": "PLAUSIBLE", "confidence": 0.90 },
+      "RAIDING": { "value": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.90 },
+      "COURTLY": { "value": -0.65, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "TRADITIONAL": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.85 }
+    },
+    "cultures": {
+      "ironborn": { "weight": 0.95, "provenance": "CANON", "confidence": 0.98 }
+    },
+    "religions": {
+      "drowned_god": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "vale",
+    "values": {
+      "TRADITIONALISM": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "HONOR_CULTURE": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "HIERARCHY_ACCEPTANCE": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "COURTLY": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "TRADITIONAL": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "ISOLATIONIST": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "cultures": {
+      "valeman": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.90, "provenance": "CANON", "confidence": 0.90 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "riverlands",
+    "values": {
+      "HOUSE_LOYALTY": { "value": 0.25, "provenance": "PLAUSIBLE", "confidence": 0.50 },
+      "HOSPITALITY": { "value": 0.20, "provenance": "PLAUSIBLE", "confidence": 0.45 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.25, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "MERCANTILE": { "value": 0.15, "provenance": "PLAUSIBLE", "confidence": 0.45 },
+      "COSMOPOLITAN": { "value": 0.10, "provenance": "PLAUSIBLE", "confidence": 0.40 }
+    },
+    "cultures": {
+      "riverlander": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.90, "provenance": "CANON", "confidence": 0.90 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "westerlands",
+    "values": {
+      "WEALTH_SEEKING": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "PRESTIGE_SEEKING": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "HIERARCHY_ACCEPTANCE": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "COURTLY": { "value": 0.50, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "MERCANTILE": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "DYNASTIC": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "cultures": {
+      "westerman": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.90, "provenance": "CANON", "confidence": 0.90 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "crownlands",
+    "values": {
+      "SOCIAL_MOBILITY": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "PRESTIGE_SEEKING": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "COURTLY": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "MERCANTILE": { "value": 0.70, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "COSMOPOLITAN": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "POLITICAL_EXPOSURE": { "value": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "URBAN": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.70 }
+    },
+    "cultures": {
+      "crownlander": { "weight": 0.75, "provenance": "HYBRID_CANON", "confidence": 0.80 },
+      "westerosi": { "weight": 0.25, "provenance": "HYBRID_CANON", "confidence": 0.70 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.90, "provenance": "CANON", "confidence": 0.90 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "the_reach",
+    "values": {
+      "TRADITIONALISM": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "PRESTIGE_SEEKING": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.50 },
+      "HIERARCHY_ACCEPTANCE": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "socialNorms": {
+      "COURTLY": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "MERCANTILE": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "RURAL": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "SCHOLARLY": { "value": 0.25, "provenance": "PLAUSIBLE", "confidence": 0.45 }
+    },
+    "cultures": {
+      "reachman": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.92, "provenance": "CANON", "confidence": 0.92 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "stormlands",
+    "values": {
+      "MARTIAL_GLORY": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "DUTY": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "RURAL": { "value": 0.25, "provenance": "PLAUSIBLE", "confidence": 0.45 },
+      "COURTLY": { "value": 0.10, "provenance": "PLAUSIBLE", "confidence": 0.40 }
+    },
+    "cultures": {
+      "stormlander": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.90, "provenance": "CANON", "confidence": 0.90 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "dorne",
+    "values": {
+      "PERSONAL_FREEDOM": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "CULTURAL_TOLERANCE": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "FAMILY_LOYALTY": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "COURTLY": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.50 },
+      "MARTIAL": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.50 },
+      "COSMOPOLITAN": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "cultures": {
+      "dornish": { "weight": 0.90, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "religions": {
+      "faith_of_the_seven": { "weight": 0.88, "provenance": "CANON", "confidence": 0.88 }
+    },
+    "languages": {
+      "common_tongue": { "weight": 0.98, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "andalos",
+    "sourceNote": "Modern regional conditions are sparsely established; only low-confidence simulation pressures are supplied.",
+    "values": {
+      "TRADITIONALISM": { "value": 0.10, "provenance": "PLAUSIBLE", "confidence": 0.25 }
+    },
+    "socialNorms": {
+      "RURAL": { "value": 0.20, "provenance": "PLAUSIBLE", "confidence": 0.30 }
+    }
+  },
+
+  {
+    "locationId": "disputed_lands",
+    "values": {
+      "POLITICAL_STABILITY": { "value": -0.55, "provenance": "PLAUSIBLE", "confidence": 0.70 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "FOREIGN_EXPOSURE": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "POLITICAL_EXPOSURE": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    },
+    "cultures": {
+      "valyrian": { "weight": 0.50, "provenance": "HYBRID_CANON", "confidence": 0.55 }
+    },
+    "languages": {
+      "low_valyrian": { "weight": 0.75, "provenance": "HYBRID_CANON", "confidence": 0.70 }
+    }
+  },
+
+  {
+    "locationId": "lands_of_long_summer",
+    "socialNorms": {
+      "FOREIGN_EXPOSURE": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.35 },
+      "MERCANTILE": { "value": 0.25, "provenance": "PLAUSIBLE", "confidence": 0.35 }
+    },
+    "cultures": {
+      "valyrian": { "weight": 0.45, "provenance": "HYBRID_CANON", "confidence": 0.50 }
+    },
+    "languages": {
+      "low_valyrian": { "weight": 0.65, "provenance": "HYBRID_CANON", "confidence": 0.60 }
+    }
+  },
+
+  {
+    "locationId": "dothraki_sea_region",
+    "values": {
+      "MARTIAL_GLORY": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.85 },
+      "CLAN_LOYALTY": { "value": 0.70, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "TRADITIONALISM": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.70 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.90 },
+      "EQUESTRIAN": { "value": 1.00, "provenance": "PLAUSIBLE", "confidence": 0.95 },
+      "MIGRATORY": { "value": 0.95, "provenance": "PLAUSIBLE", "confidence": 0.90 },
+      "URBAN": { "value": -0.90, "provenance": "PLAUSIBLE", "confidence": 0.85 },
+      "CLAN_BASED": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.80 }
+    },
+    "cultures": {
+      "dothraki": { "weight": 0.95, "provenance": "CANON", "confidence": 0.98 }
+    },
+    "religions": {
+      "great_stallion": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "dothraki": { "weight": 0.98, "provenance": "CANON", "confidence": 0.98 }
+    }
+  },
+
+  {
+    "locationId": "ghiscar",
+    "values": {
+      "TRADITIONALISM": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "HIERARCHY_ACCEPTANCE": { "value": 0.70, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "WEALTH_SEEKING": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "socialNorms": {
+      "URBAN": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "MERCANTILE": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "TRADITIONAL": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "cultures": {
+      "ghiscari": { "weight": 0.90, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "ghiscari": { "weight": 0.85, "provenance": "HYBRID_CANON", "confidence": 0.75 }
+    }
+  },
+
+  {
+    "locationId": "lhazar",
+    "values": {
+      "PACIFISM": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "RELIGIOSITY": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    },
+    "socialNorms": {
+      "RURAL": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "MARTIAL": { "value": -0.50, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "RELIGIOUS": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    },
+    "cultures": {
+      "lhazareen": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "religions": {
+      "great_shepherd": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "lhazareen": { "weight": 0.95, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    }
+  },
+
+  {
+    "locationId": "red_waste_region",
+    "sourceNote": "Sparse settled cultural information; environmental pressures only.",
+    "socialNorms": {
+      "ISOLATIONIST": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.45 },
+      "URBAN": { "value": -0.75, "provenance": "PLAUSIBLE", "confidence": 0.70 }
+    }
+  },
+
+  {
+    "locationId": "qarth_region",
+    "values": {
+      "WEALTH_SEEKING": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "PRESTIGE_SEEKING": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "socialNorms": {
+      "MERCANTILE": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "URBAN": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "COSMOPOLITAN": { "value": 0.70, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "COURTLY": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "cultures": {
+      "qartheen": { "weight": 0.90, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "qartheen": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.80 }
+    }
+  },
+
+  {
+    "locationId": "ib_region",
+    "socialNorms": {
+      "ISOLATIONIST": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "NAVAL": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.50 },
+      "MERCANTILE": { "value": 0.25, "provenance": "PLAUSIBLE", "confidence": 0.40 }
+    },
+    "cultures": {
+      "ibbenese": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "ibbenese": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "jogos_nhai",
+    "values": {
+      "MARTIAL_GLORY": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "CLAN_LOYALTY": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "EQUESTRIAN": { "value": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "MIGRATORY": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "CLAN_BASED": { "value": 0.70, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    },
+    "cultures": {
+      "jogos_nhai": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "jogos_nhai": { "weight": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    }
+  },
+
+  {
+    "locationId": "orange_emperor_domain",
+    "sourceNote": "Mod-authored political territory. All interpretation deliberately marked plausible.",
+    "values": {
+      "HIERARCHY_ACCEPTANCE": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.30 }
+    },
+    "socialNorms": {
+      "BUREAUCRATIC": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.30 },
+      "COURTLY": { "value": 0.35, "provenance": "PLAUSIBLE", "confidence": 0.30 }
+    },
+    "cultures": {
+      "yi_tish": { "weight": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.35 }
+    },
+    "languages": {
+      "yi_tish": { "weight": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.35 }
+    }
+  },
+
+  {
+    "locationId": "yi_ti",
+    "values": {
+      "TRADITIONALISM": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.45 },
+      "HIERARCHY_ACCEPTANCE": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.45 }
+    },
+    "socialNorms": {
+      "COURTLY": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.45 },
+      "BUREAUCRATIC": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.45 },
+      "URBAN": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.40 }
+    },
+    "cultures": {
+      "yi_tish": { "weight": 0.90, "provenance": "HYBRID_CANON", "confidence": 0.80 }
+    },
+    "languages": {
+      "yi_tish": { "weight": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    }
+  },
+
+  {
+    "locationId": "mossovy",
+    "sourceNote": "Lore is sparse. Profile intentionally contains mostly unknown dimensions.",
+    "socialNorms": {
+      "ISOLATIONIST": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.20 }
+    }
+  },
+
+  {
+    "locationId": "shadow_lands",
+    "sourceNote": "Sparse and mysterious source material; confidence deliberately low.",
+    "values": {
+      "RELIGIOSITY": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.25 }
+    },
+    "socialNorms": {
+      "RELIGIOUS": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.25 },
+      "ISOLATIONIST": { "value": 0.40, "provenance": "PLAUSIBLE", "confidence": 0.25 }
+    },
+    "religions": {
+      "rhllor": { "weight": 0.25, "provenance": "HYBRID_CANON", "confidence": 0.35 }
+    }
+  },
+
+  {
+    "locationId": "moraq_region",
+    "sourceNote": "Authoring grouping with little cultural certainty; unknown values intentionally preserved."
+  },
+
+  {
+    "locationId": "summer_isles",
+    "values": {
+      "CULTURAL_TOLERANCE": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "PERSONAL_FREEDOM": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "socialNorms": {
+      "NAVAL": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "COSMOPOLITAN": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.55 },
+      "MERCANTILE": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    },
+    "cultures": {
+      "summer_islander": { "weight": 0.95, "provenance": "CANON", "confidence": 0.95 }
+    },
+    "languages": {
+      "summer_tongue": { "weight": 0.95, "provenance": "HYBRID_CANON", "confidence": 0.85 }
+    }
+  },
+
+  {
+    "locationId": "north_sothoryos",
+    "sourceNote": "Cultural data is intentionally left unknown because the visible northern region is poorly documented.",
+    "socialNorms": {
+      "URBAN": { "value": -0.70, "provenance": "PLAUSIBLE", "confidence": 0.35 },
+      "ISOLATIONIST": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.25 }
+    }
+  },
+
+  {
+    "locationId": "northwest_ulthos",
+    "sourceNote": "Mod-authored geographic region with insufficient canonical social information. Most dimensions remain UNKNOWN."
+  },
+
+  {
+    "locationId": "wolfswood",
+    "sourceNote": "Subregional refinement of The North.",
+    "values": {
+      "TRADITIONALISM": { "value": 0.82, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "RURAL": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "ISOLATIONIST": { "value": 0.30, "provenance": "PLAUSIBLE", "confidence": 0.45 }
+    }
+  },
+
+  {
+    "locationId": "the_neck",
+    "sourceNote": "Crannogman-influenced subregional refinement.",
+    "values": {
+      "TRADITIONALISM": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.65 },
+      "CLAN_LOYALTY": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "ISOLATIONIST": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "RURAL": { "value": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "CLAN_BASED": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.60 }
+    },
+    "religions": {
+      "old_gods": { "weight": 0.95, "provenance": "CANON", "confidence": 0.90 }
+    }
+  },
+
+  {
+    "locationId": "the_new_gift",
+    "sourceNote": "Northern frontier and Night's Watch proximity refinement.",
+    "values": {
+      "DUTY": { "value": 0.60, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "POLITICAL_EXPOSURE": { "value": 0.15, "provenance": "PLAUSIBLE", "confidence": 0.35 }
+    }
+  },
+
+  {
+    "locationId": "the_wall",
+    "sourceNote": "Night's Watch institutional frontier refinement.",
+    "values": {
+      "DUTY": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.75 },
+      "PERSONAL_FREEDOM": { "value": -0.35, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.80 },
+      "AUTHORITY": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    }
+  },
+
+  {
+    "locationId": "dornish_marches",
+    "sourceNote": "Border-march martial refinement.",
+    "values": {
+      "MARTIAL_GLORY": { "value": 0.55, "provenance": "PLAUSIBLE", "confidence": 0.55 }
+    },
+    "socialNorms": {
+      "MARTIAL": { "value": 0.70, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    }
+  },
+
+  {
+    "locationId": "braavosian_coastlands",
+    "sourceNote": "Braavosi coastal influence refinement.",
+    "values": {
+      "PERSONAL_FREEDOM": { "value": 0.50, "provenance": "PLAUSIBLE", "confidence": 0.50 },
+      "SOCIAL_MOBILITY": { "value": 0.45, "provenance": "PLAUSIBLE", "confidence": 0.45 }
+    },
+    "socialNorms": {
+      "NAVAL": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "MERCANTILE": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "COSMOPOLITAN": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.70 }
+    },
+    "cultures": {
+      "braavosi": { "weight": 0.85, "provenance": "HYBRID_CANON", "confidence": 0.80 }
+    },
+    "religions": {
+      "moonsingers": { "weight": 0.20, "provenance": "CANON", "confidence": 0.45 },
+      "many_faced_god": { "weight": 0.10, "provenance": "CANON", "confidence": 0.35 }
+    },
+    "languages": {
+      "braavosi_valyrian": { "weight": 0.85, "provenance": "HYBRID_CANON", "confidence": 0.80 }
+    }
+  },
+
+  {
+    "locationId": "mother_of_mountains",
+    "sourceNote": "Sacred Dothraki subregional refinement.",
+    "values": {
+      "RELIGIOSITY": { "value": 0.75, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "TRADITIONALISM": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.70 }
+    },
+    "socialNorms": {
+      "RELIGIOUS": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.75 }
+    },
+    "religions": {
+      "great_stallion": { "weight": 1.00, "provenance": "CANON", "confidence": 0.95 }
+    }
+  },
+
+  {
+    "locationId": "plains_of_the_jogos_nhai",
+    "sourceNote": "Jogos Nhai steppe refinement.",
+    "socialNorms": {
+      "EQUESTRIAN": { "value": 0.95, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "MIGRATORY": { "value": 0.90, "provenance": "PLAUSIBLE", "confidence": 0.70 },
+      "MARTIAL": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.65 }
+    }
+  },
+
+  {
+    "locationId": "basilisk_isles",
+    "sourceNote": "Piracy/raiding-oriented island refinement.",
+    "socialNorms": {
+      "NAVAL": { "value": 0.85, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "RAIDING": { "value": 0.80, "provenance": "PLAUSIBLE", "confidence": 0.60 },
+      "FOREIGN_EXPOSURE": { "value": 0.65, "provenance": "PLAUSIBLE", "confidence": 0.50 }
+    }
+  }
+]

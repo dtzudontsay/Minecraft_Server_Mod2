@@ -8,6 +8,7 @@ import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
+import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
@@ -34,6 +35,7 @@ import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegi
 import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
+import dev.dtzudontsay.knownworld.world.reference.influence.RegionalInfluenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
 import dev.dtzudontsay.knownworld.world.reference.spatial.RegionalSubregionCatalog;
 import dev.dtzudontsay.knownworld.world.reference.spatial.RegionalSubregionResolver;
@@ -89,15 +91,16 @@ public final class KnownWorld implements ModInitializer {
 
         TerritoryZoneCatalog.bootstrap();
 
-        /*
-         * Regional painted subregion masks.
-         *
-         * These are loaded from the high-resolution regional maps
-         * that were manually painted with exact flat colors.
-         */
         RegionalSubregionCatalog.bootstrap();
 
         RegionalSubregionResolver.bootstrap();
+
+        /*
+         * Batch 18C.
+         *
+         * Territory profiles and optional subregion refinements.
+         */
+        RegionalInfluenceCatalog.bootstrap();
 
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -119,7 +122,7 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones, {} territory zones, {} subregion masks and {} subregion color entries.",
+                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries and {} regional influence profiles.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
@@ -131,7 +134,9 @@ public final class KnownWorld implements ModInitializer {
                 RegionalSubregionCatalog.get()
                         .size(),
                 RegionalSubregionCatalog.get()
-                        .totalEntryCount()
+                        .totalEntryCount(),
+                RegionalInfluenceCatalog.get()
+                        .size()
         );
 
         KnownWorldDebugCommand.register();
@@ -139,6 +144,8 @@ public final class KnownWorld implements ModInitializer {
         KnownWorldGeoDebugCommand.register();
 
         WorldReferenceDebugCommand.register();
+
+        RegionalInfluenceDebugCommand.register();
 
         NpcSimulation.registerLifecycle();
 
