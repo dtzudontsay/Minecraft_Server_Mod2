@@ -3,6 +3,7 @@ package dev.dtzudontsay.knownworld.simulation.social;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.NonDynasticSocietyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.OrganizationMembershipPersistence;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyActivationReport;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityReport;
@@ -10,6 +11,9 @@ import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityServ
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyScenarioBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembershipManager;
+import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyBootstrapService;
+import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyManager;
+import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyService;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 
@@ -28,11 +32,17 @@ public final class SocietyStructureRuntime {
 
     private final OrganizationMembershipManager memberships;
 
+    private final NonDynasticSocietyManager nonDynasticSocieties;
+
+    private final NonDynasticSocietyService nonDynasticSocietyService;
+
     private final DynastyIntegrityService dynastyIntegrity;
 
     private final DynastyPersistence dynastyPersistence;
 
     private final OrganizationMembershipPersistence membershipPersistence;
+
+    private final NonDynasticSocietyPersistence nonDynasticSocietyPersistence;
 
     private DynastyActivationReport lastActivationReport;
 
@@ -61,6 +71,18 @@ public final class SocietyStructureRuntime {
                         simulation.organizations()
                 );
 
+        this.nonDynasticSocieties =
+                new NonDynasticSocietyManager(
+                        simulation.organizations(),
+                        simulation.registry()
+                );
+
+        this.nonDynasticSocietyService =
+                new NonDynasticSocietyService(
+                        nonDynasticSocieties,
+                        memberships
+                );
+
         this.dynastyIntegrity =
                 new DynastyIntegrityService(
                         simulation,
@@ -85,13 +107,15 @@ public final class SocietyStructureRuntime {
                 new OrganizationMembershipPersistence(
                         savePath
                 );
+
+        this.nonDynasticSocietyPersistence =
+                new NonDynasticSocietyPersistence(
+                        savePath
+                );
     }
 
     public static void registerLifecycle() {
 
-        /*
-         * Must be registered after NpcSimulation.registerLifecycle().
-         */
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
 
@@ -117,8 +141,9 @@ public final class SocietyStructureRuntime {
                     runtime.loadAndReconcile();
 
                     KnownWorld.LOGGER.info(
-                            "Society structure runtime started with {} dynasties and {} organization memberships.",
+                            "Society structure runtime started with {} dynasties, {} non-dynastic societies and {} organization memberships.",
                             runtime.dynasties.size(),
+                            runtime.nonDynasticSocieties.size(),
                             runtime.memberships.size()
                     );
                 }
@@ -190,22 +215,26 @@ public final class SocietyStructureRuntime {
     }
 
     public DynastyManager dynasties() {
-
         return dynasties;
     }
 
     public OrganizationMembershipManager memberships() {
-
         return memberships;
     }
 
-    public DynastyActivationReport lastActivationReport() {
+    public NonDynasticSocietyManager nonDynasticSocieties() {
+        return nonDynasticSocieties;
+    }
 
+    public NonDynasticSocietyService nonDynasticSocietyService() {
+        return nonDynasticSocietyService;
+    }
+
+    public DynastyActivationReport lastActivationReport() {
         return lastActivationReport;
     }
 
     public DynastyIntegrityReport lastIntegrityReport() {
-
         return lastIntegrityReport;
     }
 
@@ -229,18 +258,10 @@ public final class SocietyStructureRuntime {
 
         try {
 
-            /*
-             * 1. Load previously persisted dynasty runtime state.
-             */
             dynastyPersistence.loadInto(
                     dynasties
             );
 
-            /*
-             * 2. Reconcile persistent authored dynasties against the
-             * current complete reference catalog and perform 298 AC
-             * activation.
-             */
             lastActivationReport =
                     DynastyScenarioBootstrapService.ensureDefault(
                             simulation,
@@ -248,49 +269,36 @@ public final class SocietyStructureRuntime {
                     );
 
             /*
-             * 3. Load generic organization memberships after all
-             * dynasty organizations are guaranteed to exist.
+             * Organizations already belong to the main NPC simulation
+             * and therefore exist before society metadata is loaded.
              */
+            nonDynasticSocietyPersistence.loadInto(
+                    nonDynasticSocieties
+            );
+
             membershipPersistence.loadInto(
                     memberships
             );
 
-            /*
-             * 4. Mirror old primary affiliations into the generic
-             * organization membership system.
-             */
+            NonDynasticSocietyBootstrapService.ensureDefault(
+                    simulation,
+                    nonDynasticSocieties,
+                    memberships
+            );
+
             reconcile();
 
-            /*
-             * 5. Strict structural dynasty audit.
-             *
-             * Warnings are allowed.
-             * Structural errors stop initialization.
-             */
             lastIntegrityReport =
                     dynastyIntegrity.auditStrict();
 
             KnownWorld.LOGGER.info(
-                    "Dynasty integrity audit passed: total={}, authored={}, generated={}, active={}, inactive={}, organizations={}, extinct={}, exiled={}, notYetFounded={}, noHead={}, noHeir={}, warnings={}.",
+                    "Dynasty integrity audit passed: total={}, active={}, inactive={}, warnings={}.",
                     lastIntegrityReport.totalDynasties(),
-                    lastIntegrityReport.authoredDynasties(),
-                    lastIntegrityReport.generatedDynasties(),
                     lastIntegrityReport.activeAtScenarioStart(),
                     lastIntegrityReport.inactiveAtScenarioStart(),
-                    lastIntegrityReport.activeRuntimeOrganizations(),
-                    lastIntegrityReport.extinctDynasties(),
-                    lastIntegrityReport.exiledDynasties(),
-                    lastIntegrityReport.notYetFoundedDynasties(),
-                    lastIntegrityReport.dynastiesWithoutHeads(),
-                    lastIntegrityReport.dynastiesWithoutHeirs(),
                     lastIntegrityReport.warningCount()
             );
 
-            /*
-             * Dynasty bootstrap may create new organizations and authored
-             * organization mappings. Persist those through the main NPC
-             * simulation.
-             */
             simulation.save();
 
             save();
@@ -318,6 +326,10 @@ public final class SocietyStructureRuntime {
 
             membershipPersistence.save(
                     memberships
+            );
+
+            nonDynasticSocietyPersistence.save(
+                    nonDynasticSocieties
             );
 
         } catch (

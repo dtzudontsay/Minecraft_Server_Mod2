@@ -1,0 +1,58 @@
+{
+  "defaults": {
+    "type": "KHALASAR",
+    "status": "ACTIVE",
+    "homeLocationId": "vaes_dothrak",
+    "cultureId": "dothraki",
+    "religionId": "great_stallion",
+    "mobile": true,
+    "provenance": "CANON",
+    "primaryLeaderRole": "khal"
+  },
+
+  "societies": [
+    {
+      "id": "khalasar_drogo",
+      "name": "Khal Drogo's Khalasar",
+      "primaryLeaderNpcId": "drogo",
+      "populationEstimate": 40000,
+      "militaryStrength": 0.95,
+      "cohesion": 0.88,
+      "sourceNote": "Drogo commands an exceptionally large khalasar of roughly forty thousand at the beginning of the story.",
+      "members": [
+        {
+          "npcId": "cohollo",
+          "roles": ["bloodrider"],
+          "loyalty": 0.98
+        },
+        {
+          "npcId": "haggo",
+          "roles": ["bloodrider"],
+          "loyalty": 0.98
+        },
+        {
+          "npcId": "qotho",
+          "roles": ["bloodrider"],
+          "loyalty": 0.98
+        }
+      ]
+    },
+
+    {
+      "id": "khalasar_ogo",
+      "name": "Khal Ogo's Khalasar",
+      "primaryLeaderNpcId": "ogo",
+      "populationEstimate": -1,
+      "militaryStrength": 0.62,
+      "cohesion": 0.72,
+      "sourceNote": "Khal Ogo and his son Fogo are active during 298 AC.",
+      "members": [
+        {
+          "npcId": "fogo",
+          "roles": ["khalakka"],
+          "loyalty": 0.90
+        }
+      ]
+    }
+  ]
+}

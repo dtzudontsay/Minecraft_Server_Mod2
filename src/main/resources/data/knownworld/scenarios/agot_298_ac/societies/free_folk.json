@@ -1,0 +1,76 @@
+{
+  "defaults": {
+    "status": "ACTIVE",
+    "homeLocationId": "beyond_the_wall",
+    "cultureId": "wildling",
+    "religionId": "old_gods",
+    "mobile": false,
+    "provenance": "CANON"
+  },
+
+  "societies": [
+    {
+      "id": "free_folk_thenns",
+      "name": "The Thenns",
+      "type": "FREE_FOLK_CLAN",
+      "cultureId": "thenn",
+      "primaryLeaderNpcId": "styr",
+      "primaryLeaderRole": "magnar",
+      "militaryStrength": 0.62,
+      "cohesion": 0.86
+    },
+
+    {
+      "id": "free_folk_hornfoots",
+      "name": "The Hornfoots",
+      "type": "FREE_FOLK_CLAN",
+      "militaryStrength": 0.38,
+      "cohesion": 0.64
+    },
+
+    {
+      "id": "free_folk_nightrunners",
+      "name": "The Nightrunners",
+      "type": "FREE_FOLK_CLAN",
+      "militaryStrength": 0.36,
+      "cohesion": 0.60
+    },
+
+    {
+      "id": "free_folk_frozen_shore",
+      "name": "Men of the Frozen Shore",
+      "type": "FREE_FOLK_CLAN",
+      "militaryStrength": 0.48,
+      "cohesion": 0.54
+    },
+
+    {
+      "id": "free_folk_ice_river_clans",
+      "name": "Ice-River Clans",
+      "type": "FREE_FOLK_CLAN",
+      "militaryStrength": 0.44,
+      "cohesion": 0.52
+    },
+
+    {
+      "id": "free_folk_cave_dwellers",
+      "name": "Cave-Dwelling Free Folk",
+      "type": "FREE_FOLK_CLAN",
+      "militaryStrength": 0.30,
+      "cohesion": 0.48
+    },
+
+    {
+      "id": "free_folk_mance_confederation",
+      "name": "Mance Rayder's Free Folk Confederation",
+      "type": "FREE_FOLK_CONFEDERATION",
+      "status": "FORMING",
+      "mobile": true,
+      "primaryLeaderNpcId": "mance_rayder",
+      "primaryLeaderRole": "king_beyond_the_wall",
+      "militaryStrength": 0.64,
+      "cohesion": 0.42,
+      "sourceNote": "Scenario-start representation of Mance Rayder's developing coalition rather than a hereditary kingdom."
+    }
+  ]
+}

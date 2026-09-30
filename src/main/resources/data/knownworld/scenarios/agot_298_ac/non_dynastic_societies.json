@@ -1,0 +1,7 @@
+{
+  "resources": [
+    "data/knownworld/scenarios/agot_298_ac/societies/dothraki.json",
+    "data/knownworld/scenarios/agot_298_ac/societies/free_folk.json",
+    "data/knownworld/scenarios/agot_298_ac/societies/jogos_nhai.json"
+  ]
+}

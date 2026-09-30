@@ -1,0 +1,87 @@
+[
+  {
+    "id": "high_priestess_dosh_khaleen",
+    "displayName": "High Priestess of the Dosh Khaleen",
+    "category": "DOTHRAKI_RELIGIOUS",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Singular high-priestess framing is primarily show-derived; retained as an optional authored role."
+  },
+  {
+    "id": "little_bird",
+    "displayName": "Little Bird",
+    "category": "SPY_NETWORK",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "magnar",
+    "displayName": "Magnar",
+    "category": "FREE_FOLK_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "clan_chieftain",
+    "displayName": "Clan Chieftain",
+    "category": "CLAN_LEADERSHIP",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "free_folk_chieftain",
+    "displayName": "Free Folk Chieftain",
+    "category": "FREE_FOLK_LEADERSHIP",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "clan_mother",
+    "displayName": "Clan Mother",
+    "category": "FREE_FOLK_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "free_folk_war_leader",
+    "displayName": "Free Folk War Leader",
+    "category": "FREE_FOLK_LEADERSHIP",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "king_beyond_the_wall",
+    "displayName": "King-Beyond-the-Wall",
+    "category": "FREE_FOLK_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "jhat",
+    "displayName": "Jhat",
+    "category": "JOGOS_NHAI_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "jhattar",
+    "displayName": "Jhattar",
+    "category": "JOGOS_NHAI_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "unsullied_commander",
+    "displayName": "Unsullied Commander",
+    "category": "MILITARY_COMMAND",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "good_master",
+    "displayName": "Good Master",
+    "category": "GHISCARI_ELITE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wise_master",
+    "displayName": "Wise Master",
+    "category": "GHISCARI_ELITE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "great_master",
+    "displayName": "Great Master",
+    "category": "GHISCARI_ELITE",
+    "provenance": "CANON"
+  }
+]

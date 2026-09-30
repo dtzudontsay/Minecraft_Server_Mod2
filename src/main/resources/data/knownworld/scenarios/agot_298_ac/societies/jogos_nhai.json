@@ -1,0 +1,15 @@
+{
+  "defaults": {
+    "type": "JOGOS_NHAI_BAND",
+    "status": "ACTIVE",
+    "homeLocationId": "jogos_nhai",
+    "cultureId": "jogos_nhai",
+    "religionId": "moonsingers",
+    "mobile": true,
+    "provenance": "CANON",
+    "primaryLeaderRole": "jhat",
+    "secondaryLeaderRole": "moonsinger"
+  },
+
+  "societies": []
+}
