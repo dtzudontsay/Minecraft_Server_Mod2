@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CharacterProfileDebugCommand;
+import dev.dtzudontsay.knownworld.debug.CultureDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
@@ -62,7 +63,7 @@ public final class KnownWorld implements ModInitializer {
 
         /*
          * ---------------------------------------------------------
-         * WORLD GENERATION REGISTRATION
+         * WORLD GENERATION
          * ---------------------------------------------------------
          */
 
@@ -108,13 +109,6 @@ public final class KnownWorld implements ModInitializer {
 
         WorldReferenceCatalog.bootstrap();
 
-        /*
-         * Batch 18D.2
-         *
-         * Religious clergy/order metadata is loaded after the main
-         * reference catalog because its definitions validate their
-         * religion IDs against WorldReferenceCatalog.
-         */
         ReligiousInstitutionCatalog.bootstrap();
 
         /*
@@ -131,17 +125,11 @@ public final class KnownWorld implements ModInitializer {
 
         RegionalSubregionResolver.bootstrap();
 
-        /*
-         * Batch 18C.
-         *
-         * Territory-level influence profiles and optional
-         * subregional refinements.
-         */
         RegionalInfluenceCatalog.bootstrap();
 
         /*
          * ---------------------------------------------------------
-         * GEODATA / BIOME RASTERS
+         * GEODATA / BIOMES
          * ---------------------------------------------------------
          */
 
@@ -165,10 +153,19 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
+                "Known World reference system ready with {} geographic features, {} reference locations, {} cultures, {} religions, {} languages, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
+                        .size(),
+                WorldReferenceCatalog.get()
+                        .cultures()
+                        .size(),
+                WorldReferenceCatalog.get()
+                        .religions()
+                        .size(),
+                WorldReferenceCatalog.get()
+                        .languages()
                         .size(),
                 LandmassZoneCatalog.get()
                         .size(),
@@ -201,13 +198,15 @@ public final class KnownWorld implements ModInitializer {
 
         /*
          * ---------------------------------------------------------
-         * RELIGION DEBUG COMMANDS
+         * CHARACTER IDENTITY DEBUG COMMANDS
          * ---------------------------------------------------------
          */
 
         ReligionDebugCommand.register();
 
         ReligiousInstitutionDebugCommand.register();
+
+        CultureDebugCommand.register();
 
         /*
          * ---------------------------------------------------------
@@ -244,12 +243,6 @@ public final class KnownWorld implements ModInitializer {
         CharacterProfileDebugCommand.register();
 
         WorldEventDebugCommand.register();
-
-        /*
-         * ---------------------------------------------------------
-         * FINAL STARTUP LOGGING
-         * ---------------------------------------------------------
-         */
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
