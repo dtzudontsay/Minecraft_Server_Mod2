@@ -1,0 +1,52 @@
+{
+  "scenarioId": "agot_298_ac",
+  "anchorId": "royal_arrival_winterfell_pre_crypt",
+  "displayName": "Royal Party Arrives at Winterfell",
+
+  "startYear": 298,
+  "startDayOfYear": 0,
+  "daysPerYear": 365,
+
+  "chronologyCertainty": "canon_year_relative_event",
+  "seasonId": "long_summer",
+
+  "description": "Scenario Day 1 begins immediately after King Robert I Baratheon's royal party has arrived at Winterfell, before Robert and Eddard descend into the crypts, before Eddard accepts the office of Hand of the King, before the proposed betrothal of Sansa Stark and Joffrey Baratheon, and before Bran Stark's fall.",
+
+  "essosSynchronizationNote": "The Westerosi anchor is exact at the event level but does not provide an exact calendar date within 298 AC. Published Essosi POV chronology is not always synchronized precisely with the opening northern chapters. Essosi authored characters should therefore use the best-supported parallel state compatible with this 298 AC anchor, and uncertain synchronization should be recorded through provenance/source notes rather than by inventing an exact date.",
+
+  "establishedFacts": [
+    "The year is 298 AC.",
+    "The long summer is still ongoing.",
+    "Jon Arryn is dead.",
+    "Robert Baratheon is King of the Seven Kingdoms.",
+    "Eddard Stark is Lord of Winterfell and Warden of the North.",
+    "Eddard Stark has not yet accepted appointment as Hand of the King.",
+    "Robert's royal party has reached Winterfell.",
+    "Robert, Cersei, Jaime and Tyrion are therefore in the Winterfell royal visit context.",
+    "The Stark household, including Robb, Sansa, Arya, Bran, Rickon, Jon Snow and Theon Greyjoy, is still based at Winterfell.",
+    "The Stark children have already found the direwolf pups.",
+    "Bran Stark is alive, healthy and has not yet fallen from the broken tower.",
+    "The War of the Five Kings has not begun."
+  ],
+
+  "notYetOccurred": [
+    "Robert and Eddard's crypt conversation in which Robert offers Eddard the office of Hand.",
+    "Robert's proposal that Joffrey Baratheon and Sansa Stark be betrothed.",
+    "Bran Stark witnessing Jaime Lannister and Cersei Lannister together.",
+    "Bran Stark's fall from the tower.",
+    "Eddard Stark's departure from Winterfell for King's Landing.",
+    "The incident at the Trident involving Arya Stark, Joffrey Baratheon and Mycah.",
+    "Lady's death.",
+    "Eddard Stark taking up active duties as Hand in King's Landing.",
+    "Robert Baratheon's death.",
+    "Joffrey Baratheon's coronation.",
+    "The outbreak of the War of the Five Kings."
+  ],
+
+  "sourceNotes": [
+    "A Game of Thrones opens its main Westerosi storyline in 298 AC after Jon Arryn's death.",
+    "Robert travels north to Winterfell intending to offer Eddard Stark the office of Hand of the King.",
+    "The royal party's arrival precedes the welcoming feast and Bran Stark's fall.",
+    "No canon source supplies an exact numbered day-of-year for this event; startDayOfYear 0 is therefore the simulation-relative Scenario Day 1, not a claim about a canonical month or date."
+  ]
+}

@@ -1,6 +1,8 @@
 {
   "id": "agot_298_ac",
 
+  "startDefinition": "scenario_start.json",
+
   "settlements": "settlements.json",
   "organizations": "organizations.json",
   "titles": "titles.json",

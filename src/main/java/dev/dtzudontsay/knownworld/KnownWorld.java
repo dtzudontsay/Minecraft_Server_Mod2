@@ -19,6 +19,7 @@ import dev.dtzudontsay.knownworld.debug.ReferenceValidationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligiousInstitutionDebugCommand;
+import dev.dtzudontsay.knownworld.debug.ScenarioStartDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
@@ -26,6 +27,7 @@ import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldReferenceDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileOverlayService;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
@@ -90,6 +92,14 @@ public final class KnownWorld implements ModInitializer {
         WorldReferenceSettings.bootstrap();
 
         WorldReferenceCatalog.bootstrap();
+
+        /*
+         * Batch 19.0E.3.
+         *
+         * Lock the authored scenario to one explicit historical/event
+         * anchor before any runtime population systems are started.
+         */
+        ScenarioStartCatalog.bootstrap();
 
         ReligiousInstitutionCatalog.bootstrap();
 
@@ -179,6 +189,13 @@ public final class KnownWorld implements ModInitializer {
         SuccessionDebugCommand.register();
         CharacterProfileDebugCommand.register();
         WorldEventDebugCommand.register();
+
+        /*
+         * Scenario-start inspection is intentionally registered after the
+         * simulation commands. The command itself reads the live campaign
+         * calendar when executed.
+         */
+        ScenarioStartDebugCommand.register();
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",
