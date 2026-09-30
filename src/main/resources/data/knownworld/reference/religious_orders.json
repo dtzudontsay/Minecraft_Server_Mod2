@@ -14,6 +14,55 @@
     "provenance": "CANON"
   },
   {
+    "id": "most_devout",
+    "displayName": "Most Devout",
+    "parentId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wandering_septons",
+    "displayName": "Wandering Septons",
+    "parentId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "holy_brothers",
+    "displayName": "Holy Brothers",
+    "parentId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "holy_sisters",
+    "displayName": "Holy Sisters",
+    "parentId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "begging_brothers",
+    "displayName": "Begging Brothers",
+    "parentId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "septry_brothers",
+    "displayName": "Septry Brothers",
+    "parentId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "motherhouse_sisters",
+    "displayName": "Motherhouse Sisters",
+    "parentId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "HYBRID_CANON"
+  },
+  {
     "id": "silent_sisters",
     "displayName": "Silent Sisters",
     "parentId": "faith_of_the_seven",
@@ -34,6 +83,7 @@
     "category": "MILITANT_ORDER",
     "provenance": "CANON"
   },
+
   {
     "id": "red_priests",
     "displayName": "Red Priests",
@@ -42,17 +92,58 @@
     "provenance": "CANON"
   },
   {
+    "id": "fiery_hand",
+    "displayName": "Fiery Hand",
+    "parentId": "rhllor",
+    "category": "MILITANT_ORDER",
+    "provenance": "CANON"
+  },
+
+  {
     "id": "faceless_men",
     "displayName": "Faceless Men",
     "parentId": "many_faced_god",
     "category": "RELIGIOUS_ORDER",
     "provenance": "CANON"
   },
+
   {
     "id": "drowned_men",
     "displayName": "Drowned Men",
     "parentId": "drowned_god",
     "category": "CLERGY",
     "provenance": "CANON"
+  },
+
+  {
+    "id": "dosh_khaleen",
+    "displayName": "Dosh Khaleen",
+    "parentId": "great_stallion",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "moonsingers_clergy",
+    "displayName": "Moonsingers",
+    "parentId": "moonsingers",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "priests_of_boash",
+    "displayName": "Priests of Boash",
+    "parentId": "boash",
+    "category": "CLERGY",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "starry_wisdom_clergy",
+    "displayName": "Clergy of the Church of Starry Wisdom",
+    "parentId": "church_of_starry_wisdom",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "HYBRID_CANON"
   }
 ]

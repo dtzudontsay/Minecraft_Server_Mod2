@@ -1,39 +1,103 @@
 package dev.dtzudontsay.knownworld.simulation.social;
 
 /**
- * Persistent social/political organization categories.
+ * Persistent social, political, military, religious and economic
+ * organization categories.
+ *
+ * These are intentionally broad structural classes. Specific entities such
+ * as the Night's Watch, Citadel, Iron Bank or a particular khalasar remain
+ * Organization instances rather than enum constants.
  */
 public enum OrganizationType {
 
     /**
-     * People sharing a domestic household or court.
+     * Domestic household or residential court.
      */
     HOUSEHOLD,
 
     /**
-     * Dynastic noble house such as House Stark.
+     * Dynastic noble house.
      */
     NOBLE_HOUSE,
 
     /**
-     * Political allegiance or realm-level faction.
+     * Broad political allegiance or realm-level faction.
      */
     FACTION,
 
     /**
-     * Military organization.
+     * Formal state or civic government.
+     */
+    GOVERNMENT,
+
+    /**
+     * Deliberative or advisory governing body.
+     *
+     * Examples: Small Council, conclave-like councils.
+     */
+    COUNCIL,
+
+    /**
+     * General military formation or army.
      */
     ARMY,
 
     /**
-     * Religious institution.
+     * Permanent sworn military order.
+     *
+     * Examples: Kingsguard, Night's Watch.
+     */
+    MILITARY_ORDER,
+
+    /**
+     * Professional mercenary company.
+     *
+     * Examples: Golden Company, Second Sons.
+     */
+    MERCENARY_COMPANY,
+
+    /**
+     * Religious institution or religious order.
      */
     RELIGIOUS_ORDER,
 
     /**
-     * Trade / professional organization.
+     * Scholarly / educational institution.
+     *
+     * Example: Citadel.
+     */
+    SCHOLARLY_ORDER,
+
+    /**
+     * Trade or professional guild.
      */
     GUILD,
+
+    /**
+     * Bank or similarly persistent financial institution.
+     *
+     * Example: Iron Bank of Braavos.
+     */
+    FINANCIAL_INSTITUTION,
+
+    /**
+     * Organized political party.
+     *
+     * Example: Volantene Tigers or Elephants.
+     */
+    POLITICAL_PARTY,
+
+    /**
+     * Nomadic political/military host.
+     *
+     * Example: Dothraki khalasar.
+     */
+    NOMADIC_HOST,
+
+    /**
+     * Persistent organized criminal enterprise.
+     */
+    CRIMINAL_ORGANIZATION,
 
     OTHER
 }

@@ -19,6 +19,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.formation.ChildFormationService
 import dev.dtzudontsay.knownworld.simulation.npc.formation.UpbringingManager;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
 import dev.dtzudontsay.knownworld.simulation.npc.knowledge.NpcKnowledgeManager;
+import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterLegalStateManager;
 import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.FertilityService;
 import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.GeneratedNameService;
 import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.LifeCycleService;
@@ -39,6 +40,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CampaignCalendarPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.CharacterLegalStatePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterProfilePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.ClaimPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.GenealogyPersistence;
@@ -111,6 +113,8 @@ public final class NpcSimulation {
     private final PregnancyManager pregnancyManager;
 
     private final CharacterProfileManager profileManager;
+
+    private final CharacterLegalStateManager legalStateManager;
 
     private final CharacterProfileGenerationService profileGenerationService;
 
@@ -187,6 +191,8 @@ public final class NpcSimulation {
     private final ClaimPersistence claimPersistence;
 
     private final CharacterProfilePersistence profilePersistence;
+
+    private final CharacterLegalStatePersistence legalStatePersistence;
 
     private final ReligiousMembershipPersistence religiousMembershipPersistence;
 
@@ -285,6 +291,11 @@ public final class NpcSimulation {
 
         this.profileManager =
                 new CharacterProfileManager(
+                        registry
+                );
+
+        this.legalStateManager =
+                new CharacterLegalStateManager(
                         registry
                 );
 
@@ -560,6 +571,11 @@ public final class NpcSimulation {
                         savePath
                 );
 
+        this.legalStatePersistence =
+                new CharacterLegalStatePersistence(
+                        savePath
+                );
+
         this.religiousMembershipPersistence =
                 new ReligiousMembershipPersistence(
                         savePath
@@ -592,11 +608,12 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} genealogy records, {} unions, {} pregnancies, {} upbringing records, {} claims, {} settlements, {} organizations, {} religious institutions, {} religious memberships and {} titles.",
+                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} legal states, {} genealogy records, {} unions, {} pregnancies, {} upbringing records, {} claims, {} settlements, {} organizations, {} religious institutions, {} religious memberships and {} titles.",
                             simulation.campaignCalendar.year(),
                             simulation.campaignCalendar.dayOfYear() + 1,
                             simulation.registry.size(),
                             simulation.profileManager.size(),
+                            simulation.legalStateManager.size(),
                             simulation.genealogyManager.size(),
                             simulation.marriageManager.size(),
                             simulation.pregnancyManager.size(),
@@ -700,6 +717,10 @@ public final class NpcSimulation {
 
     public CharacterProfileManager profiles() {
         return profileManager;
+    }
+
+    public CharacterLegalStateManager legalStates() {
+        return legalStateManager;
     }
 
     public SettlementManager settlements() {
@@ -932,13 +953,19 @@ public final class NpcSimulation {
 
         try {
 
-            /*
-             * Important 18F.5 integration point.
-             *
-             * Anything created through older/debug/authored paths is
-             * reconciled before persistence.
-             */
             formationIntegrationService.ensureAll();
+
+            /*
+             * Important for 18G authored overlays.
+             *
+             * The overlay lifecycle runs after NpcSimulation loads and may
+             * update the old CharacterProfile.legalStatus field. Ensuring
+             * here migrates that state before persistence without requiring
+             * the overlay to know about the new legal subsystem.
+             */
+            legalStateManager.ensureAll(
+                    profileManager
+            );
 
             persistence.save(
                     clock,
@@ -993,6 +1020,10 @@ public final class NpcSimulation {
 
             profilePersistence.save(
                     profileManager
+            );
+
+            legalStatePersistence.save(
+                    legalStateManager
             );
 
             religiousMembershipPersistence.save(
@@ -1092,6 +1123,19 @@ public final class NpcSimulation {
 
             profileManager.ensureAll();
 
+            /*
+             * Multi-axis legal state is intentionally separate from the
+             * older profile persistence. Old saves therefore require no
+             * profile-format migration.
+             */
+            legalStatePersistence.loadInto(
+                    legalStateManager
+            );
+
+            legalStateManager.ensureAll(
+                    profileManager
+            );
+
             religiousMembershipPersistence.loadInto(
                     religiousInstitutionManager,
                     religiousMembershipManager
@@ -1103,14 +1147,6 @@ public final class NpcSimulation {
                     upbringingManager
             );
 
-            /*
-             * Single compatibility/integration path for:
-             *
-             * - scenario characters
-             * - old save NPCs
-             * - old children
-             * - characters created before Culture/Religion state
-             */
             formationIntegrationService.ensureAll();
 
             save();

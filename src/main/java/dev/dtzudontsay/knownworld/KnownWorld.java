@@ -7,6 +7,7 @@ import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FormationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
+import dev.dtzudontsay.knownworld.debug.LegalStateDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
@@ -149,7 +150,7 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features, {} reference locations, {} cultures, {} religions, {} languages, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
+                "Known World reference system ready with {} geographic features, {} reference locations, {} cultures, {} religions, {} languages, {} occupations, {} roles, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
@@ -162,6 +163,12 @@ public final class KnownWorld implements ModInitializer {
                         .size(),
                 WorldReferenceCatalog.get()
                         .languages()
+                        .size(),
+                WorldReferenceCatalog.get()
+                        .occupations()
+                        .size(),
+                WorldReferenceCatalog.get()
+                        .roles()
                         .size(),
                 LandmassZoneCatalog.get()
                         .size(),
@@ -206,6 +213,8 @@ public final class KnownWorld implements ModInitializer {
 
         FormationDebugCommand.register();
 
+        LegalStateDebugCommand.register();
+
         /*
          * ---------------------------------------------------------
          * SIMULATION
@@ -215,11 +224,8 @@ public final class KnownWorld implements ModInitializer {
         NpcSimulation.registerLifecycle();
 
         /*
-         * Batch 18G.
-         *
-         * This MUST be registered after NpcSimulation's lifecycle.
-         * When SERVER_STARTED fires, the simulation therefore loads first
-         * and authored profile overlays are applied afterwards.
+         * Batch 18G authored overlays remain registered after the
+         * simulation lifecycle so scenario/profile state is available.
          */
         AuthoredCharacterProfileOverlayService.registerLifecycle();
 

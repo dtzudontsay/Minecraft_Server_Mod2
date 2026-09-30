@@ -8,63 +8,32 @@
   {
     "id": "ward",
     "displayName": "Ward",
-    "category": "LEGAL_STATUS",
+    "category": "LEGAL_RELATION",
     "provenance": "CANON"
   },
   {
     "id": "hostage",
     "displayName": "Hostage",
-    "category": "LEGAL_STATUS",
+    "category": "LEGAL_RELATION",
     "provenance": "CANON"
   },
   {
     "id": "bastard",
     "displayName": "Bastard",
-    "category": "LEGAL_STATUS",
+    "category": "BIRTH_STATUS",
     "provenance": "CANON"
   },
   {
     "id": "legitimized_bastard",
     "displayName": "Legitimized Bastard",
-    "category": "LEGAL_STATUS",
+    "category": "BIRTH_STATUS",
     "provenance": "CANON"
   },
 
   {
-    "id": "sworn_sword",
-    "displayName": "Sworn Sword",
-    "category": "SERVICE_RELATION",
-    "provenance": "CANON"
-  },
-  {
-    "id": "sworn_brother",
-    "displayName": "Sworn Brother",
-    "category": "SOCIAL_RELATION",
-    "provenance": "CANON"
-  },
-  {
-    "id": "squire",
-    "displayName": "Squire",
-    "category": "TRAINING_ROLE",
-    "provenance": "CANON"
-  },
-  {
-    "id": "mentor",
-    "displayName": "Mentor",
-    "category": "SOCIAL_RELATION",
-    "provenance": "HYBRID_CANON"
-  },
-  {
-    "id": "guardian",
-    "displayName": "Guardian",
-    "category": "LEGAL_RELATION",
-    "provenance": "HYBRID_CANON"
-  },
-
-  {
-    "id": "lover",
-    "displayName": "Lover",
-    "category": "ROMANTIC_RELATION",
+    "id": "spouse",
+    "displayName": "Spouse",
+    "category": "KINSHIP_RELATION",
     "provenance": "HYBRID_CANON"
   },
   {
@@ -74,10 +43,77 @@
     "provenance": "CANON"
   },
   {
-    "id": "spouse",
-    "displayName": "Spouse",
-    "category": "KINSHIP_RELATION",
+    "id": "lover",
+    "displayName": "Lover",
+    "category": "ROMANTIC_RELATION",
     "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "rock_wife",
+    "displayName": "Rock Wife",
+    "category": "IRONBORN_KINSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "salt_wife",
+    "displayName": "Salt Wife",
+    "category": "IRONBORN_KINSHIP",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "guardian",
+    "displayName": "Guardian",
+    "category": "LEGAL_RELATION",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "mentor",
+    "displayName": "Mentor",
+    "category": "SOCIAL_RELATION",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "tutor",
+    "displayName": "Tutor",
+    "category": "EDUCATION_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "wet_nurse",
+    "displayName": "Wet Nurse",
+    "category": "HOUSEHOLD_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "companion",
+    "displayName": "Companion",
+    "category": "HOUSEHOLD_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "lady_in_waiting",
+    "displayName": "Lady-in-Waiting",
+    "category": "COURT_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "cupbearer",
+    "displayName": "Cupbearer",
+    "category": "COURT_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "page",
+    "displayName": "Page",
+    "category": "TRAINING_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "squire",
+    "displayName": "Squire",
+    "category": "TRAINING_ROLE",
+    "provenance": "CANON"
   },
 
   {
@@ -92,17 +128,162 @@
     "category": "FEUDAL_RELATION",
     "provenance": "CANON"
   },
-
   {
-    "id": "kingsguard",
-    "displayName": "Kingsguard",
+    "id": "sworn_sword",
+    "displayName": "Sworn Sword",
+    "category": "SERVICE_RELATION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sworn_brother",
+    "displayName": "Sworn Brother",
+    "category": "SOCIAL_RELATION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "household_knight",
+    "displayName": "Household Knight",
     "category": "MILITARY_SERVICE",
     "provenance": "CANON"
   },
   {
-    "id": "nights_watch",
-    "displayName": "Brother of the Night's Watch",
+    "id": "hedge_knight",
+    "displayName": "Hedge Knight",
     "category": "MILITARY_SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "freerider",
+    "displayName": "Freerider",
+    "category": "MILITARY_SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "man_at_arms",
+    "displayName": "Man-at-Arms",
+    "category": "MILITARY_SERVICE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "castellan",
+    "displayName": "Castellan",
+    "category": "CASTLE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "steward",
+    "displayName": "Steward",
+    "category": "CASTLE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "chief_steward",
+    "displayName": "Chief Steward",
+    "category": "CASTLE_OFFICE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "understeward",
+    "displayName": "Understeward",
+    "category": "CASTLE_OFFICE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "master_at_arms",
+    "displayName": "Master-at-Arms",
+    "category": "CASTLE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "captain_of_guards",
+    "displayName": "Captain of Guards",
+    "category": "CASTLE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "garrison_commander",
+    "displayName": "Garrison Commander",
+    "category": "MILITARY_COMMAND",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "master_of_horse",
+    "displayName": "Master of Horse",
+    "category": "CASTLE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "kennelmaster",
+    "displayName": "Kennelmaster",
+    "category": "CASTLE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "master_of_hounds",
+    "displayName": "Master of Hounds",
+    "category": "CASTLE_OFFICE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "keeper",
+    "displayName": "Keeper",
+    "category": "CASTLE_SERVICE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "herald",
+    "displayName": "Herald",
+    "category": "COURT_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "standard_bearer",
+    "displayName": "Standard-Bearer",
+    "category": "MILITARY_SERVICE",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "gaoler",
+    "displayName": "Gaoler",
+    "category": "JUSTICE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "chief_gaoler",
+    "displayName": "Chief Gaoler",
+    "category": "JUSTICE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "undergaoler",
+    "displayName": "Undergaoler",
+    "category": "JUSTICE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "turnkey",
+    "displayName": "Turnkey",
+    "category": "JUSTICE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "executioner",
+    "displayName": "Executioner",
+    "category": "JUSTICE_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "kings_justice",
+    "displayName": "King's Justice",
+    "category": "ROYAL_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "justiciar",
+    "displayName": "Justiciar",
+    "category": "JUSTICE_OFFICE",
     "provenance": "CANON"
   },
 
@@ -146,6 +327,497 @@
     "id": "grand_maester",
     "displayName": "Grand Maester",
     "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "regent",
+    "displayName": "Regent",
+    "category": "GOVERNMENT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lord_regent",
+    "displayName": "Lord Regent",
+    "category": "GOVERNMENT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "royal_advisor",
+    "displayName": "Royal Advisor",
+    "category": "COURT_POSITION",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "lord_confessor",
+    "displayName": "Lord Confessor",
+    "category": "COURT_POSITION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lord_treasurer",
+    "displayName": "Lord Treasurer",
+    "category": "GOVERNMENT_POSITION",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "lord_admiral",
+    "displayName": "Lord Admiral",
+    "category": "MILITARY_COMMAND",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "grand_admiral",
+    "displayName": "Grand Admiral",
+    "category": "MILITARY_COMMAND",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "commander_city_watch",
+    "displayName": "Commander of the City Watch",
+    "category": "CITY_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "city_watch_captain",
+    "displayName": "City Watch Captain",
+    "category": "CITY_WATCH",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "city_watch_serjeant",
+    "displayName": "City Watch Serjeant",
+    "category": "CITY_WATCH",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "kingsguard",
+    "displayName": "Kingsguard",
+    "category": "MILITARY_SERVICE",
+    "provenance": "CANON",
+    "sourceNote": "Legacy broad membership role. Prefer kingsguard_member for new authored characters."
+  },
+  {
+    "id": "kingsguard_member",
+    "displayName": "Kingsguard Knight",
+    "category": "MILITARY_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lord_commander_kingsguard",
+    "displayName": "Lord Commander of the Kingsguard",
+    "category": "MILITARY_COMMAND",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "nights_watch",
+    "displayName": "Brother of the Night's Watch",
+    "category": "MILITARY_SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "nights_watch_recruit",
+    "displayName": "Night's Watch Recruit",
+    "category": "NIGHTS_WATCH",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "lord_commander_nights_watch",
+    "displayName": "Lord Commander of the Night's Watch",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "first_ranger",
+    "displayName": "First Ranger",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lord_steward",
+    "displayName": "Lord Steward",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "first_builder",
+    "displayName": "First Builder",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "nights_watch_ranger",
+    "displayName": "Night's Watch Ranger",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "nights_watch_steward",
+    "displayName": "Night's Watch Steward",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "nights_watch_builder",
+    "displayName": "Night's Watch Builder",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wandering_crow",
+    "displayName": "Wandering Crow",
+    "category": "NIGHTS_WATCH",
+    "provenance": "CANON"
+  },
+  {
+    "id": "nights_watch_master_at_arms",
+    "displayName": "Night's Watch Master-at-Arms",
+    "category": "NIGHTS_WATCH",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "nights_watch_maester",
+    "displayName": "Night's Watch Maester",
+    "category": "NIGHTS_WATCH",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "nights_watch_septon",
+    "displayName": "Night's Watch Septon",
+    "category": "NIGHTS_WATCH",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "citadel_novice",
+    "displayName": "Citadel Novice",
+    "category": "CITADEL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "citadel_acolyte",
+    "displayName": "Citadel Acolyte",
+    "category": "CITADEL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "maester",
+    "displayName": "Maester",
+    "category": "CITADEL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "archmaester",
+    "displayName": "Archmaester",
+    "category": "CITADEL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "conclave_member",
+    "displayName": "Conclave Member",
+    "category": "CITADEL",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Normally derivable from being an archmaester; retained as an optional institutional role."
+  },
+  {
+    "id": "citadel_seneschal",
+    "displayName": "Seneschal of the Citadel",
+    "category": "CITADEL",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "septon",
+    "displayName": "Septon",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "septa",
+    "displayName": "Septa",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "high_septon",
+    "displayName": "High Septon",
+    "category": "RELIGIOUS_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "most_devout",
+    "displayName": "Member of the Most Devout",
+    "category": "RELIGIOUS_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wandering_septon",
+    "displayName": "Wandering Septon",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "holy_brother",
+    "displayName": "Holy Brother",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "holy_sister",
+    "displayName": "Holy Sister",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "begging_brother",
+    "displayName": "Begging Brother",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "elder_brother",
+    "displayName": "Elder Brother",
+    "category": "RELIGIOUS_LEADERSHIP",
+    "provenance": "CANON"
+  },
+  {
+    "id": "proctor",
+    "displayName": "Proctor",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "septry_brother",
+    "displayName": "Septry Brother",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "motherhouse_sister",
+    "displayName": "Motherhouse Sister",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "silent_sister",
+    "displayName": "Silent Sister",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "poor_fellow",
+    "displayName": "Poor Fellow",
+    "category": "RELIGIOUS_MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "warriors_son",
+    "displayName": "Warrior's Son",
+    "category": "RELIGIOUS_MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "red_priest",
+    "displayName": "Red Priest",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "fiery_hand",
+    "displayName": "Fiery Hand Member",
+    "category": "RELIGIOUS_MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "faceless_man",
+    "displayName": "Faceless Man",
+    "category": "RELIGIOUS_ORDER",
+    "provenance": "CANON"
+  },
+  {
+    "id": "drowned_man",
+    "displayName": "Drowned Man",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "moonsinger",
+    "displayName": "Moonsinger",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "priest_of_boash",
+    "displayName": "Priest of Boash",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "starry_wisdom_priest",
+    "displayName": "Priest of the Church of Starry Wisdom",
+    "category": "RELIGIOUS_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "reaver",
+    "displayName": "Reaver",
+    "category": "IRONBORN_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "thrall",
+    "displayName": "Thrall",
+    "category": "IRONBORN_STATUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ship_captain",
+    "displayName": "Ship Captain",
+    "category": "MARITIME_COMMAND",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "longship_captain",
+    "displayName": "Longship Captain",
+    "category": "IRONBORN_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "khal",
+    "displayName": "Khal",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "khaleesi",
+    "displayName": "Khaleesi",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "khalakka",
+    "displayName": "Khalakka",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ko",
+    "displayName": "Ko",
+    "category": "DOTHRAKI_COMMAND",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bloodrider",
+    "displayName": "Bloodrider",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "dosh_khaleen",
+    "displayName": "Dosh Khaleen",
+    "category": "DOTHRAKI_RELIGIOUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "jaqqa_rhan",
+    "displayName": "Jaqqa Rhan",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "khas_guard",
+    "displayName": "Khas Guard",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "dothraki_outrider",
+    "displayName": "Dothraki Outrider",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "dothraki_scout",
+    "displayName": "Dothraki Scout",
+    "category": "DOTHRAKI_ROLE",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "magister",
+    "displayName": "Magister",
+    "category": "ESSOSI_GOVERNMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sealord",
+    "displayName": "Sealord",
+    "category": "ESSOSI_GOVERNMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "first_sword",
+    "displayName": "First Sword",
+    "category": "BRAAVOSI_OFFICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "triarch",
+    "displayName": "Triarch",
+    "category": "ESSOSI_GOVERNMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "archon",
+    "displayName": "Archon",
+    "category": "ESSOSI_GOVERNMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "prince_of_pentos",
+    "displayName": "Prince of Pentos",
+    "category": "ESSOSI_GOVERNMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "keyholder",
+    "displayName": "Keyholder",
+    "category": "BRAAVOSI_ELITE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pureborn",
+    "displayName": "Pureborn",
+    "category": "QARTHEEN_ELITE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "merchant_prince",
+    "displayName": "Merchant Prince",
+    "category": "MERCANTILE_ELITE",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "sellsword",
+    "displayName": "Sellsword",
+    "category": "MERCENARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sellsword_captain",
+    "displayName": "Sellsword Captain",
+    "category": "MERCENARY_COMMAND",
+    "provenance": "CANON"
+  },
+  {
+    "id": "captain_general",
+    "displayName": "Captain-General",
+    "category": "MERCENARY_COMMAND",
     "provenance": "CANON"
   }
 ]

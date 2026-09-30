@@ -9,16 +9,11 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.45,
     "minimumDoctrinalKnowledge": 0.45,
-    "rituals": [
-      "seven_prayer",
-      "blessing",
-      "marriage_rite"
-    ],
+    "rituals": ["seven_prayer", "blessing", "marriage_rite"],
     "taboos": [],
-    "roles": [
-      "septon"
-    ],
-    "provenance": "CANON"
+    "roles": ["septon"],
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Canonical clergy; thresholds and generalized ritual identifiers are simulation abstractions."
   },
   {
     "id": "faith_septa",
@@ -30,15 +25,115 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.45,
     "minimumDoctrinalKnowledge": 0.45,
-    "rituals": [
-      "seven_prayer",
-      "blessing"
-    ],
+    "rituals": ["seven_prayer", "blessing"],
     "taboos": [],
-    "roles": [
-      "septa"
-    ],
-    "provenance": "CANON"
+    "roles": ["septa"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "most_devout",
+    "displayName": "Most Devout",
+    "religionId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": false,
+    "minimumDevotion": 0.75,
+    "minimumDoctrinalKnowledge": 0.80,
+    "rituals": ["seven_prayer", "high_council", "high_septon_election"],
+    "taboos": [],
+    "roles": ["most_devout"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "wandering_septons",
+    "displayName": "Wandering Septons",
+    "religionId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.45,
+    "rituals": ["seven_prayer", "marriage_rite", "forgive_sins"],
+    "taboos": [],
+    "roles": ["wandering_septon"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "holy_brothers",
+    "displayName": "Holy Brothers",
+    "religionId": "faith_of_the_seven",
+    "category": "MONASTIC",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.25,
+    "rituals": ["seven_prayer", "penitence", "contemplation"],
+    "taboos": [],
+    "roles": ["holy_brother", "elder_brother", "proctor"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "holy_sisters",
+    "displayName": "Holy Sisters",
+    "religionId": "faith_of_the_seven",
+    "category": "MONASTIC",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.25,
+    "rituals": ["seven_prayer", "penitence", "contemplation"],
+    "taboos": [],
+    "roles": ["holy_sister"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "begging_brothers",
+    "displayName": "Begging Brothers",
+    "religionId": "faith_of_the_seven",
+    "category": "RELIGIOUS_ORDER",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.45,
+    "minimumDoctrinalKnowledge": 0.20,
+    "rituals": ["seven_prayer", "penitence"],
+    "taboos": [],
+    "roles": ["begging_brother"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "septry_brothers",
+    "displayName": "Septry Brothers",
+    "religionId": "faith_of_the_seven",
+    "category": "MONASTIC",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.25,
+    "rituals": ["seven_prayer", "manual_labor", "contemplation"],
+    "taboos": [],
+    "roles": ["septry_brother", "elder_brother", "proctor"],
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "motherhouse_sisters",
+    "displayName": "Motherhouse Sisters",
+    "religionId": "faith_of_the_seven",
+    "category": "MONASTIC",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.25,
+    "rituals": ["seven_prayer", "contemplation"],
+    "taboos": [],
+    "roles": ["motherhouse_sister"],
+    "provenance": "HYBRID_CANON"
   },
   {
     "id": "silent_sisters",
@@ -50,16 +145,10 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.50,
     "minimumDoctrinalKnowledge": 0.40,
-    "rituals": [
-      "prepare_dead"
-    ],
-    "taboos": [
-      "speech"
-    ],
-    "roles": [
-      "silent_sister"
-    ],
-    "provenance": "CANON"
+    "rituals": ["prepare_dead", "funerary_vigil"],
+    "taboos": ["speech_to_living"],
+    "roles": ["silent_sister"],
+    "provenance": "HYBRID_CANON"
   },
   {
     "id": "poor_fellows",
@@ -71,14 +160,10 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.55,
     "minimumDoctrinalKnowledge": 0.30,
-    "rituals": [
-      "seven_prayer"
-    ],
+    "rituals": ["seven_prayer", "pilgrim_escort"],
     "taboos": [],
-    "roles": [
-      "poor_fellow"
-    ],
-    "provenance": "CANON"
+    "roles": ["poor_fellow"],
+    "provenance": "HYBRID_CANON"
   },
   {
     "id": "warriors_sons",
@@ -90,15 +175,12 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.65,
     "minimumDoctrinalKnowledge": 0.40,
-    "rituals": [
-      "seven_prayer"
-    ],
+    "rituals": ["seven_prayer", "sword_oath"],
     "taboos": [],
-    "roles": [
-      "warriors_son"
-    ],
-    "provenance": "CANON"
+    "roles": ["warriors_son"],
+    "provenance": "HYBRID_CANON"
   },
+
   {
     "id": "red_priests",
     "displayName": "Red Priests",
@@ -109,16 +191,27 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.60,
     "minimumDoctrinalKnowledge": 0.50,
-    "rituals": [
-      "night_fire",
-      "fire_prayer"
-    ],
+    "rituals": ["night_fire", "fire_prayer"],
     "taboos": [],
-    "roles": [
-      "red_priest"
-    ],
-    "provenance": "CANON"
+    "roles": ["red_priest"],
+    "provenance": "HYBRID_CANON"
   },
+  {
+    "id": "fiery_hand",
+    "displayName": "Fiery Hand",
+    "religionId": "rhllor",
+    "category": "MILITANT_ORDER",
+    "clergy": false,
+    "militant": true,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.65,
+    "minimumDoctrinalKnowledge": 0.30,
+    "rituals": ["fire_prayer", "temple_guard_oath"],
+    "taboos": [],
+    "roles": ["fiery_hand"],
+    "provenance": "HYBRID_CANON"
+  },
+
   {
     "id": "faceless_men",
     "displayName": "Faceless Men",
@@ -129,15 +222,12 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.70,
     "minimumDoctrinalKnowledge": 0.65,
-    "rituals": [
-      "many_faced_prayer"
-    ],
+    "rituals": ["many_faced_prayer", "service_of_many_faces"],
     "taboos": [],
-    "roles": [
-      "faceless_man"
-    ],
-    "provenance": "CANON"
+    "roles": ["faceless_man"],
+    "provenance": "HYBRID_CANON"
   },
+
   {
     "id": "drowned_men",
     "displayName": "Drowned Men",
@@ -148,14 +238,73 @@
     "exclusiveMembership": true,
     "minimumDevotion": 0.55,
     "minimumDoctrinalKnowledge": 0.35,
-    "rituals": [
-      "drowning_rite",
-      "saltwater_prayer"
-    ],
+    "rituals": ["drowning_rite", "saltwater_prayer"],
     "taboos": [],
-    "roles": [
-      "drowned_man"
-    ],
-    "provenance": "CANON"
+    "roles": ["drowned_man"],
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "dosh_khaleen",
+    "displayName": "Dosh Khaleen",
+    "religionId": "great_stallion",
+    "category": "RELIGIOUS_ORDER",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.55,
+    "minimumDoctrinalKnowledge": 0.40,
+    "rituals": ["omen_interpretation", "khal_wife_acceptance"],
+    "taboos": [],
+    "roles": ["dosh_khaleen"],
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "moonsingers_clergy",
+    "displayName": "Moonsingers",
+    "religionId": "moonsingers",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.40,
+    "rituals": ["moon_prayer"],
+    "taboos": [],
+    "roles": ["moonsinger"],
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "priests_of_boash",
+    "displayName": "Priests of Boash",
+    "religionId": "boash",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.55,
+    "minimumDoctrinalKnowledge": 0.45,
+    "rituals": ["boash_prayer"],
+    "taboos": [],
+    "roles": ["priest_of_boash"],
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
+    "id": "starry_wisdom_clergy",
+    "displayName": "Clergy of the Church of Starry Wisdom",
+    "religionId": "church_of_starry_wisdom",
+    "category": "MYSTERY_ORDER",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.60,
+    "minimumDoctrinalKnowledge": 0.55,
+    "rituals": ["star_observance"],
+    "taboos": [],
+    "roles": ["starry_wisdom_priest"],
+    "provenance": "HYBRID_CANON"
   }
 ]

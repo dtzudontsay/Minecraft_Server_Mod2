@@ -17,10 +17,70 @@
     "category": "GOVERNANCE",
     "provenance": "HYBRID_CANON"
   },
+  {
+    "id": "steward",
+    "displayName": "Steward",
+    "category": "GOVERNANCE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "castellan",
+    "displayName": "Castellan",
+    "category": "GOVERNANCE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "scribe",
+    "displayName": "Scribe",
+    "category": "GOVERNANCE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "clerk",
+    "displayName": "Clerk",
+    "category": "GOVERNANCE",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "messenger",
+    "displayName": "Messenger",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "tax_collector",
+    "displayName": "Tax Collector",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "tax_farmer",
+    "displayName": "Tax Farmer",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "toll_collector",
+    "displayName": "Toll Collector",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "customs_officer",
+    "displayName": "Customs Officer",
+    "category": "GOVERNANCE",
+    "provenance": "HYBRID_CANON"
+  },
 
   {
     "id": "soldier",
     "displayName": "Soldier",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "man_at_arms",
+    "displayName": "Man-at-Arms",
     "category": "MILITARY",
     "provenance": "CANON"
   },
@@ -43,6 +103,67 @@
     "provenance": "CANON"
   },
   {
+    "id": "crossbowman",
+    "displayName": "Crossbowman",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "spearman",
+    "displayName": "Spearman",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "scout",
+    "displayName": "Scout",
+    "category": "MILITARY",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "outrider",
+    "displayName": "Outrider",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "siege_engineer",
+    "displayName": "Siege Engineer",
+    "category": "MILITARY",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "weapons_master",
+    "displayName": "Weapons Master",
+    "category": "MILITARY",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "drillmaster",
+    "displayName": "Drillmaster",
+    "category": "MILITARY",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "standard_bearer",
+    "displayName": "Standard-Bearer",
+    "category": "MILITARY",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "sellsword",
+    "displayName": "Sellsword",
+    "category": "MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mercenary_captain",
+    "displayName": "Mercenary Captain",
+    "category": "MILITARY",
+    "provenance": "HYBRID_CANON"
+  },
+
+  {
     "id": "sailor",
     "displayName": "Sailor",
     "category": "MARITIME",
@@ -51,6 +172,72 @@
   {
     "id": "captain",
     "displayName": "Captain",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "fisherman",
+    "displayName": "Fisherman",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "shipwright",
+    "displayName": "Shipwright",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "oarsman",
+    "displayName": "Oarsman",
+    "category": "MARITIME",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "dockworker",
+    "displayName": "Dockworker",
+    "category": "MARITIME",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "harbormaster",
+    "displayName": "Harbormaster",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "navigator",
+    "displayName": "Navigator",
+    "category": "MARITIME",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "pilot",
+    "displayName": "Pilot",
+    "category": "MARITIME",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "galley_master",
+    "displayName": "Galley Master",
+    "category": "MARITIME",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "pirate",
+    "displayName": "Pirate",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "corsair",
+    "displayName": "Corsair",
+    "category": "MARITIME",
+    "provenance": "CANON"
+  },
+  {
+    "id": "reaver",
+    "displayName": "Reaver",
     "category": "MARITIME",
     "provenance": "CANON"
   },
@@ -73,6 +260,30 @@
     "category": "SCHOLARLY",
     "provenance": "CANON"
   },
+  {
+    "id": "tutor",
+    "displayName": "Tutor",
+    "category": "SCHOLARLY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "midwife",
+    "displayName": "Midwife",
+    "category": "MEDICAL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "herbalist",
+    "displayName": "Herbalist",
+    "category": "MEDICAL",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "apothecary",
+    "displayName": "Apothecary",
+    "category": "MEDICAL",
+    "provenance": "PLAUSIBLE"
+  },
 
   {
     "id": "septon",
@@ -92,6 +303,18 @@
     "category": "RELIGIOUS",
     "provenance": "CANON"
   },
+  {
+    "id": "drowned_man",
+    "displayName": "Drowned Man",
+    "category": "RELIGIOUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "moonsinger",
+    "displayName": "Moonsinger",
+    "category": "RELIGIOUS",
+    "provenance": "CANON"
+  },
 
   {
     "id": "merchant",
@@ -100,8 +323,56 @@
     "provenance": "CANON"
   },
   {
+    "id": "merchant_prince",
+    "displayName": "Merchant Prince",
+    "category": "TRADE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
     "id": "innkeeper",
     "displayName": "Innkeeper",
+    "category": "TRADE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "banker",
+    "displayName": "Banker",
+    "category": "TRADE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "moneylender",
+    "displayName": "Moneylender",
+    "category": "TRADE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "moneychanger",
+    "displayName": "Moneychanger",
+    "category": "TRADE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "factor",
+    "displayName": "Factor",
+    "category": "TRADE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wine_factor",
+    "displayName": "Wine Factor",
+    "category": "TRADE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wool_factor",
+    "displayName": "Wool Factor",
+    "category": "TRADE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "purser",
+    "displayName": "Purser",
     "category": "TRADE",
     "provenance": "CANON"
   },
@@ -130,6 +401,120 @@
     "category": "CRAFT",
     "provenance": "CANON"
   },
+  {
+    "id": "weaver",
+    "displayName": "Weaver",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "tailor",
+    "displayName": "Tailor",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "seamstress",
+    "displayName": "Seamstress",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "tanner",
+    "displayName": "Tanner",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "leatherworker",
+    "displayName": "Leatherworker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "cobbler",
+    "displayName": "Cobbler",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "potter",
+    "displayName": "Potter",
+    "category": "CRAFT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "cooper",
+    "displayName": "Cooper",
+    "category": "CRAFT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "fletcher",
+    "displayName": "Fletcher",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bowyer",
+    "displayName": "Bowyer",
+    "category": "CRAFT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "goldsmith",
+    "displayName": "Goldsmith",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "silversmith",
+    "displayName": "Silversmith",
+    "category": "CRAFT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "jeweler",
+    "displayName": "Jeweler",
+    "category": "CRAFT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "glassworker",
+    "displayName": "Glassworker",
+    "category": "CRAFT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "rope_maker",
+    "displayName": "Rope Maker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "wheelwright",
+    "displayName": "Wheelwright",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "cartwright",
+    "displayName": "Cartwright",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "dyer",
+    "displayName": "Dyer",
+    "category": "CRAFT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "stonecutter",
+    "displayName": "Stonecutter",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE"
+  },
 
   {
     "id": "farmer",
@@ -144,10 +529,76 @@
     "provenance": "CANON"
   },
   {
+    "id": "shepherd",
+    "displayName": "Shepherd",
+    "category": "AGRICULTURE",
+    "provenance": "CANON"
+  },
+  {
     "id": "hunter",
     "displayName": "Hunter",
     "category": "AGRICULTURE",
     "provenance": "CANON"
+  },
+  {
+    "id": "miller",
+    "displayName": "Miller",
+    "category": "FOOD",
+    "provenance": "CANON"
+  },
+  {
+    "id": "baker",
+    "displayName": "Baker",
+    "category": "FOOD",
+    "provenance": "CANON"
+  },
+  {
+    "id": "butcher",
+    "displayName": "Butcher",
+    "category": "FOOD",
+    "provenance": "CANON"
+  },
+  {
+    "id": "brewer",
+    "displayName": "Brewer",
+    "category": "FOOD",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "vintner",
+    "displayName": "Vintner",
+    "category": "FOOD",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "beekeeper",
+    "displayName": "Beekeeper",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "dairyman",
+    "displayName": "Dairyman",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "orchardist",
+    "displayName": "Orchardist",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "gardener",
+    "displayName": "Gardener",
+    "category": "AGRICULTURE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "gamekeeper",
+    "displayName": "Gamekeeper",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE"
   },
 
   {
@@ -168,6 +619,55 @@
     "category": "SERVICE",
     "provenance": "CANON"
   },
+  {
+    "id": "wet_nurse",
+    "displayName": "Wet Nurse",
+    "category": "SERVICE",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "singer",
+    "displayName": "Singer",
+    "category": "ENTERTAINMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "musician",
+    "displayName": "Musician",
+    "category": "ENTERTAINMENT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "fool",
+    "displayName": "Fool",
+    "category": "ENTERTAINMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "storyteller",
+    "displayName": "Storyteller",
+    "category": "ENTERTAINMENT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "mummer",
+    "displayName": "Mummer",
+    "category": "ENTERTAINMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "dancer",
+    "displayName": "Dancer",
+    "category": "ENTERTAINMENT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bard",
+    "displayName": "Bard",
+    "category": "ENTERTAINMENT",
+    "provenance": "HYBRID_CANON"
+  },
 
   {
     "id": "smuggler",
@@ -179,6 +679,152 @@
     "id": "bandit",
     "displayName": "Bandit",
     "category": "CRIMINAL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "thief",
+    "displayName": "Thief",
+    "category": "CRIMINAL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "assassin",
+    "displayName": "Assassin",
+    "category": "CRIMINAL",
+    "provenance": "CANON"
+  },
+  {
+    "id": "poacher",
+    "displayName": "Poacher",
+    "category": "CRIMINAL",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "fence",
+    "displayName": "Fence",
+    "category": "CRIMINAL",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "beggar",
+    "displayName": "Beggar",
+    "category": "MARGINAL",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "slaver",
+    "displayName": "Slaver",
+    "category": "ESSOSI",
+    "provenance": "CANON"
+  },
+  {
+    "id": "slave_trader",
+    "displayName": "Slave Trader",
+    "category": "ESSOSI",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "pit_fighter",
+    "displayName": "Pit Fighter",
+    "category": "ESSOSI",
+    "provenance": "CANON"
+  },
+  {
+    "id": "unsullied_soldier",
+    "displayName": "Unsullied Soldier",
+    "category": "ESSOSI_MILITARY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "courtesan",
+    "displayName": "Courtesan",
+    "category": "ESSOSI_SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "prostitute",
+    "displayName": "Prostitute",
+    "category": "SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "eunuch_healer",
+    "displayName": "Eunuch Healer",
+    "category": "ESSOSI_MEDICAL",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "dothraki_herbwoman",
+    "displayName": "Dothraki Herbwoman",
+    "category": "DOTHRAKI",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "jaqqa_rhan",
+    "displayName": "Jaqqa Rhan",
+    "category": "DOTHRAKI",
+    "provenance": "CANON"
+  },
+  {
+    "id": "caravan_master",
+    "displayName": "Caravan Master",
+    "category": "TRADE",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "elephant_handler",
+    "displayName": "Elephant Handler",
+    "category": "ESSOSI",
+    "provenance": "PLAUSIBLE"
+  },
+  {
+    "id": "camel_rider",
+    "displayName": "Camel Rider",
+    "category": "ESSOSI",
+    "provenance": "PLAUSIBLE"
+  },
+
+  {
+    "id": "alchemist",
+    "displayName": "Alchemist",
+    "category": "ARCANE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pyromancer",
+    "displayName": "Pyromancer",
+    "category": "ARCANE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "warlock",
+    "displayName": "Warlock",
+    "category": "ARCANE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "shadowbinder",
+    "displayName": "Shadowbinder",
+    "category": "ARCANE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bloodmage",
+    "displayName": "Bloodmage",
+    "category": "ARCANE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "godswife",
+    "displayName": "Godswife",
+    "category": "ARCANE_RELIGIOUS",
+    "provenance": "CANON"
+  },
+  {
+    "id": "necromancer",
+    "displayName": "Necromancer",
+    "category": "ARCANE",
     "provenance": "CANON"
   }
 ]

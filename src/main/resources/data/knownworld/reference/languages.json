@@ -12,12 +12,18 @@
     "provenance": "CANON"
   },
   {
+    "id": "rhoynish",
+    "displayName": "Rhoynish",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+
+  {
     "id": "high_valyrian",
     "displayName": "High Valyrian",
     "category": "LANGUAGE",
     "provenance": "CANON"
   },
-
   {
     "id": "low_valyrian",
     "displayName": "Low Valyrian",
@@ -47,6 +53,71 @@
     "provenance": "HYBRID_CANON"
   },
   {
+    "id": "myrish_valyrian",
+    "displayName": "Myrish Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "tyroshi_valyrian",
+    "displayName": "Tyroshi Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "lysene_valyrian",
+    "displayName": "Lysene Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "norvoshi_valyrian",
+    "displayName": "Norvoshi Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "qohorik_valyrian",
+    "displayName": "Qohorik Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "lorathi_valyrian",
+    "displayName": "Lorathi Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "slavers_bay_valyrian",
+    "displayName": "Slaver's Bay Valyrian",
+    "parentId": "low_valyrian",
+    "category": "DIALECT",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Simulation identifier for the canonically described mixed High Valyrian/Old Ghiscari speech of Slaver's Bay."
+  },
+
+  {
+    "id": "old_ghiscari",
+    "displayName": "Old Ghiscari",
+    "category": "LANGUAGE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ghiscari",
+    "displayName": "Ghiscari",
+    "category": "LANGUAGE_FAMILY",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Compatibility umbrella identifier. Prefer old_ghiscari or slavers_bay_valyrian where specificity is known."
+  },
+
+  {
     "id": "dothraki",
     "displayName": "Dothraki",
     "category": "LANGUAGE",
@@ -55,12 +126,6 @@
   {
     "id": "lhazareen",
     "displayName": "Lhazareen",
-    "category": "LANGUAGE",
-    "provenance": "HYBRID_CANON"
-  },
-  {
-    "id": "ghiscari",
-    "displayName": "Ghiscari",
     "category": "LANGUAGE",
     "provenance": "HYBRID_CANON"
   },
@@ -81,6 +146,18 @@
     "displayName": "Summer Tongue",
     "category": "LANGUAGE",
     "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "asshaii",
+    "displayName": "Speech of Asshai",
+    "category": "LANGUAGE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "trade_talk",
+    "displayName": "Trade Talk",
+    "category": "PIDGIN",
+    "provenance": "CANON"
   },
   {
     "id": "yi_tish",

@@ -55,13 +55,141 @@
   },
   {
     "id": "bearded_priests",
-    "displayName": "Bearded Priests of Norvos",
+    "displayName": "Norvoshi Faith of the Bearded Priests",
     "category": "RELIGION",
-    "provenance": "CANON"
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Compatibility identifier. Canon clearly establishes the Bearded Priests as Norvoshi religious rulers, while the underlying faith lacks a convenient single canonical religion name."
   },
   {
     "id": "naathi_butterfly_god",
     "displayName": "Lord of Harmony",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mother_rhoyne",
+    "displayName": "Mother Rhoyne",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "old_gods_of_valyria",
+    "displayName": "Old Gods of Valyria",
+    "category": "PANTHEON",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Simulation umbrella identifier for worship of the named gods of old Valyria."
+  },
+  {
+    "id": "boash",
+    "displayName": "Boash",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "aquan_red_bull",
+    "displayName": "Aquan the Red Bull",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bakkalon",
+    "displayName": "Bakkalon",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "hooded_wayfarer",
+    "displayName": "Hooded Wayfarer",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lady_of_spears",
+    "displayName": "Lady of Spears",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lion_of_night",
+    "displayName": "Lion of Night",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "merling_king",
+    "displayName": "Merling King",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "moon_pale_maiden",
+    "displayName": "Moon-Pale Maiden",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pattern",
+    "displayName": "Pattern",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "semosh_and_selloso",
+    "displayName": "Semosh and Selloso",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "silent_god",
+    "displayName": "Silent God",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "stone_cow_of_faros",
+    "displayName": "Stone Cow of Faros",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "trios",
+    "displayName": "Trios",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "weeping_lady",
+    "displayName": "Weeping Lady of Lys",
+    "category": "RELIGION",
+    "provenance": "CANON"
+  },
+  {
+    "id": "father_of_waters",
+    "displayName": "Father of Waters",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "yndros_of_twilight",
+    "displayName": "Yndros of the Twilight",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "saagael",
+    "displayName": "Saagael",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pantera",
+    "displayName": "Pantera",
+    "category": "CULT",
+    "provenance": "CANON"
+  },
+  {
+    "id": "church_of_starry_wisdom",
+    "displayName": "Church of Starry Wisdom",
     "category": "RELIGION",
     "provenance": "CANON"
   },

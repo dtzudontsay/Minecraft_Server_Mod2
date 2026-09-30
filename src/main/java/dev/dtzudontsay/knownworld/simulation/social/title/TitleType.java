@@ -1,27 +1,57 @@
 package dev.dtzudontsay.knownworld.simulation.social.title;
 
 /**
- * Broad categories of formal title or office.
+ * Broad categories of formal titles and offices.
+ *
+ * These are deliberately generic enough to represent both Westerosi and
+ * Essosi government without hard-coding specific cultures into the core
+ * title system.
  */
 public enum TitleType {
 
     /**
-     * King, Queen, Emperor, etc.
+     * Crowned monarch or dynastic royal title.
+     *
+     * Examples:
+     * King, Queen.
      */
     ROYAL,
 
     /**
-     * Lord, Lady, Duke-like feudal titles, landed nobility, etc.
+     * Landed or dynastic nobility.
+     *
+     * Examples:
+     * Lord, Lady, Head of House.
      */
     NOBLE,
 
     /**
-     * Appointed governmental office such as Hand of the King.
+     * Sovereign or quasi-sovereign ruler title that is not necessarily
+     * royal in the Westerosi sense.
+     *
+     * Examples:
+     * Khal and certain Essosi ruler forms.
+     */
+    RULER,
+
+    /**
+     * Civic or republican leadership position.
+     *
+     * Examples:
+     * Sealord, Triarch, Archon.
+     */
+    CIVIC,
+
+    /**
+     * Appointed governmental office.
+     *
+     * Example:
+     * Hand of the King.
      */
     OFFICE,
 
     /**
-     * Military command such as commander, general, marshal, etc.
+     * Military command.
      */
     MILITARY,
 
@@ -31,7 +61,7 @@ public enum TitleType {
     RELIGIOUS,
 
     /**
-     * Honorific without necessarily conveying direct authority.
+     * Honorific without necessarily conveying direct governing authority.
      */
     HONORARY
 }
