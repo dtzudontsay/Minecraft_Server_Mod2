@@ -4,8 +4,10 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 import dev.dtzudontsay.knownworld.world.reference.ReferenceProvenance;
 
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 public final class Dynasty {
 
@@ -19,6 +21,12 @@ public final class Dynasty {
 
     private DynastyStatus status;
 
+    /**
+     * Optional.
+     *
+     * Historical/extinct dynasties do not need to generate useless
+     * runtime organizations.
+     */
     private final OrganizationId organizationId;
 
     private final String homeLocationId;
@@ -27,13 +35,49 @@ public final class Dynasty {
 
     private final String religionId;
 
+    /**
+     * Genealogical/cadet parent.
+     */
     private DynastyId parentDynasty;
 
+    /**
+     * Political/feudal liege at the scenario start.
+     */
     private DynastyId liegeDynasty;
+
+    /**
+     * Historical predecessor/successor links.
+     */
+    private DynastyId predecessorDynasty;
+
+    private DynastyId successorDynasty;
 
     private NpcId head;
 
     private NpcId heir;
+
+    /**
+     * AC year when known.
+     *
+     * Null means unknown or inappropriate to express as a precise year.
+     */
+    private final Integer foundedYear;
+
+    /**
+     * AC year of extinction when known.
+     */
+    private final Integer extinctYear;
+
+    /**
+     * Whether this lineage exists as an active social/political entity
+     * at the scenario start.
+     *
+     * Exiled dynasties may still be active.
+     */
+    private final boolean activeAtScenarioStart;
+
+    private final Set<DynastyContinuity> continuities =
+            new LinkedHashSet<>();
 
     private final String words;
 
@@ -61,8 +105,14 @@ public final class Dynasty {
             String religionId,
             DynastyId parentDynasty,
             DynastyId liegeDynasty,
+            DynastyId predecessorDynasty,
+            DynastyId successorDynasty,
             NpcId head,
             NpcId heir,
+            Integer foundedYear,
+            Integer extinctYear,
+            boolean activeAtScenarioStart,
+            Set<DynastyContinuity> continuities,
             String words,
             String heraldry,
             double prestige,
@@ -102,10 +152,7 @@ public final class Dynasty {
                 );
 
         this.organizationId =
-                Objects.requireNonNull(
-                        organizationId,
-                        "organizationId"
-                );
+                organizationId;
 
         this.homeLocationId =
                 normalizeOptionalId(
@@ -128,11 +175,40 @@ public final class Dynasty {
         this.liegeDynasty =
                 liegeDynasty;
 
+        this.predecessorDynasty =
+                predecessorDynasty;
+
+        this.successorDynasty =
+                successorDynasty;
+
         this.head =
                 head;
 
         this.heir =
                 heir;
+
+        this.foundedYear =
+                foundedYear;
+
+        this.extinctYear =
+                extinctYear;
+
+        this.activeAtScenarioStart =
+                activeAtScenarioStart;
+
+        if (continuities != null) {
+
+            this.continuities.addAll(
+                    continuities
+            );
+        }
+
+        if (this.continuities.isEmpty()) {
+
+            throw new IllegalArgumentException(
+                    "Dynasty must belong to at least one continuity"
+            );
+        }
 
         this.words =
                 optionalText(
@@ -169,6 +245,8 @@ public final class Dynasty {
                 optionalText(
                         sourceNote
                 );
+
+        validateTemporalState();
     }
 
     public DynastyId id() {
@@ -210,6 +288,10 @@ public final class Dynasty {
         return organizationId;
     }
 
+    public boolean hasOrganization() {
+        return organizationId != null;
+    }
+
     public String homeLocationId() {
         return homeLocationId;
     }
@@ -230,14 +312,10 @@ public final class Dynasty {
             DynastyId parentDynasty
     ) {
 
-        if (id.equals(
-                parentDynasty
-        )) {
-
-            throw new IllegalArgumentException(
-                    "Dynasty cannot be its own parent"
-            );
-        }
+        validateNotSelf(
+                parentDynasty,
+                "parent"
+        );
 
         this.parentDynasty =
                 parentDynasty;
@@ -251,17 +329,47 @@ public final class Dynasty {
             DynastyId liegeDynasty
     ) {
 
-        if (id.equals(
-                liegeDynasty
-        )) {
-
-            throw new IllegalArgumentException(
-                    "Dynasty cannot be its own liege"
-            );
-        }
+        validateNotSelf(
+                liegeDynasty,
+                "liege"
+        );
 
         this.liegeDynasty =
                 liegeDynasty;
+    }
+
+    public DynastyId predecessorDynasty() {
+        return predecessorDynasty;
+    }
+
+    public void setPredecessorDynasty(
+            DynastyId predecessorDynasty
+    ) {
+
+        validateNotSelf(
+                predecessorDynasty,
+                "predecessor"
+        );
+
+        this.predecessorDynasty =
+                predecessorDynasty;
+    }
+
+    public DynastyId successorDynasty() {
+        return successorDynasty;
+    }
+
+    public void setSuccessorDynasty(
+            DynastyId successorDynasty
+    ) {
+
+        validateNotSelf(
+                successorDynasty,
+                "successor"
+        );
+
+        this.successorDynasty =
+                successorDynasty;
     }
 
     public NpcId head() {
@@ -286,6 +394,34 @@ public final class Dynasty {
 
         this.heir =
                 heir;
+    }
+
+    public Integer foundedYear() {
+        return foundedYear;
+    }
+
+    public Integer extinctYear() {
+        return extinctYear;
+    }
+
+    public boolean activeAtScenarioStart() {
+        return activeAtScenarioStart;
+    }
+
+    public Set<DynastyContinuity> continuities() {
+
+        return Set.copyOf(
+                continuities
+        );
+    }
+
+    public boolean existsIn(
+            DynastyContinuity continuity
+    ) {
+
+        return continuities.contains(
+                continuity
+        );
     }
 
     public String words() {
@@ -346,6 +482,43 @@ public final class Dynasty {
         return sourceNote;
     }
 
+    private void validateTemporalState() {
+
+        if (foundedYear != null
+                && extinctYear != null
+                && extinctYear < foundedYear) {
+
+            throw new IllegalArgumentException(
+                    "Dynasty extinction year cannot precede founding year"
+            );
+        }
+
+        if (status == DynastyStatus.EXTINCT
+                && activeAtScenarioStart) {
+
+            throw new IllegalArgumentException(
+                    "Extinct dynasty cannot be active at scenario start"
+            );
+        }
+    }
+
+    private void validateNotSelf(
+            DynastyId other,
+            String relationship
+    ) {
+
+        if (other != null
+                && id.equals(
+                other
+        )) {
+
+            throw new IllegalArgumentException(
+                    "Dynasty cannot be its own "
+                            + relationship
+            );
+        }
+    }
+
     private static String normalizeOptionalId(
             String value
     ) {
@@ -377,14 +550,14 @@ public final class Dynasty {
 
     private static String requireText(
             String value,
-            String name
+            String description
     ) {
 
         if (value == null
                 || value.isBlank()) {
 
             throw new IllegalArgumentException(
-                    name
+                    description
                             + " cannot be empty"
             );
         }

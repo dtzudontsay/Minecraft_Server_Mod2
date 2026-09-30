@@ -14,6 +14,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 public final class DynastyManager {
 
@@ -60,6 +61,10 @@ public final class DynastyManager {
             String homeLocationId,
             String cultureId,
             String religionId,
+            Integer foundedYear,
+            Integer extinctYear,
+            boolean activeAtScenarioStart,
+            Set<DynastyContinuity> continuities,
             String words,
             String heraldry,
             double prestige,
@@ -86,25 +91,22 @@ public final class DynastyManager {
                             existingId
                     );
 
-            if (!existing.organizationId()
-                    .equals(
-                            organizationId
-                    )) {
+            if (!Objects.equals(
+                    existing.organizationId(),
+                    organizationId
+            )) {
 
                 throw new IllegalStateException(
                         "Authored dynasty "
                                 + key
-                                + " is already bound to organization "
-                                + existing.organizationId()
-                                + ", not "
-                                + organizationId
+                                + " has conflicting organization binding"
                 );
             }
 
             return existing;
         }
 
-        validateOrganization(
+        validateOrganizationIfPresent(
                 organizationId,
                 type
         );
@@ -124,6 +126,12 @@ public final class DynastyManager {
                         null,
                         null,
                         null,
+                        null,
+                        null,
+                        foundedYear,
+                        extinctYear,
+                        activeAtScenarioStart,
+                        continuities,
                         words,
                         heraldry,
                         prestige,
@@ -149,7 +157,12 @@ public final class DynastyManager {
             String religionId
     ) {
 
-        validateOrganization(
+        Objects.requireNonNull(
+                organizationId,
+                "Generated active dynasty requires organizationId"
+        );
+
+        validateOrganizationIfPresent(
                 organizationId,
                 type
         );
@@ -169,6 +182,14 @@ public final class DynastyManager {
                         null,
                         null,
                         null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        true,
+                        Set.of(
+                                DynastyContinuity.BOOK
+                        ),
                         "",
                         "",
                         0.20,
@@ -194,7 +215,7 @@ public final class DynastyManager {
                 "dynasty"
         );
 
-        validateOrganization(
+        validateOrganizationIfPresent(
                 dynasty.organizationId(),
                 dynasty.type()
         );
@@ -280,6 +301,10 @@ public final class DynastyManager {
             OrganizationId organizationId
     ) {
 
+        if (organizationId == null) {
+            return Optional.empty();
+        }
+
         DynastyId id =
                 byOrganization.get(
                         organizationId
@@ -322,6 +347,40 @@ public final class DynastyManager {
                                 ? null
                                 : require(
                                 liege
+                        ).id()
+                );
+    }
+
+    public synchronized void setPredecessor(
+            DynastyId dynasty,
+            DynastyId predecessor
+    ) {
+
+        require(
+                dynasty
+        )
+                .setPredecessorDynasty(
+                        predecessor == null
+                                ? null
+                                : require(
+                                predecessor
+                        ).id()
+                );
+    }
+
+    public synchronized void setSuccessor(
+            DynastyId dynasty,
+            DynastyId successor
+    ) {
+
+        require(
+                dynasty
+        )
+                .setSuccessorDynasty(
+                        successor == null
+                                ? null
+                                : require(
+                                successor
                         ).id()
                 );
     }
@@ -387,24 +446,27 @@ public final class DynastyManager {
             );
         }
 
-        DynastyId existingOrganization =
-                byOrganization.putIfAbsent(
-                        dynasty.organizationId(),
+        if (dynasty.hasOrganization()) {
+
+            DynastyId existingOrganization =
+                    byOrganization.putIfAbsent(
+                            dynasty.organizationId(),
+                            dynasty.id()
+                    );
+
+            if (existingOrganization != null) {
+
+                dynasties.remove(
                         dynasty.id()
                 );
 
-        if (existingOrganization != null) {
-
-            dynasties.remove(
-                    dynasty.id()
-            );
-
-            throw new IllegalStateException(
-                    "Organization "
-                            + dynasty.organizationId()
-                            + " already belongs to dynasty "
-                            + existingOrganization
-            );
+                throw new IllegalStateException(
+                        "Organization "
+                                + dynasty.organizationId()
+                                + " already belongs to dynasty "
+                                + existingOrganization
+                );
+            }
         }
 
         if (dynasty.hasAuthoredId()) {
@@ -421,9 +483,12 @@ public final class DynastyManager {
                         dynasty.id()
                 );
 
-                byOrganization.remove(
-                        dynasty.organizationId()
-                );
+                if (dynasty.hasOrganization()) {
+
+                    byOrganization.remove(
+                            dynasty.organizationId()
+                    );
+                }
 
                 throw new IllegalStateException(
                         "Duplicate authored dynasty ID "
@@ -433,10 +498,14 @@ public final class DynastyManager {
         }
     }
 
-    private void validateOrganization(
+    private void validateOrganizationIfPresent(
             OrganizationId organizationId,
             DynastyType type
     ) {
+
+        if (organizationId == null) {
+            return;
+        }
 
         Organization organization =
                 organizations.find(

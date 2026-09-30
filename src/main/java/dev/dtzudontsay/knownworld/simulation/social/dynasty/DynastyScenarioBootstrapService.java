@@ -14,7 +14,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public final class DynastyScenarioBootstrapService {
 
@@ -39,9 +42,14 @@ public final class DynastyScenarioBootstrapService {
                 );
 
         /*
-         * Pass 1:
-         * ensure organizations and dynasty records exist.
+         * =========================================================
+         * PASS 1
+         * =========================================================
+         *
+         * Create dynasty records and, ONLY for active scenario-start
+         * lineages, their runtime organizations.
          */
+
         for (
                 DynastyData entry :
                 data
@@ -74,17 +82,28 @@ public final class DynastyScenarioBootstrapService {
                                     + ".status"
                     );
 
+            Set<DynastyContinuity> continuities =
+                    parseContinuities(
+                            entry
+                    );
+
             validateReferences(
                     entry
             );
 
             OrganizationId organizationId =
-                    ensureOrganization(
-                            simulation,
-                            entry.id,
-                            entry.name,
-                            type
-                    );
+                    null;
+
+            if (entry.activeAtScenarioStart) {
+
+                organizationId =
+                        ensureOrganization(
+                                simulation,
+                                entry.id,
+                                entry.name,
+                                type
+                        );
+            }
 
             manager.ensureAuthored(
                     entry.id,
@@ -95,6 +114,10 @@ public final class DynastyScenarioBootstrapService {
                     entry.homeLocationId,
                     entry.cultureId,
                     entry.religionId,
+                    entry.foundedYear,
+                    entry.extinctYear,
+                    entry.activeAtScenarioStart,
+                    continuities,
                     entry.words,
                     entry.heraldry,
                     entry.prestige,
@@ -111,41 +134,34 @@ public final class DynastyScenarioBootstrapService {
         }
 
         /*
-         * Pass 2:
-         * relationships can reference dynasties defined later in the JSON.
+         * =========================================================
+         * PASS 2
+         * =========================================================
+         *
+         * Structural dynasty relationships may point forward in JSON.
          */
+
         for (
                 DynastyData entry :
                 data
         ) {
 
             Dynasty dynasty =
-                    manager.findAuthored(
-                                    entry.id
-                            )
-                            .orElseThrow();
+                    requireAuthored(
+                            manager,
+                            entry.id
+                    );
 
             if (hasText(
                     entry.parentDynastyId
             )) {
 
-                Dynasty parent =
-                        manager.findAuthored(
-                                        entry.parentDynastyId
-                                )
-                                .orElseThrow(
-                                        () ->
-                                                new IllegalStateException(
-                                                        "Dynasty "
-                                                                + entry.id
-                                                                + " references unknown parent dynasty "
-                                                                + entry.parentDynastyId
-                                                )
-                                );
-
                 manager.setParent(
                         dynasty.id(),
-                        parent.id()
+                        requireAuthored(
+                                manager,
+                                entry.parentDynastyId
+                        ).id()
                 );
             }
 
@@ -153,25 +169,63 @@ public final class DynastyScenarioBootstrapService {
                     entry.liegeDynastyId
             )) {
 
-                Dynasty liege =
-                        manager.findAuthored(
-                                        entry.liegeDynastyId
-                                )
-                                .orElseThrow(
-                                        () ->
-                                                new IllegalStateException(
-                                                        "Dynasty "
-                                                                + entry.id
-                                                                + " references unknown liege dynasty "
-                                                                + entry.liegeDynastyId
-                                                )
-                                );
-
                 manager.setLiege(
                         dynasty.id(),
-                        liege.id()
+                        requireAuthored(
+                                manager,
+                                entry.liegeDynastyId
+                        ).id()
                 );
             }
+
+            if (hasText(
+                    entry.predecessorDynastyId
+            )) {
+
+                manager.setPredecessor(
+                        dynasty.id(),
+                        requireAuthored(
+                                manager,
+                                entry.predecessorDynastyId
+                        ).id()
+                );
+            }
+
+            if (hasText(
+                    entry.successorDynastyId
+            )) {
+
+                manager.setSuccessor(
+                        dynasty.id(),
+                        requireAuthored(
+                                manager,
+                                entry.successorDynastyId
+                        ).id()
+                );
+            }
+        }
+
+        /*
+         * =========================================================
+         * PASS 3
+         * =========================================================
+         *
+         * Head/heir references are soft during population construction.
+         *
+         * This lets the dynasty reference catalog become complete before
+         * every canon NPC JSON has been authored.
+         */
+
+        for (
+                DynastyData entry :
+                data
+        ) {
+
+            Dynasty dynasty =
+                    requireAuthored(
+                            manager,
+                            entry.id
+                    );
 
             if (hasText(
                     entry.headNpcId
@@ -209,9 +263,26 @@ public final class DynastyScenarioBootstrapService {
         }
 
         KnownWorld.LOGGER.info(
-                "Dynasty scenario bootstrap ready with {} dynasties.",
+                "Dynasty scenario bootstrap ready with {} catalogued dynasties.",
                 manager.size()
         );
+    }
+
+    private static Dynasty requireAuthored(
+            DynastyManager manager,
+            String id
+    ) {
+
+        return manager.findAuthored(
+                        id
+                )
+                .orElseThrow(
+                        () ->
+                                new IllegalStateException(
+                                        "Unknown referenced dynasty "
+                                                + id
+                                )
+                );
     }
 
     private static OrganizationId ensureOrganization(
@@ -281,6 +352,46 @@ public final class DynastyScenarioBootstrapService {
         return organization.id();
     }
 
+    private static Set<DynastyContinuity> parseContinuities(
+            DynastyData data
+    ) {
+
+        List<String> raw =
+                data.continuities;
+
+        if (raw == null
+                || raw.isEmpty()) {
+
+            throw new IllegalArgumentException(
+                    "Dynasty "
+                            + data.id
+                            + " requires at least one continuity"
+            );
+        }
+
+        Set<DynastyContinuity> result =
+                new LinkedHashSet<>();
+
+        for (
+                String value :
+                raw
+        ) {
+
+            result.add(
+                    enumValue(
+                            DynastyContinuity.class,
+                            value,
+                            data.id
+                                    + ".continuity"
+                    )
+            );
+        }
+
+        return Set.copyOf(
+                result
+        );
+    }
+
     private static void validateReferences(
             DynastyData data
     ) {
@@ -330,6 +441,30 @@ public final class DynastyScenarioBootstrapService {
                             + data.id
                             + " references unknown religion "
                             + data.religionId
+            );
+        }
+
+        if (data.status != null
+                && data.status.equalsIgnoreCase(
+                "EXTINCT"
+        )
+                && data.activeAtScenarioStart) {
+
+            throw new IllegalStateException(
+                    "Dynasty "
+                            + data.id
+                            + " is EXTINCT but marked activeAtScenarioStart"
+            );
+        }
+
+        if (data.foundedYear != null
+                && data.extinctYear != null
+                && data.extinctYear < data.foundedYear) {
+
+            throw new IllegalStateException(
+                    "Dynasty "
+                            + data.id
+                            + " has extinctYear before foundedYear"
             );
         }
     }
@@ -462,6 +597,14 @@ public final class DynastyScenarioBootstrapService {
 
         String status;
 
+        List<String> continuities;
+
+        boolean activeAtScenarioStart;
+
+        Integer foundedYear;
+
+        Integer extinctYear;
+
         String homeLocationId;
 
         String cultureId;
@@ -471,6 +614,10 @@ public final class DynastyScenarioBootstrapService {
         String parentDynastyId;
 
         String liegeDynastyId;
+
+        String predecessorDynastyId;
+
+        String successorDynastyId;
 
         String headNpcId;
 

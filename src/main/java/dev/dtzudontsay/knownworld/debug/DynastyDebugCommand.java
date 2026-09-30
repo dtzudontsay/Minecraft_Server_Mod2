@@ -36,12 +36,23 @@ public final class DynastyDebugCommand {
                                                                             SocietyStructureRuntime.get()
                                                                                     .dynasties();
 
+                                                                    long active =
+                                                                            manager.all()
+                                                                                    .stream()
+                                                                                    .filter(
+                                                                                            Dynasty::activeAtScenarioStart
+                                                                                    )
+                                                                                    .count();
+
                                                                     context.getSource()
                                                                             .sendSuccess(
                                                                                     () ->
                                                                                             Component.literal(
                                                                                                     "Dynasties: "
                                                                                                             + manager.size()
+                                                                                                            + " catalogued, "
+                                                                                                            + active
+                                                                                                            + " active at scenario start."
                                                                                             ),
                                                                                     false
                                                                             );
@@ -61,7 +72,8 @@ public final class DynastyDebugCommand {
                                                                                                                 + dynasty.name()
                                                                                                                 + " ["
                                                                                                                 + dynasty.type()
-                                                                                                                + "]"
+                                                                                                                + "] "
+                                                                                                                + dynasty.status()
                                                                                                 ),
                                                                                         false
                                                                                 );
@@ -104,6 +116,12 @@ public final class DynastyDebugCommand {
                                                                                                                     )
                                                                                                     );
 
+                                                                                    String organization =
+                                                                                            dynasty.hasOrganization()
+                                                                                                    ? "#"
+                                                                                                    + dynasty.organizationId()
+                                                                                                    : "none";
+
                                                                                     context.getSource()
                                                                                             .sendSuccess(
                                                                                                     () ->
@@ -113,8 +131,20 @@ public final class DynastyDebugCommand {
                                                                                                                             + dynasty.type()
                                                                                                                             + " status="
                                                                                                                             + dynasty.status()
-                                                                                                                            + " org=#"
-                                                                                                                            + dynasty.organizationId()
+                                                                                                                            + " active="
+                                                                                                                            + dynasty.activeAtScenarioStart()
+                                                                                                                            + " org="
+                                                                                                                            + organization
+                                                                                                            ),
+                                                                                                    false
+                                                                                            );
+
+                                                                                    context.getSource()
+                                                                                            .sendSuccess(
+                                                                                                    () ->
+                                                                                                            Component.literal(
+                                                                                                                    "continuities="
+                                                                                                                            + dynasty.continuities()
                                                                                                             ),
                                                                                                     false
                                                                                             );
@@ -141,10 +171,26 @@ public final class DynastyDebugCommand {
                                                                                                                             + dynasty.parentDynasty()
                                                                                                                             + " liege="
                                                                                                                             + dynasty.liegeDynasty()
-                                                                                                                            + " head="
+                                                                                                                            + " predecessor="
+                                                                                                                            + dynasty.predecessorDynasty()
+                                                                                                                            + " successor="
+                                                                                                                            + dynasty.successorDynasty()
+                                                                                                            ),
+                                                                                                    false
+                                                                                            );
+
+                                                                                    context.getSource()
+                                                                                            .sendSuccess(
+                                                                                                    () ->
+                                                                                                            Component.literal(
+                                                                                                                    "head="
                                                                                                                             + dynasty.head()
                                                                                                                             + " heir="
                                                                                                                             + dynasty.heir()
+                                                                                                                            + " founded="
+                                                                                                                            + dynasty.foundedYear()
+                                                                                                                            + " extinct="
+                                                                                                                            + dynasty.extinctYear()
                                                                                                             ),
                                                                                                     false
                                                                                             );
