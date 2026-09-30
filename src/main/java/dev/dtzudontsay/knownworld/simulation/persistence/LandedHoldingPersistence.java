@@ -17,7 +17,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public final class LandedHoldingPersistence {
 
@@ -128,6 +130,9 @@ public final class LandedHoldingPersistence {
             return;
         }
 
+        List<LoadedHolding> loaded =
+                new ArrayList<>();
+
         try (
                 BufferedReader reader =
                         Files.newBufferedReader(
@@ -167,9 +172,15 @@ public final class LandedHoldingPersistence {
 
                 try {
 
-                    manager.registerLoaded(
+                    LandedHolding decoded =
                             decode(
                                     line
+                            );
+
+                    loaded.add(
+                            new LoadedHolding(
+                                    lineNumber,
+                                    decoded
                             )
                     );
 
@@ -185,6 +196,132 @@ public final class LandedHoldingPersistence {
                 }
             }
         }
+
+        /*
+         * ---------------------------------------------------------
+         * PASS 1 — REGISTER EVERY HOLDING WITHOUT ITS PARENT
+         * ---------------------------------------------------------
+         *
+         * Holding IDs are persistent runtime IDs.
+         *
+         * A child may have a parent whose numeric ID is greater than
+         * the child's ID. Because the persistence file is saved in
+         * numeric ID order, requiring the parent to already exist
+         * while reading a child makes loading dependent on file order.
+         *
+         * Example:
+         *
+         * holding #40
+         *     parent = holding #236
+         *
+         * #236 is perfectly valid, but has not been encountered yet.
+         *
+         * Therefore every holding is first registered with
+         * parentHoldingId = null. All other references can already be
+         * validated normally because NPCs, organizations, titles,
+         * dynasties and world references exist before holdings load.
+         */
+        for (
+                LoadedHolding entry :
+                loaded
+        ) {
+
+            LandedHolding decoded =
+                    entry.holding();
+
+            try {
+
+                manager.registerLoaded(
+                        withoutParent(
+                                decoded
+                        )
+                );
+
+            } catch (
+                    RuntimeException exception
+            ) {
+
+                throw new IOException(
+                        "Invalid landed holding at line "
+                                + entry.lineNumber()
+                                + " during first-pass registration",
+                        exception
+                );
+            }
+        }
+
+        /*
+         * ---------------------------------------------------------
+         * PASS 2 — RESTORE THE TERRITORIAL HIERARCHY
+         * ---------------------------------------------------------
+         *
+         * At this point every persisted HoldingId is registered.
+         *
+         * LandedHoldingManager.setParent() now performs the normal
+         * existence and cycle validation without depending on the
+         * serialization order of the file.
+         */
+        for (
+                LoadedHolding entry :
+                loaded
+        ) {
+
+            LandedHolding decoded =
+                    entry.holding();
+
+            HoldingId parent =
+                    decoded.parentHoldingId();
+
+            if (parent == null) {
+                continue;
+            }
+
+            try {
+
+                manager.setParent(
+                        decoded.id(),
+                        parent
+                );
+
+            } catch (
+                    RuntimeException exception
+            ) {
+
+                throw new IOException(
+                        "Invalid landed holding parent at line "
+                                + entry.lineNumber()
+                                + ": holding "
+                                + decoded.id()
+                                + " -> parent "
+                                + parent,
+                        exception
+                );
+            }
+        }
+    }
+
+    private static LandedHolding withoutParent(
+            LandedHolding holding
+    ) {
+
+        return new LandedHolding(
+                holding.id(),
+                holding.authoredId(),
+                holding.name(),
+                holding.type(),
+                holding.worldLocationId(),
+                holding.deJureDynastyId(),
+                null,
+                holding.status(),
+                holding.ownerDynastyId(),
+                holding.holderNpcId(),
+                holding.governmentOrganizationId(),
+                holding.linkedTitleId(),
+                holding.capital(),
+                holding.taxBase(),
+                holding.militaryValue(),
+                holding.populationWeight()
+        );
     }
 
     private static String encode(
@@ -570,5 +707,11 @@ public final class LandedHoldingPersistence {
         }
 
         return result.toString();
+    }
+
+    private record LoadedHolding(
+            int lineNumber,
+            LandedHolding holding
+    ) {
     }
 }

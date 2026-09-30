@@ -3,6 +3,7 @@ package dev.dtzudontsay.knownworld.simulation.social;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.debug.DynastyHierarchyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LandedHoldingDebugCommand;
+import dev.dtzudontsay.knownworld.debug.PoliticalStructureAuditCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterSocialIdentityPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyAllegiancePersistence;
@@ -22,6 +23,8 @@ import dev.dtzudontsay.knownworld.simulation.social.holding.LandedHoldingManager
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityManager;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityService;
+import dev.dtzudontsay.knownworld.simulation.social.integrity.PoliticalStructureIntegrityReport;
+import dev.dtzudontsay.knownworld.simulation.social.integrity.PoliticalStructureIntegrityService;
 import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembershipManager;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyManager;
@@ -60,6 +63,8 @@ public final class SocietyStructureRuntime {
 
     private final DynastyIntegrityService dynastyIntegrity;
 
+    private final PoliticalStructureIntegrityService politicalStructureIntegrity;
+
     private final DynastyPersistence dynastyPersistence;
 
     private final DynastyAllegiancePersistence dynastyAllegiancePersistence;
@@ -79,6 +84,8 @@ public final class SocietyStructureRuntime {
     private DynastyHierarchyBootstrapService.Report lastHierarchyReport;
 
     private LandedHoldingBootstrapService.Report lastHoldingReport;
+
+    private PoliticalStructureIntegrityReport lastPoliticalStructureReport;
 
     private SocietyStructureRuntime(
             MinecraftServer server,
@@ -151,6 +158,15 @@ public final class SocietyStructureRuntime {
                         dynasties
                 );
 
+        this.politicalStructureIntegrity =
+                new PoliticalStructureIntegrityService(
+                        simulation,
+                        dynasties,
+                        dynastyAllegiances,
+                        holdings,
+                        WorldReferenceCatalog.get()
+                );
+
         Path savePath =
                 server.getWorldPath(
                                 LevelResource.ROOT
@@ -203,6 +219,8 @@ public final class SocietyStructureRuntime {
 
         DynastyHierarchyDebugCommand.register();
 
+        PoliticalStructureAuditCommand.register();
+
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
 
@@ -228,10 +246,10 @@ public final class SocietyStructureRuntime {
                     runtime.loadAndReconcile();
 
                     KnownWorld.LOGGER.info(
-                            "Society structure runtime started with {} dynasties, {} current allegiance override(s), {} landed holdings, {} non-dynastic societies, {} character social identities and {} organization memberships.",
+                            "Society structure runtime started with {} dynasties, {} landed holdings, {} current allegiance overrides, {} non-dynastic societies, {} character social identities and {} organization memberships.",
                             runtime.dynasties.size(),
-                            runtime.dynastyAllegiances.overrideCount(),
                             runtime.holdings.size(),
+                            runtime.dynastyAllegiances.overrideCount(),
                             runtime.nonDynasticSocieties.size(),
                             runtime.characterSocialIdentities.size(),
                             runtime.memberships.size()
@@ -352,12 +370,24 @@ public final class SocietyStructureRuntime {
         return lastHoldingReport;
     }
 
+    public PoliticalStructureIntegrityReport lastPoliticalStructureReport() {
+        return lastPoliticalStructureReport;
+    }
+
     public DynastyIntegrityReport auditDynasties() {
 
         lastIntegrityReport =
                 dynastyIntegrity.audit();
 
         return lastIntegrityReport;
+    }
+
+    public PoliticalStructureIntegrityReport auditPoliticalStructure() {
+
+        lastPoliticalStructureReport =
+                politicalStructureIntegrity.audit();
+
+        return lastPoliticalStructureReport;
     }
 
     public void reconcile() {
@@ -391,10 +421,13 @@ public final class SocietyStructureRuntime {
                     );
 
             /*
-             * Authored/default house-to-house liege structure.
+             * -----------------------------------------------------
+             * AUTHORED / DE-JURE DYNASTY HIERARCHY
+             * -----------------------------------------------------
              *
-             * This is the 298 AC/de-jure baseline. It is deliberately
-             * separate from current runtime allegiance.
+             * DynastyScenarioBootstrapService restores the catalog
+             * relationships first. This additional pass applies the
+             * broader regional feudal hierarchy from 19.0E.1.
              */
             lastHierarchyReport =
                     DynastyHierarchyBootstrapService.apply(
@@ -402,15 +435,14 @@ public final class SocietyStructureRuntime {
                     );
 
             /*
-             * Runtime allegiance deviations from the authored hierarchy.
+             * -----------------------------------------------------
+             * CURRENT POLITICAL ALLEGIANCE
+             * -----------------------------------------------------
              *
-             * Examples:
-             * - a house rebels and becomes independent
-             * - a house changes sides
-             * - a house is forced under a new liege
-             *
-             * Only deviations are persisted, so restoring a house to its
-             * authored hierarchy simply removes the override.
+             * Runtime allegiance overrides are loaded AFTER the
+             * authored/de-jure hierarchy. That means rebellion,
+             * independence or switching sides survives a restart
+             * without erasing the scenario's canonical hierarchy.
              */
             dynastyAllegiancePersistence.loadInto(
                     dynastyAllegiances
@@ -477,6 +509,12 @@ public final class SocietyStructureRuntime {
 
             reconcile();
 
+            /*
+             * -----------------------------------------------------
+             * DYNASTY INTEGRITY
+             * -----------------------------------------------------
+             */
+
             lastIntegrityReport =
                     dynastyIntegrity.auditStrict();
 
@@ -486,6 +524,32 @@ public final class SocietyStructureRuntime {
                     lastIntegrityReport.activeAtScenarioStart(),
                     lastIntegrityReport.inactiveAtScenarioStart(),
                     lastIntegrityReport.warningCount()
+            );
+
+            /*
+             * -----------------------------------------------------
+             * 19.0E.2 POLITICAL STRUCTURE INTEGRITY
+             * -----------------------------------------------------
+             *
+             * Structural errors are fatal.
+             *
+             * Warnings and information are intentionally non-fatal:
+             * - multiple capital labels may be legitimate at different
+             *   territorial layers;
+             * - current owner may differ from de-jure owner;
+             * - current allegiance may differ from de-jure allegiance;
+             * - civic/Essosi territory may not have a dynasty owner.
+             */
+            lastPoliticalStructureReport =
+                    politicalStructureIntegrity.auditStrict();
+
+            KnownWorld.LOGGER.info(
+                    "Political structure integrity audit passed: dynasties={}, holdings={}, allegianceOverrides={}, warnings={}, info={}.",
+                    lastPoliticalStructureReport.dynastyCount(),
+                    lastPoliticalStructureReport.holdingCount(),
+                    lastPoliticalStructureReport.allegianceOverrideCount(),
+                    lastPoliticalStructureReport.warningCount(),
+                    lastPoliticalStructureReport.infoCount()
             );
 
             simulation.save();
