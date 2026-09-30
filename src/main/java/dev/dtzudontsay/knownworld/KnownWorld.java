@@ -3,6 +3,7 @@ package dev.dtzudontsay.knownworld;
 import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CharacterProfileDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CultureDebugCommand;
+import dev.dtzudontsay.knownworld.debug.DynastyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FormationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
@@ -11,6 +12,7 @@ import dev.dtzudontsay.knownworld.debug.LegalStateDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
+import dev.dtzudontsay.knownworld.debug.OrganizationMembershipDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReferenceValidationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
@@ -24,6 +26,7 @@ import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileOverlayService;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
+import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeSources;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
@@ -66,49 +69,21 @@ public final class KnownWorld implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        /*
-         * ---------------------------------------------------------
-         * WORLD GENERATION
-         * ---------------------------------------------------------
-         */
-
         KnownWorldBiomeSources.register();
 
         KnownWorldChunkGenerators.register();
 
-        /*
-         * ---------------------------------------------------------
-         * GEOGRAPHIC FEATURE REGISTRIES
-         * ---------------------------------------------------------
-         */
-
         NorthFeatureRegistry.bootstrap();
-
         SouthFeatureRegistry.bootstrap();
-
         SummerIslesFeatureRegistry.bootstrap();
-
         SouthWestEssosFeatureRegistry.bootstrap();
-
         NorthWestEssosFeatureRegistry.bootstrap();
-
         NorthEssosFeatureRegistry.bootstrap();
-
         SouthEssosFeatureRegistry.bootstrap();
-
         NorthEastEssosFeatureRegistry.bootstrap();
-
         SouthEastEssosFeatureRegistry.bootstrap();
-
         SothoryosFeatureRegistry.bootstrap();
-
         UlthosFeatureRegistry.bootstrap();
-
-        /*
-         * ---------------------------------------------------------
-         * STATIC REFERENCE DATA
-         * ---------------------------------------------------------
-         */
 
         WorldReferenceSettings.bootstrap();
 
@@ -116,38 +91,13 @@ public final class KnownWorld implements ModInitializer {
 
         ReligiousInstitutionCatalog.bootstrap();
 
-        /*
-         * ---------------------------------------------------------
-         * SPATIAL REFERENCE LAYERS
-         * ---------------------------------------------------------
-         */
-
         LandmassZoneCatalog.bootstrap();
-
         TerritoryZoneCatalog.bootstrap();
-
         RegionalSubregionCatalog.bootstrap();
-
         RegionalSubregionResolver.bootstrap();
-
         RegionalInfluenceCatalog.bootstrap();
 
-        /*
-         * ---------------------------------------------------------
-         * 18H.1 REFERENCE INTEGRITY
-         * ---------------------------------------------------------
-         *
-         * The full authored scenario is checked before the runtime NPC
-         * simulation starts. Batch 19 can therefore fail fast on bad IDs.
-         */
-
         ReferenceIntegrityValidator.validateDefaultScenario();
-
-        /*
-         * ---------------------------------------------------------
-         * GEODATA / BIOME RASTERS
-         * ---------------------------------------------------------
-         */
 
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -171,110 +121,59 @@ public final class KnownWorld implements ModInitializer {
         LOGGER.info(
                 "Known World reference system ready with {} geographic features, {} reference locations, {} cultures, {} religions, {} languages, {} occupations, {} roles, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
                 GeographicFeatureRegistry.getFeatureCount(),
-                WorldReferenceCatalog.get()
-                        .locations()
-                        .size(),
-                WorldReferenceCatalog.get()
-                        .cultures()
-                        .size(),
-                WorldReferenceCatalog.get()
-                        .religions()
-                        .size(),
-                WorldReferenceCatalog.get()
-                        .languages()
-                        .size(),
-                WorldReferenceCatalog.get()
-                        .occupations()
-                        .size(),
-                WorldReferenceCatalog.get()
-                        .roles()
-                        .size(),
-                LandmassZoneCatalog.get()
-                        .size(),
-                TerritoryZoneCatalog.get()
-                        .size(),
-                RegionalSubregionCatalog.get()
-                        .size(),
-                RegionalSubregionCatalog.get()
-                        .totalEntryCount(),
-                RegionalInfluenceCatalog.get()
-                        .size(),
-                ReligiousInstitutionCatalog.get()
-                        .all()
-                        .size()
+                WorldReferenceCatalog.get().locations().size(),
+                WorldReferenceCatalog.get().cultures().size(),
+                WorldReferenceCatalog.get().religions().size(),
+                WorldReferenceCatalog.get().languages().size(),
+                WorldReferenceCatalog.get().occupations().size(),
+                WorldReferenceCatalog.get().roles().size(),
+                LandmassZoneCatalog.get().size(),
+                TerritoryZoneCatalog.get().size(),
+                RegionalSubregionCatalog.get().size(),
+                RegionalSubregionCatalog.get().totalEntryCount(),
+                RegionalInfluenceCatalog.get().size(),
+                ReligiousInstitutionCatalog.get().all().size()
         );
 
-        /*
-         * ---------------------------------------------------------
-         * WORLD / REFERENCE DEBUG
-         * ---------------------------------------------------------
-         */
-
         KnownWorldDebugCommand.register();
-
         KnownWorldGeoDebugCommand.register();
-
         WorldReferenceDebugCommand.register();
-
         RegionalInfluenceDebugCommand.register();
-
         ReferenceValidationDebugCommand.register();
 
-        /*
-         * ---------------------------------------------------------
-         * CHARACTER IDENTITY / FORMATION DEBUG
-         * ---------------------------------------------------------
-         */
-
         ReligionDebugCommand.register();
-
         ReligiousInstitutionDebugCommand.register();
-
         CultureDebugCommand.register();
-
         FormationDebugCommand.register();
-
         LegalStateDebugCommand.register();
 
         /*
-         * ---------------------------------------------------------
-         * SIMULATION
-         * ---------------------------------------------------------
+         * NPC simulation must register first.
          */
-
         NpcSimulation.registerLifecycle();
 
         /*
-         * 18G/18H.1 authored overlays run after NpcSimulation load.
+         * 19.0B society runtime depends on the running NPC simulation.
+         */
+        SocietyStructureRuntime.registerLifecycle();
+
+        /*
+         * Authored character overlays run after simulation state exists.
          */
         AuthoredCharacterProfileOverlayService.registerLifecycle();
 
-        /*
-         * ---------------------------------------------------------
-         * SIMULATION DEBUG
-         * ---------------------------------------------------------
-         */
-
         NpcDebugCommand.register();
-
         NpcNeedsDebugCommand.register();
-
         NpcRoutineDebugCommand.register();
-
         SocialDebugCommand.register();
-
+        DynastyDebugCommand.register();
+        OrganizationMembershipDebugCommand.register();
         TitleDebugCommand.register();
-
         BootstrapDebugCommand.register();
-
         FamilyDebugCommand.register();
-
         LifeCycleDebugCommand.register();
-
         SuccessionDebugCommand.register();
-
         CharacterProfileDebugCommand.register();
-
         WorldEventDebugCommand.register();
 
         LOGGER.info(
