@@ -1,0 +1,159 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "westerlands",
+    "cultureId": "westerman",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_lannister",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_lannister",
+      "name": "House Lannister",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "Hear Me Roar!",
+      "prestige": 0.98,
+      "wealth": 1.0,
+      "militaryStrength": 0.90
+    },
+
+    {
+      "id": "house_lannister_lannisport",
+      "name": "House Lannister of Lannisport",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_lannister"
+    },
+
+    { "id": "house_algood", "name": "House Algood" },
+    { "id": "house_banefort", "name": "House Banefort" },
+    { "id": "house_bettley", "name": "House Bettley" },
+    { "id": "house_brax", "name": "House Brax" },
+    { "id": "house_broom", "name": "House Broom" },
+    { "id": "house_broome", "name": "House Broome" },
+
+    {
+      "id": "house_casterly",
+      "name": "House Casterly",
+      "type": "GREAT_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "liegeDynastyId": null,
+      "successorDynastyId": "house_lannister"
+    },
+
+    { "id": "house_clegane", "name": "House Clegane", "type": "LANDED_KNIGHTLY_HOUSE", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_clifton", "name": "House Clifton", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_crakehall", "name": "House Crakehall", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_doggett", "name": "House Doggett" },
+    { "id": "house_drox", "name": "House Drox" },
+    { "id": "house_estren", "name": "House Estren" },
+    { "id": "house_falwell", "name": "House Falwell" },
+    { "id": "house_farman", "name": "House Farman", "homeLocationId": "fair_isle" },
+    { "id": "house_ferren", "name": "House Ferren" },
+    { "id": "house_foote", "name": "House Foote" },
+    { "id": "house_garner", "name": "House Garner" },
+    { "id": "house_greenfield", "name": "House Greenfield", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_hamell", "name": "House Hamell" },
+    { "id": "house_hawthorne", "name": "House Hawthorne" },
+    { "id": "house_hetherspoon", "name": "House Hetherspoon", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_jast", "name": "House Jast" },
+
+    {
+      "id": "house_kenning_kayce",
+      "name": "House Kenning of Kayce",
+      "type": "LANDED_KNIGHTLY_HOUSE"
+    },
+
+    { "id": "house_kyndall", "name": "House Kyndall" },
+
+    {
+      "id": "house_lannett",
+      "name": "House Lannett",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_lannister"
+    },
+    {
+      "id": "house_lanny",
+      "name": "House Lanny",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_lannister"
+    },
+    {
+      "id": "house_lantell",
+      "name": "House Lantell",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_lannister"
+    },
+
+    { "id": "house_lefford", "name": "House Lefford" },
+    { "id": "house_lorch", "name": "House Lorch", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_lydden", "name": "House Lydden" },
+    { "id": "house_marbrand", "name": "House Marbrand" },
+    { "id": "house_moreland", "name": "House Moreland" },
+    { "id": "house_myatt", "name": "House Myatt" },
+
+    {
+      "id": "house_parren",
+      "name": "House Parren",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_payne", "name": "House Payne", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_peckledon", "name": "House Peckledon" },
+    { "id": "house_plumm", "name": "House Plumm" },
+    { "id": "house_prester", "name": "House Prester" },
+
+    {
+      "id": "house_reyne",
+      "name": "House Reyne",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    { "id": "house_ruttiger", "name": "House Ruttiger", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_sarsfield", "name": "House Sarsfield" },
+
+    {
+      "id": "house_sarwyck",
+      "name": "House Sarwyck",
+      "continuities": ["BOOK", "OFFICIAL_GAME"],
+      "sourceNote": "Book lineage elaborated in licensed game continuity."
+    },
+
+    { "id": "house_serrett", "name": "House Serrett" },
+    { "id": "house_spicer", "name": "House Spicer" },
+    { "id": "house_stackspear", "name": "House Stackspear" },
+    { "id": "house_stilwood", "name": "House Stilwood" },
+    { "id": "house_swyft", "name": "House Swyft", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    {
+      "id": "house_tarbeck",
+      "name": "House Tarbeck",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_turnberry", "name": "House Turnberry" },
+    { "id": "house_vikary", "name": "House Vikary", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_westerling", "name": "House Westerling", "continuities": ["BOOK", "TELEVISION"] },
+
+    {
+      "id": "house_westford",
+      "name": "House Westford",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["BOOK", "OFFICIAL_GAME"]
+    },
+
+    { "id": "house_yarwyck", "name": "House Yarwyck" },
+    { "id": "house_yew", "name": "House Yew", "type": "LANDED_KNIGHTLY_HOUSE" }
+  ]
+}

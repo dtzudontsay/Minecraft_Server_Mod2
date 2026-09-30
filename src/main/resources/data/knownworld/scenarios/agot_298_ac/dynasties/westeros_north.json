@@ -1,0 +1,331 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "the_north",
+    "cultureId": "northman",
+    "religionId": "old_gods",
+    "liegeDynastyId": "house_stark",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_stark",
+      "name": "House Stark",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "headNpcId": "eddard_stark",
+      "heirNpcId": "robb_stark",
+      "words": "Winter Is Coming",
+      "heraldry": "A grey direwolf on a white field.",
+      "prestige": 0.96,
+      "wealth": 0.70,
+      "militaryStrength": 0.88
+    },
+
+    { "id": "house_ashwood", "name": "House Ashwood" },
+    { "id": "house_blackmyre", "name": "House Blackmyre" },
+    { "id": "house_boggs_north", "name": "House Boggs of the North" },
+    { "id": "house_bole", "name": "House Bole" },
+
+    {
+      "id": "house_bolton",
+      "name": "House Bolton",
+      "continuities": ["BOOK", "TELEVISION"],
+      "words": "Our Blades Are Sharp",
+      "heraldry": "A flayed man."
+    },
+    {
+      "id": "house_bolton_winterfell",
+      "name": "House Bolton of Winterfell",
+      "type": "CADET_BRANCH",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_bolton",
+      "liegeDynastyId": null,
+      "continuities": ["TELEVISION"],
+      "sourceNote": "Television-continuity political branch/title configuration arising only after the 298 AC scenario start."
+    },
+
+    { "id": "house_branch", "name": "House Branch" },
+    { "id": "house_burley", "name": "House Burley" },
+    { "id": "house_cassel", "name": "House Cassel" },
+    { "id": "house_cerwyn", "name": "House Cerwyn" },
+    { "id": "house_condon", "name": "House Condon" },
+    { "id": "house_cray", "name": "House Cray" },
+
+    {
+      "id": "house_crowl",
+      "name": "House Crowl",
+      "homeLocationId": "skagos",
+      "cultureId": "skagosi"
+    },
+
+    { "id": "house_dustin", "name": "House Dustin", "homeLocationId": "barrowlands" },
+    { "id": "house_fenn", "name": "House Fenn", "homeLocationId": "the_neck", "cultureId": "crannogman" },
+
+    {
+      "id": "house_fisher_stony_shore",
+      "name": "House Fisher of the Stony Shore",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_flint",
+      "name": "House Flint"
+    },
+    {
+      "id": "house_flint_breakstone_hill",
+      "name": "House Flint of Breakstone Hill",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_flint"
+    },
+    {
+      "id": "house_flint_flints_finger",
+      "name": "House Flint of Flint's Finger",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_flint"
+    },
+    {
+      "id": "house_flint_mountains",
+      "name": "House Flint of the Mountains",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_flint"
+    },
+    {
+      "id": "house_flint_widows_watch",
+      "name": "House Flint of Widow's Watch",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_flint"
+    },
+
+    {
+      "id": "house_forrester",
+      "name": "House Forrester",
+      "continuities": ["BOOK", "OFFICIAL_GAME"],
+      "sourceNote": "Book-canon northern house substantially elaborated in the Telltale continuity."
+    },
+
+    {
+      "id": "house_frost",
+      "name": "House Frost",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_glover",
+      "name": "House Glover",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    { "id": "house_greengood", "name": "House Greengood" },
+
+    {
+      "id": "house_greenwood",
+      "name": "House Greenwood",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_greystark",
+      "name": "House Greystark",
+      "type": "CADET_BRANCH",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_stark"
+    },
+
+    { "id": "house_harclay", "name": "House Harclay" },
+    { "id": "house_holt_north", "name": "House Holt of the North" },
+    { "id": "house_hornwood", "name": "House Hornwood", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_ironsmith", "name": "House Ironsmith" },
+
+    {
+      "id": "house_karstark",
+      "name": "House Karstark",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_stark",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    { "id": "house_knott", "name": "House Knott" },
+    { "id": "house_lake_north", "name": "House Lake of the North" },
+    { "id": "house_liddle", "name": "House Liddle" },
+    { "id": "house_lightfoot", "name": "House Lightfoot" },
+    { "id": "house_locke", "name": "House Locke" },
+    { "id": "house_long_north", "name": "House Long of the North" },
+
+    {
+      "id": "house_magnar",
+      "name": "House Magnar",
+      "homeLocationId": "skagos",
+      "cultureId": "skagosi"
+    },
+
+    {
+      "id": "house_manderly",
+      "name": "House Manderly",
+      "continuities": ["BOOK", "TELEVISION"],
+      "religionId": "faith_of_the_seven",
+      "wealth": 0.82
+    },
+
+    { "id": "house_marsh", "name": "House Marsh" },
+    { "id": "house_mollen", "name": "House Mollen" },
+
+    {
+      "id": "house_mormont",
+      "name": "House Mormont",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "bear_island"
+    },
+
+    { "id": "house_moss", "name": "House Moss" },
+    { "id": "house_norrey", "name": "House Norrey" },
+    { "id": "house_overton", "name": "House Overton" },
+    { "id": "house_peat", "name": "House Peat", "homeLocationId": "the_neck", "cultureId": "crannogman" },
+    { "id": "house_poole", "name": "House Poole" },
+    { "id": "house_quagg", "name": "House Quagg" },
+    { "id": "house_redbeard", "name": "House Redbeard" },
+
+    {
+      "id": "house_reed",
+      "name": "House Reed",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "the_neck",
+      "cultureId": "crannogman"
+    },
+
+    {
+      "id": "house_ryder",
+      "name": "House Ryder",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_ryswell", "name": "House Ryswell", "homeLocationId": "the_rills" },
+    { "id": "house_slate", "name": "House Slate" },
+    { "id": "house_stane", "name": "House Stane" },
+    { "id": "house_stout", "name": "House Stout" },
+
+    {
+      "id": "house_tallhart",
+      "name": "House Tallhart",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    {
+      "id": "house_thenn",
+      "name": "House Thenn",
+      "type": "CADET_BRANCH",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "cultureId": "thenn",
+      "parentDynastyId": null,
+      "sourceNote": "The Westerosi noble House Thenn forms later than the 298 AC scenario start; the Thenn people themselves already exist."
+    },
+
+    {
+      "id": "house_towers_north",
+      "name": "House Towers of the North",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_umber",
+      "name": "House Umber",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    { "id": "house_waterman", "name": "House Waterman" },
+    { "id": "house_wells_north", "name": "House Wells of the North" },
+
+    {
+      "id": "house_whitehill",
+      "name": "House Whitehill",
+      "continuities": ["BOOK", "OFFICIAL_GAME"],
+      "sourceNote": "Known northern lineage substantially elaborated in the Telltale continuity."
+    },
+
+    {
+      "id": "house_woodfoot",
+      "name": "House Woodfoot",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_woods", "name": "House Woods" },
+    { "id": "house_woolfield", "name": "House Woolfield" },
+    { "id": "house_wull", "name": "House Wull" },
+
+    {
+      "id": "house_tuttle",
+      "name": "House Tuttle",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["OFFICIAL_GAME"],
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Telltale continuity."
+    },
+
+    {
+      "id": "house_brownbarrow",
+      "name": "House Brownbarrow",
+      "continuities": ["OFFICIAL_GAME"],
+      "provenance": "HYBRID_CANON"
+    },
+    {
+      "id": "house_dormand",
+      "name": "House Dormand",
+      "continuities": ["TELEVISION"],
+      "provenance": "HYBRID_CANON",
+      "words": "Faithful and True"
+    },
+    {
+      "id": "house_elliver",
+      "name": "House Elliver",
+      "continuities": ["OFFICIAL_GAME"],
+      "provenance": "HYBRID_CANON"
+    },
+    {
+      "id": "house_glenmore",
+      "name": "House Glenmore",
+      "continuities": ["OFFICIAL_GAME"],
+      "provenance": "HYBRID_CANON"
+    },
+    {
+      "id": "house_grayson",
+      "name": "House Grayson",
+      "continuities": ["OFFICIAL_GAME"],
+      "provenance": "HYBRID_CANON"
+    },
+    {
+      "id": "house_greenleaf",
+      "name": "House Greenleaf",
+      "continuities": ["TELEVISION"],
+      "provenance": "HYBRID_CANON"
+    },
+    {
+      "id": "house_mazin",
+      "name": "House Mazin",
+      "continuities": ["TELEVISION"],
+      "provenance": "HYBRID_CANON"
+    },
+    {
+      "id": "house_degore",
+      "name": "House Degore",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["OFFICIAL_GAME"],
+      "provenance": "HYBRID_CANON"
+    }
+  ]
+}

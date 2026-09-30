@@ -1,0 +1,59 @@
+{
+  "defaults": {
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "family_belaerys",
+      "name": "Belaerys Family",
+      "type": "DRAGONLORD_FAMILY",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false,
+      "cultureId": "valyrian",
+      "sourceNote": "Known dragonlord family of old Valyria. Survival into 298 AC is not established."
+    },
+
+    {
+      "id": "family_deeth",
+      "name": "Deeth Family",
+      "type": "PUREBORN_FAMILY",
+      "homeLocationId": "qarth",
+      "cultureId": "qartheen",
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Lineage grouping inferred from the known Pureborn Wendello Qar Deeth."
+    },
+    {
+      "id": "family_emeros",
+      "name": "Emeros Family",
+      "type": "PUREBORN_FAMILY",
+      "homeLocationId": "qarth",
+      "cultureId": "qartheen",
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Lineage grouping inferred from the known Pureborn Egon Emeros."
+    },
+    {
+      "id": "family_mallarawan",
+      "name": "Mallarawan Family",
+      "type": "PUREBORN_FAMILY",
+      "homeLocationId": "qarth",
+      "cultureId": "qartheen",
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Lineage grouping inferred from the known Pureborn Mathos Mallarawan."
+    },
+
+    {
+      "id": "family_daxos",
+      "name": "Daxos Family",
+      "type": "MERCHANT_DYNASTY",
+      "homeLocationId": "qarth",
+      "cultureId": "qartheen",
+      "continuities": ["BOOK", "TELEVISION"],
+      "provenance": "PLAUSIBLE",
+      "sourceNote": "Compatibility lineage around Xaro Xhoan Daxos. Canon establishes Xaro as a merchant prince but does not establish a formal hereditary House Daxos."
+    }
+  ]
+}

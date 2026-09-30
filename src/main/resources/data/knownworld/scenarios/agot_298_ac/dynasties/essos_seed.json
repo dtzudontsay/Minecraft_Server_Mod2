@@ -1,0 +1,94 @@
+{
+  "defaults": {
+    "status": "ACTIVE",
+    "activeAtScenarioStart": true,
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "family_paenymion",
+      "name": "Paenymion Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "continuities": ["BOOK"],
+      "homeLocationId": "lands_of_long_summer",
+      "cultureId": "volantene"
+    },
+
+    {
+      "id": "family_maegyr",
+      "name": "Maegyr Family",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "continuities": ["TELEVISION"],
+      "homeLocationId": "lands_of_long_summer",
+      "cultureId": "volantene",
+      "provenance": "HYBRID_CANON"
+    },
+
+    {
+      "id": "family_mopatis",
+      "name": "Mopatis Family",
+      "type": "MAGISTERIAL_FAMILY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "pentos",
+      "cultureId": "pentoshi",
+      "provenance": "HYBRID_CANON"
+    },
+
+    {
+      "id": "family_nestoris",
+      "name": "Nestoris Family",
+      "type": "MERCHANT_DYNASTY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi",
+      "provenance": "HYBRID_CANON"
+    },
+
+    {
+      "id": "family_zo_loraq",
+      "name": "zo Loraq Family",
+      "type": "MASTER_FAMILY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+
+    {
+      "id": "family_mo_nakloz",
+      "name": "mo Nakloz Family",
+      "type": "MASTER_FAMILY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "astapor",
+      "cultureId": "astapori"
+    },
+
+    {
+      "id": "family_mo_eraz",
+      "name": "mo Eraz Family",
+      "type": "MASTER_FAMILY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+
+    {
+      "id": "family_zo_qaggaz",
+      "name": "zo Qaggaz Family",
+      "type": "MASTER_FAMILY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+
+    {
+      "id": "family_daxos",
+      "name": "Daxos Family",
+      "type": "MERCHANT_DYNASTY",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "qarth",
+      "cultureId": "qartheen",
+      "provenance": "HYBRID_CANON"
+    }
+  ]
+}

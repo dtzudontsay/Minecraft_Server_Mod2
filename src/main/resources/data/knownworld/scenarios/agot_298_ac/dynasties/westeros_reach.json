@@ -1,0 +1,182 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "the_reach",
+    "cultureId": "reachman",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_tyrell",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_tyrell",
+      "name": "House Tyrell",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "Growing Strong",
+      "prestige": 0.91,
+      "wealth": 0.92,
+      "militaryStrength": 0.94
+    },
+
+    { "id": "house_ambrose", "name": "House Ambrose" },
+    { "id": "house_appleton", "name": "House Appleton" },
+    { "id": "house_ashford", "name": "House Ashford" },
+    { "id": "house_ball", "name": "House Ball" },
+    { "id": "house_beesbury", "name": "House Beesbury", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_blackbar", "name": "House Blackbar" },
+    { "id": "house_bridges", "name": "House Bridges" },
+    { "id": "house_bulwer", "name": "House Bulwer" },
+    { "id": "house_bushy", "name": "House Bushy" },
+    { "id": "house_caswell", "name": "House Caswell" },
+    { "id": "house_chester", "name": "House Chester" },
+    { "id": "house_cobb", "name": "House Cobb" },
+    { "id": "house_cockshaw", "name": "House Cockshaw" },
+    { "id": "house_conklyn", "name": "House Conklyn" },
+    { "id": "house_cordwayner", "name": "House Cordwayner" },
+    { "id": "house_costayne", "name": "House Costayne" },
+    { "id": "house_crane", "name": "House Crane" },
+    { "id": "house_cuy", "name": "House Cuy" },
+    { "id": "house_dunn", "name": "House Dunn" },
+    { "id": "house_durwell", "name": "House Durwell" },
+    { "id": "house_florent", "name": "House Florent", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_footly", "name": "House Footly" },
+
+    {
+      "id": "house_fossoway",
+      "name": "House Fossoway"
+    },
+    {
+      "id": "house_fossoway_cider_hall",
+      "name": "House Fossoway of Cider Hall",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "parentDynastyId": "house_fossoway"
+    },
+    {
+      "id": "house_fossoway_new_barrel",
+      "name": "House Fossoway of New Barrel",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_fossoway"
+    },
+
+    {
+      "id": "house_gardener",
+      "name": "House Gardener",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "liegeDynastyId": null,
+      "successorDynastyId": "house_tyrell"
+    },
+
+    { "id": "house_graceford", "name": "House Graceford" },
+    { "id": "house_graves", "name": "House Graves" },
+    { "id": "house_grimm", "name": "House Grimm" },
+    { "id": "house_hastwyck", "name": "House Hastwyck" },
+    { "id": "house_hewett", "name": "House Hewett" },
+
+    {
+      "id": "house_hightower",
+      "name": "House Hightower",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "oldtown",
+      "prestige": 0.86,
+      "wealth": 0.92
+    },
+
+    { "id": "house_hunt", "name": "House Hunt" },
+    { "id": "house_hutcheson", "name": "House Hutcheson" },
+    { "id": "house_inchfield", "name": "House Inchfield" },
+    { "id": "house_kidwell", "name": "House Kidwell" },
+    { "id": "house_leygood", "name": "House Leygood" },
+    { "id": "house_lowther", "name": "House Lowther" },
+    { "id": "house_lyberr", "name": "House Lyberr" },
+    { "id": "house_meadows", "name": "House Meadows" },
+    { "id": "house_merryweather", "name": "House Merryweather" },
+    { "id": "house_middlebury", "name": "House Middlebury" },
+    { "id": "house_mullendore", "name": "House Mullendore" },
+    { "id": "house_norcross", "name": "House Norcross" },
+    { "id": "house_norridge", "name": "House Norridge" },
+    { "id": "house_oakheart", "name": "House Oakheart", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_oldflowers", "name": "House Oldflowers" },
+    { "id": "house_orme", "name": "House Orme" },
+
+    {
+      "id": "house_osgrey",
+      "name": "House Osgrey"
+    },
+    {
+      "id": "house_osgrey_leafy_lake",
+      "name": "House Osgrey of Leafy Lake",
+      "type": "CADET_BRANCH",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_osgrey"
+    },
+
+    { "id": "house_peake", "name": "House Peake" },
+    { "id": "house_pommingham", "name": "House Pommingham" },
+    { "id": "house_redding", "name": "House Redding" },
+
+    {
+      "id": "house_redwyne",
+      "name": "House Redwyne",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "the_arbor",
+      "wealth": 0.86
+    },
+
+    { "id": "house_rhysling", "name": "House Rhysling" },
+    { "id": "house_risley", "name": "House Risley", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_rodden", "name": "House Rodden" },
+    { "id": "house_rowan", "name": "House Rowan", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_roxton", "name": "House Roxton" },
+    { "id": "house_serry", "name": "House Serry" },
+    { "id": "house_shermer", "name": "House Shermer" },
+    { "id": "house_sloane", "name": "House Sloane" },
+    { "id": "house_stackhouse", "name": "House Stackhouse" },
+
+    {
+      "id": "house_tarly",
+      "name": "House Tarly",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    {
+      "id": "house_tyrell_brightwater_keep",
+      "name": "House Tyrell of Brightwater Keep",
+      "type": "CADET_BRANCH",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_tyrell"
+    },
+
+    { "id": "house_uffering", "name": "House Uffering" },
+    { "id": "house_varner", "name": "House Varner" },
+    { "id": "house_vyrwel", "name": "House Vyrwel" },
+    { "id": "house_webber", "name": "House Webber" },
+    { "id": "house_westbrook", "name": "House Westbrook" },
+    { "id": "house_willum", "name": "House Willum" },
+    { "id": "house_woodwright", "name": "House Woodwright" },
+    { "id": "house_wythers", "name": "House Wythers" },
+    { "id": "house_yelshire", "name": "House Yelshire" },
+
+    {
+      "id": "tv_bronn_dynasty",
+      "name": "Bronn's House",
+      "type": "GREAT_HOUSE",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "continuities": ["TELEVISION"],
+      "foundedYear": 305,
+      "liegeDynastyId": null,
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Television-continuity future ruling lineage at Highgarden. No canonical house name is supplied, so no invented formal surname is asserted."
+    }
+  ]
+}

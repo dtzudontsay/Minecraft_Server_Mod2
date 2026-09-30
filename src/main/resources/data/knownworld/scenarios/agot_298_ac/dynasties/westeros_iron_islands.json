@@ -1,0 +1,164 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "iron_islands",
+    "cultureId": "ironborn",
+    "religionId": "drowned_god",
+    "liegeDynastyId": "house_greyjoy",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_greyjoy",
+      "name": "House Greyjoy",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "We Do Not Sow",
+      "prestige": 0.82,
+      "wealth": 0.52,
+      "militaryStrength": 0.76
+    },
+
+    { "id": "house_blacktyde", "name": "House Blacktyde", "homeLocationId": "blacktyde" },
+    { "id": "house_botley", "name": "House Botley", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_codd", "name": "House Codd" },
+    { "id": "house_drumm", "name": "House Drumm", "homeLocationId": "old_wyk", "continuities": ["BOOK", "TELEVISION"] },
+
+    {
+      "id": "house_farwynd",
+      "name": "House Farwynd"
+    },
+    {
+      "id": "house_farwynd_sealskin_point",
+      "name": "House Farwynd of Sealskin Point",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_farwynd"
+    },
+    {
+      "id": "house_farwynd_lonely_light",
+      "name": "House Farwynd of the Lonely Light",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_farwynd",
+      "homeLocationId": "lonely_light"
+    },
+
+    {
+      "id": "house_goodbrother",
+      "name": "House Goodbrother",
+      "homeLocationId": "great_wyk",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+    {
+      "id": "house_goodbrother_corpse_lake",
+      "name": "House Goodbrother of Corpse Lake",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_goodbrother",
+      "homeLocationId": "great_wyk"
+    },
+    {
+      "id": "house_goodbrother_crow_spike",
+      "name": "House Goodbrother of Crow Spike Keep",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_goodbrother",
+      "homeLocationId": "great_wyk"
+    },
+    {
+      "id": "house_goodbrother_downdelving",
+      "name": "House Goodbrother of Downdelving",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_goodbrother",
+      "homeLocationId": "great_wyk"
+    },
+    {
+      "id": "house_goodbrother_orkmont",
+      "name": "House Goodbrother of Orkmont",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_goodbrother",
+      "homeLocationId": "orkmont"
+    },
+    {
+      "id": "house_goodbrother_shatterstone",
+      "name": "House Goodbrother of Shatterstone",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_goodbrother",
+      "homeLocationId": "great_wyk"
+    },
+
+    {
+      "id": "house_greyiron",
+      "name": "House Greyiron",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "liegeDynastyId": null
+    },
+
+    {
+      "id": "house_harlaw",
+      "name": "House Harlaw",
+      "homeLocationId": "harlaw",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+    {
+      "id": "house_harlaw_grey_garden",
+      "name": "House Harlaw of Grey Garden",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "parentDynastyId": "house_harlaw",
+      "homeLocationId": "harlaw"
+    },
+    {
+      "id": "house_harlaw_harlaw_hall",
+      "name": "House Harlaw of Harlaw Hall",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_harlaw",
+      "homeLocationId": "harlaw"
+    },
+    {
+      "id": "house_harlaw_harridan_hill",
+      "name": "House Harlaw of Harridan Hill",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_harlaw",
+      "homeLocationId": "harlaw"
+    },
+    {
+      "id": "house_harlaw_tower_glimmering",
+      "name": "House Harlaw of the Tower of Glimmering",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_harlaw",
+      "homeLocationId": "harlaw"
+    },
+
+    {
+      "id": "house_hoare",
+      "name": "House Hoare",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "liegeDynastyId": null
+    },
+
+    { "id": "house_humble", "name": "House Humble" },
+    { "id": "house_ironmaker", "name": "House Ironmaker" },
+    { "id": "house_kenning_harlaw", "name": "House Kenning of Harlaw", "homeLocationId": "harlaw" },
+    { "id": "house_merlyn", "name": "House Merlyn" },
+    { "id": "house_myre", "name": "House Myre" },
+    { "id": "house_netley", "name": "House Netley" },
+    { "id": "house_orkwood", "name": "House Orkwood", "homeLocationId": "orkmont" },
+    { "id": "house_saltcliffe", "name": "House Saltcliffe" },
+    { "id": "house_sharp", "name": "House Sharp" },
+    { "id": "house_shepherd_iron_islands", "name": "House Shepherd of the Iron Islands" },
+    { "id": "house_sparr", "name": "House Sparr" },
+    { "id": "house_stonehouse", "name": "House Stonehouse" },
+    { "id": "house_stonetree", "name": "House Stonetree" },
+    { "id": "house_sunderly", "name": "House Sunderly" },
+    { "id": "house_tawney", "name": "House Tawney" },
+    { "id": "house_volmark", "name": "House Volmark" },
+    { "id": "house_weaver", "name": "House Weaver" },
+    { "id": "house_wynch", "name": "House Wynch" }
+  ]
+}

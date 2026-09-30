@@ -31,6 +31,15 @@ public enum DynastyStatus {
     DORMANT,
 
     /**
+     * Lore-known dynasty or branch which is founded only after
+     * the scenario start.
+     *
+     * It exists in the reference catalog but must not create a
+     * runtime organization in 298 AC.
+     */
+    NOT_YET_FOUNDED,
+
+    /**
      * No surviving lineage at the scenario date.
      */
     EXTINCT,

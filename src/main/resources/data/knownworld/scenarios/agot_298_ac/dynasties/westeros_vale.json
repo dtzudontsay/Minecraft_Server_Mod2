@@ -1,0 +1,118 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "vale",
+    "cultureId": "valeman",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_arryn",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_arryn",
+      "name": "House Arryn",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "As High as Honor",
+      "prestige": 0.94,
+      "wealth": 0.76,
+      "militaryStrength": 0.80
+    },
+
+    {
+      "id": "house_arryn_gulltown",
+      "name": "House Arryn of Gulltown",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_arryn"
+    },
+
+    {
+      "id": "house_baelish",
+      "name": "House Baelish",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "the_fingers"
+    },
+
+    { "id": "house_belmore", "name": "House Belmore" },
+    { "id": "house_borrell", "name": "House Borrell", "homeLocationId": "sweetsister", "cultureId": "sisterman" },
+    { "id": "house_breakstone", "name": "House Breakstone" },
+
+    {
+      "id": "house_brightstone",
+      "name": "House Brightstone",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_coldwater", "name": "House Coldwater" },
+    { "id": "house_corbray", "name": "House Corbray", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_crayne", "name": "House Crayne" },
+    { "id": "house_donnerly", "name": "House Donnerly" },
+    { "id": "house_donniger", "name": "House Donniger" },
+    { "id": "house_dutton", "name": "House Dutton" },
+    { "id": "house_egen", "name": "House Egen" },
+    { "id": "house_elesham", "name": "House Elesham" },
+    { "id": "house_grafton", "name": "House Grafton" },
+
+    { "id": "house_hardyng", "name": "House Hardyng", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_hersy", "name": "House Hersy" },
+    { "id": "house_hunter_vale", "name": "House Hunter", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_lipps", "name": "House Lipps" },
+    { "id": "house_longthorpe", "name": "House Longthorpe", "homeLocationId": "longsister", "cultureId": "sisterman" },
+    { "id": "house_lynderly", "name": "House Lynderly" },
+    { "id": "house_melcolm", "name": "House Melcolm" },
+    { "id": "house_moore_vale", "name": "House Moore" },
+    { "id": "house_pryor", "name": "House Pryor" },
+    { "id": "house_redfort", "name": "House Redfort" },
+
+    {
+      "id": "house_royce",
+      "name": "House Royce",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+    {
+      "id": "house_royce_gates_moon",
+      "name": "House Royce of the Gates of the Moon",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_royce"
+    },
+
+    { "id": "house_ruthermont", "name": "House Ruthermont" },
+
+    {
+      "id": "house_shell_vale",
+      "name": "House Shell of the Vale",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_shett", "name": "House Shett", "type": "LANDED_KNIGHTLY_HOUSE" },
+    {
+      "id": "house_shett_gull_tower",
+      "name": "House Shett of Gull Tower",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_shett"
+    },
+    {
+      "id": "house_shett_gulltown",
+      "name": "House Shett of Gulltown",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_shett"
+    },
+
+    { "id": "house_sunderland", "name": "House Sunderland", "cultureId": "sisterman" },
+    { "id": "house_templeton", "name": "House Templeton", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_tollett", "name": "House Tollett" },
+    { "id": "house_torrent", "name": "House Torrent" },
+    { "id": "house_upcliff", "name": "House Upcliff" },
+    { "id": "house_waxley", "name": "House Waxley", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_waynwood", "name": "House Waynwood", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_woodhull", "name": "House Woodhull", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_wydman", "name": "House Wydman" }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "defaults": {
+    "type": "MASTER_FAMILY",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "religionId": "unknown_religion",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "family_nakloz",
+      "name": "House of Nakloz",
+      "homeLocationId": "astapor",
+      "cultureId": "astapori"
+    },
+    {
+      "id": "family_ullhor",
+      "name": "House of Ullhor",
+      "homeLocationId": "astapor",
+      "cultureId": "astapori"
+    },
+
+    {
+      "id": "family_ahlaq",
+      "name": "House of Ahlaq",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_eraz",
+      "name": "House of Eraz",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_faez",
+      "name": "House of Faez",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_myraq",
+      "name": "House of Myraq",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_qaggaz",
+      "name": "House of Qaggaz",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_rhaezn",
+      "name": "House of Rhaezn",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_yunzak",
+      "name": "House of Yunzak",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+    {
+      "id": "family_zherzyn",
+      "name": "House of Zherzyn",
+      "homeLocationId": "yunkai",
+      "cultureId": "yunkish"
+    },
+
+    {
+      "id": "family_dhazak",
+      "name": "House of Dhazak",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_galare",
+      "name": "House of Galare",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_ghazeen",
+      "name": "House of Ghazeen",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_hazkar",
+      "name": "House of Hazkar",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_kandaq",
+      "name": "House of Kandaq",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_loraq",
+      "name": "House of Loraq",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+    {
+      "id": "family_merreq",
+      "name": "House of Merreq",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_naqqan",
+      "name": "House of Naqqan",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_pahl",
+      "name": "House of Pahl",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_quazzar",
+      "name": "House of Quazzar",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_reznak",
+      "name": "House of Reznak",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_rhazdar",
+      "name": "House of Rhazdar",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_uhlez",
+      "name": "House of Uhlez",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_yherizan",
+      "name": "House of Yherizan",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    },
+    {
+      "id": "family_zhak",
+      "name": "House of Zhak",
+      "homeLocationId": "meereen",
+      "cultureId": "meereenese"
+    }
+  ]
+}

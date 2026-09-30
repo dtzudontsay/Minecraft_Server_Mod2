@@ -1,0 +1,181 @@
+{
+  "defaults": {
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "family_antaryon",
+      "name": "House Antaryon",
+      "type": "KEYHOLDER_FAMILY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi",
+      "sourceNote": "Known Braavosi house."
+    },
+    {
+      "id": "family_fregar",
+      "name": "House Fregar",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi"
+    },
+    {
+      "id": "family_otherys",
+      "name": "House Otherys",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi",
+      "sourceNote": "Otharys is treated as an alternate or misspelled form rather than a separate dynasty."
+    },
+    {
+      "id": "family_prestayn",
+      "name": "House Prestayn",
+      "type": "KEYHOLDER_FAMILY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi"
+    },
+    {
+      "id": "family_reyaan",
+      "name": "House Reyaan",
+      "type": "KEYHOLDER_FAMILY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi",
+      "sourceNote": "Known keyholder family of the Iron Bank."
+    },
+    {
+      "id": "family_zalyne",
+      "name": "House Zalyne",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi"
+    },
+    {
+      "id": "family_nestoris",
+      "name": "Nestoris Family",
+      "type": "MERCHANT_DYNASTY",
+      "homeLocationId": "braavos",
+      "cultureId": "braavosi",
+      "continuities": ["BOOK", "TELEVISION"],
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Dynastic grouping for the known Nestoris lineage; not asserted to be a Westerosi-style noble house."
+    },
+
+    {
+      "id": "family_haen",
+      "name": "House Haen",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene"
+    },
+    {
+      "id": "family_dagareon",
+      "name": "House Dagareon",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene"
+    },
+    {
+      "id": "family_moraqos",
+      "name": "House Moraqos",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene"
+    },
+    {
+      "id": "family_orthys",
+      "name": "House Orthys",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene"
+    },
+    {
+      "id": "family_pendaerys",
+      "name": "House Pendaerys",
+      "type": "FREE_CITY_NOBLE_FAMILY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene"
+    },
+    {
+      "id": "family_rogare",
+      "name": "House Rogare",
+      "type": "MERCHANT_DYNASTY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene",
+      "sourceNote": "Powerful Lysene banking and mercantile dynasty."
+    },
+    {
+      "id": "family_saan",
+      "name": "Saan Family",
+      "type": "MERCHANT_DYNASTY",
+      "homeLocationId": "lys",
+      "cultureId": "lysene",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    {
+      "id": "family_maegyr",
+      "name": "Maegyr Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene",
+      "continuities": ["BOOK", "TELEVISION"],
+      "sourceNote": "Old Blood lineage. Malaquo Maegyr is a serving triarch in the book continuity; Talisa Maegyr is television-continuity material."
+    },
+    {
+      "id": "family_paenymion",
+      "name": "Paenymion Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene"
+    },
+    {
+      "id": "family_qhaedar",
+      "name": "Qhaedar Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene"
+    },
+    {
+      "id": "family_staegone",
+      "name": "Staegone Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene"
+    },
+    {
+      "id": "family_tagaros",
+      "name": "Tagaros Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene"
+    },
+    {
+      "id": "family_vaelaros",
+      "name": "Vaelaros Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene"
+    },
+    {
+      "id": "family_vhassar",
+      "name": "Vhassar Family",
+      "type": "OLD_BLOOD_FAMILY",
+      "homeLocationId": "volantis",
+      "cultureId": "volantene"
+    },
+
+    {
+      "id": "family_mopatis",
+      "name": "Mopatis Family",
+      "type": "MAGISTERIAL_FAMILY",
+      "homeLocationId": "pentos",
+      "cultureId": "pentoshi",
+      "continuities": ["BOOK", "TELEVISION"],
+      "provenance": "HYBRID_CANON",
+      "sourceNote": "Simulation lineage grouping around Illyrio Mopatis. The sources establish Illyrio as a Pentoshi magister but do not establish a Westerosi-style House Mopatis."
+    }
+  ]
+}

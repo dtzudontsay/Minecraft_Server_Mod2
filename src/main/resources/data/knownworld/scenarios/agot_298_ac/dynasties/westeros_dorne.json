@@ -1,0 +1,128 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "dorne",
+    "cultureId": "dornish",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_martell",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_martell",
+      "name": "House Nymeros Martell",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "Unbowed, Unbent, Unbroken",
+      "prestige": 0.94,
+      "wealth": 0.72,
+      "militaryStrength": 0.72
+    },
+
+    { "id": "house_allyrion", "name": "House Allyrion", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_blackmont", "name": "House Blackmont" },
+
+    {
+      "id": "house_briar",
+      "name": "House Briar",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false,
+      "sourceNote": "Historical Dornish house; survival at 298 AC is not confidently established."
+    },
+    {
+      "id": "house_brook",
+      "name": "House Brook",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+    {
+      "id": "house_brownhill_dorne",
+      "name": "House Brownhill of Dorne",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_dalt", "name": "House Dalt", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    {
+      "id": "house_dayne",
+      "name": "House Dayne",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "the_red_mountains"
+    },
+    {
+      "id": "house_dayne_high_hermitage",
+      "name": "House Dayne of High Hermitage",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "parentDynastyId": "house_dayne",
+      "homeLocationId": "the_red_mountains"
+    },
+
+    { "id": "house_drinkwater", "name": "House Drinkwater", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    {
+      "id": "house_dryland",
+      "name": "House Dryland",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_fowler", "name": "House Fowler", "homeLocationId": "the_prince_pass", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_gargalen", "name": "House Gargalen" },
+
+    {
+      "id": "house_holt_dorne",
+      "name": "House Holt of Dorne",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+    {
+      "id": "house_hull_dorne",
+      "name": "House Hull of Dorne",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_jordayne", "name": "House Jordayne" },
+    { "id": "house_ladybright", "name": "House Ladybright" },
+
+    {
+      "id": "house_lake_dorne",
+      "name": "House Lake of Dorne",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_manwoody", "name": "House Manwoody", "homeLocationId": "the_prince_pass" },
+    { "id": "house_qorgyle", "name": "House Qorgyle" },
+    { "id": "house_santagar", "name": "House Santagar", "type": "LANDED_KNIGHTLY_HOUSE", "continuities": ["BOOK", "TELEVISION"] },
+
+    {
+      "id": "house_shell_dorne",
+      "name": "House Shell of Dorne",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_toland", "name": "House Toland" },
+    { "id": "house_uller", "name": "House Uller", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_vaith", "name": "House Vaith" },
+
+    {
+      "id": "house_wade_dorne",
+      "name": "House Wade of Dorne",
+      "status": "UNKNOWN",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_wells_dorne", "name": "House Wells of Dorne" },
+    { "id": "house_wyl", "name": "House Wyl", "homeLocationId": "the_red_mountains" },
+    { "id": "house_yronwood", "name": "House Yronwood", "homeLocationId": "the_red_mountains", "continuities": ["BOOK", "TELEVISION"] }
+  ]
+}

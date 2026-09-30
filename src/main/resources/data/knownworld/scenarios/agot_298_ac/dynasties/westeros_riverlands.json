@@ -1,0 +1,200 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "riverlands",
+    "cultureId": "riverlander",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_tully",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_tully",
+      "name": "House Tully",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "Family, Duty, Honor",
+      "prestige": 0.88,
+      "wealth": 0.68,
+      "militaryStrength": 0.72
+    },
+
+    { "id": "house_bigglestone", "name": "House Bigglestone" },
+    { "id": "house_blackwood", "name": "House Blackwood", "continuities": ["BOOK", "TELEVISION"], "religionId": "old_gods" },
+    { "id": "house_blanetree", "name": "House Blanetree" },
+    { "id": "house_bracken", "name": "House Bracken", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_butterwell", "name": "House Butterwell" },
+    { "id": "house_chambers", "name": "House Chambers" },
+    { "id": "house_charlton", "name": "House Charlton" },
+
+    { "id": "house_cox", "name": "House Cox", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    { "id": "house_darry", "name": "House Darry", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_deddings", "name": "House Deddings" },
+    { "id": "house_erenford", "name": "House Erenford" },
+
+    {
+      "id": "house_fisher_riverlands",
+      "name": "House Fisher of the Riverlands",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_frey",
+      "name": "House Frey",
+      "continuities": ["BOOK", "TELEVISION"],
+      "wealth": 0.76
+    },
+
+    {
+      "id": "house_frey_riverrun",
+      "name": "House Frey of Riverrun",
+      "type": "CADET_BRANCH",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_frey",
+      "sourceNote": "Branch/political configuration created only after the scenario start."
+    },
+
+    { "id": "house_goodbrook", "name": "House Goodbrook" },
+    { "id": "house_grell", "name": "House Grell" },
+    { "id": "house_grey_riverlands", "name": "House Grey of the Riverlands", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_haigh", "name": "House Haigh", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    {
+      "id": "house_harlton",
+      "name": "House Harlton",
+      "continuities": ["BOOK", "OFFICIAL_GAME"],
+      "sourceNote": "Book lineage also represented in licensed game continuity."
+    },
+
+    {
+      "id": "house_harroway",
+      "name": "House Harroway",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_hawick", "name": "House Hawick" },
+    { "id": "house_hook", "name": "House Hook" },
+
+    {
+      "id": "house_justman",
+      "name": "House Justman",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_keath", "name": "House Keath" },
+
+    {
+      "id": "house_lannister_darry",
+      "name": "House Lannister of Darry",
+      "type": "CADET_BRANCH",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_lannister",
+      "liegeDynastyId": null
+    },
+
+    { "id": "house_lolliston", "name": "House Lolliston" },
+
+    {
+      "id": "house_lothston",
+      "name": "House Lothston",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_lychester", "name": "House Lychester" },
+    { "id": "house_mallister", "name": "House Mallister", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_mooton", "name": "House Mooton" },
+
+    {
+      "id": "house_mudd",
+      "name": "House Mudd",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_nayland", "name": "House Nayland", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    {
+      "id": "house_nutt",
+      "name": "House Nutt",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_paege", "name": "House Paege", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_pemford", "name": "House Pemford" },
+    { "id": "house_perryn", "name": "House Perryn" },
+    { "id": "house_piper", "name": "House Piper", "continuities": ["BOOK", "TELEVISION"] },
+
+    {
+      "id": "house_qoherys",
+      "name": "House Qoherys",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_roote", "name": "House Roote" },
+    { "id": "house_ryger", "name": "House Ryger" },
+    { "id": "house_shawney", "name": "House Shawney" },
+    { "id": "house_smallwood", "name": "House Smallwood" },
+
+    {
+      "id": "house_strong",
+      "name": "House Strong",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_teague",
+      "name": "House Teague",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_terrick", "name": "House Terrick" },
+
+    {
+      "id": "house_towers_harrenhal",
+      "name": "House Towers of Harrenhal",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_vance",
+      "name": "House Vance"
+    },
+    {
+      "id": "house_vance_atranta",
+      "name": "House Vance of Atranta",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_vance"
+    },
+    {
+      "id": "house_vance_wayfarers_rest",
+      "name": "House Vance of Wayfarer's Rest",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_vance"
+    },
+
+    { "id": "house_vypren", "name": "House Vypren" },
+    { "id": "house_wayn", "name": "House Wayn" },
+    { "id": "house_whent", "name": "House Whent", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_wode", "name": "House Wode", "type": "LANDED_KNIGHTLY_HOUSE" }
+  ]
+}

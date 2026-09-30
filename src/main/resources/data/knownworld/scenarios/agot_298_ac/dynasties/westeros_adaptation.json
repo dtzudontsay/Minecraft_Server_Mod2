@@ -1,0 +1,43 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "activeAtScenarioStart": true,
+    "cultureId": "westerosi",
+    "religionId": "faith_of_the_seven",
+    "provenance": "HYBRID_CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_blackbrow",
+      "name": "House Blackbrow",
+      "continuities": ["TELEVISION"]
+    },
+    {
+      "id": "house_branfield",
+      "name": "House Branfield",
+      "continuities": ["OFFICIAL_GAME"]
+    },
+    {
+      "id": "house_caulfield",
+      "name": "House Caulfield",
+      "continuities": ["TELEVISION"]
+    },
+    {
+      "id": "house_morgryn",
+      "name": "House Morgryn",
+      "continuities": ["OFFICIAL_GAME"]
+    },
+    {
+      "id": "house_tarwick",
+      "name": "House Tarwick",
+      "continuities": ["OFFICIAL_GAME"]
+    },
+    {
+      "id": "house_wibberley",
+      "name": "House Wibberley",
+      "continuities": ["TELEVISION"]
+    }
+  ]
+}

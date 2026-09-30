@@ -21,12 +21,6 @@ public final class Dynasty {
 
     private DynastyStatus status;
 
-    /**
-     * Optional.
-     *
-     * Historical/extinct dynasties do not need to generate useless
-     * runtime organizations.
-     */
     private final OrganizationId organizationId;
 
     private final String homeLocationId;
@@ -35,19 +29,10 @@ public final class Dynasty {
 
     private final String religionId;
 
-    /**
-     * Genealogical/cadet parent.
-     */
     private DynastyId parentDynasty;
 
-    /**
-     * Political/feudal liege at the scenario start.
-     */
     private DynastyId liegeDynasty;
 
-    /**
-     * Historical predecessor/successor links.
-     */
     private DynastyId predecessorDynasty;
 
     private DynastyId successorDynasty;
@@ -56,24 +41,10 @@ public final class Dynasty {
 
     private NpcId heir;
 
-    /**
-     * AC year when known.
-     *
-     * Null means unknown or inappropriate to express as a precise year.
-     */
     private final Integer foundedYear;
 
-    /**
-     * AC year of extinction when known.
-     */
     private final Integer extinctYear;
 
-    /**
-     * Whether this lineage exists as an active social/political entity
-     * at the scenario start.
-     *
-     * Exiled dynasties may still be active.
-     */
     private final boolean activeAtScenarioStart;
 
     private final Set<DynastyContinuity> continuities =
@@ -498,6 +469,14 @@ public final class Dynasty {
 
             throw new IllegalArgumentException(
                     "Extinct dynasty cannot be active at scenario start"
+            );
+        }
+
+        if (status == DynastyStatus.NOT_YET_FOUNDED
+                && activeAtScenarioStart) {
+
+            throw new IllegalArgumentException(
+                    "Not-yet-founded dynasty cannot be active at scenario start"
             );
         }
     }

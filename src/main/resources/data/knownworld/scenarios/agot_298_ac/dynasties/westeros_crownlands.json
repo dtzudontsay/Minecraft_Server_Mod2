@@ -1,0 +1,158 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "crownlands",
+    "cultureId": "crownlander",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_baratheon_kings_landing",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_baratheon_kings_landing",
+      "name": "House Baratheon of King's Landing",
+      "type": "ROYAL_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "parentDynastyId": "house_baratheon",
+      "liegeDynastyId": null,
+      "headNpcId": "robert_baratheon",
+      "prestige": 1.0,
+      "wealth": 0.86,
+      "militaryStrength": 0.92
+    },
+
+    {
+      "id": "house_baratheon_dragonstone",
+      "name": "House Baratheon of Dragonstone",
+      "type": "CADET_BRANCH",
+      "continuities": ["BOOK", "TELEVISION"],
+      "parentDynastyId": "house_baratheon",
+      "homeLocationId": "dragonstone"
+    },
+
+    { "id": "house_bar_emmon", "name": "House Bar Emmon" },
+    { "id": "house_blount", "name": "House Blount" },
+    { "id": "house_boggs_crownlands", "name": "House Boggs of the Crownlands" },
+
+    {
+      "id": "house_blackfyre",
+      "name": "House Blackfyre",
+      "type": "CADET_BRANCH",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_targaryen"
+    },
+
+    { "id": "house_brune", "name": "House Brune" },
+    {
+      "id": "house_brune_dyre_den",
+      "name": "House Brune of Dyre Den",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_brune"
+    },
+    {
+      "id": "house_brune_brownhollow",
+      "name": "House Brune of Brownhollow",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "parentDynastyId": "house_brune"
+    },
+
+    { "id": "house_buckwell", "name": "House Buckwell" },
+    { "id": "house_byrch", "name": "House Byrch" },
+    { "id": "house_bywater", "name": "House Bywater" },
+
+    {
+      "id": "house_cargyll",
+      "name": "House Cargyll",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_cave", "name": "House Cave" },
+    { "id": "house_celtigar", "name": "House Celtigar", "continuities": ["BOOK", "TELEVISION"], "homeLocationId": "claw_isle" },
+    { "id": "house_chelsted", "name": "House Chelsted" },
+    { "id": "house_chyttering", "name": "House Chyttering" },
+    { "id": "house_crabb", "name": "House Crabb", "homeLocationId": "crackclaw_point" },
+    { "id": "house_cressey", "name": "House Cressey" },
+    { "id": "house_dargood", "name": "House Dargood" },
+
+    {
+      "id": "house_darklyn",
+      "name": "House Darklyn",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "house_darke",
+      "name": "House Darke",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_darklyn"
+    },
+    {
+      "id": "house_darkwood",
+      "name": "House Darkwood",
+      "type": "CADET_BRANCH",
+      "parentDynastyId": "house_darklyn"
+    },
+
+    { "id": "house_edgerton", "name": "House Edgerton" },
+    { "id": "house_farring", "name": "House Farring" },
+    { "id": "house_follard", "name": "House Follard" },
+    { "id": "house_gaunt", "name": "House Gaunt" },
+    { "id": "house_hardy", "name": "House Hardy" },
+    { "id": "house_harte", "name": "House Harte" },
+    { "id": "house_hayford", "name": "House Hayford" },
+    { "id": "house_hogg", "name": "House Hogg", "type": "LANDED_KNIGHTLY_HOUSE" },
+
+    {
+      "id": "house_hollard",
+      "name": "House Hollard",
+      "continuities": ["BOOK", "TELEVISION"],
+      "sourceNote": "Still represented at the 298 AC starting point; later events can end the lineage."
+    },
+
+    { "id": "house_scales", "name": "House Scales" },
+    { "id": "house_kettleblack", "name": "House Kettleblack", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_langward", "name": "House Langward" },
+    { "id": "house_largent", "name": "House Largent" },
+    { "id": "house_longwaters", "name": "House Longwaters" },
+    { "id": "house_mallery", "name": "House Mallery" },
+    { "id": "house_manning", "name": "House Manning" },
+    { "id": "house_massey", "name": "House Massey", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_pyle", "name": "House Pyle" },
+    { "id": "house_pyne", "name": "House Pyne" },
+    { "id": "house_rambton", "name": "House Rambton" },
+    { "id": "house_rollingford", "name": "House Rollingford" },
+    { "id": "house_rosby", "name": "House Rosby", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_rykker", "name": "House Rykker" },
+    { "id": "house_slynt", "name": "House Slynt", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_staunton", "name": "House Staunton" },
+    { "id": "house_stokeworth", "name": "House Stokeworth", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_sunglass", "name": "House Sunglass" },
+    { "id": "house_sweet_crownlands", "name": "House Sweet of the Crownlands" },
+    { "id": "house_thorne", "name": "House Thorne", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_velaryon", "name": "House Velaryon", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_wendwater", "name": "House Wendwater" },
+
+    {
+      "id": "house_targaryen",
+      "name": "House Targaryen",
+      "type": "EXILED_DYNASTY",
+      "status": "EXILED",
+      "continuities": ["BOOK", "TELEVISION"],
+      "activeAtScenarioStart": true,
+      "homeLocationId": null,
+      "cultureId": "valyrian",
+      "liegeDynastyId": null,
+      "words": "Fire and Blood",
+      "prestige": 0.97,
+      "wealth": 0.16,
+      "militaryStrength": 0.05
+    }
+  ]
+}

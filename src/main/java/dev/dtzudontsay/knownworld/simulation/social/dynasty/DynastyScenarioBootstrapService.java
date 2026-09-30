@@ -1,6 +1,9 @@
 package dev.dtzudontsay.knownworld.simulation.social.dynasty;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
@@ -14,9 +17,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 public final class DynastyScenarioBootstrapService {
@@ -24,7 +30,7 @@ public final class DynastyScenarioBootstrapService {
     private static final Gson GSON =
             new Gson();
 
-    private static final String DEFAULT_RESOURCE =
+    private static final String MANIFEST_RESOURCE =
             "data/knownworld/scenarios/agot_298_ac/dynasties.json";
 
     private DynastyScenarioBootstrapService() {
@@ -35,21 +41,13 @@ public final class DynastyScenarioBootstrapService {
             DynastyManager manager
     ) throws IOException {
 
-        DynastyData[] data =
-                readJson(
-                        DEFAULT_RESOURCE,
-                        DynastyData[].class
-                );
+        List<DynastyData> data =
+                loadCatalog();
 
         /*
-         * =========================================================
-         * PASS 1
-         * =========================================================
-         *
-         * Create dynasty records and, ONLY for active scenario-start
-         * lineages, their runtime organizations.
+         * Pass 1:
+         * create reference dynasties and runtime organizations.
          */
-
         for (
                 DynastyData entry :
                 data
@@ -120,9 +118,24 @@ public final class DynastyScenarioBootstrapService {
                     continuities,
                     entry.words,
                     entry.heraldry,
-                    entry.prestige,
-                    entry.wealth,
-                    entry.militaryStrength,
+                    metric(
+                            entry.prestige,
+                            type,
+                            entry.activeAtScenarioStart,
+                            Metric.PRESTIGE
+                    ),
+                    metric(
+                            entry.wealth,
+                            type,
+                            entry.activeAtScenarioStart,
+                            Metric.WEALTH
+                    ),
+                    metric(
+                            entry.militaryStrength,
+                            type,
+                            entry.activeAtScenarioStart,
+                            Metric.MILITARY
+                    ),
                     enumValue(
                             ReferenceProvenance.class,
                             entry.provenance,
@@ -134,13 +147,10 @@ public final class DynastyScenarioBootstrapService {
         }
 
         /*
-         * =========================================================
-         * PASS 2
-         * =========================================================
-         *
-         * Structural dynasty relationships may point forward in JSON.
+         * Pass 2:
+         * resolve all structural dynasty relationships after the
+         * complete catalog exists.
          */
-
         for (
                 DynastyData entry :
                 data
@@ -206,16 +216,10 @@ public final class DynastyScenarioBootstrapService {
         }
 
         /*
-         * =========================================================
-         * PASS 3
-         * =========================================================
-         *
-         * Head/heir references are soft during population construction.
-         *
-         * This lets the dynasty reference catalog become complete before
-         * every canon NPC JSON has been authored.
+         * Pass 3:
+         * NPC head/heir references remain deliberately soft while the
+         * named population is still being authored.
          */
-
         for (
                 DynastyData entry :
                 data
@@ -262,10 +266,213 @@ public final class DynastyScenarioBootstrapService {
             }
         }
 
+        long active =
+                manager.all()
+                        .stream()
+                        .filter(
+                                Dynasty::activeAtScenarioStart
+                        )
+                        .count();
+
         KnownWorld.LOGGER.info(
-                "Dynasty scenario bootstrap ready with {} catalogued dynasties.",
-                manager.size()
+                "Dynasty catalog ready with {} dynasties, {} active at scenario start.",
+                manager.size(),
+                active
         );
+    }
+
+    private static List<DynastyData> loadCatalog()
+            throws IOException {
+
+        CatalogManifest manifest =
+                readJson(
+                        MANIFEST_RESOURCE,
+                        CatalogManifest.class
+                );
+
+        if (manifest.resources == null
+                || manifest.resources.isEmpty()) {
+
+            throw new IOException(
+                    "Dynasty catalog manifest contains no resources"
+            );
+        }
+
+        List<DynastyData> result =
+                new ArrayList<>();
+
+        Map<String, String> sourceById =
+                new LinkedHashMap<>();
+
+        for (
+                String resource :
+                manifest.resources
+        ) {
+
+            if (!hasText(
+                    resource
+            )) {
+
+                throw new IOException(
+                        "Dynasty catalog manifest contains blank resource"
+                );
+            }
+
+            loadCatalogResource(
+                    resource,
+                    result,
+                    sourceById
+            );
+        }
+
+        return List.copyOf(
+                result
+        );
+    }
+
+    private static void loadCatalogResource(
+            String resource,
+            List<DynastyData> destination,
+            Map<String, String> sourceById
+    ) throws IOException {
+
+        JsonObject root =
+                readJson(
+                        resource,
+                        JsonObject.class
+                );
+
+        JsonObject defaults =
+                root.has(
+                        "defaults"
+                )
+                        && root.get(
+                        "defaults"
+                ).isJsonObject()
+                        ? root.getAsJsonObject(
+                        "defaults"
+                )
+                        : new JsonObject();
+
+        JsonArray dynasties =
+                root.has(
+                        "dynasties"
+                )
+                        && root.get(
+                        "dynasties"
+                ).isJsonArray()
+                        ? root.getAsJsonArray(
+                        "dynasties"
+                )
+                        : null;
+
+        if (dynasties == null) {
+
+            throw new IOException(
+                    "Dynasty catalog resource has no dynasties array: "
+                            + resource
+            );
+        }
+
+        for (
+                JsonElement element :
+                dynasties
+        ) {
+
+            if (!element.isJsonObject()) {
+
+                throw new IOException(
+                        "Dynasty entry is not an object in "
+                                + resource
+                );
+            }
+
+            JsonObject merged =
+                    merge(
+                            defaults,
+                            element.getAsJsonObject()
+                    );
+
+            DynastyData data =
+                    GSON.fromJson(
+                            merged,
+                            DynastyData.class
+                    );
+
+            if (data == null
+                    || !hasText(
+                    data.id
+            )) {
+
+                throw new IOException(
+                        "Dynasty entry without ID in "
+                                + resource
+                );
+            }
+
+            String normalized =
+                    data.id.trim()
+                            .toLowerCase(
+                                    Locale.ROOT
+                            );
+
+            String previous =
+                    sourceById.putIfAbsent(
+                            normalized,
+                            resource
+                    );
+
+            if (previous != null) {
+
+                throw new IOException(
+                        "Duplicate dynasty authored ID "
+                                + normalized
+                                + " in "
+                                + previous
+                                + " and "
+                                + resource
+                );
+            }
+
+            destination.add(
+                    data
+            );
+        }
+    }
+
+    private static JsonObject merge(
+            JsonObject defaults,
+            JsonObject entry
+    ) {
+
+        JsonObject result =
+                new JsonObject();
+
+        for (
+                Map.Entry<String, JsonElement> value :
+                defaults.entrySet()
+        ) {
+
+            result.add(
+                    value.getKey(),
+                    value.getValue()
+                            .deepCopy()
+            );
+        }
+
+        for (
+                Map.Entry<String, JsonElement> value :
+                entry.entrySet()
+        ) {
+
+            result.add(
+                    value.getKey(),
+                    value.getValue()
+                            .deepCopy()
+            );
+        }
+
+        return result;
     }
 
     private static Dynasty requireAuthored(
@@ -356,11 +563,8 @@ public final class DynastyScenarioBootstrapService {
             DynastyData data
     ) {
 
-        List<String> raw =
-                data.continuities;
-
-        if (raw == null
-                || raw.isEmpty()) {
+        if (data.continuities == null
+                || data.continuities.isEmpty()) {
 
             throw new IllegalArgumentException(
                     "Dynasty "
@@ -374,7 +578,7 @@ public final class DynastyScenarioBootstrapService {
 
         for (
                 String value :
-                raw
+                data.continuities
         ) {
 
             result.add(
@@ -444,16 +648,24 @@ public final class DynastyScenarioBootstrapService {
             );
         }
 
-        if (data.status != null
-                && data.status.equalsIgnoreCase(
-                "EXTINCT"
-        )
+        DynastyStatus status =
+                enumValue(
+                        DynastyStatus.class,
+                        data.status,
+                        data.id
+                                + ".status"
+                );
+
+        if ((status == DynastyStatus.EXTINCT
+                || status == DynastyStatus.NOT_YET_FOUNDED)
                 && data.activeAtScenarioStart) {
 
             throw new IllegalStateException(
                     "Dynasty "
                             + data.id
-                            + " is EXTINCT but marked activeAtScenarioStart"
+                            + " has status "
+                            + status
+                            + " but is active at scenario start"
             );
         }
 
@@ -467,6 +679,124 @@ public final class DynastyScenarioBootstrapService {
                             + " has extinctYear before foundedYear"
             );
         }
+    }
+
+    private static double metric(
+            Double explicit,
+            DynastyType type,
+            boolean active,
+            Metric metric
+    ) {
+
+        if (explicit != null) {
+
+            return clamp01(
+                    explicit
+            );
+        }
+
+        if (!active) {
+
+            return metric == Metric.PRESTIGE
+                    ? historicalPrestige(
+                    type
+            )
+                    : 0.0;
+        }
+
+        return switch (type) {
+
+            case ROYAL_HOUSE ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.95;
+                        case WEALTH -> 0.82;
+                        case MILITARY -> 0.86;
+                    };
+
+            case GREAT_HOUSE ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.88;
+                        case WEALTH -> 0.72;
+                        case MILITARY -> 0.76;
+                    };
+
+            case NOBLE_HOUSE ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.50;
+                        case WEALTH -> 0.44;
+                        case MILITARY -> 0.44;
+                    };
+
+            case LANDED_KNIGHTLY_HOUSE ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.34;
+                        case WEALTH -> 0.30;
+                        case MILITARY -> 0.34;
+                    };
+
+            case CADET_BRANCH ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.42;
+                        case WEALTH -> 0.36;
+                        case MILITARY -> 0.38;
+                    };
+
+            case EXILED_DYNASTY ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.72;
+                        case WEALTH -> 0.16;
+                        case MILITARY -> 0.10;
+                    };
+
+            default ->
+                    switch (metric) {
+                        case PRESTIGE -> 0.40;
+                        case WEALTH -> 0.38;
+                        case MILITARY -> 0.32;
+                    };
+        };
+    }
+
+    private static double historicalPrestige(
+            DynastyType type
+    ) {
+
+        return switch (type) {
+
+            case ROYAL_HOUSE ->
+                    0.90;
+
+            case GREAT_HOUSE ->
+                    0.80;
+
+            case NOBLE_HOUSE ->
+                    0.45;
+
+            case LANDED_KNIGHTLY_HOUSE ->
+                    0.30;
+
+            case CADET_BRANCH ->
+                    0.34;
+
+            case EXILED_DYNASTY ->
+                    0.65;
+
+            default ->
+                    0.35;
+        };
+    }
+
+    private static double clamp01(
+            double value
+    ) {
+
+        return Math.max(
+                0.0,
+                Math.min(
+                        1.0,
+                        value
+                )
+        );
     }
 
     private static <E extends Enum<E>> E enumValue(
@@ -587,6 +917,17 @@ public final class DynastyScenarioBootstrapService {
         }
     }
 
+    private enum Metric {
+        PRESTIGE,
+        WEALTH,
+        MILITARY
+    }
+
+    private static final class CatalogManifest {
+
+        List<String> resources;
+    }
+
     private static final class DynastyData {
 
         String id;
@@ -627,11 +968,11 @@ public final class DynastyScenarioBootstrapService {
 
         String heraldry;
 
-        double prestige;
+        Double prestige;
 
-        double wealth;
+        Double wealth;
 
-        double militaryStrength;
+        Double militaryStrength;
 
         String provenance;
 

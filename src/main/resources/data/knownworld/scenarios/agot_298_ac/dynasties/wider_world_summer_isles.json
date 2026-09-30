@@ -1,0 +1,33 @@
+{
+  "defaults": {
+    "type": "PRINCELY_DYNASTY",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "summer_isles",
+    "cultureId": "summer_islander",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_qhoqua",
+      "name": "House Qhoqua"
+    },
+    {
+      "id": "house_qo",
+      "name": "House Qo",
+      "homeLocationId": "jhala"
+    },
+    {
+      "id": "house_xaq",
+      "name": "House Xaq",
+      "homeLocationId": "koj"
+    },
+    {
+      "id": "house_xho",
+      "name": "House Xho",
+      "homeLocationId": "jhala"
+    }
+  ]
+}

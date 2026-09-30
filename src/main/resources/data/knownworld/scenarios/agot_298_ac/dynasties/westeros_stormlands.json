@@ -1,0 +1,122 @@
+{
+  "defaults": {
+    "type": "NOBLE_HOUSE",
+    "status": "ACTIVE",
+    "continuities": ["BOOK"],
+    "activeAtScenarioStart": true,
+    "homeLocationId": "stormlands",
+    "cultureId": "stormlander",
+    "religionId": "faith_of_the_seven",
+    "liegeDynastyId": "house_baratheon",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "house_baratheon",
+      "name": "House Baratheon",
+      "type": "GREAT_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"],
+      "liegeDynastyId": null,
+      "words": "Ours Is the Fury",
+      "prestige": 0.94,
+      "wealth": 0.72,
+      "militaryStrength": 0.86,
+      "sourceNote": "Parent Stormlands lineage. Royal and Dragonstone branches are modeled separately."
+    },
+
+    { "id": "house_bolling", "name": "House Bolling", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_brownhill_stormlands", "name": "House Brownhill of the Stormlands", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_buckler", "name": "House Buckler" },
+    { "id": "house_cafferen", "name": "House Cafferen" },
+    { "id": "house_caron", "name": "House Caron", "continuities": ["BOOK", "TELEVISION"] },
+
+    {
+      "id": "house_cole",
+      "name": "House Cole",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_connington", "name": "House Connington", "type": "LANDED_KNIGHTLY_HOUSE", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_dondarrion", "name": "House Dondarrion", "continuities": ["BOOK", "TELEVISION"] },
+
+    {
+      "id": "house_durrandon",
+      "name": "House Durrandon",
+      "type": "ROYAL_HOUSE",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "liegeDynastyId": null,
+      "successorDynastyId": "house_baratheon"
+    },
+
+    { "id": "house_errol", "name": "House Errol" },
+    { "id": "house_estermont", "name": "House Estermont", "homeLocationId": "estermont", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_fell", "name": "House Fell" },
+
+    {
+      "id": "house_foote_nightsong",
+      "name": "House Foote of Nightsong",
+      "type": "CADET_BRANCH",
+      "status": "NOT_YET_FOUNDED",
+      "activeAtScenarioStart": false,
+      "parentDynastyId": "house_foote",
+      "sourceNote": "Later grant/branch; not present as this house at the 298 AC scenario start."
+    },
+
+    { "id": "house_gower", "name": "House Gower" },
+    { "id": "house_grandison", "name": "House Grandison" },
+    { "id": "house_hasty", "name": "House Hasty", "type": "LANDED_KNIGHTLY_HOUSE" },
+    { "id": "house_herston", "name": "House Herston" },
+    { "id": "house_horpe", "name": "House Horpe" },
+    { "id": "house_kellington", "name": "House Kellington" },
+    { "id": "house_lonmouth", "name": "House Lonmouth" },
+    { "id": "house_mertyns", "name": "House Mertyns" },
+    { "id": "house_morrigen", "name": "House Morrigen" },
+    { "id": "house_musgood", "name": "House Musgood" },
+    { "id": "house_peasebury", "name": "House Peasebury" },
+    { "id": "house_penrose", "name": "House Penrose", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_rogers", "name": "House Rogers" },
+
+    {
+      "id": "house_seaworth",
+      "name": "House Seaworth",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    {
+      "id": "house_selmy",
+      "name": "House Selmy",
+      "type": "LANDED_KNIGHTLY_HOUSE",
+      "continuities": ["BOOK", "TELEVISION"]
+    },
+
+    { "id": "house_staedmon", "name": "House Staedmon" },
+    { "id": "house_swann", "name": "House Swann", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_sweet_stormlands", "name": "House Sweet of the Stormlands" },
+    { "id": "house_swygert", "name": "House Swygert" },
+
+    {
+      "id": "house_tarth",
+      "name": "House Tarth",
+      "continuities": ["BOOK", "TELEVISION"],
+      "homeLocationId": "tarth"
+    },
+
+    {
+      "id": "house_toyne",
+      "name": "House Toyne",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    { "id": "house_trant", "name": "House Trant", "continuities": ["BOOK", "TELEVISION"] },
+    { "id": "house_tudbury", "name": "House Tudbury" },
+    { "id": "house_wagstaff", "name": "House Wagstaff" },
+    { "id": "house_wensington", "name": "House Wensington" },
+    { "id": "house_whitehead", "name": "House Whitehead" },
+    { "id": "house_wylde", "name": "House Wylde", "homeLocationId": "rainwood" }
+  ]
+}

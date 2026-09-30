@@ -1,0 +1,99 @@
+{
+  "defaults": {
+    "type": "IMPERIAL_DYNASTY",
+    "continuities": ["BOOK"],
+    "cultureId": "yi_tish",
+    "homeLocationId": "yi_ti",
+    "provenance": "CANON"
+  },
+
+  "dynasties": [
+    {
+      "id": "dynasty_yiti_grey",
+      "name": "Grey Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "sourceNote": "Yi Tish ruling dynasty associated with the family name Har."
+    },
+    {
+      "id": "dynasty_yiti_indigo",
+      "name": "Indigo Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "sourceNote": "Yi Tish ruling dynasty associated with the family name Choq."
+    },
+    {
+      "id": "dynasty_yiti_jade_green",
+      "name": "Jade-Green Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "sourceNote": "Yi Tish ruling dynasty associated with the family name Mengo."
+    },
+    {
+      "id": "dynasty_yiti_scarlet",
+      "name": "Scarlet Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "sourceNote": "Yi Tish ruling dynasty associated with the family name Lo."
+    },
+    {
+      "id": "dynasty_yiti_pearl_white",
+      "name": "Pearl-White Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+    {
+      "id": "dynasty_yiti_sea_green",
+      "name": "Sea-Green Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false,
+      "sourceNote": "Yi Tish ruling dynasty associated with the family name Jar."
+    },
+    {
+      "id": "dynasty_yiti_purple",
+      "name": "Purple Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+    {
+      "id": "dynasty_yiti_maroon",
+      "name": "Maroon Emperors",
+      "status": "EXTINCT",
+      "activeAtScenarioStart": false
+    },
+
+    {
+      "id": "dynasty_yiti_yellow",
+      "name": "Yellow Emperors",
+      "status": "DISPOSSESSED",
+      "activeAtScenarioStart": true,
+      "sourceNote": "Historical imperial line associated with the family name Chai. At the current setting date a sorcerer lord at Carcosa claims to be the sixty-ninth Yellow Emperor."
+    },
+    {
+      "id": "dynasty_yiti_azure",
+      "name": "Azure Emperors",
+      "status": "ACTIVE",
+      "activeAtScenarioStart": true,
+      "sourceNote": "Family name Bu. Bu Gai, the seventeenth Azure Emperor, is the current ruler at Yin."
+    },
+    {
+      "id": "dynasty_yiti_orange",
+      "name": "Orange Emperors",
+      "status": "ACTIVE",
+      "activeAtScenarioStart": true,
+      "homeLocationId": "orange_emperor_domain",
+      "sourceNote": "Family name Pol. General Pol Qo has proclaimed himself the first Orange Emperor from Trader Town."
+    },
+
+    {
+      "id": "dynasty_leng_khiara",
+      "name": "Dynasty of Khiara the Great",
+      "type": "IMPERIAL_DYNASTY",
+      "status": "ACTIVE",
+      "activeAtScenarioStart": true,
+      "homeLocationId": "leng",
+      "cultureId": "lengi",
+      "sourceNote": "Current hereditary god-empress dynasty of Leng, founded by Khiara the Great. The canonical family surname is not known."
+    }
+  ]
+}
