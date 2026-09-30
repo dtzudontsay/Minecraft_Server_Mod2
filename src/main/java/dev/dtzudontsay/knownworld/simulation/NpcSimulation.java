@@ -14,6 +14,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.family.DynastyService;
 import dev.dtzudontsay.knownworld.simulation.npc.family.GenealogyManager;
 import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageManager;
 import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageService;
+import dev.dtzudontsay.knownworld.simulation.npc.formation.CharacterFormationIntegrationService;
 import dev.dtzudontsay.knownworld.simulation.npc.formation.ChildFormationService;
 import dev.dtzudontsay.knownworld.simulation.npc.formation.UpbringingManager;
 import dev.dtzudontsay.knownworld.simulation.npc.goal.NpcGoalManager;
@@ -126,6 +127,8 @@ public final class NpcSimulation {
     private final CultureService cultureService;
 
     private final ReligionService religionService;
+
+    private final CharacterFormationIntegrationService formationIntegrationService;
 
     private final ChildFormationService formationService;
 
@@ -335,6 +338,18 @@ public final class NpcSimulation {
                         profileManager,
                         relationshipManager,
                         psychologyService
+                );
+
+        this.formationIntegrationService =
+                new CharacterFormationIntegrationService(
+                        registry,
+                        profileManager,
+                        genealogyManager,
+                        lifeHistoryManager,
+                        campaignCalendar,
+                        upbringingManager,
+                        cultureService,
+                        religionService
                 );
 
         this.formationService =
@@ -779,6 +794,10 @@ public final class NpcSimulation {
         return upbringingManager;
     }
 
+    public CharacterFormationIntegrationService formationIntegration() {
+        return formationIntegrationService;
+    }
+
     public ChildFormationService formation() {
         return formationService;
     }
@@ -912,6 +931,14 @@ public final class NpcSimulation {
     public void save() {
 
         try {
+
+            /*
+             * Important 18F.5 integration point.
+             *
+             * Anything created through older/debug/authored paths is
+             * reconciled before persistence.
+             */
+            formationIntegrationService.ensureAll();
 
             persistence.save(
                     clock,
@@ -1077,12 +1104,14 @@ public final class NpcSimulation {
             );
 
             /*
-             * Migration for children that existed before 18F.
+             * Single compatibility/integration path for:
              *
-             * Their current age becomes the formation baseline so
-             * old saves do not suddenly replay ten childhood years.
+             * - scenario characters
+             * - old save NPCs
+             * - old children
+             * - characters created before Culture/Religion state
              */
-            formationService.ensureExistingChildren();
+            formationIntegrationService.ensureAll();
 
             save();
 

@@ -32,6 +32,24 @@ public final class FormationDebugCommand {
 
                                         .then(
                                                 Commands.literal(
+                                                                "status"
+                                                        )
+                                                        .executes(
+                                                                FormationDebugCommand::status
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "reconcile"
+                                                        )
+                                                        .executes(
+                                                                FormationDebugCommand::reconcile
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
                                                                 "show"
                                                         )
                                                         .then(
@@ -124,6 +142,63 @@ public final class FormationDebugCommand {
                                         )
                         )
         );
+    }
+
+    private static int status(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        NpcSimulation simulation =
+                NpcSimulation.get();
+
+        success(
+                context,
+                "Formation integration: NPCs="
+                        + simulation.registry()
+                        .size()
+                        + " profiles="
+                        + simulation.profiles()
+                        .size()
+                        + " upbringingRecords="
+                        + simulation.upbringing()
+                        .size()
+        );
+
+        return 1;
+    }
+
+    private static int reconcile(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        try {
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            simulation.formationIntegration()
+                    .ensureAll();
+
+            simulation.save();
+
+            success(
+                    context,
+                    "Formation integration reconciliation complete. Upbringing records="
+                            + simulation.upbringing()
+                            .size()
+            );
+
+            return 1;
+
+        } catch (
+                RuntimeException exception
+        ) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
     }
 
     private static int show(

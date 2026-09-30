@@ -27,6 +27,12 @@ public final class UpbringingManager {
                 );
     }
 
+    /**
+     * Exact birth path for newly generated children.
+     *
+     * Here the current world position genuinely is the birth
+     * position because creation happens at the mother's position.
+     */
     public synchronized UpbringingRecord createBirthRecord(
             NpcId child,
             String birthLocationId,
@@ -68,9 +74,18 @@ public final class UpbringingManager {
         return record;
     }
 
-    public synchronized UpbringingRecord ensureExisting(
+    /**
+     * Migration path for children that existed before Batch 18F.
+     *
+     * Birthplace and current upbringing are deliberately separate.
+     * We never infer a historical birthplace from a child's current
+     * position.
+     */
+    public synchronized UpbringingRecord ensureMigrated(
             NpcId child,
-            String currentLocationId,
+            String birthLocationId,
+            String currentUpbringingLocationId,
+            NpcId defaultGuardian,
             int currentAge
     ) {
 
@@ -78,21 +93,47 @@ public final class UpbringingManager {
                 child
         );
 
-        return records.computeIfAbsent(
-                child,
-                ignored ->
-                        new UpbringingRecord(
-                                child,
-                                currentLocationId,
-                                currentLocationId,
-                                null,
-                                null,
-                                Math.max(
-                                        0,
-                                        currentAge
-                                )
-                        )
+        validateNpcIfPresent(
+                defaultGuardian
         );
+
+        UpbringingRecord existing =
+                records.get(
+                        child
+                );
+
+        if (existing != null) {
+
+            if (existing.guardian() == null
+                    && defaultGuardian != null) {
+
+                existing.setGuardian(
+                        defaultGuardian
+                );
+            }
+
+            return existing;
+        }
+
+        UpbringingRecord record =
+                new UpbringingRecord(
+                        child,
+                        birthLocationId,
+                        currentUpbringingLocationId,
+                        defaultGuardian,
+                        null,
+                        Math.max(
+                                0,
+                                currentAge
+                        )
+                );
+
+        records.put(
+                child,
+                record
+        );
+
+        return record;
     }
 
     public synchronized Optional<UpbringingRecord> find(
@@ -107,6 +148,19 @@ public final class UpbringingManager {
                 records.get(
                         child
                 )
+        );
+    }
+
+    public synchronized boolean contains(
+            NpcId child
+    ) {
+
+        validateNpc(
+                child
+        );
+
+        return records.containsKey(
+                child
         );
     }
 

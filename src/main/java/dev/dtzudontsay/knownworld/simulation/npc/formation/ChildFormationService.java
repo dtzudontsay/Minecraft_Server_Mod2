@@ -173,11 +173,6 @@ public final class ChildFormationService {
                 profile
         );
 
-        /*
-         * Small parental cultural exposure establishes ancestry /
-         * household affinity without pretending a newborn already
-         * possesses a fully developed worldview.
-         */
         if (genealogy.parentsOf(
                 child
         ).isPresent()) {
@@ -187,12 +182,6 @@ public final class ChildFormationService {
                     0.20
             );
         }
-
-        /*
-         * Birth does NOT apply full regional values or skills.
-         *
-         * Those develop during annual upbringing formation.
-         */
     }
 
     private void initializeCultureAtBirth(
@@ -245,11 +234,15 @@ public final class ChildFormationService {
 
     /*
      * =========================================================
-     * OLD SAVE / AUTHORED CHILD MIGRATION
+     * COMPATIBILITY MIGRATION
      * =========================================================
      */
 
     public void ensureExistingChildren() {
+
+        lifeHistory.ensureAll(
+                calendar.daysPerYear()
+        );
 
         for (
                 NpcState npc :
@@ -271,38 +264,55 @@ public final class ChildFormationService {
                 continue;
             }
 
-            String location =
-                    resolveLocation(
-                            npc
-                    );
-
-            UpbringingRecord record =
-                    upbringing.ensureExisting(
-                            npc.id(),
-                            location,
-                            age
-                    );
-
             CharacterProfile profile =
                     profiles.getOrCreate(
                             npc.id()
                     );
 
-            if ("unknown".equals(
-                    profile.birthplaceLocationId()
-            )) {
+            String birthLocation =
+                    knownLocationOrUnknown(
+                            profile.birthplaceLocationId()
+                    );
 
-                profile.setBirthplaceLocationId(
-                        record.birthLocationId()
-                );
-            }
+            String upbringingLocation =
+                    knownLocationOrCurrent(
+                            profile.upbringingLocationId(),
+                            npc
+                    );
 
-            if ("unknown".equals(
-                    profile.upbringingLocationId()
+            NpcId defaultGuardian =
+                    defaultGuardian(
+                            npc.id()
+                    );
+
+            UpbringingRecord record =
+                    upbringing.ensureMigrated(
+                            npc.id(),
+                            birthLocation,
+                            upbringingLocation,
+                            defaultGuardian,
+                            age
+                    );
+
+            if (!"unknown".equals(
+                    record.upbringingLocationId()
             )) {
 
                 profile.setUpbringingLocationId(
                         record.upbringingLocationId()
+                );
+            }
+
+            /*
+             * Never invent a historical birthplace from current
+             * position.
+             */
+            if (!"unknown".equals(
+                    record.birthLocationId()
+            )) {
+
+                profile.setBirthplaceLocationId(
+                        record.birthLocationId()
                 );
             }
         }
@@ -310,7 +320,7 @@ public final class ChildFormationService {
 
     /*
      * =========================================================
-     * DAILY ENTRY POINT — ANNUAL WORK ONLY
+     * DAILY ENTRY POINT — ACTUAL WORK ONLY ON NEW AGE
      * =========================================================
      */
 
@@ -366,7 +376,7 @@ public final class ChildFormationService {
 
     /*
      * =========================================================
-     * ONE YEAR OF DEVELOPMENT
+     * ONE DEVELOPMENT YEAR
      * =========================================================
      */
 
@@ -421,22 +431,45 @@ public final class ChildFormationService {
                 strength
         );
 
+        Parentage parentage =
+                genealogy.parentsOf(
+                                child
+                        )
+                        .orElse(
+                                null
+                        );
+
         applyBiologicalParentFormation(
                 child,
+                parentage,
                 strength
         );
 
-        applyMentorFormation(
-                child,
+        /*
+         * Do not double-count a biological parent merely because
+         * they are also the recorded guardian.
+         */
+        if (!isBiologicalParent(
                 record.guardian(),
-                strength,
-                CharacterInfluenceChannel.GUARDIAN
-        );
+                parentage
+        )) {
+
+            applyMentorFormation(
+                    child,
+                    record.guardian(),
+                    strength,
+                    CharacterInfluenceChannel.GUARDIAN
+            );
+        }
 
         if (record.fosterParent() != null
                 && !Objects.equals(
                 record.guardian(),
                 record.fosterParent()
+        )
+                && !isBiologicalParent(
+                record.fosterParent(),
+                parentage
         )) {
 
             applyMentorFormation(
@@ -476,10 +509,6 @@ public final class ChildFormationService {
             return;
         }
 
-        /*
-         * RegionalCharacterInfluenceService currently accepts
-         * Minecraft X/Z directly for upbringing influence.
-         */
         regionalInfluence.applyUpbringingInfluence(
                 child,
                 x,
@@ -511,24 +540,14 @@ public final class ChildFormationService {
 
     private void applyBiologicalParentFormation(
             NpcId child,
+            Parentage parentage,
             double strength
     ) {
-
-        Parentage parentage =
-                genealogy.parentsOf(
-                                child
-                        )
-                        .orElse(
-                                null
-                        );
 
         if (parentage == null) {
             return;
         }
 
-        /*
-         * CultureService also transfers parent languages.
-         */
         culture.applyParentInfluence(
                 child,
                 strength
@@ -779,10 +798,6 @@ public final class ChildFormationService {
                             skill
                     );
 
-            /*
-             * Learned competence approaches the mentor's competence.
-             * The mentor's skill itself is never inherited directly.
-             */
             double target =
                     Math.max(
                             current,
@@ -935,6 +950,80 @@ public final class ChildFormationService {
                                                 + npc
                                 )
                 );
+    }
+
+    private NpcId defaultGuardian(
+            NpcId child
+    ) {
+
+        Parentage parentage =
+                genealogy.parentsOf(
+                                child
+                        )
+                        .orElse(
+                                null
+                        );
+
+        if (parentage == null) {
+            return null;
+        }
+
+        if (parentage.mother() != null) {
+            return parentage.mother();
+        }
+
+        return parentage.father();
+    }
+
+    private static boolean isBiologicalParent(
+            NpcId npc,
+            Parentage parentage
+    ) {
+
+        if (npc == null
+                || parentage == null) {
+
+            return false;
+        }
+
+        return npc.equals(
+                parentage.mother()
+        )
+                || npc.equals(
+                parentage.father()
+        );
+    }
+
+    private static String knownLocationOrUnknown(
+            String location
+    ) {
+
+        if (location == null
+                || location.isBlank()) {
+
+            return "unknown";
+        }
+
+        return location;
+    }
+
+    private static String knownLocationOrCurrent(
+            String location,
+            NpcState npc
+    ) {
+
+        if (location != null
+                && !location.isBlank()
+                && !"unknown".equals(
+                location
+        )) {
+
+            return location;
+        }
+
+        return resolveLocation(
+                npc
+        );
     }
 
     private static String resolveLocation(
