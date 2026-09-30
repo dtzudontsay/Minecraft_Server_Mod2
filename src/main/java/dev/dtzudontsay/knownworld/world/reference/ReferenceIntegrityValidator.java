@@ -3,11 +3,16 @@ package dev.dtzudontsay.knownworld.world.reference;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.PopulationPackCatalog;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioBootstrapper;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
+import dev.dtzudontsay.knownworld.simulation.npc.family.DynastyInheritanceRule;
 import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterBirthStatus;
 import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterCivilStatus;
 import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterCustodyStatus;
 import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterFreedomStatus;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSkill;
+import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoleType;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
 import dev.dtzudontsay.knownworld.simulation.social.title.TitleType;
 
@@ -16,9 +21,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 public final class ReferenceIntegrityValidator {
@@ -63,6 +71,12 @@ public final class ReferenceIntegrityValidator {
                         scenarioResource
                 );
 
+        PopulationPackCatalog.Plan populationPlan =
+                PopulationPackCatalog.load(
+                        scenarioResource,
+                        scenario.populationPacks
+                );
+
         Set<String> settlementIds =
                 loadSettlementIds(
                         base,
@@ -84,14 +98,20 @@ public final class ReferenceIntegrityValidator {
                         settlementIds
                 );
 
+        List<String> characterResources =
+                collectCharacterResources(
+                        base,
+                        scenario.characters,
+                        populationPlan.characterResources()
+                );
+
         List<CharacterData> characters =
                 loadCharacters(
-                        base,
-                        scenario.characters
+                        characterResources
                 );
 
         Set<String> characterIds =
-                new HashSet<>();
+                new LinkedHashSet<>();
 
         for (
                 CharacterData character :
@@ -129,21 +149,44 @@ public final class ReferenceIntegrityValidator {
             );
         }
 
+        List<String> parentageResources =
+                collectSingleAndPackResources(
+                        base,
+                        scenario.parentages,
+                        populationPlan.parentageResources()
+                );
+
+        List<String> marriageResources =
+                collectSingleAndPackResources(
+                        base,
+                        scenario.marriages,
+                        populationPlan.marriageResources()
+                );
+
+        int parentageCount =
+                validateParentages(
+                        parentageResources,
+                        characterIds
+                );
+
+        int marriageCount =
+                validateMarriages(
+                        marriageResources,
+                        characterIds
+                );
+
         KnownWorld.LOGGER.info(
-                "Reference integrity validation passed for scenario {}: {} characters, {} settlements, {} organizations and {} titles.",
+                "Reference integrity validation passed for scenario {}: {} population packs, {} characters, {} parentages, {} marriages, {} settlements, {} organizations and {} titles.",
                 scenarioResource,
+                populationPlan.enabledPackCount(),
                 characterIds.size(),
+                parentageCount,
+                marriageCount,
                 settlementIds.size(),
                 organizationIds.size(),
                 titleIds.size()
         );
     }
-
-    /*
-     * =========================================================
-     * SETTLEMENTS
-     * =========================================================
-     */
 
     private static Set<String> loadSettlementIds(
             String base,
@@ -167,7 +210,7 @@ public final class ReferenceIntegrityValidator {
                 );
 
         Set<String> result =
-                new HashSet<>();
+                new LinkedHashSet<>();
 
         for (
                 SettlementData entry :
@@ -196,12 +239,6 @@ public final class ReferenceIntegrityValidator {
         );
     }
 
-    /*
-     * =========================================================
-     * ORGANIZATIONS
-     * =========================================================
-     */
-
     private static Set<String> loadAndValidateOrganizations(
             String base,
             String resource,
@@ -225,7 +262,7 @@ public final class ReferenceIntegrityValidator {
                 );
 
         Set<String> result =
-                new HashSet<>();
+                new LinkedHashSet<>();
 
         for (
                 OrganizationData entry :
@@ -278,12 +315,6 @@ public final class ReferenceIntegrityValidator {
         );
     }
 
-    /*
-     * =========================================================
-     * TITLES
-     * =========================================================
-     */
-
     private static Set<String> loadAndValidateTitles(
             String base,
             String resource,
@@ -308,7 +339,7 @@ public final class ReferenceIntegrityValidator {
                 );
 
         Set<String> result =
-                new HashSet<>();
+                new LinkedHashSet<>();
 
         for (
                 TitleData entry :
@@ -388,42 +419,21 @@ public final class ReferenceIntegrityValidator {
         );
     }
 
-    /*
-     * =========================================================
-     * CHARACTERS
-     * =========================================================
-     */
-
     private static List<CharacterData> loadCharacters(
-            String base,
             List<String> resources
     ) throws IOException {
 
-        if (resources == null) {
-            return List.of();
-        }
-
-        java.util.ArrayList<CharacterData> result =
-                new java.util.ArrayList<>();
+        List<CharacterData> result =
+                new ArrayList<>();
 
         for (
                 String resource :
                 resources
         ) {
 
-            if (!hasText(
-                    resource
-            )) {
-
-                continue;
-            }
-
             result.add(
                     readJson(
-                            resolve(
-                                    base,
-                                    resource
-                            ),
+                            resource,
                             CharacterData.class
                     )
             );
@@ -447,6 +457,73 @@ public final class ReferenceIntegrityValidator {
                         character.id,
                         "character id"
                 );
+
+        if (character.identity == null) {
+
+            throw new IllegalStateException(
+                    "Character "
+                            + id
+                            + " has no identity"
+            );
+        }
+
+        if (!hasText(
+                character.identity.givenName
+        )) {
+
+            throw new IllegalStateException(
+                    "Character "
+                            + id
+                            + " has no givenName"
+            );
+        }
+
+        if (!hasText(
+                character.identity.familyName
+        )) {
+
+            throw new IllegalStateException(
+                    "Character "
+                            + id
+                            + " has no familyName"
+            );
+        }
+
+        enumValue(
+                NpcSex.class,
+                character.identity.sex,
+                "NPC sex for "
+                        + id
+        );
+
+        if (hasText(
+                character.startingSettlement
+        )
+                && !settlementIds.contains(
+                normalizeId(
+                        character.startingSettlement
+                )
+        )) {
+
+            throw new IllegalStateException(
+                    "Character "
+                            + id
+                            + " references unknown starting settlement "
+                            + character.startingSettlement
+            );
+        }
+
+        if (!hasText(
+                character.startingSettlement
+        )
+                && character.position == null) {
+
+            throw new IllegalStateException(
+                    "Character "
+                            + id
+                            + " has neither startingSettlement nor position"
+            );
+        }
 
         WorldReferenceCatalog references =
                 WorldReferenceCatalog.get();
@@ -484,6 +561,22 @@ public final class ReferenceIntegrityValidator {
                                 + " references unknown religion "
                                 + profile.religion
                 );
+            }
+
+            if (profile.skills != null) {
+
+                for (
+                        String skill :
+                        profile.skills.keySet()
+                ) {
+
+                    enumValue(
+                            CharacterSkill.class,
+                            skill,
+                            "character skill for "
+                                    + id
+                    );
+                }
             }
 
             if (profile.languages != null) {
@@ -528,10 +621,6 @@ public final class ReferenceIntegrityValidator {
                 }
             }
 
-            /*
-             * Offices and courtRoles can legitimately correspond to
-             * scenario title IDs rather than global social-role IDs.
-             */
             validateRoleOrTitleList(
                     id,
                     "office",
@@ -548,10 +637,6 @@ public final class ReferenceIntegrityValidator {
                     titleIds
             );
 
-            /*
-             * Military roles should be reusable shared roles rather than
-             * ad-hoc scenario title strings.
-             */
             if (profile.militaryRoles != null) {
 
                 for (
@@ -583,7 +668,7 @@ public final class ReferenceIntegrityValidator {
                 enumValue(
                         CharacterBirthStatus.class,
                         character.legal.birth,
-                        "birth legal status for "
+                        "birth status for "
                                 + id
                 );
             }
@@ -666,6 +751,35 @@ public final class ReferenceIntegrityValidator {
             }
         }
 
+        if (character.routine != null) {
+
+            if (hasText(
+                    character.routine.role
+            )) {
+
+                enumValue(
+                        NpcRoleType.class,
+                        character.routine.role,
+                        "NPC routine role for "
+                                + id
+                );
+            }
+
+            validateSettlementReference(
+                    id,
+                    "routine home settlement",
+                    character.routine.homeSettlement,
+                    settlementIds
+            );
+
+            validateSettlementReference(
+                    id,
+                    "routine work settlement",
+                    character.routine.workSettlement,
+                    settlementIds
+            );
+        }
+
         if (character.titles != null) {
 
             for (
@@ -696,32 +810,219 @@ public final class ReferenceIntegrityValidator {
                     character.relationships
             ) {
 
-                if (!hasText(
-                        relationship.target
+                requireKnownCharacter(
+                        id,
+                        "relationship target",
+                        relationship.target,
+                        characterIds
+                );
+            }
+        }
+
+        if (character.beliefs != null) {
+
+            for (
+                    BeliefData belief :
+                    character.beliefs
+            ) {
+
+                if (hasText(
+                        belief.sourceNpc
                 )) {
 
-                    throw new IllegalStateException(
-                            "Character "
-                                    + id
-                                    + " has relationship without target"
-                    );
-                }
-
-                if (!characterIds.contains(
-                        normalizeId(
-                                relationship.target
-                        )
-                )) {
-
-                    throw new IllegalStateException(
-                            "Character "
-                                    + id
-                                    + " references unknown relationship target "
-                                    + relationship.target
+                    requireKnownCharacter(
+                            id,
+                            "belief source",
+                            belief.sourceNpc,
+                            characterIds
                     );
                 }
             }
         }
+
+        if (character.memories != null) {
+
+            for (
+                    MemoryData memory :
+                    character.memories
+            ) {
+
+                if (hasText(
+                        memory.relatedNpc
+                )) {
+
+                    requireKnownCharacter(
+                            id,
+                            "memory related NPC",
+                            memory.relatedNpc,
+                            characterIds
+                    );
+                }
+            }
+        }
+    }
+
+    private static int validateParentages(
+            List<String> resources,
+            Set<String> characterIds
+    ) throws IOException {
+
+        int count =
+                0;
+
+        Set<String> children =
+                new HashSet<>();
+
+        for (
+                String resource :
+                resources
+        ) {
+
+            ParentageData[] entries =
+                    readJson(
+                            resource,
+                            ParentageData[].class
+                    );
+
+            for (
+                    ParentageData entry :
+                    entries
+            ) {
+
+                String child =
+                        requireId(
+                                entry.child,
+                                "parentage child"
+                        );
+
+                if (!characterIds.contains(
+                        child
+                )) {
+
+                    throw new IllegalStateException(
+                            "Parentage references unknown child "
+                                    + child
+                    );
+                }
+
+                if (!children.add(
+                        child
+                )) {
+
+                    throw new IllegalStateException(
+                            "Duplicate parentage definition for "
+                                    + child
+                    );
+                }
+
+                if (hasText(
+                        entry.mother
+                )) {
+
+                    requireKnownCharacter(
+                            child,
+                            "mother",
+                            entry.mother,
+                            characterIds
+                    );
+                }
+
+                if (hasText(
+                        entry.father
+                )) {
+
+                    requireKnownCharacter(
+                            child,
+                            "father",
+                            entry.father,
+                            characterIds
+                    );
+                }
+
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private static int validateMarriages(
+            List<String> resources,
+            Set<String> characterIds
+    ) throws IOException {
+
+        int count =
+                0;
+
+        for (
+                String resource :
+                resources
+        ) {
+
+            MarriageData[] entries =
+                    readJson(
+                            resource,
+                            MarriageData[].class
+                    );
+
+            for (
+                    MarriageData entry :
+                    entries
+            ) {
+
+                String first =
+                        requireId(
+                                entry.first,
+                                "marriage first"
+                        );
+
+                String second =
+                        requireId(
+                                entry.second,
+                                "marriage second"
+                        );
+
+                if (!characterIds.contains(
+                        first
+                )
+                        || !characterIds.contains(
+                        second
+                )) {
+
+                    throw new IllegalStateException(
+                            "Marriage references unknown NPC(s): "
+                                    + first
+                                    + " / "
+                                    + second
+                    );
+                }
+
+                if (first.equals(
+                        second
+                )) {
+
+                    throw new IllegalStateException(
+                            "NPC cannot marry itself: "
+                                    + first
+                    );
+                }
+
+                if (hasText(
+                        entry.inheritanceRule
+                )) {
+
+                    enumValue(
+                            DynastyInheritanceRule.class,
+                            entry.inheritanceRule,
+                            "dynasty inheritance rule"
+                    );
+                }
+
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private static void validateRoleOrTitleList(
@@ -748,12 +1049,8 @@ public final class ReferenceIntegrityValidator {
 
             if (references.role(
                     normalized
-            ).isPresent()) {
-
-                continue;
-            }
-
-            if (titleIds.contains(
+            ).isPresent()
+                    || titleIds.contains(
                     normalized
             )) {
 
@@ -802,11 +1099,202 @@ public final class ReferenceIntegrityValidator {
         }
     }
 
-    /*
-     * =========================================================
-     * HELPERS
-     * =========================================================
-     */
+    private static void validateSettlementReference(
+            String characterId,
+            String description,
+            String settlementId,
+            Set<String> settlementIds
+    ) {
+
+        if (!hasText(
+                settlementId
+        )) {
+
+            return;
+        }
+
+        if (!settlementIds.contains(
+                normalizeId(
+                        settlementId
+                )
+        )) {
+
+            throw new IllegalStateException(
+                    "Character "
+                            + characterId
+                            + " references unknown "
+                            + description
+                            + " "
+                            + settlementId
+            );
+        }
+    }
+
+    private static void requireKnownCharacter(
+            String owner,
+            String description,
+            String target,
+            Set<String> characterIds
+    ) {
+
+        if (!hasText(
+                target
+        )) {
+
+            throw new IllegalStateException(
+                    owner
+                            + " has blank "
+                            + description
+            );
+        }
+
+        String normalized =
+                normalizeId(
+                        target
+                );
+
+        if (!characterIds.contains(
+                normalized
+        )) {
+
+            throw new IllegalStateException(
+                    owner
+                            + " references unknown "
+                            + description
+                            + " "
+                            + target
+            );
+        }
+    }
+
+    private static List<String> collectCharacterResources(
+            String base,
+            List<String> legacy,
+            List<String> packed
+    ) {
+
+        List<String> result =
+                new ArrayList<>();
+
+        Set<String> seen =
+                new LinkedHashSet<>();
+
+        if (legacy != null) {
+
+            for (
+                    String resource :
+                    legacy
+            ) {
+
+                if (!hasText(
+                        resource
+                )) {
+
+                    continue;
+                }
+
+                String resolved =
+                        resolve(
+                                base,
+                                resource
+                        );
+
+                if (!seen.add(
+                        resolved
+                )) {
+
+                    throw new IllegalStateException(
+                            "Duplicate character resource "
+                                    + resolved
+                    );
+                }
+
+                result.add(
+                        resolved
+                );
+            }
+        }
+
+        for (
+                String resource :
+                packed
+        ) {
+
+            if (!seen.add(
+                    resource
+            )) {
+
+                throw new IllegalStateException(
+                        "Duplicate character resource "
+                                + resource
+                );
+            }
+
+            result.add(
+                    resource
+            );
+        }
+
+        return List.copyOf(
+                result
+        );
+    }
+
+    private static List<String> collectSingleAndPackResources(
+            String base,
+            String legacy,
+            List<String> packed
+    ) {
+
+        List<String> result =
+                new ArrayList<>();
+
+        Set<String> seen =
+                new LinkedHashSet<>();
+
+        if (hasText(
+                legacy
+        )) {
+
+            String resolved =
+                    resolve(
+                            base,
+                            legacy
+                    );
+
+            seen.add(
+                    resolved
+            );
+
+            result.add(
+                    resolved
+            );
+        }
+
+        for (
+                String resource :
+                packed
+        ) {
+
+            if (!seen.add(
+                    resource
+            )) {
+
+                throw new IllegalStateException(
+                        "Duplicate population resource "
+                                + resource
+                );
+            }
+
+            result.add(
+                    resource
+            );
+        }
+
+        return List.copyOf(
+                result
+        );
+    }
 
     private static String requireId(
             String value,
@@ -840,8 +1328,9 @@ public final class ReferenceIntegrityValidator {
             String value
     ) {
 
-        if (value == null
-                || value.isBlank()) {
+        if (!hasText(
+                value
+        )) {
 
             throw new IllegalArgumentException(
                     "ID cannot be blank"
@@ -907,7 +1396,7 @@ public final class ReferenceIntegrityValidator {
                 ? ""
                 : resource.substring(
                 0,
-                index + 1
+                index
         );
     }
 
@@ -925,7 +1414,15 @@ public final class ReferenceIntegrityValidator {
             );
         }
 
+        if (child.startsWith(
+                "data/"
+        )) {
+
+            return child;
+        }
+
         return base
+                + "/"
                 + child;
     }
 
@@ -988,12 +1485,6 @@ public final class ReferenceIntegrityValidator {
         }
     }
 
-    /*
-     * =========================================================
-     * JSON STRUCTURES
-     * =========================================================
-     */
-
     private static final class ScenarioData {
 
         String settlements;
@@ -1002,7 +1493,13 @@ public final class ReferenceIntegrityValidator {
 
         String titles;
 
+        String populationPacks;
+
         List<String> characters;
+
+        String parentages;
+
+        String marriages;
     }
 
     private static final class SettlementData {
@@ -1036,15 +1533,49 @@ public final class ReferenceIntegrityValidator {
 
         String id;
 
+        IdentityData identity;
+
+        String startingSettlement;
+
+        PositionData position;
+
         ProfileData profile;
 
         LegalData legal;
 
         SocialData social;
 
+        RoutineData routine;
+
         List<String> titles;
 
         List<RelationshipData> relationships;
+
+        List<BeliefData> beliefs;
+
+        List<MemoryData> memories;
+    }
+
+    private static final class IdentityData {
+
+        String givenName;
+
+        String familyName;
+
+        String sex;
+
+        int birthYear;
+    }
+
+    private static final class PositionData {
+
+        String dimension;
+
+        double x;
+
+        double y;
+
+        double z;
     }
 
     private static final class ProfileData {
@@ -1053,7 +1584,9 @@ public final class ReferenceIntegrityValidator {
 
         String religion;
 
-        java.util.Map<String, Double> languages;
+        Map<String, Double> skills;
+
+        Map<String, Double> languages;
 
         List<String> occupations;
 
@@ -1086,8 +1619,45 @@ public final class ReferenceIntegrityValidator {
         String faction;
     }
 
+    private static final class RoutineData {
+
+        String role;
+
+        String homeSettlement;
+
+        String workSettlement;
+    }
+
     private static final class RelationshipData {
 
         String target;
+    }
+
+    private static final class BeliefData {
+
+        String sourceNpc;
+    }
+
+    private static final class MemoryData {
+
+        String relatedNpc;
+    }
+
+    private static final class ParentageData {
+
+        String child;
+
+        String mother;
+
+        String father;
+    }
+
+    private static final class MarriageData {
+
+        String first;
+
+        String second;
+
+        String inheritanceRule;
     }
 }

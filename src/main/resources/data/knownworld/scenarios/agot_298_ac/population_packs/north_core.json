@@ -1,0 +1,31 @@
+{
+  "id": "north_core",
+  "displayName": "North Core Characters",
+  "kind": "AUTHORED_NAMED",
+  "regionId": "the_north",
+  "enabled": true,
+
+  "characters": [
+    "characters/eddard_stark.json",
+    "characters/catelyn_stark.json",
+    "characters/robb_stark.json",
+    "characters/sansa_stark.json",
+    "characters/arya_stark.json",
+    "characters/bran_stark.json",
+    "characters/rickon_stark.json",
+    "characters/jon_snow.json",
+    "characters/theon_greyjoy.json"
+  ],
+
+  "parentages": [
+    "population_packs/north_core_parentages.json"
+  ],
+
+  "marriages": [
+    "population_packs/north_core_marriages.json"
+  ],
+
+  "socialIdentities": [
+    "population_packs/north_core_social_identities.json"
+  ]
+}

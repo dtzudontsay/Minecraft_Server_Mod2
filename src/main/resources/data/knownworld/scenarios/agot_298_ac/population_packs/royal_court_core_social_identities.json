@@ -1,0 +1,54 @@
+{
+  "characters": [
+    {
+      "npcId": "robert_baratheon",
+      "birthDynastyId": "house_baratheon",
+      "currentDynastyId": "house_baratheon_kings_landing",
+      "legalFamilyDynastyId": "house_baratheon_kings_landing",
+
+      "householdOrganizationId": "royal_household",
+      "houseOrganizationId": "house_baratheon_kings_landing",
+
+      "primaryAllegianceOrganizationId": "iron_throne",
+      "allegianceStrength": 1.0
+    },
+
+    {
+      "npcId": "cersei_lannister",
+      "birthDynastyId": "house_lannister",
+      "currentDynastyId": "house_baratheon_kings_landing",
+      "marriedIntoDynastyId": "house_baratheon_kings_landing",
+      "legalFamilyDynastyId": "house_baratheon_kings_landing",
+
+      "householdOrganizationId": "royal_household",
+      "houseOrganizationId": "house_baratheon_kings_landing",
+
+      "primaryAllegianceOrganizationId": "iron_throne",
+      "allegianceStrength": 0.82
+    },
+
+    {
+      "npcId": "jaime_lannister",
+      "birthDynastyId": "house_lannister",
+      "currentDynastyId": "house_lannister",
+      "legalFamilyDynastyId": "house_lannister",
+
+      "householdOrganizationId": "royal_household",
+      "houseOrganizationId": "house_lannister",
+
+      "primaryAllegianceOrganizationId": "iron_throne",
+      "allegianceStrength": 0.78
+    },
+
+    {
+      "npcId": "tyrion_lannister",
+      "birthDynastyId": "house_lannister",
+      "currentDynastyId": "house_lannister",
+      "legalFamilyDynastyId": "house_lannister",
+
+      "houseOrganizationId": "house_lannister",
+
+      "clearPrimaryAllegiance": true
+    }
+  ]
+}

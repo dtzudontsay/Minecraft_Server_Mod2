@@ -35,10 +35,12 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public final class ScenarioBootstrapper {
 
@@ -56,6 +58,7 @@ public final class ScenarioBootstrapper {
             NpcSimulation simulation,
             AuthoredIdRegistry ids
     ) {
+
         this.simulation =
                 Objects.requireNonNull(
                         simulation,
@@ -77,9 +80,10 @@ public final class ScenarioBootstrapper {
         new ScenarioBootstrapper(
                 simulation,
                 ids
-        ).bootstrap(
-                DEFAULT_SCENARIO
-        );
+        )
+                .bootstrap(
+                        DEFAULT_SCENARIO
+                );
     }
 
     private void bootstrap(
@@ -106,79 +110,118 @@ public final class ScenarioBootstrapper {
                 scenario.id
         );
 
+        PopulationPackCatalog.Plan populationPlan =
+                PopulationPackCatalog.load(
+                        scenarioResource,
+                        scenario.populationPacks
+                );
+
         List<SettlementData> settlements =
-                readJsonList(
+                hasText(
+                        scenario.settlements
+                )
+                        ? readJsonList(
                         resolve(
                                 base,
                                 scenario.settlements
                         ),
                         SettlementData[].class
-                );
+                )
+                        : List.of();
 
         List<OrganizationData> organizations =
-                readJsonList(
+                hasText(
+                        scenario.organizations
+                )
+                        ? readJsonList(
                         resolve(
                                 base,
                                 scenario.organizations
                         ),
                         OrganizationData[].class
-                );
+                )
+                        : List.of();
 
         List<TitleData> titles =
-                readJsonList(
+                hasText(
+                        scenario.titles
+                )
+                        ? readJsonList(
                         resolve(
                                 base,
                                 scenario.titles
                         ),
                         TitleData[].class
+                )
+                        : List.of();
+
+        List<String> characterResources =
+                collectResources(
+                        base,
+                        scenario.characters,
+                        populationPlan.characterResources()
                 );
 
-        List<ParentageData> parentages =
-                hasText(
-                        scenario.parentages
-                )
-                        ? readJsonList(
-                        resolve(
-                                base,
-                                scenario.parentages
-                        ),
-                        ParentageData[].class
-                )
-                        : List.of();
+        List<String> parentageResources =
+                collectSingleAndPackResources(
+                        base,
+                        scenario.parentages,
+                        populationPlan.parentageResources()
+                );
 
-        List<MarriageData> marriages =
-                hasText(
-                        scenario.marriages
-                )
-                        ? readJsonList(
-                        resolve(
-                                base,
-                                scenario.marriages
-                        ),
-                        MarriageData[].class
-                )
-                        : List.of();
+        List<String> marriageResources =
+                collectSingleAndPackResources(
+                        base,
+                        scenario.marriages,
+                        populationPlan.marriageResources()
+                );
 
         List<CharacterData> characters =
                 new ArrayList<>();
 
-        if (scenario.characters != null) {
+        for (
+                String resource :
+                characterResources
+        ) {
 
-            for (
-                    String characterResource :
-                    scenario.characters
-            ) {
+            characters.add(
+                    readJson(
+                            resource,
+                            CharacterData.class
+                    )
+            );
+        }
 
-                characters.add(
-                        readJson(
-                                resolve(
-                                        base,
-                                        characterResource
-                                ),
-                                CharacterData.class
-                        )
-                );
-            }
+        List<ParentageData> parentages =
+                new ArrayList<>();
+
+        for (
+                String resource :
+                parentageResources
+        ) {
+
+            parentages.addAll(
+                    readJsonList(
+                            resource,
+                            ParentageData[].class
+                    )
+            );
+        }
+
+        List<MarriageData> marriages =
+                new ArrayList<>();
+
+        for (
+                String resource :
+                marriageResources
+        ) {
+
+            marriages.addAll(
+                    readJsonList(
+                            resource,
+                            MarriageData[].class
+                    )
+            );
         }
 
         createSettlements(
@@ -193,6 +236,15 @@ public final class ScenarioBootstrapper {
                 titles
         );
 
+        /*
+         * All characters from all packs are created before ANY
+         * relationships/parentage/marriages are applied.
+         *
+         * This allows cross-pack references such as:
+         *
+         * Eddard Stark -> Robert Baratheon
+         * without imposing a pack loading dependency.
+         */
         createCharacters(
                 characters
         );
@@ -214,8 +266,9 @@ public final class ScenarioBootstrapper {
         );
 
         KnownWorld.LOGGER.info(
-                "Bootstrapped scenario '{}' with {} settlements, {} organizations, {} titles, {} characters, {} parentage records and {} marriages.",
+                "Bootstrapped scenario '{}' with {} population packs, {} settlements, {} organizations, {} titles, {} characters, {} parentage records and {} marriages.",
                 scenario.id,
+                populationPlan.enabledPackCount(),
                 settlements.size(),
                 organizations.size(),
                 titles.size(),
@@ -228,6 +281,7 @@ public final class ScenarioBootstrapper {
     private void createSettlements(
             List<SettlementData> data
     ) {
+
         for (
                 SettlementData entry :
                 data
@@ -275,6 +329,7 @@ public final class ScenarioBootstrapper {
     private void createOrganizations(
             List<OrganizationData> data
     ) {
+
         for (
                 OrganizationData entry :
                 data
@@ -302,7 +357,7 @@ public final class ScenarioBootstrapper {
                                     enumValue(
                                             OrganizationType.class,
                                             entry.type,
-                                            "organization type"
+                                            "organization.type"
                                     ),
                                     optionalSettlement(
                                             entry.seatSettlement
@@ -319,6 +374,7 @@ public final class ScenarioBootstrapper {
     private void createTitles(
             List<TitleData> data
     ) {
+
         for (
                 TitleData entry :
                 data
@@ -382,6 +438,10 @@ public final class ScenarioBootstrapper {
     private void createCharacters(
             List<CharacterData> characters
     ) {
+
+        Set<String> createdIds =
+                new LinkedHashSet<>();
+
         for (
                 CharacterData character :
                 characters
@@ -391,6 +451,22 @@ public final class ScenarioBootstrapper {
                     character.id,
                     "character.id"
             );
+
+            String normalizedId =
+                    character.id.trim()
+                            .toLowerCase(
+                                    Locale.ROOT
+                            );
+
+            if (!createdIds.add(
+                    normalizedId
+            )) {
+
+                throw new IllegalArgumentException(
+                        "Duplicate authored character "
+                                + character.id
+                );
+            }
 
             if (character.identity == null) {
 
@@ -448,6 +524,7 @@ public final class ScenarioBootstrapper {
     private void applyBasicCharacterState(
             List<CharacterData> characters
     ) {
+
         long tick =
                 simulation.serverTickCounter();
 
@@ -487,6 +564,7 @@ public final class ScenarioBootstrapper {
     private void applyKnowledgeAndRelationships(
             List<CharacterData> characters
     ) {
+
         long tick =
                 simulation.serverTickCounter();
 
@@ -522,6 +600,7 @@ public final class ScenarioBootstrapper {
     private void applyParentages(
             List<ParentageData> parentages
     ) {
+
         long tick =
                 simulation.serverTickCounter();
 
@@ -571,6 +650,7 @@ public final class ScenarioBootstrapper {
     private void applyMarriages(
             List<MarriageData> marriages
     ) {
+
         long tick =
                 simulation.serverTickCounter();
 
@@ -618,6 +698,7 @@ public final class ScenarioBootstrapper {
             NpcId npc,
             ProfileData data
     ) {
+
         CharacterProfile profile =
                 simulation.profiles()
                         .getOrCreate(
@@ -680,9 +761,14 @@ public final class ScenarioBootstrapper {
                     data.traits
             ) {
 
-                profile.addTrait(
+                if (hasText(
                         trait
-                );
+                )) {
+
+                    profile.addTrait(
+                            trait
+                    );
+                }
             }
         }
 
@@ -707,9 +793,14 @@ public final class ScenarioBootstrapper {
                     data.motivations
             ) {
 
-                profile.addMotivation(
+                if (hasText(
                         motivation
-                );
+                )) {
+
+                    profile.addMotivation(
+                            motivation
+                    );
+                }
             }
         }
 
@@ -740,6 +831,7 @@ public final class ScenarioBootstrapper {
             NpcId npc,
             SocialData social
     ) {
+
         if (social == null) {
             return;
         }
@@ -801,6 +893,7 @@ public final class ScenarioBootstrapper {
             NpcId npc,
             RoutineData data
     ) {
+
         if (data == null) {
             return;
         }
@@ -891,6 +984,7 @@ public final class ScenarioBootstrapper {
             List<String> titles,
             long tick
     ) {
+
         if (titles == null) {
             return;
         }
@@ -899,6 +993,13 @@ public final class ScenarioBootstrapper {
                 String title :
                 titles
         ) {
+
+            if (!hasText(
+                    title
+            )) {
+
+                continue;
+            }
 
             simulation.titles()
                     .grant(
@@ -915,6 +1016,7 @@ public final class ScenarioBootstrapper {
             NpcId subject,
             List<RelationshipData> relationships
     ) {
+
         if (relationships == null) {
             return;
         }
@@ -924,13 +1026,32 @@ public final class ScenarioBootstrapper {
                 relationships
         ) {
 
+            if (!hasText(
+                    relationship.target
+            )) {
+
+                continue;
+            }
+
+            NpcId target =
+                    ids.requireNpc(
+                            relationship.target
+                    );
+
+            if (subject.equals(
+                    target
+            )) {
+
+                throw new IllegalArgumentException(
+                        "Authored NPC cannot have a relationship with itself"
+                );
+            }
+
             simulation.relationships()
                     .registerLoaded(
                             new NpcRelationship(
                                     subject,
-                                    ids.requireNpc(
-                                            relationship.target
-                                    ),
+                                    target,
                                     relationship.affection,
                                     relationship.trust,
                                     relationship.respect,
@@ -946,6 +1067,7 @@ public final class ScenarioBootstrapper {
             List<BeliefData> beliefs,
             long tick
     ) {
+
         if (beliefs == null) {
             return;
         }
@@ -980,6 +1102,7 @@ public final class ScenarioBootstrapper {
             List<MemoryData> memories,
             long tick
     ) {
+
         if (memories == null) {
             return;
         }
@@ -1019,6 +1142,7 @@ public final class ScenarioBootstrapper {
     private SimulationPosition resolveStartingPosition(
             CharacterData character
     ) {
+
         if (character.position != null) {
 
             return requirePosition(
@@ -1040,13 +1164,14 @@ public final class ScenarioBootstrapper {
         throw new IllegalArgumentException(
                 "Character "
                         + character.id
-                        + " requires either position or startingSettlement"
+                        + " requires position or startingSettlement"
         );
     }
 
     private SimulationPosition settlementCenter(
             String authoredSettlement
     ) {
+
         SettlementId id =
                 ids.requireSettlement(
                         authoredSettlement
@@ -1069,6 +1194,7 @@ public final class ScenarioBootstrapper {
     private OrganizationId optionalOrganization(
             String authoredId
     ) {
+
         return hasText(
                 authoredId
         )
@@ -1081,6 +1207,7 @@ public final class ScenarioBootstrapper {
     private SettlementId optionalSettlement(
             String authoredId
     ) {
+
         return hasText(
                 authoredId
         )
@@ -1093,7 +1220,9 @@ public final class ScenarioBootstrapper {
     private static NpcPersonality personalityOf(
             PersonalityData data
     ) {
+
         if (data == null) {
+
             return NpcPersonality.NEUTRAL;
         }
 
@@ -1119,9 +1248,139 @@ public final class ScenarioBootstrapper {
         );
     }
 
+    private static List<String> collectResources(
+            String base,
+            List<String> legacy,
+            List<String> packed
+    ) {
+
+        List<String> result =
+                new ArrayList<>();
+
+        Set<String> seen =
+                new LinkedHashSet<>();
+
+        if (legacy != null) {
+
+            for (
+                    String resource :
+                    legacy
+            ) {
+
+                if (!hasText(
+                        resource
+                )) {
+
+                    continue;
+                }
+
+                String resolved =
+                        resolve(
+                                base,
+                                resource
+                        );
+
+                if (!seen.add(
+                        resolved
+                )) {
+
+                    throw new IllegalArgumentException(
+                            "Duplicate character resource "
+                                    + resolved
+                    );
+                }
+
+                result.add(
+                        resolved
+                );
+            }
+        }
+
+        for (
+                String resource :
+                packed
+        ) {
+
+            if (!seen.add(
+                    resource
+            )) {
+
+                throw new IllegalArgumentException(
+                        "Duplicate character resource "
+                                + resource
+                );
+            }
+
+            result.add(
+                    resource
+            );
+        }
+
+        return List.copyOf(
+                result
+        );
+    }
+
+    private static List<String> collectSingleAndPackResources(
+            String base,
+            String legacy,
+            List<String> packed
+    ) {
+
+        List<String> result =
+                new ArrayList<>();
+
+        Set<String> seen =
+                new LinkedHashSet<>();
+
+        if (hasText(
+                legacy
+        )) {
+
+            String resolved =
+                    resolve(
+                            base,
+                            legacy
+                    );
+
+            seen.add(
+                    resolved
+            );
+
+            result.add(
+                    resolved
+            );
+        }
+
+        for (
+                String resource :
+                packed
+        ) {
+
+            if (!seen.add(
+                    resource
+            )) {
+
+                throw new IllegalArgumentException(
+                        "Duplicate scenario population resource "
+                                + resource
+                );
+            }
+
+            result.add(
+                    resource
+            );
+        }
+
+        return List.copyOf(
+                result
+        );
+    }
+
     private static double valueOrZero(
             Double value
     ) {
+
         return value == null
                 ? 0.0
                 : value;
@@ -1131,6 +1390,7 @@ public final class ScenarioBootstrapper {
             PositionData data,
             String description
     ) {
+
         if (data == null) {
 
             throw new IllegalArgumentException(
@@ -1156,6 +1416,7 @@ public final class ScenarioBootstrapper {
             String value,
             String description
     ) {
+
         requireText(
                 value,
                 description
@@ -1261,6 +1522,7 @@ public final class ScenarioBootstrapper {
             String base,
             String child
     ) {
+
         requireText(
                 child,
                 "scenario resource path"
@@ -1281,12 +1543,14 @@ public final class ScenarioBootstrapper {
     private static String parentPath(
             String resource
     ) {
+
         int separator =
                 resource.lastIndexOf(
                         '/'
                 );
 
         if (separator < 0) {
+
             return "";
         }
 
@@ -1299,6 +1563,7 @@ public final class ScenarioBootstrapper {
     private static boolean hasText(
             String value
     ) {
+
         return value != null
                 && !value.isBlank();
     }
@@ -1306,6 +1571,7 @@ public final class ScenarioBootstrapper {
     private static String emptyToNull(
             String value
     ) {
+
         return hasText(
                 value
         )
@@ -1317,6 +1583,7 @@ public final class ScenarioBootstrapper {
             String value,
             String description
     ) {
+
         if (!hasText(
                 value
         )) {
@@ -1338,11 +1605,18 @@ public final class ScenarioBootstrapper {
 
         String titles;
 
+        String populationPacks;
+
+        /*
+         * Legacy migration support.
+         *
+         * New scenario data should use populationPacks.
+         */
+        List<String> characters;
+
         String parentages;
 
         String marriages;
-
-        List<String> characters;
     }
 
     private static final class SettlementData {

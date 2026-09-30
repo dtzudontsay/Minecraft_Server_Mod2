@@ -1,0 +1,6 @@
+{
+  "packs": [
+    "population_packs/north_core.json",
+    "population_packs/royal_court_core.json"
+  ]
+}

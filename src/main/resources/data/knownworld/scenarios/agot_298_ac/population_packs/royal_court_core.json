@@ -1,0 +1,24 @@
+{
+  "id": "royal_court_core",
+  "displayName": "Royal Court Core Characters",
+  "kind": "AUTHORED_NAMED",
+  "regionId": "crownlands",
+  "enabled": true,
+
+  "characters": [
+    "characters/robert_baratheon.json",
+    "characters/cersei_lannister.json",
+    "characters/jaime_lannister.json",
+    "characters/tyrion_lannister.json"
+  ],
+
+  "parentages": [],
+
+  "marriages": [
+    "population_packs/royal_court_core_marriages.json"
+  ],
+
+  "socialIdentities": [
+    "population_packs/royal_court_core_social_identities.json"
+  ]
+}

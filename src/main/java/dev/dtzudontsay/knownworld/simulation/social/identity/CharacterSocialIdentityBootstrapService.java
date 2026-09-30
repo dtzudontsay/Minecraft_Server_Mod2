@@ -1,13 +1,17 @@
 package dev.dtzudontsay.knownworld.simulation.social.identity;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.PopulationPackCatalog;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioBootstrapper;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.social.Organization;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.Dynasty;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyId;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
 import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembershipManager;
 
 import java.io.IOException;
@@ -15,15 +19,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class CharacterSocialIdentityBootstrapService {
 
     private static final Gson GSON =
             new Gson();
-
-    private static final String RESOURCE =
-            "data/knownworld/scenarios/agot_298_ac/character_social_identities.json";
 
     private CharacterSocialIdentityBootstrapService() {
     }
@@ -32,318 +35,396 @@ public final class CharacterSocialIdentityBootstrapService {
             NpcSimulation simulation,
             CharacterSocialIdentityService service,
             CharacterSocialIdentityManager identities,
-            dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager dynasties,
+            DynastyManager dynasties,
             OrganizationMembershipManager memberships
     ) throws IOException {
 
-        RootData root =
-                read();
+        ScenarioIndex scenario =
+                readJson(
+                        ScenarioBootstrapper.DEFAULT_SCENARIO,
+                        ScenarioIndex.class
+                );
 
-        if (root.characters == null) {
+        PopulationPackCatalog.Plan plan =
+                PopulationPackCatalog.load(
+                        ScenarioBootstrapper.DEFAULT_SCENARIO,
+                        scenario.populationPacks
+                );
 
-            service.ensureAll();
+        List<String> resources =
+                plan.socialIdentityResources();
 
-            return;
-        }
+        Set<String> appliedNpcIds =
+                new LinkedHashSet<>();
 
         int applied =
                 0;
 
         for (
-                CharacterData data :
-                root.characters
+                String resource :
+                resources
         ) {
 
-            NpcId npc =
-                    simulation.authoredIds()
-                            .requireNpc(
-                                    data.npcId
-                            );
-
-            CharacterSocialIdentity identity =
-                    service.ensureIdentity(
-                            npc
+            RootData root =
+                    readJson(
+                            resource,
+                            RootData.class
                     );
 
-            /*
-             * Explicit clear flags allow authored data to say
-             * "this field is deliberately unknown/none", rather than
-             * merely omitting it.
-             */
-
-            if (data.clearBirthDynasty) {
-
-                identities.setBirthDynasty(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.birthDynastyId
-            )) {
-
-                identities.setBirthDynasty(
-                        npc,
-                        requireDynasty(
-                                dynasties,
-                                data.birthDynastyId
-                        )
-                );
+            if (root.characters == null) {
+                continue;
             }
 
-            if (data.clearCurrentDynasty) {
+            for (
+                    CharacterData data :
+                    root.characters
+            ) {
 
-                identities.setCurrentDynasty(
-                        npc,
-                        null
-                );
+                if (data == null
+                        || !hasText(
+                        data.npcId
+                )) {
 
-            } else if (hasText(
-                    data.currentDynastyId
-            )) {
+                    continue;
+                }
 
-                identities.setCurrentDynasty(
-                        npc,
-                        requireDynasty(
-                                dynasties,
-                                data.currentDynastyId
-                        )
-                );
-            }
+                String normalizedNpcId =
+                        data.npcId.trim()
+                                .toLowerCase();
 
-            if (data.clearMarriedIntoDynasty) {
+                if (!appliedNpcIds.add(
+                        normalizedNpcId
+                )) {
 
-                identities.setMarriedIntoDynasty(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.marriedIntoDynastyId
-            )) {
-
-                identities.setMarriedIntoDynasty(
-                        npc,
-                        requireDynasty(
-                                dynasties,
-                                data.marriedIntoDynastyId
-                        )
-                );
-            }
-
-            if (data.clearLegalFamilyDynasty) {
-
-                identities.setLegalFamilyDynasty(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.legalFamilyDynastyId
-            )) {
-
-                identities.setLegalFamilyDynasty(
-                        npc,
-                        requireDynasty(
-                                dynasties,
-                                data.legalFamilyDynastyId
-                        )
-                );
-            }
-
-            if (data.clearLegalMother) {
-
-                identities.setLegalMother(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.legalMotherNpcId
-            )) {
-
-                identities.setLegalMother(
-                        npc,
-                        simulation.authoredIds()
-                                .requireNpc(
-                                        data.legalMotherNpcId
-                                )
-                );
-            }
-
-            if (data.clearLegalFather) {
-
-                identities.setLegalFather(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.legalFatherNpcId
-            )) {
-
-                identities.setLegalFather(
-                        npc,
-                        simulation.authoredIds()
-                                .requireNpc(
-                                        data.legalFatherNpcId
-                                )
-                );
-            }
-
-            if (data.clearHouseholdOrganization) {
-
-                identities.setHouseholdOrganization(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.householdOrganizationId
-            )) {
-
-                identities.setHouseholdOrganization(
-                        npc,
-                        simulation.authoredIds()
-                                .requireOrganization(
-                                        data.householdOrganizationId
-                                )
-                );
-            }
-
-            if (data.clearHouseOrganization) {
-
-                identities.setHouseOrganization(
-                        npc,
-                        null
-                );
-
-            } else if (hasText(
-                    data.houseOrganizationId
-            )) {
-
-                identities.setHouseOrganization(
-                        npc,
-                        simulation.authoredIds()
-                                .requireOrganization(
-                                        data.houseOrganizationId
-                                )
-                );
-            }
-
-            if (data.clearPrimaryAllegiance) {
-
-                identities.setPrimaryAllegiance(
-                        npc,
-                        null,
-                        0.0
-                );
-
-            } else if (hasText(
-                    data.primaryAllegianceOrganizationId
-            )) {
-
-                identities.setPrimaryAllegiance(
-                        npc,
-                        simulation.authoredIds()
-                                .requireOrganization(
-                                        data.primaryAllegianceOrganizationId
-                                ),
-                        data.allegianceStrength == null
-                                ? 0.70
-                                : data.allegianceStrength
-                );
-            }
-
-            if (data.memberships != null) {
-
-                for (
-                        OrganizationMembershipData membership :
-                        data.memberships
-                ) {
-
-                    OrganizationId organization =
-                            simulation.authoredIds()
-                                    .requireOrganization(
-                                            membership.organizationId
-                                    );
-
-                    memberships.join(
-                            npc,
-                            organization,
-                            simulation.serverTickCounter(),
-                            membership.loyalty == null
-                                    ? 0.70
-                                    : membership.loyalty
+                    throw new IllegalStateException(
+                            "Duplicate character social identity overlay for "
+                                    + normalizedNpcId
                     );
-
-                    if (membership.roles != null) {
-
-                        for (
-                                String role :
-                                membership.roles
-                        ) {
-
-                            memberships.addRole(
-                                    npc,
-                                    organization,
-                                    role
-                            );
-                        }
-                    }
                 }
+
+                apply(
+                        simulation,
+                        service,
+                        identities,
+                        dynasties,
+                        memberships,
+                        data
+                );
+
+                applied++;
             }
-
-            if (data.religiousMemberships != null) {
-
-                for (
-                        ReligiousMembershipData religious :
-                        data.religiousMemberships
-                ) {
-
-                    Organization organization =
-                            simulation.religiousInstitutions()
-                                    .ensureOrganization(
-                                            religious.orderId
-                                    );
-
-                    simulation.religiousMemberships()
-                            .join(
-                                    npc,
-                                    religious.orderId,
-                                    organization.id(),
-                                    religious.roleId == null
-                                            ? ""
-                                            : religious.roleId,
-                                    religious.commitment == null
-                                            ? 0.60
-                                            : religious.commitment
-                            );
-                }
-            }
-
-            /*
-             * Re-read the identity after authored overrides and ensure
-             * primary organizations have generic memberships.
-             */
-            service.ensureIdentity(
-                    npc
-            );
-
-            applied++;
         }
 
         service.ensureAll();
 
         KnownWorld.LOGGER.info(
-                "Character social identity bootstrap applied {} authored identity overlays; {} total identities active.",
+                "Character social identity bootstrap applied {} authored identity overlays from {} population-pack resources; {} total identities active.",
                 applied,
+                resources.size(),
                 identities.size()
         );
     }
 
+    private static void apply(
+            NpcSimulation simulation,
+            CharacterSocialIdentityService service,
+            CharacterSocialIdentityManager identities,
+            DynastyManager dynasties,
+            OrganizationMembershipManager memberships,
+            CharacterData data
+    ) {
+
+        NpcId npc =
+                simulation.authoredIds()
+                        .requireNpc(
+                                data.npcId
+                        );
+
+        service.ensureIdentity(
+                npc
+        );
+
+        if (data.clearBirthDynasty) {
+
+            identities.setBirthDynasty(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.birthDynastyId
+        )) {
+
+            identities.setBirthDynasty(
+                    npc,
+                    requireDynasty(
+                            dynasties,
+                            data.birthDynastyId
+                    )
+            );
+        }
+
+        if (data.clearCurrentDynasty) {
+
+            identities.setCurrentDynasty(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.currentDynastyId
+        )) {
+
+            identities.setCurrentDynasty(
+                    npc,
+                    requireDynasty(
+                            dynasties,
+                            data.currentDynastyId
+                    )
+            );
+        }
+
+        if (data.clearMarriedIntoDynasty) {
+
+            identities.setMarriedIntoDynasty(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.marriedIntoDynastyId
+        )) {
+
+            identities.setMarriedIntoDynasty(
+                    npc,
+                    requireDynasty(
+                            dynasties,
+                            data.marriedIntoDynastyId
+                    )
+            );
+        }
+
+        if (data.clearLegalFamilyDynasty) {
+
+            identities.setLegalFamilyDynasty(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.legalFamilyDynastyId
+        )) {
+
+            identities.setLegalFamilyDynasty(
+                    npc,
+                    requireDynasty(
+                            dynasties,
+                            data.legalFamilyDynastyId
+                    )
+            );
+        }
+
+        if (data.clearLegalMother) {
+
+            identities.setLegalMother(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.legalMotherNpcId
+        )) {
+
+            identities.setLegalMother(
+                    npc,
+                    simulation.authoredIds()
+                            .requireNpc(
+                                    data.legalMotherNpcId
+                            )
+            );
+        }
+
+        if (data.clearLegalFather) {
+
+            identities.setLegalFather(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.legalFatherNpcId
+        )) {
+
+            identities.setLegalFather(
+                    npc,
+                    simulation.authoredIds()
+                            .requireNpc(
+                                    data.legalFatherNpcId
+                            )
+            );
+        }
+
+        if (data.clearHouseholdOrganization) {
+
+            identities.setHouseholdOrganization(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.householdOrganizationId
+        )) {
+
+            identities.setHouseholdOrganization(
+                    npc,
+                    simulation.authoredIds()
+                            .requireOrganization(
+                                    data.householdOrganizationId
+                            )
+            );
+        }
+
+        if (data.clearHouseOrganization) {
+
+            identities.setHouseOrganization(
+                    npc,
+                    null
+            );
+
+        } else if (hasText(
+                data.houseOrganizationId
+        )) {
+
+            identities.setHouseOrganization(
+                    npc,
+                    simulation.authoredIds()
+                            .requireOrganization(
+                                    data.houseOrganizationId
+                            )
+            );
+        }
+
+        if (data.clearPrimaryAllegiance) {
+
+            identities.setPrimaryAllegiance(
+                    npc,
+                    null,
+                    0.0
+            );
+
+        } else if (hasText(
+                data.primaryAllegianceOrganizationId
+        )) {
+
+            identities.setPrimaryAllegiance(
+                    npc,
+                    simulation.authoredIds()
+                            .requireOrganization(
+                                    data.primaryAllegianceOrganizationId
+                            ),
+                    data.allegianceStrength == null
+                            ? 0.70
+                            : data.allegianceStrength
+            );
+        }
+
+        if (data.memberships != null) {
+
+            for (
+                    OrganizationMembershipData membership :
+                    data.memberships
+            ) {
+
+                if (membership == null
+                        || !hasText(
+                        membership.organizationId
+                )) {
+
+                    continue;
+                }
+
+                OrganizationId organization =
+                        simulation.authoredIds()
+                                .requireOrganization(
+                                        membership.organizationId
+                                );
+
+                memberships.join(
+                        npc,
+                        organization,
+                        simulation.serverTickCounter(),
+                        membership.loyalty == null
+                                ? 0.70
+                                : membership.loyalty
+                );
+
+                if (membership.roles != null) {
+
+                    for (
+                            String role :
+                            membership.roles
+                    ) {
+
+                        if (!hasText(
+                                role
+                        )) {
+
+                            continue;
+                        }
+
+                        memberships.addRole(
+                                npc,
+                                organization,
+                                role
+                        );
+                    }
+                }
+            }
+        }
+
+        if (data.religiousMemberships != null) {
+
+            for (
+                    ReligiousMembershipData religious :
+                    data.religiousMemberships
+            ) {
+
+                if (religious == null
+                        || !hasText(
+                        religious.orderId
+                )) {
+
+                    continue;
+                }
+
+                Organization organization =
+                        simulation.religiousInstitutions()
+                                .ensureOrganization(
+                                        religious.orderId
+                                );
+
+                simulation.religiousMemberships()
+                        .join(
+                                npc,
+                                religious.orderId,
+                                organization.id(),
+                                religious.roleId == null
+                                        ? ""
+                                        : religious.roleId,
+                                religious.commitment == null
+                                        ? 0.60
+                                        : religious.commitment
+                        );
+            }
+        }
+
+        service.ensureIdentity(
+                npc
+        );
+    }
+
     private static DynastyId requireDynasty(
-            dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager dynasties,
+            DynastyManager dynasties,
             String authoredId
     ) {
 
@@ -362,15 +443,17 @@ public final class CharacterSocialIdentityBootstrapService {
                 );
     }
 
-    private static RootData read()
-            throws IOException {
+    private static <T> T readJson(
+            String resource,
+            Class<T> type
+    ) throws IOException {
 
         try (
                 InputStream input =
                         CharacterSocialIdentityBootstrapService.class
                                 .getClassLoader()
                                 .getResourceAsStream(
-                                        RESOURCE
+                                        resource
                                 )
         ) {
 
@@ -378,7 +461,7 @@ public final class CharacterSocialIdentityBootstrapService {
 
                 throw new IOException(
                         "Character social identity resource not found: "
-                                + RESOURCE
+                                + resource
                 );
             }
 
@@ -390,21 +473,32 @@ public final class CharacterSocialIdentityBootstrapService {
                             )
             ) {
 
-                RootData result =
+                T result =
                         GSON.fromJson(
                                 reader,
-                                RootData.class
+                                type
                         );
 
                 if (result == null) {
 
                     throw new IOException(
-                            "Character social identity resource produced null"
+                            "Character social identity resource produced null: "
+                                    + resource
                     );
                 }
 
                 return result;
             }
+
+        } catch (
+                JsonParseException exception
+        ) {
+
+            throw new IOException(
+                    "Invalid character social identity JSON "
+                            + resource,
+                    exception
+            );
         }
     }
 
@@ -414,6 +508,11 @@ public final class CharacterSocialIdentityBootstrapService {
 
         return value != null
                 && !value.isBlank();
+    }
+
+    private static final class ScenarioIndex {
+
+        String populationPacks;
     }
 
     private static final class RootData {

@@ -29,9 +29,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 public final class AuthoredCharacterProfileOverlayService {
 
@@ -119,38 +122,35 @@ public final class AuthoredCharacterProfileOverlayService {
                         ScenarioIndex.class
                 );
 
-        if (scenario.characters == null
-                || scenario.characters.isEmpty()) {
-
-            return 0;
-        }
-
         String base =
                 parentPath(
                         scenarioResource
+                );
+
+        PopulationPackCatalog.Plan populationPlan =
+                PopulationPackCatalog.load(
+                        scenarioResource,
+                        scenario.populationPacks
+                );
+
+        List<String> resources =
+                collectCharacterResources(
+                        base,
+                        scenario.characters,
+                        populationPlan.characterResources()
                 );
 
         int applied =
                 0;
 
         for (
-                String characterResource :
-                scenario.characters
+                String resource :
+                resources
         ) {
-
-            if (!hasText(
-                    characterResource
-            )) {
-
-                continue;
-            }
 
             CharacterData data =
                     readJson(
-                            resolve(
-                                    base,
-                                    characterResource
-                            ),
+                            resource,
                             CharacterData.class
                     );
 
@@ -247,12 +247,6 @@ public final class AuthoredCharacterProfileOverlayService {
         return applied;
     }
 
-    /*
-     * =========================================================
-     * PROFILE
-     * =========================================================
-     */
-
     @SuppressWarnings("deprecation")
     private static void applyProfile(
             CharacterProfile profile,
@@ -342,11 +336,6 @@ public final class AuthoredCharacterProfileOverlayService {
             );
         }
 
-        /*
-         * Legacy compatibility only.
-         *
-         * New authored data should ALSO use the top-level legal object.
-         */
         if (hasText(
                 data.legalStatus
         )) {
@@ -502,16 +491,16 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.traits != null) {
 
             for (
-                    String trait :
+                    String value :
                     data.traits
             ) {
 
                 if (hasText(
-                        trait
+                        value
                 )) {
 
                     profile.addTrait(
-                            trait
+                            value
                     );
                 }
             }
@@ -520,16 +509,16 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.aliases != null) {
 
             for (
-                    String alias :
+                    String value :
                     data.aliases
             ) {
 
                 if (hasText(
-                        alias
+                        value
                 )) {
 
                     profile.addAlias(
-                            alias
+                            value
                     );
                 }
             }
@@ -538,23 +527,23 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.occupations != null) {
 
             for (
-                    String occupation :
+                    String value :
                     data.occupations
             ) {
 
                 if (!hasText(
-                        occupation
+                        value
                 )) {
 
                     continue;
                 }
 
                 requireOccupation(
-                        occupation
+                        value
                 );
 
                 profile.addOccupation(
-                        occupation
+                        value
                 );
             }
         }
@@ -562,16 +551,16 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.offices != null) {
 
             for (
-                    String office :
+                    String value :
                     data.offices
             ) {
 
                 if (hasText(
-                        office
+                        value
                 )) {
 
                     profile.addOffice(
-                            office
+                            value
                     );
                 }
             }
@@ -580,16 +569,16 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.courtRoles != null) {
 
             for (
-                    String role :
+                    String value :
                     data.courtRoles
             ) {
 
                 if (hasText(
-                        role
+                        value
                 )) {
 
                     profile.addCourtRole(
-                            role
+                            value
                     );
                 }
             }
@@ -598,38 +587,40 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.militaryRoles != null) {
 
             for (
-                    String role :
+                    String value :
                     data.militaryRoles
             ) {
 
-                if (hasText(
-                        role
+                if (!hasText(
+                        value
                 )) {
 
-                    requireRole(
-                            role
-                    );
-
-                    profile.addMilitaryRole(
-                            role
-                    );
+                    continue;
                 }
+
+                requireRole(
+                        value
+                );
+
+                profile.addMilitaryRole(
+                        value
+                );
             }
         }
 
         if (data.combatSpecialties != null) {
 
             for (
-                    String specialty :
+                    String value :
                     data.combatSpecialties
             ) {
 
                 if (hasText(
-                        specialty
+                        value
                 )) {
 
                     profile.addCombatSpecialty(
-                            specialty
+                            value
                     );
                 }
             }
@@ -658,12 +649,12 @@ public final class AuthoredCharacterProfileOverlayService {
             profile.clearMotivations();
 
             for (
-                    String motivation :
+                    String value :
                     data.motivations
             ) {
 
                 profile.addMotivation(
-                        motivation
+                        value
                 );
             }
         }
@@ -673,12 +664,12 @@ public final class AuthoredCharacterProfileOverlayService {
             profile.clearGoals();
 
             for (
-                    String goal :
+                    String value :
                     data.goals
             ) {
 
                 profile.addGoal(
-                        goal
+                        value
                 );
             }
         }
@@ -688,12 +679,12 @@ public final class AuthoredCharacterProfileOverlayService {
             profile.clearFears();
 
             for (
-                    String fear :
+                    String value :
                     data.fears
             ) {
 
                 profile.addFear(
-                        fear
+                        value
                 );
             }
         }
@@ -703,12 +694,12 @@ public final class AuthoredCharacterProfileOverlayService {
             profile.clearDesires();
 
             for (
-                    String desire :
+                    String value :
                     data.desires
             ) {
 
                 profile.addDesire(
-                        desire
+                        value
                 );
             }
         }
@@ -716,16 +707,16 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.secrets != null) {
 
             for (
-                    String secret :
+                    String value :
                     data.secrets
             ) {
 
                 if (hasText(
-                        secret
+                        value
                 )) {
 
                     profile.addSecret(
-                            secret
+                            value
                     );
                 }
             }
@@ -734,16 +725,16 @@ public final class AuthoredCharacterProfileOverlayService {
         if (data.knownSecrets != null) {
 
             for (
-                    String secret :
+                    String value :
                     data.knownSecrets
             ) {
 
                 if (hasText(
-                        secret
+                        value
                 )) {
 
                     profile.addKnownSecret(
-                            secret
+                            value
                     );
                 }
             }
@@ -831,12 +822,6 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
-    /*
-     * =========================================================
-     * MULTI-AXIS LEGAL STATE
-     * =========================================================
-     */
-
     private static void applyLegal(
             NpcSimulation simulation,
             NpcId npc,
@@ -905,12 +890,6 @@ public final class AuthoredCharacterProfileOverlayService {
             );
         }
     }
-
-    /*
-     * =========================================================
-     * SOCIAL
-     * =========================================================
-     */
 
     private static void applySocial(
             NpcSimulation simulation,
@@ -1046,7 +1025,7 @@ public final class AuthoredCharacterProfileOverlayService {
             )) {
 
                 throw new IllegalArgumentException(
-                        "Authored character cannot have a relationship with itself"
+                        "Authored character cannot have relationship with itself"
                 );
             }
 
@@ -1065,11 +1044,73 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
-    /*
-     * =========================================================
-     * REFERENCE VALIDATION
-     * =========================================================
-     */
+    private static List<String> collectCharacterResources(
+            String base,
+            List<String> legacy,
+            List<String> packed
+    ) {
+
+        List<String> result =
+                new ArrayList<>();
+
+        Set<String> seen =
+                new LinkedHashSet<>();
+
+        if (legacy != null) {
+
+            for (
+                    String resource :
+                    legacy
+            ) {
+
+                if (!hasText(
+                        resource
+                )) {
+
+                    continue;
+                }
+
+                String resolved =
+                        resolve(
+                                base,
+                                resource
+                        );
+
+                if (seen.add(
+                        resolved
+                )) {
+
+                    result.add(
+                            resolved
+                    );
+                }
+            }
+        }
+
+        for (
+                String resource :
+                packed
+        ) {
+
+            if (!seen.add(
+                    resource
+            )) {
+
+                throw new IllegalArgumentException(
+                        "Duplicate character overlay resource "
+                                + resource
+                );
+            }
+
+            result.add(
+                    resource
+            );
+        }
+
+        return List.copyOf(
+                result
+        );
+    }
 
     private static void requireCulture(
             String cultureId
@@ -1156,12 +1197,6 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
-    /*
-     * =========================================================
-     * HELPERS
-     * =========================================================
-     */
-
     private static String versionMarker(
             int version
     ) {
@@ -1240,7 +1275,7 @@ public final class AuthoredCharacterProfileOverlayService {
                 ? ""
                 : resource.substring(
                 0,
-                index + 1
+                index
         );
     }
 
@@ -1258,7 +1293,15 @@ public final class AuthoredCharacterProfileOverlayService {
             );
         }
 
+        if (child.startsWith(
+                "data/"
+        )) {
+
+            return child;
+        }
+
         return base
+                + "/"
                 + child;
     }
 
@@ -1321,13 +1364,9 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
-    /*
-     * =========================================================
-     * JSON STRUCTURES
-     * =========================================================
-     */
-
     private static final class ScenarioIndex {
+
+        String populationPacks;
 
         List<String> characters;
     }
