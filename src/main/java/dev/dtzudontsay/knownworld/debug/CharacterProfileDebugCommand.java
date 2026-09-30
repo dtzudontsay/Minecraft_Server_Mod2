@@ -1,13 +1,23 @@
 package dev.dtzudontsay.knownworld.debug;
 
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterDisposition;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSocialNorm;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterValue;
+import dev.dtzudontsay.knownworld.simulation.npc.psychology.CharacterInfluenceChannel;
+import dev.dtzudontsay.knownworld.simulation.npc.psychology.CharacterInfluenceResult;
+import dev.dtzudontsay.knownworld.simulation.npc.psychology.CharacterPsychologyService;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+
+import java.util.Locale;
 
 public final class CharacterProfileDebugCommand {
 
@@ -44,6 +54,164 @@ public final class CharacterProfileDebugCommand {
                                                                         )
                                                         )
                                         )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "psychology"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                CharacterProfileDebugCommand::executePsychology
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "value_pressure"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "value",
+                                                                                                StringArgumentType.word()
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "target",
+                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                        -1.0,
+                                                                                                                        1.0
+                                                                                                                )
+                                                                                                        )
+                                                                                                        .then(
+                                                                                                                Commands.argument(
+                                                                                                                                "pressure",
+                                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                                        0.0,
+                                                                                                                                        1.0
+                                                                                                                                )
+                                                                                                                        )
+                                                                                                                        .then(
+                                                                                                                                Commands.argument(
+                                                                                                                                                "channel",
+                                                                                                                                                StringArgumentType.word()
+                                                                                                                                        )
+                                                                                                                                        .executes(
+                                                                                                                                                CharacterProfileDebugCommand::executeValuePressure
+                                                                                                                                        )
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "norm_pressure"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "norm",
+                                                                                                StringArgumentType.word()
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "target",
+                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                        -1.0,
+                                                                                                                        1.0
+                                                                                                                )
+                                                                                                        )
+                                                                                                        .then(
+                                                                                                                Commands.argument(
+                                                                                                                                "pressure",
+                                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                                        0.0,
+                                                                                                                                        1.0
+                                                                                                                                )
+                                                                                                                        )
+                                                                                                                        .then(
+                                                                                                                                Commands.argument(
+                                                                                                                                                "channel",
+                                                                                                                                                StringArgumentType.word()
+                                                                                                                                        )
+                                                                                                                                        .executes(
+                                                                                                                                                CharacterProfileDebugCommand::executeNormPressure
+                                                                                                                                        )
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "disposition_pressure"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .then(
+                                                                                Commands.argument(
+                                                                                                "disposition",
+                                                                                                StringArgumentType.word()
+                                                                                        )
+                                                                                        .then(
+                                                                                                Commands.argument(
+                                                                                                                "target",
+                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                        -1.0,
+                                                                                                                        1.0
+                                                                                                                )
+                                                                                                        )
+                                                                                                        .then(
+                                                                                                                Commands.argument(
+                                                                                                                                "pressure",
+                                                                                                                                DoubleArgumentType.doubleArg(
+                                                                                                                                        0.0,
+                                                                                                                                        1.0
+                                                                                                                                )
+                                                                                                                        )
+                                                                                                                        .then(
+                                                                                                                                Commands.argument(
+                                                                                                                                                "channel",
+                                                                                                                                                StringArgumentType.word()
+                                                                                                                                        )
+                                                                                                                                        .executes(
+                                                                                                                                                CharacterProfileDebugCommand::executeDispositionPressure
+                                                                                                                                        )
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
                         )
         );
     }
@@ -53,11 +221,8 @@ public final class CharacterProfileDebugCommand {
     ) {
 
         NpcId npc =
-                new NpcId(
-                        LongArgumentType.getLong(
-                                context,
-                                "npc"
-                        )
+                npcArgument(
+                        context
                 );
 
         try {
@@ -329,17 +494,391 @@ public final class CharacterProfileDebugCommand {
                 RuntimeException exception
         ) {
 
-            context.getSource()
-                    .sendFailure(
-                            Component.literal(
-                                    exception.getMessage() == null
-                                            ? exception.getClass()
-                                            .getSimpleName()
-                                            : exception.getMessage()
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executePsychology(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        NpcId npc =
+                npcArgument(
+                        context
+                );
+
+        try {
+
+            CharacterPsychologyService psychology =
+                    psychology();
+
+            success(
+                    context,
+                    "Psychology NPC #"
+                            + npc
+            );
+
+            success(
+                    context,
+                    "Social susceptibility="
+                            + format(
+                            psychology.socialSusceptibility(
+                                    npc
+                            )
+                    )
+                            + " persuasion resistance="
+                            + format(
+                            psychology.persuasionResistance(
+                                    npc
+                            )
+                    )
+                            + " manipulation susceptibility="
+                            + format(
+                            psychology.manipulationSusceptibility(
+                                    npc
+                            )
+                    )
+            );
+
+            success(
+                    context,
+                    "Derived tendencies: "
+                            + psychology.derivedTendencies(
+                            npc
+                    )
+            );
+
+            return 1;
+
+        } catch (
+                RuntimeException exception
+        ) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeValuePressure(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        try {
+
+            NpcId npc =
+                    npcArgument(
+                            context
+                    );
+
+            CharacterValue value =
+                    enumArgument(
+                            CharacterValue.class,
+                            StringArgumentType.getString(
+                                    context,
+                                    "value"
                             )
                     );
 
-            return 0;
+            double target =
+                    DoubleArgumentType.getDouble(
+                            context,
+                            "target"
+                    );
+
+            double pressure =
+                    DoubleArgumentType.getDouble(
+                            context,
+                            "pressure"
+                    );
+
+            CharacterInfluenceChannel channel =
+                    enumArgument(
+                            CharacterInfluenceChannel.class,
+                            StringArgumentType.getString(
+                                    context,
+                                    "channel"
+                            )
+                    );
+
+            CharacterInfluenceResult result =
+                    psychology()
+                            .applyValuePressure(
+                                    npc,
+                                    value,
+                                    target,
+                                    pressure,
+                                    channel
+                            );
+
+            printInfluenceResult(
+                    context,
+                    "Value "
+                            + value,
+                    result
+            );
+
+            return 1;
+
+        } catch (
+                RuntimeException exception
+        ) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeNormPressure(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        try {
+
+            NpcId npc =
+                    npcArgument(
+                            context
+                    );
+
+            CharacterSocialNorm norm =
+                    enumArgument(
+                            CharacterSocialNorm.class,
+                            StringArgumentType.getString(
+                                    context,
+                                    "norm"
+                            )
+                    );
+
+            double target =
+                    DoubleArgumentType.getDouble(
+                            context,
+                            "target"
+                    );
+
+            double pressure =
+                    DoubleArgumentType.getDouble(
+                            context,
+                            "pressure"
+                    );
+
+            CharacterInfluenceChannel channel =
+                    enumArgument(
+                            CharacterInfluenceChannel.class,
+                            StringArgumentType.getString(
+                                    context,
+                                    "channel"
+                            )
+                    );
+
+            CharacterInfluenceResult result =
+                    psychology()
+                            .applySocialNormPressure(
+                                    npc,
+                                    norm,
+                                    target,
+                                    pressure,
+                                    channel
+                            );
+
+            printInfluenceResult(
+                    context,
+                    "Social norm "
+                            + norm,
+                    result
+            );
+
+            return 1;
+
+        } catch (
+                RuntimeException exception
+        ) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static int executeDispositionPressure(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        try {
+
+            NpcId npc =
+                    npcArgument(
+                            context
+                    );
+
+            CharacterDisposition disposition =
+                    enumArgument(
+                            CharacterDisposition.class,
+                            StringArgumentType.getString(
+                                    context,
+                                    "disposition"
+                            )
+                    );
+
+            double target =
+                    DoubleArgumentType.getDouble(
+                            context,
+                            "target"
+                    );
+
+            double pressure =
+                    DoubleArgumentType.getDouble(
+                            context,
+                            "pressure"
+                    );
+
+            CharacterInfluenceChannel channel =
+                    enumArgument(
+                            CharacterInfluenceChannel.class,
+                            StringArgumentType.getString(
+                                    context,
+                                    "channel"
+                            )
+                    );
+
+            CharacterInfluenceResult result =
+                    psychology()
+                            .applyDispositionPressure(
+                                    npc,
+                                    disposition,
+                                    target,
+                                    pressure,
+                                    channel
+                            );
+
+            printInfluenceResult(
+                    context,
+                    "Disposition "
+                            + disposition,
+                    result
+            );
+
+            return 1;
+
+        } catch (
+                RuntimeException exception
+        ) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
+    private static CharacterPsychologyService psychology() {
+
+        NpcSimulation simulation =
+                NpcSimulation.get();
+
+        return new CharacterPsychologyService(
+                simulation.registry(),
+                simulation.profiles(),
+                simulation.relationships()
+        );
+    }
+
+    private static void printInfluenceResult(
+            CommandContext<CommandSourceStack> context,
+            String label,
+            CharacterInfluenceResult result
+    ) {
+
+        success(
+                context,
+                label
+                        + " | "
+                        + format(
+                        result.before()
+                )
+                        + " -> "
+                        + format(
+                        result.after()
+                )
+                        + " toward "
+                        + format(
+                        result.target()
+                )
+        );
+
+        success(
+                context,
+                "delta="
+                        + format(
+                        result.delta()
+                )
+                        + " effectiveStrength="
+                        + format(
+                        result.effectiveStrength()
+                )
+                        + " susceptibility="
+                        + format(
+                        result.susceptibility()
+                )
+                        + " resistance="
+                        + format(
+                        result.resistance()
+                )
+                        + " convictionResistance="
+                        + format(
+                        result.convictionResistance()
+                )
+                        + " sourceFactor="
+                        + format(
+                        result.sourceFactor()
+                )
+        );
+    }
+
+    private static NpcId npcArgument(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        return new NpcId(
+                LongArgumentType.getLong(
+                        context,
+                        "npc"
+                )
+        );
+    }
+
+    private static <E extends Enum<E>> E enumArgument(
+            Class<E> type,
+            String raw
+    ) {
+
+        try {
+
+            return Enum.valueOf(
+                    type,
+                    raw.trim()
+                            .toUpperCase(
+                                    Locale.ROOT
+                            )
+            );
+
+        } catch (
+                IllegalArgumentException exception
+        ) {
+
+            throw new IllegalArgumentException(
+                    "Unknown "
+                            + type.getSimpleName()
+                            + ": "
+                            + raw,
+                    exception
+            );
         }
     }
 
@@ -348,9 +887,28 @@ public final class CharacterProfileDebugCommand {
     ) {
 
         return String.format(
-                "%.2f",
+                Locale.ROOT,
+                "%.3f",
                 value
         );
+    }
+
+    private static int failure(
+            CommandContext<CommandSourceStack> context,
+            RuntimeException exception
+    ) {
+
+        context.getSource()
+                .sendFailure(
+                        Component.literal(
+                                exception.getMessage() == null
+                                        ? exception.getClass()
+                                        .getSimpleName()
+                                        : exception.getMessage()
+                        )
+                );
+
+        return 0;
     }
 
     private static void success(
