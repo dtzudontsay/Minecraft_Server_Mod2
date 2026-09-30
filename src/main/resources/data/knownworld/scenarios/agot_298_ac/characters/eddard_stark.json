@@ -1,6 +1,6 @@
 {
   "id": "eddard_stark",
-  "authoringVersion": 1,
+  "authoringVersion": 2,
 
   "identity": {
     "givenName": "Eddard",
@@ -18,6 +18,13 @@
     "honor": 0.96,
     "patience": 0.72,
     "sociability": -0.15
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
   },
 
   "profile": {
@@ -230,8 +237,8 @@
     ],
 
     "occupations": [
-      "noble_lord",
-      "ruler"
+      "ruler",
+      "soldier"
     ],
 
     "offices": [
@@ -244,10 +251,7 @@
       "lord_of_winterfell"
     ],
 
-    "militaryRoles": [
-      "commander",
-      "northern_lord"
-    ],
+    "militaryRoles": [],
 
     "combatSpecialties": [
       "sword",

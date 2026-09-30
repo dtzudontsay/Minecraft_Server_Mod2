@@ -1,0 +1,130 @@
+{
+  "id": "tyrion_lannister",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Tyrion",
+    "familyName": "Lannister",
+    "sex": "MALE",
+    "birthYear": 273
+  },
+
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
+  },
+
+  "personality": {
+    "courage": 0.45,
+    "ambition": 0.36,
+    "compassion": 0.42,
+    "honor": 0.05,
+    "patience": 0.32,
+    "sociability": 0.55
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "westerman",
+    "religion": "faith_of_the_seven",
+    "education": "noble_scholarly",
+    "birthplaceLocationId": "casterly_rock",
+    "upbringingLocationId": "casterly_rock",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.86,
+    "socialStatus": 0.70,
+    "reputation": 0.22,
+
+    "skills": {
+      "diplomacy": 0.72,
+      "stewardship": 0.70,
+      "intrigue": 0.76,
+      "learning": 0.90,
+      "leadership": 0.58,
+      "language": 0.88,
+      "trade": 0.52
+    },
+
+    "traits": [
+      "intelligent",
+      "witty",
+      "cynical",
+      "curious",
+      "socially_observant",
+      "hedonistic",
+      "resentful",
+      "empathetic_to_outcasts"
+    ],
+
+    "occupations": [
+      "courtier",
+      "scholar"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.52,
+      "culture.heritage_attachment": 0.50,
+      "culture.assimilation_openness": 0.62,
+      "culture.affinity.westerman": 1.0,
+      "religion.devotion": 0.08,
+      "religion.identity_importance": 0.12,
+      "religion.tolerance": 0.76,
+      "religion.conversion_openness": 0.62,
+      "religion.observance": 0.08
+    },
+
+    "motivations": [
+      "Use knowledge and wit to overcome contempt directed at me.",
+      "Enjoy the freedoms my wealth and name provide.",
+      "Earn recognition for my intelligence rather than my appearance."
+    ],
+
+    "dialogue": {
+      "formality": -0.28,
+      "verbosity": 0.52,
+      "warmth": 0.10,
+      "directness": 0.55,
+      "preferredAddress": "Tyrion",
+      "guidance": "Speak intelligently and wittily, often using humor or sarcasm as defense. Be highly observant of hypocrisy, status and the vulnerabilities of other people."
+    }
+  },
+
+  "social": {
+    "household": "royal_household",
+    "nobleHouse": "house_lannister",
+    "faction": "iron_throne"
+  },
+
+  "relationships": [
+    {
+      "target": "jaime_lannister",
+      "affection": 0.78,
+      "trust": 0.78,
+      "respect": 0.74,
+      "fear": 0.00,
+      "familiarity": 0.96
+    },
+    {
+      "target": "cersei_lannister",
+      "affection": -0.58,
+      "trust": -0.72,
+      "respect": -0.20,
+      "fear": 0.22,
+      "familiarity": 0.95
+    }
+  ]
+}

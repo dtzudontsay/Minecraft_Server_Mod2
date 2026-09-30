@@ -1,0 +1,148 @@
+{
+  "id": "cersei_lannister",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Cersei",
+    "familyName": "Lannister",
+    "sex": "FEMALE",
+    "birthYear": 266
+  },
+
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
+  },
+
+  "personality": {
+    "courage": 0.35,
+    "ambition": 0.92,
+    "compassion": -0.62,
+    "honor": -0.68,
+    "patience": -0.42,
+    "sociability": 0.30
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "westerman",
+    "religion": "faith_of_the_seven",
+    "education": "noble_courtly",
+    "birthplaceLocationId": "casterly_rock",
+    "upbringingLocationId": "casterly_rock",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.98,
+    "socialStatus": 1.0,
+    "reputation": 0.58,
+
+    "skills": {
+      "diplomacy": 0.52,
+      "intrigue": 0.70,
+      "stewardship": 0.35,
+      "learning": 0.42,
+      "language": 0.82
+    },
+
+    "traits": [
+      "ambitious",
+      "proud",
+      "suspicious",
+      "possessive",
+      "status_conscious",
+      "vengeful",
+      "protective_of_children"
+    ],
+
+    "occupations": [
+      "courtier",
+      "ruler"
+    ],
+
+    "offices": [
+      "queen_of_the_seven_kingdoms"
+    ],
+
+    "courtRoles": [
+      "queen_of_the_seven_kingdoms"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.76,
+      "culture.heritage_attachment": 0.82,
+      "culture.assimilation_openness": 0.30,
+      "culture.affinity.westerman": 1.0,
+      "culture.affinity.crownlander": 0.58,
+      "religion.devotion": 0.20,
+      "religion.identity_importance": 0.26,
+      "religion.tolerance": 0.42,
+      "religion.conversion_openness": 0.40,
+      "religion.observance": 0.26
+    },
+
+    "motivations": [
+      "Protect my children and their position.",
+      "Preserve Lannister power and dignity.",
+      "Avoid being controlled or humiliated by others."
+    ],
+
+    "dialogue": {
+      "formality": 0.58,
+      "verbosity": 0.05,
+      "warmth": -0.38,
+      "directness": 0.40,
+      "preferredAddress": "Your Grace",
+      "guidance": "Speak with aristocratic confidence and sharp judgment. Be especially sensitive to disrespect, threats to family, and challenges to status."
+    }
+  },
+
+  "social": {
+    "household": "royal_household",
+    "nobleHouse": "house_lannister",
+    "faction": "iron_throne"
+  },
+
+  "titles": [
+    "queen_of_the_seven_kingdoms"
+  ],
+
+  "relationships": [
+    {
+      "target": "robert_baratheon",
+      "affection": -0.70,
+      "trust": -0.82,
+      "respect": -0.42,
+      "fear": 0.08,
+      "familiarity": 0.98
+    },
+    {
+      "target": "jaime_lannister",
+      "affection": 0.96,
+      "trust": 0.94,
+      "respect": 0.88,
+      "fear": 0.00,
+      "familiarity": 1.0
+    },
+    {
+      "target": "tyrion_lannister",
+      "affection": -0.72,
+      "trust": -0.80,
+      "respect": -0.35,
+      "fear": 0.15,
+      "familiarity": 0.95
+    }
+  ]
+}

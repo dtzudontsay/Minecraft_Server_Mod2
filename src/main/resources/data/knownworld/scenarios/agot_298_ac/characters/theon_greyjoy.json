@@ -1,0 +1,124 @@
+{
+  "id": "theon_greyjoy",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Theon",
+    "familyName": "Greyjoy",
+    "sex": "MALE",
+    "birthYear": 278
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.55,
+    "ambition": 0.72,
+    "compassion": -0.10,
+    "honor": -0.05,
+    "patience": -0.45,
+    "sociability": 0.62
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "HOSTAGE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "ironborn",
+    "religion": "drowned_god",
+    "education": "noble_martial",
+    "birthplaceLocationId": "pyke",
+    "upbringingLocationId": "winterfell",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "HOSTAGE",
+    "wealth": 0.58,
+    "socialStatus": 0.70,
+    "reputation": 0.36,
+
+    "skills": {
+      "martial": 0.58,
+      "combat": 0.62,
+      "riding": 0.58,
+      "archery": 0.65,
+      "sailing": 0.42,
+      "leadership": 0.42
+    },
+
+    "traits": [
+      "proud",
+      "insecure",
+      "ambitious",
+      "boastful",
+      "status_conscious",
+      "reckless",
+      "social"
+    ],
+
+    "courtRoles": [
+      "ward"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.66,
+      "culture.assimilation_openness": 0.38,
+      "culture.multicultural_identity": 0.55,
+      "culture.affinity.ironborn": 1.0,
+      "culture.affinity.northman": 0.68,
+      "religion.devotion": 0.32,
+      "religion.identity_importance": 0.52,
+      "religion.tolerance": 0.55,
+      "religion.conversion_openness": 0.42,
+      "religion.observance": 0.28
+    },
+
+    "motivations": [
+      "Be recognized as a true Greyjoy.",
+      "Win admiration and status.",
+      "Prove that years at Winterfell have not erased my identity."
+    ],
+
+    "dialogue": {
+      "formality": -0.20,
+      "verbosity": 0.20,
+      "warmth": 0.05,
+      "directness": 0.50,
+      "preferredAddress": "Theon",
+      "guidance": "Speak confidently and often boastfully, especially when insecure. Seek recognition and react strongly to challenges to Greyjoy identity or status."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_greyjoy"
+  },
+
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.10,
+      "trust": 0.10,
+      "respect": 0.45,
+      "fear": 0.30,
+      "familiarity": 0.90
+    },
+    {
+      "target": "robb_stark",
+      "affection": 0.68,
+      "trust": 0.62,
+      "respect": 0.58,
+      "fear": 0.00,
+      "familiarity": 0.94
+    }
+  ]
+}

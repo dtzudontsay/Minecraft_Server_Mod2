@@ -11,6 +11,7 @@ import dev.dtzudontsay.knownworld.debug.LegalStateDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
+import dev.dtzudontsay.knownworld.debug.ReferenceValidationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligiousInstitutionDebugCommand;
@@ -40,6 +41,7 @@ import dev.dtzudontsay.knownworld.world.geography.regions.SouthFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SouthWestEssosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.SummerIslesFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
+import dev.dtzudontsay.knownworld.world.reference.ReferenceIntegrityValidator;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
 import dev.dtzudontsay.knownworld.world.reference.influence.RegionalInfluenceCatalog;
@@ -63,6 +65,12 @@ public final class KnownWorld implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
+        /*
+         * ---------------------------------------------------------
+         * WORLD GENERATION
+         * ---------------------------------------------------------
+         */
 
         KnownWorldBiomeSources.register();
 
@@ -123,6 +131,17 @@ public final class KnownWorld implements ModInitializer {
         RegionalSubregionResolver.bootstrap();
 
         RegionalInfluenceCatalog.bootstrap();
+
+        /*
+         * ---------------------------------------------------------
+         * 18H.1 REFERENCE INTEGRITY
+         * ---------------------------------------------------------
+         *
+         * The full authored scenario is checked before the runtime NPC
+         * simulation starts. Batch 19 can therefore fail fast on bad IDs.
+         */
+
+        ReferenceIntegrityValidator.validateDefaultScenario();
 
         /*
          * ---------------------------------------------------------
@@ -199,6 +218,8 @@ public final class KnownWorld implements ModInitializer {
 
         RegionalInfluenceDebugCommand.register();
 
+        ReferenceValidationDebugCommand.register();
+
         /*
          * ---------------------------------------------------------
          * CHARACTER IDENTITY / FORMATION DEBUG
@@ -224,8 +245,7 @@ public final class KnownWorld implements ModInitializer {
         NpcSimulation.registerLifecycle();
 
         /*
-         * Batch 18G authored overlays remain registered after the
-         * simulation lifecycle so scenario/profile state is available.
+         * 18G/18H.1 authored overlays run after NpcSimulation load.
          */
         AuthoredCharacterProfileOverlayService.registerLifecycle();
 

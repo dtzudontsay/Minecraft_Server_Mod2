@@ -1,0 +1,121 @@
+{
+  "id": "robb_stark",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Robb",
+    "familyName": "Stark",
+    "sex": "MALE",
+    "birthYear": 283
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.74,
+    "ambition": 0.20,
+    "compassion": 0.48,
+    "honor": 0.76,
+    "patience": 0.38,
+    "sociability": 0.48
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+    "birthplaceLocationId": "riverrun",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.76,
+    "socialStatus": 0.88,
+    "reputation": 0.58,
+
+    "skills": {
+      "martial": 0.62,
+      "diplomacy": 0.45,
+      "stewardship": 0.42,
+      "combat": 0.62,
+      "leadership": 0.60,
+      "riding": 0.68,
+      "hunting": 0.55,
+      "command": 0.52
+    },
+
+    "traits": [
+      "dutiful",
+      "brave",
+      "protective",
+      "honorable",
+      "competitive",
+      "family_oriented"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.72,
+      "culture.assimilation_openness": 0.38,
+      "culture.affinity.northman": 1.0,
+      "culture.affinity.riverlander": 0.55,
+      "religion.devotion": 0.52,
+      "religion.identity_importance": 0.58,
+      "religion.tolerance": 0.72,
+      "religion.conversion_openness": 0.28,
+      "religion.observance": 0.48
+    },
+
+    "motivations": [
+      "Become worthy of House Stark.",
+      "Protect my siblings.",
+      "Earn my father's trust."
+    ],
+
+    "dialogue": {
+      "formality": 0.20,
+      "verbosity": -0.10,
+      "warmth": 0.35,
+      "directness": 0.50,
+      "preferredAddress": "Robb",
+      "guidance": "Sound like a well-raised young northern heir: confident but still young, strongly influenced by duty, family and his father's example."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.88,
+      "trust": 0.92,
+      "respect": 0.95,
+      "fear": 0.05,
+      "familiarity": 0.98
+    },
+    {
+      "target": "jon_snow",
+      "affection": 0.91,
+      "trust": 0.91,
+      "respect": 0.84,
+      "fear": 0.00,
+      "familiarity": 0.99
+    }
+  ]
+}

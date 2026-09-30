@@ -1,6 +1,6 @@
 {
   "id": "robert_baratheon",
-  "authoringVersion": 1,
+  "authoringVersion": 2,
 
   "identity": {
     "givenName": "Robert",
@@ -23,6 +23,13 @@
     "honor": 0.05,
     "patience": -0.72,
     "sociability": 0.88
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
   },
 
   "profile": {
@@ -239,9 +246,9 @@
     ],
 
     "occupations": [
-      "king",
-      "warrior",
-      "ruler"
+      "ruler",
+      "soldier",
+      "hunter"
     ],
 
     "offices": [
@@ -249,14 +256,10 @@
     ],
 
     "courtRoles": [
-      "king"
+      "king_of_the_seven_kingdoms"
     ],
 
-    "militaryRoles": [
-      "king",
-      "commander",
-      "rebel_commander"
-    ],
+    "militaryRoles": [],
 
     "combatSpecialties": [
       "warhammer",

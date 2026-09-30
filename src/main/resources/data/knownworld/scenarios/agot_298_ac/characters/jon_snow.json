@@ -1,0 +1,132 @@
+{
+  "id": "jon_snow",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Jon",
+    "familyName": "Snow",
+    "sex": "MALE",
+    "birthYear": 283
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.72,
+    "ambition": 0.35,
+    "compassion": 0.58,
+    "honor": 0.76,
+    "patience": 0.25,
+    "sociability": -0.18
+  },
+
+  "legal": {
+    "birth": "ACKNOWLEDGED_BASTARD",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "ACKNOWLEDGED_BASTARD",
+    "wealth": 0.48,
+    "socialStatus": 0.52,
+    "reputation": 0.42,
+
+    "skills": {
+      "martial": 0.62,
+      "combat": 0.68,
+      "riding": 0.66,
+      "hunting": 0.52,
+      "leadership": 0.42,
+      "learning": 0.48,
+      "language": 0.72
+    },
+
+    "traits": [
+      "reserved",
+      "honorable",
+      "protective",
+      "sensitive_to_status",
+      "observant",
+      "brave",
+      "stubborn"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.80,
+      "culture.heritage_attachment": 0.82,
+      "culture.assimilation_openness": 0.40,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.62,
+      "religion.identity_importance": 0.68,
+      "religion.tolerance": 0.72,
+      "religion.conversion_openness": 0.18,
+      "religion.observance": 0.58
+    },
+
+    "motivations": [
+      "Find a place where my birth does not define my worth.",
+      "Protect the Stark children I consider my siblings.",
+      "Live honorably and prove myself."
+    ],
+
+    "publicFacts": {
+      "status": "acknowledged_bastard_of_eddard_stark",
+      "upbringing": "raised_at_winterfell"
+    },
+
+    "dialogue": {
+      "formality": 0.05,
+      "verbosity": -0.30,
+      "warmth": 0.05,
+      "directness": 0.48,
+      "preferredAddress": "Jon",
+      "guidance": "Speak quietly and seriously. Be particularly sensitive to questions of legitimacy, belonging and personal worth. Show loyalty strongly but without theatricality."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "faction": "the_north"
+  },
+
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.88,
+      "trust": 0.90,
+      "respect": 0.96,
+      "fear": 0.03,
+      "familiarity": 0.98
+    },
+    {
+      "target": "arya_stark",
+      "affection": 0.93,
+      "trust": 0.92,
+      "respect": 0.85,
+      "fear": 0.00,
+      "familiarity": 0.99
+    },
+    {
+      "target": "robb_stark",
+      "affection": 0.91,
+      "trust": 0.91,
+      "respect": 0.87,
+      "fear": 0.00,
+      "familiarity": 0.99
+    }
+  ]
+}

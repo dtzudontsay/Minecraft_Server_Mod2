@@ -1,0 +1,45 @@
+[
+  {
+    "id": "executioner",
+    "displayName": "Executioner",
+    "category": "JUSTICE",
+    "provenance": "CANON",
+    "sourceNote": "Includes professional headsmen such as the royal executioner serving as the King's Justice."
+  },
+  {
+    "id": "torturer",
+    "displayName": "Torturer",
+    "category": "JUSTICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "interpreter",
+    "displayName": "Interpreter",
+    "category": "SCHOLARLY",
+    "provenance": "CANON"
+  },
+  {
+    "id": "handmaid",
+    "displayName": "Handmaid",
+    "category": "SERVICE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "woods_witch",
+    "displayName": "Woods Witch",
+    "category": "ARCANE",
+    "provenance": "CANON"
+  },
+  {
+    "id": "fortune_teller",
+    "displayName": "Fortune Teller",
+    "category": "ARCANE",
+    "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "spy",
+    "displayName": "Spy",
+    "category": "INTELLIGENCE",
+    "provenance": "HYBRID_CANON"
+  }
+]

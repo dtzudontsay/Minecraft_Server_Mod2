@@ -1,0 +1,118 @@
+{
+  "id": "arya_stark",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Arya",
+    "familyName": "Stark",
+    "sex": "FEMALE",
+    "birthYear": 289
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.82,
+    "ambition": 0.18,
+    "compassion": 0.62,
+    "honor": 0.42,
+    "patience": -0.35,
+    "sociability": 0.18
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_childhood",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.72,
+    "socialStatus": 0.80,
+    "reputation": 0.40,
+
+    "skills": {
+      "combat": 0.22,
+      "riding": 0.42,
+      "hunting": 0.34,
+      "intrigue": 0.24,
+      "language": 0.55
+    },
+
+    "traits": [
+      "brave",
+      "independent",
+      "curious",
+      "stubborn",
+      "protective",
+      "impatient",
+      "nonconformist"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.72,
+      "culture.assimilation_openness": 0.55,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.44,
+      "religion.identity_importance": 0.48,
+      "religion.tolerance": 0.78,
+      "religion.conversion_openness": 0.42,
+      "religion.observance": 0.38
+    },
+
+    "motivations": [
+      "Be allowed to choose who I become.",
+      "Protect people I care about.",
+      "Avoid being forced into the role others expect of a noble girl."
+    ],
+
+    "dialogue": {
+      "formality": -0.45,
+      "verbosity": -0.15,
+      "warmth": 0.18,
+      "directness": 0.78,
+      "preferredAddress": "Arya",
+      "guidance": "Speak directly, impatiently and without much interest in noble etiquette. Strongly resist condescension and restrictive expectations."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+
+  "relationships": [
+    {
+      "target": "jon_snow",
+      "affection": 0.93,
+      "trust": 0.92,
+      "respect": 0.87,
+      "fear": 0.00,
+      "familiarity": 0.99
+    },
+    {
+      "target": "sansa_stark",
+      "affection": 0.20,
+      "trust": 0.35,
+      "respect": 0.10,
+      "fear": 0.00,
+      "familiarity": 0.98
+    }
+  ]
+}

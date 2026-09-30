@@ -5,6 +5,11 @@ import com.google.gson.JsonParseException;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
+import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterBirthStatus;
+import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterCivilStatus;
+import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterCustodyStatus;
+import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterFreedomStatus;
+import dev.dtzudontsay.knownworld.simulation.npc.legal.CharacterLegalState;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterAptitude;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterDisposition;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterHealthState;
@@ -28,24 +33,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * Batch 18G.
- *
- * Applies versioned, authored high-detail character state from the same
- * character JSON files already used by ScenarioBootstrapper.
- *
- * The original scenario bootstrapper intentionally remains backwards
- * compatible with the older compact schema. This service understands the
- * expanded 18B+ profile vocabulary.
- *
- * Each authoring version is applied once per character and marked inside
- * CharacterProfile custom values. Therefore:
- *
- * - old saves can receive newly-authored character state,
- * - fresh scenarios receive the complete state,
- * - later restarts do not reset simulation changes,
- * - a future authoringVersion 2 can migrate a character once again.
- */
 public final class AuthoredCharacterProfileOverlayService {
 
     private static final Gson GSON =
@@ -59,13 +46,6 @@ public final class AuthoredCharacterProfileOverlayService {
 
     public static void registerLifecycle() {
 
-        /*
-         * KnownWorld registers this AFTER NpcSimulation.registerLifecycle().
-         *
-         * Therefore the simulation's SERVER_STARTED listener initializes
-         * and loads the save first. This listener then applies authored
-         * profile overlays.
-         */
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
 
@@ -158,8 +138,9 @@ public final class AuthoredCharacterProfileOverlayService {
                 scenario.characters
         ) {
 
-            if (characterResource == null
-                    || characterResource.isBlank()) {
+            if (!hasText(
+                    characterResource
+            )) {
 
                 continue;
             }
@@ -173,8 +154,9 @@ public final class AuthoredCharacterProfileOverlayService {
                             CharacterData.class
                     );
 
-            if (data.id == null
-                    || data.id.isBlank()
+            if (!hasText(
+                    data.id
+            )
                     || data.authoringVersion <= 0) {
 
                 continue;
@@ -191,10 +173,6 @@ public final class AuthoredCharacterProfileOverlayService {
 
             if (npc == null) {
 
-                /*
-                 * This allows future scenarios to omit characters without
-                 * making the whole server fail.
-                 */
                 KnownWorld.LOGGER.warn(
                         "Authored character overlay references NPC '{}' which is not present in the current scenario.",
                         data.id
@@ -227,6 +205,12 @@ public final class AuthoredCharacterProfileOverlayService {
                     data.profile
             );
 
+            applyLegal(
+                    simulation,
+                    npc,
+                    data.legal
+            );
+
             applySocial(
                     simulation,
                     npc,
@@ -245,13 +229,6 @@ public final class AuthoredCharacterProfileOverlayService {
                     data.relationships
             );
 
-            /*
-             * Must be last.
-             *
-             * If application throws above, no completion marker is written
-             * and the migration will be attempted again after the problem
-             * is fixed.
-             */
             profile.setValue(
                     marker,
                     1.0
@@ -270,6 +247,13 @@ public final class AuthoredCharacterProfileOverlayService {
         return applied;
     }
 
+    /*
+     * =========================================================
+     * PROFILE
+     * =========================================================
+     */
+
+    @SuppressWarnings("deprecation")
     private static void applyProfile(
             CharacterProfile profile,
             ProfileData data
@@ -358,6 +342,11 @@ public final class AuthoredCharacterProfileOverlayService {
             );
         }
 
+        /*
+         * Legacy compatibility only.
+         *
+         * New authored data should ALSO use the top-level legal object.
+         */
         if (hasText(
                 data.legalStatus
         )) {
@@ -366,7 +355,7 @@ public final class AuthoredCharacterProfileOverlayService {
                     enumValue(
                             CharacterLegalStatus.class,
                             data.legalStatus,
-                            "legal status"
+                            "legacy legal status"
                     )
             );
         }
@@ -482,12 +471,6 @@ public final class AuthoredCharacterProfileOverlayService {
             }
         }
 
-        /*
-         * Backwards-compatible custom values.
-         *
-         * This is also where the current culture/religion systems keep
-         * their detailed personal state.
-         */
         if (data.values != null) {
 
             for (
@@ -559,14 +542,20 @@ public final class AuthoredCharacterProfileOverlayService {
                     data.occupations
             ) {
 
-                if (hasText(
+                if (!hasText(
                         occupation
                 )) {
 
-                    profile.addOccupation(
-                            occupation
-                    );
+                    continue;
                 }
+
+                requireOccupation(
+                        occupation
+                );
+
+                profile.addOccupation(
+                        occupation
+                );
             }
         }
 
@@ -617,6 +606,10 @@ public final class AuthoredCharacterProfileOverlayService {
                         role
                 )) {
 
+                    requireRole(
+                            role
+                    );
+
                     profile.addMilitaryRole(
                             role
                     );
@@ -660,12 +653,6 @@ public final class AuthoredCharacterProfileOverlayService {
             }
         }
 
-        /*
-         * These lists are authored baselines.
-         *
-         * Clear the old compact scenario versions before applying the
-         * richer gold-standard versions.
-         */
         if (data.motivations != null) {
 
             profile.clearMotivations();
@@ -844,6 +831,87 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
+    /*
+     * =========================================================
+     * MULTI-AXIS LEGAL STATE
+     * =========================================================
+     */
+
+    private static void applyLegal(
+            NpcSimulation simulation,
+            NpcId npc,
+            LegalData data
+    ) {
+
+        if (data == null) {
+            return;
+        }
+
+        CharacterLegalState state =
+                simulation.legalStates()
+                        .getOrCreate(
+                                npc
+                        );
+
+        if (hasText(
+                data.birth
+        )) {
+
+            state.setBirthStatus(
+                    enumValue(
+                            CharacterBirthStatus.class,
+                            data.birth,
+                            "birth status"
+                    )
+            );
+        }
+
+        if (hasText(
+                data.freedom
+        )) {
+
+            state.setFreedomStatus(
+                    enumValue(
+                            CharacterFreedomStatus.class,
+                            data.freedom,
+                            "freedom status"
+                    )
+            );
+        }
+
+        if (hasText(
+                data.custody
+        )) {
+
+            state.setCustodyStatus(
+                    enumValue(
+                            CharacterCustodyStatus.class,
+                            data.custody,
+                            "custody status"
+                    )
+            );
+        }
+
+        if (hasText(
+                data.civil
+        )) {
+
+            state.setCivilStatus(
+                    enumValue(
+                            CharacterCivilStatus.class,
+                            data.civil,
+                            "civil status"
+                    )
+            );
+        }
+    }
+
+    /*
+     * =========================================================
+     * SOCIAL
+     * =========================================================
+     */
+
     private static void applySocial(
             NpcSimulation simulation,
             NpcId npc,
@@ -997,6 +1065,12 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
+    /*
+     * =========================================================
+     * REFERENCE VALIDATION
+     * =========================================================
+     */
+
     private static void requireCulture(
             String cultureId
     ) {
@@ -1047,6 +1121,46 @@ public final class AuthoredCharacterProfileOverlayService {
             );
         }
     }
+
+    private static void requireOccupation(
+            String occupationId
+    ) {
+
+        if (WorldReferenceCatalog.get()
+                .occupation(
+                        occupationId
+                )
+                .isEmpty()) {
+
+            throw new IllegalArgumentException(
+                    "Unknown authored occupation: "
+                            + occupationId
+            );
+        }
+    }
+
+    private static void requireRole(
+            String roleId
+    ) {
+
+        if (WorldReferenceCatalog.get()
+                .role(
+                        roleId
+                )
+                .isEmpty()) {
+
+            throw new IllegalArgumentException(
+                    "Unknown authored role: "
+                            + roleId
+            );
+        }
+    }
+
+    /*
+     * =========================================================
+     * HELPERS
+     * =========================================================
+     */
 
     private static String versionMarker(
             int version
@@ -1135,8 +1249,9 @@ public final class AuthoredCharacterProfileOverlayService {
             String child
     ) {
 
-        if (child == null
-                || child.isBlank()) {
+        if (!hasText(
+                child
+        )) {
 
             throw new IllegalArgumentException(
                     "Scenario character resource path cannot be empty"
@@ -1206,6 +1321,12 @@ public final class AuthoredCharacterProfileOverlayService {
         }
     }
 
+    /*
+     * =========================================================
+     * JSON STRUCTURES
+     * =========================================================
+     */
+
     private static final class ScenarioIndex {
 
         List<String> characters;
@@ -1219,11 +1340,24 @@ public final class AuthoredCharacterProfileOverlayService {
 
         ProfileData profile;
 
+        LegalData legal;
+
         SocialData social;
 
         List<String> titles;
 
         List<RelationshipData> relationships;
+    }
+
+    private static final class LegalData {
+
+        String birth;
+
+        String freedom;
+
+        String custody;
+
+        String civil;
     }
 
     private static final class ProfileData {

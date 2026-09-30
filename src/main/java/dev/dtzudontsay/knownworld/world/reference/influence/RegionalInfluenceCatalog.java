@@ -26,8 +26,11 @@ public final class RegionalInfluenceCatalog {
     private static final Gson GSON =
             new Gson();
 
-    private static final String RESOURCE =
+    private static final String BASE_RESOURCE =
             "data/knownworld/reference/regional_influences.json";
+
+    private static final String EXTENSION_RESOURCE =
+            "data/knownworld/reference/regional_influence_extensions.json";
 
     private static RegionalInfluenceCatalog instance;
 
@@ -48,7 +51,9 @@ public final class RegionalInfluenceCatalog {
 
         try {
 
-            catalog.load();
+            catalog.loadBase();
+
+            catalog.loadExtensions();
 
             catalog.validate();
 
@@ -66,7 +71,7 @@ public final class RegionalInfluenceCatalog {
                 catalog;
 
         KnownWorld.LOGGER.info(
-                "Regional influence catalog loaded with {} profiles.",
+                "Regional influence catalog loaded with {} effective profiles.",
                 catalog.profiles.size()
         );
     }
@@ -95,10 +100,9 @@ public final class RegionalInfluenceCatalog {
 
         return Optional.ofNullable(
                 profiles.get(
-                        locationId.trim()
-                                .toLowerCase(
-                                        Locale.ROOT
-                                )
+                        normalizeId(
+                                locationId
+                        )
                 )
         );
     }
@@ -114,12 +118,19 @@ public final class RegionalInfluenceCatalog {
         return profiles.size();
     }
 
-    private void load() throws IOException {
+    /*
+     * =========================================================
+     * LOAD
+     * =========================================================
+     */
+
+    private void loadBase() throws IOException {
 
         ProfileData[] data =
                 readJson(
-                        RESOURCE,
-                        ProfileData[].class
+                        BASE_RESOURCE,
+                        ProfileData[].class,
+                        false
                 );
 
         for (
@@ -145,11 +156,69 @@ public final class RegionalInfluenceCatalog {
         }
     }
 
+    /**
+     * Batch 18H.1.
+     *
+     * Extension profiles refine the existing regional model without
+     * requiring the large historical baseline JSON to be rewritten.
+     *
+     * When an extension has the same locationId as an existing profile,
+     * only dimensions authored by the extension replace/refine the base.
+     */
+    private void loadExtensions() throws IOException {
+
+        ProfileData[] data =
+                readJson(
+                        EXTENSION_RESOURCE,
+                        ProfileData[].class,
+                        true
+                );
+
+        if (data == null) {
+            return;
+        }
+
+        for (
+                ProfileData entry :
+                data
+        ) {
+
+            RegionalInfluenceProfile refinement =
+                    createProfile(
+                            entry
+                    );
+
+            RegionalInfluenceProfile existing =
+                    profiles.get(
+                            refinement.locationId()
+                    );
+
+            if (existing == null) {
+
+                profiles.put(
+                        refinement.locationId(),
+                        refinement
+                );
+
+            } else {
+
+                profiles.put(
+                        refinement.locationId(),
+                        RegionalInfluenceProfile.merge(
+                                existing,
+                                refinement
+                        )
+                );
+            }
+        }
+    }
+
     private RegionalInfluenceProfile createProfile(
             ProfileData data
     ) {
 
-        if (data.locationId == null
+        if (data == null
+                || data.locationId == null
                 || data.locationId.isBlank()) {
 
             throw new IllegalArgumentException(
@@ -222,6 +291,12 @@ public final class RegionalInfluenceCatalog {
         );
     }
 
+    /*
+     * =========================================================
+     * VALIDATION
+     * =========================================================
+     */
+
     private void validate() {
 
         WorldReferenceCatalog references =
@@ -241,13 +316,28 @@ public final class RegionalInfluenceCatalog {
                                 + profile.locationId()
                 );
             }
+
+            validateCultureExposure(
+                    references,
+                    profile
+            );
+
+            validateReligionExposure(
+                    references,
+                    profile
+            );
+
+            validateLanguageExposure(
+                    references,
+                    profile
+            );
         }
 
         /*
-         * Every major runtime territory must have a profile.
+         * Every major runtime territory must have a baseline.
          *
-         * The profile may consist entirely of UNKNOWN values for
-         * poorly documented regions, but the absence is explicit.
+         * Sparse/unknown profiles are allowed, but completely missing
+         * territories are not.
          */
         for (
                 var territory :
@@ -266,6 +356,87 @@ public final class RegionalInfluenceCatalog {
             }
         }
     }
+
+    private static void validateCultureExposure(
+            WorldReferenceCatalog references,
+            RegionalInfluenceProfile profile
+    ) {
+
+        for (
+                String culture :
+                profile.cultureExposure()
+                        .keySet()
+        ) {
+
+            if (references.culture(
+                    culture
+            ).isEmpty()) {
+
+                throw new IllegalStateException(
+                        "Regional influence profile "
+                                + profile.locationId()
+                                + " references unknown culture "
+                                + culture
+                );
+            }
+        }
+    }
+
+    private static void validateReligionExposure(
+            WorldReferenceCatalog references,
+            RegionalInfluenceProfile profile
+    ) {
+
+        for (
+                String religion :
+                profile.religionExposure()
+                        .keySet()
+        ) {
+
+            if (references.religion(
+                    religion
+            ).isEmpty()) {
+
+                throw new IllegalStateException(
+                        "Regional influence profile "
+                                + profile.locationId()
+                                + " references unknown religion "
+                                + religion
+                );
+            }
+        }
+    }
+
+    private static void validateLanguageExposure(
+            WorldReferenceCatalog references,
+            RegionalInfluenceProfile profile
+    ) {
+
+        for (
+                String language :
+                profile.languageExposure()
+                        .keySet()
+        ) {
+
+            if (references.language(
+                    language
+            ).isEmpty()) {
+
+                throw new IllegalStateException(
+                        "Regional influence profile "
+                                + profile.locationId()
+                                + " references unknown language "
+                                + language
+                );
+            }
+        }
+    }
+
+    /*
+     * =========================================================
+     * DATA CONVERSION
+     * =========================================================
+     */
 
     private static RegionalInfluenceValue influenceValue(
             InfluenceData data
@@ -307,7 +478,9 @@ public final class RegionalInfluenceCatalog {
                     entry.getValue();
 
             result.put(
-                    entry.getKey(),
+                    normalizeId(
+                            entry.getKey()
+                    ),
                     value == null
                             ? RegionalExposureWeight.unknown()
                             : new RegionalExposureWeight(
@@ -347,6 +520,15 @@ public final class RegionalInfluenceCatalog {
             String raw
     ) {
 
+        if (raw == null
+                || raw.isBlank()) {
+
+            throw new IllegalArgumentException(
+                    "Missing enum value for "
+                            + type.getSimpleName()
+            );
+        }
+
         return Enum.valueOf(
                 type,
                 raw.trim()
@@ -356,9 +538,34 @@ public final class RegionalInfluenceCatalog {
         );
     }
 
+    private static String normalizeId(
+            String id
+    ) {
+
+        if (id == null
+                || id.isBlank()) {
+
+            throw new IllegalArgumentException(
+                    "Reference ID cannot be blank"
+            );
+        }
+
+        return id.trim()
+                .toLowerCase(
+                        Locale.ROOT
+                );
+    }
+
+    /*
+     * =========================================================
+     * JSON
+     * =========================================================
+     */
+
     private static <T> T readJson(
             String resource,
-            Class<T> type
+            Class<T> type,
+            boolean optional
     ) throws IOException {
 
         try (
@@ -371,6 +578,10 @@ public final class RegionalInfluenceCatalog {
         ) {
 
             if (input == null) {
+
+                if (optional) {
+                    return null;
+                }
 
                 throw new IOException(
                         "Reference resource not found: "
@@ -392,7 +603,8 @@ public final class RegionalInfluenceCatalog {
                                 type
                         );
 
-                if (value == null) {
+                if (value == null
+                        && !optional) {
 
                     throw new IOException(
                             "Reference JSON returned null: "

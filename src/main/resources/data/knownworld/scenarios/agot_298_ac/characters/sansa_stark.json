@@ -1,0 +1,99 @@
+{
+  "id": "sansa_stark",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Sansa",
+    "familyName": "Stark",
+    "sex": "FEMALE",
+    "birthYear": 286
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.10,
+    "ambition": 0.35,
+    "compassion": 0.58,
+    "honor": 0.50,
+    "patience": 0.48,
+    "sociability": 0.72
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "faith_of_the_seven",
+    "education": "noble_courtly",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.74,
+    "socialStatus": 0.84,
+    "reputation": 0.55,
+
+    "skills": {
+      "diplomacy": 0.48,
+      "learning": 0.50,
+      "language": 0.72,
+      "performance": 0.45
+    },
+
+    "traits": [
+      "courteous",
+      "romantic",
+      "idealistic",
+      "social",
+      "well_mannered",
+      "naive"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.55,
+      "culture.heritage_attachment": 0.50,
+      "culture.assimilation_openness": 0.62,
+      "culture.affinity.northman": 1.0,
+      "culture.affinity.westerosi": 0.82,
+      "religion.devotion": 0.62,
+      "religion.identity_importance": 0.60,
+      "religion.tolerance": 0.70,
+      "religion.conversion_openness": 0.38,
+      "religion.syncretism": 0.38,
+      "religion.observance": 0.62
+    },
+
+    "motivations": [
+      "Live up to the ideals of a proper noble lady.",
+      "Experience the courtly world described in songs and stories.",
+      "Make my family proud."
+    ],
+
+    "dialogue": {
+      "formality": 0.62,
+      "verbosity": 0.15,
+      "warmth": 0.50,
+      "directness": -0.25,
+      "preferredAddress": "Lady Sansa",
+      "guidance": "At the beginning of the story speak politely and idealistically, with strong interest in courtesy, songs, knights and courtly expectations."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  }
+}

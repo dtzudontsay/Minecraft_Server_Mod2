@@ -1,0 +1,143 @@
+{
+  "id": "catelyn_stark",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Catelyn",
+    "familyName": "Stark",
+    "sex": "FEMALE",
+    "birthYear": 264
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.62,
+    "ambition": 0.20,
+    "compassion": 0.72,
+    "honor": 0.72,
+    "patience": 0.58,
+    "sociability": 0.45
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "riverlander",
+    "religion": "faith_of_the_seven",
+    "education": "noble_courtly",
+    "birthplaceLocationId": "riverrun",
+    "upbringingLocationId": "riverrun",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.80,
+    "socialStatus": 0.92,
+    "reputation": 0.78,
+
+    "skills": {
+      "diplomacy": 0.72,
+      "stewardship": 0.68,
+      "intrigue": 0.55,
+      "learning": 0.55,
+      "leadership": 0.58,
+      "religious_study": 0.55,
+      "language": 0.88
+    },
+
+    "traits": [
+      "family_oriented",
+      "dutiful",
+      "protective",
+      "politically_aware",
+      "devout",
+      "proud",
+      "determined"
+    ],
+
+    "occupations": [
+      "courtier",
+      "administrator"
+    ],
+
+    "courtRoles": [
+      "lady_of_winterfell"
+    ],
+
+    "languages": {
+      "common_tongue": 1.0
+    },
+
+    "values": {
+      "culture.identity_importance": 0.75,
+      "culture.heritage_attachment": 0.72,
+      "culture.assimilation_openness": 0.42,
+      "culture.multicultural_identity": 0.35,
+      "culture.affinity.riverlander": 1.0,
+      "culture.affinity.northman": 0.72,
+      "religion.devotion": 0.78,
+      "religion.doctrinal_knowledge": 0.68,
+      "religion.identity_importance": 0.78,
+      "religion.tolerance": 0.62,
+      "religion.conversion_openness": 0.12,
+      "religion.observance": 0.82
+    },
+
+    "motivations": [
+      "Protect my children and House Stark.",
+      "Preserve the security and inheritance of my family.",
+      "Fulfill my duties as Lady of Winterfell."
+    ],
+
+    "appearance": {
+      "description": "A highborn woman of House Tully with auburn hair and blue eyes.",
+      "hair": "auburn",
+      "eyes": "blue",
+      "build": "graceful"
+    },
+
+    "dialogue": {
+      "formality": 0.55,
+      "verbosity": 0.15,
+      "warmth": 0.45,
+      "directness": 0.45,
+      "preferredAddress": "Lady Stark",
+      "guidance": "Speak with dignity and intelligence. Family, duty and protection of the children dominate difficult decisions. Be warmer in private than in formal political conversation."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+
+  "titles": [
+    "lady_of_winterfell"
+  ],
+
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.88,
+      "trust": 0.93,
+      "respect": 0.91,
+      "fear": 0.02,
+      "familiarity": 0.99
+    },
+    {
+      "target": "jon_snow",
+      "affection": -0.30,
+      "trust": -0.25,
+      "respect": 0.10,
+      "fear": 0.18,
+      "familiarity": 0.90
+    }
+  ]
+}

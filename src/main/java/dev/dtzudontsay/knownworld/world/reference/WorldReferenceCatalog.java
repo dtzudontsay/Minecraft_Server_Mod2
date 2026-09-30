@@ -111,12 +111,24 @@ public final class WorldReferenceCatalog {
             );
 
             /*
-             * All previously classified map labels become reference
-             * locations automatically.
+             * Batch 19.0A.
              *
-             * Explicit locations.json entries win when both use the
-             * same ID because those contain the richer hierarchy.
+             * Small future vocabulary expansions can now live in
+             * dedicated extension files rather than forcing complete
+             * rewrites of the large baseline catalogs.
              */
+            catalog.loadOptionalEntries(
+                    BASE
+                            + "occupations_extensions.json",
+                    catalog.occupations
+            );
+
+            catalog.loadOptionalEntries(
+                    BASE
+                            + "roles_extensions.json",
+                    catalog.roles
+            );
+
             catalog.importGeographicFeatures();
 
             catalog.validate();
@@ -161,6 +173,7 @@ public final class WorldReferenceCatalog {
     public Optional<WorldLocationDefinition> location(
             String id
     ) {
+
         return Optional.ofNullable(
                 locations.get(
                         normalizeId(
@@ -173,6 +186,7 @@ public final class WorldReferenceCatalog {
     public Optional<ReferenceEntry> culture(
             String id
     ) {
+
         return findEntry(
                 cultures,
                 id
@@ -182,6 +196,7 @@ public final class WorldReferenceCatalog {
     public Optional<ReferenceEntry> religion(
             String id
     ) {
+
         return findEntry(
                 religions,
                 id
@@ -191,6 +206,7 @@ public final class WorldReferenceCatalog {
     public Optional<ReferenceEntry> religiousOrder(
             String id
     ) {
+
         return findEntry(
                 religiousOrders,
                 id
@@ -200,6 +216,7 @@ public final class WorldReferenceCatalog {
     public Optional<ReferenceEntry> language(
             String id
     ) {
+
         return findEntry(
                 languages,
                 id
@@ -209,6 +226,7 @@ public final class WorldReferenceCatalog {
     public Optional<ReferenceEntry> occupation(
             String id
     ) {
+
         return findEntry(
                 occupations,
                 id
@@ -218,6 +236,7 @@ public final class WorldReferenceCatalog {
     public Optional<ReferenceEntry> role(
             String id
     ) {
+
         return findEntry(
                 roles,
                 id
@@ -225,42 +244,49 @@ public final class WorldReferenceCatalog {
     }
 
     public Collection<WorldLocationDefinition> locations() {
+
         return List.copyOf(
                 locations.values()
         );
     }
 
     public Collection<ReferenceEntry> cultures() {
+
         return List.copyOf(
                 cultures.values()
         );
     }
 
     public Collection<ReferenceEntry> religions() {
+
         return List.copyOf(
                 religions.values()
         );
     }
 
     public Collection<ReferenceEntry> religiousOrders() {
+
         return List.copyOf(
                 religiousOrders.values()
         );
     }
 
     public Collection<ReferenceEntry> languages() {
+
         return List.copyOf(
                 languages.values()
         );
     }
 
     public Collection<ReferenceEntry> occupations() {
+
         return List.copyOf(
                 occupations.values()
         );
     }
 
     public Collection<ReferenceEntry> roles() {
+
         return List.copyOf(
                 roles.values()
         );
@@ -269,6 +295,7 @@ public final class WorldReferenceCatalog {
     public List<WorldLocationDefinition> childrenOf(
             String parentId
     ) {
+
         String normalized =
                 normalizeId(
                         parentId
@@ -288,6 +315,7 @@ public final class WorldReferenceCatalog {
     public List<WorldLocationDefinition> pathToRoot(
             String locationId
     ) {
+
         WorldLocationDefinition current =
                 location(
                         locationId
@@ -356,6 +384,7 @@ public final class WorldReferenceCatalog {
     public Optional<FeatureLocation> resolvedMapLocation(
             String locationId
     ) {
+
         WorldLocationDefinition location =
                 location(
                         locationId
@@ -375,13 +404,10 @@ public final class WorldReferenceCatalog {
         );
     }
 
-    /**
-     * When subcultures are disabled, repeatedly walks upward until
-     * the first non-SUBCULTURE culture is reached.
-     */
     public String effectiveCultureId(
             String cultureId
     ) {
+
         String normalized =
                 normalizeId(
                         cultureId
@@ -505,6 +531,41 @@ public final class WorldReferenceCatalog {
                         EntryData[].class
                 );
 
+        addEntries(
+                data,
+                destination,
+                resource
+        );
+    }
+
+    private void loadOptionalEntries(
+            String resource,
+            Map<String, ReferenceEntry> destination
+    ) throws IOException {
+
+        EntryData[] data =
+                readOptionalJson(
+                        resource,
+                        EntryData[].class
+                );
+
+        if (data == null) {
+            return;
+        }
+
+        addEntries(
+                data,
+                destination,
+                resource
+        );
+    }
+
+    private void addEntries(
+            EntryData[] data,
+            Map<String, ReferenceEntry> destination,
+            String resource
+    ) {
+
         for (
                 EntryData entry :
                 data
@@ -529,8 +590,10 @@ public final class WorldReferenceCatalog {
             ) != null) {
 
                 throw new IllegalStateException(
-                        "Duplicate reference entry: "
+                        "Duplicate reference entry "
                                 + definition.id()
+                                + " while loading "
+                                + resource
                 );
             }
         }
@@ -607,10 +670,6 @@ public final class WorldReferenceCatalog {
                 "language"
         );
 
-        /*
-         * Religious-order parents refer to religions rather than to
-         * other religious orders.
-         */
         for (
                 ReferenceEntry order :
                 religiousOrders.values()
@@ -635,6 +694,7 @@ public final class WorldReferenceCatalog {
             Map<String, ReferenceEntry> entries,
             String description
     ) {
+
         for (
                 ReferenceEntry entry :
                 entries.values()
@@ -659,6 +719,7 @@ public final class WorldReferenceCatalog {
     private static WorldLocationKind locationKindFor(
             GeographicFeatureType type
     ) {
+
         return switch (type) {
 
             case CONTINENT ->
@@ -686,6 +747,7 @@ public final class WorldReferenceCatalog {
     private static ReferenceProvenance provenanceFor(
             SourceConfidence confidence
     ) {
+
         return switch (confidence) {
 
             case CANON ->
@@ -703,6 +765,7 @@ public final class WorldReferenceCatalog {
             Map<String, ReferenceEntry> entries,
             String id
     ) {
+
         return Optional.ofNullable(
                 entries.get(
                         normalizeId(
@@ -715,19 +778,23 @@ public final class WorldReferenceCatalog {
     private static String normalizeId(
             String id
     ) {
+
         Objects.requireNonNull(
                 id,
                 "id"
         );
 
         return id.trim()
-                .toLowerCase();
+                .toLowerCase(
+                        Locale.ROOT
+                );
     }
 
     private static <E extends Enum<E>> E enumValue(
             Class<E> type,
             String value
     ) {
+
         if (value == null
                 || value.isBlank()) {
 
@@ -768,30 +835,69 @@ public final class WorldReferenceCatalog {
                 );
             }
 
-            try (
-                    Reader reader =
-                            new InputStreamReader(
-                                    input,
-                                    StandardCharsets.UTF_8
-                            )
-            ) {
+            return parseJson(
+                    input,
+                    resource,
+                    type
+            );
+        }
+    }
 
-                T value =
-                        GSON.fromJson(
-                                reader,
-                                type
-                        );
+    private static <T> T readOptionalJson(
+            String resource,
+            Class<T> type
+    ) throws IOException {
 
-                if (value == null) {
+        try (
+                InputStream input =
+                        WorldReferenceCatalog.class
+                                .getClassLoader()
+                                .getResourceAsStream(
+                                        resource
+                                )
+        ) {
 
-                    throw new IOException(
-                            "Reference JSON returned null: "
-                                    + resource
-                    );
-                }
-
-                return value;
+            if (input == null) {
+                return null;
             }
+
+            return parseJson(
+                    input,
+                    resource,
+                    type
+            );
+        }
+    }
+
+    private static <T> T parseJson(
+            InputStream input,
+            String resource,
+            Class<T> type
+    ) throws IOException {
+
+        try (
+                Reader reader =
+                        new InputStreamReader(
+                                input,
+                                StandardCharsets.UTF_8
+                        )
+        ) {
+
+            T value =
+                    GSON.fromJson(
+                            reader,
+                            type
+                    );
+
+            if (value == null) {
+
+                throw new IOException(
+                        "Reference JSON returned null: "
+                                + resource
+                );
+            }
+
+            return value;
 
         } catch (
                 JsonParseException exception

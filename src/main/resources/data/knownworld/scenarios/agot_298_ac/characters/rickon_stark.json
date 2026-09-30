@@ -1,0 +1,87 @@
+{
+  "id": "rickon_stark",
+  "authoringVersion": 1,
+
+  "identity": {
+    "givenName": "Rickon",
+    "familyName": "Stark",
+    "sex": "MALE",
+    "birthYear": 295
+  },
+
+  "startingSettlement": "winterfell",
+
+  "personality": {
+    "courage": 0.35,
+    "ambition": 0.00,
+    "compassion": 0.45,
+    "honor": 0.05,
+    "patience": -0.55,
+    "sociability": 0.15
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "early_childhood",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.70,
+    "socialStatus": 0.74,
+    "reputation": 0.10,
+
+    "traits": [
+      "young",
+      "emotional",
+      "stubborn",
+      "energetic"
+    ],
+
+    "languages": {
+      "common_tongue": 0.72
+    },
+
+    "values": {
+      "culture.identity_importance": 0.22,
+      "culture.heritage_attachment": 0.28,
+      "culture.assimilation_openness": 0.72,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.12,
+      "religion.identity_importance": 0.18,
+      "religion.tolerance": 0.75,
+      "religion.conversion_openness": 0.72,
+      "religion.observance": 0.12
+    },
+
+    "motivations": [
+      "Stay close to my family.",
+      "Explore and play."
+    ],
+
+    "dialogue": {
+      "formality": -0.70,
+      "verbosity": -0.45,
+      "warmth": 0.20,
+      "directness": 0.55,
+      "preferredAddress": "Rickon",
+      "guidance": "Speak as a very young child. Use simple ideas and strong emotions rather than adult political reasoning."
+    }
+  },
+
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  }
+}

@@ -1,0 +1,409 @@
+[
+  {
+    "locationId": "the_neck",
+    "sourceNote": "18H.1 identity refinement. The Neck retains the broader North profile while adding strong Crannogman exposure.",
+    "cultures": {
+      "crannogman": {
+        "weight": 0.88,
+        "provenance": "CANON",
+        "confidence": 0.90,
+        "sourceNote": "The crannogmen inhabit the Neck."
+      }
+    },
+    "religions": {
+      "old_gods": {
+        "weight": 0.98,
+        "provenance": "CANON",
+        "confidence": 0.95
+      }
+    },
+    "languages": {
+      "common_tongue": {
+        "weight": 0.94,
+        "provenance": "CANON",
+        "confidence": 0.90
+      }
+    }
+  },
+
+  {
+    "locationId": "skagos",
+    "sourceNote": "18H.1 Skagosi identity refinement. Numerical exposure weights are simulation tuning.",
+    "cultures": {
+      "skagosi": {
+        "weight": 0.92,
+        "provenance": "CANON",
+        "confidence": 0.90
+      }
+    },
+    "religions": {
+      "old_gods": {
+        "weight": 0.90,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.80
+      }
+    },
+    "languages": {
+      "common_tongue": {
+        "weight": 0.78,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.70
+      },
+      "old_tongue": {
+        "weight": 0.20,
+        "provenance": "PLAUSIBLE",
+        "confidence": 0.30,
+        "sourceNote": "Low-confidence simulation exposure rather than a claim that all Skagosi use the Old Tongue."
+      }
+    }
+  },
+
+  {
+    "locationId": "dorne",
+    "sourceNote": "18H.1 adds low-level Rhoynish minority exposure. This does not imply that all of Dorne follows Mother Rhoyne or speaks Rhoynish.",
+    "cultures": {
+      "orphan_greenblood": {
+        "weight": 0.08,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45,
+        "sourceNote": "Low regional minority exposure until a dedicated Greenblood subregion is authored."
+      }
+    },
+    "religions": {
+      "mother_rhoyne": {
+        "weight": 0.08,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45,
+        "sourceNote": "Represents limited Orphan of the Greenblood presence, not a Dornish majority religion."
+      }
+    },
+    "languages": {
+      "rhoynish": {
+        "weight": 0.06,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.40,
+        "sourceNote": "Minority/heritage exposure associated with the Orphans of the Greenblood."
+      }
+    }
+  },
+
+  {
+    "locationId": "iron_islands",
+    "sourceNote": "18H.1 preserves dominant Drowned God identity while allowing limited Faith of the Seven exposure.",
+    "religions": {
+      "faith_of_the_seven": {
+        "weight": 0.07,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45
+      }
+    }
+  },
+
+  {
+    "locationId": "braavosian_coastlands",
+    "sourceNote": "18H.1 adds commercial lingua-franca exposure to the existing Braavosi refinement.",
+    "languages": {
+      "trade_talk": {
+        "weight": 0.52,
+        "provenance": "CANON",
+        "confidence": 0.70
+      }
+    }
+  },
+
+  {
+    "locationId": "hills_of_norvos",
+    "sourceNote": "Norvoshi cultural/religious/language refinement. Numerical weights are simulation tuning.",
+    "cultures": {
+      "norvoshi": {
+        "weight": 0.88,
+        "provenance": "CANON",
+        "confidence": 0.90
+      }
+    },
+    "religions": {
+      "bearded_priests": {
+        "weight": 0.82,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.80,
+        "sourceNote": "Uses the project's compatibility religion identifier for the Norvoshi faith governed by the Bearded Priests."
+      }
+    },
+    "languages": {
+      "norvoshi_valyrian": {
+        "weight": 0.86,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.80
+      },
+      "trade_talk": {
+        "weight": 0.25,
+        "provenance": "CANON",
+        "confidence": 0.55
+      }
+    }
+  },
+
+  {
+    "locationId": "forest_of_qohor",
+    "sourceNote": "Qohorik cultural/religious/language refinement.",
+    "cultures": {
+      "qohorik": {
+        "weight": 0.88,
+        "provenance": "CANON",
+        "confidence": 0.90
+      }
+    },
+    "religions": {
+      "black_goat": {
+        "weight": 0.88,
+        "provenance": "CANON",
+        "confidence": 0.90
+      }
+    },
+    "languages": {
+      "qohorik_valyrian": {
+        "weight": 0.86,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.80
+      },
+      "trade_talk": {
+        "weight": 0.28,
+        "provenance": "CANON",
+        "confidence": 0.55
+      }
+    }
+  },
+
+  {
+    "locationId": "disputed_lands",
+    "sourceNote": "18H.1 adds low-confidence influence from the three principal neighboring Free Cities rather than treating the region as culturally uniform.",
+    "cultures": {
+      "myrish": {
+        "weight": 0.20,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.50
+      },
+      "tyroshi": {
+        "weight": 0.20,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.50
+      },
+      "lysene": {
+        "weight": 0.18,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45
+      }
+    },
+    "languages": {
+      "myrish_valyrian": {
+        "weight": 0.20,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45
+      },
+      "tyroshi_valyrian": {
+        "weight": 0.20,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45
+      },
+      "lysene_valyrian": {
+        "weight": 0.18,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.40
+      },
+      "trade_talk": {
+        "weight": 0.48,
+        "provenance": "CANON",
+        "confidence": 0.65
+      }
+    }
+  },
+
+  {
+    "locationId": "lands_of_long_summer",
+    "sourceNote": "18H.1 adds Volantene influence to the existing broad Valyrian profile.",
+    "cultures": {
+      "volantene": {
+        "weight": 0.38,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.50
+      }
+    },
+    "religions": {
+      "rhllor": {
+        "weight": 0.30,
+        "provenance": "CANON",
+        "confidence": 0.55
+      },
+      "old_gods_of_valyria": {
+        "weight": 0.14,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.35
+      }
+    },
+    "languages": {
+      "volantene_valyrian": {
+        "weight": 0.58,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.60
+      },
+      "trade_talk": {
+        "weight": 0.38,
+        "provenance": "CANON",
+        "confidence": 0.60
+      }
+    }
+  },
+
+  {
+    "locationId": "ghiscar",
+    "sourceNote": "18H.1 replaces the previous generic Ghiscari-language interpretation with explicit historical and modern language exposures.",
+    "languages": {
+      "old_ghiscari": {
+        "weight": 0.26,
+        "provenance": "CANON",
+        "confidence": 0.60
+      },
+      "slavers_bay_valyrian": {
+        "weight": 0.76,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.80
+      },
+      "trade_talk": {
+        "weight": 0.38,
+        "provenance": "CANON",
+        "confidence": 0.60
+      }
+    }
+  },
+
+  {
+    "locationId": "slavers_bay_region",
+    "sourceNote": "Slaver's Bay subregional identity refinement. City-specific cultures are represented as overlapping exposure because this mask covers the wider bay.",
+    "cultures": {
+      "astapori": {
+        "weight": 0.27,
+        "provenance": "CANON",
+        "confidence": 0.65
+      },
+      "yunkish": {
+        "weight": 0.27,
+        "provenance": "CANON",
+        "confidence": 0.65
+      },
+      "meereenese": {
+        "weight": 0.30,
+        "provenance": "CANON",
+        "confidence": 0.70
+      }
+    },
+    "religions": {
+      "lady_of_spears": {
+        "weight": 0.12,
+        "provenance": "CANON",
+        "confidence": 0.45,
+        "sourceNote": "Limited cult exposure; not represented as a majority religion of Slaver's Bay."
+      }
+    },
+    "languages": {
+      "slavers_bay_valyrian": {
+        "weight": 0.94,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.88
+      },
+      "old_ghiscari": {
+        "weight": 0.20,
+        "provenance": "CANON",
+        "confidence": 0.55
+      },
+      "trade_talk": {
+        "weight": 0.48,
+        "provenance": "CANON",
+        "confidence": 0.65
+      }
+    }
+  },
+
+  {
+    "locationId": "qarth_region",
+    "sourceNote": "18H.1 adds commercial lingua-franca exposure to cosmopolitan Qarth.",
+    "languages": {
+      "trade_talk": {
+        "weight": 0.58,
+        "provenance": "CANON",
+        "confidence": 0.70
+      }
+    }
+  },
+
+  {
+    "locationId": "shadow_lands",
+    "sourceNote": "18H.1 adds Asshai'i cultural and linguistic exposure while keeping confidence restrained because the region remains sparsely documented.",
+    "cultures": {
+      "asshaii": {
+        "weight": 0.64,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.55
+      }
+    },
+    "languages": {
+      "asshaii": {
+        "weight": 0.72,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.60
+      },
+      "trade_talk": {
+        "weight": 0.26,
+        "provenance": "CANON",
+        "confidence": 0.45
+      }
+    }
+  },
+
+  {
+    "locationId": "summer_isles",
+    "sourceNote": "18H.1 adds limited interregional trade-language exposure.",
+    "languages": {
+      "trade_talk": {
+        "weight": 0.24,
+        "provenance": "CANON",
+        "confidence": 0.50
+      }
+    }
+  },
+
+  {
+    "locationId": "basilisk_isles",
+    "sourceNote": "18H.1 adds a mixed trade-language environment appropriate to the region's interregional contact.",
+    "languages": {
+      "trade_talk": {
+        "weight": 0.40,
+        "provenance": "CANON",
+        "confidence": 0.55
+      }
+    }
+  },
+
+  {
+    "locationId": "kingdom_of_sarnor",
+    "sourceNote": "Historical Sarnori region. Modern identity is heavily disrupted; all surviving Sarnori exposure is deliberately low-confidence.",
+    "cultures": {
+      "sarnori": {
+        "weight": 0.18,
+        "provenance": "CANON",
+        "confidence": 0.35
+      },
+      "dothraki": {
+        "weight": 0.32,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45
+      }
+    },
+    "languages": {
+      "dothraki": {
+        "weight": 0.30,
+        "provenance": "HYBRID_CANON",
+        "confidence": 0.45
+      }
+    }
+  }
+]

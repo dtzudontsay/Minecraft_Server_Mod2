@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -86,7 +85,9 @@ public final class ReligiousInstitutionCatalog {
             String id
     ) {
 
-        if (id == null) {
+        if (id == null
+                || id.isBlank()) {
+
             return Optional.empty();
         }
 
@@ -111,7 +112,9 @@ public final class ReligiousInstitutionCatalog {
             String religionId
     ) {
 
-        if (religionId == null) {
+        if (religionId == null
+                || religionId.isBlank()) {
+
             return List.of();
         }
 
@@ -189,6 +192,12 @@ public final class ReligiousInstitutionCatalog {
         }
     }
 
+    /**
+     * Batch 18H.1:
+     *
+     * Religious institutions are no longer allowed to contain soft,
+     * unvalidated string references.
+     */
     private void validate() {
 
         WorldReferenceCatalog references =
@@ -211,29 +220,51 @@ public final class ReligiousInstitutionCatalog {
                 );
             }
 
-            /*
-             * Where the old reference religious_orders.json already
-             * contains the same ID, require consistency.
-             */
-            references.religiousOrder(
-                    definition.id()
-            ).ifPresent(
-                    reference -> {
-
-                        if (!definition.religionId()
-                                .equals(
-                                        reference.parentId()
-                                )) {
-
-                            throw new IllegalStateException(
-                                    "Religious institution "
-                                            + definition.id()
-                                            + " conflicts with reference parent "
-                                            + reference.parentId()
+            var referenceOrder =
+                    references.religiousOrder(
+                                    definition.id()
+                            )
+                            .orElseThrow(
+                                    () ->
+                                            new IllegalStateException(
+                                                    "Religious institution "
+                                                            + definition.id()
+                                                            + " has no matching entry in religious_orders.json"
+                                            )
                             );
-                        }
-                    }
-            );
+
+            if (!definition.religionId()
+                    .equals(
+                            referenceOrder.parentId()
+                    )) {
+
+                throw new IllegalStateException(
+                        "Religious institution "
+                                + definition.id()
+                                + " belongs to religion "
+                                + definition.religionId()
+                                + " but religious_orders.json assigns it to "
+                                + referenceOrder.parentId()
+                );
+            }
+
+            for (
+                    String role :
+                    definition.roles()
+            ) {
+
+                if (references.role(
+                        role
+                ).isEmpty()) {
+
+                    throw new IllegalStateException(
+                            "Religious institution "
+                                    + definition.id()
+                                    + " references unknown role "
+                                    + role
+                    );
+                }
+            }
         }
     }
 
