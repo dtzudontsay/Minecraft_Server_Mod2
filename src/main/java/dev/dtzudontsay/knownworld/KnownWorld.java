@@ -35,6 +35,8 @@ import dev.dtzudontsay.knownworld.world.geography.regions.UlthosFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
+import dev.dtzudontsay.knownworld.world.reference.spatial.RegionalSubregionCatalog;
+import dev.dtzudontsay.knownworld.world.reference.spatial.RegionalSubregionResolver;
 import dev.dtzudontsay.knownworld.world.reference.spatial.TerritoryZoneCatalog;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -83,24 +85,19 @@ public final class KnownWorld implements ModInitializer {
 
         WorldReferenceCatalog.bootstrap();
 
-        /*
-         * Top-level landmass envelopes:
-         *
-         * Westeros / Essos / Sothoryos / Ulthos / Summer Isles.
-         *
-         * These may extend into sea on the authoring map. Runtime
-         * resolution still requires the terrain sampler to report LAND.
-         */
         LandmassZoneCatalog.bootstrap();
 
-        /*
-         * Major realm / regional territory layer.
-         *
-         * Every territory is restricted to its parent landmass,
-         * preventing sea-side authoring envelopes from assigning
-         * islands to an unrelated continent.
-         */
         TerritoryZoneCatalog.bootstrap();
+
+        /*
+         * Regional painted subregion masks.
+         *
+         * These are loaded from the high-resolution regional maps
+         * that were manually painted with exact flat colors.
+         */
+        RegionalSubregionCatalog.bootstrap();
+
+        RegionalSubregionResolver.bootstrap();
 
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -122,7 +119,7 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones and {} territory zones.",
+                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones, {} territory zones, {} subregion masks and {} subregion color entries.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
@@ -130,7 +127,11 @@ public final class KnownWorld implements ModInitializer {
                 LandmassZoneCatalog.get()
                         .size(),
                 TerritoryZoneCatalog.get()
-                        .size()
+                        .size(),
+                RegionalSubregionCatalog.get()
+                        .size(),
+                RegionalSubregionCatalog.get()
+                        .totalEntryCount()
         );
 
         KnownWorldDebugCommand.register();

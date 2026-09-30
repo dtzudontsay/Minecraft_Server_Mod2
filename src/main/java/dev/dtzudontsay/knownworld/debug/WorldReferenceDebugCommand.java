@@ -8,6 +8,8 @@ import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import dev.dtzudontsay.knownworld.world.reference.WorldReferenceSettings;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneCatalog;
 import dev.dtzudontsay.knownworld.world.reference.spatial.LandmassZoneResolver;
+import dev.dtzudontsay.knownworld.world.reference.spatial.RegionalSubregionCatalog;
+import dev.dtzudontsay.knownworld.world.reference.spatial.RegionalSubregionResolver;
 import dev.dtzudontsay.knownworld.world.reference.spatial.TerritoryZoneCatalog;
 import dev.dtzudontsay.knownworld.world.reference.spatial.TerritoryZoneResolver;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -69,6 +71,15 @@ public final class WorldReferenceDebugCommand {
                                                         )
                                                         .executes(
                                                                 WorldReferenceDebugCommand::territory
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
+                                                                "subregion"
+                                                        )
+                                                        .executes(
+                                                                WorldReferenceDebugCommand::subregion
                                                         )
                                         )
 
@@ -185,6 +196,12 @@ public final class WorldReferenceDebugCommand {
                         + " territoryZones="
                         + TerritoryZoneCatalog.get()
                         .size()
+                        + " subregionMasks="
+                        + RegionalSubregionCatalog.get()
+                        .size()
+                        + " subregionColors="
+                        + RegionalSubregionCatalog.get()
+                        .totalEntryCount()
         );
 
         return 1;
@@ -326,7 +343,6 @@ public final class WorldReferenceDebugCommand {
                     context,
                     "Landmass: none (water)"
             );
-
             success(
                     context,
                     "Territory: none"
@@ -350,7 +366,6 @@ public final class WorldReferenceDebugCommand {
                     context,
                     "Landmass: unresolved land"
             );
-
             success(
                     context,
                     "Territory: unresolved"
@@ -394,6 +409,134 @@ public final class WorldReferenceDebugCommand {
                         + " ["
                         + territory.id()
                         + "]"
+        );
+
+        success(
+                context,
+                "Master map pixel: "
+                        + String.format(
+                        "%.2f / %.2f",
+                        sample.logicalMapCoordinate()
+                                .pixelX(),
+                        sample.logicalMapCoordinate()
+                                .pixelY()
+                )
+        );
+
+        return 1;
+    }
+
+    private static int subregion(
+            CommandContext<CommandSourceStack> context
+    ) {
+        double x =
+                context.getSource()
+                        .getPosition()
+                        .x;
+
+        double z =
+                context.getSource()
+                        .getPosition()
+                        .z;
+
+        var sample =
+                KnownWorldGeoSampler.sampleMinecraft(
+                        x,
+                        z
+                );
+
+        if (!sample.insideKnownWorldMap()) {
+
+            failure(
+                    context,
+                    "Position lies outside the Known World map."
+            );
+
+            return 0;
+        }
+
+        if (!sample.land()) {
+
+            success(
+                    context,
+                    "Landmass: none (water)"
+            );
+            success(
+                    context,
+                    "Territory: none"
+            );
+            success(
+                    context,
+                    "Subregion: none"
+            );
+
+            return 1;
+        }
+
+        var landmass =
+                LandmassZoneResolver.resolveMinecraft(
+                                x,
+                                z
+                        )
+                        .orElse(
+                                null
+                        );
+
+        var territory =
+                TerritoryZoneResolver.resolveMinecraft(
+                                x,
+                                z
+                        )
+                        .orElse(
+                                null
+                        );
+
+        var subregion =
+                RegionalSubregionResolver.resolveMinecraft(
+                                x,
+                                z
+                        )
+                        .orElse(
+                                null
+                        );
+
+        success(
+                context,
+                "Landmass: "
+                        + (
+                        landmass == null
+                                ? "unresolved"
+                                : landmass.displayName()
+                                + " ["
+                                + landmass.id()
+                                + "]"
+                )
+        );
+
+        success(
+                context,
+                "Territory: "
+                        + (
+                        territory == null
+                                ? "none"
+                                : territory.displayName()
+                                + " ["
+                                + territory.id()
+                                + "]"
+                )
+        );
+
+        success(
+                context,
+                "Subregion: "
+                        + (
+                        subregion == null
+                                ? "none"
+                                : subregion.displayName()
+                                + " ["
+                                + subregion.id()
+                                + "]"
+                )
         );
 
         success(

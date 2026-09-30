@@ -112,6 +112,364 @@
   },
 
   {
+    "id": "lands_of_always_winter",
+    "displayName": "The Lands of Always Winter",
+    "kind": "SUBREGION",
+    "parentId": "beyond_the_wall",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_frozen_shore",
+    "displayName": "The Frozen Shore",
+    "kind": "SUBREGION",
+    "parentId": "beyond_the_wall",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_frostfangs",
+    "displayName": "The Frostfangs",
+    "kind": "SUBREGION",
+    "parentId": "beyond_the_wall",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_haunted_forest",
+    "displayName": "The Haunted Forest",
+    "kind": "SUBREGION",
+    "parentId": "beyond_the_wall",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_wall",
+    "displayName": "The Wall",
+    "kind": "SUBREGION",
+    "parentId": "westeros",
+    "provenance": "CANON"
+  },
+  {
+    "id": "brandons_gift",
+    "displayName": "Brandon's Gift",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_new_gift",
+    "displayName": "The New Gift",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "gray_cliffs",
+    "displayName": "Gray Cliffs",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sea_dragon_point",
+    "displayName": "Sea Dragon Point",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "wolfswood",
+    "displayName": "Wolfswood",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lonely_hills",
+    "displayName": "Lonely Hills",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sheepshead_hills",
+    "displayName": "Sheepshead Hills",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "stony_shore",
+    "displayName": "Stony Shore",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_rills",
+    "displayName": "The Rills",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "barrowlands",
+    "displayName": "Barrowlands",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "cape_kraken",
+    "displayName": "Cape Kraken",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_neck",
+    "displayName": "The Neck",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bear_island",
+    "displayName": "Bear Island",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "skagos",
+    "displayName": "Skagos",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON"
+  },
+  {
+    "id": "littlesister",
+    "displayName": "Littlesister",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "longsister",
+    "displayName": "Longsister",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sweetsister",
+    "displayName": "Sweetsister",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "pebble",
+    "displayName": "Pebble",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_paps",
+    "displayName": "The Paps",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_fingers",
+    "displayName": "The Fingers",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "vale_of_arryn",
+    "displayName": "Vale of Arryn",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mountains_of_the_moon",
+    "displayName": "Mountains of the Moon",
+    "kind": "SUBREGION",
+    "parentId": "vale",
+    "provenance": "CANON"
+  },
+  {
+    "id": "claw_isle",
+    "displayName": "Claw Isle",
+    "kind": "SUBREGION",
+    "parentId": "crownlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "crackclaw_point",
+    "displayName": "Crackclaw Point",
+    "kind": "SUBREGION",
+    "parentId": "crownlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_faces",
+    "displayName": "Isle of Faces",
+    "kind": "SUBREGION",
+    "parentId": "riverlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "fair_isle",
+    "displayName": "Fair Isle",
+    "kind": "SUBREGION",
+    "parentId": "westerlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "great_wyk",
+    "displayName": "Great Wyk",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "old_wyk",
+    "displayName": "Old Wyk",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lonely_light",
+    "displayName": "Lonely Light",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "orkmont",
+    "displayName": "Orkmont",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "blacktyde",
+    "displayName": "Blacktyde",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "harlaw",
+    "displayName": "Harlaw",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "dornish_marches",
+    "displayName": "Dornish Marches",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON"
+  },
+  {
+    "id": "kingswood",
+    "displayName": "Kingswood",
+    "kind": "SUBREGION",
+    "parentId": "crownlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "tarth",
+    "displayName": "Tarth",
+    "kind": "SUBREGION",
+    "parentId": "stormlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "rainwood",
+    "displayName": "Rainwood",
+    "kind": "SUBREGION",
+    "parentId": "stormlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "cape_wrath",
+    "displayName": "Cape Wrath",
+    "kind": "SUBREGION",
+    "parentId": "stormlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "estermont",
+    "displayName": "Estermont",
+    "kind": "SUBREGION",
+    "parentId": "stormlands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "green_shield",
+    "displayName": "Green Shield",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON"
+  },
+  {
+    "id": "gray_shield",
+    "displayName": "Gray Shield",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON"
+  },
+  {
+    "id": "south_shield",
+    "displayName": "South Shield",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON"
+  },
+  {
+    "id": "oakenshield",
+    "displayName": "Oakenshield",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_red_mountains",
+    "displayName": "The Red Mountains",
+    "kind": "SUBREGION",
+    "parentId": "dorne",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_prince_pass",
+    "displayName": "The Prince Pass",
+    "kind": "SUBREGION",
+    "parentId": "dorne",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_arbor",
+    "displayName": "The Arbor",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_broken_arm",
+    "displayName": "The Broken Arm",
+    "kind": "SUBREGION",
+    "parentId": "dorne",
+    "provenance": "CANON"
+  },
+
+  {
     "id": "winterfell",
     "displayName": "Winterfell",
     "kind": "SETTLEMENT",
@@ -297,6 +655,63 @@
     "sourceNote": "Convenient simulation grouping for the western Free Cities."
   },
   {
+    "id": "braavosian_coastlands",
+    "displayName": "Braavosian Coastlands",
+    "kind": "SUBREGION",
+    "parentId": "free_cities",
+    "provenance": "CANON"
+  },
+  {
+    "id": "velvet_hills",
+    "displayName": "Velvet Hills",
+    "kind": "SUBREGION",
+    "parentId": "andalos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_flatlands",
+    "displayName": "The Flatlands",
+    "kind": "SUBREGION",
+    "parentId": "andalos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "hills_of_norvos",
+    "displayName": "Hills of Norvos",
+    "kind": "SUBREGION",
+    "parentId": "free_cities",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_axe",
+    "displayName": "The Axe",
+    "kind": "SUBREGION",
+    "parentId": "andalos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "forest_of_qohor",
+    "displayName": "Forest of Qohor",
+    "kind": "SUBREGION",
+    "parentId": "free_cities",
+    "provenance": "CANON"
+  },
+  {
+    "id": "kingdom_of_sarnor",
+    "displayName": "Kingdom of Sarnor",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "omber",
+    "displayName": "Omber",
+    "kind": "SUBREGION",
+    "parentId": "kingdom_of_sarnor",
+    "provenance": "CANON"
+  },
+
+  {
     "id": "braavos",
     "displayName": "Braavos",
     "kind": "SETTLEMENT",
@@ -385,6 +800,20 @@
     "geographicFeatureId": "vaes_dothrak",
     "provenance": "CANON"
   },
+  {
+    "id": "mother_of_mountains",
+    "displayName": "Mother of Mountains",
+    "kind": "SUBREGION",
+    "parentId": "dothraki_sea_region",
+    "provenance": "CANON"
+  },
+  {
+    "id": "howling_hills",
+    "displayName": "Howling Hills",
+    "kind": "SUBREGION",
+    "parentId": "dothraki_sea_region",
+    "provenance": "CANON"
+  },
 
   {
     "id": "lhazar",
@@ -401,6 +830,13 @@
     "kind": "REGION",
     "parentId": "essos",
     "geographicFeatureId": "ghiscar",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ghaen",
+    "displayName": "Ghaen",
+    "kind": "SUBREGION",
+    "parentId": "ghiscar",
     "provenance": "CANON"
   },
   {
@@ -459,12 +895,40 @@
     "geographicFeatureId": "qarth",
     "provenance": "CANON"
   },
+  {
+    "id": "khyzai_pass",
+    "displayName": "Khyzai Pass",
+    "kind": "SUBREGION",
+    "parentId": "qarth_region",
+    "provenance": "CANON"
+  },
+  {
+    "id": "qal",
+    "displayName": "Qal",
+    "kind": "SUBREGION",
+    "parentId": "qarth_region",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bone_mountains",
+    "displayName": "Bone Mountains",
+    "kind": "SUBREGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
 
   {
     "id": "ib_region",
     "displayName": "Ib",
     "kind": "REGION",
     "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "far_ib",
+    "displayName": "Far Ib",
+    "kind": "SUBREGION",
+    "parentId": "ib_region",
     "provenance": "CANON"
   },
 
@@ -500,10 +964,38 @@
     "sourceNote": "Authoring grouping for the Great Moraq / nearby island area."
   },
   {
+    "id": "great_moraq",
+    "displayName": "Great Moraq",
+    "kind": "SUBREGION",
+    "parentId": "moraq_region",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lesser_moraq",
+    "displayName": "Lesser Moraq",
+    "kind": "SUBREGION",
+    "parentId": "moraq_region",
+    "provenance": "CANON"
+  },
+  {
     "id": "jogos_nhai",
     "displayName": "Jogos Nhai",
     "kind": "REGION",
     "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "plains_of_the_jogos_nhai",
+    "displayName": "Plains of the Jogos Nhai",
+    "kind": "SUBREGION",
+    "parentId": "jogos_nhai",
+    "provenance": "CANON"
+  },
+  {
+    "id": "n_ghai",
+    "displayName": "N Ghai",
+    "kind": "SUBREGION",
+    "parentId": "jogos_nhai",
     "provenance": "CANON"
   },
   {
@@ -512,6 +1004,13 @@
     "kind": "REGION",
     "parentId": "essos",
     "geographicFeatureId": "mossovy",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_thousand_islands",
+    "displayName": "The Thousand Islands",
+    "kind": "SUBREGION",
+    "parentId": "mossovy",
     "provenance": "CANON"
   },
 
@@ -531,6 +1030,119 @@
     "geographicFeatureId": "asshai",
     "provenance": "CANON"
   },
+  {
+    "id": "marahai",
+    "displayName": "Marahai",
+    "kind": "SUBREGION",
+    "parentId": "yi_ti",
+    "provenance": "CANON"
+  },
+  {
+    "id": "manticore_isles",
+    "displayName": "Manticore Isles",
+    "kind": "SUBREGION",
+    "parentId": "shadow_lands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ghost_grass",
+    "displayName": "Ghost Grass",
+    "kind": "SUBREGION",
+    "parentId": "yi_ti",
+    "provenance": "CANON"
+  },
+  {
+    "id": "mountains_of_the_morn",
+    "displayName": "Mountains of the Morn",
+    "kind": "SUBREGION",
+    "parentId": "shadow_lands",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ulos",
+    "displayName": "Ulos",
+    "kind": "REGION",
+    "parentId": "ulthos",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "kingdoms_of_the_ifeqevron",
+    "displayName": "Kingdoms of the Ifeqevron",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "womb_of_the_world",
+    "displayName": "Womb of the World",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "realm_of_jhogwin",
+    "displayName": "Realm of Jhogwin",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "krazaaj_zasqa",
+    "displayName": "Krazaaj Zasqa",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "great_sand_sea",
+    "displayName": "Great Sand Sea",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_shrinking_sea",
+    "displayName": "The Shrinking Sea",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "cannibal_sands",
+    "displayName": "Cannibal Sands",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "grey_waste",
+    "displayName": "Grey Waste",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "land_of_the_shrykes",
+    "displayName": "Land of the Shrykes",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_dry_deep",
+    "displayName": "The Dry Deep",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "cities_of_the_bloodless_men",
+    "displayName": "Cities of the Bloodless Men",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
 
   {
     "id": "summer_isles",
@@ -540,6 +1152,126 @@
     "geographicFeatureId": "summer_isles",
     "provenance": "CANON"
   },
+  {
+    "id": "walano",
+    "displayName": "Walano",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_women",
+    "displayName": "Isle of Women",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "koj",
+    "displayName": "Koj",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_birds",
+    "displayName": "Isle of Birds",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "omboru",
+    "displayName": "Omboru",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_love",
+    "displayName": "Isle of Love",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "moluu",
+    "displayName": "Moluu",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "three_exiles",
+    "displayName": "Three Exiles",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_singing_stones",
+    "displayName": "The Singing Stones",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "jhala",
+    "displayName": "Jhala",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "sweet_lotus_vale",
+    "displayName": "Sweet Lotus Vale",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "xon",
+    "displayName": "Xon",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "doquu",
+    "displayName": "Doquu",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_bones",
+    "displayName": "The Bones",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "red_flower_vale",
+    "displayName": "Red Flower Vale",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "golden_head",
+    "displayName": "Golden Head",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lizard_head",
+    "displayName": "Lizard Head",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON"
+  },
+
   {
     "id": "naath",
     "displayName": "Naath",
@@ -558,11 +1290,67 @@
     "sourceNote": "Simulation region for the northern portion visible on the Known World map."
   },
   {
+    "id": "wyvern_point",
+    "displayName": "Wyvern Point",
+    "kind": "SUBREGION",
+    "parentId": "north_sothoryos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_elephants",
+    "displayName": "Isle of Elephants",
+    "kind": "SUBREGION",
+    "parentId": "north_sothoryos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_whips",
+    "displayName": "Isle of Whips",
+    "kind": "SUBREGION",
+    "parentId": "north_sothoryos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "ax_ilse",
+    "displayName": "Ax Ilse",
+    "kind": "SUBREGION",
+    "parentId": "north_sothoryos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "basilisk_point",
+    "displayName": "Basilisk Point",
+    "kind": "SUBREGION",
+    "parentId": "north_sothoryos",
+    "provenance": "CANON"
+  },
+  {
     "id": "basilisk_isles",
     "displayName": "Basilisk Isles",
     "kind": "REGION",
     "parentId": "sothoryos",
     "geographicFeatureId": "basilisk_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "skull_island",
+    "displayName": "Skull Island",
+    "kind": "SUBREGION",
+    "parentId": "basilisk_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_tears",
+    "displayName": "Isle of Tears",
+    "kind": "SUBREGION",
+    "parentId": "basilisk_isles",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_toads",
+    "displayName": "Isle of Toads",
+    "kind": "SUBREGION",
+    "parentId": "basilisk_isles",
     "provenance": "CANON"
   },
   {
@@ -579,6 +1367,78 @@
     "kind": "SETTLEMENT",
     "parentId": "sothoryos",
     "geographicFeatureId": "yeen",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "stepstones",
+    "displayName": "Stepstones",
+    "kind": "REGION",
+    "parentId": "known_world",
+    "provenance": "CANON"
+  },
+  {
+    "id": "bloodstone",
+    "displayName": "Bloodstone",
+    "kind": "SUBREGION",
+    "parentId": "stepstones",
+    "provenance": "CANON"
+  },
+  {
+    "id": "orange_shore",
+    "displayName": "The Orange Shore",
+    "kind": "SUBREGION",
+    "parentId": "lands_of_long_summer",
+    "provenance": "CANON"
+  },
+  {
+    "id": "golden_fields",
+    "displayName": "The Golden Fields",
+    "kind": "SUBREGION",
+    "parentId": "lands_of_long_summer",
+    "provenance": "CANON"
+  },
+  {
+    "id": "painted_mountains",
+    "displayName": "Painted Mountains",
+    "kind": "SUBREGION",
+    "parentId": "lands_of_long_summer",
+    "provenance": "CANON"
+  },
+  {
+    "id": "lands_of_old_valyria",
+    "displayName": "The Lands of Old Valyria",
+    "kind": "REGION",
+    "parentId": "essos",
+    "provenance": "CANON"
+  },
+  {
+    "id": "stone_head",
+    "displayName": "Stone Head",
+    "kind": "SUBREGION",
+    "parentId": "lands_of_old_valyria",
+    "provenance": "CANON"
+  },
+  {
+    "id": "the_black_cliffs",
+    "displayName": "The Black Cliffs",
+    "kind": "SUBREGION",
+    "parentId": "lands_of_old_valyria",
+    "provenance": "CANON"
+  },
+  {
+    "id": "isle_of_cedars",
+    "displayName": "Isle of Cedars",
+    "kind": "SUBREGION",
+    "parentId": "lands_of_old_valyria",
+    "provenance": "CANON"
+  },
+
+  {
+    "id": "yaros",
+    "displayName": "Yaros",
+    "kind": "SUBREGION",
+    "parentId": "essos",
     "provenance": "CANON"
   },
 
