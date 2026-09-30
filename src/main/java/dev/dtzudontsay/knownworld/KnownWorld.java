@@ -4,6 +4,7 @@ import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CharacterProfileDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CultureDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
+import dev.dtzudontsay.knownworld.debug.FormationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
@@ -61,21 +62,9 @@ public final class KnownWorld implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        /*
-         * ---------------------------------------------------------
-         * WORLD GENERATION
-         * ---------------------------------------------------------
-         */
-
         KnownWorldBiomeSources.register();
 
         KnownWorldChunkGenerators.register();
-
-        /*
-         * ---------------------------------------------------------
-         * GEOGRAPHIC FEATURE REGISTRIES
-         * ---------------------------------------------------------
-         */
 
         NorthFeatureRegistry.bootstrap();
 
@@ -99,23 +88,11 @@ public final class KnownWorld implements ModInitializer {
 
         UlthosFeatureRegistry.bootstrap();
 
-        /*
-         * ---------------------------------------------------------
-         * REFERENCE DATA
-         * ---------------------------------------------------------
-         */
-
         WorldReferenceSettings.bootstrap();
 
         WorldReferenceCatalog.bootstrap();
 
         ReligiousInstitutionCatalog.bootstrap();
-
-        /*
-         * ---------------------------------------------------------
-         * SPATIAL REFERENCE LAYERS
-         * ---------------------------------------------------------
-         */
 
         LandmassZoneCatalog.bootstrap();
 
@@ -126,12 +103,6 @@ public final class KnownWorld implements ModInitializer {
         RegionalSubregionResolver.bootstrap();
 
         RegionalInfluenceCatalog.bootstrap();
-
-        /*
-         * ---------------------------------------------------------
-         * GEODATA / BIOMES
-         * ---------------------------------------------------------
-         */
 
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -183,9 +154,7 @@ public final class KnownWorld implements ModInitializer {
         );
 
         /*
-         * ---------------------------------------------------------
-         * WORLD / REFERENCE DEBUG COMMANDS
-         * ---------------------------------------------------------
+         * Reference/world debug.
          */
 
         KnownWorldDebugCommand.register();
@@ -197,9 +166,7 @@ public final class KnownWorld implements ModInitializer {
         RegionalInfluenceDebugCommand.register();
 
         /*
-         * ---------------------------------------------------------
-         * CHARACTER IDENTITY DEBUG COMMANDS
-         * ---------------------------------------------------------
+         * Character identity / formation debug.
          */
 
         ReligionDebugCommand.register();
@@ -208,18 +175,16 @@ public final class KnownWorld implements ModInitializer {
 
         CultureDebugCommand.register();
 
+        FormationDebugCommand.register();
+
         /*
-         * ---------------------------------------------------------
-         * NPC SIMULATION
-         * ---------------------------------------------------------
+         * Simulation lifecycle.
          */
 
         NpcSimulation.registerLifecycle();
 
         /*
-         * ---------------------------------------------------------
-         * NPC / SIMULATION DEBUG COMMANDS
-         * ---------------------------------------------------------
+         * Simulation debug.
          */
 
         NpcDebugCommand.register();

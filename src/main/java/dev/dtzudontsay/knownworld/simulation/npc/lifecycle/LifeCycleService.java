@@ -7,6 +7,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.family.CharacterGenerationService;
+import dev.dtzudontsay.knownworld.simulation.npc.formation.ChildFormationService;
 import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageManager;
 import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageRecord;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
@@ -35,6 +36,8 @@ public final class LifeCycleService {
 
     private final CharacterGenerationService characterGeneration;
 
+    private final ChildFormationService formation;
+
     private final GeneratedNameService names;
 
     private final NpcMemoryManager memories;
@@ -51,11 +54,13 @@ public final class LifeCycleService {
             PregnancyManager pregnancies,
             MarriageManager marriages,
             CharacterGenerationService characterGeneration,
+            ChildFormationService formation,
             GeneratedNameService names,
             NpcMemoryManager memories,
             WorldEventManager events,
             SuccessionService succession
     ) {
+
         this.registry =
                 Objects.requireNonNull(
                         registry,
@@ -98,6 +103,12 @@ public final class LifeCycleService {
                         "characterGeneration"
                 );
 
+        this.formation =
+                Objects.requireNonNull(
+                        formation,
+                        "formation"
+                );
+
         this.names =
                 Objects.requireNonNull(
                         names,
@@ -126,6 +137,7 @@ public final class LifeCycleService {
     public void onNewCampaignDay(
             long simulationTick
     ) {
+
         lifeHistory.ensureAll(
                 calendar.daysPerYear()
         );
@@ -133,6 +145,12 @@ public final class LifeCycleService {
         processPregnancies(
                 simulationTick
         );
+
+        /*
+         * Upbringing performs actual work only when a child reaches
+         * a new age year.
+         */
+        formation.onNewCampaignDay();
 
         processNaturalDeaths(
                 simulationTick
@@ -148,6 +166,7 @@ public final class LifeCycleService {
             NpcId father,
             long simulationTick
     ) {
+
         validateParents(
                 mother,
                 father
@@ -176,6 +195,7 @@ public final class LifeCycleService {
     private void processConceptions(
             long simulationTick
     ) {
+
         for (
                 MarriageRecord marriage :
                 marriages.all()
@@ -297,6 +317,7 @@ public final class LifeCycleService {
     private void processPregnancies(
             long simulationTick
     ) {
+
         List<Pregnancy> due =
                 new ArrayList<>();
 
@@ -314,7 +335,10 @@ public final class LifeCycleService {
             }
         }
 
-        for (Pregnancy pregnancy : due) {
+        for (
+                Pregnancy pregnancy :
+                due
+        ) {
 
             NpcState mother =
                     registry.find(
@@ -380,6 +404,19 @@ public final class LifeCycleService {
                     calendar.absoluteDay()
             );
 
+            /*
+             * 18F:
+             *
+             * After biological creation/profile generation and after
+             * the exact birth day is registered, create the social /
+             * cultural / religious formation state.
+             */
+            formation.initializeAtBirth(
+                    child.id(),
+                    pregnancy.mother(),
+                    pregnancy.father()
+            );
+
             pregnancies.complete(
                     pregnancy.mother()
             );
@@ -389,6 +426,7 @@ public final class LifeCycleService {
     private void processNaturalDeaths(
             long simulationTick
     ) {
+
         List<NpcState> deaths =
                 new ArrayList<>();
 
@@ -434,7 +472,10 @@ public final class LifeCycleService {
             }
         }
 
-        for (NpcState npc : deaths) {
+        for (
+                NpcState npc :
+                deaths
+        ) {
 
             naturalDeath(
                     npc,
@@ -447,6 +488,7 @@ public final class LifeCycleService {
             NpcState npc,
             long simulationTick
     ) {
+
         NpcId spouse =
                 marriages.currentSpouseOf(
                                 npc.id()
@@ -518,6 +560,7 @@ public final class LifeCycleService {
             NpcId mother,
             NpcId father
     ) {
+
         NpcState motherState =
                 requireAlive(
                         mother
@@ -560,6 +603,7 @@ public final class LifeCycleService {
     private NpcState requireAlive(
             NpcId npc
     ) {
+
         NpcState state =
                 registry.find(
                                 npc
@@ -587,6 +631,7 @@ public final class LifeCycleService {
     private static double naturalDeathChancePerDay(
             int age
     ) {
+
         if (age < 50) {
             return 0.00002;
         }
@@ -616,6 +661,7 @@ public final class LifeCycleService {
             NpcId second,
             long salt
     ) {
+
         long seed =
                 day;
 
