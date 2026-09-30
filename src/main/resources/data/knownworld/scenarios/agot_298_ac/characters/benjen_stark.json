@@ -1,0 +1,312 @@
+{
+  "id": "benjen_stark",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Benjen",
+    "familyName": "Stark",
+    "sex": "MALE",
+    "birthYear": 267
+  },
+
+  "startingSettlement": "winterfell",
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "CANON",
+    "startingWorldLocationId": "winterfell",
+    "note": "At Winterfell with the royal visit; explicitly present before the welcoming feast."
+  },
+
+  "personality": {
+    "courage": 0.90,
+    "ambition": -0.45,
+    "compassion": 0.50,
+    "honor": 0.84,
+    "patience": 0.55,
+    "sociability": 0.25
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.06,
+    "socialStatus": 0.68,
+    "reputation": 0.84,
+
+    "skills": {
+      "martial": 0.88,
+      "diplomacy": 0.20,
+      "stewardship": 0.20,
+      "intrigue": 0.20,
+      "learning": 0.20,
+      "combat": 0.86,
+      "leadership": 0.76,
+      "riding": 0.82,
+      "sailing": 0.20,
+      "navigation": 0.90,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.92,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.20,
+      "performance": 0.20,
+      "command": 0.76,
+      "logistics": 0.72
+    },
+
+    "aptitudes": {
+      "martial": 0.90,
+      "diplomacy": 0.25,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.25,
+      "combat": 0.90,
+      "leadership": 0.25,
+      "riding": 0.86,
+      "sailing": 0.25,
+      "navigation": 0.94,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.94,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.80,
+      "logistics": 0.25
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.00,
+      "impulsivity": 0.00,
+      "discipline": 0.84,
+      "curiosity": 0.00,
+      "risk_tolerance": 0.70,
+      "emotional_stability": 0.72,
+      "suspiciousness": 0.00,
+      "empathy": 0.00,
+      "aggression": 0.00,
+      "adaptability": 0.72,
+      "persistence": 0.82,
+      "pride": 0.05,
+      "humility": 0.00,
+      "greed": -0.80,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.90,
+      "family_loyalty": 0.82,
+      "house_loyalty": 0.65,
+      "dynastic_loyalty": 0.25,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.60,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.65,
+      "hospitality": 0.00,
+      "mercy": 0.00,
+      "vengeance": 0.00,
+      "justice": 0.00,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.30,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.90,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.00,
+      "urban": 0.00,
+      "rural": 0.60,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.55,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": 0.20
+    },
+
+    "values": {
+      "duty": 0.95,
+      "honor": 0.825,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.northman": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "brave",
+      "skilled_ranger",
+      "dutiful",
+      "reserved",
+      "loyal",
+      "experienced_wilderness_traveler"
+    ],
+
+    "aliases": [
+      "Uncle Benjen"
+    ],
+
+    "occupations": [
+      "soldier",
+      "scout",
+      "hunter"
+    ],
+
+    "offices": [
+      "first_ranger"
+    ],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "first_ranger",
+      "nights_watch_ranger"
+    ],
+
+    "combatSpecialties": [
+      "sword",
+      "ranging",
+      "wilderness_survival"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Serve the Watch and protect the realm from threats beyond the Wall.",
+      "Remain loyal to family without abandoning sworn duty."
+    ],
+
+    "goals": [
+      "Return to Castle Black after the royal visit.",
+      "Continue leading dangerous rangings beyond the Wall."
+    ],
+
+    "fears": [
+      "Losing brothers under his command."
+    ],
+
+    "desires": [
+      "To fulfill his oath without severing affection for his family."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "office": "first_ranger"
+    },
+
+    "privateFacts": {
+      "birth_house": "house_stark",
+      "scenario_visit": "winterfell"
+    },
+
+    "appearance": {
+      "description": "A lean, hard northern ranger with the Stark look and the bearing of a veteran outdoorsman.",
+      "hair": "dark",
+      "eyes": "grey",
+      "build": "lean_martial"
+    },
+
+    "dialogue": {
+      "formality": 0.05,
+      "verbosity": -0.20,
+      "warmth": 0.25,
+      "directness": 0.70,
+      "preferredAddress": "Benjen",
+      "guidance": "Speak plainly and dryly, with the confidence of an experienced ranger and quiet affection for family."
+    }
+  },
+
+  "social": {},
+
+  "titles": [
+    "first_ranger"
+  ],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

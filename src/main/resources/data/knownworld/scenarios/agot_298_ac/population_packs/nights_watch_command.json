@@ -1,0 +1,30 @@
+{
+  "id": "nights_watch_command",
+  "displayName": "Night's Watch Command and Senior Core",
+  "kind": "AUTHORED_NAMED",
+  "regionId": "the_wall",
+  "enabled": true,
+
+  "characters": [
+    "characters/aemon_targaryen.json",
+    "characters/jeor_mormont.json",
+    "characters/benjen_stark.json",
+    "characters/alliser_thorne.json",
+    "characters/bowen_marsh.json",
+    "characters/qhorin_halfhand.json",
+    "characters/denys_mallister.json",
+    "characters/yoren.json"
+  ],
+
+  "parentages": [],
+
+  "marriages": [],
+
+  "socialIdentities": [
+    "population_packs/nights_watch_command_social_identities.json"
+  ],
+
+  "relationships": [
+    "population_packs/nights_watch_command_relationships.json"
+  ]
+}

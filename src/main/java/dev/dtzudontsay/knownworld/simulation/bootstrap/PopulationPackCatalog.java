@@ -99,6 +99,9 @@ public final class PopulationPackCatalog {
         List<String> socialIdentityResources =
                 new ArrayList<>();
 
+        List<String> relationshipResources =
+                new ArrayList<>();
+
         Set<String> packIds =
                 new LinkedHashSet<>();
 
@@ -112,6 +115,9 @@ public final class PopulationPackCatalog {
                 new LinkedHashSet<>();
 
         Set<String> socialIdentityPaths =
+                new LinkedHashSet<>();
+
+        Set<String> relationshipPaths =
                 new LinkedHashSet<>();
 
         for (
@@ -193,6 +199,12 @@ public final class PopulationPackCatalog {
                             data.socialIdentities
                     );
 
+            List<String> packRelationships =
+                    resolveEntries(
+                            scenarioBase,
+                            data.relationships
+                    );
+
             Pack pack =
                     new Pack(
                             id,
@@ -210,7 +222,8 @@ public final class PopulationPackCatalog {
                             packCharacters,
                             packParentages,
                             packMarriages,
-                            packSocialIdentities
+                            packSocialIdentities,
+                            packRelationships
                     );
 
             packs.add(
@@ -252,6 +265,14 @@ public final class PopulationPackCatalog {
                     "social identity",
                     id
             );
+
+            addUniqueResources(
+                    relationshipResources,
+                    relationshipPaths,
+                    packRelationships,
+                    "relationship",
+                    id
+            );
         }
 
         return new Plan(
@@ -269,6 +290,9 @@ public final class PopulationPackCatalog {
                 ),
                 List.copyOf(
                         socialIdentityResources
+                ),
+                List.copyOf(
+                        relationshipResources
                 )
         );
     }
@@ -573,7 +597,8 @@ public final class PopulationPackCatalog {
             List<String> characterResources,
             List<String> parentageResources,
             List<String> marriageResources,
-            List<String> socialIdentityResources
+            List<String> socialIdentityResources,
+            List<String> relationshipResources
     ) {
 
         public Pack {
@@ -617,6 +642,11 @@ public final class PopulationPackCatalog {
                     List.copyOf(
                             socialIdentityResources
                     );
+
+            relationshipResources =
+                    List.copyOf(
+                            relationshipResources
+                    );
         }
     }
 
@@ -625,7 +655,8 @@ public final class PopulationPackCatalog {
             List<String> characterResources,
             List<String> parentageResources,
             List<String> marriageResources,
-            List<String> socialIdentityResources
+            List<String> socialIdentityResources,
+            List<String> relationshipResources
     ) {
 
         public Plan {
@@ -654,11 +685,17 @@ public final class PopulationPackCatalog {
                     List.copyOf(
                             socialIdentityResources
                     );
+
+            relationshipResources =
+                    List.copyOf(
+                            relationshipResources
+                    );
         }
 
         public static Plan empty() {
 
             return new Plan(
+                    List.of(),
                     List.of(),
                     List.of(),
                     List.of(),
@@ -701,5 +738,7 @@ public final class PopulationPackCatalog {
         List<String> marriages;
 
         List<String> socialIdentities;
+
+        List<String> relationships;
     }
 }

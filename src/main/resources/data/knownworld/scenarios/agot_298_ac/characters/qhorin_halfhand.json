@@ -1,0 +1,314 @@
+{
+  "id": "qhorin_halfhand",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Qhorin",
+    "familyName": "Halfhand",
+    "sex": "MALE",
+    "birthYear": 250
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "STRONGLY_INFERRED",
+    "startingWorldLocationId": "the_wall",
+    "note": "Stationed at the Shadow Tower as second-in-command. Exact birth year is unknown; authoring year is approximate."
+  },
+
+  "personality": {
+    "courage": 0.98,
+    "ambition": -0.25,
+    "compassion": 0.25,
+    "honor": 0.88,
+    "patience": 0.78,
+    "sociability": -0.30
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "westerosi",
+    "religion": "old_gods",
+    "education": "martial",
+
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "unknown",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "CHRONIC_CONDITION",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.02,
+    "socialStatus": 0.62,
+    "reputation": 0.95,
+
+    "skills": {
+      "martial": 0.94,
+      "diplomacy": 0.20,
+      "stewardship": 0.20,
+      "intrigue": 0.20,
+      "learning": 0.20,
+      "combat": 0.98,
+      "leadership": 0.82,
+      "riding": 0.20,
+      "sailing": 0.20,
+      "navigation": 0.96,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.90,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.20,
+      "performance": 0.20,
+      "command": 0.84,
+      "logistics": 0.78
+    },
+
+    "aptitudes": {
+      "martial": 0.96,
+      "diplomacy": 0.25,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.25,
+      "combat": 0.99,
+      "leadership": 0.86,
+      "riding": 0.25,
+      "sailing": 0.25,
+      "navigation": 0.98,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.94,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.25,
+      "logistics": 0.25
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.00,
+      "impulsivity": 0.00,
+      "discipline": 0.95,
+      "curiosity": 0.00,
+      "risk_tolerance": 0.85,
+      "emotional_stability": 0.90,
+      "suspiciousness": 0.00,
+      "empathy": 0.00,
+      "aggression": 0.45,
+      "adaptability": 0.95,
+      "persistence": 0.96,
+      "pride": -0.10,
+      "humility": 0.00,
+      "greed": 0.00,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.98,
+      "family_loyalty": 0.00,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": 0.00,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.40,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.65,
+      "hospitality": 0.00,
+      "mercy": 0.20,
+      "vengeance": 0.00,
+      "justice": 0.55,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.15,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.98,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.00,
+      "urban": 0.00,
+      "rural": 0.80,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.55,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": 0.60
+    },
+
+    "values": {
+      "duty": 0.99,
+      "honor": 0.825,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.westerosi": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "legendary_ranger",
+      "brave",
+      "disciplined",
+      "quiet",
+      "pragmatic",
+      "maimed",
+      "wilderness_master"
+    ],
+
+    "aliases": [
+      "Qhorin Halfhand",
+      "The Halfhand"
+    ],
+
+    "occupations": [
+      "soldier",
+      "scout",
+      "hunter"
+    ],
+
+    "offices": [],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "nights_watch_ranger"
+    ],
+
+    "combatSpecialties": [
+      "left_handed_sword",
+      "ranging",
+      "wilderness_survival"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Defend the realm from threats beyond the Wall.",
+      "Complete the mission even at personal cost."
+    ],
+
+    "goals": [
+      "Serve the Shadow Tower and support Denys Mallister.",
+      "Range effectively beyond the Wall."
+    ],
+
+    "fears": [
+      "Failure of mission through hesitation."
+    ],
+
+    "desires": [
+      "A capable Watch prepared for the true northern threat."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "posting": "shadow_tower"
+    },
+
+    "privateFacts": {
+      "injury": "missing_most_fingers_right_hand",
+      "birth_year_note": "approximate_authoring_year"
+    },
+
+    "appearance": {
+      "description": "A tall, weathered ranger with grey eyes, a long grey braid and a badly maimed right hand.",
+      "hair": "grey_braid",
+      "eyes": "grey",
+      "build": "tall_lean"
+    },
+
+    "dialogue": {
+      "formality": -0.10,
+      "verbosity": -0.55,
+      "warmth": 0.00,
+      "directness": 0.78,
+      "preferredAddress": "Qhorin",
+      "guidance": "Speak quietly, sparingly and deliberately. Show competence through concise observations rather than boasting."
+    }
+  },
+
+  "social": {},
+
+  "titles": [],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

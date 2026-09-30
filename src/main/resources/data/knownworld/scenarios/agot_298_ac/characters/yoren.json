@@ -1,0 +1,309 @@
+{
+  "id": "yoren",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Yoren",
+    "familyName": "",
+    "sex": "MALE",
+    "birthYear": 250
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "INFERRED",
+    "startingWorldLocationId": "castle_black",
+    "note": "Senior wandering crow. Exact location at the Winterfell-arrival instant is not stated; Castle Black is used as semantic home base with INFERRED confidence."
+  },
+
+  "personality": {
+    "courage": 0.82,
+    "ambition": -0.65,
+    "compassion": 0.48,
+    "honor": 0.62,
+    "patience": 0.48,
+    "sociability": 0.12
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "westerosi",
+    "religion": "faith_of_the_seven",
+    "education": "commoner_practical",
+
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "unknown",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.02,
+    "socialStatus": 0.38,
+    "reputation": 0.64,
+
+    "skills": {
+      "martial": 0.68,
+      "diplomacy": 0.70,
+      "stewardship": 0.20,
+      "intrigue": 0.20,
+      "learning": 0.20,
+      "combat": 0.66,
+      "leadership": 0.20,
+      "riding": 0.72,
+      "sailing": 0.20,
+      "navigation": 0.82,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.20,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.74,
+      "performance": 0.20,
+      "command": 0.20,
+      "logistics": 0.78
+    },
+
+    "aptitudes": {
+      "martial": 0.70,
+      "diplomacy": 0.72,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.25,
+      "combat": 0.68,
+      "leadership": 0.25,
+      "riding": 0.25,
+      "sailing": 0.25,
+      "navigation": 0.85,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.25,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.25,
+      "logistics": 0.82
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.00,
+      "impulsivity": 0.00,
+      "discipline": 0.72,
+      "curiosity": 0.00,
+      "risk_tolerance": 0.68,
+      "emotional_stability": 0.00,
+      "suspiciousness": 0.00,
+      "empathy": 0.45,
+      "aggression": 0.00,
+      "adaptability": 0.86,
+      "persistence": 0.84,
+      "pride": -0.55,
+      "humility": 0.00,
+      "greed": -0.65,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.82,
+      "family_loyalty": 0.00,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": 0.00,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.20,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.65,
+      "hospitality": 0.25,
+      "mercy": 0.42,
+      "vengeance": 0.00,
+      "justice": 0.00,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.00,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.60,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.00,
+      "urban": 0.00,
+      "rural": 0.45,
+      "cosmopolitan": 0.35,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.55,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": 0.88
+    },
+
+    "values": {
+      "duty": 0.91,
+      "honor": 0.825,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.westerosi": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "tough",
+      "practical",
+      "wandering_crow",
+      "resourceful",
+      "blunt",
+      "loyal"
+    ],
+
+    "aliases": [],
+
+    "occupations": [
+      "soldier",
+      "messenger"
+    ],
+
+    "offices": [
+      "wandering_crow"
+    ],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "wandering_crow"
+    ],
+
+    "combatSpecialties": [
+      "sword",
+      "road_survival"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Bring recruits safely to the Wall.",
+      "Keep the Night's Watch supplied with men."
+    ],
+
+    "goals": [
+      "Continue recruiting across the Seven Kingdoms."
+    ],
+
+    "fears": [
+      "Losing recruits before reaching the Wall."
+    ],
+
+    "desires": [
+      "Enough men to keep the Watch alive."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "role": "wandering_crow"
+    },
+
+    "privateFacts": {
+      "exact_location_at_anchor": "unknown_home_base_castle_black_used",
+      "birth_year_note": "approximate_authoring_year"
+    },
+
+    "appearance": {
+      "description": "A weathered, rough traveling brother dressed in worn black.",
+      "hair": "dark_grey",
+      "eyes": "dark",
+      "build": "weathered"
+    },
+
+    "dialogue": {
+      "formality": -0.55,
+      "verbosity": -0.20,
+      "warmth": 0.00,
+      "directness": 0.88,
+      "preferredAddress": "Yoren",
+      "guidance": "Speak roughly and directly like a man who spends his life on roads, in prisons and among recruits."
+    }
+  },
+
+  "social": {},
+
+  "titles": [],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

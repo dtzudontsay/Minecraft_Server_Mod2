@@ -1,0 +1,242 @@
+[
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "aemon_targaryen",
+    "affection": 0.62,
+    "trust": 0.92,
+    "respect": 0.97,
+    "fear": 0.0,
+    "familiarity": 0.95
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "aemon_targaryen",
+    "target": "jeor_mormont",
+    "affection": 0.58,
+    "trust": 0.90,
+    "respect": 0.90,
+    "fear": 0.0,
+    "familiarity": 0.95
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "benjen_stark",
+    "affection": 0.45,
+    "trust": 0.82,
+    "respect": 0.90,
+    "fear": 0.01,
+    "familiarity": 0.90
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "benjen_stark",
+    "target": "jeor_mormont",
+    "affection": 0.42,
+    "trust": 0.86,
+    "respect": 0.93,
+    "fear": 0.03,
+    "familiarity": 0.90
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "bowen_marsh",
+    "affection": 0.28,
+    "trust": 0.80,
+    "respect": 0.72,
+    "fear": 0.0,
+    "familiarity": 0.90
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "bowen_marsh",
+    "target": "jeor_mormont",
+    "affection": 0.25,
+    "trust": 0.82,
+    "respect": 0.84,
+    "fear": 0.04,
+    "familiarity": 0.90
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "alliser_thorne",
+    "affection": 0.02,
+    "trust": 0.48,
+    "respect": 0.58,
+    "fear": 0.0,
+    "familiarity": 0.88
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "alliser_thorne",
+    "target": "jeor_mormont",
+    "affection": 0.0,
+    "trust": 0.55,
+    "respect": 0.72,
+    "fear": 0.08,
+    "familiarity": 0.88
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "qhorin_halfhand",
+    "affection": 0.38,
+    "trust": 0.90,
+    "respect": 0.96,
+    "fear": 0.0,
+    "familiarity": 0.82
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "qhorin_halfhand",
+    "target": "jeor_mormont",
+    "affection": 0.32,
+    "trust": 0.88,
+    "respect": 0.92,
+    "fear": 0.0,
+    "familiarity": 0.80
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "denys_mallister",
+    "affection": 0.28,
+    "trust": 0.86,
+    "respect": 0.90,
+    "fear": 0.0,
+    "familiarity": 0.80
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "denys_mallister",
+    "target": "jeor_mormont",
+    "affection": 0.25,
+    "trust": 0.86,
+    "respect": 0.88,
+    "fear": 0.02,
+    "familiarity": 0.80
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "jeor_mormont",
+    "target": "yoren",
+    "affection": 0.20,
+    "trust": 0.78,
+    "respect": 0.74,
+    "fear": 0.0,
+    "familiarity": 0.75
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "yoren",
+    "target": "jeor_mormont",
+    "affection": 0.18,
+    "trust": 0.80,
+    "respect": 0.82,
+    "fear": 0.02,
+    "familiarity": 0.75
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "denys_mallister",
+    "target": "qhorin_halfhand",
+    "affection": 0.45,
+    "trust": 0.94,
+    "respect": 0.98,
+    "fear": 0.0,
+    "familiarity": 0.98
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "qhorin_halfhand",
+    "target": "denys_mallister",
+    "affection": 0.40,
+    "trust": 0.92,
+    "respect": 0.90,
+    "fear": 0.0,
+    "familiarity": 0.98
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "benjen_stark",
+    "target": "aemon_targaryen",
+    "affection": 0.38,
+    "trust": 0.80,
+    "respect": 0.92,
+    "fear": 0.0,
+    "familiarity": 0.78
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "aemon_targaryen",
+    "target": "benjen_stark",
+    "affection": 0.42,
+    "trust": 0.82,
+    "respect": 0.85,
+    "fear": 0.0,
+    "familiarity": 0.78
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "bowen_marsh",
+    "target": "aemon_targaryen",
+    "affection": 0.35,
+    "trust": 0.80,
+    "respect": 0.90,
+    "fear": 0.0,
+    "familiarity": 0.85
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "aemon_targaryen",
+    "target": "bowen_marsh",
+    "affection": 0.30,
+    "trust": 0.75,
+    "respect": 0.72,
+    "fear": 0.0,
+    "familiarity": 0.85
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "alliser_thorne",
+    "target": "aemon_targaryen",
+    "affection": 0.05,
+    "trust": 0.60,
+    "respect": 0.80,
+    "fear": 0.0,
+    "familiarity": 0.78
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "aemon_targaryen",
+    "target": "alliser_thorne",
+    "affection": 0.10,
+    "trust": 0.62,
+    "respect": 0.60,
+    "fear": 0.0,
+    "familiarity": 0.78
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "benjen_stark",
+    "target": "alliser_thorne",
+    "affection": -0.05,
+    "trust": 0.42,
+    "respect": 0.55,
+    "fear": 0.02,
+    "familiarity": 0.72
+  },
+  {
+    "authoringVersion": 1,
+    "subject": "alliser_thorne",
+    "target": "benjen_stark",
+    "affection": -0.08,
+    "trust": 0.40,
+    "respect": 0.62,
+    "fear": 0.04,
+    "familiarity": 0.72
+  }
+]

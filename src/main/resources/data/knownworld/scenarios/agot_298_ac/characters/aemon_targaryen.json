@@ -1,0 +1,310 @@
+{
+  "id": "aemon_targaryen",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Aemon",
+    "familyName": "Targaryen",
+    "sex": "MALE",
+    "birthYear": 198
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "CANON",
+    "startingWorldLocationId": "castle_black",
+    "note": "Maester at Castle Black at Scenario Day 1; exact birth year is canon."
+  },
+
+  "personality": {
+    "courage": 0.55,
+    "ambition": -0.90,
+    "compassion": 0.88,
+    "honor": 0.92,
+    "patience": 0.95,
+    "sociability": 0.05
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "valyrian",
+    "religion": "faith_of_the_seven",
+    "education": "maester",
+
+    "birthplaceLocationId": "kings_landing",
+    "upbringingLocationId": "unknown",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "CHRONIC_CONDITION",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.05,
+    "socialStatus": 0.62,
+    "reputation": 0.95,
+
+    "skills": {
+      "martial": 0.20,
+      "diplomacy": 0.75,
+      "stewardship": 0.72,
+      "intrigue": 0.45,
+      "learning": 0.97,
+      "combat": 0.20,
+      "leadership": 0.20,
+      "riding": 0.20,
+      "sailing": 0.20,
+      "navigation": 0.20,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.20,
+      "medicine": 0.92,
+      "religious_study": 0.88,
+      "language": 0.92,
+      "performance": 0.20,
+      "command": 0.20,
+      "logistics": 0.20
+    },
+
+    "aptitudes": {
+      "martial": 0.25,
+      "diplomacy": 0.78,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.98,
+      "combat": 0.25,
+      "leadership": 0.25,
+      "riding": 0.25,
+      "sailing": 0.25,
+      "navigation": 0.25,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.25,
+      "medicine": 0.96,
+      "religious_study": 0.92,
+      "languages": 0.88,
+      "performance": 0.25,
+      "command": 0.25,
+      "logistics": 0.25
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.00,
+      "impulsivity": 0.00,
+      "discipline": 0.95,
+      "curiosity": 0.75,
+      "risk_tolerance": 0.00,
+      "emotional_stability": 0.90,
+      "suspiciousness": 0.00,
+      "empathy": 0.88,
+      "aggression": 0.00,
+      "adaptability": 0.00,
+      "persistence": 0.00,
+      "pride": 0.00,
+      "humility": 0.92,
+      "greed": -0.95,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.85,
+      "family_loyalty": 0.55,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": -0.25,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.60,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.55,
+      "religious_tolerance": 0.90,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.65,
+      "hospitality": 0.00,
+      "mercy": 0.85,
+      "vengeance": 0.00,
+      "justice": 0.00,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": -0.90,
+      "power_seeking": -0.95,
+      "knowledge_seeking": 0.95,
+      "martial_glory": 0.00,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.60,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.95,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.50,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.55,
+      "urban": 0.00,
+      "rural": 0.30,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.55,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": -0.20
+    },
+
+    "values": {
+      "duty": 0.925,
+      "honor": 0.825,
+      "faith": 0.775,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.valyrian": 1.00,
+      "religion.devotion": 0.775,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.95,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.775
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "wise",
+      "patient",
+      "compassionate",
+      "learned",
+      "blind",
+      "dutiful",
+      "humble",
+      "self_denial"
+    ],
+
+    "aliases": [
+      "Maester Aemon"
+    ],
+
+    "occupations": [
+      "maester",
+      "healer",
+      "scholar"
+    ],
+
+    "offices": [],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "nights_watch_maester"
+    ],
+
+    "combatSpecialties": [],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Serve the Night's Watch with knowledge and counsel.",
+      "Place duty above dynastic temptation."
+    ],
+
+    "goals": [
+      "Keep the brothers alive through medicine and advice.",
+      "Guide younger men without ruling them."
+    ],
+
+    "fears": [
+      "Failing the Watch through age or infirmity."
+    ],
+
+    "desires": [
+      "To remain useful despite blindness and age."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "role": "maester_of_castle_black"
+    },
+
+    "privateFacts": {
+      "birth_dynasty": "house_targaryen",
+      "dynastic_claim": "renounced_in_practice"
+    },
+
+    "appearance": {
+      "description": "An extremely old, frail and blind maester with a calm, precise bearing.",
+      "hair": "bald",
+      "eyes": "blind_milk_white",
+      "build": "frail"
+    },
+
+    "dialogue": {
+      "formality": 0.55,
+      "verbosity": 0.15,
+      "warmth": 0.65,
+      "directness": 0.45,
+      "preferredAddress": "Maester Aemon",
+      "guidance": "Speak softly, precisely and patiently. Favor counsel, memory and moral clarity over commands."
+    }
+  },
+
+  "social": {},
+
+  "titles": [],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

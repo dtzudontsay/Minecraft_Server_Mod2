@@ -1,0 +1,311 @@
+{
+  "id": "alliser_thorne",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Alliser",
+    "familyName": "Thorne",
+    "sex": "MALE",
+    "birthYear": 250
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "STRONGLY_INFERRED",
+    "startingWorldLocationId": "castle_black",
+    "note": "At Castle Black as master-at-arms. Birth year is an authoring approximation because canon gives no exact year."
+  },
+
+  "personality": {
+    "courage": 0.72,
+    "ambition": 0.12,
+    "compassion": -0.68,
+    "honor": 0.15,
+    "patience": -0.38,
+    "sociability": -0.50
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "crownlander",
+    "religion": "faith_of_the_seven",
+    "education": "noble_martial",
+
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "unknown",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.03,
+    "socialStatus": 0.52,
+    "reputation": 0.42,
+
+    "skills": {
+      "martial": 0.78,
+      "diplomacy": 0.20,
+      "stewardship": 0.20,
+      "intrigue": 0.20,
+      "learning": 0.20,
+      "combat": 0.82,
+      "leadership": 0.56,
+      "riding": 0.72,
+      "sailing": 0.20,
+      "navigation": 0.20,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.20,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.20,
+      "performance": 0.20,
+      "command": 0.62,
+      "logistics": 0.50
+    },
+
+    "aptitudes": {
+      "martial": 0.80,
+      "diplomacy": 0.25,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.25,
+      "combat": 0.84,
+      "leadership": 0.58,
+      "riding": 0.25,
+      "sailing": 0.25,
+      "navigation": 0.25,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.25,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.65,
+      "logistics": 0.25
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.70,
+      "impulsivity": 0.00,
+      "discipline": 0.70,
+      "curiosity": 0.00,
+      "risk_tolerance": 0.00,
+      "emotional_stability": 0.00,
+      "suspiciousness": 0.62,
+      "empathy": -0.70,
+      "aggression": 0.60,
+      "adaptability": 0.00,
+      "persistence": 0.00,
+      "pride": 0.72,
+      "humility": 0.00,
+      "greed": 0.00,
+      "generosity": 0.00,
+      "forgiveness": -0.72,
+      "vindictiveness": 0.58,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.58,
+      "family_loyalty": 0.20,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": 0.10,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.60,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.42,
+      "hospitality": 0.00,
+      "mercy": -0.60,
+      "vengeance": 0.55,
+      "justice": 0.00,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.00,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.86,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.40,
+      "bureaucratic": 0.00,
+      "urban": 0.00,
+      "rural": 0.30,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.68,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": -0.20
+    },
+
+    "values": {
+      "duty": 0.79,
+      "honor": 0.71,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.crownlander": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "harsh",
+      "bitter",
+      "martial",
+      "disciplinarian",
+      "proud",
+      "resentful_targaryen_loyalist"
+    ],
+
+    "aliases": [
+      "Ser Alliser"
+    ],
+
+    "occupations": [
+      "knight",
+      "drillmaster",
+      "soldier"
+    ],
+
+    "offices": [],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "nights_watch_master_at_arms"
+    ],
+
+    "combatSpecialties": [
+      "sword",
+      "training"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Maintain discipline among recruits.",
+      "Preserve his own sense of martial standards."
+    ],
+
+    "goals": [
+      "Train recruits into useful brothers.",
+      "Keep authority in the training yard."
+    ],
+
+    "fears": [
+      "Humiliation and loss of authority."
+    ],
+
+    "desires": [
+      "Recognition of his experience and status."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "role": "master_at_arms"
+    },
+
+    "privateFacts": {
+      "rebellion_history": "fought_for_house_targaryen_and_was_sent_to_the_wall_after_kings_landing_fell",
+      "birth_year_note": "approximate_authoring_year"
+    },
+
+    "appearance": {
+      "description": "A hard-faced veteran knight with a severe military bearing.",
+      "hair": "dark_grey",
+      "eyes": "dark",
+      "build": "lean_martial"
+    },
+
+    "dialogue": {
+      "formality": 0.20,
+      "verbosity": -0.15,
+      "warmth": -0.75,
+      "directness": 0.92,
+      "preferredAddress": "Ser Alliser",
+      "guidance": "Speak sharply and contemptuously, especially to recruits. Emphasize weakness, discipline and martial competence."
+    }
+  },
+
+  "social": {},
+
+  "titles": [],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

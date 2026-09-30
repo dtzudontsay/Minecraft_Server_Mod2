@@ -1,0 +1,314 @@
+{
+  "id": "denys_mallister",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Denys",
+    "familyName": "Mallister",
+    "sex": "MALE",
+    "birthYear": 238
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "CANON",
+    "startingWorldLocationId": "the_wall",
+    "note": "Commander of the Shadow Tower since 267 AC. Canon places his birth between 231 and 245 AC; 238 is the authoring midpoint."
+  },
+
+  "personality": {
+    "courage": 0.85,
+    "ambition": 0.30,
+    "compassion": 0.35,
+    "honor": 0.82,
+    "patience": 0.72,
+    "sociability": 0.18
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "riverlander",
+    "religion": "faith_of_the_seven",
+    "education": "noble_martial",
+
+    "birthplaceLocationId": "seagard",
+    "upbringingLocationId": "seagard",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.04,
+    "socialStatus": 0.68,
+    "reputation": 0.88,
+
+    "skills": {
+      "martial": 0.86,
+      "diplomacy": 0.70,
+      "stewardship": 0.20,
+      "intrigue": 0.20,
+      "learning": 0.20,
+      "combat": 0.84,
+      "leadership": 0.86,
+      "riding": 0.82,
+      "sailing": 0.20,
+      "navigation": 0.20,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.20,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.20,
+      "performance": 0.20,
+      "command": 0.88,
+      "logistics": 0.75
+    },
+
+    "aptitudes": {
+      "martial": 0.88,
+      "diplomacy": 0.25,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.25,
+      "combat": 0.86,
+      "leadership": 0.88,
+      "riding": 0.85,
+      "sailing": 0.25,
+      "navigation": 0.25,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.25,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.90,
+      "logistics": 0.25
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.62,
+      "impulsivity": 0.00,
+      "discipline": 0.88,
+      "curiosity": 0.00,
+      "risk_tolerance": 0.00,
+      "emotional_stability": 0.78,
+      "suspiciousness": 0.00,
+      "empathy": 0.00,
+      "aggression": 0.00,
+      "adaptability": 0.58,
+      "persistence": 0.82,
+      "pride": 0.35,
+      "humility": 0.00,
+      "greed": 0.00,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.90,
+      "family_loyalty": 0.35,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": -0.05,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.60,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.82,
+      "hospitality": 0.00,
+      "mercy": 0.00,
+      "vengeance": 0.00,
+      "justice": 0.00,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.40,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.90,
+      "courtly": 0.25,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.00,
+      "urban": 0.00,
+      "rural": 0.30,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.75,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": -0.20
+    },
+
+    "values": {
+      "duty": 0.95,
+      "honor": 0.91,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.riverlander": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "honorable",
+      "experienced_knight",
+      "commander",
+      "dutiful",
+      "seasoned_ranger"
+    ],
+
+    "aliases": [
+      "Ser Denys"
+    ],
+
+    "occupations": [
+      "knight",
+      "soldier"
+    ],
+
+    "offices": [
+      "commander_shadow_tower"
+    ],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "nights_watch_ranger"
+    ],
+
+    "combatSpecialties": [
+      "sword",
+      "mounted_combat",
+      "field_command"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Command the Shadow Tower effectively.",
+      "Protect the western end of the Wall."
+    ],
+
+    "goals": [
+      "Respond to increasing wildling movement.",
+      "Maintain the Shadow Tower's readiness."
+    ],
+
+    "fears": [
+      "The Wall being undermanned when attacked."
+    ],
+
+    "desires": [
+      "A stronger Watch and recognition of competent service."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "office": "commander_shadow_tower"
+    },
+
+    "privateFacts": {
+      "birth_house": "house_mallister",
+      "birth_year_range": "231_to_245"
+    },
+
+    "appearance": {
+      "description": "An older knight and veteran commander with the bearing of a highborn warrior.",
+      "hair": "grey",
+      "eyes": "dark",
+      "build": "fit_older_knight"
+    },
+
+    "dialogue": {
+      "formality": 0.50,
+      "verbosity": 0.00,
+      "warmth": 0.10,
+      "directness": 0.60,
+      "preferredAddress": "Ser Denys",
+      "guidance": "Speak as an experienced knight and commander: formal, measured and confident."
+    }
+  },
+
+  "social": {},
+
+  "titles": [
+    "commander_shadow_tower"
+  ],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

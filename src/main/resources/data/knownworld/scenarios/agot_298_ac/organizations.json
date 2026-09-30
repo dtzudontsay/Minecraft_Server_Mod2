@@ -17,7 +17,6 @@
     "type": "FACTION",
     "seatSettlement": "winterfell"
   },
-
   {
     "id": "house_tully",
     "name": "House Tully",
@@ -38,7 +37,6 @@
     "name": "House Greyjoy",
     "type": "NOBLE_HOUSE"
   },
-
   {
     "id": "royal_household",
     "name": "Royal Household",
@@ -48,5 +46,10 @@
     "id": "iron_throne",
     "name": "The Iron Throne",
     "type": "FACTION"
+  },
+  {
+    "id": "nights_watch",
+    "name": "Night's Watch",
+    "type": "MILITARY_ORDER"
   }
 ]

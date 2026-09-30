@@ -1,0 +1,315 @@
+{
+  "id": "jeor_mormont",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Jeor",
+    "familyName": "Mormont",
+    "sex": "MALE",
+    "birthYear": 230
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "CANON",
+    "startingWorldLocationId": "castle_black",
+    "note": "997th Lord Commander, based at Castle Black."
+  },
+
+  "personality": {
+    "courage": 0.88,
+    "ambition": 0.20,
+    "compassion": 0.45,
+    "honor": 0.82,
+    "patience": 0.62,
+    "sociability": -0.10
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+
+    "birthplaceLocationId": "bear_island",
+    "upbringingLocationId": "bear_island",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.08,
+    "socialStatus": 0.80,
+    "reputation": 0.92,
+
+    "skills": {
+      "martial": 0.85,
+      "diplomacy": 0.65,
+      "stewardship": 0.72,
+      "intrigue": 0.20,
+      "learning": 0.20,
+      "combat": 0.72,
+      "leadership": 0.92,
+      "riding": 0.20,
+      "sailing": 0.20,
+      "navigation": 0.20,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.65,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.20,
+      "performance": 0.20,
+      "command": 0.92,
+      "logistics": 0.82
+    },
+
+    "aptitudes": {
+      "martial": 0.86,
+      "diplomacy": 0.25,
+      "stewardship": 0.25,
+      "intrigue": 0.25,
+      "learning": 0.25,
+      "combat": 0.74,
+      "leadership": 0.94,
+      "riding": 0.25,
+      "sailing": 0.25,
+      "navigation": 0.25,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.25,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.94,
+      "logistics": 0.86
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.72,
+      "impulsivity": 0.00,
+      "discipline": 0.88,
+      "curiosity": 0.00,
+      "risk_tolerance": 0.00,
+      "emotional_stability": 0.72,
+      "suspiciousness": 0.00,
+      "empathy": 0.00,
+      "aggression": 0.00,
+      "adaptability": 0.00,
+      "persistence": 0.84,
+      "pride": 0.25,
+      "humility": 0.00,
+      "greed": -0.80,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.00,
+      "dominance": 0.68,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.96,
+      "family_loyalty": 0.45,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": -0.15,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.60,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.55,
+      "innovation": 0.00,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.65,
+      "hospitality": 0.00,
+      "mercy": 0.35,
+      "vengeance": 0.00,
+      "justice": 0.68,
+      "law_obedience": 0.00,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.35,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.60,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.90,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.00,
+      "urban": 0.00,
+      "rural": 0.30,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.75,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.82,
+      "traditional": 0.50,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": -0.20
+    },
+
+    "values": {
+      "duty": 0.98,
+      "honor": 0.825,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.northman": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "dutiful",
+      "stern",
+      "experienced_commander",
+      "pragmatic",
+      "brave",
+      "watch_loyalist"
+    ],
+
+    "aliases": [
+      "The Old Bear",
+      "Old Lord Crow"
+    ],
+
+    "occupations": [
+      "soldier",
+      "ruler"
+    ],
+
+    "offices": [
+      "lord_commander_nights_watch"
+    ],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "lord_commander_nights_watch"
+    ],
+
+    "combatSpecialties": [
+      "sword",
+      "field_command"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Preserve the Night's Watch.",
+      "Prepare the Wall for worsening threats."
+    ],
+
+    "goals": [
+      "Maintain discipline at Castle Black.",
+      "Strengthen the Watch despite dwindling manpower."
+    ],
+
+    "fears": [
+      "The Watch failing when the realm needs it."
+    ],
+
+    "desires": [
+      "A stronger and more capable Night's Watch."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "office": "lord_commander_nights_watch"
+    },
+
+    "privateFacts": {
+      "former_house": "house_mormont",
+      "former_seat": "bear_island"
+    },
+
+    "appearance": {
+      "description": "An aging but physically imposing northern commander with a weathered face.",
+      "hair": "grey",
+      "eyes": "dark",
+      "build": "large_and_sturdy"
+    },
+
+    "dialogue": {
+      "formality": 0.25,
+      "verbosity": -0.15,
+      "warmth": 0.00,
+      "directness": 0.80,
+      "preferredAddress": "Lord Commander",
+      "guidance": "Speak bluntly and authoritatively. Value duty, discipline and practical survival."
+    }
+  },
+
+  "social": {},
+
+  "titles": [
+    "lord_commander_nights_watch"
+  ],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}

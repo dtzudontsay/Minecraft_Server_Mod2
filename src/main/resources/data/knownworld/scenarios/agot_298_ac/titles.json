@@ -36,7 +36,6 @@
     "organization": "the_north",
     "successionLaw": "NONE"
   },
-
   {
     "id": "king_of_the_seven_kingdoms",
     "name": "King of the Seven Kingdoms",
@@ -53,6 +52,42 @@
     "authority": 90,
     "exclusive": true,
     "organization": "royal_household",
+    "successionLaw": "NONE"
+  },
+  {
+    "id": "lord_commander_nights_watch",
+    "name": "Lord Commander of the Night's Watch",
+    "type": "OFFICE",
+    "authority": 88,
+    "exclusive": true,
+    "organization": "nights_watch",
+    "successionLaw": "NONE"
+  },
+  {
+    "id": "first_ranger",
+    "name": "First Ranger of the Night's Watch",
+    "type": "OFFICE",
+    "authority": 72,
+    "exclusive": true,
+    "organization": "nights_watch",
+    "successionLaw": "NONE"
+  },
+  {
+    "id": "lord_steward_nights_watch",
+    "name": "Lord Steward of the Night's Watch",
+    "type": "OFFICE",
+    "authority": 68,
+    "exclusive": true,
+    "organization": "nights_watch",
+    "successionLaw": "NONE"
+  },
+  {
+    "id": "commander_shadow_tower",
+    "name": "Commander of the Shadow Tower",
+    "type": "OFFICE",
+    "authority": 70,
+    "exclusive": true,
+    "organization": "nights_watch",
     "successionLaw": "NONE"
   }
 ]

@@ -483,11 +483,22 @@ public final class ScenarioBootstrapper {
                             + ".identity.givenName"
             );
 
-            requireText(
-                    character.identity.familyName,
-                    character.id
-                            + ".identity.familyName"
-            );
+            /*
+             * familyName is intentionally optional.
+             *
+             * Many Known World characters are genuine mononyms:
+             *
+             * Yoren
+             * Hodor
+             * Gilly
+             * Osha
+             * Ygritte
+             * Craster
+             * and many Free Folk / Essosi characters.
+             *
+             * Do not fabricate an "Unknown" surname merely to satisfy
+             * the bootstrap schema.
+             */
 
             requireText(
                     character.identity.sex,
@@ -499,7 +510,9 @@ public final class ScenarioBootstrapper {
                     simulation.registry()
                             .create(
                                     character.identity.givenName,
-                                    character.identity.familyName,
+                                    character.identity.familyName == null
+                                            ? ""
+                                            : character.identity.familyName,
                                     enumValue(
                                             NpcSex.class,
                                             character.identity.sex,

@@ -1,0 +1,193 @@
+{
+  "characters": [
+    {
+      "npcId": "aemon_targaryen",
+      "birthDynastyId": "house_targaryen",
+      "currentDynastyId": "house_targaryen",
+      "legalFamilyDynastyId": "house_targaryen",
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 0.99,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 0.99,
+          "roles": [
+            "nights_watch",
+            "nights_watch_maester"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "jeor_mormont",
+      "birthDynastyId": "house_mormont",
+      "currentDynastyId": "house_mormont",
+      "legalFamilyDynastyId": "house_mormont",
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 1.0,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 1.0,
+          "roles": [
+            "nights_watch",
+            "lord_commander_nights_watch"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "benjen_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+
+      "clearHouseholdOrganization": true,
+      "houseOrganizationId": "house_stark",
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 0.99,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 0.99,
+          "roles": [
+            "nights_watch",
+            "first_ranger",
+            "nights_watch_ranger"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "alliser_thorne",
+      "birthDynastyId": "house_thorne",
+      "currentDynastyId": "house_thorne",
+      "legalFamilyDynastyId": "house_thorne",
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 0.82,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 0.82,
+          "roles": [
+            "nights_watch",
+            "nights_watch_master_at_arms"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "bowen_marsh",
+      "birthDynastyId": "house_marsh",
+      "currentDynastyId": "house_marsh",
+      "legalFamilyDynastyId": "house_marsh",
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 0.96,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 0.96,
+          "roles": [
+            "nights_watch",
+            "lord_steward",
+            "nights_watch_steward"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "qhorin_halfhand",
+
+      "clearBirthDynasty": true,
+      "clearCurrentDynasty": true,
+      "clearLegalFamilyDynasty": true,
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 1.0,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 1.0,
+          "roles": [
+            "nights_watch",
+            "nights_watch_ranger"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "denys_mallister",
+      "birthDynastyId": "house_mallister",
+      "currentDynastyId": "house_mallister",
+      "legalFamilyDynastyId": "house_mallister",
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 0.99,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 0.99,
+          "roles": [
+            "nights_watch",
+            "nights_watch_ranger",
+            "commander_shadow_tower"
+          ]
+        }
+      ]
+    },
+    {
+      "npcId": "yoren",
+
+      "clearBirthDynasty": true,
+      "clearCurrentDynasty": true,
+      "clearLegalFamilyDynasty": true,
+
+      "clearHouseholdOrganization": true,
+      "clearHouseOrganization": true,
+
+      "primaryAllegianceOrganizationId": "nights_watch",
+      "allegianceStrength": 0.95,
+
+      "memberships": [
+        {
+          "organizationId": "nights_watch",
+          "loyalty": 0.95,
+          "roles": [
+            "nights_watch",
+            "wandering_crow"
+          ]
+        }
+      ]
+    }
+  ]
+}

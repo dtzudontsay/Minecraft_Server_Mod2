@@ -479,13 +479,13 @@ public final class ReferenceIntegrityValidator {
         }
 
         if (!hasText(
-                character.identity.familyName
+                character.identity.givenName
         )) {
 
             throw new IllegalStateException(
                     "Character "
                             + id
-                            + " has no familyName"
+                            + " has no givenName"
             );
         }
 
@@ -495,6 +495,7 @@ public final class ReferenceIntegrityValidator {
                 "NPC sex for "
                         + id
         );
+
 
         if (hasText(
                 character.startingSettlement

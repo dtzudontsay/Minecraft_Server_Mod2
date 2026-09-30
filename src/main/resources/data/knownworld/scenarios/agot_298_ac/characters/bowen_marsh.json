@@ -1,0 +1,309 @@
+{
+  "id": "bowen_marsh",
+  "authoringVersion": 3,
+
+  "identity": {
+    "givenName": "Bowen",
+    "familyName": "Marsh",
+    "sex": "MALE",
+    "birthYear": 248
+  },
+
+  "position": {
+    "dimension": "knownworld:unplaced",
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "scenarioState": {
+    "authoringVersion": 1,
+    "presence": "ALIVE",
+    "continuity": "SHARED_BOOK_AND_HBO",
+    "confidence": "STRONGLY_INFERRED",
+    "startingWorldLocationId": "castle_black",
+    "note": "Lord Steward at Castle Black. Exact birth year is unknown; authoring year is approximate."
+  },
+
+  "personality": {
+    "courage": 0.40,
+    "ambition": 0.05,
+    "compassion": 0.20,
+    "honor": 0.68,
+    "patience": 0.72,
+    "sociability": -0.20
+  },
+
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+
+  "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "stewardship",
+
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "unknown",
+
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.03,
+    "socialStatus": 0.60,
+    "reputation": 0.70,
+
+    "skills": {
+      "martial": 0.48,
+      "diplomacy": 0.52,
+      "stewardship": 0.90,
+      "intrigue": 0.20,
+      "learning": 0.58,
+      "combat": 0.38,
+      "leadership": 0.62,
+      "riding": 0.20,
+      "sailing": 0.20,
+      "navigation": 0.20,
+      "trade": 0.20,
+      "crafting": 0.20,
+      "agriculture": 0.20,
+      "hunting": 0.20,
+      "medicine": 0.20,
+      "religious_study": 0.20,
+      "language": 0.20,
+      "performance": 0.20,
+      "command": 0.20,
+      "logistics": 0.88
+    },
+
+    "aptitudes": {
+      "martial": 0.25,
+      "diplomacy": 0.25,
+      "stewardship": 0.92,
+      "intrigue": 0.25,
+      "learning": 0.62,
+      "combat": 0.25,
+      "leadership": 0.64,
+      "riding": 0.25,
+      "sailing": 0.25,
+      "navigation": 0.25,
+      "trade": 0.25,
+      "crafting": 0.25,
+      "agriculture": 0.25,
+      "hunting": 0.25,
+      "medicine": 0.25,
+      "religious_study": 0.25,
+      "languages": 0.25,
+      "performance": 0.25,
+      "command": 0.25,
+      "logistics": 0.92
+    },
+
+    "dispositions": {
+      "independence": 0.00,
+      "assertiveness": 0.00,
+      "impulsivity": 0.00,
+      "discipline": 0.90,
+      "curiosity": 0.00,
+      "risk_tolerance": -0.65,
+      "emotional_stability": 0.58,
+      "suspiciousness": 0.48,
+      "empathy": 0.00,
+      "aggression": 0.00,
+      "adaptability": -0.35,
+      "persistence": 0.76,
+      "pride": 0.00,
+      "humility": 0.00,
+      "greed": 0.00,
+      "generosity": 0.00,
+      "forgiveness": 0.00,
+      "vindictiveness": 0.00,
+      "deceitfulness": 0.00,
+      "gullibility": 0.00,
+      "conformity": 0.70,
+      "dominance": 0.00,
+      "obedience": 0.00,
+      "jealousy": 0.00,
+      "romanticism": 0.00,
+      "sensuality": 0.00
+    },
+
+    "characterValues": {
+      "duty": 0.90,
+      "family_loyalty": 0.00,
+      "house_loyalty": 0.00,
+      "dynastic_loyalty": 0.00,
+      "clan_loyalty": 0.00,
+      "friendship_loyalty": 0.55,
+      "personal_freedom": -0.60,
+      "authority_respect": 0.70,
+      "hierarchy_acceptance": 0.75,
+      "egalitarianism": 0.00,
+      "traditionalism": 0.82,
+      "innovation": -0.70,
+      "religiosity": 0.00,
+      "religious_tolerance": 0.00,
+      "cultural_tolerance": 0.00,
+      "honor_culture": 0.65,
+      "hospitality": 0.00,
+      "mercy": 0.00,
+      "vengeance": 0.00,
+      "justice": 0.00,
+      "law_obedience": 0.85,
+      "wealth_seeking": 0.00,
+      "prestige_seeking": 0.00,
+      "power_seeking": 0.00,
+      "knowledge_seeking": 0.00,
+      "martial_glory": 0.00,
+      "pacifism": 0.00,
+      "family_formation": -0.75,
+      "romantic_love": 0.00,
+      "political_stability": 0.92,
+      "social_mobility": 0.00,
+      "communal_solidarity": 0.75,
+      "individualism": 0.00
+    },
+
+    "socialNorms": {
+      "martial": 0.60,
+      "courtly": 0.00,
+      "mercantile": 0.00,
+      "naval": 0.00,
+      "raiding": 0.00,
+      "scholarly": 0.00,
+      "equestrian": 0.00,
+      "clan_based": 0.00,
+      "dynastic": 0.00,
+      "religious": 0.00,
+      "hospitality": 0.00,
+      "vengeance": 0.00,
+      "bureaucratic": 0.82,
+      "urban": 0.00,
+      "rural": 0.30,
+      "cosmopolitan": 0.00,
+      "isolationist": 0.00,
+      "collectivist": 0.45,
+      "individualist": 0.00,
+      "social_mobility": 0.00,
+      "authority": 0.78,
+      "traditional": 0.82,
+      "foreign_exposure": 0.00,
+      "political_exposure": 0.25,
+      "migratory": -0.20
+    },
+
+    "values": {
+      "duty": 0.95,
+      "honor": 0.825,
+      "faith": 0.50,
+      "culture.identity_importance": 0.65,
+      "culture.affinity.northman": 1.00,
+      "religion.devotion": 0.50,
+      "religion.identity_importance": 0.55,
+      "religion.tolerance": 0.50,
+      "religion.conversion_openness": 0.10,
+      "religion.observance": 0.50
+    },
+
+    "politicalPreferences": {
+      "nights_watch_neutrality": 0.90,
+      "duty_over_dynasty": 0.85,
+      "realm_politics": -0.65
+    },
+
+    "traits": [
+      "dutiful",
+      "conservative",
+      "careful",
+      "administrator",
+      "watch_loyalist"
+    ],
+
+    "aliases": [
+      "The Old Pomegranate"
+    ],
+
+    "occupations": [
+      "steward",
+      "administrator"
+    ],
+
+    "offices": [
+      "lord_steward_nights_watch"
+    ],
+
+    "courtRoles": [],
+
+    "militaryRoles": [
+      "lord_steward",
+      "nights_watch_steward"
+    ],
+
+    "combatSpecialties": [],
+
+    "languages": {
+      "common_tongue": 1.00
+    },
+
+    "motivations": [
+      "Keep Castle Black supplied and functioning.",
+      "Preserve established Night's Watch order."
+    ],
+
+    "goals": [
+      "Maintain stores, discipline and steward operations."
+    ],
+
+    "fears": [
+      "Disorder threatening the Watch."
+    ],
+
+    "desires": [
+      "Predictability and institutional stability."
+    ],
+
+    "secrets": [],
+    "knownSecrets": [],
+
+    "publicFacts": {
+      "organization": "nights_watch",
+      "office": "lord_steward"
+    },
+
+    "privateFacts": {
+      "birth_year_note": "approximate_authoring_year"
+    },
+
+    "appearance": {
+      "description": "A solidly built older steward with a cautious, administrative manner.",
+      "hair": "greying",
+      "eyes": "dark",
+      "build": "stout"
+    },
+
+    "dialogue": {
+      "formality": 0.35,
+      "verbosity": 0.05,
+      "warmth": -0.05,
+      "directness": 0.55,
+      "preferredAddress": "Lord Steward",
+      "guidance": "Speak cautiously and institutionally. Prefer established procedure, supply realities and risk avoidance."
+    }
+  },
+
+  "social": {},
+
+  "titles": [
+    "lord_steward_nights_watch"
+  ],
+
+  "relationships": [],
+
+  "beliefs": [],
+
+  "memories": []
+}
