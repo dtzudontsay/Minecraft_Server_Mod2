@@ -1,0 +1,147 @@
+{
+  "characters": [
+    {
+      "npcId": "eddard_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.98
+    },
+
+    {
+      "npcId": "catelyn_stark",
+      "birthDynastyId": "house_tully",
+      "currentDynastyId": "house_stark",
+      "marriedIntoDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.94
+    },
+
+    {
+      "npcId": "robb_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.95
+    },
+
+    {
+      "npcId": "sansa_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.90
+    },
+
+    {
+      "npcId": "arya_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.90
+    },
+
+    {
+      "npcId": "bran_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.90
+    },
+
+    {
+      "npcId": "rickon_stark",
+      "birthDynastyId": "house_stark",
+      "currentDynastyId": "house_stark",
+      "legalFamilyDynastyId": "house_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.90
+    },
+
+    {
+      "npcId": "jon_snow",
+      "clearBirthDynasty": true,
+      "clearCurrentDynasty": true,
+      "clearMarriedIntoDynasty": true,
+      "clearLegalFamilyDynasty": true,
+      "legalFatherNpcId": "eddard_stark",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_stark",
+      "primaryAllegianceOrganizationId": "the_north",
+      "allegianceStrength": 0.78
+    },
+
+    {
+      "npcId": "theon_greyjoy",
+      "birthDynastyId": "house_greyjoy",
+      "currentDynastyId": "house_greyjoy",
+      "legalFamilyDynastyId": "house_greyjoy",
+      "householdOrganizationId": "stark_household",
+      "houseOrganizationId": "house_greyjoy",
+      "clearPrimaryAllegiance": true
+    },
+
+    {
+      "npcId": "robert_baratheon",
+      "birthDynastyId": "house_baratheon",
+      "currentDynastyId": "house_baratheon_kings_landing",
+      "legalFamilyDynastyId": "house_baratheon_kings_landing",
+      "householdOrganizationId": "royal_household",
+      "houseOrganizationId": "house_baratheon_kings_landing",
+      "primaryAllegianceOrganizationId": "iron_throne",
+      "allegianceStrength": 1.0
+    },
+
+    {
+      "npcId": "cersei_lannister",
+      "birthDynastyId": "house_lannister",
+      "currentDynastyId": "house_baratheon_kings_landing",
+      "marriedIntoDynastyId": "house_baratheon_kings_landing",
+      "legalFamilyDynastyId": "house_baratheon_kings_landing",
+      "householdOrganizationId": "royal_household",
+      "houseOrganizationId": "house_baratheon_kings_landing",
+      "primaryAllegianceOrganizationId": "iron_throne",
+      "allegianceStrength": 0.82
+    },
+
+    {
+      "npcId": "jaime_lannister",
+      "birthDynastyId": "house_lannister",
+      "currentDynastyId": "house_lannister",
+      "legalFamilyDynastyId": "house_lannister",
+      "householdOrganizationId": "royal_household",
+      "houseOrganizationId": "house_lannister",
+      "primaryAllegianceOrganizationId": "iron_throne",
+      "allegianceStrength": 0.78
+    },
+
+    {
+      "npcId": "tyrion_lannister",
+      "birthDynastyId": "house_lannister",
+      "currentDynastyId": "house_lannister",
+      "legalFamilyDynastyId": "house_lannister",
+      "houseOrganizationId": "house_lannister",
+      "clearPrimaryAllegiance": true
+    }
+  ]
+}

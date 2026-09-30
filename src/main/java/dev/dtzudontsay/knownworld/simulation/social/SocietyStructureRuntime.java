@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld.simulation.social;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.persistence.CharacterSocialIdentityPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NonDynasticSocietyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.OrganizationMembershipPersistence;
@@ -10,12 +11,16 @@ import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityRepo
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyScenarioBootstrapService;
+import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityBootstrapService;
+import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityManager;
+import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityService;
 import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembershipManager;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyManager;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyService;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.storage.LevelResource;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -36,6 +41,10 @@ public final class SocietyStructureRuntime {
 
     private final NonDynasticSocietyService nonDynasticSocietyService;
 
+    private final CharacterSocialIdentityManager characterSocialIdentities;
+
+    private final CharacterSocialIdentityService characterSocialIdentityService;
+
     private final DynastyIntegrityService dynastyIntegrity;
 
     private final DynastyPersistence dynastyPersistence;
@@ -43,6 +52,8 @@ public final class SocietyStructureRuntime {
     private final OrganizationMembershipPersistence membershipPersistence;
 
     private final NonDynasticSocietyPersistence nonDynasticSocietyPersistence;
+
+    private final CharacterSocialIdentityPersistence characterSocialIdentityPersistence;
 
     private DynastyActivationReport lastActivationReport;
 
@@ -83,14 +94,36 @@ public final class SocietyStructureRuntime {
                         memberships
                 );
 
+        this.characterSocialIdentities =
+                new CharacterSocialIdentityManager(
+                        simulation.registry(),
+                        dynasties,
+                        simulation.organizations()
+                );
+
+        this.characterSocialIdentityService =
+                new CharacterSocialIdentityService(
+                        simulation,
+                        characterSocialIdentities,
+                        dynasties,
+                        memberships,
+                        nonDynasticSocieties
+                );
+
         this.dynastyIntegrity =
                 new DynastyIntegrityService(
                         simulation,
                         dynasties
                 );
 
+        /*
+         * Society persistence MUST use exactly the same per-world root
+         * as NpcSimulation.
+         */
         Path savePath =
-                server.getServerDirectory()
+                server.getWorldPath(
+                                LevelResource.ROOT
+                        )
                         .resolve(
                                 "knownworld"
                         )
@@ -110,6 +143,11 @@ public final class SocietyStructureRuntime {
 
         this.nonDynasticSocietyPersistence =
                 new NonDynasticSocietyPersistence(
+                        savePath
+                );
+
+        this.characterSocialIdentityPersistence =
+                new CharacterSocialIdentityPersistence(
                         savePath
                 );
     }
@@ -141,9 +179,10 @@ public final class SocietyStructureRuntime {
                     runtime.loadAndReconcile();
 
                     KnownWorld.LOGGER.info(
-                            "Society structure runtime started with {} dynasties, {} non-dynastic societies and {} organization memberships.",
+                            "Society structure runtime started with {} dynasties, {} non-dynastic societies, {} character social identities and {} organization memberships.",
                             runtime.dynasties.size(),
                             runtime.nonDynasticSocieties.size(),
+                            runtime.characterSocialIdentities.size(),
                             runtime.memberships.size()
                     );
                 }
@@ -230,6 +269,14 @@ public final class SocietyStructureRuntime {
         return nonDynasticSocietyService;
     }
 
+    public CharacterSocialIdentityManager characterSocialIdentities() {
+        return characterSocialIdentities;
+    }
+
+    public CharacterSocialIdentityService characterSocialIdentityService() {
+        return characterSocialIdentityService;
+    }
+
     public DynastyActivationReport lastActivationReport() {
         return lastActivationReport;
     }
@@ -252,6 +299,8 @@ public final class SocietyStructureRuntime {
                 simulation.affiliations(),
                 simulation.serverTickCounter()
         );
+
+        characterSocialIdentityService.ensureAll();
     }
 
     private void loadAndReconcile() {
@@ -268,10 +317,6 @@ public final class SocietyStructureRuntime {
                             dynasties
                     );
 
-            /*
-             * Organizations already belong to the main NPC simulation
-             * and therefore exist before society metadata is loaded.
-             */
             nonDynasticSocietyPersistence.loadInto(
                     nonDynasticSocieties
             );
@@ -283,6 +328,18 @@ public final class SocietyStructureRuntime {
             NonDynasticSocietyBootstrapService.ensureDefault(
                     simulation,
                     nonDynasticSocieties,
+                    memberships
+            );
+
+            characterSocialIdentityPersistence.loadInto(
+                    characterSocialIdentities
+            );
+
+            CharacterSocialIdentityBootstrapService.ensureDefault(
+                    simulation,
+                    characterSocialIdentityService,
+                    characterSocialIdentities,
+                    dynasties,
                     memberships
             );
 
@@ -330,6 +387,10 @@ public final class SocietyStructureRuntime {
 
             nonDynasticSocietyPersistence.save(
                     nonDynasticSocieties
+            );
+
+            characterSocialIdentityPersistence.save(
+                    characterSocialIdentities
             );
 
         } catch (

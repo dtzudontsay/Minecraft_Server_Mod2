@@ -9,6 +9,7 @@ import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,7 +20,17 @@ public final class ReligiousMembershipManager {
 
     private final OrganizationManager organizations;
 
-    private final Map<NpcId, ReligiousMembership> memberships =
+    /*
+     * 19.0C:
+     *
+     * Previously this map was keyed only by NPC, meaning a character
+     * could belong to only one religious institution.
+     *
+     * Membership is now many-to-many:
+     *
+     * NPC + religious order -> membership.
+     */
+    private final Map<Key, ReligiousMembership> memberships =
             new LinkedHashMap<>();
 
     public ReligiousMembershipManager(
@@ -40,6 +51,12 @@ public final class ReligiousMembershipManager {
                 );
     }
 
+    /**
+     * Legacy-compatible lookup.
+     *
+     * Returns an active membership when possible, otherwise any
+     * membership for the NPC.
+     */
     public synchronized Optional<ReligiousMembership> find(
             NpcId npc
     ) {
@@ -48,11 +65,90 @@ public final class ReligiousMembershipManager {
                 npc
         );
 
+        Optional<ReligiousMembership> active =
+                memberships.values()
+                        .stream()
+                        .filter(
+                                membership ->
+                                        membership.npc()
+                                                .equals(
+                                                        npc
+                                                )
+                        )
+                        .filter(
+                                ReligiousMembership::active
+                        )
+                        .findFirst();
+
+        if (active.isPresent()) {
+            return active;
+        }
+
+        return memberships.values()
+                .stream()
+                .filter(
+                        membership ->
+                                membership.npc()
+                                        .equals(
+                                                npc
+                                        )
+                )
+                .findFirst();
+    }
+
+    public synchronized Optional<ReligiousMembership> find(
+            NpcId npc,
+            String orderId
+    ) {
+
+        validateNpc(
+                npc
+        );
+
         return Optional.ofNullable(
                 memberships.get(
-                        npc
+                        new Key(
+                                npc,
+                                normalizeOrderId(
+                                        orderId
+                                )
+                        )
                 )
         );
+    }
+
+    public synchronized List<ReligiousMembership> membershipsFor(
+            NpcId npc
+    ) {
+
+        validateNpc(
+                npc
+        );
+
+        return memberships.values()
+                .stream()
+                .filter(
+                        membership ->
+                                membership.npc()
+                                        .equals(
+                                                npc
+                                        )
+                )
+                .toList();
+    }
+
+    public synchronized List<ReligiousMembership> activeMembershipsFor(
+            NpcId npc
+    ) {
+
+        return membershipsFor(
+                npc
+        )
+                .stream()
+                .filter(
+                        ReligiousMembership::active
+                )
+                .toList();
     }
 
     public synchronized ReligiousMembership join(
@@ -84,18 +180,68 @@ public final class ReligiousMembershipManager {
                 organizationId
         );
 
-        ReligiousMembership existing =
+        Key key =
+                new Key(
+                        npc,
+                        definition.id()
+                );
+
+        ReligiousMembership sameOrder =
                 memberships.get(
+                        key
+                );
+
+        if (sameOrder != null) {
+
+            sameOrder.setRoleId(
+                    roleId
+            );
+
+            sameOrder.setCommitment(
+                    commitment
+            );
+
+            sameOrder.setActive(
+                    true
+            );
+
+            return sameOrder;
+        }
+
+        List<ReligiousMembership> activeExisting =
+                activeMembershipsFor(
                         npc
                 );
 
-        if (existing != null
-                && existing.active()
-                && definition.exclusiveMembership()) {
+        if (definition.exclusiveMembership()
+                && !activeExisting.isEmpty()) {
 
             throw new IllegalStateException(
-                    "NPC already has an active exclusive religious membership"
+                    "NPC already has active religious membership(s); "
+                            + definition.id()
+                            + " is exclusive"
             );
+        }
+
+        for (
+                ReligiousMembership existing :
+                activeExisting
+        ) {
+
+            ReligiousOrderDefinition existingDefinition =
+                    ReligiousInstitutionCatalog.get()
+                            .find(
+                                    existing.orderId()
+                            )
+                            .orElseThrow();
+
+            if (existingDefinition.exclusiveMembership()) {
+
+                throw new IllegalStateException(
+                        "NPC is already a member of exclusive religious institution "
+                                + existingDefinition.id()
+                );
+            }
         }
 
         ReligiousMembership membership =
@@ -109,13 +255,17 @@ public final class ReligiousMembershipManager {
                 );
 
         memberships.put(
-                npc,
+                key,
                 membership
         );
 
         return membership;
     }
 
+    /**
+     * Legacy behavior: leave all currently active religious
+     * institution memberships.
+     */
     public synchronized void leave(
             NpcId npc
     ) {
@@ -124,17 +274,37 @@ public final class ReligiousMembershipManager {
                 npc
         );
 
-        ReligiousMembership membership =
-                memberships.get(
+        for (
+                ReligiousMembership membership :
+                membershipsFor(
                         npc
+                )
+        ) {
+
+            if (membership.active()) {
+
+                membership.setActive(
+                        false
                 );
-
-        if (membership != null) {
-
-            membership.setActive(
-                    false
-            );
+            }
         }
+    }
+
+    public synchronized void leave(
+            NpcId npc,
+            String orderId
+    ) {
+
+        find(
+                npc,
+                orderId
+        )
+                .ifPresent(
+                        membership ->
+                                membership.setActive(
+                                        false
+                                )
+                );
     }
 
     public synchronized void registerLoaded(
@@ -167,10 +337,24 @@ public final class ReligiousMembershipManager {
                 membership.organizationId()
         );
 
-        memberships.put(
-                membership.npc(),
+        Key key =
+                new Key(
+                        membership.npc(),
+                        definition.id()
+                );
+
+        if (memberships.putIfAbsent(
+                key,
                 membership
-        );
+        ) != null) {
+
+            throw new IllegalStateException(
+                    "Duplicate religious membership for NPC "
+                            + membership.npc()
+                            + " and order "
+                            + definition.id()
+            );
+        }
     }
 
     public synchronized List<ReligiousMembership> activeForOrder(
@@ -293,5 +477,29 @@ public final class ReligiousMembershipManager {
                             + ", expected RELIGIOUS_ORDER"
             );
         }
+    }
+
+    private static String normalizeOrderId(
+            String value
+    ) {
+
+        if (value == null
+                || value.isBlank()) {
+
+            throw new IllegalArgumentException(
+                    "orderId cannot be blank"
+            );
+        }
+
+        return value.trim()
+                .toLowerCase(
+                        Locale.ROOT
+                );
+    }
+
+    private record Key(
+            NpcId npc,
+            String orderId
+    ) {
     }
 }

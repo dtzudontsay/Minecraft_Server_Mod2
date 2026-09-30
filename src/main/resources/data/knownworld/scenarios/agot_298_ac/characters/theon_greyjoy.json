@@ -1,6 +1,6 @@
 {
   "id": "theon_greyjoy",
-  "authoringVersion": 1,
+  "authoringVersion": 2,
 
   "identity": {
     "givenName": "Theon",
@@ -31,22 +31,25 @@
     "culture": "ironborn",
     "religion": "drowned_god",
     "education": "noble_martial",
+
     "birthplaceLocationId": "pyke",
     "upbringingLocationId": "winterfell",
+
     "orientation": "HETEROSEXUAL",
     "healthState": "HEALTHY",
     "legalStatus": "HOSTAGE",
+
     "wealth": 0.58,
     "socialStatus": 0.70,
     "reputation": 0.36,
 
     "skills": {
       "martial": 0.58,
-      "combat": 0.62,
+      "combat": 0.65,
       "riding": 0.58,
-      "archery": 0.65,
       "sailing": 0.42,
-      "leadership": 0.42
+      "leadership": 0.42,
+      "hunting": 0.55
     },
 
     "traits": [
@@ -59,8 +62,17 @@
       "social"
     ],
 
+    "occupations": [
+      "courtier"
+    ],
+
     "courtRoles": [
       "ward"
+    ],
+
+    "combatSpecialties": [
+      "archery",
+      "mounted_combat"
     ],
 
     "languages": {
@@ -74,6 +86,7 @@
       "culture.multicultural_identity": 0.55,
       "culture.affinity.ironborn": 1.0,
       "culture.affinity.northman": 0.68,
+
       "religion.devotion": 0.32,
       "religion.identity_importance": 0.52,
       "religion.tolerance": 0.55,

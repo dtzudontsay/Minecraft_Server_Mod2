@@ -5,6 +5,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
 import dev.dtzudontsay.knownworld.simulation.social.Organization;
 
+import java.util.List;
 import java.util.Objects;
 
 public final class ReligionPracticeService {
@@ -163,12 +164,27 @@ public final class ReligionPracticeService {
         return membership;
     }
 
+    /**
+     * Legacy convenience:
+     * leaves all religious institutions.
+     */
     public void leaveOrder(
             NpcId npc
     ) {
 
         memberships.leave(
                 npc
+        );
+    }
+
+    public void leaveOrder(
+            NpcId npc,
+            String orderId
+    ) {
+
+        memberships.leave(
+                npc,
+                orderId
         );
     }
 
@@ -259,40 +275,61 @@ public final class ReligionPracticeService {
             String ritualId
     ) {
 
-        ReligiousMembership membership =
-                memberships.find(
-                                npc
-                        )
-                        .filter(
-                                ReligiousMembership::active
-                        )
-                        .orElse(
-                                null
-                        );
+        List<ReligiousMembership> active =
+                memberships.activeMembershipsFor(
+                        npc
+                );
 
-        if (membership == null) {
-
+        if (active.isEmpty()) {
             return;
         }
 
-        ReligiousOrderDefinition definition =
-                ReligiousInstitutionCatalog.get()
-                        .find(
-                                membership.orderId()
-                        )
-                        .orElseThrow();
+        boolean anyAllows =
+                false;
 
-        if (!definition.rituals()
-                .isEmpty()
-                && !definition.rituals()
-                .contains(
-                        ritualId
-                )) {
+        boolean anyDefinesRituals =
+                false;
+
+        for (
+                ReligiousMembership membership :
+                active
+        ) {
+
+            ReligiousOrderDefinition definition =
+                    ReligiousInstitutionCatalog.get()
+                            .find(
+                                    membership.orderId()
+                            )
+                            .orElseThrow();
+
+            if (definition.rituals()
+                    .isEmpty()) {
+
+                anyAllows =
+                        true;
+
+                continue;
+            }
+
+            anyDefinesRituals =
+                    true;
+
+            if (definition.rituals()
+                    .contains(
+                            ritualId
+                    )) {
+
+                anyAllows =
+                        true;
+            }
+        }
+
+        if (anyDefinesRituals
+                && !anyAllows) {
 
             throw new IllegalArgumentException(
                     ritualId
-                            + " is not a defined ritual for "
-                            + definition.id()
+                            + " is not a defined ritual for any active religious institution membership"
             );
         }
     }

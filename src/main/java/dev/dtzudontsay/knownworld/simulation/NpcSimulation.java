@@ -65,6 +65,7 @@ import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.storage.LevelResource;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -79,123 +80,65 @@ public final class NpcSimulation {
     private final MinecraftServer server;
 
     private final SimulationClock clock;
-
     private final CampaignCalendar campaignCalendar;
-
     private final NpcRegistry registry;
-
     private final SettlementManager settlementManager;
-
     private final OrganizationManager organizationManager;
-
     private final ReligiousInstitutionRuntimeManager religiousInstitutionManager;
-
     private final NpcAffiliationManager affiliationManager;
-
     private final TitleManager titleManager;
-
     private final SuccessionRuleManager successionRuleManager;
-
     private final ClaimManager claimManager;
-
     private final AuthorityService authorityService;
-
     private final AuthoredIdRegistry authoredIdRegistry;
-
     private final GenealogyManager genealogyManager;
-
     private final MarriageManager marriageManager;
-
     private final DynastyService dynastyService;
-
     private final LifeHistoryManager lifeHistoryManager;
-
     private final PregnancyManager pregnancyManager;
-
     private final CharacterProfileManager profileManager;
-
     private final CharacterLegalStateManager legalStateManager;
-
     private final CharacterProfileGenerationService profileGenerationService;
-
     private final NpcRelationshipManager relationshipManager;
-
     private final ReligiousMembershipManager religiousMembershipManager;
-
     private final UpbringingManager upbringingManager;
-
     private final CharacterPsychologyService psychologyService;
-
     private final RegionalCharacterInfluenceService regionalInfluenceService;
-
     private final CultureService cultureService;
-
     private final ReligionService religionService;
-
     private final CharacterFormationIntegrationService formationIntegrationService;
-
     private final ChildFormationService formationService;
-
     private final NpcKnowledgeManager knowledgeManager;
-
     private final NpcMemoryManager memoryManager;
-
     private final NpcGoalManager goalManager;
-
     private final NpcNeedManager needManager;
-
     private final NpcRoutineManager routineManager;
-
     private final WorldEventManager eventManager;
-
     private final SuccessionService successionService;
-
     private final FertilityService fertilityService;
-
     private final GeneratedNameService generatedNameService;
-
     private final NpcCommunicationService communicationService;
-
     private final NpcObservationService observationService;
-
     private final NpcDecisionService decisionService;
-
     private final NpcRoutineService routineService;
-
     private final NpcActionProcessor actionProcessor;
-
     private final MarriageService marriageService;
-
     private final CharacterGenerationService characterGenerationService;
-
     private final LifeCycleService lifeCycleService;
 
     private final NpcPersistence persistence;
-
     private final TitlePersistence titlePersistence;
-
     private final AuthoredIdPersistence authoredIdPersistence;
-
     private final GenealogyPersistence genealogyPersistence;
-
     private final MarriagePersistence marriagePersistence;
-
     private final CampaignCalendarPersistence campaignCalendarPersistence;
-
     private final LifeHistoryPersistence lifeHistoryPersistence;
-
     private final PregnancyPersistence pregnancyPersistence;
-
     private final SuccessionPersistence successionPersistence;
-
     private final ClaimPersistence claimPersistence;
-
     private final CharacterProfilePersistence profilePersistence;
-
     private final CharacterLegalStatePersistence legalStatePersistence;
-
     private final ReligiousMembershipPersistence religiousMembershipPersistence;
-
     private final UpbringingPersistence upbringingPersistence;
 
     private final NpcActivationManager activationManager;
@@ -204,20 +147,12 @@ public final class NpcSimulation {
             MinecraftServer server
     ) {
 
-        this.server =
-                server;
+        this.server = server;
 
-        this.clock =
-                new SimulationClock();
-
-        this.campaignCalendar =
-                new CampaignCalendar();
-
-        this.registry =
-                new NpcRegistry();
-
-        this.settlementManager =
-                new SettlementManager();
+        this.clock = new SimulationClock();
+        this.campaignCalendar = new CampaignCalendar();
+        this.registry = new NpcRegistry();
+        this.settlementManager = new SettlementManager();
 
         this.organizationManager =
                 new OrganizationManager(
@@ -507,8 +442,19 @@ public final class NpcSimulation {
                         registry
                 );
 
+        /*
+         * IMPORTANT:
+         *
+         * Known World persistence belongs to the actual Minecraft world.
+         *
+         * The former implementation used server.getServerDirectory(),
+         * which caused every single-player test world to share the same
+         * NPC state under run/knownworld/npc.
+         */
         Path savePath =
-                server.getServerDirectory()
+                server.getWorldPath(
+                                LevelResource.ROOT
+                        )
                         .resolve(
                                 "knownworld"
                         )
@@ -684,8 +630,7 @@ public final class NpcSimulation {
                             && instance.server
                             == server) {
 
-                        instance =
-                                null;
+                        instance = null;
                     }
                 }
         );
@@ -955,14 +900,6 @@ public final class NpcSimulation {
 
             formationIntegrationService.ensureAll();
 
-            /*
-             * Important for 18G authored overlays.
-             *
-             * The overlay lifecycle runs after NpcSimulation loads and may
-             * update the old CharacterProfile.legalStatus field. Ensuring
-             * here migrates that state before persistence without requiring
-             * the overlay to know about the new legal subsystem.
-             */
             legalStateManager.ensureAll(
                     profileManager
             );
@@ -1123,11 +1060,6 @@ public final class NpcSimulation {
 
             profileManager.ensureAll();
 
-            /*
-             * Multi-axis legal state is intentionally separate from the
-             * older profile persistence. Old saves therefore require no
-             * profile-format migration.
-             */
             legalStatePersistence.loadInto(
                     legalStateManager
             );
@@ -1155,7 +1087,7 @@ public final class NpcSimulation {
                 IOException exception
         ) {
 
-            KnownWorld.LOGGER.error(
+            throw new IllegalStateException(
                     "Failed to load NPC simulation.",
                     exception
             );
@@ -1164,7 +1096,7 @@ public final class NpcSimulation {
                 RuntimeException exception
         ) {
 
-            KnownWorld.LOGGER.error(
+            throw new IllegalStateException(
                     "Failed to initialize NPC simulation.",
                     exception
             );

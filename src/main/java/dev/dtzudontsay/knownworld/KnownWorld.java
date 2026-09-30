@@ -2,6 +2,7 @@ package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CharacterProfileDebugCommand;
+import dev.dtzudontsay.knownworld.debug.CharacterSocialIdentityDebugCommand;
 import dev.dtzudontsay.knownworld.debug.CultureDebugCommand;
 import dev.dtzudontsay.knownworld.debug.DynastyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.FamilyDebugCommand;
@@ -148,10 +149,19 @@ public final class KnownWorld implements ModInitializer {
         FormationDebugCommand.register();
         LegalStateDebugCommand.register();
 
+        /*
+         * NPC simulation must register first.
+         */
         NpcSimulation.registerLifecycle();
 
+        /*
+         * Society runtime depends on the running NPC simulation.
+         */
         SocietyStructureRuntime.registerLifecycle();
 
+        /*
+         * Authored profile overlays run after simulation state exists.
+         */
         AuthoredCharacterProfileOverlayService.registerLifecycle();
 
         NpcDebugCommand.register();
@@ -161,6 +171,7 @@ public final class KnownWorld implements ModInitializer {
         DynastyDebugCommand.register();
         OrganizationMembershipDebugCommand.register();
         NonDynasticSocietyDebugCommand.register();
+        CharacterSocialIdentityDebugCommand.register();
         TitleDebugCommand.register();
         BootstrapDebugCommand.register();
         FamilyDebugCommand.register();

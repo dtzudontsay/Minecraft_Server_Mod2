@@ -96,14 +96,23 @@ public final class ReligiousMembershipPersistence {
                 writer.newLine();
             }
 
+            Comparator<ReligiousMembership> membershipComparator =
+                    Comparator
+                            .comparingLong(
+                                    (ReligiousMembership membership) ->
+                                            membership.npc()
+                                                    .value()
+                            )
+                            .thenComparing(
+                                    ReligiousMembership::orderId
+                            );
+
             for (
                     ReligiousMembership membership :
                     memberships.all()
                             .stream()
                             .sorted(
-                                    Comparator.comparing(
-                                            ReligiousMembership::npc
-                                    )
+                                    membershipComparator
                             )
                             .toList()
             ) {

@@ -9,6 +9,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
+import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 
 import java.util.Objects;
 
@@ -31,6 +32,7 @@ public final class MarriageService {
             NpcMemoryManager memories,
             WorldEventManager events
     ) {
+
         this.registry =
                 Objects.requireNonNull(
                         registry,
@@ -68,6 +70,7 @@ public final class MarriageService {
             DynastyInheritanceRule rule,
             long tick
     ) {
+
         MarriageRecord record =
                 marriages.betroth(
                         first,
@@ -145,6 +148,7 @@ public final class MarriageService {
             DynastyInheritanceRule rule,
             long tick
     ) {
+
         MarriageRecord record =
                 marriages.marry(
                         first,
@@ -239,6 +243,20 @@ public final class MarriageService {
                 null
         );
 
+        SocietyStructureRuntime society =
+                SocietyStructureRuntime.getNullable();
+
+        if (society != null) {
+
+            society.characterSocialIdentityService()
+                    .onMarriage(
+                            first,
+                            second,
+                            rule,
+                            tick
+                    );
+        }
+
         return record;
     }
 
@@ -246,6 +264,15 @@ public final class MarriageService {
             NpcId npc,
             long tick
     ) {
+
+        /*
+         * We intentionally do not automatically revert current dynasty
+         * or married-into dynasty when a marriage ends.
+         *
+         * Widows, annulments, repudiation and divorce can all produce
+         * different legal/social results. A future marriage-law system
+         * must decide those consequences explicitly.
+         */
         return marriages.endCurrentUnion(
                 npc,
                 tick
@@ -256,6 +283,7 @@ public final class MarriageService {
             NpcId subject,
             NpcId target
     ) {
+
         return relationships.getOrCreate(
                 subject,
                 target
@@ -265,6 +293,7 @@ public final class MarriageService {
     private String name(
             NpcId npc
     ) {
+
         return requireNpc(
                 npc
         )
@@ -275,6 +304,7 @@ public final class MarriageService {
     private NpcState requireNpc(
             NpcId npc
     ) {
+
         return registry.find(
                         npc
                 )
