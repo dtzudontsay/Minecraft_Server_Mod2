@@ -1,0 +1,75 @@
+package dev.dtzudontsay.knownworld.simulation.npc.profile;
+
+/**
+ * Learned convictions, priorities and moral/social values.
+ *
+ * Range: [-1.0, 1.0]
+ */
+public enum CharacterValue {
+
+    DUTY,
+
+    FAMILY_LOYALTY,
+
+    HOUSE_LOYALTY,
+
+    DYNASTIC_LOYALTY,
+
+    CLAN_LOYALTY,
+
+    FRIENDSHIP_LOYALTY,
+
+    PERSONAL_FREEDOM,
+
+    AUTHORITY_RESPECT,
+
+    HIERARCHY_ACCEPTANCE,
+
+    EGALITARIANISM,
+
+    TRADITIONALISM,
+
+    INNOVATION,
+
+    RELIGIOSITY,
+
+    RELIGIOUS_TOLERANCE,
+
+    CULTURAL_TOLERANCE,
+
+    HONOR_CULTURE,
+
+    HOSPITALITY,
+
+    MERCY,
+
+    VENGEANCE,
+
+    JUSTICE,
+
+    LAW_OBEDIENCE,
+
+    WEALTH_SEEKING,
+
+    PRESTIGE_SEEKING,
+
+    POWER_SEEKING,
+
+    KNOWLEDGE_SEEKING,
+
+    MARTIAL_GLORY,
+
+    PACIFISM,
+
+    FAMILY_FORMATION,
+
+    ROMANTIC_LOVE,
+
+    POLITICAL_STABILITY,
+
+    SOCIAL_MOBILITY,
+
+    COMMUNAL_SOLIDARITY,
+
+    INDIVIDUALISM
+}

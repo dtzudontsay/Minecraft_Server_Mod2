@@ -51,6 +51,7 @@ public final class CharacterProfileDebugCommand {
     private static int executeShow(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcId npc =
                 new NpcId(
                         LongArgumentType.getLong(
@@ -72,12 +73,74 @@ public final class CharacterProfileDebugCommand {
                     context,
                     "Profile NPC #"
                             + npc
-                            + " | culture "
+            );
+
+            success(
+                    context,
+                    "Identity | culture="
                             + profile.culture()
-                            + " | religion "
+                            + " religion="
                             + profile.religion()
-                            + " | education "
+                            + " education="
                             + profile.education()
+            );
+
+            success(
+                    context,
+                    "Formation | birthplace="
+                            + profile.birthplaceLocationId()
+                            + " upbringing="
+                            + profile.upbringingLocationId()
+            );
+
+            success(
+                    context,
+                    "Personal | orientation="
+                            + profile.orientation()
+                            + " health="
+                            + profile.healthState()
+                            + " legalStatus="
+                            + profile.legalStatus()
+            );
+
+            success(
+                    context,
+                    "Social | wealth="
+                            + format(
+                            profile.wealth()
+                    )
+                            + " status="
+                            + format(
+                            profile.socialStatus()
+                    )
+                            + " reputation="
+                            + format(
+                            profile.reputation()
+                    )
+            );
+
+            success(
+                    context,
+                    "Dispositions: "
+                            + profile.dispositions()
+            );
+
+            success(
+                    context,
+                    "Values: "
+                            + profile.characterValues()
+            );
+
+            success(
+                    context,
+                    "Social norms: "
+                            + profile.socialNorms()
+            );
+
+            success(
+                    context,
+                    "Aptitudes: "
+                            + profile.aptitudes()
             );
 
             success(
@@ -94,8 +157,44 @@ public final class CharacterProfileDebugCommand {
 
             success(
                     context,
-                    "Values: "
-                            + profile.values()
+                    "Aliases: "
+                            + profile.aliases()
+            );
+
+            success(
+                    context,
+                    "Languages: "
+                            + profile.languages()
+            );
+
+            success(
+                    context,
+                    "Occupations: "
+                            + profile.occupations()
+            );
+
+            success(
+                    context,
+                    "Offices: "
+                            + profile.offices()
+            );
+
+            success(
+                    context,
+                    "Court roles: "
+                            + profile.courtRoles()
+            );
+
+            success(
+                    context,
+                    "Military roles: "
+                            + profile.militaryRoles()
+            );
+
+            success(
+                    context,
+                    "Combat specialties: "
+                            + profile.combatSpecialties()
             );
 
             success(
@@ -104,24 +203,101 @@ public final class CharacterProfileDebugCommand {
                             + profile.motivations()
             );
 
+            success(
+                    context,
+                    "Goals: "
+                            + profile.goals()
+            );
+
+            success(
+                    context,
+                    "Fears: "
+                            + profile.fears()
+            );
+
+            success(
+                    context,
+                    "Desires: "
+                            + profile.desires()
+            );
+
+            success(
+                    context,
+                    "Political preferences: "
+                            + profile.politicalPreferences()
+            );
+
+            success(
+                    context,
+                    "Legacy/custom values: "
+                            + profile.values()
+            );
+
+            success(
+                    context,
+                    "Secrets owned="
+                            + profile.secrets()
+                            .size()
+                            + " known="
+                            + profile.knownSecrets()
+                            .size()
+            );
+
+            success(
+                    context,
+                    "Facts | public="
+                            + profile.publicFacts()
+                            .size()
+                            + " private="
+                            + profile.privateFacts()
+                            .size()
+            );
+
+            if (
+                    !profile.appearanceDescription()
+                            .isBlank()
+                            ||
+                            !profile.hairDescription()
+                                    .isBlank()
+                            ||
+                            !profile.eyeDescription()
+                                    .isBlank()
+                            ||
+                            !profile.buildDescription()
+                                    .isBlank()
+            ) {
+
+                success(
+                        context,
+                        "Appearance | general="
+                                + profile.appearanceDescription()
+                                + " hair="
+                                + profile.hairDescription()
+                                + " eyes="
+                                + profile.eyeDescription()
+                                + " build="
+                                + profile.buildDescription()
+                );
+            }
+
             var dialogue =
                     profile.dialoguePersona();
 
             success(
                     context,
-                    "Dialogue | formality "
+                    "Dialogue | formality="
                             + format(
                             dialogue.formality()
                     )
-                            + " | verbosity "
+                            + " verbosity="
                             + format(
                             dialogue.verbosity()
                     )
-                            + " | warmth "
+                            + " warmth="
                             + format(
                             dialogue.warmth()
                     )
-                            + " | directness "
+                            + " directness="
                             + format(
                             dialogue.directness()
                     )
@@ -170,6 +346,7 @@ public final class CharacterProfileDebugCommand {
     private static String format(
             double value
     ) {
+
         return String.format(
                 "%.2f",
                 value
@@ -180,6 +357,7 @@ public final class CharacterProfileDebugCommand {
             CommandContext<CommandSourceStack> context,
             String text
     ) {
+
         context.getSource()
                 .sendSuccess(
                         () ->

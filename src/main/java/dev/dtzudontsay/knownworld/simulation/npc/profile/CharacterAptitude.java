@@ -1,11 +1,13 @@
 package dev.dtzudontsay.knownworld.simulation.npc.profile;
 
 /**
- * Current learned competence.
+ * Natural or developmental potential.
+ *
+ * Aptitude is intentionally distinct from learned CharacterSkill.
  *
  * Range: [0.0, 1.0]
  */
-public enum CharacterSkill {
+public enum CharacterAptitude {
 
     MARTIAL,
 
@@ -39,7 +41,7 @@ public enum CharacterSkill {
 
     RELIGIOUS_STUDY,
 
-    LANGUAGE,
+    LANGUAGES,
 
     PERFORMANCE,
 

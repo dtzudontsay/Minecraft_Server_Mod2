@@ -11,8 +11,17 @@ import java.util.Random;
 
 public final class CharacterProfileGenerationService {
 
+    private static final double DISPOSITION_VARIATION =
+            0.15;
+
+    private static final double APTITUDE_VARIATION =
+            0.15;
+
     private static final double VALUE_VARIATION =
             0.10;
+
+    private static final double SOCIAL_NORM_VARIATION =
+            0.08;
 
     private final NpcRegistry registry;
 
@@ -41,6 +50,7 @@ public final class CharacterProfileGenerationService {
             NpcId father,
             long seedValue
     ) {
+
         NpcState childState =
                 requireNpc(
                         child
@@ -66,43 +76,73 @@ public final class CharacterProfileGenerationService {
                         seedValue
                 );
 
-        String culture =
-                inheritIdentity(
-                        motherProfile.culture(),
-                        fatherProfile == null
-                                ? null
-                                : fatherProfile.culture(),
-                        random
-                );
-
-        String religion =
-                inheritIdentity(
-                        motherProfile.religion(),
-                        fatherProfile == null
-                                ? null
-                                : fatherProfile.religion(),
-                        random
-                );
-
-        DialoguePersona dialogue =
-                dialogueFromPersonality(
-                        childState.personality()
-                );
-
         CharacterProfile childProfile =
                 new CharacterProfile(
                         child,
-                        culture,
-                        religion,
+                        inheritIdentity(
+                                motherProfile.culture(),
+                                fatherProfile == null
+                                        ? null
+                                        : fatherProfile.culture(),
+                                random
+                        ),
+                        inheritIdentity(
+                                motherProfile.religion(),
+                                fatherProfile == null
+                                        ? null
+                                        : fatherProfile.religion(),
+                                random
+                        ),
                         "childhood",
-                        dialogue
+                        dialogueFromPersonality(
+                                childState.personality()
+                        )
                 );
 
-        inheritValues(
+        initializeDispositionFromPersonality(
+                childProfile,
+                childState.personality()
+        );
+
+        inheritDispositions(
                 childProfile,
                 motherProfile,
                 fatherProfile,
                 random
+        );
+
+        inheritAptitudes(
+                childProfile,
+                motherProfile,
+                fatherProfile,
+                random
+        );
+
+        inheritCharacterValues(
+                childProfile,
+                motherProfile,
+                fatherProfile,
+                random
+        );
+
+        inheritSocialNorms(
+                childProfile,
+                motherProfile,
+                fatherProfile,
+                random
+        );
+
+        inheritLegacyValues(
+                childProfile,
+                motherProfile,
+                fatherProfile,
+                random
+        );
+
+        inheritLanguages(
+                childProfile,
+                motherProfile,
+                fatherProfile
         );
 
         initializeTraitsFromPersonality(
@@ -111,40 +151,60 @@ public final class CharacterProfileGenerationService {
         );
 
         /*
-         * A newborn does not inherit actual learned competence.
+         * Learned competence is not genetically inherited.
          *
-         * Skills begin very low and will later be developed by
-         * childhood, education, training and experience systems.
+         * The child receives aptitude, while actual skill starts
+         * at zero and develops through education/experience.
          */
         for (
                 CharacterSkill skill :
                 CharacterSkill.values()
         ) {
 
-            double parentPotential =
-                    parentalSkillAverage(
-                            skill,
-                            motherProfile,
-                            fatherProfile
-                    );
-
-            double startingSkill =
-                    parentPotential
-                            * 0.10
-                            * (
-                            0.75
-                                    + random.nextDouble()
-                                    * 0.50
-                    );
-
             childProfile.setSkill(
                     skill,
-                    startingSkill
+                    0.0
             );
         }
 
+        childProfile.setOrientation(
+                CharacterOrientation.UNSPECIFIED
+        );
+
+        childProfile.setHealthState(
+                CharacterHealthState.HEALTHY
+        );
+
+        childProfile.setLegalStatus(
+                CharacterLegalStatus.UNSPECIFIED
+        );
+
+        childProfile.setBirthplaceLocationId(
+                "unknown"
+        );
+
+        childProfile.setUpbringingLocationId(
+                "unknown"
+        );
+
+        childProfile.setWealth(
+                0.0
+        );
+
+        childProfile.setSocialStatus(
+                0.0
+        );
+
+        childProfile.setReputation(
+                0.0
+        );
+
         childProfile.addMotivation(
                 "grow_and_learn"
+        );
+
+        childProfile.addGoal(
+                "survive_childhood"
         );
 
         profiles.registerLoaded(
@@ -154,12 +214,289 @@ public final class CharacterProfileGenerationService {
         return childProfile;
     }
 
-    private static void inheritValues(
+    private static void initializeDispositionFromPersonality(
+            CharacterProfile profile,
+            NpcPersonality personality
+    ) {
+
+        profile.setDisposition(
+                CharacterDisposition.ASSERTIVENESS,
+                personality.courage()
+                        * 0.45
+                        +
+                        personality.ambition()
+                                * 0.25
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.IMPULSIVITY,
+                -personality.patience()
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.DISCIPLINE,
+                personality.patience()
+                        * 0.55
+                        +
+                        personality.honor()
+                                * 0.20
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.EMPATHY,
+                personality.compassion()
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.AGGRESSION,
+                personality.courage()
+                        * 0.25
+                        -
+                        personality.compassion()
+                                * 0.35
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.DOMINANCE,
+                personality.ambition()
+                        * 0.50
+                        +
+                        personality.courage()
+                                * 0.20
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.CONFORMITY,
+                personality.sociability()
+                        * 0.10
+                        -
+                        personality.ambition()
+                                * 0.10
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.INDEPENDENCE,
+                personality.ambition()
+                        * 0.15
+                        +
+                        personality.courage()
+                                * 0.15
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.RISK_TOLERANCE,
+                personality.courage()
+                        * 0.60
+        );
+
+        profile.setDisposition(
+                CharacterDisposition.PERSISTENCE,
+                personality.patience()
+                        * 0.40
+                        +
+                        personality.ambition()
+                                * 0.25
+        );
+    }
+
+    private static void inheritDispositions(
             CharacterProfile child,
             CharacterProfile mother,
             CharacterProfile father,
             Random random
     ) {
+
+        for (
+                CharacterDisposition disposition :
+                CharacterDisposition.values()
+        ) {
+
+            double parentValue =
+                    parentAverageSigned(
+                            mother.disposition(
+                                    disposition
+                            ),
+                            father == null
+                                    ? null
+                                    : father.disposition(
+                                    disposition
+                            )
+                    );
+
+            double inherited =
+                    parentValue
+                            +
+                            signedVariation(
+                                    random,
+                                    DISPOSITION_VARIATION
+                            );
+
+            double temperamentBase =
+                    child.disposition(
+                            disposition
+                    );
+
+            child.setDisposition(
+                    disposition,
+                    temperamentBase
+                            * 0.55
+                            +
+                            inherited
+                                    * 0.45
+            );
+        }
+    }
+
+    private static void inheritAptitudes(
+            CharacterProfile child,
+            CharacterProfile mother,
+            CharacterProfile father,
+            Random random
+    ) {
+
+        for (
+                CharacterAptitude aptitude :
+                CharacterAptitude.values()
+        ) {
+
+            double motherValue =
+                    mother.aptitude(
+                            aptitude
+                    );
+
+            double fatherValue =
+                    father == null
+                            ? motherValue
+                            : father.aptitude(
+                            aptitude
+                    );
+
+            double inherited;
+
+            if (
+                    motherValue == 0.0
+                            &&
+                            fatherValue == 0.0
+            ) {
+
+                inherited =
+                        0.35
+                                +
+                                random.nextDouble()
+                                        * 0.30;
+
+            } else {
+
+                inherited =
+                        (
+                                motherValue
+                                        +
+                                        fatherValue
+                        ) / 2.0;
+
+                inherited +=
+                        signedVariation(
+                                random,
+                                APTITUDE_VARIATION
+                        );
+            }
+
+            child.setAptitude(
+                    aptitude,
+                    inherited
+            );
+        }
+    }
+
+    private static void inheritCharacterValues(
+            CharacterProfile child,
+            CharacterProfile mother,
+            CharacterProfile father,
+            Random random
+    ) {
+
+        for (
+                CharacterValue value :
+                CharacterValue.values()
+        ) {
+
+            double parentValue =
+                    parentAverageSigned(
+                            mother.characterValue(
+                                    value
+                            ),
+                            father == null
+                                    ? null
+                                    : father.characterValue(
+                                    value
+                            )
+                    );
+
+            /*
+             * Values are learned much more strongly during
+             * upbringing than biologically inherited.
+             */
+            child.setCharacterValue(
+                    value,
+                    (
+                            parentValue
+                                    +
+                                    signedVariation(
+                                            random,
+                                            VALUE_VARIATION
+                                    )
+                    )
+                            * 0.25
+            );
+        }
+    }
+
+    private static void inheritSocialNorms(
+            CharacterProfile child,
+            CharacterProfile mother,
+            CharacterProfile father,
+            Random random
+    ) {
+
+        for (
+                CharacterSocialNorm norm :
+                CharacterSocialNorm.values()
+        ) {
+
+            double parentValue =
+                    parentAverageSigned(
+                            mother.socialNorm(
+                                    norm
+                            ),
+                            father == null
+                                    ? null
+                                    : father.socialNorm(
+                                    norm
+                            )
+                    );
+
+            child.setSocialNorm(
+                    norm,
+                    (
+                            parentValue
+                                    +
+                                    signedVariation(
+                                            random,
+                                            SOCIAL_NORM_VARIATION
+                                    )
+                    )
+                            * 0.35
+            );
+        }
+    }
+
+    private static void inheritLegacyValues(
+            CharacterProfile child,
+            CharacterProfile mother,
+            CharacterProfile father,
+            Random random
+    ) {
+
         for (
                 Map.Entry<String, Double> entry :
                 mother.values()
@@ -181,24 +518,18 @@ public final class CharacterProfileGenerationService {
                                     motherValue
                             );
 
-            double inherited =
-                    (
-                            motherValue
-                                    + fatherValue
-                    )
-                            / 2.0;
-
-            inherited +=
-                    (
-                            random.nextDouble()
-                                    * 2.0
-                                    - 1.0
-                    )
-                            * VALUE_VARIATION;
-
             child.setValue(
                     key,
-                    inherited
+                    (
+                            motherValue
+                                    +
+                                    fatherValue
+                    ) / 2.0
+                            +
+                            signedVariation(
+                                    random,
+                                    VALUE_VARIATION
+                            )
             );
         }
 
@@ -210,18 +541,83 @@ public final class CharacterProfileGenerationService {
                             .entrySet()
             ) {
 
-                if (child.values()
-                        .containsKey(
-                                entry.getKey()
-                        )) {
+                if (
+                        !child.values()
+                                .containsKey(
+                                        entry.getKey()
+                                )
+                ) {
 
-                    continue;
+                    child.setValue(
+                            entry.getKey(),
+                            entry.getValue()
+                    );
                 }
+            }
+        }
+    }
 
-                child.setValue(
-                        entry.getKey(),
-                        entry.getValue()
-                );
+    private static void inheritLanguages(
+            CharacterProfile child,
+            CharacterProfile mother,
+            CharacterProfile father
+    ) {
+
+        for (
+                Map.Entry<String, Double> entry :
+                mother.languages()
+                        .entrySet()
+        ) {
+
+            double fatherKnowledge =
+                    father == null
+                            ? 0.0
+                            : father.languages()
+                            .getOrDefault(
+                                    entry.getKey(),
+                                    0.0
+                            );
+
+            /*
+             * This is exposure potential only.
+             *
+             * A newborn does not literally speak the language.
+             * 18F upbringing will turn exposure into proficiency.
+             */
+            double exposure =
+                    Math.max(
+                            entry.getValue(),
+                            fatherKnowledge
+                    );
+
+            child.setLanguageProficiency(
+                    entry.getKey(),
+                    exposure
+                            * 0.05
+            );
+        }
+
+        if (father != null) {
+
+            for (
+                    Map.Entry<String, Double> entry :
+                    father.languages()
+                            .entrySet()
+            ) {
+
+                if (
+                        !child.languages()
+                                .containsKey(
+                                        entry.getKey()
+                                )
+                ) {
+
+                    child.setLanguageProficiency(
+                            entry.getKey(),
+                            entry.getValue()
+                                    * 0.05
+                    );
+                }
             }
         }
     }
@@ -230,81 +626,62 @@ public final class CharacterProfileGenerationService {
             CharacterProfile profile,
             NpcPersonality personality
     ) {
-        if (personality.courage()
-                >= 0.55) {
 
+        if (personality.courage() >= 0.55) {
             profile.addTrait(
                     "brave"
             );
         }
 
-        if (personality.courage()
-                <= -0.55) {
-
+        if (personality.courage() <= -0.55) {
             profile.addTrait(
                     "cautious"
             );
         }
 
-        if (personality.ambition()
-                >= 0.55) {
-
+        if (personality.ambition() >= 0.55) {
             profile.addTrait(
                     "ambitious"
             );
         }
 
-        if (personality.compassion()
-                >= 0.55) {
-
+        if (personality.compassion() >= 0.55) {
             profile.addTrait(
                     "compassionate"
             );
         }
 
-        if (personality.compassion()
-                <= -0.55) {
-
+        if (personality.compassion() <= -0.55) {
             profile.addTrait(
                     "callous"
             );
         }
 
-        if (personality.honor()
-                >= 0.65) {
-
+        if (personality.honor() >= 0.65) {
             profile.addTrait(
                     "honorable"
             );
         }
 
-        if (personality.patience()
-                >= 0.55) {
-
+        if (personality.patience() >= 0.55) {
             profile.addTrait(
                     "patient"
             );
         }
 
-        if (personality.patience()
-                <= -0.55) {
-
+        if (personality.patience() <= -0.55) {
             profile.addTrait(
                     "impatient"
             );
         }
 
-        if (personality.sociability()
-                >= 0.55) {
-
+        if (personality.sociability() >= 0.55) {
             profile.addTrait(
                     "gregarious"
             );
         }
 
-        if (personality.sociability()
-                <= -0.55) {
-
+        if (personality.sociability() <= -0.55) {
             profile.addTrait(
                     "reserved"
             );
@@ -314,42 +691,72 @@ public final class CharacterProfileGenerationService {
     private static DialoguePersona dialogueFromPersonality(
             NpcPersonality personality
     ) {
+
         return new DialoguePersona(
                 personality.honor()
                         * 0.35,
+
                 personality.sociability()
                         * 0.30,
+
                 personality.compassion()
                         * 0.65,
+
                 personality.courage()
                         * 0.35
-                        - personality.patience()
-                        * 0.10,
+                        -
+                        personality.patience()
+                                * 0.10,
+
                 "",
                 ""
         );
     }
 
-    private static double parentalSkillAverage(
-            CharacterSkill skill,
-            CharacterProfile mother,
-            CharacterProfile father
+    private static double parentAverageSigned(
+            double mother,
+            Double father
     ) {
+
         if (father == null) {
-            return mother.skill(
-                    skill
-            );
+            return mother;
         }
 
         return (
-                mother.skill(
-                        skill
-                )
-                        + father.skill(
-                        skill
-                )
+                mother
+                        +
+                        father
+        ) / 2.0;
+    }
+
+    private static double signedVariation(
+            Random random,
+            double magnitude
+    ) {
+
+        return (
+                random.nextDouble()
+                        * 2.0
+                        -
+                        1.0
         )
-                / 2.0;
+                * magnitude;
+    }
+
+    private NpcState requireNpc(
+            NpcId npc
+    ) {
+
+        return registry.find(
+                        npc
+                )
+                .orElseThrow(
+                        () ->
+                                new IllegalArgumentException(
+                                        "Unknown NPC "
+                                                + npc
+                                )
+                );
     }
 
     private static String inheritIdentity(
@@ -357,10 +764,14 @@ public final class CharacterProfileGenerationService {
             String father,
             Random random
     ) {
-        if (father == null
-                || "unknown".equals(
-                father
-        )) {
+
+        if (
+                father == null
+                        ||
+                        "unknown".equals(
+                                father
+                        )
+        ) {
 
             return mother;
         }
@@ -379,25 +790,16 @@ public final class CharacterProfileGenerationService {
             return mother;
         }
 
+        /*
+         * Temporary household-inheritance weighting.
+         *
+         * 18D/18E/18F will replace this with actual household,
+         * religion, culture and upbringing influence.
+         */
         return random.nextDouble()
                 < 0.65
                 ? mother
                 : father;
-    }
-
-    private NpcState requireNpc(
-            NpcId npc
-    ) {
-        return registry.find(
-                        npc
-                )
-                .orElseThrow(
-                        () ->
-                                new IllegalArgumentException(
-                                        "Unknown NPC ID: "
-                                                + npc
-                                )
-                );
     }
 
     private static Random randomFor(
@@ -406,27 +808,27 @@ public final class CharacterProfileGenerationService {
             NpcId father,
             long seedValue
     ) {
+
         long seed =
                 seedValue;
 
-        seed =
-                seed * 31L
-                        + child.value();
-
-        seed =
-                seed * 31L
-                        + mother.value();
-
-        seed =
-                seed * 31L
-                        + (
-                        father == null
-                                ? 0L
-                                : father.value()
-                );
+        seed ^=
+                child.value()
+                        *
+                        0x9E3779B97F4A7C15L;
 
         seed ^=
-                0x6A09E667F3BCC909L;
+                mother.value()
+                        *
+                        0xBF58476D1CE4E5B9L;
+
+        if (father != null) {
+
+            seed ^=
+                    father.value()
+                            *
+                            0x94D049BB133111EBL;
+        }
 
         return new Random(
                 seed
