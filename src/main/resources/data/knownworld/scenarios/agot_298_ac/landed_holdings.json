@@ -1,0 +1,191 @@
+{
+  "holdings": [
+    {
+      "id": "north_domain",
+      "name": "The North",
+      "type": "REGION",
+      "status": "ACTIVE",
+      "worldLocationId": "the_north",
+
+      "deJureDynastyId": "house_stark",
+      "ownerDynastyId": "house_stark",
+      "holderNpcId": "eddard_stark",
+
+      "governmentOrganizationId": "the_north",
+
+      "capital": false,
+
+      "taxBase": 0.58,
+      "militaryValue": 0.78,
+      "populationWeight": 0.55
+    },
+
+    {
+      "id": "winterfell_domain",
+      "name": "Winterfell",
+      "type": "CASTLE",
+      "status": "ACTIVE",
+      "worldLocationId": "winterfell",
+      "parentHoldingId": "north_domain",
+
+      "deJureDynastyId": "house_stark",
+      "ownerDynastyId": "house_stark",
+      "holderNpcId": "eddard_stark",
+
+      "governmentOrganizationId": "the_north",
+      "linkedTitleId": "lord_of_winterfell",
+
+      "capital": true,
+
+      "taxBase": 0.67,
+      "militaryValue": 0.82,
+      "populationWeight": 0.48
+    },
+
+    {
+      "id": "riverlands_domain",
+      "name": "The Riverlands",
+      "type": "REGION",
+      "status": "ACTIVE",
+      "worldLocationId": "riverlands",
+
+      "deJureDynastyId": "house_tully",
+      "ownerDynastyId": "house_tully",
+
+      "capital": false,
+
+      "taxBase": 0.70,
+      "militaryValue": 0.62,
+      "populationWeight": 0.72
+    },
+
+    {
+      "id": "riverrun_domain",
+      "name": "Riverrun",
+      "type": "CASTLE",
+      "status": "ACTIVE",
+      "worldLocationId": "riverrun",
+      "parentHoldingId": "riverlands_domain",
+
+      "deJureDynastyId": "house_tully",
+      "ownerDynastyId": "house_tully",
+
+      "capital": true,
+
+      "taxBase": 0.68,
+      "militaryValue": 0.70,
+      "populationWeight": 0.42
+    },
+
+    {
+      "id": "westerlands_domain",
+      "name": "The Westerlands",
+      "type": "REGION",
+      "status": "ACTIVE",
+      "worldLocationId": "westerlands",
+
+      "deJureDynastyId": "house_lannister",
+      "ownerDynastyId": "house_lannister",
+
+      "capital": false,
+
+      "taxBase": 0.93,
+      "militaryValue": 0.80,
+      "populationWeight": 0.68
+    },
+
+    {
+      "id": "casterly_rock_domain",
+      "name": "Casterly Rock",
+      "type": "CASTLE",
+      "status": "ACTIVE",
+      "worldLocationId": "casterly_rock",
+      "parentHoldingId": "westerlands_domain",
+
+      "deJureDynastyId": "house_lannister",
+      "ownerDynastyId": "house_lannister",
+
+      "capital": true,
+
+      "taxBase": 0.98,
+      "militaryValue": 0.92,
+      "populationWeight": 0.48
+    },
+
+    {
+      "id": "iron_islands_domain",
+      "name": "The Iron Islands",
+      "type": "REGION",
+      "status": "ACTIVE",
+      "worldLocationId": "iron_islands",
+
+      "deJureDynastyId": "house_greyjoy",
+      "ownerDynastyId": "house_greyjoy",
+
+      "capital": false,
+
+      "taxBase": 0.38,
+      "militaryValue": 0.72,
+      "populationWeight": 0.34
+    },
+
+    {
+      "id": "pyke_domain",
+      "name": "Pyke",
+      "type": "CASTLE",
+      "status": "ACTIVE",
+      "worldLocationId": "pyke",
+      "parentHoldingId": "iron_islands_domain",
+
+      "deJureDynastyId": "house_greyjoy",
+      "ownerDynastyId": "house_greyjoy",
+
+      "capital": true,
+
+      "taxBase": 0.40,
+      "militaryValue": 0.70,
+      "populationWeight": 0.28
+    },
+
+    {
+      "id": "crownlands_domain",
+      "name": "The Crownlands",
+      "type": "REGION",
+      "status": "ACTIVE",
+      "worldLocationId": "crownlands",
+
+      "deJureDynastyId": "house_baratheon_kings_landing",
+      "ownerDynastyId": "house_baratheon_kings_landing",
+      "holderNpcId": "robert_baratheon",
+
+      "governmentOrganizationId": "iron_throne",
+
+      "capital": false,
+
+      "taxBase": 0.86,
+      "militaryValue": 0.77,
+      "populationWeight": 0.90
+    },
+
+    {
+      "id": "kings_landing_domain",
+      "name": "King's Landing",
+      "type": "CITY",
+      "status": "ACTIVE",
+      "worldLocationId": "kings_landing",
+      "parentHoldingId": "crownlands_domain",
+
+      "deJureDynastyId": "house_baratheon_kings_landing",
+      "ownerDynastyId": "house_baratheon_kings_landing",
+      "holderNpcId": "robert_baratheon",
+
+      "governmentOrganizationId": "iron_throne",
+
+      "capital": true,
+
+      "taxBase": 0.94,
+      "militaryValue": 0.84,
+      "populationWeight": 1.0
+    }
+  ]
+}

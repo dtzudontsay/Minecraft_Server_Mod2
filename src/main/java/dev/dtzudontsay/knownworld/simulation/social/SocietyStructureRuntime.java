@@ -1,9 +1,11 @@
 package dev.dtzudontsay.knownworld.simulation.social;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.debug.LandedHoldingDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterSocialIdentityPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.LandedHoldingPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NonDynasticSocietyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.OrganizationMembershipPersistence;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyActivationReport;
@@ -11,6 +13,8 @@ import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityRepo
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyScenarioBootstrapService;
+import dev.dtzudontsay.knownworld.simulation.social.holding.LandedHoldingBootstrapService;
+import dev.dtzudontsay.knownworld.simulation.social.holding.LandedHoldingManager;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityManager;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentityService;
@@ -18,6 +22,7 @@ import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembe
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyManager;
 import dev.dtzudontsay.knownworld.simulation.social.society.NonDynasticSocietyService;
+import dev.dtzudontsay.knownworld.world.reference.WorldReferenceCatalog;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.storage.LevelResource;
@@ -35,6 +40,8 @@ public final class SocietyStructureRuntime {
 
     private final DynastyManager dynasties;
 
+    private final LandedHoldingManager holdings;
+
     private final OrganizationMembershipManager memberships;
 
     private final NonDynasticSocietyManager nonDynasticSocieties;
@@ -49,6 +56,8 @@ public final class SocietyStructureRuntime {
 
     private final DynastyPersistence dynastyPersistence;
 
+    private final LandedHoldingPersistence landedHoldingPersistence;
+
     private final OrganizationMembershipPersistence membershipPersistence;
 
     private final NonDynasticSocietyPersistence nonDynasticSocietyPersistence;
@@ -58,6 +67,8 @@ public final class SocietyStructureRuntime {
     private DynastyActivationReport lastActivationReport;
 
     private DynastyIntegrityReport lastIntegrityReport;
+
+    private LandedHoldingBootstrapService.Report lastHoldingReport;
 
     private SocietyStructureRuntime(
             MinecraftServer server,
@@ -74,6 +85,15 @@ public final class SocietyStructureRuntime {
                 new DynastyManager(
                         simulation.organizations(),
                         simulation.registry()
+                );
+
+        this.holdings =
+                new LandedHoldingManager(
+                        simulation.registry(),
+                        simulation.organizations(),
+                        simulation.titles(),
+                        dynasties,
+                        WorldReferenceCatalog.get()
                 );
 
         this.memberships =
@@ -116,10 +136,6 @@ public final class SocietyStructureRuntime {
                         dynasties
                 );
 
-        /*
-         * Society persistence MUST use exactly the same per-world root
-         * as NpcSimulation.
-         */
         Path savePath =
                 server.getWorldPath(
                                 LevelResource.ROOT
@@ -133,6 +149,11 @@ public final class SocietyStructureRuntime {
 
         this.dynastyPersistence =
                 new DynastyPersistence(
+                        savePath
+                );
+
+        this.landedHoldingPersistence =
+                new LandedHoldingPersistence(
                         savePath
                 );
 
@@ -153,6 +174,12 @@ public final class SocietyStructureRuntime {
     }
 
     public static void registerLifecycle() {
+
+        /*
+         * registerLifecycle() itself is called during mod initialization,
+         * so command registration is still early enough here.
+         */
+        LandedHoldingDebugCommand.register();
 
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
@@ -179,8 +206,9 @@ public final class SocietyStructureRuntime {
                     runtime.loadAndReconcile();
 
                     KnownWorld.LOGGER.info(
-                            "Society structure runtime started with {} dynasties, {} non-dynastic societies, {} character social identities and {} organization memberships.",
+                            "Society structure runtime started with {} dynasties, {} landed holdings, {} non-dynastic societies, {} character social identities and {} organization memberships.",
                             runtime.dynasties.size(),
+                            runtime.holdings.size(),
                             runtime.nonDynasticSocieties.size(),
                             runtime.characterSocialIdentities.size(),
                             runtime.memberships.size()
@@ -257,6 +285,10 @@ public final class SocietyStructureRuntime {
         return dynasties;
     }
 
+    public LandedHoldingManager holdings() {
+        return holdings;
+    }
+
     public OrganizationMembershipManager memberships() {
         return memberships;
     }
@@ -285,6 +317,10 @@ public final class SocietyStructureRuntime {
         return lastIntegrityReport;
     }
 
+    public LandedHoldingBootstrapService.Report lastHoldingReport() {
+        return lastHoldingReport;
+    }
+
     public DynastyIntegrityReport auditDynasties() {
 
         lastIntegrityReport =
@@ -307,6 +343,12 @@ public final class SocietyStructureRuntime {
 
         try {
 
+            /*
+             * -----------------------------------------------------
+             * DYNASTIES
+             * -----------------------------------------------------
+             */
+
             dynastyPersistence.loadInto(
                     dynasties
             );
@@ -316,6 +358,33 @@ public final class SocietyStructureRuntime {
                             simulation,
                             dynasties
                     );
+
+            /*
+             * -----------------------------------------------------
+             * LANDED HOLDINGS
+             * -----------------------------------------------------
+             *
+             * Holdings depend on:
+             * - loaded NPCs
+             * - organizations/titles
+             * - reconciled dynasties
+             */
+            landedHoldingPersistence.loadInto(
+                    holdings
+            );
+
+            lastHoldingReport =
+                    LandedHoldingBootstrapService.ensureDefault(
+                            simulation,
+                            dynasties,
+                            holdings
+                    );
+
+            /*
+             * -----------------------------------------------------
+             * NON-DYNASTIC SOCIETIES
+             * -----------------------------------------------------
+             */
 
             nonDynasticSocietyPersistence.loadInto(
                     nonDynasticSocieties
@@ -330,6 +399,12 @@ public final class SocietyStructureRuntime {
                     nonDynasticSocieties,
                     memberships
             );
+
+            /*
+             * -----------------------------------------------------
+             * CHARACTER SOCIAL IDENTITY
+             * -----------------------------------------------------
+             */
 
             characterSocialIdentityPersistence.loadInto(
                     characterSocialIdentities
@@ -379,6 +454,10 @@ public final class SocietyStructureRuntime {
 
             dynastyPersistence.save(
                     dynasties
+            );
+
+            landedHoldingPersistence.save(
+                    holdings
             );
 
             membershipPersistence.save(
