@@ -1,49 +1,51 @@
 package dev.dtzudontsay.knownworld.world.terrain;
 
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
+import dev.dtzudontsay.knownworld.world.geography.WorldDefinition;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSample;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.ElevationProvider;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.ElevationSample;
 import dev.dtzudontsay.knownworld.world.terrain.elevation.RasterElevationProvider;
+import dev.dtzudontsay.knownworld.world.terrain.lowland.LowlandTerrainGenerator;
 import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainRegionProfileProvider;
 import dev.dtzudontsay.knownworld.world.terrain.mountain.MountainTerrainGenerator;
 import dev.dtzudontsay.knownworld.world.terrain.relief.ReliefIntensityProvider;
+
 
 public final class RasterTerrainProvider implements TerrainProvider {
 
     public static final double SEA_LEVEL_METRES =
             63.0;
 
+
     public static final double FALLBACK_COASTAL_LAND_HEIGHT =
             67.0;
+
 
     public static final double FALLBACK_MAX_LAND_HEIGHT =
             92.0;
 
+
     public static final double FALLBACK_SHALLOW_OCEAN_FLOOR =
             52.0;
+
 
     public static final double FALLBACK_DEEP_OCEAN_FLOOR =
             34.0;
 
+
     private static final double FALLBACK_LAND_TRANSITION_DISTANCE =
             120_000.0;
+
 
     private static final double FALLBACK_OCEAN_TRANSITION_DISTANCE =
             150_000.0;
 
 
     /*
-     * Keep a little room between the ordinary local terrain base and
-     * very low configured summit ceilings.
-     *
-     * Example:
-     *
-     *     max Y = 100
-     *
-     * needs ordinary terrain below 100 or there would be no vertical
-     * budget available for the hills at all.
+     * Low configured hill regions still need some room above the
+     * macro elevation base.
      */
 
     private static final double MINIMUM_PROFILE_RELIEF_ROOM =
@@ -53,6 +55,8 @@ public final class RasterTerrainProvider implements TerrainProvider {
     private final ElevationProvider elevationProvider;
 
     private final ReliefIntensityProvider reliefProvider;
+
+    private final LowlandTerrainGenerator lowlandGenerator;
 
     private final MountainRegionProfileProvider mountainProfileProvider;
 
@@ -64,11 +68,18 @@ public final class RasterTerrainProvider implements TerrainProvider {
         elevationProvider =
                 new RasterElevationProvider();
 
+
         reliefProvider =
                 new ReliefIntensityProvider();
 
+
+        lowlandGenerator =
+                new LowlandTerrainGenerator();
+
+
         mountainProfileProvider =
                 new MountainRegionProfileProvider();
+
 
         mountainGenerator =
                 new MountainTerrainGenerator();
@@ -85,6 +96,12 @@ public final class RasterTerrainProvider implements TerrainProvider {
                         coordinate
                 );
 
+
+        /*
+         * ========================================================
+         * OUTSIDE KNOWN WORLD
+         * ========================================================
+         */
 
         if (
                 !geography.insideKnownWorldMap()
@@ -104,6 +121,12 @@ public final class RasterTerrainProvider implements TerrainProvider {
                 );
 
 
+        /*
+         * ========================================================
+         * LAND
+         * ========================================================
+         */
+
         if (
                 geography.land()
         ) {
@@ -112,6 +135,12 @@ public final class RasterTerrainProvider implements TerrainProvider {
 
             String source;
 
+
+            /*
+             * ----------------------------------------------------
+             * MACRO ELEVATION
+             * ----------------------------------------------------
+             */
 
             if (
                     !Double.isNaN(
@@ -125,6 +154,7 @@ public final class RasterTerrainProvider implements TerrainProvider {
                                 SEA_LEVEL_METRES + 1.0
                         );
 
+
                 source =
                         canonicalElevation.source();
 
@@ -135,10 +165,17 @@ public final class RasterTerrainProvider implements TerrainProvider {
                                 geography
                         );
 
+
                 source =
                         "CANONICAL_RASTER_FALLBACK";
             }
 
+
+            /*
+             * ----------------------------------------------------
+             * AUTHORED MOUNTAIN PROFILE
+             * ----------------------------------------------------
+             */
 
             MountainRegionProfileProvider.MountainProfileSample profile =
                     mountainProfileProvider.sample(
@@ -147,14 +184,10 @@ public final class RasterTerrainProvider implements TerrainProvider {
 
 
             /*
-             * Some of your requested hill regions have an absolute
-             * summit ceiling around Y 100.
+             * Very low hill profiles may have ceilings below the
+             * normal inland macro-elevation maximum.
              *
-             * The generic macro land base can itself reach ~105.
-             *
-             * For an explicitly configured low region, lower the
-             * local macro base enough to leave room for the intended
-             * hills instead of immediately violating the ceiling.
+             * Leave room for their authored relief.
              */
 
             if (
@@ -181,13 +214,60 @@ public final class RasterTerrainProvider implements TerrainProvider {
             }
 
 
+            /*
+             * ----------------------------------------------------
+             * AUTHORED RELIEF STRENGTH
+             * ----------------------------------------------------
+             */
+
             double reliefIntensity =
                     reliefProvider.sample(
                             coordinate
                     );
 
 
-            double proceduralOffset =
+            /*
+             * ----------------------------------------------------
+             * OPTIONAL LOWLAND TERRAIN
+             * ----------------------------------------------------
+             *
+             * This is our new vanilla-LIKE terrain layer.
+             *
+             * It does not invoke Minecraft's vanilla world generator.
+             *
+             * It cannot create vanilla mountain ranges.
+             */
+
+            double lowlandOffset =
+                    0.0;
+
+
+            if (
+                    WorldDefinition.ENABLE_LOWLAND_TERRAIN
+            ) {
+
+                lowlandOffset =
+                        lowlandGenerator.sampleLandOffset(
+                                coordinate,
+                                geography.coastDistanceMetres(),
+                                reliefIntensity
+                        );
+            }
+
+
+            /*
+             * ----------------------------------------------------
+             * CANONICAL MOUNTAIN TERRAIN
+             * ----------------------------------------------------
+             *
+             * Existing mountain generation remains entirely separate
+             * and authoritative.
+             *
+             * This is the ONLY system here allowed to generate the
+             * large mountain ranges we previously authored.
+             */
+
+            double mountainOffset =
                     mountainGenerator.sampleLandOffset(
                             coordinate,
                             reliefIntensity,
@@ -196,20 +276,34 @@ public final class RasterTerrainProvider implements TerrainProvider {
                     );
 
 
+            /*
+             * ----------------------------------------------------
+             * FINAL LAND ELEVATION
+             * ----------------------------------------------------
+             */
+
             double elevation =
+                    baseElevation
+                            + lowlandOffset
+                            + mountainOffset;
+
+
+            /*
+             * Keep canonical land above water.
+             */
+
+            elevation =
                     Math.max(
                             SEA_LEVEL_METRES + 1.0,
-                            baseElevation
-                                    + proceduralOffset
+                            elevation
                     );
 
 
             /*
-             * Safety only.
+             * Existing authored mountain ceilings remain absolute.
              *
-             * The generator already scales itself to the available
-             * vertical budget rather than producing terrain and
-             * chopping it flat.
+             * This protects low hill profiles as well as large
+             * mountain systems.
              */
 
             if (
@@ -224,16 +318,47 @@ public final class RasterTerrainProvider implements TerrainProvider {
             }
 
 
+            String terrainSource =
+                    source;
+
+
+            if (
+                    WorldDefinition.ENABLE_LOWLAND_TERRAIN
+            ) {
+
+                terrainSource +=
+                        "+LOWLAND_TERRAIN";
+            }
+
+
+            terrainSource +=
+                    "+BLOCK_SCALE_TERRAIN"
+                            + "+"
+                            + profile.regionId();
+
+
             return new TerrainSample(
                     elevation,
                     "LAND",
-                    source
-                            + "+BLOCK_SCALE_TERRAIN"
-                            + "+"
-                            + profile.regionId()
+                    terrainSource
             );
         }
 
+
+        /*
+         * ========================================================
+         * OCEAN
+         * ========================================================
+         *
+         * The lowland generator is never applied to ocean pixels.
+         *
+         * Therefore it cannot:
+         *
+         * - create islands
+         * - extend continents
+         * - fill oceans
+         * - move coastlines
+         */
 
         if (
                 !Double.isNaN(
