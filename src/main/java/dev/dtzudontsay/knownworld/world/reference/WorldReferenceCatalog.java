@@ -74,6 +74,20 @@ public final class WorldReferenceCatalog {
                             + "locations.json"
             );
 
+            /*
+             * Batch 19.0E.1.
+             *
+             * Holdings may be authored before their castles/cities have been
+             * physically placed on the Minecraft map. A WorldLocationDefinition
+             * does not require a geographicFeatureId, so named-but-unplaced seats
+             * live in this extension catalog until their actual map feature is
+             * authored later.
+             */
+            catalog.loadOptionalLocations(
+                    BASE
+                            + "locations_holdings.json"
+            );
+
             catalog.loadEntries(
                     BASE
                             + "cultures.json",
@@ -110,13 +124,6 @@ public final class WorldReferenceCatalog {
                     catalog.roles
             );
 
-            /*
-             * Batch 19.0A.
-             *
-             * Small future vocabulary expansions can now live in
-             * dedicated extension files rather than forcing complete
-             * rewrites of the large baseline catalogs.
-             */
             catalog.loadOptionalEntries(
                     BASE
                             + "occupations_extensions.json",
@@ -483,6 +490,40 @@ public final class WorldReferenceCatalog {
                         LocationData[].class
                 );
 
+        addLocations(
+                data,
+                resource,
+                false
+        );
+    }
+
+    private void loadOptionalLocations(
+            String resource
+    ) throws IOException {
+
+        LocationData[] data =
+                readOptionalJson(
+                        resource,
+                        LocationData[].class
+                );
+
+        if (data == null) {
+            return;
+        }
+
+        addLocations(
+                data,
+                resource,
+                true
+        );
+    }
+
+    private void addLocations(
+            LocationData[] data,
+            String resource,
+            boolean allowExisting
+    ) {
+
         for (
                 LocationData entry :
                 data
@@ -507,14 +548,20 @@ public final class WorldReferenceCatalog {
                             false
                     );
 
-            if (locations.putIfAbsent(
-                    definition.id(),
-                    definition
-            ) != null) {
+            WorldLocationDefinition existing =
+                    locations.putIfAbsent(
+                            definition.id(),
+                            definition
+                    );
+
+            if (existing != null
+                    && !allowExisting) {
 
                 throw new IllegalStateException(
-                        "Duplicate world location: "
+                        "Duplicate world location "
                                 + definition.id()
+                                + " while loading "
+                                + resource
                 );
             }
         }
@@ -914,34 +961,22 @@ public final class WorldReferenceCatalog {
     private static final class LocationData {
 
         String id;
-
         String displayName;
-
         String kind;
-
         String parentId;
-
         String geographicFeatureId;
-
         String boundaryMaskId;
-
         String provenance;
-
         String sourceNote;
     }
 
     private static final class EntryData {
 
         String id;
-
         String displayName;
-
         String parentId;
-
         String category;
-
         String provenance;
-
         String sourceNote;
     }
 }

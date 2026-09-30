@@ -1,14 +1,18 @@
 package dev.dtzudontsay.knownworld.simulation.social;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.debug.DynastyHierarchyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LandedHoldingDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterSocialIdentityPersistence;
+import dev.dtzudontsay.knownworld.simulation.persistence.DynastyAllegiancePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.LandedHoldingPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.NonDynasticSocietyPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.OrganizationMembershipPersistence;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyActivationReport;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyAllegianceManager;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyHierarchyBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityReport;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
@@ -40,6 +44,8 @@ public final class SocietyStructureRuntime {
 
     private final DynastyManager dynasties;
 
+    private final DynastyAllegianceManager dynastyAllegiances;
+
     private final LandedHoldingManager holdings;
 
     private final OrganizationMembershipManager memberships;
@@ -56,6 +62,8 @@ public final class SocietyStructureRuntime {
 
     private final DynastyPersistence dynastyPersistence;
 
+    private final DynastyAllegiancePersistence dynastyAllegiancePersistence;
+
     private final LandedHoldingPersistence landedHoldingPersistence;
 
     private final OrganizationMembershipPersistence membershipPersistence;
@@ -67,6 +75,8 @@ public final class SocietyStructureRuntime {
     private DynastyActivationReport lastActivationReport;
 
     private DynastyIntegrityReport lastIntegrityReport;
+
+    private DynastyHierarchyBootstrapService.Report lastHierarchyReport;
 
     private LandedHoldingBootstrapService.Report lastHoldingReport;
 
@@ -85,6 +95,11 @@ public final class SocietyStructureRuntime {
                 new DynastyManager(
                         simulation.organizations(),
                         simulation.registry()
+                );
+
+        this.dynastyAllegiances =
+                new DynastyAllegianceManager(
+                        dynasties
                 );
 
         this.holdings =
@@ -152,6 +167,11 @@ public final class SocietyStructureRuntime {
                         savePath
                 );
 
+        this.dynastyAllegiancePersistence =
+                new DynastyAllegiancePersistence(
+                        savePath
+                );
+
         this.landedHoldingPersistence =
                 new LandedHoldingPersistence(
                         savePath
@@ -181,6 +201,8 @@ public final class SocietyStructureRuntime {
          */
         LandedHoldingDebugCommand.register();
 
+        DynastyHierarchyDebugCommand.register();
+
         ServerLifecycleEvents.SERVER_STARTED.register(
                 server -> {
 
@@ -206,8 +228,9 @@ public final class SocietyStructureRuntime {
                     runtime.loadAndReconcile();
 
                     KnownWorld.LOGGER.info(
-                            "Society structure runtime started with {} dynasties, {} landed holdings, {} non-dynastic societies, {} character social identities and {} organization memberships.",
+                            "Society structure runtime started with {} dynasties, {} current allegiance override(s), {} landed holdings, {} non-dynastic societies, {} character social identities and {} organization memberships.",
                             runtime.dynasties.size(),
+                            runtime.dynastyAllegiances.overrideCount(),
                             runtime.holdings.size(),
                             runtime.nonDynasticSocieties.size(),
                             runtime.characterSocialIdentities.size(),
@@ -285,6 +308,10 @@ public final class SocietyStructureRuntime {
         return dynasties;
     }
 
+    public DynastyAllegianceManager dynastyAllegiances() {
+        return dynastyAllegiances;
+    }
+
     public LandedHoldingManager holdings() {
         return holdings;
     }
@@ -315,6 +342,10 @@ public final class SocietyStructureRuntime {
 
     public DynastyIntegrityReport lastIntegrityReport() {
         return lastIntegrityReport;
+    }
+
+    public DynastyHierarchyBootstrapService.Report lastHierarchyReport() {
+        return lastHierarchyReport;
     }
 
     public LandedHoldingBootstrapService.Report lastHoldingReport() {
@@ -358,6 +389,32 @@ public final class SocietyStructureRuntime {
                             simulation,
                             dynasties
                     );
+
+            /*
+             * Authored/default house-to-house liege structure.
+             *
+             * This is the 298 AC/de-jure baseline. It is deliberately
+             * separate from current runtime allegiance.
+             */
+            lastHierarchyReport =
+                    DynastyHierarchyBootstrapService.apply(
+                            dynasties
+                    );
+
+            /*
+             * Runtime allegiance deviations from the authored hierarchy.
+             *
+             * Examples:
+             * - a house rebels and becomes independent
+             * - a house changes sides
+             * - a house is forced under a new liege
+             *
+             * Only deviations are persisted, so restoring a house to its
+             * authored hierarchy simply removes the override.
+             */
+            dynastyAllegiancePersistence.loadInto(
+                    dynastyAllegiances
+            );
 
             /*
              * -----------------------------------------------------
@@ -454,6 +511,10 @@ public final class SocietyStructureRuntime {
 
             dynastyPersistence.save(
                     dynasties
+            );
+
+            dynastyAllegiancePersistence.save(
+                    dynastyAllegiances
             );
 
             landedHoldingPersistence.save(

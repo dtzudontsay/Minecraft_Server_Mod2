@@ -1,0 +1,135 @@
+{
+  "regions": [
+    {
+      "dynastyResource": "dynasties/westeros_north.json",
+      "defaultLiegeDynastyId": "house_stark"
+    },
+    {
+      "dynastyResource": "dynasties/westeros_vale.json",
+      "defaultLiegeDynastyId": "house_arryn",
+      "overrides": [
+        {
+          "vassalDynastyId": "house_borrell",
+          "liegeDynastyId": "house_sunderland",
+          "sourceNote": "House Borrell is sworn to House Sunderland."
+        },
+        {
+          "vassalDynastyId": "house_longthorpe",
+          "liegeDynastyId": "house_sunderland",
+          "sourceNote": "House Longthorpe is sworn to House Sunderland."
+        },
+        {
+          "vassalDynastyId": "house_torrent",
+          "liegeDynastyId": "house_sunderland",
+          "sourceNote": "House Torrent is sworn to House Sunderland."
+        }
+      ]
+    },
+    {
+      "dynastyResource": "dynasties/westeros_riverlands.json",
+      "defaultLiegeDynastyId": "house_tully",
+      "overrides": [
+        {
+          "vassalDynastyId": "house_charlton",
+          "liegeDynastyId": "house_frey",
+          "sourceNote": "House Charlton is a Frey vassal."
+        },
+        {
+          "vassalDynastyId": "house_erenford",
+          "liegeDynastyId": "house_frey",
+          "sourceNote": "House Erenford is a Frey vassal."
+        },
+        {
+          "vassalDynastyId": "house_haigh",
+          "liegeDynastyId": "house_frey",
+          "sourceNote": "House Haigh is a Frey vassal."
+        },
+        {
+          "vassalDynastyId": "house_wode",
+          "liegeDynastyId": "house_whent",
+          "sourceNote": "House Wode is sworn to House Whent at the AGOT start."
+        }
+      ]
+    },
+    {
+      "dynastyResource": "dynasties/westeros_iron_islands.json",
+      "defaultLiegeDynastyId": "house_greyjoy",
+      "overrides": [
+        {
+          "vassalDynastyId": "house_harlaw_grey_garden",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_harlaw_harlaw_hall",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_harlaw_harridan_hill",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_harlaw_tower_glimmering",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_kenning_harlaw",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_myre",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_stonetree",
+          "liegeDynastyId": "house_harlaw"
+        },
+        {
+          "vassalDynastyId": "house_volmark",
+          "liegeDynastyId": "house_harlaw"
+        }
+      ]
+    },
+    {
+      "dynastyResource": "dynasties/westeros_westerlands.json",
+      "defaultLiegeDynastyId": "house_lannister"
+    },
+    {
+      "dynastyResource": "dynasties/westeros_crownlands.json",
+      "defaultLiegeDynastyId": "house_baratheon_kings_landing",
+      "excludedDynastyIds": [
+        "house_targaryen"
+      ]
+    },
+    {
+      "dynastyResource": "dynasties/westeros_reach.json",
+      "defaultLiegeDynastyId": "house_tyrell",
+      "overrides": [
+        {
+          "vassalDynastyId": "house_osgrey",
+          "liegeDynastyId": "house_rowan",
+          "sourceNote": "House Osgrey is sworn to House Rowan."
+        },
+        {
+          "vassalDynastyId": "house_webber",
+          "liegeDynastyId": "house_rowan",
+          "sourceNote": "House Webber is sworn to House Rowan."
+        }
+      ]
+    },
+    {
+      "dynastyResource": "dynasties/westeros_stormlands.json",
+      "defaultLiegeDynastyId": "house_baratheon"
+    },
+    {
+      "dynastyResource": "dynasties/westeros_dorne.json",
+      "defaultLiegeDynastyId": "house_martell",
+      "overrides": [
+        {
+          "vassalDynastyId": "house_dayne_high_hermitage",
+          "liegeDynastyId": "house_dayne",
+          "sourceNote": "High Hermitage is a lesser Dayne branch sworn to House Dayne of Starfall."
+        }
+      ]
+    }
+  ]
+}

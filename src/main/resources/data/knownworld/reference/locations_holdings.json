@@ -1,0 +1,1994 @@
+[
+  {
+    "id": "the_north",
+    "displayName": "The North",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "riverlands",
+    "displayName": "The Riverlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "westerlands",
+    "displayName": "The Westerlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "iron_islands",
+    "displayName": "The Iron Islands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "crownlands",
+    "displayName": "The Crownlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_vale",
+    "displayName": "The Vale",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_reach",
+    "displayName": "The Reach",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "stormlands",
+    "displayName": "The Stormlands",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "dorne",
+    "displayName": "Dorne",
+    "kind": "REALM",
+    "parentId": "westeros",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "braavos",
+    "displayName": "Braavos",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lys",
+    "displayName": "Lys",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "volantis",
+    "displayName": "Volantis",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pentos",
+    "displayName": "Pentos",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "qarth",
+    "displayName": "Qarth",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "astapor",
+    "displayName": "Astapor",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "yunkai",
+    "displayName": "Yunkai",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "meereen",
+    "displayName": "Meereen",
+    "kind": "SETTLEMENT",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "summer_isles",
+    "displayName": "Summer Isles",
+    "kind": "REALM",
+    "parentId": "known_world",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "yi_ti",
+    "displayName": "Yi Ti",
+    "kind": "REALM",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "leng",
+    "displayName": "Leng",
+    "kind": "REALM",
+    "parentId": "essos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "acorn_hall",
+    "displayName": "Acorn Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "amberly",
+    "displayName": "Amberly",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "antlers",
+    "displayName": "Antlers",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "appleton",
+    "displayName": "Appleton",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_arbor",
+    "displayName": "The Arbor",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "gulltown",
+    "displayName": "Gulltown",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ashemark",
+    "displayName": "Ashemark",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ashford",
+    "displayName": "Ashford",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "atranta",
+    "displayName": "Atranta",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "bandallon",
+    "displayName": "Bandallon",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "banefort",
+    "displayName": "Banefort",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "barrow_hall",
+    "displayName": "Barrow Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "bitterbridge",
+    "displayName": "Bitterbridge",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "blackcrown",
+    "displayName": "Blackcrown",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "blackhaven",
+    "displayName": "Blackhaven",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "blackmont",
+    "displayName": "Blackmont",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "blackpool",
+    "displayName": "Blackpool",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "blacktyde",
+    "displayName": "Blacktyde",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "breakstone_hill",
+    "displayName": "Breakstone Hill",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "breakwater",
+    "displayName": "Breakwater",
+    "kind": "SETTLEMENT",
+    "parentId": "three_sisters",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "brightwater_keep",
+    "displayName": "Brightwater Keep",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "broad_arch",
+    "displayName": "Broad Arch",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "bronzegate",
+    "displayName": "Bronzegate",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "brownhollow",
+    "displayName": "Brownhollow",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "cape_wrath",
+    "displayName": "Cape Wrath",
+    "kind": "SUBREGION",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "carcosa",
+    "displayName": "Carcosa",
+    "kind": "SETTLEMENT",
+    "parentId": "yi_ti",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "casterly_rock",
+    "displayName": "Casterly Rock",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "castle_cerwyn",
+    "displayName": "Castle Cerwyn",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "castlewood",
+    "displayName": "Castlewood",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "cider_hall",
+    "displayName": "Cider Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "claw_isle",
+    "displayName": "Claw Isle",
+    "kind": "SUBREGION",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "cleganes_keep",
+    "displayName": "Clegane's Keep",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "coldmoat",
+    "displayName": "Coldmoat",
+    "kind": "SETTLEMENT",
+    "parentId": "goldengrove",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "coldwater_burn",
+    "displayName": "Coldwater Burn",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "cornfield",
+    "displayName": "Cornfield",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "corpse_lake",
+    "displayName": "Corpse Lake",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_crag",
+    "displayName": "The Crag",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "crakehall",
+    "displayName": "Crakehall",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "crow_spike_keep",
+    "displayName": "Crow Spike Keep",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "crows_nest",
+    "displayName": "Crow's Nest",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "darkdell",
+    "displayName": "Darkdell",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "darry",
+    "displayName": "Darry",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "deep_den",
+    "displayName": "Deep Den",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "deepdown",
+    "displayName": "Deepdown",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "deepwood_motte",
+    "displayName": "Deepwood Motte",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "dormand_hall",
+    "displayName": "Dormand Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "downdelving",
+    "displayName": "Downdelving",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "dragonstone",
+    "displayName": "Dragonstone",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "dreadfort",
+    "displayName": "The Dreadfort",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "drearfort",
+    "displayName": "The Drearfort",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "driftmark",
+    "displayName": "Driftmark",
+    "kind": "SUBREGION",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "driftwood_hall",
+    "displayName": "Driftwood Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "dun_fort",
+    "displayName": "Dun Fort",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "dyre_den",
+    "displayName": "Dyre Den",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "evenfall_hall",
+    "displayName": "Evenfall Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "eyrie",
+    "displayName": "The Eyrie",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "faircastle",
+    "displayName": "Faircastle",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "fawnton",
+    "displayName": "Fawnton",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "feastfires",
+    "displayName": "Feastfires",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "felwood",
+    "displayName": "Felwood",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "flints_finger",
+    "displayName": "Flint's Finger",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "gallowsgrey",
+    "displayName": "Gallowsgrey",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "gates_of_the_moon",
+    "displayName": "Gates of the Moon",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ghost_hill",
+    "displayName": "Ghost Hill",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "godsgrace",
+    "displayName": "Godsgrace",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "golden_tooth",
+    "displayName": "Golden Tooth",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "goldengrove",
+    "displayName": "Goldengrove",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "goldgrass",
+    "displayName": "Goldgrass",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "orkmont",
+    "displayName": "Orkmont",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "grandview",
+    "displayName": "Grandview",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "grassfield_keep",
+    "displayName": "Grassfield Keep",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "great_wyk",
+    "displayName": "Great Wyk",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "greenfield",
+    "displayName": "Greenfield",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "greenshield",
+    "displayName": "Greenshield",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "greenstone",
+    "displayName": "Greenstone",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "grey_garden",
+    "displayName": "Grey Garden",
+    "kind": "SETTLEMENT",
+    "parentId": "ten_towers",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "grey_glen",
+    "displayName": "Grey Glen",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "greywater_watch",
+    "displayName": "Greywater Watch",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "griffins_roost",
+    "displayName": "Griffin's Roost",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "grimston",
+    "displayName": "Grimston",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "gull_tower",
+    "displayName": "Gull Tower",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hags_mire",
+    "displayName": "Hag's Mire",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hall_of_the_mormonts",
+    "displayName": "Hall of the Mormonts",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hammerhal",
+    "displayName": "Hammerhal",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hammerhorn",
+    "displayName": "Hammerhorn",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "harlaw_hall",
+    "displayName": "Harlaw Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "ten_towers",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "harrenhal",
+    "displayName": "Harrenhal",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "harridan_hill",
+    "displayName": "Harridan Hill",
+    "kind": "SETTLEMENT",
+    "parentId": "ten_towers",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "harvest_hall",
+    "displayName": "Harvest Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hayford",
+    "displayName": "Hayford",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "haystack_hall",
+    "displayName": "Haystack Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hearts_home",
+    "displayName": "Heart's Home",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hellholt",
+    "displayName": "Hellholt",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "high_hermitage",
+    "displayName": "High Hermitage",
+    "kind": "SETTLEMENT",
+    "parentId": "starfall",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "high_tide",
+    "displayName": "High Tide",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "highgarden",
+    "displayName": "Highgarden",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "highpoint",
+    "displayName": "Highpoint",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hightower",
+    "displayName": "The Hightower",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "holyhall",
+    "displayName": "Holyhall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "honeyholt",
+    "displayName": "Honeyholt",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "horn_hill",
+    "displayName": "Horn Hill",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hornvale",
+    "displayName": "Hornvale",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "hornwood",
+    "displayName": "Hornwood",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "illyrios_manse",
+    "displayName": "Illyrio's Manse",
+    "kind": "BUILDING",
+    "parentId": "pentos",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "iron_holt",
+    "displayName": "Iron Holt",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ironoaks",
+    "displayName": "Ironoaks",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ironrath",
+    "displayName": "Ironrath",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ivy_hall",
+    "displayName": "Ivy Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "karhold",
+    "displayName": "Karhold",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "kayce",
+    "displayName": "Kayce",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "harlaw",
+    "displayName": "Harlaw",
+    "kind": "SUBREGION",
+    "parentId": "ten_towers",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "kings_landing",
+    "displayName": "King's Landing",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "kingsgrave",
+    "displayName": "Kingsgrave",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "kingshouse",
+    "displayName": "Kingshouse",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "koj",
+    "displayName": "Koj",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lannisport",
+    "displayName": "Lannisport",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "last_hearth",
+    "displayName": "Last Hearth",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lemonwood",
+    "displayName": "Lemonwood",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "littlesister",
+    "displayName": "Littlesister",
+    "kind": "SUBREGION",
+    "parentId": "three_sisters",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lonely_light",
+    "displayName": "Lonely Light",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "longbow_hall",
+    "displayName": "Longbow Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "longsister",
+    "displayName": "Longsister",
+    "kind": "SUBREGION",
+    "parentId": "three_sisters",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "longtable",
+    "displayName": "Longtable",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lord_harroways_town",
+    "displayName": "Lord Harroway's Town",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lord_hewetts_castle",
+    "displayName": "Lord Hewett's Castle",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lordsport",
+    "displayName": "Lordsport",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "lychester_keep",
+    "displayName": "Lychester's Keep",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "maidenpool",
+    "displayName": "Maidenpool",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "mistwood",
+    "displayName": "Mistwood",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "new_barrel",
+    "displayName": "New Barrel",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "new_castle",
+    "displayName": "New Castle",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "newkeep",
+    "displayName": "Newkeep",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "nightsong",
+    "displayName": "Nightsong",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ninestars",
+    "displayName": "Ninestars",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "northern_mountains",
+    "displayName": "Northern Mountains",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "old_anchor",
+    "displayName": "Old Anchor",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "old_oak",
+    "displayName": "Old Oak",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "old_wyk",
+    "displayName": "Old Wyk",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "oldcastle",
+    "displayName": "Oldcastle",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_paps",
+    "displayName": "The Paps",
+    "kind": "SUBREGION",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "parchments",
+    "displayName": "Parchments",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pebble",
+    "displayName": "Pebble",
+    "kind": "SUBREGION",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pebbleton",
+    "displayName": "Pebbleton",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pinkmaiden_castle",
+    "displayName": "Pinkmaiden Castle",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "poddingfield",
+    "displayName": "Poddingfield",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyke",
+    "displayName": "Pyke",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_ghazeen",
+    "displayName": "Pyramid of Ghazeen",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_hazkar",
+    "displayName": "Pyramid of Hazkar",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_kandaq",
+    "displayName": "Pyramid of Kandaq",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_loraq",
+    "displayName": "Pyramid of Loraq",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_merreq",
+    "displayName": "Pyramid of Merreq",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_nakloz",
+    "displayName": "Pyramid of Nakloz",
+    "kind": "BUILDING",
+    "parentId": "astapor",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_naqqan",
+    "displayName": "Pyramid of Naqqan",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_pahl",
+    "displayName": "Pyramid of Pahl",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_quazzar",
+    "displayName": "Pyramid of Quazzar",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_rhazdar",
+    "displayName": "Pyramid of Rhazdar",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_uhlez",
+    "displayName": "Pyramid of Uhlez",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_ullhor",
+    "displayName": "Pyramid of Ullhor",
+    "kind": "BUILDING",
+    "parentId": "astapor",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_yherizan",
+    "displayName": "Pyramid of Yherizan",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "pyramid_of_zhak",
+    "displayName": "Pyramid of Zhak",
+    "kind": "BUILDING",
+    "parentId": "meereen",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "rain_house",
+    "displayName": "Rain House",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "raventree_hall",
+    "displayName": "Raventree Hall",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "red_flower_vale",
+    "displayName": "Red Flower Vale",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "red_keep",
+    "displayName": "Red Keep",
+    "kind": "SETTLEMENT",
+    "parentId": "kings_landing",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "red_lake",
+    "displayName": "Red Lake",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "redfort",
+    "displayName": "Redfort",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_rills",
+    "displayName": "The Rills",
+    "kind": "SUBREGION",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "rillwater_crossing",
+    "displayName": "Rillwater Crossing",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "HYBRID_CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_ring",
+    "displayName": "The Ring",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "risley_glade",
+    "displayName": "Risley Glade",
+    "kind": "BUILDING",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "riverrun",
+    "displayName": "Riverrun",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "riverspring",
+    "displayName": "Riverspring",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "rooks_rest",
+    "displayName": "Rook's Rest",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "rosby",
+    "displayName": "Rosby",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "runestone",
+    "displayName": "Runestone",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "salt_shore",
+    "displayName": "Salt Shore",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "saltcliffe",
+    "displayName": "Saltcliffe",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "saltpans",
+    "displayName": "Saltpans",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sandstone",
+    "displayName": "Sandstone",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sarsfield",
+    "displayName": "Sarsfield",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "seagard",
+    "displayName": "Seagard",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sealskin_point",
+    "displayName": "Sealskin Point",
+    "kind": "SUBREGION",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sharp_point",
+    "displayName": "Sharp Point",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "shatterstone",
+    "displayName": "Shatterstone",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "silverhill",
+    "displayName": "Silverhill",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "skyreach",
+    "displayName": "Skyreach",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "smithyton",
+    "displayName": "Smithyton",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "snakewood",
+    "displayName": "Snakewood",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "southshield",
+    "displayName": "Southshield",
+    "kind": "SUBREGION",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sows_horn",
+    "displayName": "Sow's Horn",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "spottswood",
+    "displayName": "Spottswood",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "standfast",
+    "displayName": "Standfast",
+    "kind": "SETTLEMENT",
+    "parentId": "goldengrove",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "starfall",
+    "displayName": "Starfall",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "starpike",
+    "displayName": "Starpike",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "stokeworth",
+    "displayName": "Stokeworth",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "stone_hedge",
+    "displayName": "Stone Hedge",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "stonedance",
+    "displayName": "Stonedance",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "stonehelm",
+    "displayName": "Stonehelm",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "storms_end",
+    "displayName": "Storm's End",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "strongsong",
+    "displayName": "Strongsong",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sunhouse",
+    "displayName": "Sunhouse",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sunspear",
+    "displayName": "Sunspear",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sweet_lotus_vale",
+    "displayName": "Sweet Lotus Vale",
+    "kind": "SUBREGION",
+    "parentId": "summer_isles",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "sweetport_sound",
+    "displayName": "Sweetport Sound",
+    "kind": "SUBREGION",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "ten_towers",
+    "displayName": "Ten Towers",
+    "kind": "SETTLEMENT",
+    "parentId": "iron_islands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "three_sisters",
+    "displayName": "Three Sisters",
+    "kind": "SUBREGION",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "three_towers",
+    "displayName": "Three Towers",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_tor",
+    "displayName": "The Tor",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "torrhens_square",
+    "displayName": "Torrhen's Square",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "tower_of_glimmering",
+    "displayName": "Tower of Glimmering",
+    "kind": "SETTLEMENT",
+    "parentId": "ten_towers",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "trader_town",
+    "displayName": "Trader Town",
+    "kind": "SETTLEMENT",
+    "parentId": "yi_ti",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "tumbleton",
+    "displayName": "Tumbleton",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_twins",
+    "displayName": "The Twins",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "uplands",
+    "displayName": "Uplands",
+    "kind": "SETTLEMENT",
+    "parentId": "the_reach",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "vaith",
+    "displayName": "Vaith",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "volmark",
+    "displayName": "Volmark",
+    "kind": "SETTLEMENT",
+    "parentId": "ten_towers",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "wayfarers_rest",
+    "displayName": "Wayfarer's Rest",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "weeping_town",
+    "displayName": "Weeping Town",
+    "kind": "SETTLEMENT",
+    "parentId": "stormlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "the_whispers",
+    "displayName": "The Whispers",
+    "kind": "SETTLEMENT",
+    "parentId": "crownlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "wickenden",
+    "displayName": "Wickenden",
+    "kind": "SETTLEMENT",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "widows_watch",
+    "displayName": "Widow's Watch",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "willow_wood",
+    "displayName": "Willow Wood",
+    "kind": "SETTLEMENT",
+    "parentId": "riverlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "winterfell",
+    "displayName": "Winterfell",
+    "kind": "SETTLEMENT",
+    "parentId": "the_north",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "witch_isle",
+    "displayName": "Witch Isle",
+    "kind": "SUBREGION",
+    "parentId": "the_vale",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "wyl",
+    "displayName": "Wyl",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "wyndhall",
+    "displayName": "Wyndhall",
+    "kind": "SETTLEMENT",
+    "parentId": "westerlands",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "xaros_home",
+    "displayName": "Xaro's Home",
+    "kind": "BUILDING",
+    "parentId": "qarth",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "yin",
+    "displayName": "Yin",
+    "kind": "SETTLEMENT",
+    "parentId": "yi_ti",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  },
+  {
+    "id": "yronwood",
+    "displayName": "Yronwood",
+    "kind": "SETTLEMENT",
+    "parentId": "dorne",
+    "provenance": "CANON",
+    "sourceNote": "Batch 19.0E.1 named holding reference. Physical map placement/geographic feature may be added later."
+  }
+]
