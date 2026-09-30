@@ -10,6 +10,7 @@ import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
 import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
+import dev.dtzudontsay.knownworld.debug.ReligiousInstitutionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
@@ -17,6 +18,7 @@ import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldReferenceDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
+import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeSources;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
@@ -58,9 +60,21 @@ public final class KnownWorld implements ModInitializer {
     @Override
     public void onInitialize() {
 
+        /*
+         * ---------------------------------------------------------
+         * WORLD GENERATION REGISTRATION
+         * ---------------------------------------------------------
+         */
+
         KnownWorldBiomeSources.register();
 
         KnownWorldChunkGenerators.register();
+
+        /*
+         * ---------------------------------------------------------
+         * GEOGRAPHIC FEATURE REGISTRIES
+         * ---------------------------------------------------------
+         */
 
         NorthFeatureRegistry.bootstrap();
 
@@ -84,9 +98,30 @@ public final class KnownWorld implements ModInitializer {
 
         UlthosFeatureRegistry.bootstrap();
 
+        /*
+         * ---------------------------------------------------------
+         * REFERENCE DATA
+         * ---------------------------------------------------------
+         */
+
         WorldReferenceSettings.bootstrap();
 
         WorldReferenceCatalog.bootstrap();
+
+        /*
+         * Batch 18D.2
+         *
+         * Religious clergy/order metadata is loaded after the main
+         * reference catalog because its definitions validate their
+         * religion IDs against WorldReferenceCatalog.
+         */
+        ReligiousInstitutionCatalog.bootstrap();
+
+        /*
+         * ---------------------------------------------------------
+         * SPATIAL REFERENCE LAYERS
+         * ---------------------------------------------------------
+         */
 
         LandmassZoneCatalog.bootstrap();
 
@@ -96,7 +131,19 @@ public final class KnownWorld implements ModInitializer {
 
         RegionalSubregionResolver.bootstrap();
 
+        /*
+         * Batch 18C.
+         *
+         * Territory-level influence profiles and optional
+         * subregional refinements.
+         */
         RegionalInfluenceCatalog.bootstrap();
+
+        /*
+         * ---------------------------------------------------------
+         * GEODATA / BIOME RASTERS
+         * ---------------------------------------------------------
+         */
 
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -118,7 +165,7 @@ public final class KnownWorld implements ModInitializer {
         );
 
         LOGGER.info(
-                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries and {} regional influence profiles.",
+                "Known World reference system ready with {} geographic features, {} reference locations, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get()
                         .locations()
@@ -132,8 +179,17 @@ public final class KnownWorld implements ModInitializer {
                 RegionalSubregionCatalog.get()
                         .totalEntryCount(),
                 RegionalInfluenceCatalog.get()
+                        .size(),
+                ReligiousInstitutionCatalog.get()
+                        .all()
                         .size()
         );
+
+        /*
+         * ---------------------------------------------------------
+         * WORLD / REFERENCE DEBUG COMMANDS
+         * ---------------------------------------------------------
+         */
 
         KnownWorldDebugCommand.register();
 
@@ -143,9 +199,29 @@ public final class KnownWorld implements ModInitializer {
 
         RegionalInfluenceDebugCommand.register();
 
+        /*
+         * ---------------------------------------------------------
+         * RELIGION DEBUG COMMANDS
+         * ---------------------------------------------------------
+         */
+
         ReligionDebugCommand.register();
 
+        ReligiousInstitutionDebugCommand.register();
+
+        /*
+         * ---------------------------------------------------------
+         * NPC SIMULATION
+         * ---------------------------------------------------------
+         */
+
         NpcSimulation.registerLifecycle();
+
+        /*
+         * ---------------------------------------------------------
+         * NPC / SIMULATION DEBUG COMMANDS
+         * ---------------------------------------------------------
+         */
 
         NpcDebugCommand.register();
 
@@ -168,6 +244,12 @@ public final class KnownWorld implements ModInitializer {
         CharacterProfileDebugCommand.register();
 
         WorldEventDebugCommand.register();
+
+        /*
+         * ---------------------------------------------------------
+         * FINAL STARTUP LOGGING
+         * ---------------------------------------------------------
+         */
 
         LOGGER.info(
                 "Known World loaded with {} geographic features.",

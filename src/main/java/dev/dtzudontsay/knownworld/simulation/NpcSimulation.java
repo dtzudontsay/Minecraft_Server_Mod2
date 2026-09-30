@@ -26,6 +26,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationServi
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileGenerationService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
+import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousMembershipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
@@ -102,6 +103,15 @@ public final class NpcSimulation {
     private final CharacterProfileGenerationService profileGenerationService;
 
     private final NpcRelationshipManager relationshipManager;
+
+    /*
+     * Batch 18D.2
+     *
+     * Runtime religious-order/clergy membership state.
+     *
+     * Persistence for this manager is added in 18D.3.
+     */
+    private final ReligiousMembershipManager religiousMembershipManager;
 
     private final NpcKnowledgeManager knowledgeManager;
 
@@ -257,6 +267,11 @@ public final class NpcSimulation {
 
         this.relationshipManager =
                 new NpcRelationshipManager(
+                        registry
+                );
+
+        this.religiousMembershipManager =
+                new ReligiousMembershipManager(
                         registry
                 );
 
@@ -475,7 +490,7 @@ public final class NpcSimulation {
                             );
 
                     KnownWorld.LOGGER.info(
-                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations and {} titles.",
+                            "NPC simulation started at campaign year {} day {} with {} NPCs, {} profiles, {} genealogy records, {} unions, {} pregnancies, {} claims, {} settlements, {} organizations, {} religious memberships and {} titles.",
                             simulation.campaignCalendar.year(),
                             simulation.campaignCalendar.dayOfYear() + 1,
                             simulation.registry.size(),
@@ -486,6 +501,8 @@ public final class NpcSimulation {
                             simulation.claimManager.size(),
                             simulation.settlementManager.size(),
                             simulation.organizationManager.size(),
+                            simulation.religiousMembershipManager.all()
+                                    .size(),
                             simulation.titleManager.definitionCount()
                     );
                 }
@@ -662,6 +679,10 @@ public final class NpcSimulation {
         return relationshipManager;
     }
 
+    public ReligiousMembershipManager religiousMemberships() {
+        return religiousMembershipManager;
+    }
+
     public NpcKnowledgeManager knowledge() {
         return knowledgeManager;
     }
@@ -750,6 +771,7 @@ public final class NpcSimulation {
     public void advanceCampaignDaysForDebug(
             int days
     ) {
+
         if (days <= 0) {
 
             throw new IllegalArgumentException(
@@ -829,6 +851,11 @@ public final class NpcSimulation {
             profilePersistence.save(
                     profileManager
             );
+
+            /*
+             * Religious memberships intentionally become persistent
+             * in Batch 18D.3.
+             */
 
         } catch (
                 IOException exception

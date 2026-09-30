@@ -1,0 +1,161 @@
+[
+  {
+    "id": "faith_septon",
+    "displayName": "Septons",
+    "religionId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.45,
+    "minimumDoctrinalKnowledge": 0.45,
+    "rituals": [
+      "seven_prayer",
+      "blessing",
+      "marriage_rite"
+    ],
+    "taboos": [],
+    "roles": [
+      "septon"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "faith_septa",
+    "displayName": "Septas",
+    "religionId": "faith_of_the_seven",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.45,
+    "minimumDoctrinalKnowledge": 0.45,
+    "rituals": [
+      "seven_prayer",
+      "blessing"
+    ],
+    "taboos": [],
+    "roles": [
+      "septa"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "silent_sisters",
+    "displayName": "Silent Sisters",
+    "religionId": "faith_of_the_seven",
+    "category": "FUNERARY_ORDER",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.50,
+    "minimumDoctrinalKnowledge": 0.40,
+    "rituals": [
+      "prepare_dead"
+    ],
+    "taboos": [
+      "speech"
+    ],
+    "roles": [
+      "silent_sister"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "poor_fellows",
+    "displayName": "Poor Fellows",
+    "religionId": "faith_of_the_seven",
+    "category": "MILITANT_ORDER",
+    "clergy": false,
+    "militant": true,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.55,
+    "minimumDoctrinalKnowledge": 0.30,
+    "rituals": [
+      "seven_prayer"
+    ],
+    "taboos": [],
+    "roles": [
+      "poor_fellow"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "warriors_sons",
+    "displayName": "Warrior's Sons",
+    "religionId": "faith_of_the_seven",
+    "category": "MILITANT_ORDER",
+    "clergy": false,
+    "militant": true,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.65,
+    "minimumDoctrinalKnowledge": 0.40,
+    "rituals": [
+      "seven_prayer"
+    ],
+    "taboos": [],
+    "roles": [
+      "warriors_son"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "red_priests",
+    "displayName": "Red Priests",
+    "religionId": "rhllor",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.60,
+    "minimumDoctrinalKnowledge": 0.50,
+    "rituals": [
+      "night_fire",
+      "fire_prayer"
+    ],
+    "taboos": [],
+    "roles": [
+      "red_priest"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "faceless_men",
+    "displayName": "Faceless Men",
+    "religionId": "many_faced_god",
+    "category": "MYSTERY_ORDER",
+    "clergy": false,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.70,
+    "minimumDoctrinalKnowledge": 0.65,
+    "rituals": [
+      "many_faced_prayer"
+    ],
+    "taboos": [],
+    "roles": [
+      "faceless_man"
+    ],
+    "provenance": "CANON"
+  },
+  {
+    "id": "drowned_men",
+    "displayName": "Drowned Men",
+    "religionId": "drowned_god",
+    "category": "CLERGY",
+    "clergy": true,
+    "militant": false,
+    "exclusiveMembership": true,
+    "minimumDevotion": 0.55,
+    "minimumDoctrinalKnowledge": 0.35,
+    "rituals": [
+      "drowning_rite",
+      "saltwater_prayer"
+    ],
+    "taboos": [],
+    "roles": [
+      "drowned_man"
+    ],
+    "provenance": "CANON"
+  }
+]
