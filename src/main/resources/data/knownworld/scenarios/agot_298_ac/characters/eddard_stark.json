@@ -1,5 +1,6 @@
 {
   "id": "eddard_stark",
+  "authoringVersion": 1,
 
   "identity": {
     "givenName": "Eddard",
@@ -12,11 +13,11 @@
 
   "personality": {
     "courage": 0.80,
-    "ambition": -0.30,
-    "compassion": 0.65,
-    "honor": 0.95,
-    "patience": 0.70,
-    "sociability": -0.10
+    "ambition": -0.45,
+    "compassion": 0.70,
+    "honor": 0.96,
+    "patience": 0.72,
+    "sociability": -0.15
   },
 
   "profile": {
@@ -24,23 +25,155 @@
     "religion": "old_gods",
     "education": "noble_martial",
 
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "vale",
+
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+
+    "wealth": 0.82,
+    "socialStatus": 0.95,
+    "reputation": 0.90,
+
     "skills": {
       "martial": 0.80,
-      "diplomacy": 0.58,
-      "stewardship": 0.66,
-      "intrigue": 0.30,
-      "learning": 0.57,
+      "diplomacy": 0.61,
+      "stewardship": 0.72,
+      "intrigue": 0.28,
+      "learning": 0.60,
       "combat": 0.78,
-      "leadership": 0.82
+      "leadership": 0.82,
+      "riding": 0.75,
+      "sailing": 0.20,
+      "navigation": 0.35,
+      "trade": 0.25,
+      "crafting": 0.20,
+      "agriculture": 0.35,
+      "hunting": 0.72,
+      "medicine": 0.20,
+      "religious_study": 0.45,
+      "language": 0.85,
+      "performance": 0.20,
+      "command": 0.84,
+      "logistics": 0.78
     },
 
-    "traits": [
-      "honorable",
-      "dutiful",
-      "reserved",
-      "brave",
-      "family_oriented"
-    ],
+    "aptitudes": {
+      "martial": 0.82,
+      "diplomacy": 0.64,
+      "stewardship": 0.75,
+      "intrigue": 0.32,
+      "learning": 0.64,
+      "combat": 0.82,
+      "leadership": 0.82,
+      "riding": 0.76,
+      "sailing": 0.25,
+      "navigation": 0.42,
+      "trade": 0.30,
+      "crafting": 0.25,
+      "agriculture": 0.40,
+      "hunting": 0.76,
+      "medicine": 0.28,
+      "religious_study": 0.52,
+      "languages": 0.65,
+      "performance": 0.25,
+      "command": 0.84,
+      "logistics": 0.82
+    },
+
+    "dispositions": {
+      "independence": 0.55,
+      "assertiveness": 0.45,
+      "impulsivity": -0.75,
+      "discipline": 0.90,
+      "curiosity": 0.15,
+      "risk_tolerance": 0.25,
+      "emotional_stability": 0.75,
+      "suspiciousness": 0.15,
+      "empathy": 0.68,
+      "aggression": -0.15,
+      "adaptability": 0.35,
+      "persistence": 0.85,
+      "pride": 0.15,
+      "humility": 0.70,
+      "greed": -0.85,
+      "generosity": 0.55,
+      "forgiveness": 0.45,
+      "vindictiveness": -0.55,
+      "deceitfulness": -0.80,
+      "gullibility": -0.10,
+      "conformity": 0.35,
+      "dominance": 0.25,
+      "obedience": 0.55,
+      "jealousy": -0.40,
+      "romanticism": 0.25,
+      "sensuality": -0.25
+    },
+
+    "characterValues": {
+      "duty": 0.98,
+      "family_loyalty": 0.98,
+      "house_loyalty": 0.98,
+      "dynastic_loyalty": 0.75,
+      "clan_loyalty": 0.45,
+      "friendship_loyalty": 0.85,
+      "personal_freedom": 0.25,
+      "authority_respect": 0.55,
+      "hierarchy_acceptance": 0.55,
+      "egalitarianism": 0.05,
+      "traditionalism": 0.85,
+      "innovation": -0.55,
+      "religiosity": 0.60,
+      "religious_tolerance": 0.65,
+      "cultural_tolerance": 0.40,
+      "honor_culture": 0.98,
+      "hospitality": 0.65,
+      "mercy": 0.65,
+      "vengeance": -0.35,
+      "justice": 0.90,
+      "law_obedience": 0.75,
+      "wealth_seeking": -0.80,
+      "prestige_seeking": -0.65,
+      "power_seeking": -0.80,
+      "knowledge_seeking": 0.30,
+      "martial_glory": 0.15,
+      "pacifism": 0.10,
+      "family_formation": 0.90,
+      "romantic_love": 0.55,
+      "political_stability": 0.85,
+      "social_mobility": -0.10,
+      "communal_solidarity": 0.65,
+      "individualism": 0.05
+    },
+
+    "socialNorms": {
+      "martial": 0.55,
+      "courtly": 0.05,
+      "mercantile": -0.20,
+      "naval": -0.35,
+      "raiding": -0.85,
+      "scholarly": 0.20,
+      "equestrian": 0.45,
+      "clan_based": 0.30,
+      "dynastic": 0.70,
+      "religious": 0.45,
+      "hospitality": 0.55,
+      "vengeance": -0.25,
+      "bureaucratic": 0.20,
+      "urban": -0.35,
+      "rural": 0.60,
+      "cosmopolitan": -0.15,
+      "isolationist": 0.20,
+      "collectivist": 0.55,
+      "individualist": -0.10,
+      "social_mobility": -0.10,
+      "authority": 0.55,
+      "traditional": 0.80,
+      "foreign_exposure": 0.20,
+      "political_exposure": 0.65,
+      "migratory": -0.80
+    },
 
     "values": {
       "family": 0.95,
@@ -49,22 +182,145 @@
       "power": 0.20,
       "wealth": 0.15,
       "faith": 0.65,
-      "justice": 0.90
+      "justice": 0.90,
+
+      "culture.identity_importance": 0.85,
+      "culture.heritage_attachment": 0.90,
+      "culture.assimilation_openness": 0.18,
+      "culture.multicultural_identity": 0.25,
+      "culture.affinity.northman": 1.00,
+      "culture.affinity.valeman": 0.68,
+      "culture.affinity.westerosi": 0.85,
+
+      "religion.devotion": 0.62,
+      "religion.doctrinal_knowledge": 0.55,
+      "religion.identity_importance": 0.68,
+      "religion.tolerance": 0.72,
+      "religion.conversion_openness": 0.10,
+      "religion.concealment_willingness": 0.20,
+      "religion.syncretism": 0.10,
+      "religion.observance": 0.70
+    },
+
+    "politicalPreferences": {
+      "royal_service": -0.30,
+      "northern_autonomy": 0.70,
+      "dynastic_security": 0.82,
+      "court_intrigue": -0.92,
+      "war_as_policy": -0.55,
+      "lawful_succession": 0.90,
+      "political_compromise": 0.30
+    },
+
+    "traits": [
+      "honorable",
+      "dutiful",
+      "reserved",
+      "brave",
+      "family_oriented",
+      "just",
+      "loyal",
+      "austere",
+      "responsible",
+      "reluctant_politician"
+    ],
+
+    "aliases": [
+      "Ned"
+    ],
+
+    "occupations": [
+      "noble_lord",
+      "ruler"
+    ],
+
+    "offices": [
+      "head_house_stark",
+      "lord_of_winterfell",
+      "warden_of_the_north"
+    ],
+
+    "courtRoles": [
+      "lord_of_winterfell"
+    ],
+
+    "militaryRoles": [
+      "commander",
+      "northern_lord"
+    ],
+
+    "combatSpecialties": [
+      "sword",
+      "mounted_combat",
+      "field_command"
+    ],
+
+    "languages": {
+      "common_tongue": 1.00
     },
 
     "motivations": [
-      "Protect House Stark and my family.",
-      "Fulfill my duties to the North.",
-      "Act honorably even when it is personally costly."
+      "Protect House Stark and every member of my family.",
+      "Fulfill my obligations to the North and the people who depend upon me.",
+      "Act honorably even when doing so carries a personal or political cost.",
+      "Preserve stability rather than pursue power for its own sake."
     ],
+
+    "goals": [
+      "Keep House Stark secure.",
+      "Rule the North justly.",
+      "Protect the children entrusted to me.",
+      "Avoid unnecessary war and political chaos."
+    ],
+
+    "fears": [
+      "Failing my family through a breach of duty.",
+      "The people I love suffering because of my decisions.",
+      "Being forced to choose between honor and protecting my family.",
+      "Political intrigue placing innocent people in danger."
+    ],
+
+    "desires": [
+      "A secure and peaceful future for House Stark.",
+      "To return to family life rather than remain trapped in southern politics.",
+      "To be worthy of the trust placed in me."
+    ],
+
+    "secrets": [
+      "jon_snow_parentage"
+    ],
+
+    "knownSecrets": [
+      "jon_snow_parentage"
+    ],
+
+    "publicFacts": {
+      "house": "house_stark",
+      "seat": "winterfell",
+      "office": "warden_of_the_north",
+      "public_reputation": "honorable_and_dutiful_northern_lord"
+    },
+
+    "privateFacts": {
+      "jon_snow_parentage": "lyanna_stark_and_rhaegar_targaryen",
+      "jon_snow_protection": "eddard_claims_jon_as_his_own_son_to_protect_him",
+      "political_preference": "prefers_duty_and_home_over_court_power"
+    },
+
+    "appearance": {
+      "description": "A solemn, long-faced northern noble with a restrained bearing and little taste for display.",
+      "hair": "dark_brown",
+      "eyes": "grey",
+      "build": "lean_and_martial"
+    },
 
     "dialogue": {
       "formality": 0.45,
-      "verbosity": -0.35,
-      "warmth": 0.15,
-      "directness": 0.65,
+      "verbosity": -0.40,
+      "warmth": 0.10,
+      "directness": 0.70,
       "preferredAddress": "Lord Stark",
-      "guidance": "Speak plainly and with restraint. Avoid boasting. Place duty, family and honor above personal ambition."
+      "guidance": "Speak plainly, carefully and with restraint. Avoid boasting, theatrics and unnecessary threats. Treat promises, duties and family obligations as serious matters. Show warmth sparingly but sincerely. Dislike political games, evasive court language and casual dishonor."
     }
   },
 
@@ -92,27 +348,35 @@
   "relationships": [
     {
       "target": "catelyn_stark",
-      "affection": 0.78,
-      "trust": 0.90,
-      "respect": 0.88,
+      "affection": 0.84,
+      "trust": 0.94,
+      "respect": 0.92,
+      "fear": 0.00,
+      "familiarity": 0.99
+    },
+    {
+      "target": "robert_baratheon",
+      "affection": 0.72,
+      "trust": 0.82,
+      "respect": 0.86,
+      "fear": 0.03,
+      "familiarity": 0.97
+    },
+    {
+      "target": "jon_snow",
+      "affection": 0.88,
+      "trust": 0.80,
+      "respect": 0.72,
       "fear": 0.00,
       "familiarity": 0.98
     },
     {
-      "target": "robert_baratheon",
-      "affection": 0.65,
-      "trust": 0.75,
-      "respect": 0.80,
-      "fear": 0.05,
-      "familiarity": 0.95
-    },
-    {
-      "target": "jon_snow",
-      "affection": 0.80,
-      "trust": 0.72,
-      "respect": 0.65,
-      "fear": 0.00,
-      "familiarity": 0.96
+      "target": "theon_greyjoy",
+      "affection": 0.10,
+      "trust": 0.10,
+      "respect": 0.22,
+      "fear": 0.02,
+      "familiarity": 0.75
     }
   ],
 
@@ -125,6 +389,11 @@
     {
       "factKey": "house.stark",
       "value": "house_stark",
+      "confidence": 1.0
+    },
+    {
+      "factKey": "person.jon_snow.parentage_public",
+      "value": "eddard_stark",
       "confidence": 1.0
     }
   ],
@@ -139,6 +408,16 @@
     {
       "type": "POLITICAL",
       "summary": "I rule Winterfell and bear responsibility for House Stark and the North.",
+      "importance": 0.95
+    },
+    {
+      "type": "DEATH",
+      "summary": "My father, brother and sister died during the upheaval surrounding Robert's Rebellion.",
+      "importance": 1.00
+    },
+    {
+      "type": "PERSONAL_EXPERIENCE",
+      "summary": "Jon Arryn fostered me in the Vale and became a father figure to me.",
       "importance": 0.95
     }
   ]

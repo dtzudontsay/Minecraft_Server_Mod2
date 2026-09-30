@@ -19,6 +19,7 @@ import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldReferenceDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileOverlayService;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
@@ -66,6 +67,12 @@ public final class KnownWorld implements ModInitializer {
 
         KnownWorldChunkGenerators.register();
 
+        /*
+         * ---------------------------------------------------------
+         * GEOGRAPHIC FEATURE REGISTRIES
+         * ---------------------------------------------------------
+         */
+
         NorthFeatureRegistry.bootstrap();
 
         SouthFeatureRegistry.bootstrap();
@@ -88,11 +95,23 @@ public final class KnownWorld implements ModInitializer {
 
         UlthosFeatureRegistry.bootstrap();
 
+        /*
+         * ---------------------------------------------------------
+         * STATIC REFERENCE DATA
+         * ---------------------------------------------------------
+         */
+
         WorldReferenceSettings.bootstrap();
 
         WorldReferenceCatalog.bootstrap();
 
         ReligiousInstitutionCatalog.bootstrap();
+
+        /*
+         * ---------------------------------------------------------
+         * SPATIAL REFERENCE LAYERS
+         * ---------------------------------------------------------
+         */
 
         LandmassZoneCatalog.bootstrap();
 
@@ -103,6 +122,12 @@ public final class KnownWorld implements ModInitializer {
         RegionalSubregionResolver.bootstrap();
 
         RegionalInfluenceCatalog.bootstrap();
+
+        /*
+         * ---------------------------------------------------------
+         * GEODATA / BIOME RASTERS
+         * ---------------------------------------------------------
+         */
 
         KnownWorldGeoData geodata =
                 KnownWorldGeoData.getInstance();
@@ -154,7 +179,9 @@ public final class KnownWorld implements ModInitializer {
         );
 
         /*
-         * Reference/world debug.
+         * ---------------------------------------------------------
+         * WORLD / REFERENCE DEBUG
+         * ---------------------------------------------------------
          */
 
         KnownWorldDebugCommand.register();
@@ -166,7 +193,9 @@ public final class KnownWorld implements ModInitializer {
         RegionalInfluenceDebugCommand.register();
 
         /*
-         * Character identity / formation debug.
+         * ---------------------------------------------------------
+         * CHARACTER IDENTITY / FORMATION DEBUG
+         * ---------------------------------------------------------
          */
 
         ReligionDebugCommand.register();
@@ -178,13 +207,26 @@ public final class KnownWorld implements ModInitializer {
         FormationDebugCommand.register();
 
         /*
-         * Simulation lifecycle.
+         * ---------------------------------------------------------
+         * SIMULATION
+         * ---------------------------------------------------------
          */
 
         NpcSimulation.registerLifecycle();
 
         /*
-         * Simulation debug.
+         * Batch 18G.
+         *
+         * This MUST be registered after NpcSimulation's lifecycle.
+         * When SERVER_STARTED fires, the simulation therefore loads first
+         * and authored profile overlays are applied afterwards.
+         */
+        AuthoredCharacterProfileOverlayService.registerLifecycle();
+
+        /*
+         * ---------------------------------------------------------
+         * SIMULATION DEBUG
+         * ---------------------------------------------------------
          */
 
         NpcDebugCommand.register();
