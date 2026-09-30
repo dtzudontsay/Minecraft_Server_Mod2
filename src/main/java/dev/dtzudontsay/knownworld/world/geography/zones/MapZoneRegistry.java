@@ -7,7 +7,9 @@ import java.util.Optional;
 public final class MapZoneRegistry {
 
     private static final Map<MapZoneId, MapZoneDefinition> ZONES =
-            new EnumMap<>(MapZoneId.class);
+            new EnumMap<>(
+                    MapZoneId.class
+            );
 
     static {
         registerNorthWesteros();
@@ -30,19 +32,20 @@ public final class MapZoneRegistry {
     }
 
     private static void registerNorthWesteros() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.NW,
                         "Official The Known World regional map: North Westeros",
-                        2048,
-                        1942,
+                        2073,
+                        1966,
                         new RegionalMapTransform(
-                                0.269235463,
-                                0.000032805,
+                                0.26598696561824325,
+                                0.00003240432824427481,
                                 19.5523523,
 
-                                -0.000015746,
-                                0.269241799,
+                                -0.000015556014478764482,
+                                0.2659533495465649,
                                 25.6487478
                         )
                 )
@@ -50,19 +53,20 @@ public final class MapZoneRegistry {
     }
 
     private static void registerSouthWesteros() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.SW,
                         "Official The Known World regional map: South Westeros",
-                        2048,
-                        1876,
+                        2067,
+                        1894,
                         new RegionalMapTransform(
-                                0.251274800,
-                                -0.000013323,
+                                0.24896394753146178,
+                                -0.000013196315372424722,
                                 18.0074268,
 
-                                0.000001467,
-                                0.251214149,
+                                0.0000014535087124878994,
+                                0.2488254249207607,
                                 482.4480120
                         )
                 )
@@ -70,19 +74,20 @@ public final class MapZoneRegistry {
     }
 
     private static void registerSummerIsles() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.SI,
                         "Official The Known World regional map: Summer Isles",
-                        2048,
-                        1189,
+                        2952,
+                        1714,
                         new RegionalMapTransform(
-                                0.358829934,
-                                -0.000020605,
+                                0.24890710772551677,
+                                -0.000014289982486865149,
                                 17.8553612,
 
-                                0.000020605,
-                                0.358829934,
+                                0.0000142929295154185,
+                                0.2488557861015762,
                                 915.7434305
                         )
                 )
@@ -90,19 +95,20 @@ public final class MapZoneRegistry {
     }
 
     private static void registerNorthWestEssos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.NWE,
                         "Official The Known World regional map: North-West Essos",
-                        2048,
-                        1769,
+                        2251,
+                        1945,
                         new RegionalMapTransform(
-                                0.321658128,
-                                -0.000005214,
+                                0.292637416896,
+                                -0.00000474195061728395,
                                 515.2110972,
 
-                                0.000044536,
-                                0.321670459,
+                                0.00004051786311111111,
+                                0.29254803061316875,
                                 175.8865722
                         )
                 )
@@ -110,6 +116,7 @@ public final class MapZoneRegistry {
     }
 
     private static void registerSouthWestEssos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.SWE,
@@ -130,6 +137,7 @@ public final class MapZoneRegistry {
     }
 
     private static void registerNorthEssos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.NE,
@@ -150,6 +158,7 @@ public final class MapZoneRegistry {
     }
 
     private static void registerSouthEssos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.SE,
@@ -170,6 +179,7 @@ public final class MapZoneRegistry {
     }
 
     private static void registerNorthEastEssos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.NEE,
@@ -190,6 +200,7 @@ public final class MapZoneRegistry {
     }
 
     private static void registerSouthEastEssos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.SEE,
@@ -210,19 +221,20 @@ public final class MapZoneRegistry {
     }
 
     private static void registerSothoryos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.SO,
                         "Official The Known World regional map: Sothoryos",
-                        2048,
-                        721,
+                        2248,
+                        792,
                         new RegionalMapTransform(
-                                0.353392311,
-                                0.000158547,
+                                0.3219377216809079,
+                                0.00014431585335018964,
                                 831.249112,
 
-                                -0.000044447,
-                                0.353120367,
+                                -0.00004049088072986204,
+                                0.3214243542857143,
                                 1093.184561
                         )
                 )
@@ -230,6 +242,7 @@ public final class MapZoneRegistry {
     }
 
     private static void registerUlthos() {
+
         register(
                 new MapZoneDefinition(
                         MapZoneId.UL,
@@ -252,7 +265,13 @@ public final class MapZoneRegistry {
     private static void register(
             MapZoneDefinition zone
     ) {
-        if (ZONES.containsKey(zone.id())) {
+
+        if (
+                ZONES.containsKey(
+                        zone.id()
+                )
+        ) {
+
             throw new IllegalStateException(
                     "Duplicate map zone: "
                             + zone.id()
@@ -268,16 +287,21 @@ public final class MapZoneRegistry {
     public static Optional<MapZoneDefinition> get(
             MapZoneId id
     ) {
+
         return Optional.ofNullable(
-                ZONES.get(id)
+                ZONES.get(
+                        id
+                )
         );
     }
 
     public static int registeredZoneCount() {
+
         return ZONES.size();
     }
 
     public static Map<MapZoneId, MapZoneDefinition> getAll() {
+
         return Map.copyOf(
                 ZONES
         );

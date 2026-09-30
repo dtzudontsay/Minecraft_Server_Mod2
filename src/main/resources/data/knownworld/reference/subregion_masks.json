@@ -2,8 +2,8 @@
   {
     "zoneId": "NW",
     "imageResource": "assets/knownworld/subregions/nw.png",
-    "width": 2048,
-    "height": 1942,
+    "width": 2073,
+    "height": 1966,
     "priority": 100,
     "entries": [
       { "hexColor": "#76258C", "locationId": "lands_of_always_winter" },
@@ -36,8 +36,8 @@
   {
     "zoneId": "NWE",
     "imageResource": "assets/knownworld/subregions/nwe.png",
-    "width": 2048,
-    "height": 1769,
+    "width": 2251,
+    "height": 1945,
     "priority": 100,
     "entries": [
       { "hexColor": "#3D6B25", "locationId": "braavosian_coastlands" },
@@ -91,8 +91,8 @@
   {
     "zoneId": "SI",
     "imageResource": "assets/knownworld/subregions/si.png",
-    "width": 2048,
-    "height": 1189,
+    "width": 2952,
+    "height": 1714,
     "priority": 100,
     "entries": [
       { "hexColor": "#0E0B1A", "locationId": "walano" },
@@ -117,8 +117,8 @@
   {
     "zoneId": "SO",
     "imageResource": "assets/knownworld/subregions/so.png",
-    "width": 2048,
-    "height": 721,
+    "width": 2248,
+    "height": 792,
     "priority": 100,
     "entries": [
       { "hexColor": "#8D37E8", "locationId": "wyvern_point" },
@@ -138,8 +138,8 @@
   {
     "zoneId": "SW",
     "imageResource": "assets/knownworld/subregions/sw.png",
-    "width": 2048,
-    "height": 1876,
+    "width": 2067,
+    "height": 1894,
     "priority": 100,
     "entries": [
       { "hexColor": "#4D119C", "locationId": "the_neck" },

@@ -49,7 +49,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
     public static final int SEA_LEVEL =
             63;
 
-
     public static final MapCodec<KnownWorldChunkGenerator> CODEC =
             RecordCodecBuilder.mapCodec(
                     instance ->
@@ -68,7 +67,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                                     )
             );
 
-
     private static final BlockState AIR =
             Blocks.AIR.defaultBlockState();
 
@@ -84,9 +82,7 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
     private static final BlockState WATER =
             Blocks.WATER.defaultBlockState();
 
-
     private final KnownWorldSurfaceResolver surfaceResolver;
-
 
     public KnownWorldChunkGenerator(
             BiomeSource biomeSource
@@ -100,13 +96,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 new KnownWorldSurfaceResolver();
     }
 
-
     @Override
     protected MapCodec<? extends ChunkGenerator> codec() {
 
         return CODEC;
     }
-
 
     @Override
     public CompletableFuture<ChunkAccess> buildTerrain(
@@ -130,7 +124,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         BlockPos.MutableBlockPos position =
                 new BlockPos.MutableBlockPos();
 
-
         for (
                 int localZ = 0;
                 localZ < 16;
@@ -139,7 +132,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
 
             int worldZ =
                     startZ + localZ;
-
 
             for (
                     int localX = 0;
@@ -159,12 +151,10 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             }
         }
 
-
         return CompletableFuture.completedFuture(
                 chunk
         );
     }
-
 
     private void generateColumn(
             ChunkAccess chunk,
@@ -179,7 +169,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         worldZ + 0.5
                 );
 
-
         if (
                 !geography.insideKnownWorldMap()
         ) {
@@ -187,13 +176,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             return;
         }
 
-
         TerrainSample terrain =
                 sampleTerrain(
                         worldX,
                         worldZ
                 );
-
 
         int terrainY =
                 clamp(
@@ -203,7 +190,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         MIN_Y + 1,
                         MAX_Y - 1
                 );
-
 
         if (
                 geography.land()
@@ -230,7 +216,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         }
     }
 
-
     private void generateLandColumn(
             ChunkAccess chunk,
             BlockPos.MutableBlockPos position,
@@ -248,7 +233,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         geography
                 );
 
-
         setBlock(
                 chunk,
                 position,
@@ -258,7 +242,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 BEDROCK
         );
 
-
         for (
                 int y = MIN_Y + 1;
                 y <= surfaceY;
@@ -266,7 +249,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         ) {
 
             BlockState state;
-
 
             if (
                     y < surfaceY - 4
@@ -288,7 +270,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         surface.topBlock();
             }
 
-
             setBlock(
                     chunk,
                     position,
@@ -299,7 +280,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             );
         }
     }
-
 
     private void generateOceanColumn(
             ChunkAccess chunk,
@@ -315,7 +295,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         SEA_LEVEL - 4
                 );
 
-
         setBlock(
                 chunk,
                 position,
@@ -325,7 +304,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 BEDROCK
         );
 
-
         for (
                 int y = MIN_Y + 1;
                 y <= floorY;
@@ -333,7 +311,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         ) {
 
             BlockState state;
-
 
             if (
                     y < floorY - 3
@@ -348,7 +325,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         GRAVEL;
             }
 
-
             setBlock(
                     chunk,
                     position,
@@ -358,7 +334,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                     state
             );
         }
-
 
         for (
                 int y = floorY + 1;
@@ -377,7 +352,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         }
     }
 
-
     private static void setBlock(
             ChunkAccess chunk,
             BlockPos.MutableBlockPos position,
@@ -393,14 +367,12 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 z
         );
 
-
         chunk.setBlockState(
                 position,
                 state,
                 0
         );
     }
-
 
     @Override
     public int getBaseHeight(
@@ -417,14 +389,12 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         z + 0.5
                 );
 
-
         if (
                 !geography.insideKnownWorldMap()
         ) {
 
             return MIN_Y;
         }
-
 
         if (
                 !geography.land()
@@ -433,13 +403,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             return SEA_LEVEL + 1;
         }
 
-
         TerrainSample terrain =
                 sampleTerrain(
                         x,
                         z
                 );
-
 
         return clamp(
                 (int) Math.round(
@@ -450,7 +418,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         );
     }
 
-
     @Override
     public NoiseColumn getBaseColumn(
             int x,
@@ -459,29 +426,17 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             RandomState randomState
     ) {
 
-        /*
-         * Build this column once.
-         *
-         * The old implementation re-sampled the complete terrain
-         * provider once for every Y value in a 2096-block column.
-         *
-         * That became extremely expensive after procedural mountains
-         * were introduced.
-         */
-
         BlockState[] column =
                 buildColumnStates(
                         x,
                         z
                 );
 
-
         return new NoiseColumn(
                 MIN_Y,
                 column
         );
     }
-
 
     private BlockState[] buildColumnStates(
             int worldX,
@@ -493,19 +448,16 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         GENERATION_DEPTH
                         ];
 
-
         Arrays.fill(
                 column,
                 AIR
         );
-
 
         KnownWorldGeoSample geography =
                 KnownWorldGeoSampler.sampleMinecraft(
                         worldX + 0.5,
                         worldZ + 0.5
                 );
-
 
         if (
                 !geography.insideKnownWorldMap()
@@ -514,13 +466,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             return column;
         }
 
-
         TerrainSample terrain =
                 sampleTerrain(
                         worldX,
                         worldZ
                 );
-
 
         int terrainY =
                 clamp(
@@ -531,13 +481,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         MAX_Y - 1
                 );
 
-
         setArrayState(
                 column,
                 MIN_Y,
                 BEDROCK
         );
-
 
         if (
                 geography.land()
@@ -551,7 +499,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                             geography
                     );
 
-
             for (
                     int y = MIN_Y + 1;
                     y <= terrainY;
@@ -559,7 +506,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             ) {
 
                 BlockState state;
-
 
                 if (
                         y < terrainY - 4
@@ -581,7 +527,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                             surface.topBlock();
                 }
 
-
                 setArrayState(
                         column,
                         y,
@@ -589,17 +534,14 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 );
             }
 
-
             return column;
         }
-
 
         int floorY =
                 Math.min(
                         terrainY,
                         SEA_LEVEL - 4
                 );
-
 
         for (
                 int y = MIN_Y + 1;
@@ -608,7 +550,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         ) {
 
             BlockState state;
-
 
             if (
                     y < floorY - 3
@@ -623,14 +564,12 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         GRAVEL;
             }
 
-
             setArrayState(
                     column,
                     y,
                     state
             );
         }
-
 
         for (
                 int y = floorY + 1;
@@ -645,10 +584,8 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             );
         }
 
-
         return column;
     }
-
 
     private static void setArrayState(
             BlockState[] column,
@@ -659,7 +596,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         int index =
                 y - MIN_Y;
 
-
         if (
                 index < 0
                         ||
@@ -669,13 +605,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
             return;
         }
 
-
         column[
                 index
                 ] =
                 state;
     }
-
 
     private TerrainSample sampleTerrain(
             int worldX,
@@ -688,7 +622,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         worldZ + 0.5
                 );
 
-
         return GeographicDataManager
                 .getInstance()
                 .sample(
@@ -696,13 +629,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 );
     }
 
-
     @Override
     public int getSeaLevel() {
 
         return SEA_LEVEL;
     }
-
 
     @Override
     public int getMinY() {
@@ -710,13 +641,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         return MIN_Y;
     }
 
-
     @Override
     public int getGenDepth() {
 
         return GENERATION_DEPTH;
     }
-
 
     @Override
     public void spawnOriginalMobs(
@@ -724,10 +653,11 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
     ) {
 
         /*
-         * Disabled during geography testing.
+         * Natural spawning remains disabled during geography testing.
+         *
+         * This is independent from biome decoration.
          */
     }
-
 
     @Override
     public void applyBiomeDecoration(
@@ -737,12 +667,23 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
     ) {
 
         /*
-         * Intentionally disabled.
+         * Use Minecraft's normal biome feature pipeline.
          *
-         * Vegetation comes after the terrain/surface layer is stable.
+         * The Known World biome source has already selected the
+         * resolved biome for this X/Z position. Therefore an exact
+         * authored override such as minecraft:forest now receives
+         * the normal Forest placed features: trees, vegetation,
+         * flowers and other biome decorations.
+         *
+         * Terrain shape remains entirely controlled by the Known
+         * World terrain/elevation system.
          */
+        super.applyBiomeDecoration(
+                level,
+                chunk,
+                structureManager
+        );
     }
-
 
     @Override
     public void addDebugScreenInfo(
@@ -758,7 +699,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         feetPos.getZ() + 0.5
                 );
 
-
         result.add(
                 "Known World: "
                         +
@@ -773,7 +713,6 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                         )
         );
     }
-
 
     private static int clamp(
             int value,
