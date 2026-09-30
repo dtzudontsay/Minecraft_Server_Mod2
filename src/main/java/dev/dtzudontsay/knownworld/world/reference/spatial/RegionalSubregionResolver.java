@@ -144,20 +144,20 @@ public final class RegionalSubregionResolver {
             return Optional.empty();
         }
 
-        Point local =
-                projectMasterToZonePixel(
+        Point pixel =
+                masterToRegionalPixel(
                         master,
                         mask
                 );
 
-        if (local == null) {
+        if (pixel == null) {
             return Optional.empty();
         }
 
         int argb =
                 image.getRGB(
-                        local.x,
-                        local.y
+                        pixel.x,
+                        pixel.y
                 );
 
         int alpha =
@@ -184,7 +184,7 @@ public final class RegionalSubregionResolver {
                 );
     }
 
-    private Point projectMasterToZonePixel(
+    private Point masterToRegionalPixel(
             MapCoordinate master,
             RegionalSubregionMaskDefinition mask
     ) {
@@ -202,108 +202,54 @@ public final class RegionalSubregionResolver {
                                         )
                         );
 
-        MapCoordinate masterTopLeft =
-                zone.toMaster(
-                        new MapCoordinate(
-                                0.0,
-                                0.0
-                        )
-                );
+        /*
+         * IMPORTANT:
+         *
+         * Regional maps are calibrated through a full affine
+         * transformation. Do not reconstruct the inverse from
+         * a rectangular bounding box because the calibration can
+         * contain small skew / rotation terms.
+         *
+         * RegionalMapTransform already provides the exact inverse.
+         */
+        MapCoordinate regional =
+                zone.transform()
+                        .toRegional(
+                                master
+                        );
 
-        MapCoordinate masterBottomRight =
-                zone.toMaster(
-                        new MapCoordinate(
-                                mask.width() - 1.0,
-                                mask.height() - 1.0
-                        )
-                );
+        double regionalX =
+                regional.pixelX();
 
-        double x0 =
-                masterTopLeft.pixelX();
+        double regionalY =
+                regional.pixelY();
 
-        double y0 =
-                masterTopLeft.pixelY();
-
-        double x1 =
-                masterBottomRight.pixelX();
-
-        double y1 =
-                masterBottomRight.pixelY();
-
-        double minX =
-                Math.min(
-                        x0,
-                        x1
-                );
-
-        double maxX =
-                Math.max(
-                        x0,
-                        x1
-                );
-
-        double minY =
-                Math.min(
-                        y0,
-                        y1
-                );
-
-        double maxY =
-                Math.max(
-                        y0,
-                        y1
-                );
-
-        if (master.pixelX()
-                < minX
-                || master.pixelX()
-                > maxX
-                || master.pixelY()
-                < minY
-                || master.pixelY()
-                > maxY) {
+        if (regionalX < 0.0
+                || regionalY < 0.0
+                || regionalX >= mask.width()
+                || regionalY >= mask.height()) {
 
             return null;
         }
 
-        double localX =
-                (
-                        master.pixelX()
-                                - x0
-                )
-                        * (
-                        mask.width() - 1.0
-                )
-                        / (
-                        x1 - x0
-                );
-
-        double localY =
-                (
-                        master.pixelY()
-                                - y0
-                )
-                        * (
-                        mask.height() - 1.0
-                )
-                        / (
-                        y1 - y0
-                );
-
         int pixelX =
-                (int) Math.round(
-                        localX
+                (int) Math.floor(
+                        regionalX
                 );
 
         int pixelY =
-                (int) Math.round(
-                        localY
+                (int) Math.floor(
+                        regionalY
                 );
 
         if (pixelX < 0
-                || pixelX >= mask.width()
                 || pixelY < 0
-                || pixelY >= mask.height()) {
+                || pixelX >= imageWidth(
+                mask
+        )
+                || pixelY >= imageHeight(
+                mask
+        )) {
 
             return null;
         }
@@ -312,6 +258,18 @@ public final class RegionalSubregionResolver {
                 pixelX,
                 pixelY
         );
+    }
+
+    private static int imageWidth(
+            RegionalSubregionMaskDefinition mask
+    ) {
+        return mask.width();
+    }
+
+    private static int imageHeight(
+            RegionalSubregionMaskDefinition mask
+    ) {
+        return mask.height();
     }
 
     private void loadImages() throws IOException {
