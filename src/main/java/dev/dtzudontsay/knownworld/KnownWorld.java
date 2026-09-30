@@ -9,6 +9,7 @@ import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcNeedsDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NpcRoutineDebugCommand;
 import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
+import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
@@ -95,11 +96,6 @@ public final class KnownWorld implements ModInitializer {
 
         RegionalSubregionResolver.bootstrap();
 
-        /*
-         * Batch 18C.
-         *
-         * Territory profiles and optional subregion refinements.
-         */
         RegionalInfluenceCatalog.bootstrap();
 
         KnownWorldGeoData geodata =
@@ -146,6 +142,8 @@ public final class KnownWorld implements ModInitializer {
         WorldReferenceDebugCommand.register();
 
         RegionalInfluenceDebugCommand.register();
+
+        ReligionDebugCommand.register();
 
         NpcSimulation.registerLifecycle();
 
