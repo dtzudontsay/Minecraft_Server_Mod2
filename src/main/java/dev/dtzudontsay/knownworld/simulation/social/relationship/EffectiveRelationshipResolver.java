@@ -5,7 +5,6 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
-import dev.dtzudontsay.knownworld.simulation.social.dynasty.Dynasty;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyId;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentity;
 
@@ -17,7 +16,7 @@ public final class EffectiveRelationshipResolver {
 
     private final SocietyStructureRuntime society;
 
-    private final DynastyRelationshipManager dynastyRelationships;
+    private final EffectiveDynastyRelationshipResolver dynastyResolver;
 
     public EffectiveRelationshipResolver(
             NpcSimulation simulation,
@@ -37,10 +36,13 @@ public final class EffectiveRelationshipResolver {
                         "society"
                 );
 
-        this.dynastyRelationships =
-                Objects.requireNonNull(
-                        dynastyRelationships,
-                        "dynastyRelationships"
+        this.dynastyResolver =
+                new EffectiveDynastyRelationshipResolver(
+                        society,
+                        Objects.requireNonNull(
+                                dynastyRelationships,
+                                "dynastyRelationships"
+                        )
                 );
     }
 
@@ -117,12 +119,6 @@ public final class EffectiveRelationshipResolver {
                         targetDynasty
                 );
 
-        /*
-         * Culture/religion are intentionally weak modifiers.
-         *
-         * Shared House/political history should matter far more than
-         * simply sharing a religion or broad regional culture.
-         */
         CharacterProfile subjectProfile =
                 simulation.profiles()
                         .getOrCreate(
@@ -195,9 +191,6 @@ public final class EffectiveRelationshipResolver {
          * familiarity = 0.0 -> pure fallback
          * familiarity = 0.5 -> 50/50 personal and fallback
          * familiarity = 1.0 -> pure personal history
-         *
-         * This prevents a blank NpcRelationship created by some other
-         * service from accidentally erasing the House relationship.
          */
         if (personal != null) {
 
@@ -265,6 +258,17 @@ public final class EffectiveRelationshipResolver {
         );
     }
 
+    public EffectiveDynastyRelationshipResolver.EffectiveDynastyRelationship resolveDynasty(
+            DynastyId subject,
+            DynastyId target
+    ) {
+
+        return dynastyResolver.resolve(
+                subject,
+                target
+        );
+    }
+
     private Baseline dynastyBaseline(
             DynastyId subject,
             DynastyId target
@@ -276,101 +280,44 @@ public final class EffectiveRelationshipResolver {
             return Baseline.neutral();
         }
 
-        if (subject.equals(
-                target
-        )) {
-
-            return new Baseline(
-                    0.48,
-                    0.42,
-                    0.42,
-                    0.03,
-                    0.72,
-                    Source.SAME_DYNASTY
-            );
-        }
-
-        DynastyRelationship authored =
-                dynastyRelationships.find(
-                                subject,
-                                target
-                        )
-                        .orElse(
-                                null
-                        );
-
-        if (authored != null) {
-
-            return new Baseline(
-                    authored.affinity(),
-                    authored.trust(),
-                    authored.respect(),
-                    authored.fear(),
-                    authored.familiarity(),
-                    Source.DYNASTY_AUTHORED
-            );
-        }
-
-        if (society.dynastyAllegiances()
-                .isVassalOf(
+        EffectiveDynastyRelationshipResolver.EffectiveDynastyRelationship dynasty =
+                dynastyResolver.resolve(
                         subject,
                         target
-                )) {
+                );
 
-            return new Baseline(
-                    0.18,
-                    0.24,
-                    0.55,
-                    0.10,
-                    0.62,
-                    Source.VASSAL_TO_LIEGE
-            );
-        }
+        return new Baseline(
+                dynasty.affinity(),
+                dynasty.trust(),
+                dynasty.respect(),
+                dynasty.fear(),
+                dynasty.familiarity(),
+                switch (
+                        dynasty.source()
+                ) {
 
-        if (society.dynastyAllegiances()
-                .isVassalOf(
-                        target,
-                        subject
-                )) {
+                    case DYNASTY_AUTHORED ->
+                            Source.DYNASTY_AUTHORED;
 
-            return new Baseline(
-                    0.12,
-                    0.18,
-                    0.25,
-                    0.03,
-                    0.58,
-                    Source.LIEGE_TO_VASSAL
-            );
-        }
+                    case INHERITED_ANCESTOR_RELATION ->
+                            Source.DYNASTY_INHERITED;
 
-        Dynasty subjectRoot =
-                society.dynastyAllegiances()
-                        .rootLiege(
-                                subject
-                        );
+                    case SAME_DYNASTY ->
+                            Source.SAME_DYNASTY;
 
-        Dynasty targetRoot =
-                society.dynastyAllegiances()
-                        .rootLiege(
-                                target
-                        );
+                    case VASSAL_TO_LIEGE ->
+                            Source.VASSAL_TO_LIEGE;
 
-        if (subjectRoot.id()
-                .equals(
-                        targetRoot.id()
-                )) {
+                    case LIEGE_TO_VASSAL ->
+                            Source.LIEGE_TO_VASSAL;
 
-            return new Baseline(
-                    0.06,
-                    0.05,
-                    0.10,
-                    0.02,
-                    0.32,
-                    Source.SAME_REALM
-            );
-        }
+                    case SAME_REALM ->
+                            Source.SAME_REALM;
 
-        return Baseline.neutral();
+                    case NEUTRAL_FALLBACK ->
+                            Source.NEUTRAL_FALLBACK;
+                }
+        );
     }
 
     private static DynastyId preferredDynasty(
@@ -441,6 +388,8 @@ public final class EffectiveRelationshipResolver {
         PERSONAL_EXPLICIT,
 
         DYNASTY_AUTHORED,
+
+        DYNASTY_INHERITED,
 
         SAME_DYNASTY,
 

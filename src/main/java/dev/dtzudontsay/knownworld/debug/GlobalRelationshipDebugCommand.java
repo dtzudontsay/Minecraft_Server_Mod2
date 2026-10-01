@@ -1,7 +1,7 @@
 package dev.dtzudontsay.knownworld.debug;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
-import dev.dtzudontsay.knownworld.simulation.social.relationship.DynastyRelationship;
+import dev.dtzudontsay.knownworld.simulation.social.relationship.EffectiveDynastyRelationshipResolver;
 import dev.dtzudontsay.knownworld.simulation.social.relationship.EffectiveRelationshipResolver;
 import dev.dtzudontsay.knownworld.simulation.social.relationship.GlobalRelationshipRuntime;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -168,9 +168,9 @@ public final class GlobalRelationshipDebugCommand {
                                                                                                                     "target"
                                                                                                             );
 
-                                                                                                    DynastyRelationship relationship =
+                                                                                                    EffectiveDynastyRelationshipResolver.EffectiveDynastyRelationship relationship =
                                                                                                             GlobalRelationshipRuntime.get()
-                                                                                                                    .requireDynastyRelationship(
+                                                                                                                    .resolveDynastyRelationship(
                                                                                                                             subject,
                                                                                                                             target
                                                                                                                     );
@@ -180,8 +180,8 @@ public final class GlobalRelationshipDebugCommand {
                                                                                                             subject
                                                                                                                     + " -> "
                                                                                                                     + target
-                                                                                                                    + " authoredVersion="
-                                                                                                                    + relationship.authoredVersion()
+                                                                                                                    + " source="
+                                                                                                                    + relationship.source()
                                                                                                     );
 
                                                                                                     send(
@@ -196,6 +196,20 @@ public final class GlobalRelationshipDebugCommand {
                                                                                                                     + relationship.fear()
                                                                                                                     + " familiarity="
                                                                                                                     + relationship.familiarity()
+                                                                                                    );
+
+                                                                                                    send(
+                                                                                                            context.getSource(),
+                                                                                                            "anchor="
+                                                                                                                    + relationship.subjectAnchor()
+                                                                                                                    + " -> "
+                                                                                                                    + relationship.targetAnchor()
+                                                                                                                    + " steps="
+                                                                                                                    + relationship.subjectSteps()
+                                                                                                                    + "+"
+                                                                                                                    + relationship.targetSteps()
+                                                                                                                    + " attenuation="
+                                                                                                                    + relationship.attenuation()
                                                                                                     );
 
                                                                                                     return 1;

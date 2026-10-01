@@ -262,10 +262,6 @@ public final class GlobalRelationshipRuntime {
                     definition
             );
 
-            /*
-             * NPC relationships are persisted by the existing core NPC
-             * persistence. Dynasty relationships are persisted here.
-             */
             simulation.save();
 
             persistence.save(
@@ -397,14 +393,6 @@ public final class GlobalRelationshipRuntime {
                                     null
                             );
 
-            /*
-             * This is the core deferred-edge behavior.
-             *
-             * The resource may describe Eddard -> Robert today even if
-             * Robert is not imported until the Crownlands batch.
-             *
-             * Missing characters are intentionally NOT errors.
-             */
             if (subject == null
                     || target == null) {
 
@@ -478,38 +466,47 @@ public final class GlobalRelationshipRuntime {
         );
     }
 
+    /**
+     * Resolves BOTH explicit and inherited/fallback dynasty relationships.
+     *
+     * This is intentionally different from requireDynastyRelationship(),
+     * which remains available for inspecting only persisted explicit edges.
+     */
+    public EffectiveDynastyRelationshipResolver.EffectiveDynastyRelationship resolveDynastyRelationship(
+            String subjectAuthoredId,
+            String targetAuthoredId
+    ) {
+
+        DynastyId subject =
+                requireDynastyId(
+                        subjectAuthoredId
+                );
+
+        DynastyId target =
+                requireDynastyId(
+                        targetAuthoredId
+                );
+
+        return resolver.resolveDynasty(
+                subject,
+                target
+        );
+    }
+
     public DynastyRelationship requireDynastyRelationship(
             String subjectAuthoredId,
             String targetAuthoredId
     ) {
 
         DynastyId subject =
-                society.dynasties()
-                        .findAuthored(
-                                subjectAuthoredId
-                        )
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Unknown dynasty "
-                                                        + subjectAuthoredId
-                                        )
-                        )
-                        .id();
+                requireDynastyId(
+                        subjectAuthoredId
+                );
 
         DynastyId target =
-                society.dynasties()
-                        .findAuthored(
-                                targetAuthoredId
-                        )
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Unknown dynasty "
-                                                        + targetAuthoredId
-                                        )
-                        )
-                        .id();
+                requireDynastyId(
+                        targetAuthoredId
+                );
 
         return dynastyRelationships.find(
                         subject,
@@ -524,6 +521,24 @@ public final class GlobalRelationshipRuntime {
                                                 + targetAuthoredId
                                 )
                 );
+    }
+
+    private DynastyId requireDynastyId(
+            String authoredId
+    ) {
+
+        return society.dynasties()
+                .findAuthored(
+                        authoredId
+                )
+                .orElseThrow(
+                        () ->
+                                new IllegalArgumentException(
+                                        "Unknown dynasty "
+                                                + authoredId
+                                )
+                )
+                .id();
     }
 
     private void saveQuietly() {
