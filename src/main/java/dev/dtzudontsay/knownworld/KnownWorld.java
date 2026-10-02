@@ -22,6 +22,7 @@ import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligiousInstitutionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ScenarioStartDebugCommand;
+import dev.dtzudontsay.knownworld.debug.SimulationSocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
@@ -168,6 +169,9 @@ public final class KnownWorld implements ModInitializer {
          *
          * Adds semantic scenario location/presence metadata and
          * relationship-completeness support after the base NPCs exist.
+         *
+         * This remains development/scenario-authoring infrastructure.
+         * The new runtime social simulation does not depend on it.
          */
         NamedCharacterAuthoringRuntime.registerLifecycle();
 
@@ -189,6 +193,9 @@ public final class KnownWorld implements ModInitializer {
         /*
          * Rich authored profile overlays run after the base simulation
          * and named-character authoring runtime exist.
+         *
+         * Long-term this should become scenario-import/migration tooling
+         * rather than something that defines ongoing simulation behavior.
          */
         AuthoredCharacterProfileOverlayService.registerLifecycle();
 
@@ -207,6 +214,25 @@ public final class KnownWorld implements ModInitializer {
         SuccessionDebugCommand.register();
         CharacterProfileDebugCommand.register();
         WorldEventDebugCommand.register();
+
+        /*
+         * First dedicated simulation-development command.
+         *
+         * /kwsim social ...
+         *
+         * allows us to trigger a runtime social action manually and verify:
+         *
+         * interaction
+         *      -> world event
+         *      -> memory
+         *      -> relationship mutation
+         *      -> persistence
+         *
+         * Later the NPC decision/action systems will invoke the same
+         * SocialInteractionService autonomously.
+         */
+        SimulationSocialDebugCommand.register();
+
         ScenarioStartDebugCommand.register();
         NamedCharacterAuthoringDebugCommand.register();
         GlobalRelationshipDebugCommand.register();

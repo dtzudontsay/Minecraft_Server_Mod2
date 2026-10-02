@@ -4473,6 +4473,19 @@
       "note": "Longstanding service together on Robert's small council."
     },
     {
+      "authoringVersion": 3,
+      "subject": "robert_baratheon",
+      "target": "jaime_lannister",
+      "relationshipClass": "STRONGLY_INFERRED_PERSONAL",
+      "confidence": "STRONGLY_INFERRED",
+      "affection": -0.05,
+      "trust": -0.2,
+      "respect": 0.25,
+      "fear": 0.02,
+      "familiarity": 0.75,
+      "note": "Migrated from Robert Baratheon's legacy character-local relationship section during 19.1R.6 centralization. Robert knows Jaime well at court and has reason to view the Kingslayer with limited trust."
+    },
+    {
       "authoringVersion": 2,
       "subject": "robert_baratheon",
       "target": "joffrey_baratheon",

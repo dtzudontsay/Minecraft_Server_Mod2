@@ -4,7 +4,6 @@
   "kind": "AUTHORED_NAMED",
   "regionId": "the_wall",
   "enabled": true,
-
   "characters": [
     "characters/aemon_targaryen.json",
     "characters/jeor_mormont.json",
@@ -15,16 +14,9 @@
     "characters/denys_mallister.json",
     "characters/yoren.json"
   ],
-
   "parentages": [],
-
   "marriages": [],
-
   "socialIdentities": [
     "population_packs/nights_watch_command_social_identities.json"
-  ],
-
-  "relationships": [
-    "population_packs/nights_watch_command_relationships.json"
   ]
 }

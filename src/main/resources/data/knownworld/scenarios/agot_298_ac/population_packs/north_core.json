@@ -4,7 +4,6 @@
   "kind": "AUTHORED_NAMED",
   "regionId": "the_north",
   "enabled": true,
-
   "characters": [
     "characters/eddard_stark.json",
     "characters/catelyn_stark.json",
@@ -16,20 +15,13 @@
     "characters/jon_snow.json",
     "characters/theon_greyjoy.json"
   ],
-
   "parentages": [
     "population_packs/north_core_parentages.json"
   ],
-
   "marriages": [
     "population_packs/north_core_marriages.json"
   ],
-
   "socialIdentities": [
     "population_packs/north_core_social_identities.json"
-  ],
-
-  "relationships": [
-    "population_packs/north_core_relationships.json"
   ]
 }

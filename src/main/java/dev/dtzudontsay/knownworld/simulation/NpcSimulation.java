@@ -38,6 +38,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionRu
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousMembershipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialInteractionService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CampaignCalendarPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterLegalStatePersistence;
@@ -114,6 +115,16 @@ public final class NpcSimulation {
     private final NpcNeedManager needManager;
     private final NpcRoutineManager routineManager;
     private final WorldEventManager eventManager;
+
+    /*
+     * Simulation-layer service.
+     *
+     * This operates only on runtime NPC state and does not know anything
+     * about the AGOT scenario JSON. Canonical characters and generated
+     * characters therefore use the same social-interaction mechanics.
+     */
+    private final SocialInteractionService socialInteractionService;
+
     private final SuccessionService successionService;
     private final FertilityService fertilityService;
     private final GeneratedNameService generatedNameService;
@@ -340,6 +351,21 @@ public final class NpcSimulation {
         this.eventManager =
                 new WorldEventManager(
                         registry
+                );
+
+        /*
+         * This is intentionally instantiated before the higher-level
+         * decision/action services.
+         *
+         * Later the AI can call this same service when it decides that an
+         * NPC should help, praise, insult, threaten or betray another NPC.
+         */
+        this.socialInteractionService =
+                new SocialInteractionService(
+                        registry,
+                        relationshipManager,
+                        memoryManager,
+                        eventManager
                 );
 
         this.successionService =
@@ -808,6 +834,19 @@ public final class NpcSimulation {
         return eventManager;
     }
 
+    /**
+     * Runtime social-interaction mechanics.
+     *
+     * This is intentionally exposed from the simulation in the same way
+     * relationships(), memories(), events(), etc. are exposed.
+     *
+     * Debug commands use it now.
+     * Autonomous NPC decision/action systems can use it later.
+     */
+    public SocialInteractionService socialInteractions() {
+        return socialInteractionService;
+    }
+
     public NpcCommunicationService communication() {
         return communicationService;
     }
@@ -904,6 +943,17 @@ public final class NpcSimulation {
                     profileManager
             );
 
+            /*
+             * SocialInteractionService has no persistence file of its own.
+             *
+             * Its results live in the canonical runtime managers:
+             *
+             * - relationshipManager
+             * - memoryManager
+             * - eventManager
+             *
+             * All three are already included in NpcPersistence.
+             */
             persistence.save(
                     clock,
                     registry,
