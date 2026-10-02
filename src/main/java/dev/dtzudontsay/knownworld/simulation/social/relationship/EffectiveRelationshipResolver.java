@@ -4,11 +4,19 @@ import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
+import dev.dtzudontsay.knownworld.simulation.social.Organization;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyId;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentity;
+import dev.dtzudontsay.knownworld.simulation.social.membership.OrganizationMembership;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public final class EffectiveRelationshipResolver {
 
@@ -47,15 +55,23 @@ public final class EffectiveRelationshipResolver {
     }
 
     /**
-     * Returns the best currently available relationship view.
+     * Resolves the current effective personal relationship.
      *
-     * IMPORTANT:
+     * Explicit authored/runtime personal history has priority.
      *
-     * Fallback values are NOT written into NpcRelationshipManager.
+     * When personal history is absent or still unfamiliar, social
+     * context supplies a STARTING fallback:
      *
-     * They are contextual starting opinions only. Once two NPCs build
-     * personal history, their explicit personal relationship takes
-     * precedence automatically.
+     * - dynasty / political-house relation
+     * - household
+     * - social house organization
+     * - primary political allegiance
+     * - shared organizations
+     * - legal parent/child relation
+     * - culture and religion (weak only)
+     *
+     * These contextual values are NOT written into NpcRelationshipManager.
+     * They therefore do not become permanent personal memories.
      */
     public EffectiveRelationship resolve(
             NpcId subject,
@@ -119,79 +135,47 @@ public final class EffectiveRelationshipResolver {
                         targetDynasty
                 );
 
-        CharacterProfile subjectProfile =
-                simulation.profiles()
-                        .getOrCreate(
-                                subject
-                        );
+        MutableContext context =
+                new MutableContext(
+                        baseline.affinity(),
+                        baseline.trust(),
+                        baseline.respect(),
+                        baseline.fear(),
+                        baseline.familiarity(),
+                        baseline.source()
+                );
 
-        CharacterProfile targetProfile =
-                simulation.profiles()
-                        .getOrCreate(
-                                target
-                        );
+        applyFamilyContext(
+                subject,
+                target,
+                subjectIdentity,
+                targetIdentity,
+                context
+        );
 
-        double affinity =
-                baseline.affinity();
+        applyPrimarySocialContext(
+                subjectIdentity,
+                targetIdentity,
+                context
+        );
 
-        double trust =
-                baseline.trust();
+        applySharedMembershipContext(
+                subject,
+                target,
+                subjectIdentity,
+                targetIdentity,
+                context
+        );
 
-        double respect =
-                baseline.respect();
-
-        double fear =
-                baseline.fear();
-
-        double familiarity =
-                baseline.familiarity();
-
-        boolean contextualModifier =
-                false;
-
-        if (knownAndEqual(
-                subjectProfile.culture(),
-                targetProfile.culture()
-        )) {
-
-            affinity += 0.05;
-            trust += 0.03;
-            familiarity += 0.06;
-            contextualModifier =
-                    true;
-        }
-
-        if (knownAndEqual(
-                subjectProfile.religion(),
-                targetProfile.religion()
-        )) {
-
-            affinity += 0.03;
-            trust += 0.02;
-            familiarity += 0.03;
-            contextualModifier =
-                    true;
-        }
+        applyCultureReligionContext(
+                subject,
+                target,
+                context
+        );
 
         Source source =
-                baseline.source();
+                context.source;
 
-        if (source == Source.NEUTRAL_FALLBACK
-                && contextualModifier) {
-
-            source =
-                    Source.CONTEXTUAL_FALLBACK;
-        }
-
-        /*
-         * A newly-created personal relationship is allowed to inherit
-         * the social/House baseline until the two people actually know
-         * one another.
-         *
-         * familiarity = 0.0 -> pure fallback
-         * familiarity = 0.5 -> 50/50 personal and fallback
-         * familiarity = 1.0 -> pure personal history
-         */
         if (personal != null) {
 
             double personalWeight =
@@ -202,34 +186,34 @@ public final class EffectiveRelationshipResolver {
             double fallbackWeight =
                     1.0 - personalWeight;
 
-            affinity =
+            context.affinity =
                     personal.affection()
                             * personalWeight
-                            + affinity
+                            + context.affinity
                             * fallbackWeight;
 
-            trust =
+            context.trust =
                     personal.trust()
                             * personalWeight
-                            + trust
+                            + context.trust
                             * fallbackWeight;
 
-            respect =
+            context.respect =
                     personal.respect()
                             * personalWeight
-                            + respect
+                            + context.respect
                             * fallbackWeight;
 
-            fear =
+            context.fear =
                     personal.fear()
                             * personalWeight
-                            + fear
+                            + context.fear
                             * fallbackWeight;
 
-            familiarity =
+            context.familiarity =
                     Math.max(
                             personal.familiarity(),
-                            familiarity
+                            context.familiarity
                     );
 
             source =
@@ -238,23 +222,26 @@ public final class EffectiveRelationshipResolver {
 
         return new EffectiveRelationship(
                 clampSigned(
-                        affinity
+                        context.affinity
                 ),
                 clampSigned(
-                        trust
+                        context.trust
                 ),
                 clampSigned(
-                        respect
+                        context.respect
                 ),
                 clampUnit(
-                        fear
+                        context.fear
                 ),
                 clampUnit(
-                        familiarity
+                        context.familiarity
                 ),
                 source,
                 subjectDynasty,
-                targetDynasty
+                targetDynasty,
+                List.copyOf(
+                        context.modifiers
+                )
         );
     }
 
@@ -267,6 +254,334 @@ public final class EffectiveRelationshipResolver {
                 subject,
                 target
         );
+    }
+
+    private void applyFamilyContext(
+            NpcId subject,
+            NpcId target,
+            CharacterSocialIdentity subjectIdentity,
+            CharacterSocialIdentity targetIdentity,
+            MutableContext context
+    ) {
+
+        boolean directLegalFamily =
+                target.equals(
+                        subjectIdentity.legalMother()
+                )
+                        || target.equals(
+                        subjectIdentity.legalFather()
+                )
+                        || subject.equals(
+                        targetIdentity.legalMother()
+                )
+                        || subject.equals(
+                        targetIdentity.legalFather()
+                );
+
+        if (!directLegalFamily) {
+            return;
+        }
+
+        context.affinity +=
+                0.20;
+
+        context.trust +=
+                0.18;
+
+        context.respect +=
+                0.12;
+
+        context.familiarity +=
+                0.30;
+
+        context.modifiers.add(
+                "LEGAL_PARENT_CHILD"
+        );
+
+        context.upgradeContextualSource();
+    }
+
+    private void applyPrimarySocialContext(
+            CharacterSocialIdentity subject,
+            CharacterSocialIdentity target,
+            MutableContext context
+    ) {
+
+        if (sameKnown(
+                subject.householdOrganization(),
+                target.householdOrganization()
+        )) {
+
+            context.affinity +=
+                    0.12;
+
+            context.trust +=
+                    0.12;
+
+            context.respect +=
+                    0.08;
+
+            context.familiarity +=
+                    0.28;
+
+            context.modifiers.add(
+                    "SAME_HOUSEHOLD"
+            );
+
+            context.upgradeContextualSource();
+        }
+
+        if (sameKnown(
+                subject.houseOrganization(),
+                target.houseOrganization()
+        )) {
+
+            context.affinity +=
+                    0.08;
+
+            context.trust +=
+                    0.08;
+
+            context.respect +=
+                    0.06;
+
+            context.familiarity +=
+                    0.18;
+
+            context.modifiers.add(
+                    "SAME_HOUSE_ORGANIZATION"
+            );
+
+            context.upgradeContextualSource();
+        }
+
+        if (sameKnown(
+                subject.primaryAllegianceOrganization(),
+                target.primaryAllegianceOrganization()
+        )) {
+
+            double strength =
+                    Math.min(
+                            subject.allegianceStrength(),
+                            target.allegianceStrength()
+                    );
+
+            context.affinity +=
+                    0.04 * strength;
+
+            context.trust +=
+                    0.05 * strength;
+
+            context.respect +=
+                    0.04 * strength;
+
+            context.familiarity +=
+                    0.12 * strength;
+
+            context.modifiers.add(
+                    "SAME_PRIMARY_ALLEGIANCE"
+            );
+
+            context.upgradeContextualSource();
+        }
+    }
+
+    private void applySharedMembershipContext(
+            NpcId subject,
+            NpcId target,
+            CharacterSocialIdentity subjectIdentity,
+            CharacterSocialIdentity targetIdentity,
+            MutableContext context
+    ) {
+
+        List<OrganizationMembership> subjectMemberships =
+                society.memberships()
+                        .activeMembershipsFor(
+                                subject
+                        );
+
+        Set<OrganizationId> targetOrganizations =
+                new LinkedHashSet<>();
+
+        for (
+                OrganizationMembership membership :
+                society.memberships()
+                        .activeMembershipsFor(
+                                target
+                        )
+        ) {
+
+            targetOrganizations.add(
+                    membership.organization()
+            );
+        }
+
+        Set<OrganizationId> primaryAlreadyCounted =
+                new LinkedHashSet<>();
+
+        addIfPresent(
+                primaryAlreadyCounted,
+                subjectIdentity.householdOrganization()
+        );
+
+        addIfPresent(
+                primaryAlreadyCounted,
+                subjectIdentity.houseOrganization()
+        );
+
+        addIfPresent(
+                primaryAlreadyCounted,
+                subjectIdentity.primaryAllegianceOrganization()
+        );
+
+        addIfPresent(
+                primaryAlreadyCounted,
+                targetIdentity.householdOrganization()
+        );
+
+        addIfPresent(
+                primaryAlreadyCounted,
+                targetIdentity.houseOrganization()
+        );
+
+        addIfPresent(
+                primaryAlreadyCounted,
+                targetIdentity.primaryAllegianceOrganization()
+        );
+
+        int applied =
+                0;
+
+        for (
+                OrganizationMembership membership :
+                subjectMemberships
+        ) {
+
+            OrganizationId organizationId =
+                    membership.organization();
+
+            if (!targetOrganizations.contains(
+                    organizationId
+            )
+                    || primaryAlreadyCounted.contains(
+                    organizationId
+            )) {
+
+                continue;
+            }
+
+            Organization organization =
+                    simulation.organizations()
+                            .find(
+                                    organizationId
+                            )
+                            .orElse(
+                                    null
+                            );
+
+            if (organization == null) {
+                continue;
+            }
+
+            SharedOrganizationModifier modifier =
+                    modifierFor(
+                            organization.type()
+                    );
+
+            if (modifier == null) {
+                continue;
+            }
+
+            context.affinity +=
+                    modifier.affinity();
+
+            context.trust +=
+                    modifier.trust();
+
+            context.respect +=
+                    modifier.respect();
+
+            context.familiarity +=
+                    modifier.familiarity();
+
+            context.modifiers.add(
+                    "SHARED_ORGANIZATION:"
+                            + organizationId
+            );
+
+            context.upgradeContextualSource();
+
+            applied++;
+
+            /*
+             * Prevent a character pair with many overlapping bookkeeping
+             * organizations from accumulating an unrealistic stack.
+             */
+            if (applied >= 2) {
+                break;
+            }
+        }
+    }
+
+    private void applyCultureReligionContext(
+            NpcId subject,
+            NpcId target,
+            MutableContext context
+    ) {
+
+        CharacterProfile subjectProfile =
+                simulation.profiles()
+                        .getOrCreate(
+                                subject
+                        );
+
+        CharacterProfile targetProfile =
+                simulation.profiles()
+                        .getOrCreate(
+                                target
+                        );
+
+        if (knownAndEqual(
+                subjectProfile.culture(),
+                targetProfile.culture()
+        )) {
+
+            context.affinity +=
+                    0.05;
+
+            context.trust +=
+                    0.03;
+
+            context.familiarity +=
+                    0.06;
+
+            context.modifiers.add(
+                    "SAME_CULTURE"
+            );
+
+            context.upgradeContextualSource();
+        }
+
+        if (knownAndEqual(
+                subjectProfile.religion(),
+                targetProfile.religion()
+        )) {
+
+            context.affinity +=
+                    0.03;
+
+            context.trust +=
+                    0.02;
+
+            context.familiarity +=
+                    0.03;
+
+            context.modifiers.add(
+                    "SAME_RELIGION"
+            );
+
+            context.upgradeContextualSource();
+        }
     }
 
     private Baseline dynastyBaseline(
@@ -320,6 +635,74 @@ public final class EffectiveRelationshipResolver {
         );
     }
 
+    private static SharedOrganizationModifier modifierFor(
+            OrganizationType type
+    ) {
+
+        return switch (
+                type
+        ) {
+
+            case MILITARY_ORDER ->
+                    new SharedOrganizationModifier(
+                            0.06,
+                            0.08,
+                            0.07,
+                            0.16
+                    );
+
+            case ARMY,
+                    CIVIC_GUARD,
+                    MERCENARY_COMPANY ->
+                    new SharedOrganizationModifier(
+                            0.04,
+                            0.05,
+                            0.06,
+                            0.12
+                    );
+
+            case CLAN,
+                    NOMADIC_HOST ->
+                    new SharedOrganizationModifier(
+                            0.05,
+                            0.06,
+                            0.05,
+                            0.14
+                    );
+
+            case RELIGIOUS_ORDER,
+                    MYSTIC_ORDER,
+                    SCHOLARLY_ORDER,
+                    GUILD,
+                    FINANCIAL_INSTITUTION ->
+                    new SharedOrganizationModifier(
+                            0.03,
+                            0.04,
+                            0.04,
+                            0.10
+                    );
+
+            case GOVERNMENT,
+                    COUNCIL,
+                    FACTION,
+                    POLITICAL_PARTY ->
+                    new SharedOrganizationModifier(
+                            0.02,
+                            0.03,
+                            0.04,
+                            0.08
+                    );
+
+            case HOUSEHOLD,
+                    NOBLE_HOUSE,
+                    DYNASTIC_FAMILY,
+                    SECRET_SOCIETY,
+                    CRIMINAL_ORGANIZATION,
+                    OTHER ->
+                    null;
+        };
+    }
+
     private static DynastyId preferredDynasty(
             CharacterSocialIdentity identity
     ) {
@@ -333,6 +716,30 @@ public final class EffectiveRelationshipResolver {
         }
 
         return identity.birthDynasty();
+    }
+
+    private static boolean sameKnown(
+            OrganizationId first,
+            OrganizationId second
+    ) {
+
+        return first != null
+                && first.equals(
+                second
+        );
+    }
+
+    private static void addIfPresent(
+            Set<OrganizationId> organizations,
+            OrganizationId value
+    ) {
+
+        if (value != null) {
+
+            organizations.add(
+                    value
+            );
+        }
     }
 
     private static boolean knownAndEqual(
@@ -399,6 +806,8 @@ public final class EffectiveRelationshipResolver {
 
         SAME_REALM,
 
+        SOCIAL_CONTEXT_FALLBACK,
+
         CONTEXTUAL_FALLBACK,
 
         NEUTRAL_FALLBACK
@@ -412,7 +821,8 @@ public final class EffectiveRelationshipResolver {
             double familiarity,
             Source source,
             DynastyId subjectDynasty,
-            DynastyId targetDynasty
+            DynastyId targetDynasty,
+            List<String> contextModifiers
     ) {
     }
 
@@ -435,6 +845,76 @@ public final class EffectiveRelationshipResolver {
                     0.0,
                     Source.NEUTRAL_FALLBACK
             );
+        }
+    }
+
+    private record SharedOrganizationModifier(
+            double affinity,
+            double trust,
+            double respect,
+            double familiarity
+    ) {
+    }
+
+    private static final class MutableContext {
+
+        private double affinity;
+
+        private double trust;
+
+        private double respect;
+
+        private double fear;
+
+        private double familiarity;
+
+        private Source source;
+
+        private final List<String> modifiers =
+                new ArrayList<>();
+
+        private MutableContext(
+                double affinity,
+                double trust,
+                double respect,
+                double fear,
+                double familiarity,
+                Source source
+        ) {
+
+            this.affinity =
+                    affinity;
+
+            this.trust =
+                    trust;
+
+            this.respect =
+                    respect;
+
+            this.fear =
+                    fear;
+
+            this.familiarity =
+                    familiarity;
+
+            this.source =
+                    source;
+        }
+
+        private void upgradeContextualSource() {
+
+            if (source
+                    == Source.NEUTRAL_FALLBACK) {
+
+                source =
+                        Source.SOCIAL_CONTEXT_FALLBACK;
+
+            } else if (source
+                    == Source.SAME_REALM) {
+
+                source =
+                        Source.CONTEXTUAL_FALLBACK;
+            }
         }
     }
 }

@@ -1,0 +1,1540 @@
+{
+  "entries": [
+    {
+      "rosterName": "Aemon",
+      "npcId": "aemon_targaryen",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Benjen Stark",
+      "npcId": "benjen_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Yoren",
+      "npcId": "yoren",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jeor Mormont",
+      "npcId": "jeor_mormont",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Will",
+      "npcId": "will",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Waymar Royce",
+      "npcId": "waymar_royce",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Gared",
+      "npcId": "gared",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Janos Slynt",
+      "npcId": "janos_slynt",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Grenn",
+      "npcId": "grenn",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Pypar",
+      "npcId": "pypar",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Alliser Thorne",
+      "npcId": "alliser_thorne",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Rast",
+      "npcId": "rast",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Todder",
+      "npcId": "todder",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Eddison Tollett",
+      "npcId": "eddison_tollett",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Qhorin Halfhand",
+      "npcId": "qhorin_halfhand",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Olly",
+      "npcId": "olly",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Bowen Marsh",
+      "npcId": "bowen_marsh",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Karl Tanner",
+      "npcId": "karl_tanner",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Denys Mallister",
+      "npcId": "denys_mallister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Beric Dondarrion",
+      "npcId": "beric_dondarrion",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Anguy",
+      "npcId": "anguy",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Lem Lemoncloak",
+      "npcId": "lem_lemoncloak",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Thoros of Myr",
+      "npcId": "thoros_of_myr",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Arya Stark",
+      "npcId": "arya_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Bran Stark",
+      "npcId": "bran_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Catelyn Stark",
+      "npcId": "catelyn_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Eddard Stark",
+      "npcId": "eddard_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jon Snow",
+      "npcId": "jon_snow",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Rickon Stark",
+      "npcId": "rickon_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Robb Stark",
+      "npcId": "robb_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Sansa Stark",
+      "npcId": "sansa_stark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Rodrick Cassel",
+      "npcId": "rodrik_cassel",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Hodor",
+      "npcId": "hodor",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Old Nan",
+      "npcId": "old_nan",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Teela",
+      "npcId": "teela",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Jory Cassel",
+      "npcId": "jory_cassel",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Aberdolf Strongbeard",
+      "npcId": "aberdolf_strongbeard",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Farlen",
+      "npcId": "farlen",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mycah",
+      "npcId": "mycah",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Cley Cerwyn",
+      "npcId": "cley_cerwyn",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Syrio Forel",
+      "npcId": "syrio_forel",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Cersei Lannister",
+      "npcId": "cersei_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jaime Lannister",
+      "npcId": "jaime_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Kevan Lannister",
+      "npcId": "kevan_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tyrion Lannister",
+      "npcId": "tyrion_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tywin Lannister",
+      "npcId": "tywin_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lancel Lannister",
+      "npcId": "lancel_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Leo Lefford",
+      "npcId": "leo_lefford",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Addam Marbrand",
+      "npcId": "addam_marbrand",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Alton Lannister",
+      "npcId": "alton_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Martyn Lannister",
+      "npcId": "martyn_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Willem Lannister",
+      "npcId": "willem_lannister",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Ilyn Payne",
+      "npcId": "ilyn_payne",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Podrick Payne",
+      "npcId": "podrick_payne",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Daenerys Targaryen",
+      "npcId": "daenerys_targaryen",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Viserys Targaryen",
+      "npcId": "viserys_targaryen",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Illyrio Mopatis",
+      "npcId": "illyrio_mopatis",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Doreah",
+      "npcId": "doreah",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Khal Drogo",
+      "npcId": "khal_drogo",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Irri",
+      "npcId": "irri",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Rakharo",
+      "npcId": "rakharo",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Kovarro",
+      "npcId": "kovarro",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Hizdahr zo Loraq",
+      "npcId": "hizdahr_zo_loraq",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Mossador",
+      "npcId": "mossador",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mirri Maz Duur",
+      "npcId": "mirri_maz_duur",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Qotho",
+      "npcId": "qotho",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Qhono",
+      "npcId": "qhono",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Aggo",
+      "npcId": "aggo",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Khal Moro",
+      "npcId": "khal_moro",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Iggo",
+      "npcId": "iggo",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Ornella",
+      "npcId": "ornella",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Khal Rhalko",
+      "npcId": "khal_rhalko",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Khal Forzho",
+      "npcId": "khal_forzho",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Davos Seaworth",
+      "npcId": "davos_seaworth",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Matthos Seaworth",
+      "npcId": "matthos_seaworth",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Drogon",
+      "npcId": "drogon",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Viserion",
+      "npcId": "viserion",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Rhaegal",
+      "npcId": "rhaegal",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Edmure Tully",
+      "npcId": "edmure_tully",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Hoster Tully",
+      "npcId": "hoster_tully",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jonas Bracken",
+      "npcId": "jonas_bracken",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Brynden Tully",
+      "npcId": "brynden_tully",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Euron Greyjoy",
+      "npcId": "euron_greyjoy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Thon Greyjoy",
+      "npcId": "theon_greyjoy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Yara Greyjoy",
+      "npcId": "yara_greyjoy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Balon Greyjoy",
+      "npcId": "balon_greyjoy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Dagmer Cleftjaw",
+      "npcId": "dagmer_cleftjaw",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Black Lorren",
+      "npcId": "black_lorren",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Drennan",
+      "npcId": "drennan",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Harrag",
+      "npcId": "harrag",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Gendry",
+      "npcId": "gendry",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Myrcella Baratheon",
+      "npcId": "myrcella_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Renly Baratheon",
+      "npcId": "renly_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Shireen Baratheon",
+      "npcId": "shireen_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Stannis Baratheon",
+      "npcId": "stannis_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Robert Baratheon",
+      "npcId": "robert_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Joffrey Baratheon",
+      "npcId": "joffrey_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tommen Baratheon",
+      "npcId": "tommen_baratheon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Selyse Florent",
+      "npcId": "selyse_florent",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jojen Reed",
+      "npcId": "jojen_reed",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Meera Reed",
+      "npcId": "meera_reed",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Howland Reed",
+      "npcId": "howland_reed",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jon Arryn",
+      "npcId": "jon_arryn",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lysa Arryn",
+      "npcId": "lysa_arryn",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Robin Arryn",
+      "npcId": "robin_arryn",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lothar Frey",
+      "npcId": "lothar_frey",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Walder Frey",
+      "npcId": "walder_frey",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Stevron Frey",
+      "npcId": "stevron_frey",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Joyeuse Frey",
+      "npcId": "joyeuse_frey",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Black Walder Rivers",
+      "npcId": "black_walder_rivers",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Roslin Frey",
+      "npcId": "roslin_frey",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Kitty Frey",
+      "npcId": "kitty_frey",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Margaery Tyrell",
+      "npcId": "margaery_tyrell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Loras Tyrell",
+      "npcId": "loras_tyrell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Olenna Tyrell",
+      "npcId": "olenna_tyrell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mace Tyrell",
+      "npcId": "mace_tyrell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Olyvar",
+      "npcId": "olyvar",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Petyr Baelish",
+      "npcId": "petyr_baelish",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Varys",
+      "npcId": "varys",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Ramsey Snow",
+      "npcId": "ramsay_snow",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Roose Bolton",
+      "npcId": "roose_bolton",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Locke",
+      "npcId": "locke",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Myranda",
+      "npcId": "myranda",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Walda Bolton",
+      "npcId": "walda_bolton",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Night King",
+      "npcId": "night_king",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Jorah Mormont",
+      "npcId": "jorah_mormont",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Maege Mormont",
+      "npcId": "maege_mormont",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lyanna Mormont",
+      "npcId": "lyanna_mormont",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Sandor Clegane",
+      "npcId": "sandor_clegane",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Gregor Clegane",
+      "npcId": "gregor_clegane",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Bronn",
+      "npcId": "bronn",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Brienne of Tarth",
+      "npcId": "brienne_of_tarth",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Daario Naharis",
+      "npcId": "daario_naharis",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Grey Worm",
+      "npcId": "grey_worm",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Hugh of the Vale",
+      "npcId": "hugh_of_the_vale",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Shagga, Son of Dolf",
+      "npcId": "shagga",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Timett",
+      "npcId": "timett",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Chella",
+      "npcId": "chella",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Yohn Royce",
+      "npcId": "yohn_royce",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Donnel Wynwood",
+      "npcId": "donnel_waynwood",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Polliver",
+      "npcId": "polliver",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Amory Lorch",
+      "npcId": "amory_lorch",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "The Tickler",
+      "npcId": "the_tickler",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Walton Steelshanks",
+      "npcId": "walton_steelshanks",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Barristan Selmy",
+      "npcId": "barristan_selmy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Meryn Trant",
+      "npcId": "meryn_trant",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Dontos Hollard",
+      "npcId": "dontos_hollard",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mandon Moore",
+      "npcId": "mandon_moore",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Samwell Tarly",
+      "npcId": "samwell_tarly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Randyll Tarly",
+      "npcId": "randyll_tarly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Melessa Tarly",
+      "npcId": "melessa_tarly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Talla Tarly",
+      "npcId": "talla_tarly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Dickon Tarly",
+      "npcId": "dickon_tarly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Melisandre",
+      "npcId": "melisandre",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Maggy the Frog",
+      "npcId": "maggy_the_frog",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Shae",
+      "npcId": "shae",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Ros",
+      "npcId": "ros",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Armeca",
+      "npcId": "armeca",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mhaegen",
+      "npcId": "mhaegen",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Marei",
+      "npcId": "marei",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Daisy",
+      "npcId": "daisy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Kayla",
+      "npcId": "kayla",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Talisa Maegyr",
+      "npcId": "talisa_maegyr",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Ygritte",
+      "npcId": "ygritte",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lord of Bones",
+      "npcId": "lord_of_bones",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tormund Giantsbane",
+      "npcId": "tormund_giantsbane",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Gilly",
+      "npcId": "gilly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Osha",
+      "npcId": "osha",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Craster",
+      "npcId": "craster",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mance Rayder",
+      "npcId": "mance_rayder",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Orell",
+      "npcId": "orell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Styr",
+      "npcId": "styr",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Morag",
+      "npcId": "morag",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Sissy",
+      "npcId": "sissy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Karsi",
+      "npcId": "karsi",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Loboda",
+      "npcId": "loboda",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Wun Weg Wun Dar Wun",
+      "npcId": "wun_wun",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Johnna",
+      "npcId": "johnna",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Dim Dalba",
+      "npcId": "dim_dalba",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Missandei",
+      "npcId": "missandei",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Kraznys mo Nakloz",
+      "npcId": "kraznys_mo_nakloz",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Greizhen mo Ullhor",
+      "npcId": "greizhen_mo_ullhor",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Razdal mo Eraz",
+      "npcId": "razdal_mo_eraz",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Mero",
+      "npcId": "mero",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Prendahl na Ghezn",
+      "npcId": "prendahl_na_ghezn",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Vala",
+      "npcId": "vala",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Malko",
+      "npcId": "malko",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Yezzan zo Qaggaz",
+      "npcId": "yezzan_zo_qaggaz",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Belicho Paenymion",
+      "npcId": "belicho_paenymion",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Kinvara",
+      "npcId": "kinvara",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Ellaria Sand",
+      "npcId": "ellaria_sand",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Oberyn Martell",
+      "npcId": "oberyn_martell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Trystane Martell",
+      "npcId": "trystane_martell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Doran Martell",
+      "npcId": "doran_martell",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Areo Hotah",
+      "npcId": "areo_hotah",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tyene Sand",
+      "npcId": "tyene_sand",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Nymeria Sand",
+      "npcId": "nymeria_sand",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Obara Sand",
+      "npcId": "obara_sand",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jaqen H'ghar",
+      "npcId": "jaqen_hghar",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "The Waif",
+      "npcId": "the_waif",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "The High Sparrow",
+      "npcId": "high_sparrow",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Septa Mordane",
+      "npcId": "septa_mordane",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Septa Unella",
+      "npcId": "septa_unella",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Brother Ray",
+      "npcId": "brother_ray",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "The High Septon",
+      "npcId": "high_septon",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Marillion",
+      "npcId": "marillion",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Anya Waynwood",
+      "npcId": "anya_waynwood",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tansy",
+      "npcId": "tansy",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Maester Cressen",
+      "npcId": "maester_cressen",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Maester Luwin",
+      "npcId": "maester_luwin",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Maester Wolkan",
+      "npcId": "maester_wolkan",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Archmaester Ebrose",
+      "npcId": "archmaester_ebrose",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Grand Maester Pycelle",
+      "npcId": "grand_maester_pycelle",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Qyburn",
+      "npcId": "qyburn",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Salladhor Saan",
+      "npcId": "salladhor_saan",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Harald Karstark",
+      "npcId": "harald_karstark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Ned Umber",
+      "npcId": "ned_umber",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Jon Umber",
+      "npcId": "jon_umber",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Bernadette",
+      "npcId": "bernadette",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Vayon Poole",
+      "npcId": "vayon_poole",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Torrhen Karstark",
+      "npcId": "torrhen_karstark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Rickard Karstark",
+      "npcId": "rickard_karstark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Alys Karstark",
+      "npcId": "alys_karstark",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Robett Glover",
+      "npcId": "robett_glover",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Wyman Manderly",
+      "npcId": "wyman_manderly",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Quaithe",
+      "npcId": "quaithe",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Xaro Xhoan Daxos",
+      "npcId": "xaro_xhoan_daxos",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Pyat Pree",
+      "npcId": "pyat_pree",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "The Spice King",
+      "npcId": "spice_king",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "The Silk King",
+      "npcId": "silk_king",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Tycho Nestoris",
+      "npcId": "tycho_nestoris",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Lhara",
+      "npcId": "lhara",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Ternesio Terys",
+      "npcId": "ternesio_terys",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Ghita",
+      "npcId": "ghita",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Izembaro",
+      "npcId": "izembaro",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lady Crane",
+      "npcId": "lady_crane",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Camello",
+      "npcId": "camello",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Bobono",
+      "npcId": "bobono",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Bianca",
+      "npcId": "bianca",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Clarenzo",
+      "npcId": "clarenzo",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Harry Strickland",
+      "npcId": "harry_strickland",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Tobho Mott",
+      "npcId": "tobho_mott",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Lommy Greenhands",
+      "npcId": "lommy_greenhands",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Hot Pie",
+      "npcId": "hot_pie",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Frances",
+      "npcId": "frances",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Rorge",
+      "npcId": "rorge",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Biter",
+      "npcId": "biter",
+      "declaredStatus": "AUTO",
+      "note": ""
+    },
+    {
+      "rosterName": "Hallyne",
+      "npcId": "hallyne",
+      "declaredStatus": "NO_SUPPORTED_RELATION_FOUND",
+      "note": "Manual research pass found no justified named-person relationship at the exact Scenario Day 1 anchor; do not invent one without new evidence."
+    },
+    {
+      "rosterName": "Three Eyed Raven",
+      "npcId": "three_eyed_raven",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Leaf",
+      "npcId": "leaf",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Nymeria",
+      "npcId": "nymeria",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Ghost",
+      "npcId": "ghost",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Grey Wind",
+      "npcId": "grey_wind",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Lady",
+      "npcId": "lady",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Summer",
+      "npcId": "summer",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    },
+    {
+      "rosterName": "Shaggydog",
+      "npcId": "shaggydog",
+      "declaredStatus": "SPECIAL_ENTITY_PENDING",
+      "note": "Requires the later nonhuman/supernatural/special-entity relationship pass rather than ordinary human social-opinion authoring."
+    }
+  ]
+}

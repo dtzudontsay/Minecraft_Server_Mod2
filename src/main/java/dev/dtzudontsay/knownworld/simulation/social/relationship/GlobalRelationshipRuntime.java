@@ -35,6 +35,8 @@ public final class GlobalRelationshipRuntime {
 
     private final EffectiveRelationshipResolver resolver;
 
+    private RelationshipReviewAudit.Report lastReviewReport;
+
     private int authoredCharacterRelationshipCount;
 
     private int appliedCharacterRelationshipCount;
@@ -260,6 +262,41 @@ public final class GlobalRelationshipRuntime {
 
             applyCharacterRelationships(
                     definition
+            );
+
+            RelationshipReviewCatalog.Definition reviewRoster =
+                    RelationshipReviewCatalog.loadDefault();
+
+            lastReviewReport =
+                    new RelationshipReviewAudit(
+                            simulation,
+                            society,
+                            definition,
+                            reviewRoster
+                    )
+                            .audit();
+
+            KnownWorld.LOGGER.info(
+                    "Relationship review audit: total={}, direct={}, fallbackOnly={}, noSupported={}, continuityUncertain={}, specialPending={}, unreviewed={}.",
+                    lastReviewReport.total(),
+                    lastReviewReport.count(
+                            RelationshipReviewAudit.Status.HAS_DIRECT_RELATION
+                    ),
+                    lastReviewReport.count(
+                            RelationshipReviewAudit.Status.FALLBACK_ONLY
+                    ),
+                    lastReviewReport.count(
+                            RelationshipReviewAudit.Status.NO_SUPPORTED_RELATION_FOUND
+                    ),
+                    lastReviewReport.count(
+                            RelationshipReviewAudit.Status.CONTINUITY_UNCERTAIN
+                    ),
+                    lastReviewReport.count(
+                            RelationshipReviewAudit.Status.SPECIAL_ENTITY_PENDING
+                    ),
+                    lastReviewReport.count(
+                            RelationshipReviewAudit.Status.UNREVIEWED
+                    )
             );
 
             simulation.save();
@@ -539,6 +576,18 @@ public final class GlobalRelationshipRuntime {
                                 )
                 )
                 .id();
+    }
+
+    public RelationshipReviewAudit.Report relationshipReviewReport() {
+
+        if (lastReviewReport == null) {
+
+            throw new IllegalStateException(
+                    "Relationship review audit has not run"
+            );
+        }
+
+        return lastReviewReport;
     }
 
     private void saveQuietly() {
