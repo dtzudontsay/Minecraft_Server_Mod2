@@ -13,28 +13,10 @@ import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipMan
 
 import java.util.Objects;
 
-/**
- * Executes an objective social interaction and applies its immediate
- * consequences.
- *
- * This is the beginning of the dynamic social simulation.
- *
- * IMPORTANT:
- *
- * The service does not read scenario JSON and does not know whether
- * the characters are canonical ASOIAF characters.
- *
- * It works purely with runtime NPC state.
- *
- * This means the same system can eventually handle:
- *
- * - Eddard Stark and Robert Baratheon
- * - generated peasants
- * - generated nobles
- * - future children
- * - characters who do not exist at Scenario Day 1
- */
 public final class SocialInteractionService {
+
+    private static final double SIGNIFICANT_HISTORY_THRESHOLD =
+            0.60;
 
     private final NpcRegistry registry;
 
@@ -44,11 +26,14 @@ public final class SocialInteractionService {
 
     private final WorldEventManager events;
 
+    private final SocialReactionService reactions;
+
     public SocialInteractionService(
             NpcRegistry registry,
             NpcRelationshipManager relationships,
             NpcMemoryManager memories,
-            WorldEventManager events
+            WorldEventManager events,
+            SocialReactionService reactions
     ) {
 
         this.registry =
@@ -74,6 +59,12 @@ public final class SocialInteractionService {
                         events,
                         "events"
                 );
+
+        this.reactions =
+                Objects.requireNonNull(
+                        reactions,
+                        "reactions"
+                );
     }
 
     public Result perform(
@@ -82,6 +73,25 @@ public final class SocialInteractionService {
             SocialInteractionType type,
             double magnitude,
             long tick
+    ) {
+
+        return perform(
+                actor,
+                target,
+                type,
+                magnitude,
+                tick,
+                SocialHistoryMode.FULL
+        );
+    }
+
+    public Result perform(
+            NpcId actor,
+            NpcId target,
+            SocialInteractionType type,
+            double magnitude,
+            long tick,
+            SocialHistoryMode historyMode
     ) {
 
         Objects.requireNonNull(
@@ -97,6 +107,11 @@ public final class SocialInteractionService {
         Objects.requireNonNull(
                 type,
                 "type"
+        );
+
+        Objects.requireNonNull(
+                historyMode,
+                "historyMode"
         );
 
         if (actor.equals(
@@ -129,17 +144,6 @@ public final class SocialInteractionService {
                         target
                 );
 
-        /*
-         * Relationships are directional.
-         *
-         * If Robert insults Eddard, the principal immediate effect is:
-         *
-         * Eddard -> Robert
-         *
-         * not automatically:
-         *
-         * Robert -> Eddard
-         */
         NpcRelationship targetTowardActor =
                 relationships.getOrCreate(
                         target,
@@ -151,58 +155,50 @@ public final class SocialInteractionService {
                         targetTowardActor
                 );
 
-        double affectionChange =
-                type.affectionDelta()
-                        * magnitude;
-
-        double trustChange =
-                type.trustDelta()
-                        * magnitude;
-
-        double respectChange =
-                type.respectDelta()
-                        * magnitude;
-
-        double fearChange =
-                type.fearDelta()
-                        * magnitude;
-
-        double familiarityGain =
-                type.familiarityGain()
-                        * magnitude;
+        /*
+         * The same objective action can now produce different emotional
+         * consequences depending on the target.
+         */
+        SocialReactionService.Reaction reaction =
+                reactions.react(
+                        actor,
+                        target,
+                        type,
+                        magnitude
+                );
 
         targetTowardActor.changeAffection(
-                affectionChange
+                reaction.affectionDelta()
         );
 
         targetTowardActor.changeTrust(
-                trustChange
+                reaction.trustDelta()
         );
 
         targetTowardActor.changeRespect(
-                respectChange
+                reaction.respectDelta()
         );
 
         targetTowardActor.changeFear(
-                fearChange
+                reaction.fearDelta()
         );
 
         targetTowardActor.increaseFamiliarity(
-                familiarityGain
+                reaction.familiarityGain()
         );
 
         /*
-         * The actor also becomes slightly more familiar with the target
-         * simply because the interaction happened.
+         * Actor familiarity still increases simply because the interaction
+         * occurred.
          *
-         * We deliberately do NOT mirror the emotional consequences.
+         * Emotional effects remain directional.
          */
         relationships.getOrCreate(
                         actor,
                         target
                 )
                 .increaseFamiliarity(
-                        familiarityGain
+                        reaction.familiarityGain()
                                 * 0.50
                 );
 
@@ -215,6 +211,7 @@ public final class SocialInteractionService {
                                         magnitude
                                                 * 0.50
                         )
+                                * reaction.importanceMultiplier()
                 );
 
         String actorName =
@@ -233,57 +230,63 @@ public final class SocialInteractionService {
                         + targetName
                         + ".";
 
+        boolean recordHistory =
+                historyMode
+                        == SocialHistoryMode.FULL
+                        ||
+                        (
+                                historyMode
+                                        == SocialHistoryMode.SIGNIFICANT_ONLY
+                                        &&
+                                        importance
+                                                >= SIGNIFICANT_HISTORY_THRESHOLD
+                        );
+
         WorldEvent event =
-                events.create(
-                        WorldEventType.SOCIAL,
-                        summary,
-                        targetState.position(),
-                        tick,
-                        importance,
-                        actor,
-                        target,
-                        null,
-                        null
-                );
+                null;
 
-        /*
-         * Target remembers experiencing the action.
-         */
-        memories.remember(
-                target,
-                NpcMemoryType.PERSONAL_EXPERIENCE,
-                summary,
-                importance,
-                actor,
-                null,
-                tick
-        );
+        if (recordHistory) {
 
-        /*
-         * The actor also remembers performing it, but generally with
-         * slightly lower subjective importance.
-         */
-        memories.remember(
-                actor,
-                NpcMemoryType.PERSONAL_EXPERIENCE,
-                "I "
-                        + type.summaryVerb()
-                        + " "
-                        + targetName
-                        + ".",
-                clampUnit(
-                        importance
-                                * 0.75
-                ),
-                target,
-                null,
-                tick
-        );
+            event =
+                    events.create(
+                            WorldEventType.SOCIAL,
+                            summary,
+                            targetState.position(),
+                            tick,
+                            importance,
+                            actor,
+                            target,
+                            null,
+                            null
+                    );
 
-        RelationshipSnapshot after =
-                snapshot(
-                        targetTowardActor
-                );
+            memories.remember(
+                    target,
+                    NpcMemoryType.PERSONAL_EXPERIENCE,
+                    summary,
+                    importance,
+                    actor,
+                    null,
+                    tick
+            );
+
+            memories.remember(
+                    actor,
+                    NpcMemoryType.PERSONAL_EXPERIENCE,
+                    "I "
+                            + type.summaryVerb()
+                            + " "
+                            + targetName
+                            + ".",
+                    clampUnit(
+                            importance
+                                    * 0.75
+                    ),
+                    target,
+                    null,
+                    tick
+            );
+        }
 
         return new Result(
                 event,
@@ -292,7 +295,11 @@ public final class SocialInteractionService {
                 type,
                 magnitude,
                 before,
-                after
+                snapshot(
+                        targetTowardActor
+                ),
+                reaction,
+                recordHistory
         );
     }
 
@@ -365,7 +372,9 @@ public final class SocialInteractionService {
             SocialInteractionType type,
             double magnitude,
             RelationshipSnapshot before,
-            RelationshipSnapshot after
+            RelationshipSnapshot after,
+            SocialReactionService.Reaction reaction,
+            boolean historyRecorded
     ) {
     }
 }

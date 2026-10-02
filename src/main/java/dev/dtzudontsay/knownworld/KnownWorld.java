@@ -22,6 +22,7 @@ import dev.dtzudontsay.knownworld.debug.RegionalInfluenceDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ReligiousInstitutionDebugCommand;
 import dev.dtzudontsay.knownworld.debug.ScenarioStartDebugCommand;
+import dev.dtzudontsay.knownworld.debug.SimulationHarnessDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SimulationSocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SocialDebugCommand;
 import dev.dtzudontsay.knownworld.debug.SuccessionDebugCommand;
@@ -158,45 +159,14 @@ public final class KnownWorld implements ModInitializer {
         FormationDebugCommand.register();
         LegalStateDebugCommand.register();
 
-        /*
-         * NPC simulation owns the core persistent character state and
-         * therefore must start before any authored character overlays.
-         */
         NpcSimulation.registerLifecycle();
 
-        /*
-         * 19.0F:
-         *
-         * Adds semantic scenario location/presence metadata and
-         * relationship-completeness support after the base NPCs exist.
-         *
-         * This remains development/scenario-authoring infrastructure.
-         * The new runtime social simulation does not depend on it.
-         */
         NamedCharacterAuthoringRuntime.registerLifecycle();
 
-        /*
-         * Society runtime resolves dynasties, holdings, memberships and
-         * political hierarchy.
-         */
         SocietyStructureRuntime.registerLifecycle();
 
-        /*
-         * 19.1R:
-         *
-         * Global/deferred character relationships, persistent House-level
-         * relations and effective relationship fallback require both the
-         * NPC simulation and society/dynasty runtime to exist first.
-         */
         GlobalRelationshipRuntime.registerLifecycle();
 
-        /*
-         * Rich authored profile overlays run after the base simulation
-         * and named-character authoring runtime exist.
-         *
-         * Long-term this should become scenario-import/migration tooling
-         * rather than something that defines ongoing simulation behavior.
-         */
         AuthoredCharacterProfileOverlayService.registerLifecycle();
 
         NpcDebugCommand.register();
@@ -216,22 +186,10 @@ public final class KnownWorld implements ModInitializer {
         WorldEventDebugCommand.register();
 
         /*
-         * First dedicated simulation-development command.
-         *
-         * /kwsim social ...
-         *
-         * allows us to trigger a runtime social action manually and verify:
-         *
-         * interaction
-         *      -> world event
-         *      -> memory
-         *      -> relationship mutation
-         *      -> persistence
-         *
-         * Later the NPC decision/action systems will invoke the same
-         * SocialInteractionService autonomously.
+         * Simulation development commands.
          */
         SimulationSocialDebugCommand.register();
+        SimulationHarnessDebugCommand.register();
 
         ScenarioStartDebugCommand.register();
         NamedCharacterAuthoringDebugCommand.register();

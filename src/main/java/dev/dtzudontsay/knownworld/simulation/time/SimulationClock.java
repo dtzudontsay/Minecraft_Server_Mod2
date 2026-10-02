@@ -19,6 +19,7 @@ public final class SimulationClock {
     public SimulationClock(
             long tick
     ) {
+
         setTick(
                 tick
         );
@@ -29,11 +30,13 @@ public final class SimulationClock {
     }
 
     public long day() {
+
         return tick
                 / TICKS_PER_DAY;
     }
 
     public int tickOfDay() {
+
         return (int) Math.floorMod(
                 tick,
                 TICKS_PER_DAY
@@ -42,19 +45,47 @@ public final class SimulationClock {
 
     public void advance() {
 
-        if (tick == Long.MAX_VALUE) {
+        advanceBy(
+                1L
+        );
+    }
+
+    /**
+     * Allows abstract/campaign simulation to advance without waiting for
+     * real Minecraft ticks.
+     */
+    public void advanceBy(
+            long ticks
+    ) {
+
+        if (ticks < 0L) {
+
+            throw new IllegalArgumentException(
+                    "ticks cannot be negative"
+            );
+        }
+
+        if (ticks == 0L) {
+            return;
+        }
+
+        if (tick
+                > Long.MAX_VALUE
+                - ticks) {
 
             throw new IllegalStateException(
                     "Simulation clock exhausted"
             );
         }
 
-        tick++;
+        tick +=
+                ticks;
     }
 
     public void setTick(
             long tick
     ) {
+
         if (tick < 0) {
 
             throw new IllegalArgumentException(

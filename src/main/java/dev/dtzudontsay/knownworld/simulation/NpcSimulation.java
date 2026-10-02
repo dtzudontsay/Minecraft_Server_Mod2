@@ -38,7 +38,9 @@ import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionRu
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousMembershipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialActionDecisionService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialInteractionService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialReactionService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CampaignCalendarPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterLegalStatePersistence;
@@ -60,6 +62,10 @@ import dev.dtzudontsay.knownworld.simulation.social.succession.ClaimManager;
 import dev.dtzudontsay.knownworld.simulation.social.succession.SuccessionRuleManager;
 import dev.dtzudontsay.knownworld.simulation.social.succession.SuccessionService;
 import dev.dtzudontsay.knownworld.simulation.social.title.TitleManager;
+import dev.dtzudontsay.knownworld.simulation.testing.AbstractSocialSimulationService;
+import dev.dtzudontsay.knownworld.simulation.testing.SimulationFastForwardService;
+import dev.dtzudontsay.knownworld.simulation.testing.SimulationReportService;
+import dev.dtzudontsay.knownworld.simulation.testing.SyntheticPopulationService;
 import dev.dtzudontsay.knownworld.simulation.time.CampaignCalendar;
 import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
 import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementManager;
@@ -116,13 +122,8 @@ public final class NpcSimulation {
     private final NpcRoutineManager routineManager;
     private final WorldEventManager eventManager;
 
-    /*
-     * Simulation-layer service.
-     *
-     * This operates only on runtime NPC state and does not know anything
-     * about the AGOT scenario JSON. Canonical characters and generated
-     * characters therefore use the same social-interaction mechanics.
-     */
+    private final SocialReactionService socialReactionService;
+    private final SocialActionDecisionService socialActionDecisionService;
     private final SocialInteractionService socialInteractionService;
 
     private final SuccessionService successionService;
@@ -136,6 +137,11 @@ public final class NpcSimulation {
     private final MarriageService marriageService;
     private final CharacterGenerationService characterGenerationService;
     private final LifeCycleService lifeCycleService;
+
+    private final SyntheticPopulationService syntheticPopulationService;
+    private final AbstractSocialSimulationService abstractSocialSimulationService;
+    private final SimulationFastForwardService fastForwardService;
+    private final SimulationReportService simulationReportService;
 
     private final NpcPersistence persistence;
     private final TitlePersistence titlePersistence;
@@ -158,12 +164,20 @@ public final class NpcSimulation {
             MinecraftServer server
     ) {
 
-        this.server = server;
+        this.server =
+                server;
 
-        this.clock = new SimulationClock();
-        this.campaignCalendar = new CampaignCalendar();
-        this.registry = new NpcRegistry();
-        this.settlementManager = new SettlementManager();
+        this.clock =
+                new SimulationClock();
+
+        this.campaignCalendar =
+                new CampaignCalendar();
+
+        this.registry =
+                new NpcRegistry();
+
+        this.settlementManager =
+                new SettlementManager();
 
         this.organizationManager =
                 new OrganizationManager(
@@ -354,18 +368,35 @@ public final class NpcSimulation {
                 );
 
         /*
-         * This is intentionally instantiated before the higher-level
-         * decision/action services.
+         * SIM 03.
          *
-         * Later the AI can call this same service when it decides that an
-         * NPC should help, praise, insult, threaten or betray another NPC.
+         * Reaction and action selection are deliberately separate from the
+         * interaction executor.
          */
+        this.socialReactionService =
+                new SocialReactionService(
+                        registry,
+                        profileManager,
+                        psychologyService,
+                        relationshipManager
+                );
+
+        this.socialActionDecisionService =
+                new SocialActionDecisionService(
+                        registry,
+                        profileManager,
+                        psychologyService,
+                        relationshipManager,
+                        memoryManager
+                );
+
         this.socialInteractionService =
                 new SocialInteractionService(
                         registry,
                         relationshipManager,
                         memoryManager,
-                        eventManager
+                        eventManager,
+                        socialReactionService
                 );
 
         this.successionService =
@@ -463,20 +494,40 @@ public final class NpcSimulation {
                         successionService
                 );
 
+        this.syntheticPopulationService =
+                new SyntheticPopulationService(
+                        registry,
+                        profileManager,
+                        lifeHistoryManager
+                );
+
+        this.abstractSocialSimulationService =
+                new AbstractSocialSimulationService(
+                        registry,
+                        relationshipManager,
+                        socialInteractionService,
+                        socialActionDecisionService
+                );
+
+        this.fastForwardService =
+                new SimulationFastForwardService(
+                        clock,
+                        campaignCalendar,
+                        lifeCycleService,
+                        abstractSocialSimulationService
+                );
+
+        this.simulationReportService =
+                new SimulationReportService(
+                        registry,
+                        relationshipManager
+                );
+
         this.activationManager =
                 new NpcActivationManager(
                         registry
                 );
 
-        /*
-         * IMPORTANT:
-         *
-         * Known World persistence belongs to the actual Minecraft world.
-         *
-         * The former implementation used server.getServerDirectory(),
-         * which caused every single-player test world to share the same
-         * NPC state under run/knownworld/npc.
-         */
         Path savePath =
                 server.getWorldPath(
                                 LevelResource.ROOT
@@ -656,7 +707,8 @@ public final class NpcSimulation {
                             && instance.server
                             == server) {
 
-                        instance = null;
+                        instance =
+                                null;
                     }
                 }
         );
@@ -834,17 +886,32 @@ public final class NpcSimulation {
         return eventManager;
     }
 
-    /**
-     * Runtime social-interaction mechanics.
-     *
-     * This is intentionally exposed from the simulation in the same way
-     * relationships(), memories(), events(), etc. are exposed.
-     *
-     * Debug commands use it now.
-     * Autonomous NPC decision/action systems can use it later.
-     */
+    public SocialReactionService socialReactions() {
+        return socialReactionService;
+    }
+
+    public SocialActionDecisionService socialActionDecisions() {
+        return socialActionDecisionService;
+    }
+
     public SocialInteractionService socialInteractions() {
         return socialInteractionService;
+    }
+
+    public SyntheticPopulationService syntheticPopulation() {
+        return syntheticPopulationService;
+    }
+
+    public AbstractSocialSimulationService abstractSocialSimulation() {
+        return abstractSocialSimulationService;
+    }
+
+    public SimulationFastForwardService fastForward() {
+        return fastForwardService;
+    }
+
+    public SimulationReportService simulationReports() {
+        return simulationReportService;
     }
 
     public NpcCommunicationService communication() {
@@ -925,6 +992,10 @@ public final class NpcSimulation {
                 index++
         ) {
 
+            clock.advanceBy(
+                    campaignCalendar.ticksPerCampaignDay()
+            );
+
             campaignCalendar.advanceOneDay();
 
             lifeCycleService.onNewCampaignDay(
@@ -943,17 +1014,6 @@ public final class NpcSimulation {
                     profileManager
             );
 
-            /*
-             * SocialInteractionService has no persistence file of its own.
-             *
-             * Its results live in the canonical runtime managers:
-             *
-             * - relationshipManager
-             * - memoryManager
-             * - eventManager
-             *
-             * All three are already included in NpcPersistence.
-             */
             persistence.save(
                     clock,
                     registry,
