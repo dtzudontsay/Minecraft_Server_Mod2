@@ -6,6 +6,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
+import dev.dtzudontsay.knownworld.simulation.event.HistoricalChronicleManager;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEvent;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEventId;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEventManager;
@@ -56,8 +57,6 @@ public final class WorldEventDebugCommand {
                                         /*
                                          * -------------------------------------------------
                                          * STATS
-                                         *
-                                         * SIM 09A bounded-history diagnostics.
                                          * -------------------------------------------------
                                          */
                                         .then(
@@ -66,6 +65,22 @@ public final class WorldEventDebugCommand {
                                                         )
                                                         .executes(
                                                                 WorldEventDebugCommand::executeStats
+                                                        )
+                                        )
+
+                                        /*
+                                         * -------------------------------------------------
+                                         * CHRONICLE
+                                         *
+                                         * SIM 09B.1 compressed historical summary.
+                                         * -------------------------------------------------
+                                         */
+                                        .then(
+                                                Commands.literal(
+                                                                "chronicle"
+                                                        )
+                                                        .executes(
+                                                                WorldEventDebugCommand::executeChronicle
                                                         )
                                         )
 
@@ -334,6 +349,95 @@ public final class WorldEventDebugCommand {
         return valid
                 ? 1
                 : 0;
+    }
+
+    private static int executeChronicle(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        HistoricalChronicleManager chronicle =
+                NpcSimulation.get()
+                        .events()
+                        .chronicle();
+
+        HistoricalChronicleManager.ChronicleStats stats =
+                chronicle.stats();
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "Historical chronicle | total="
+                                                + stats.totalEvents()
+                                                + " social="
+                                                + stats.socialEvents()
+                                                + " structural="
+                                                + stats.structuralEvents()
+                                                + " facts="
+                                                + stats.eventsWithFacts()
+                                ),
+                        false
+                );
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        String.format(
+                                                Locale.ROOT,
+                                                "Importance | average=%.4f maximum=%.4f total=%.2f",
+                                                stats.averageImportance(),
+                                                stats.maximumImportance(),
+                                                stats.totalImportance()
+                                        )
+                                ),
+                        false
+                );
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "Chronicle ticks | first="
+                                                + stats.firstRecordedTick()
+                                                + " last="
+                                                + stats.lastRecordedTick()
+                                ),
+                        false
+                );
+
+        for (
+                HistoricalChronicleManager.TypeStats typeStats :
+                chronicle.allTypeStats()
+        ) {
+
+            if (typeStats.count()
+                    <= 0L) {
+
+                continue;
+            }
+
+            context.getSource()
+                    .sendSuccess(
+                            () ->
+                                    Component.literal(
+                                            String.format(
+                                                    Locale.ROOT,
+                                                    "%s | count=%d facts=%d avgImportance=%.4f maxImportance=%.4f first=%d last=%d",
+                                                    typeStats.type(),
+                                                    typeStats.count(),
+                                                    typeStats.factCount(),
+                                                    typeStats.averageImportance(),
+                                                    typeStats.maximumImportance(),
+                                                    typeStats.firstTick(),
+                                                    typeStats.lastTick()
+                                            )
+                                    ),
+                            false
+                    );
+        }
+
+        return 1;
     }
 
     private static int executeList(

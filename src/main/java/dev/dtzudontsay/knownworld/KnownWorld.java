@@ -35,6 +35,7 @@ import dev.dtzudontsay.knownworld.simulation.bootstrap.NamedCharacterAuthoringRu
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
+import dev.dtzudontsay.knownworld.simulation.persistence.HistoricalChroniclePersistence;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 import dev.dtzudontsay.knownworld.simulation.social.relationship.GlobalRelationshipRuntime;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
@@ -160,6 +161,13 @@ public final class KnownWorld implements ModInitializer {
         LegalStateDebugCommand.register();
 
         NpcSimulation.registerLifecycle();
+
+        /*
+         * Register immediately after NpcSimulation so SERVER_STARTED first
+         * reconstructs the journal-derived migration baseline and then replaces
+         * it with the exact persisted chronicle when one exists.
+         */
+        HistoricalChroniclePersistence.registerLifecycle();
 
         NamedCharacterAuthoringRuntime.registerLifecycle();
 
