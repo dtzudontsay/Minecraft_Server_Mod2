@@ -189,6 +189,39 @@ public final class LifeCycleService {
         return pregnancy;
     }
 
+    /**
+     * Debug/testing entry point for forcing an NPC through the exact same
+     * death pipeline used by natural mortality.
+     *
+     * This deliberately does not bypass lifecycle handling by directly
+     * toggling NpcState. It therefore exercises:
+     *
+     * - marriage cleanup;
+     * - life-history death registration;
+     * - hereditary title succession;
+     * - dynasty head/heir reconciliation;
+     * - landed holding reconciliation;
+     * - spouse memory creation;
+     * - world death-event creation.
+     *
+     * The caller is responsible for persisting the simulation afterward.
+     */
+    public void forceNaturalDeath(
+            NpcId npc,
+            long simulationTick
+    ) {
+
+        NpcState state =
+                requireAlive(
+                        npc
+                );
+
+        naturalDeath(
+                state,
+                simulationTick
+        );
+    }
+
     private void processConceptions(
             long simulationTick
     ) {

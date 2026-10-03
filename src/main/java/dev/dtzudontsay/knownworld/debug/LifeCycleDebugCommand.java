@@ -134,6 +134,23 @@ public final class LifeCycleDebugCommand {
 
                                         .then(
                                                 Commands.literal(
+                                                                "death"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                LifeCycleDebugCommand::executeDeath
+                                                                        )
+                                                        )
+                                        )
+
+                                        .then(
+                                                Commands.literal(
                                                                 "advance"
                                                         )
                                                         .then(
@@ -156,6 +173,7 @@ public final class LifeCycleDebugCommand {
     private static int executeDate(
             CommandContext<CommandSourceStack> context
     ) {
+
         var calendar =
                 NpcSimulation.get()
                         .campaignCalendar();
@@ -184,6 +202,7 @@ public final class LifeCycleDebugCommand {
     private static int executeScale(
             CommandContext<CommandSourceStack> context
     ) {
+
         int ticks =
                 IntegerArgumentType.getInteger(
                         context,
@@ -213,6 +232,7 @@ public final class LifeCycleDebugCommand {
     private static int executeAge(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcId npc =
                 npc(
                         context,
@@ -268,6 +288,7 @@ public final class LifeCycleDebugCommand {
     private static int executeFertility(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcId npc =
                 npc(
                         context,
@@ -312,6 +333,7 @@ public final class LifeCycleDebugCommand {
     private static int executePregnancy(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcId mother =
                 npc(
                         context,
@@ -368,6 +390,7 @@ public final class LifeCycleDebugCommand {
     private static int executeConceive(
             CommandContext<CommandSourceStack> context
     ) {
+
         NpcId mother =
                 npc(
                         context,
@@ -416,9 +439,67 @@ public final class LifeCycleDebugCommand {
         }
     }
 
+    private static int executeDeath(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        NpcId npc =
+                npc(
+                        context,
+                        "npc"
+                );
+
+        try {
+
+            NpcSimulation simulation =
+                    NpcSimulation.get();
+
+            String name =
+                    simulation.registry()
+                            .find(
+                                    npc
+                            )
+                            .map(
+                                    state ->
+                                            state.identity()
+                                                    .fullName()
+                            )
+                            .orElse(
+                                    "NPC #" + npc
+                            );
+
+            simulation.lifeCycle()
+                    .forceNaturalDeath(
+                            npc,
+                            simulation.serverTickCounter()
+                    );
+
+            simulation.save();
+
+            success(
+                    context,
+                    "Forced lifecycle death completed for "
+                            + name
+                            + " [NPC #"
+                            + npc
+                            + "]."
+            );
+
+            return 1;
+
+        } catch (RuntimeException exception) {
+
+            return failure(
+                    context,
+                    exception
+            );
+        }
+    }
+
     private static int executeAdvance(
             CommandContext<CommandSourceStack> context
     ) {
+
         int days =
                 IntegerArgumentType.getInteger(
                         context,
@@ -466,6 +547,7 @@ public final class LifeCycleDebugCommand {
             CommandContext<CommandSourceStack> context,
             String name
     ) {
+
         return new NpcId(
                 LongArgumentType.getLong(
                         context,
@@ -478,6 +560,7 @@ public final class LifeCycleDebugCommand {
             CommandContext<CommandSourceStack> context,
             String message
     ) {
+
         context.getSource()
                 .sendSuccess(
                         () ->
@@ -492,6 +575,7 @@ public final class LifeCycleDebugCommand {
             CommandContext<CommandSourceStack> context,
             RuntimeException exception
     ) {
+
         context.getSource()
                 .sendFailure(
                         Component.literal(
