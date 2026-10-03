@@ -248,11 +248,6 @@ public final class SocialInteractionService {
                         + targetName
                         + ".";
 
-        String memoryFactKey =
-                memoryFactKey(
-                        type
-                );
-
         boolean recordHistory =
                 historyMode
                         == SocialHistoryMode.FULL
@@ -279,17 +274,23 @@ public final class SocialInteractionService {
                             importance,
                             actor,
                             target,
-                            memoryFactKey,
+                            eventFactKey(
+                                    type
+                            ),
                             Double.toString(
                                     magnitude
                             )
                     );
 
             /*
-             * Target remembers what the actor did TO them.
+             * -------------------------------------------------
+             * TARGET PERSPECTIVE
+             * -------------------------------------------------
              *
-             * This is the memory that should strongly influence future
-             * behavior toward the actor.
+             * The target remembers what happened TO them.
+             *
+             * This is what should directly influence how the target later
+             * evaluates the actor.
              */
             memories.remember(
                     target,
@@ -297,16 +298,24 @@ public final class SocialInteractionService {
                     summary,
                     importance,
                     actor,
-                    memoryFactKey,
+                    receivedMemoryFactKey(
+                            type
+                    ),
                     tick
             );
 
             /*
-             * Actor also remembers having done it.
+             * -------------------------------------------------
+             * ACTOR PERSPECTIVE
+             * -------------------------------------------------
              *
-             * The semantic key is the same factual event. Interpretation is
-             * always from the memory owner's perspective when decision systems
-             * consume memories.
+             * The actor remembers what THEY did.
+             *
+             * This is deliberately not interpreted as "the target did this to
+             * me."
+             *
+             * Future guilt, pride, confession and self-concept systems can
+             * consume these performed-action memories independently.
              */
             memories.remember(
                     actor,
@@ -321,7 +330,9 @@ public final class SocialInteractionService {
                                     * 0.75
                     ),
                     target,
-                    memoryFactKey,
+                    performedMemoryFactKey(
+                            type
+                    ),
                     tick
             );
         }
@@ -342,7 +353,7 @@ public final class SocialInteractionService {
         );
     }
 
-    private static String memoryFactKey(
+    private static String eventFactKey(
             SocialInteractionType type
     ) {
 
@@ -351,19 +362,69 @@ public final class SocialInteractionService {
                 ) {
 
             case HELP ->
-                    NpcMemoryMeaningService.SOCIAL_HELP;
+                    "social.event.help";
 
             case PRAISE ->
-                    NpcMemoryMeaningService.SOCIAL_PRAISE;
+                    "social.event.praise";
 
             case INSULT ->
-                    NpcMemoryMeaningService.SOCIAL_INSULT;
+                    "social.event.insult";
 
             case THREATEN ->
-                    NpcMemoryMeaningService.SOCIAL_THREATEN;
+                    "social.event.threaten";
 
             case BETRAY ->
-                    NpcMemoryMeaningService.SOCIAL_BETRAY;
+                    "social.event.betray";
+        };
+    }
+
+    private static String receivedMemoryFactKey(
+            SocialInteractionType type
+    ) {
+
+        return switch (
+                type
+                ) {
+
+            case HELP ->
+                    NpcMemoryMeaningService.RECEIVED_HELP;
+
+            case PRAISE ->
+                    NpcMemoryMeaningService.RECEIVED_PRAISE;
+
+            case INSULT ->
+                    NpcMemoryMeaningService.RECEIVED_INSULT;
+
+            case THREATEN ->
+                    NpcMemoryMeaningService.RECEIVED_THREATEN;
+
+            case BETRAY ->
+                    NpcMemoryMeaningService.RECEIVED_BETRAY;
+        };
+    }
+
+    private static String performedMemoryFactKey(
+            SocialInteractionType type
+    ) {
+
+        return switch (
+                type
+                ) {
+
+            case HELP ->
+                    NpcMemoryMeaningService.PERFORMED_HELP;
+
+            case PRAISE ->
+                    NpcMemoryMeaningService.PERFORMED_PRAISE;
+
+            case INSULT ->
+                    NpcMemoryMeaningService.PERFORMED_INSULT;
+
+            case THREATEN ->
+                    NpcMemoryMeaningService.PERFORMED_THREATEN;
+
+            case BETRAY ->
+                    NpcMemoryMeaningService.PERFORMED_BETRAY;
         };
     }
 

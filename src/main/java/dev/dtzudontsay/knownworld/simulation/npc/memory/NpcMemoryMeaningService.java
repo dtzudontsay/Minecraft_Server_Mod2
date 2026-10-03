@@ -1,6 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.npc.memory;
 
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
+import dev.dtzudontsay.knownworld.simulation.time.CampaignCalendar;
 
 import java.util.List;
 import java.util.Objects;
@@ -8,31 +9,82 @@ import java.util.Objects;
 /**
  * Converts persistent factual memory records into decision-relevant meaning.
  *
- * The memory itself remains a generic persistent record.
+ * SIM 08 adds perspective-aware semantic memory.
  *
- * This service interprets standardized semantic fact keys such as:
+ * A crucial distinction is:
  *
- * social.action.help
- * social.action.praise
- * social.action.insult
- * social.action.threaten
- * social.action.betray
+ *   social.received.insult
  *
- * Future systems can add further semantic namespaces without changing the
- * core NpcMemory record:
+ * versus:
  *
- * combat.saved_life
- * family.parent_died
- * politics.granted_title
- * politics.revoked_title
- * war.defeated_in_battle
- * crime.murdered_kin
- * economy.paid_debt
+ *   social.performed.insult
  *
- * Old memories without semantic fact keys remain valid; they simply carry
- * salience without a known positive/negative interpretation.
+ * If Robert insults Eddard:
+ *
+ * - Eddard remembers RECEIVING an insult from Robert.
+ * - Robert remembers PERFORMING an insult toward Eddard.
+ *
+ * Those are not emotionally equivalent memories.
+ *
+ * At present, received actions directly affect social action selection.
+ * Performed actions remain available for future systems such as:
+ *
+ * - guilt
+ * - pride
+ * - remorse
+ * - self-justification
+ * - confession
+ * - reputation reasoning
+ * - behavioral consistency
+ *
+ * Legacy SIM 07 keys are still interpreted for old saves.
  */
 public final class NpcMemoryMeaningService {
+
+    /*
+     * -------------------------------------------------
+     * Perspective-aware SIM 08 keys
+     * -------------------------------------------------
+     */
+
+    public static final String RECEIVED_HELP =
+            "social.received.help";
+
+    public static final String RECEIVED_PRAISE =
+            "social.received.praise";
+
+    public static final String RECEIVED_INSULT =
+            "social.received.insult";
+
+    public static final String RECEIVED_THREATEN =
+            "social.received.threaten";
+
+    public static final String RECEIVED_BETRAY =
+            "social.received.betray";
+
+    public static final String PERFORMED_HELP =
+            "social.performed.help";
+
+    public static final String PERFORMED_PRAISE =
+            "social.performed.praise";
+
+    public static final String PERFORMED_INSULT =
+            "social.performed.insult";
+
+    public static final String PERFORMED_THREATEN =
+            "social.performed.threaten";
+
+    public static final String PERFORMED_BETRAY =
+            "social.performed.betray";
+
+    /*
+     * -------------------------------------------------
+     * Legacy SIM 07 keys
+     * -------------------------------------------------
+     *
+     * Kept intentionally so old worlds still load and old memories can still
+     * influence NPCs.
+     */
 
     public static final String SOCIAL_HELP =
             "social.action.help";
@@ -49,6 +101,20 @@ public final class NpcMemoryMeaningService {
     public static final String SOCIAL_BETRAY =
             "social.action.betray";
 
+    /**
+     * Current campaign time runs at 1200 simulation ticks per campaign day by
+     * default.
+     *
+     * Ninety campaign days gives memory recency a much more appropriate scale
+     * than the old Minecraft 24000-tick assumption.
+     *
+     * This affects temporary behavioral salience only. It does not delete the
+     * memory.
+     */
+    private static final double RECENCY_DECAY_TICKS =
+            CampaignCalendar.DEFAULT_TICKS_PER_CAMPAIGN_DAY
+                    * 90.0;
+
     private final NpcMemoryManager memories;
 
     public NpcMemoryMeaningService(
@@ -62,10 +128,6 @@ public final class NpcMemoryMeaningService {
                 );
     }
 
-    /**
-     * Builds the remembered meaning of one other NPC from the owner's
-     * persistent memories.
-     */
     public Meaning toward(
             NpcId owner,
             NpcId relatedNpc,
@@ -110,12 +172,28 @@ public final class NpcMemoryMeaningService {
                 ownerMemories
         ) {
 
-            if (memory.relatedNpc() == null
+            if (memory.relatedNpc()
+                    == null
                     ||
                     !memory.relatedNpc()
                             .equals(
                                     relatedNpc
                             )) {
+
+                continue;
+            }
+
+            MeaningContribution contribution =
+                    interpret(
+                            memory
+                    );
+
+            /*
+             * A performed memory still exists and remains queryable, but it is
+             * not currently treated as "what this other person did to me".
+             */
+            if (contribution
+                    == MeaningContribution.NEUTRAL) {
 
                 continue;
             }
@@ -130,11 +208,6 @@ public final class NpcMemoryMeaningService {
 
             total +=
                     salience;
-
-            MeaningContribution contribution =
-                    interpret(
-                            memory
-                    );
 
             if (contribution.valence()
                     > 0.0) {
@@ -180,9 +253,6 @@ public final class NpcMemoryMeaningService {
         );
     }
 
-    /**
-     * Semantic interpretation of an individual memory.
-     */
     public MeaningContribution interpret(
             NpcMemory memory
     ) {
@@ -204,51 +274,150 @@ public final class NpcMemoryMeaningService {
                 factKey
                 ) {
 
+            /*
+             * What somebody else did TO the memory owner.
+             */
+
+            case RECEIVED_HELP ->
+                    positiveHelp();
+
+            case RECEIVED_PRAISE ->
+                    positivePraise();
+
+            case RECEIVED_INSULT ->
+                    negativeInsult();
+
+            case RECEIVED_THREATEN ->
+                    negativeThreat();
+
+            case RECEIVED_BETRAY ->
+                    negativeBetrayal();
+
+            /*
+             * What the memory owner did TO somebody else.
+             *
+             * This does not directly mean that the owner likes or hates the
+             * other person. Future guilt/pride systems can consume these keys
+             * separately.
+             */
+
+            case PERFORMED_HELP,
+                 PERFORMED_PRAISE,
+                 PERFORMED_INSULT,
+                 PERFORMED_THREATEN,
+                 PERFORMED_BETRAY ->
+                    MeaningContribution.NEUTRAL;
+
+            /*
+             * Old SIM 07 worlds did not encode perspective.
+             *
+             * Actor-side memories created by SIM 07 used summaries beginning
+             * with "I ...". That one historical format lets us safely prevent
+             * those old performed actions from being treated as received
+             * actions.
+             *
+             * New memories never depend on English summary parsing.
+             */
+
             case SOCIAL_HELP ->
-                    new MeaningContribution(
-                            0.85,
-                            0.0,
-                            0.0
-                    );
+                    legacyPerformed(
+                            memory
+                    )
+                            ? MeaningContribution.NEUTRAL
+                            : positiveHelp();
 
             case SOCIAL_PRAISE ->
-                    new MeaningContribution(
-                            0.55,
-                            0.0,
-                            0.0
-                    );
+                    legacyPerformed(
+                            memory
+                    )
+                            ? MeaningContribution.NEUTRAL
+                            : positivePraise();
 
             case SOCIAL_INSULT ->
-                    new MeaningContribution(
-                            -0.55,
-                            0.0,
-                            0.05
-                    );
+                    legacyPerformed(
+                            memory
+                    )
+                            ? MeaningContribution.NEUTRAL
+                            : negativeInsult();
 
             case SOCIAL_THREATEN ->
-                    new MeaningContribution(
-                            -0.85,
-                            0.0,
-                            0.90
-                    );
+                    legacyPerformed(
+                            memory
+                    )
+                            ? MeaningContribution.NEUTRAL
+                            : negativeThreat();
 
             case SOCIAL_BETRAY ->
-                    new MeaningContribution(
-                            -1.0,
-                            1.0,
-                            0.20
-                    );
+                    legacyPerformed(
+                            memory
+                    )
+                            ? MeaningContribution.NEUTRAL
+                            : negativeBetrayal();
 
             default ->
                     MeaningContribution.NEUTRAL;
         };
     }
 
+    private static MeaningContribution positiveHelp() {
+
+        return new MeaningContribution(
+                0.85,
+                0.0,
+                0.0
+        );
+    }
+
+    private static MeaningContribution positivePraise() {
+
+        return new MeaningContribution(
+                0.55,
+                0.0,
+                0.0
+        );
+    }
+
+    private static MeaningContribution negativeInsult() {
+
+        return new MeaningContribution(
+                -0.55,
+                0.0,
+                0.05
+        );
+    }
+
+    private static MeaningContribution negativeThreat() {
+
+        return new MeaningContribution(
+                -0.85,
+                0.0,
+                0.90
+        );
+    }
+
+    private static MeaningContribution negativeBetrayal() {
+
+        return new MeaningContribution(
+                -1.0,
+                1.0,
+                0.20
+        );
+    }
+
+    private static boolean legacyPerformed(
+            NpcMemory memory
+    ) {
+
+        return memory.summary()
+                .startsWith(
+                        "I "
+                );
+    }
+
     /**
-     * Importance remains the primary weight.
+     * Recency changes behavioral intensity, not factual existence.
      *
-     * Recency fades the immediate behavioral impact, but even an old major
-     * event retains part of its salience.
+     * Even an old high-importance memory keeps part of its influence.
      */
     private static double effectiveSalience(
             NpcMemory memory,
@@ -269,7 +438,7 @@ public final class NpcMemoryMeaningService {
                                 1.0
                                         +
                                         age
-                                                / 24000.0
+                                                / RECENCY_DECAY_TICKS
                         );
 
         return clampUnit(
