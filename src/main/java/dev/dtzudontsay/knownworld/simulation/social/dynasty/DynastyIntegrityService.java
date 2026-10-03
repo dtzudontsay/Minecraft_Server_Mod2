@@ -1,6 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.social.dynasty;
 
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.social.Organization;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
 
@@ -172,7 +173,9 @@ public final class DynastyIntegrityService {
                 }
             }
 
-            switch (dynasty.status()) {
+            switch (
+                    dynasty.status()
+            ) {
 
                 case EXTINCT ->
                         extinct++;
@@ -295,30 +298,92 @@ public final class DynastyIntegrityService {
                 );
             }
 
-            if (dynasty.head() != null
-                    && !simulation.registry()
-                    .contains(
-                            dynasty.head()
-                    )) {
+            /*
+             * -----------------------------------------------------
+             * DYNASTY HEAD
+             * -----------------------------------------------------
+             */
 
-                errors.add(
-                        label
-                                + " references missing head NPC "
-                                + dynasty.head()
-                );
+            if (dynasty.head() != null) {
+
+                NpcState head =
+                        simulation.registry()
+                                .find(
+                                        dynasty.head()
+                                )
+                                .orElse(
+                                        null
+                                );
+
+                if (head == null) {
+
+                    errors.add(
+                            label
+                                    + " references missing head NPC "
+                                    + dynasty.head()
+                    );
+
+                } else if (
+                        requiresLivingLeadership(
+                                dynasty
+                        )
+                                && !head.isAlive()
+                ) {
+
+                    errors.add(
+                            label
+                                    + " references dead current head NPC "
+                                    + dynasty.head()
+                                    + " ("
+                                    + head.identity()
+                                    .fullName()
+                                    + ")"
+                    );
+                }
             }
 
-            if (dynasty.heir() != null
-                    && !simulation.registry()
-                    .contains(
-                            dynasty.heir()
-                    )) {
+            /*
+             * -----------------------------------------------------
+             * DYNASTY HEIR
+             * -----------------------------------------------------
+             */
 
-                errors.add(
-                        label
-                                + " references missing heir NPC "
-                                + dynasty.heir()
-                );
+            if (dynasty.heir() != null) {
+
+                NpcState heir =
+                        simulation.registry()
+                                .find(
+                                        dynasty.heir()
+                                )
+                                .orElse(
+                                        null
+                                );
+
+                if (heir == null) {
+
+                    errors.add(
+                            label
+                                    + " references missing heir NPC "
+                                    + dynasty.heir()
+                    );
+
+                } else if (
+                        requiresLivingLeadership(
+                                dynasty
+                        )
+                                && !heir.isAlive()
+                ) {
+
+                    errors.add(
+                            label
+                                    + " references dead current heir NPC "
+                                    + dynasty.heir()
+                                    + " ("
+                                    + heir.identity()
+                                    .fullName()
+                                    + ")"
+                    );
+                }
             }
 
             if (dynasty.head() != null
@@ -437,7 +502,9 @@ public final class DynastyIntegrityService {
                             .isEmpty()
                             ? "unknown dynasty integrity error"
                             : report.errors()
-                            .getFirst();
+                            .get(
+                                    0
+                            );
 
             throw new IllegalStateException(
                     "Dynasty integrity audit failed with "
@@ -492,6 +559,31 @@ public final class DynastyIntegrityService {
         }
     }
 
+    /**
+     * Historical extinct/not-yet-founded/dormant dynasties may retain
+     * historical character references.
+     *
+     * A politically living lineage may not present a dead NPC as its
+     * CURRENT head or heir.
+     */
+    private static boolean requiresLivingLeadership(
+            Dynasty dynasty
+    ) {
+
+        return switch (
+                dynasty.status()
+                ) {
+
+            case EXTINCT,
+                 NOT_YET_FOUNDED,
+                 DORMANT ->
+                    false;
+
+            default ->
+                    true;
+        };
+    }
+
     private static boolean requiresLandedBaseline(
             Dynasty dynasty
     ) {
@@ -501,7 +593,9 @@ public final class DynastyIntegrityService {
             return false;
         }
 
-        return switch (dynasty.type()) {
+        return switch (
+                dynasty.type()
+                ) {
 
             case ROYAL_HOUSE,
                  GREAT_HOUSE,
@@ -522,7 +616,9 @@ public final class DynastyIntegrityService {
             DynastyType type
     ) {
 
-        return switch (type) {
+        return switch (
+                type
+                ) {
 
             case ROYAL_HOUSE,
                  GREAT_HOUSE,

@@ -5,6 +5,7 @@ import dev.dtzudontsay.knownworld.debug.DynastyHierarchyDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LandedHoldingDebugCommand;
 import dev.dtzudontsay.knownworld.debug.PoliticalStructureAuditCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.persistence.CharacterSocialIdentityPersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyAllegiancePersistence;
 import dev.dtzudontsay.knownworld.simulation.persistence.DynastyPersistence;
@@ -16,6 +17,7 @@ import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyAllegianceMan
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyHierarchyBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityReport;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyIntegrityService;
+import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyLeadershipReconciliationService;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyManager;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyScenarioBootstrapService;
 import dev.dtzudontsay.knownworld.simulation.social.holding.DeadHoldingHolderReconciliationService;
@@ -62,14 +64,12 @@ public final class SocietyStructureRuntime {
 
     private final CharacterSocialIdentityService characterSocialIdentityService;
 
+    private final DynastyLeadershipReconciliationService dynastyLeadershipReconciliation;
+
     private final DynastyIntegrityService dynastyIntegrity;
 
     private final PoliticalStructureIntegrityService politicalStructureIntegrity;
 
-    /*
-     * Reconciles runtime deaths against persisted political office /
-     * landed-holding state.
-     */
     private final DeadHoldingHolderReconciliationService deadHoldingHolderReconciliation;
 
     private final DynastyPersistence dynastyPersistence;
@@ -93,6 +93,8 @@ public final class SocietyStructureRuntime {
     private LandedHoldingBootstrapService.Report lastHoldingReport;
 
     private PoliticalStructureIntegrityReport lastPoliticalStructureReport;
+
+    private DynastyLeadershipReconciliationService.Report lastDynastyLeadershipReconciliationReport;
 
     private DeadHoldingHolderReconciliationService.Report lastDeadHolderReconciliationReport;
 
@@ -161,6 +163,14 @@ public final class SocietyStructureRuntime {
                         nonDynasticSocieties
                 );
 
+        this.dynastyLeadershipReconciliation =
+                new DynastyLeadershipReconciliationService(
+                        simulation,
+                        dynasties,
+                        characterSocialIdentities,
+                        holdings
+                );
+
         this.dynastyIntegrity =
                 new DynastyIntegrityService(
                         simulation,
@@ -227,10 +237,6 @@ public final class SocietyStructureRuntime {
 
     public static void registerLifecycle() {
 
-        /*
-         * registerLifecycle() itself is called during mod initialization,
-         * so command registration is still early enough here.
-         */
         LandedHoldingDebugCommand.register();
 
         DynastyHierarchyDebugCommand.register();
@@ -390,6 +396,10 @@ public final class SocietyStructureRuntime {
         return lastPoliticalStructureReport;
     }
 
+    public DynastyLeadershipReconciliationService.Report lastDynastyLeadershipReconciliationReport() {
+        return lastDynastyLeadershipReconciliationReport;
+    }
+
     public DeadHoldingHolderReconciliationService.Report lastDeadHolderReconciliationReport() {
         return lastDeadHolderReconciliationReport;
     }
@@ -411,9 +421,9 @@ public final class SocietyStructureRuntime {
     }
 
     /**
-     * Reconciles mutable society-side projections of NPC state.
+     * Full reconciliation of society-side projections.
      *
-     * This method is intentionally safe to call repeatedly.
+     * Safe to call repeatedly.
      */
     public void reconcile() {
 
@@ -425,14 +435,57 @@ public final class SocietyStructureRuntime {
         characterSocialIdentityService.ensureAll();
 
         /*
-         * NPC death is authoritative.
+         * Leadership first.
          *
-         * A holding is not allowed to continue projecting a dead NPC
-         * as its current living ruler merely because an older political
-         * snapshot still contains that NPC ID.
+         * Holdings may subsequently use the newly reconciled living
+         * dynasty head/heir as supported runtime succession evidence.
          */
+        lastDynastyLeadershipReconciliationReport =
+                dynastyLeadershipReconciliation.reconcileAll(
+                        simulation.serverTickCounter()
+                );
+
         lastDeadHolderReconciliationReport =
                 deadHoldingHolderReconciliation.reconcileAll();
+    }
+
+    /**
+     * Immediate death-time bridge from the NPC lifecycle into political
+     * state.
+     *
+     * This prevents dynasty/holding state from remaining stale until the
+     * next save or restart.
+     */
+    public void onNpcDeath(
+            NpcId deceased,
+            long tick
+    ) {
+
+        lastDynastyLeadershipReconciliationReport =
+                dynastyLeadershipReconciliation.handleDeath(
+                        deceased,
+                        tick
+                );
+
+        lastDeadHolderReconciliationReport =
+                deadHoldingHolderReconciliation.reconcileAll();
+
+        if (lastDynastyLeadershipReconciliationReport.changedAnything()) {
+
+            KnownWorld.LOGGER.info(
+                    "Death-time dynasty reconciliation for NPC {}: examined={}, deadHeads={}, headsAdvanced={}, storedHeir={}, titleLaw={}, vacant={}, deadHeirsCleared={}, heirsRecomputed={}, events={}.",
+                    deceased,
+                    lastDynastyLeadershipReconciliationReport.dynastiesExamined(),
+                    lastDynastyLeadershipReconciliationReport.deadHeadsFound(),
+                    lastDynastyLeadershipReconciliationReport.headsAdvanced(),
+                    lastDynastyLeadershipReconciliationReport.advancedFromStoredHeir(),
+                    lastDynastyLeadershipReconciliationReport.advancedFromLinkedTitleLaw(),
+                    lastDynastyLeadershipReconciliationReport.headsVacated(),
+                    lastDynastyLeadershipReconciliationReport.deadHeirsCleared(),
+                    lastDynastyLeadershipReconciliationReport.heirsRecomputed(),
+                    lastDynastyLeadershipReconciliationReport.eventsCreated()
+            );
+        }
     }
 
     private void loadAndReconcile() {
@@ -459,11 +512,8 @@ public final class SocietyStructureRuntime {
              * -----------------------------------------------------
              * AUTHORED / DE-JURE DYNASTY HIERARCHY
              * -----------------------------------------------------
-             *
-             * DynastyScenarioBootstrapService restores the catalog
-             * relationships first. This additional pass applies the
-             * broader regional feudal hierarchy from 19.0E.1.
              */
+
             lastHierarchyReport =
                     DynastyHierarchyBootstrapService.apply(
                             dynasties
@@ -473,12 +523,8 @@ public final class SocietyStructureRuntime {
              * -----------------------------------------------------
              * CURRENT POLITICAL ALLEGIANCE
              * -----------------------------------------------------
-             *
-             * Runtime allegiance overrides are loaded AFTER the
-             * authored/de-jure hierarchy. That means rebellion,
-             * independence or switching sides survives a restart
-             * without erasing the scenario's canonical hierarchy.
              */
+
             dynastyAllegiancePersistence.loadInto(
                     dynastyAllegiances
             );
@@ -487,12 +533,8 @@ public final class SocietyStructureRuntime {
              * -----------------------------------------------------
              * LANDED HOLDINGS
              * -----------------------------------------------------
-             *
-             * Holdings depend on:
-             * - loaded NPCs
-             * - organizations/titles
-             * - reconciled dynasties
              */
+
             landedHoldingPersistence.loadInto(
                     holdings
             );
@@ -547,24 +589,37 @@ public final class SocietyStructureRuntime {
              * RUNTIME POLITICAL RECONCILIATION
              * -----------------------------------------------------
              *
-             * IMPORTANT ORDERING:
+             * This must occur before strict integrity validation.
              *
-             * This MUST run before the strict political integrity audit.
-             *
-             * Older saves can legitimately contain a holding whose holder
-             * later died during simulated history. That is not scenario
-             * authoring corruption; it is stale runtime political state.
-             *
-             * We repair that state first, then let the strict audit verify
-             * that the resulting structure is valid.
+             * A world that has been simulated for years may legitimately
+             * contain old political records referring to NPCs who have
+             * since died. Reconciliation converts that historical runtime
+             * transition into the current political state.
              */
             reconcile();
+
+            if (lastDynastyLeadershipReconciliationReport != null
+                    && lastDynastyLeadershipReconciliationReport.changedAnything()) {
+
+                KnownWorld.LOGGER.info(
+                        "Dynasty leadership reconciliation: examined={}, deadHeads={}, headsAdvanced={}, storedHeir={}, titleLaw={}, vacant={}, deadHeirsCleared={}, heirsRecomputed={}, events={}.",
+                        lastDynastyLeadershipReconciliationReport.dynastiesExamined(),
+                        lastDynastyLeadershipReconciliationReport.deadHeadsFound(),
+                        lastDynastyLeadershipReconciliationReport.headsAdvanced(),
+                        lastDynastyLeadershipReconciliationReport.advancedFromStoredHeir(),
+                        lastDynastyLeadershipReconciliationReport.advancedFromLinkedTitleLaw(),
+                        lastDynastyLeadershipReconciliationReport.headsVacated(),
+                        lastDynastyLeadershipReconciliationReport.deadHeirsCleared(),
+                        lastDynastyLeadershipReconciliationReport.heirsRecomputed(),
+                        lastDynastyLeadershipReconciliationReport.eventsCreated()
+                );
+            }
 
             if (lastDeadHolderReconciliationReport != null
                     && lastDeadHolderReconciliationReport.changedAnything()) {
 
                 KnownWorld.LOGGER.info(
-                        "Dead holding-holder reconciliation: activeExamined={}, deadFound={}, resolved={}, byTitle={}, byDynastyHeir={}, byDynastyHead={}, vacant={}, titleTransfers={}, dynastyHeadsAdvanced={}, dynastyHeirsCleared={}.",
+                        "Dead holding-holder reconciliation: activeExamined={}, deadFound={}, resolved={}, byTitle={}, byDynastyHeir={}, byDynastyHead={}, vacant={}, titleTransfers={}.",
                         lastDeadHolderReconciliationReport.activeHoldingsExamined(),
                         lastDeadHolderReconciliationReport.deadHoldersFound(),
                         lastDeadHolderReconciliationReport.resolved(),
@@ -572,9 +627,7 @@ public final class SocietyStructureRuntime {
                         lastDeadHolderReconciliationReport.resolvedFromDynastyHeir(),
                         lastDeadHolderReconciliationReport.resolvedFromDynastyHead(),
                         lastDeadHolderReconciliationReport.madeVacant(),
-                        lastDeadHolderReconciliationReport.linkedTitleTransfers(),
-                        lastDeadHolderReconciliationReport.dynastyHeadsAdvanced(),
-                        lastDeadHolderReconciliationReport.dynastyHeirsCleared()
+                        lastDeadHolderReconciliationReport.linkedTitleTransfers()
                 );
             }
 
@@ -597,22 +650,10 @@ public final class SocietyStructureRuntime {
 
             /*
              * -----------------------------------------------------
-             * 19.0E.2 POLITICAL STRUCTURE INTEGRITY
+             * POLITICAL STRUCTURE INTEGRITY
              * -----------------------------------------------------
-             *
-             * Structural errors are fatal.
-             *
-             * Warnings and information are intentionally non-fatal:
-             * - multiple capital labels may be legitimate at different
-             *   territorial layers;
-             * - current owner may differ from de-jure owner;
-             * - current allegiance may differ from de-jure allegiance;
-             * - civic/Essosi territory may not have a dynasty owner.
-             *
-             * A dead current holder remains an error. We do not weaken
-             * that invariant; the reconciliation stage above must repair
-             * legitimate historical transitions before this audit runs.
              */
+
             lastPoliticalStructureReport =
                     politicalStructureIntegrity.auditStrict();
 
@@ -626,12 +667,7 @@ public final class SocietyStructureRuntime {
             );
 
             /*
-             * Persist the repaired state immediately.
-             *
-             * This is particularly important for migration from older
-             * saves: once a dead-holder projection has been repaired,
-             * the next restart should load the corrected political state
-             * directly rather than needing to rediscover it.
+             * Persist repaired migration state immediately.
              */
             simulation.save();
 
@@ -653,12 +689,10 @@ public final class SocietyStructureRuntime {
         try {
 
             /*
-             * Reconcile again immediately before persistence.
+             * Permanent safety boundary.
              *
-             * This gives us another permanent safety boundary:
-             * if an NPC died during the current play session, stale
-             * landed-holder state is corrected before society state
-             * reaches disk.
+             * No known dead political projection should be persisted merely
+             * because a death-time hook was missed.
              */
             reconcile();
 

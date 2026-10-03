@@ -7,11 +7,12 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.family.CharacterGenerationService;
-import dev.dtzudontsay.knownworld.simulation.npc.formation.ChildFormationService;
 import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageManager;
 import dev.dtzudontsay.knownworld.simulation.npc.family.MarriageRecord;
+import dev.dtzudontsay.knownworld.simulation.npc.formation.ChildFormationService;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
+import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 import dev.dtzudontsay.knownworld.simulation.social.succession.SuccessionService;
 import dev.dtzudontsay.knownworld.simulation.time.CampaignCalendar;
 
@@ -146,10 +147,6 @@ public final class LifeCycleService {
                 simulationTick
         );
 
-        /*
-         * Upbringing performs actual work only when a child reaches
-         * a new age year.
-         */
         formation.onNewCampaignDay();
 
         processNaturalDeaths(
@@ -404,13 +401,6 @@ public final class LifeCycleService {
                     calendar.absoluteDay()
             );
 
-            /*
-             * 18F:
-             *
-             * After biological creation/profile generation and after
-             * the exact birth day is registered, create the social /
-             * cultural / religious formation state.
-             */
             formation.initializeAtBirth(
                     child.id(),
                     pregnancy.mother(),
@@ -509,10 +499,35 @@ public final class LifeCycleService {
                 calendar.absoluteDay()
         );
 
+        /*
+         * First transfer ordinary hereditary titles.
+         */
         succession.handleDeath(
                 npc.id(),
                 simulationTick
         );
+
+        /*
+         * Then reconcile the wider political projections:
+         *
+         * - dynasty head/heir;
+         * - landed holding holder;
+         * - linked political state.
+         *
+         * The society runtime starts after NpcSimulation, so a null check
+         * keeps lifecycle startup robust while still making normal runtime
+         * deaths immediate.
+         */
+        SocietyStructureRuntime society =
+                SocietyStructureRuntime.getNullable();
+
+        if (society != null) {
+
+            society.onNpcDeath(
+                    npc.id(),
+                    simulationTick
+            );
+        }
 
         if (spouse != null) {
 

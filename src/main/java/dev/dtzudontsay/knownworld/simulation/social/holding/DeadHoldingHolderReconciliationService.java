@@ -21,33 +21,28 @@ import java.util.Optional;
  * is no longer alive.
  *
  * -------------------------------------------------------------
- * WHY THIS EXISTS
+ * RESPONSIBILITY
  * -------------------------------------------------------------
  *
- * Scenario data describes the political world at the scenario
- * starting point.
+ * This service only reconciles holding/title projections.
  *
- * Persisted runtime state describes what the simulation has become.
+ * It deliberately does NOT change:
  *
- * Once a holder dies, authored scenario-start ownership MUST NOT
- * simply be reapplied. Otherwise a long-running world would keep
- * restoring dead historical rulers whenever it starts.
+ * - dynasty head;
+ * - dynasty heir;
+ * - dynasty succession law;
+ * - de-jure ownership;
+ * - current owner dynasty.
  *
- * This service therefore repairs runtime political state using only
- * runtime information that already has explicit succession meaning.
+ * Dynasty leadership is handled by
+ * DynastyLeadershipReconciliationService.
  *
  * Resolution priority:
  *
- * 1. A living active holder of the holding's linked title.
- * 2. The owning dynasty's explicitly stored heir.
- * 3. The owning dynasty's living current head.
- * 4. No supported successor -> leave the holding vacant.
- *
- * We intentionally DO NOT guess primogeniture, gender preference,
- * legitimacy, elective law, seniority, partition, etc. Those rules
- * belong in the future succession/government-law system.
- *
- * A vacant holding is preferable to silently inventing a ruler.
+ * 1. Living active holder of the holding's linked title.
+ * 2. Owning dynasty's explicitly stored living heir.
+ * 3. Owning dynasty's living current head.
+ * 4. No supported successor -> holding becomes vacant.
  */
 public final class DeadHoldingHolderReconciliationService {
 
@@ -90,16 +85,6 @@ public final class DeadHoldingHolderReconciliationService {
                 );
     }
 
-    /**
-     * Repairs all active holdings that currently reference a dead NPC.
-     *
-     * The operation is deterministic and idempotent:
-     *
-     * - a valid living holder is never touched;
-     * - once a dead holder has been replaced, another pass does nothing;
-     * - an unresolved dead holder becomes a vacancy rather than remaining
-     *   structurally invalid.
-     */
     public Report reconcileAll() {
 
         int examined =
@@ -121,12 +106,6 @@ public final class DeadHoldingHolderReconciliationService {
                 0;
 
         int titleTransfers =
-                0;
-
-        int dynastyHeadsAdvanced =
-                0;
-
-        int dynastyHeirsCleared =
                 0;
 
         for (
@@ -159,9 +138,8 @@ public final class DeadHoldingHolderReconciliationService {
                             );
 
             /*
-             * Missing NPC references are handled by the normal structural
-             * integrity audit. This service is specifically responsible
-             * for the "known NPC but now dead" case.
+             * Missing references remain an integrity-audit problem.
+             * This service only repairs known NPCs that subsequently died.
              */
             if (previousState == null) {
                 continue;
@@ -193,7 +171,8 @@ public final class DeadHoldingHolderReconciliationService {
 
                 KnownWorld.LOGGER.warn(
                         "Cleared dead holder {} from holding {} [{}]; no supported runtime successor was available.",
-                        previousState.identity().fullName(),
+                        previousState.identity()
+                                .fullName(),
                         holding.name(),
                         holding.authoredId()
                 );
@@ -220,37 +199,6 @@ public final class DeadHoldingHolderReconciliationService {
                         resolvedFromDynastyHead++;
 
                 case NONE -> {
-                    /*
-                     * Impossible here because successor != null.
-                     */
-                }
-            }
-
-            Dynasty ownerDynasty =
-                    holding.ownerDynastyId() == null
-                            ? null
-                            : dynasties.find(
-                                    holding.ownerDynastyId()
-                            )
-                            .orElse(
-                                    null
-                            );
-
-            if (ownerDynasty != null) {
-
-                HeadAdvanceResult headResult =
-                        advanceDynastyLeadershipIfAppropriate(
-                                ownerDynasty,
-                                previousHolder,
-                                successor
-                        );
-
-                if (headResult.headAdvanced()) {
-                    dynastyHeadsAdvanced++;
-                }
-
-                if (headResult.heirCleared()) {
-                    dynastyHeirsCleared++;
                 }
             }
 
@@ -281,12 +229,20 @@ public final class DeadHoldingHolderReconciliationService {
                     "Reconciled dead holding holder: {} [{}] {} -> {} via {}.",
                     holding.name(),
                     holding.authoredId(),
-                    previousState.identity().fullName(),
+                    previousState.identity()
+                            .fullName(),
                     successorName,
                     resolution.source()
             );
         }
 
+        /*
+         * The final two zero values are retained for compatibility with
+         * existing reporting/debug output from the previous batch.
+         *
+         * They are intentionally always zero now because this service no
+         * longer owns dynasty leadership.
+         */
         return new Report(
                 examined,
                 deadHolders,
@@ -295,8 +251,8 @@ public final class DeadHoldingHolderReconciliationService {
                 resolvedFromDynastyHead,
                 madeVacant,
                 titleTransfers,
-                dynastyHeadsAdvanced,
-                dynastyHeirsCleared
+                0,
+                0
         );
     }
 
@@ -305,15 +261,6 @@ public final class DeadHoldingHolderReconciliationService {
             NpcId deadHolder
     ) {
 
-        /*
-         * ---------------------------------------------------------
-         * 1. LINKED TITLE
-         * ---------------------------------------------------------
-         *
-         * A title may already have been transferred by some other
-         * simulation system. If so, that is stronger evidence than
-         * deriving anything from a dynasty.
-         */
         Optional<NpcId> titleSuccessor =
                 livingLinkedTitleHolder(
                         holding,
@@ -328,14 +275,6 @@ public final class DeadHoldingHolderReconciliationService {
             );
         }
 
-        /*
-         * ---------------------------------------------------------
-         * 2/3. DYNASTIC SUCCESSION
-         * ---------------------------------------------------------
-         *
-         * Only use explicit runtime dynasty leadership information.
-         * Do not infer primogeniture from genealogy here.
-         */
         DynastyId ownerDynastyId =
                 holding.ownerDynastyId();
 
@@ -429,7 +368,7 @@ public final class DeadHoldingHolderReconciliationService {
                                                 TitleAssignment::grantedTick
                                         )
                                         .reversed()
-                                        .thenComparing(
+                                        .thenComparingLong(
                                                 assignment ->
                                                         assignment.holder()
                                                                 .value()
@@ -502,60 +441,6 @@ public final class DeadHoldingHolderReconciliationService {
         return true;
     }
 
-    /**
-     * If the dead holding holder was also the owning dynasty's current
-     * head, move the head to the resolved successor.
-     *
-     * If that successor was the stored heir, clear the heir slot.
-     *
-     * We deliberately do not invent the NEXT heir here. That requires
-     * actual succession-law evaluation and belongs to the later
-     * succession system.
-     */
-    private HeadAdvanceResult advanceDynastyLeadershipIfAppropriate(
-            Dynasty dynasty,
-            NpcId deadHolder,
-            NpcId successor
-    ) {
-
-        boolean headAdvanced =
-                false;
-
-        boolean heirCleared =
-                false;
-
-        if (deadHolder.equals(
-                dynasty.head()
-        )) {
-
-            dynasties.setHead(
-                    dynasty.id(),
-                    successor
-            );
-
-            headAdvanced =
-                    true;
-        }
-
-        if (successor.equals(
-                dynasty.heir()
-        )) {
-
-            dynasties.setHeir(
-                    dynasty.id(),
-                    null
-            );
-
-            heirCleared =
-                    true;
-        }
-
-        return new HeadAdvanceResult(
-                headAdvanced,
-                heirCleared
-        );
-    }
-
     private boolean isLivingCandidate(
             NpcId candidate,
             NpcId deadHolder
@@ -607,12 +492,6 @@ public final class DeadHoldingHolderReconciliationService {
                     ResolutionSource.NONE
             );
         }
-    }
-
-    private record HeadAdvanceResult(
-            boolean headAdvanced,
-            boolean heirCleared
-    ) {
     }
 
     public record Report(
