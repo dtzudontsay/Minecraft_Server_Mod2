@@ -3,8 +3,7 @@ package dev.dtzudontsay.knownworld.simulation.npc.social;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
-import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemory;
-import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryMeaningService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterDisposition;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
@@ -21,20 +20,10 @@ import java.util.SplittableRandom;
 /**
  * Chooses an NPC's social action toward another NPC.
  *
- * This is deliberately separate from SocialInteractionService:
+ * SIM 07:
  *
- * SocialActionDecisionService
- *      decides WHAT the actor wants to do.
- *
- * SocialInteractionService
- *      executes what happened.
- *
- * SocialReactionService
- *      decides HOW strongly the target experiences it.
- *
- * This separation is important because later the same action can be selected
- * from local physical AI, abstract simulation, political AI, dialogue, court
- * events, military contexts, etc.
+ * Decisions now distinguish positive from negative remembered history instead
+ * of treating every important memory as emotionally equivalent.
  */
 public final class SocialActionDecisionService {
 
@@ -46,14 +35,14 @@ public final class SocialActionDecisionService {
 
     private final NpcRelationshipManager relationships;
 
-    private final NpcMemoryManager memories;
+    private final NpcMemoryMeaningService memoryMeaning;
 
     public SocialActionDecisionService(
             NpcRegistry registry,
             CharacterProfileManager profiles,
             CharacterPsychologyService psychology,
             NpcRelationshipManager relationships,
-            NpcMemoryManager memories
+            NpcMemoryMeaningService memoryMeaning
     ) {
 
         this.registry =
@@ -80,10 +69,10 @@ public final class SocialActionDecisionService {
                         "relationships"
                 );
 
-        this.memories =
+        this.memoryMeaning =
                 Objects.requireNonNull(
-                        memories,
-                        "memories"
+                        memoryMeaning,
+                        "memoryMeaning"
                 );
     }
 
@@ -171,6 +160,13 @@ public final class SocialActionDecisionService {
                         ? 0.0
                         : relationship.familiarity();
 
+        NpcMemoryMeaningService.Meaning remembered =
+                memoryMeaning.toward(
+                        actor,
+                        target,
+                        currentTick
+                );
+
         double intervention =
                 tendency(
                         tendencies,
@@ -255,42 +251,11 @@ public final class SocialActionDecisionService {
                         )
                 );
 
-        double vengeanceValue =
-                unitSigned(
-                        profile.characterValue(
-                                CharacterValue.VENGEANCE
-                        )
-                );
-
-        double mercyValue =
-                unitSigned(
-                        profile.characterValue(
-                                CharacterValue.MERCY
-                        )
-                );
-
         double honorCulture =
                 unitSigned(
                         profile.characterValue(
                                 CharacterValue.HONOR_CULTURE
                         )
-                );
-
-        /*
-         * Memories do not currently contain emotional valence.
-         *
-         * Therefore memory salience is deliberately NOT interpreted as
-         * "good" or "bad."
-         *
-         * Instead, memories make the existing relationship more behaviorally
-         * relevant. Once memories gain structured cause/effect metadata, this
-         * layer can reason about betrayal, rescue, insult, death, etc.
-         */
-        double memorySalience =
-                relatedMemorySalience(
-                        actor,
-                        target,
-                        currentTick
                 );
 
         double positiveBond =
@@ -314,9 +279,18 @@ public final class SocialActionDecisionService {
                                 * 0.50
                 );
 
-        /*
-         * HELP
-         */
+        double rememberedPositive =
+                remembered.positive();
+
+        double rememberedNegative =
+                remembered.negative();
+
+        double rememberedBetrayal =
+                remembered.betrayal();
+
+        double rememberedThreat =
+                remembered.threat();
+
         double help =
                 0.45
                         +
@@ -340,13 +314,16 @@ public final class SocialActionDecisionService {
                                 positiveBond
                         )
                                 * 0.80
+                        +
+                        rememberedPositive
+                                * 0.55
                         -
                         negativeBond
-                                * 0.45;
+                                * 0.45
+                        -
+                        rememberedNegative
+                                * 0.40;
 
-        /*
-         * PRAISE
-         */
         double praise =
                 0.40
                         +
@@ -370,13 +347,16 @@ public final class SocialActionDecisionService {
                                 respect
                         )
                                 * 0.55
+                        +
+                        rememberedPositive
+                                * 0.40
                         -
                         negativeBond
-                                * 0.30;
+                                * 0.30
+                        -
+                        rememberedNegative
+                                * 0.25;
 
-        /*
-         * INSULT
-         */
         double insult =
                 0.12
                         +
@@ -394,6 +374,12 @@ public final class SocialActionDecisionService {
                         +
                         negativeBond
                                 * 0.85
+                        +
+                        rememberedNegative
+                                * 0.65
+                        +
+                        rememberedBetrayal
+                                * 0.30
                         -
                         mercy
                                 * 0.35
@@ -401,9 +387,6 @@ public final class SocialActionDecisionService {
                         empathy
                                 * 0.20;
 
-        /*
-         * THREATEN
-         */
         double threaten =
                 0.06
                         +
@@ -422,22 +405,18 @@ public final class SocialActionDecisionService {
                         negativeBond
                                 * 0.65
                         +
-                        Math.max(
-                                0.0,
-                                fear
-                        )
-                                * 0.15
+                        rememberedNegative
+                                * 0.45
+                        +
+                        rememberedBetrayal
+                                * 0.35
+                        +
+                        rememberedThreat
+                                * 0.18
                         -
                         mercy
                                 * 0.25;
 
-        /*
-         * BETRAY
-         *
-         * This intentionally remains rare.
-         *
-         * Betrayal should not be a normal daily interaction.
-         */
         double betray =
                 0.01
                         +
@@ -459,6 +438,12 @@ public final class SocialActionDecisionService {
                         +
                         negativeBond
                                 * 0.20
+                        +
+                        rememberedNegative
+                                * 0.12
+                        -
+                        rememberedPositive
+                                * 0.20
                         -
                         loyalDuty
                                 * 0.28
@@ -470,42 +455,7 @@ public final class SocialActionDecisionService {
                                 * 0.15;
 
         /*
-         * Existing meaningful history makes an established relationship more
-         * likely to continue along its existing direction.
-         */
-        if (memorySalience > 0.0) {
-
-            if (positiveBond > 0.0) {
-
-                help +=
-                        memorySalience
-                                * positiveBond
-                                * 0.35;
-
-                praise +=
-                        memorySalience
-                                * positiveBond
-                                * 0.30;
-
-            } else if (positiveBond < 0.0) {
-
-                insult +=
-                        memorySalience
-                                * -positiveBond
-                                * 0.30;
-
-                threaten +=
-                        memorySalience
-                                * -positiveBond
-                                * 0.22;
-            }
-        }
-
-        /*
-         * Extremely low familiarity suppresses high-stakes betrayal.
-         *
-         * It makes little sense to "betray" somebody with whom the actor has
-         * virtually no established connection.
+         * Betrayal is still not a normal interaction between strangers.
          */
         betray *=
                 0.15
@@ -514,7 +464,7 @@ public final class SocialActionDecisionService {
                                 * 0.85;
 
         /*
-         * Fear can discourage direct confrontation.
+         * Fear suppresses direct confrontation.
          */
         insult *=
                 1.0
@@ -582,80 +532,11 @@ public final class SocialActionDecisionService {
                 insult,
                 threaten,
                 betray,
-                memorySalience
-        );
-    }
-
-    private double relatedMemorySalience(
-            NpcId actor,
-            NpcId target,
-            long currentTick
-    ) {
-
-        double total =
-                0.0;
-
-        int relevant =
-                0;
-
-        for (
-                NpcMemory memory :
-                memories.memoriesOf(
-                        actor
-                )
-        ) {
-
-            if (memory.relatedNpc() == null
-                    || !memory.relatedNpc()
-                    .equals(
-                            target
-                    )) {
-
-                continue;
-            }
-
-            long age =
-                    Math.max(
-                            0L,
-                            currentTick
-                                    - memory.createdTick()
-                    );
-
-            /*
-             * A very cheap recency curve.
-             *
-             * We do not need expensive historical processing during every
-             * social decision.
-             */
-            double recency =
-                    1.0
-                            /
-                            (
-                                    1.0
-                                            +
-                                            age
-                                                    / 24000.0
-                            );
-
-            total +=
-                    memory.importance()
-                            * (
-                            0.40
-                                    +
-                                    recency
-                                            * 0.60
-                    );
-
-            relevant++;
-
-            if (relevant >= 8) {
-                break;
-            }
-        }
-
-        return clampUnit(
-                total
-                        / 3.0
+                remembered.totalSalience(),
+                rememberedPositive,
+                rememberedNegative,
+                rememberedBetrayal,
+                rememberedThreat
         );
     }
 
@@ -903,7 +784,11 @@ public final class SocialActionDecisionService {
             double insultWeight,
             double threatenWeight,
             double betrayWeight,
-            double memorySalience
+            double memorySalience,
+            double positiveMemory,
+            double negativeMemory,
+            double betrayalMemory,
+            double threatMemory
     ) {
     }
 }

@@ -3,6 +3,9 @@ package dev.dtzudontsay.knownworld.simulation.testing;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemory;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryMeaningService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSkill;
@@ -25,11 +28,17 @@ public final class SimulationReportService {
 
     private final SocialContextService contexts;
 
+    private final NpcMemoryManager memories;
+
+    private final NpcMemoryMeaningService memoryMeaning;
+
     public SimulationReportService(
             NpcRegistry registry,
             NpcRelationshipManager relationships,
             CharacterProfileManager profiles,
-            SocialContextService contexts
+            SocialContextService contexts,
+            NpcMemoryManager memories,
+            NpcMemoryMeaningService memoryMeaning
     ) {
 
         this.registry =
@@ -54,6 +63,18 @@ public final class SimulationReportService {
                 Objects.requireNonNull(
                         contexts,
                         "contexts"
+                );
+
+        this.memories =
+                Objects.requireNonNull(
+                        memories,
+                        "memories"
+                );
+
+        this.memoryMeaning =
+                Objects.requireNonNull(
+                        memoryMeaning,
+                        "memoryMeaning"
                 );
     }
 
@@ -232,11 +253,6 @@ public final class SimulationReportService {
                         )
                         .toList();
 
-        SkillReport skills =
-                buildSkillReport(
-                        population
-                );
-
         return new Report(
                 population.size(),
                 alive,
@@ -265,7 +281,12 @@ public final class SimulationReportService {
                 ),
                 strongestPositive,
                 strongestNegative,
-                skills
+                buildSkillReport(
+                        population
+                ),
+                buildMemoryReport(
+                        cohort
+                )
         );
     }
 
@@ -374,6 +395,89 @@ public final class SimulationReportService {
         );
     }
 
+    private MemoryReport buildMemoryReport(
+            Set<NpcId> cohort
+    ) {
+
+        int semantic =
+                0;
+
+        int positive =
+                0;
+
+        int negative =
+                0;
+
+        int betrayal =
+                0;
+
+        int threat =
+                0;
+
+        for (
+                NpcMemory memory :
+                memories.all()
+        ) {
+
+            if (!cohort.contains(
+                    memory.owner()
+            )) {
+
+                continue;
+            }
+
+            if (memory.factKey() == null) {
+
+                continue;
+            }
+
+            NpcMemoryMeaningService.MeaningContribution interpretation =
+                    memoryMeaning.interpret(
+                            memory
+                    );
+
+            if (interpretation
+                    == NpcMemoryMeaningService.MeaningContribution.NEUTRAL) {
+
+                continue;
+            }
+
+            semantic++;
+
+            if (interpretation.valence()
+                    > 0.0) {
+
+                positive++;
+            }
+
+            if (interpretation.valence()
+                    < 0.0) {
+
+                negative++;
+            }
+
+            if (interpretation.betrayal()
+                    > 0.0) {
+
+                betrayal++;
+            }
+
+            if (interpretation.threat()
+                    > 0.0) {
+
+                threat++;
+            }
+        }
+
+        return new MemoryReport(
+                semantic,
+                positive,
+                negative,
+                betrayal,
+                threat
+        );
+    }
+
     private RelationshipSummary summary(
             NpcRelationship relation
     ) {
@@ -457,6 +561,15 @@ public final class SimulationReportService {
     ) {
     }
 
+    public record MemoryReport(
+            int semanticMemories,
+            int positiveMemories,
+            int negativeMemories,
+            int betrayalMemories,
+            int threatMemories
+    ) {
+    }
+
     public record Report(
             int population,
             long alive,
@@ -473,7 +586,8 @@ public final class SimulationReportService {
             double averageFear,
             List<RelationshipSummary> strongestPositive,
             List<RelationshipSummary> strongestNegative,
-            SkillReport skills
+            SkillReport skills,
+            MemoryReport memories
     ) {
     }
 }

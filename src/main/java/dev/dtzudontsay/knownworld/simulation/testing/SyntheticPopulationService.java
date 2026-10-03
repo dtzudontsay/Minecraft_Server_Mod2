@@ -28,10 +28,13 @@ import java.util.Random;
  *
  * Synthetic NPCs are ordinary persistent runtime NPCs.
  *
- * SIM 05:
+ * SIM 06:
  *
- * They now receive genuine Organization/NpcAffiliation structure instead of
- * relying on matching surnames for social encounters.
+ * Sandbox houses and households remain genuine persistent organizations.
+ *
+ * A shared faction now provides the controlled wider social context through
+ * which members of different noble houses can occasionally encounter one
+ * another without permitting arbitrary world-wide random contact.
  */
 public final class SyntheticPopulationService {
 
@@ -135,17 +138,24 @@ public final class SyntheticPopulationService {
                 );
 
         /*
-         * Each sandbox cohort now has a REAL persistent noble-house
-         * organization.
+         * Controlled broad context.
+         *
+         * This is NOT a fake surname shortcut. It is a real persistent
+         * organization affiliation that uses the same faction field available
+         * to ordinary runtime NPCs.
          */
+        Organization sandboxFaction =
+                organizations.create(
+                        "Sandbox Realm",
+                        OrganizationType.FACTION,
+                        null
+                );
+
         List<Organization> nobleHouses =
                 new ArrayList<>(
                         cohortCount
                 );
 
-        /*
-         * And multiple REAL household organizations inside each house.
-         */
         List<List<Organization>> households =
                 new ArrayList<>(
                         cohortCount
@@ -268,10 +278,10 @@ public final class SyntheticPopulationService {
                     );
 
             /*
-             * Physical coordinates remain deliberately far apart.
+             * Deliberately far apart in Minecraft coordinates.
              *
-             * Encounter generation must therefore be driven by simulation
-             * context, not Minecraft block proximity.
+             * Abstract social structure — not block proximity — drives this
+             * sandbox simulation.
              */
             SimulationPosition position =
                     new SimulationPosition(
@@ -319,13 +329,6 @@ public final class SyntheticPopulationService {
                             * daysPerYear
             );
 
-            /*
-             * SIM 05:
-             *
-             * The surname no longer drives encounters.
-             *
-             * These persistent affiliations do.
-             */
             affiliations.setNobleHouse(
                     npc.id(),
                     nobleHouses.get(
@@ -343,6 +346,11 @@ public final class SyntheticPopulationService {
                                     householdIndex
                             )
                             .id()
+            );
+
+            affiliations.setFaction(
+                    npc.id(),
+                    sandboxFaction.id()
             );
 
             created.add(

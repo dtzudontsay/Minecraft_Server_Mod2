@@ -26,6 +26,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.LifeCycleService;
 import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.LifeHistoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.lifecycle.PregnancyManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryMeaningService;
 import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
 import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileGenerationService;
@@ -41,6 +42,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialActionDecisionService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialContextService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterIndexService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialInteractionService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialReactionService;
@@ -121,12 +123,14 @@ public final class NpcSimulation {
     private final ChildFormationService formationService;
     private final NpcKnowledgeManager knowledgeManager;
     private final NpcMemoryManager memoryManager;
+    private final NpcMemoryMeaningService memoryMeaningService;
     private final NpcGoalManager goalManager;
     private final NpcNeedManager needManager;
     private final NpcRoutineManager routineManager;
     private final WorldEventManager eventManager;
 
     private final SocialContextService socialContextService;
+    private final SocialEncounterIndexService socialEncounterIndexService;
     private final SocialEncounterService socialEncounterService;
     private final SocialReactionService socialReactionService;
     private final SocialActionDecisionService socialActionDecisionService;
@@ -359,6 +363,11 @@ public final class NpcSimulation {
                         registry
                 );
 
+        this.memoryMeaningService =
+                new NpcMemoryMeaningService(
+                        memoryManager
+                );
+
         this.goalManager =
                 new NpcGoalManager(
                         registry
@@ -379,19 +388,18 @@ public final class NpcSimulation {
                         registry
                 );
 
-        /*
-         * SIM 05 social topology layer.
-         */
         this.socialContextService =
                 new SocialContextService(
                         affiliationManager
                 );
 
-        this.socialEncounterService =
-                new SocialEncounterService(
-                        socialContextService,
-                        relationshipManager
+        this.socialEncounterIndexService =
+                new SocialEncounterIndexService(
+                        affiliationManager
                 );
+
+        this.socialEncounterService =
+                new SocialEncounterService();
 
         this.socialReactionService =
                 new SocialReactionService(
@@ -407,7 +415,7 @@ public final class NpcSimulation {
                         profileManager,
                         psychologyService,
                         relationshipManager,
-                        memoryManager
+                        memoryMeaningService
                 );
 
         this.socialInteractionService =
@@ -527,6 +535,7 @@ public final class NpcSimulation {
         this.abstractSocialSimulationService =
                 new AbstractSocialSimulationService(
                         registry,
+                        socialEncounterIndexService,
                         socialEncounterService,
                         socialInteractionService,
                         socialActionDecisionService
@@ -545,7 +554,9 @@ public final class NpcSimulation {
                         registry,
                         relationshipManager,
                         profileManager,
-                        socialContextService
+                        socialContextService,
+                        memoryManager,
+                        memoryMeaningService
                 );
 
         this.activationManager =
@@ -683,8 +694,9 @@ public final class NpcSimulation {
                             instance;
 
                     if (simulation != null
-                            && simulation.server
-                            == server) {
+                            &&
+                            simulation.server
+                                    == server) {
 
                         simulation.tick();
                     }
@@ -702,8 +714,9 @@ public final class NpcSimulation {
                             instance;
 
                     if (simulation != null
-                            && simulation.server
-                            == server) {
+                            &&
+                            simulation.server
+                                    == server) {
 
                         simulation.save();
                     }
@@ -717,8 +730,9 @@ public final class NpcSimulation {
                             instance;
 
                     if (simulation != null
-                            && simulation.server
-                            == server) {
+                            &&
+                            simulation.server
+                                    == server) {
 
                         simulation.save();
                     }
@@ -729,8 +743,9 @@ public final class NpcSimulation {
                 server -> {
 
                     if (instance != null
-                            && instance.server
-                            == server) {
+                            &&
+                            instance.server
+                                    == server) {
 
                         instance =
                                 null;
@@ -903,6 +918,10 @@ public final class NpcSimulation {
         return memoryManager;
     }
 
+    public NpcMemoryMeaningService memoryMeaning() {
+        return memoryMeaningService;
+    }
+
     public NpcGoalManager goals() {
         return goalManager;
     }
@@ -921,6 +940,10 @@ public final class NpcSimulation {
 
     public SocialContextService socialContexts() {
         return socialContextService;
+    }
+
+    public SocialEncounterIndexService socialEncounterIndexes() {
+        return socialEncounterIndexService;
     }
 
     public SocialEncounterService socialEncounters() {
@@ -1257,9 +1280,13 @@ public final class NpcSimulation {
     private boolean shouldBootstrapScenario() {
 
         return authoredIdRegistry.isEmpty()
-                && registry.size() == 0
-                && settlementManager.size() == 0
-                && organizationManager.size() == 0
-                && titleManager.definitionCount() == 0;
+                &&
+                registry.size() == 0
+                &&
+                settlementManager.size() == 0
+                &&
+                organizationManager.size() == 0
+                &&
+                titleManager.definitionCount() == 0;
     }
 }

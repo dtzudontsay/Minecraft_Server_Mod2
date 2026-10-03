@@ -7,6 +7,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
+import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryMeaningService;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSkill;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.SkillPracticeService;
@@ -137,8 +138,10 @@ public final class SocialInteractionService {
         if (!Double.isFinite(
                 magnitude
         )
-                || magnitude <= 0.0
-                || magnitude > 1.0) {
+                ||
+                magnitude <= 0.0
+                ||
+                magnitude > 1.0) {
 
             throw new IllegalArgumentException(
                     "Social interaction magnitude must be > 0.0 and <= 1.0"
@@ -203,15 +206,6 @@ public final class SocialInteractionService {
                                 * 0.50
                 );
 
-        /*
-         * SIM 04:
-         *
-         * Performing social actions is now also experience.
-         *
-         * The progression system itself is generic and can later be invoked
-         * by combat, hunting, administration, sailing, crafting, education,
-         * medicine, trade and other gameplay systems.
-         */
         SkillPracticeService.Result practiceResult =
                 skillPractice.practice(
                         actor,
@@ -227,13 +221,15 @@ public final class SocialInteractionService {
         double importance =
                 clampUnit(
                         type.baseImportance()
-                                * (
-                                0.50
-                                        +
-                                        magnitude
-                                                * 0.50
-                        )
-                                * reaction.importanceMultiplier()
+                                *
+                                (
+                                        0.50
+                                                +
+                                                magnitude
+                                                        * 0.50
+                                )
+                                *
+                                reaction.importanceMultiplier()
                 );
 
         String actorName =
@@ -251,6 +247,11 @@ public final class SocialInteractionService {
                         + " "
                         + targetName
                         + ".";
+
+        String memoryFactKey =
+                memoryFactKey(
+                        type
+                );
 
         boolean recordHistory =
                 historyMode
@@ -278,23 +279,38 @@ public final class SocialInteractionService {
                             importance,
                             actor,
                             target,
-                            null,
-                            null
+                            memoryFactKey,
+                            Double.toString(
+                                    magnitude
+                            )
                     );
 
+            /*
+             * Target remembers what the actor did TO them.
+             *
+             * This is the memory that should strongly influence future
+             * behavior toward the actor.
+             */
             memories.remember(
                     target,
-                    NpcMemoryType.PERSONAL_EXPERIENCE,
+                    NpcMemoryType.SOCIAL_INTERACTION,
                     summary,
                     importance,
                     actor,
-                    null,
+                    memoryFactKey,
                     tick
             );
 
+            /*
+             * Actor also remembers having done it.
+             *
+             * The semantic key is the same factual event. Interpretation is
+             * always from the memory owner's perspective when decision systems
+             * consume memories.
+             */
             memories.remember(
                     actor,
-                    NpcMemoryType.PERSONAL_EXPERIENCE,
+                    NpcMemoryType.SOCIAL_INTERACTION,
                     "I "
                             + type.summaryVerb()
                             + " "
@@ -305,7 +321,7 @@ public final class SocialInteractionService {
                                     * 0.75
                     ),
                     target,
-                    null,
+                    memoryFactKey,
                     tick
             );
         }
@@ -324,6 +340,31 @@ public final class SocialInteractionService {
                 practiceResult,
                 recordHistory
         );
+    }
+
+    private static String memoryFactKey(
+            SocialInteractionType type
+    ) {
+
+        return switch (
+                type
+                ) {
+
+            case HELP ->
+                    NpcMemoryMeaningService.SOCIAL_HELP;
+
+            case PRAISE ->
+                    NpcMemoryMeaningService.SOCIAL_PRAISE;
+
+            case INSULT ->
+                    NpcMemoryMeaningService.SOCIAL_INSULT;
+
+            case THREATEN ->
+                    NpcMemoryMeaningService.SOCIAL_THREATEN;
+
+            case BETRAY ->
+                    NpcMemoryMeaningService.SOCIAL_BETRAY;
+        };
     }
 
     private static CharacterSkill practicedSkill(

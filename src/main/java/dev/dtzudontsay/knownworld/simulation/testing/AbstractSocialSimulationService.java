@@ -4,6 +4,8 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialActionDecisionService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterIndex;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterIndexService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialHistoryMode;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialInteractionService;
@@ -15,10 +17,10 @@ import java.util.SplittableRandom;
 /**
  * Campaign-scale/off-screen social simulation.
  *
- * SIM 05:
+ * SIM 06:
  *
- * Target selection is now delegated to SocialEncounterService and therefore
- * uses persistent social structure instead of synthetic surnames.
+ * Social candidate lookup now uses a per-day index rather than repeatedly
+ * scanning the full supplied population for every actor.
  */
 public final class AbstractSocialSimulationService {
 
@@ -26,6 +28,8 @@ public final class AbstractSocialSimulationService {
             0.18;
 
     private final NpcRegistry registry;
+
+    private final SocialEncounterIndexService encounterIndexes;
 
     private final SocialEncounterService encounters;
 
@@ -35,6 +39,7 @@ public final class AbstractSocialSimulationService {
 
     public AbstractSocialSimulationService(
             NpcRegistry registry,
+            SocialEncounterIndexService encounterIndexes,
             SocialEncounterService encounters,
             SocialInteractionService interactions,
             SocialActionDecisionService decisions
@@ -44,6 +49,12 @@ public final class AbstractSocialSimulationService {
                 Objects.requireNonNull(
                         registry,
                         "registry"
+                );
+
+        this.encounterIndexes =
+                Objects.requireNonNull(
+                        encounterIndexes,
+                        "encounterIndexes"
                 );
 
         this.encounters =
@@ -106,6 +117,17 @@ public final class AbstractSocialSimulationService {
             );
         }
 
+        /*
+         * Built once for this simulated day.
+         *
+         * Later, when settlement populations and active campaign groups become
+         * very large, the same concept can be cached or incrementally updated.
+         */
+        SocialEncounterIndex encounterIndex =
+                encounterIndexes.build(
+                        alive
+                );
+
         int eligibleActors =
                 alive.size();
 
@@ -146,15 +168,10 @@ public final class AbstractSocialSimulationService {
 
             attempted++;
 
-            /*
-             * SIM 05:
-             *
-             * Encounter selection now comes from durable social context.
-             */
             NpcState target =
                     encounters.chooseTarget(
                             actor,
-                            alive,
+                            encounterIndex,
                             random
                     );
 
