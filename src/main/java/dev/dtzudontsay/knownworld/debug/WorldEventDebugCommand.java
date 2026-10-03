@@ -8,6 +8,7 @@ import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEvent;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEventId;
+import dev.dtzudontsay.knownworld.simulation.event.WorldEventManager;
 import dev.dtzudontsay.knownworld.simulation.event.WorldEventType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
@@ -38,6 +39,11 @@ public final class WorldEventDebugCommand {
                                                 "kwevent"
                                         )
 
+                                        /*
+                                         * -------------------------------------------------
+                                         * LIST
+                                         * -------------------------------------------------
+                                         */
                                         .then(
                                                 Commands.literal(
                                                                 "list"
@@ -47,6 +53,27 @@ public final class WorldEventDebugCommand {
                                                         )
                                         )
 
+                                        /*
+                                         * -------------------------------------------------
+                                         * STATS
+                                         *
+                                         * SIM 09A bounded-history diagnostics.
+                                         * -------------------------------------------------
+                                         */
+                                        .then(
+                                                Commands.literal(
+                                                                "stats"
+                                                        )
+                                                        .executes(
+                                                                WorldEventDebugCommand::executeStats
+                                                        )
+                                        )
+
+                                        /*
+                                         * -------------------------------------------------
+                                         * INSPECT
+                                         * -------------------------------------------------
+                                         */
                                         .then(
                                                 Commands.literal(
                                                                 "inspect"
@@ -64,6 +91,11 @@ public final class WorldEventDebugCommand {
                                                         )
                                         )
 
+                                        /*
+                                         * -------------------------------------------------
+                                         * FACT
+                                         * -------------------------------------------------
+                                         */
                                         .then(
                                                 Commands.literal(
                                                                 "fact"
@@ -114,6 +146,7 @@ public final class WorldEventDebugCommand {
     private static int executeFact(
             CommandContext<CommandSourceStack> context
     ) {
+
         CommandSourceStack source =
                 context.getSource();
 
@@ -223,9 +256,90 @@ public final class WorldEventDebugCommand {
         return 1;
     }
 
+    private static int executeStats(
+            CommandContext<CommandSourceStack> context
+    ) {
+
+        WorldEventManager manager =
+                NpcSimulation.get()
+                        .events();
+
+        WorldEventManager.Stats stats =
+                manager.stats();
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        String.format(
+                                                Locale.ROOT,
+                                                "World-event journal | retained=%d routine=%d landmarks=%d",
+                                                stats.retained(),
+                                                stats.routine(),
+                                                stats.landmarks()
+                                        )
+                                ),
+                        false
+                );
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        String.format(
+                                                Locale.ROOT,
+                                                "Event limits | routine=%d landmark=%d total=%d",
+                                                stats.routineLimit(),
+                                                stats.landmarkLimit(),
+                                                stats.totalLimit()
+                                        )
+                                ),
+                        false
+                );
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "Detailed events discarded since startup="
+                                                + stats.discardedSinceStartup()
+                                ),
+                        false
+                );
+
+        boolean valid =
+                stats.retained()
+                        <= stats.totalLimit()
+                        &&
+                        stats.routine()
+                                <= stats.routineLimit()
+                        &&
+                        stats.landmarks()
+                                <= stats.landmarkLimit();
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "Bounded-history invariant="
+                                                + (
+                                                valid
+                                                        ? "PASS"
+                                                        : "FAIL"
+                                        )
+                                ),
+                        false
+                );
+
+        return valid
+                ? 1
+                : 0;
+    }
+
     private static int executeList(
             CommandContext<CommandSourceStack> context
     ) {
+
         var events =
                 NpcSimulation.get()
                         .events()
@@ -262,7 +376,10 @@ public final class WorldEventDebugCommand {
                         false
                 );
 
-        for (WorldEvent event : events) {
+        for (
+                WorldEvent event :
+                events
+        ) {
 
             context.getSource()
                     .sendSuccess(
@@ -285,6 +402,7 @@ public final class WorldEventDebugCommand {
     private static int executeInspect(
             CommandContext<CommandSourceStack> context
     ) {
+
         WorldEventId id =
                 new WorldEventId(
                         LongArgumentType.getLong(
@@ -308,8 +426,9 @@ public final class WorldEventDebugCommand {
             context.getSource()
                     .sendFailure(
                             Component.literal(
-                                    "No world event exists with ID "
+                                    "No retained detailed world event exists with ID "
                                             + id
+                                            + ". It may never have existed or may have been pruned by bounded-history retention."
                             )
                     );
 
@@ -347,6 +466,22 @@ public final class WorldEventDebugCommand {
                                                         .y(),
                                                 event.position()
                                                         .z()
+                                        )
+                                ),
+                        false
+                );
+
+        context.getSource()
+                .sendSuccess(
+                        () ->
+                                Component.literal(
+                                        "Retention tier: "
+                                                + (
+                                                WorldEventManager.isLandmark(
+                                                        event
+                                                )
+                                                        ? "LANDMARK"
+                                                        : "ROUTINE"
                                         )
                                 ),
                         false

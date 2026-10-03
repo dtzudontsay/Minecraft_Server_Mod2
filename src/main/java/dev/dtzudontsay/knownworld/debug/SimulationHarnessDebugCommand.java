@@ -505,6 +505,22 @@ public final class SimulationHarnessDebugCommand {
                                                                             .sendSuccess(
                                                                                     () ->
                                                                                             Component.literal(
+                                                                                                    String.format(
+                                                                                                            Locale.ROOT,
+                                                                                                            "Stored memories | total=%d maxPerNpc=%d softLimit=%d hardLimit=%d",
+                                                                                                            memories.storedMemories(),
+                                                                                                            memories.maximumMemoriesForOneNpc(),
+                                                                                                            memories.softLimitPerNpc(),
+                                                                                                            memories.hardLimitPerNpc()
+                                                                                                    )
+                                                                                            ),
+                                                                                    false
+                                                                            );
+
+                                                                    context.getSource()
+                                                                            .sendSuccess(
+                                                                                    () ->
+                                                                                            Component.literal(
                                                                                                     "Strongest positive: "
                                                                                                             + report.strongestPositive()
                                                                                             ),
@@ -766,12 +782,8 @@ public final class SimulationHarnessDebugCommand {
                                          *
                                          * /kwsandbox npc Sim0002 Sim0001
                                          *
-                                         * Prints:
-                                         * - directional relationship
-                                         * - interpreted memories
-                                         *
-                                         * Subject = the NPC whose opinion/memory is inspected.
-                                         * Target  = the NPC they are thinking about.
+                                         * Subject = NPC whose opinion/memory is inspected.
+                                         * Target  = NPC they are thinking about.
                                          * -------------------------------------------------
                                          */
                                         .then(
@@ -945,9 +957,7 @@ public final class SimulationHarnessDebugCommand {
                                          *
                                          * /kwsandbox decision Sim0002 Sim0001
                                          *
-                                         * This does NOT perform an interaction.
-                                         * It only asks the AI what its current social
-                                         * action weights are.
+                                         * Does not perform an action.
                                          * -------------------------------------------------
                                          */
                                         .then(
@@ -1020,13 +1030,6 @@ public final class SimulationHarnessDebugCommand {
                                                                                                         return 0;
                                                                                                     }
 
-                                                                                                    /*
-                                                                                                     * Fixed deterministic seed for inspection.
-                                                                                                     *
-                                                                                                     * The displayed weights themselves are not
-                                                                                                     * random; this merely keeps the chosen preview
-                                                                                                     * action stable across repeated inspections.
-                                                                                                     */
                                                                                                     long seed =
                                                                                                             actor.id()
                                                                                                                     .value()
@@ -1142,12 +1145,13 @@ public final class SimulationHarnessDebugCommand {
     /**
      * Sandbox-native NPC resolver.
      *
-     * Accepts:
+     * Accepts generated sandbox names such as:
      *
      * Sim0001
-     * 123
      *
-     * Generated sandbox NPCs do not need authored character IDs.
+     * or permanent numeric runtime IDs such as:
+     *
+     * 22
      */
     private static NpcState findSandboxNpc(
             NpcSimulation simulation,
@@ -1158,6 +1162,7 @@ public final class SimulationHarnessDebugCommand {
                 token.trim();
 
         if (wanted.isEmpty()) {
+
             return null;
         }
 
@@ -1199,8 +1204,10 @@ public final class SimulationHarnessDebugCommand {
         } catch (
                 NumberFormatException ignored
         ) {
+
             /*
-             * Not numeric. Fall through to generated-name lookup.
+             * Not numeric.
+             * Fall through to generated-name lookup.
              */
         }
 
@@ -1220,6 +1227,7 @@ public final class SimulationHarnessDebugCommand {
                             );
 
             if (npc == null) {
+
                 continue;
             }
 

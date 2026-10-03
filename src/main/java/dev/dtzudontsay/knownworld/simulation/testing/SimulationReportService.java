@@ -285,6 +285,7 @@ public final class SimulationReportService {
                         population
                 ),
                 buildMemoryReport(
+                        population,
                         cohort
                 )
         );
@@ -396,6 +397,7 @@ public final class SimulationReportService {
     }
 
     private MemoryReport buildMemoryReport(
+            List<NpcId> population,
             Set<NpcId> cohort
     ) {
 
@@ -414,6 +416,12 @@ public final class SimulationReportService {
         int threat =
                 0;
 
+        int stored =
+                0;
+
+        int maximumForOneNpc =
+                0;
+
         for (
                 NpcMemory memory :
                 memories.all()
@@ -426,7 +434,10 @@ public final class SimulationReportService {
                 continue;
             }
 
-            if (memory.factKey() == null) {
+            stored++;
+
+            if (memory.factKey()
+                    == null) {
 
                 continue;
             }
@@ -469,12 +480,30 @@ public final class SimulationReportService {
             }
         }
 
+        for (
+                NpcId npc :
+                population
+        ) {
+
+            maximumForOneNpc =
+                    Math.max(
+                            maximumForOneNpc,
+                            memories.sizeOf(
+                                    npc
+                            )
+                    );
+        }
+
         return new MemoryReport(
                 semantic,
                 positive,
                 negative,
                 betrayal,
-                threat
+                threat,
+                stored,
+                maximumForOneNpc,
+                NpcMemoryManager.SOFT_MEMORIES_PER_OWNER,
+                NpcMemoryManager.MAX_MEMORIES_PER_OWNER
         );
     }
 
@@ -566,7 +595,11 @@ public final class SimulationReportService {
             int positiveMemories,
             int negativeMemories,
             int betrayalMemories,
-            int threatMemories
+            int threatMemories,
+            int storedMemories,
+            int maximumMemoriesForOneNpc,
+            int softLimitPerNpc,
+            int hardLimitPerNpc
     ) {
     }
 

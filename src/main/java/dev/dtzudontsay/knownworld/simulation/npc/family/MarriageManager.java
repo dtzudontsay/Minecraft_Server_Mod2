@@ -46,7 +46,7 @@ public final class MarriageManager {
             DynastyInheritanceRule rule,
             long tick
     ) {
-        validatePair(
+        validateLivingPair(
                 first,
                 second
         );
@@ -95,7 +95,7 @@ public final class MarriageManager {
             DynastyInheritanceRule rule,
             long tick
     ) {
-        validatePair(
+        validateLivingPair(
                 first,
                 second
         );
@@ -222,7 +222,7 @@ public final class MarriageManager {
     public synchronized Optional<MarriageRecord> currentUnionOf(
             NpcId npc
     ) {
-        validateNpc(
+        validateExistingNpc(
                 npc
         );
 
@@ -243,7 +243,7 @@ public final class MarriageManager {
     public synchronized Optional<MarriageRecord> currentMarriageOf(
             NpcId npc
     ) {
-        validateNpc(
+        validateExistingNpc(
                 npc
         );
 
@@ -279,7 +279,7 @@ public final class MarriageManager {
             NpcId first,
             NpcId second
     ) {
-        validatePair(
+        validateExistingPair(
                 first,
                 second
         );
@@ -302,7 +302,7 @@ public final class MarriageManager {
     public synchronized List<MarriageRecord> unionsOf(
             NpcId npc
     ) {
-        validateNpc(
+        validateExistingNpc(
                 npc
         );
 
@@ -339,6 +339,15 @@ public final class MarriageManager {
         return marriages.size();
     }
 
+    /**
+     * Registers a marriage record restored from persistence.
+     *
+     * Historical records are allowed to reference NPCs who are now dead.
+     *
+     * This is essential because a marriage may have existed during an NPC's
+     * lifetime and then ended through death or another cause. Persistence is
+     * restoring history, not creating a new marriage in the present.
+     */
     public synchronized void registerLoaded(
             MarriageRecord marriage
     ) {
@@ -347,7 +356,7 @@ public final class MarriageManager {
                 "marriage"
         );
 
-        validatePair(
+        validateExistingPair(
                 marriage.first(),
                 marriage.second()
         );
@@ -359,6 +368,24 @@ public final class MarriageManager {
             throw new IllegalStateException(
                     "Duplicate marriage ID: "
                             + marriage.id()
+            );
+        }
+
+        /*
+         * Active unions involving dead NPCs indicate inconsistent persisted
+         * state.
+         *
+         * Ended historical unions involving dead NPCs are valid and must be
+         * retained.
+         */
+        if (marriage.isActive()) {
+
+            requireLivingNpc(
+                    marriage.first()
+            );
+
+            requireLivingNpc(
+                    marriage.second()
             );
         }
 
@@ -407,18 +434,54 @@ public final class MarriageManager {
         }
     }
 
-    private void validatePair(
+    /**
+     * Validation used when creating a new current union.
+     */
+    private void validateLivingPair(
             NpcId first,
             NpcId second
     ) {
-        validateNpc(
+        requireLivingNpc(
                 first
         );
 
-        validateNpc(
+        requireLivingNpc(
                 second
         );
 
+        validateDifferentPeople(
+                first,
+                second
+        );
+    }
+
+    /**
+     * Validation used when reading historical/current relationships.
+     *
+     * The NPCs must exist, but they are not required to still be alive.
+     */
+    private void validateExistingPair(
+            NpcId first,
+            NpcId second
+    ) {
+        validateExistingNpc(
+                first
+        );
+
+        validateExistingNpc(
+                second
+        );
+
+        validateDifferentPeople(
+                first,
+                second
+        );
+    }
+
+    private void validateDifferentPeople(
+            NpcId first,
+            NpcId second
+    ) {
         if (first.equals(
                 second
         )) {
@@ -429,7 +492,13 @@ public final class MarriageManager {
         }
     }
 
-    private void validateNpc(
+    /**
+     * Requires that an NPC exists in the registry.
+     *
+     * Dead NPCs are valid here because historical queries and persisted
+     * records must remain accessible after death.
+     */
+    private NpcState validateExistingNpc(
             NpcId id
     ) {
         Objects.requireNonNull(
@@ -437,17 +506,31 @@ public final class MarriageManager {
                 "id"
         );
 
+        return registry.find(
+                        id
+                )
+                .orElseThrow(
+                        () ->
+                                new IllegalArgumentException(
+                                        "Unknown NPC ID: "
+                                                + id
+                                )
+                );
+    }
+
+    /**
+     * Requires that an NPC both exists and is currently alive.
+     *
+     * Used only for operations that create or require a living present-day
+     * participant.
+     */
+    private NpcState requireLivingNpc(
+            NpcId id
+    ) {
         NpcState npc =
-                registry.find(
-                                id
-                        )
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Unknown NPC ID: "
-                                                        + id
-                                        )
-                        );
+                validateExistingNpc(
+                        id
+                );
 
         if (!npc.isAlive()) {
 
@@ -457,6 +540,8 @@ public final class MarriageManager {
                             + " is dead"
             );
         }
+
+        return npc;
     }
 
     private MarriageId allocateId() {
