@@ -3,28 +3,31 @@ package dev.dtzudontsay.knownworld.simulation.testing;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
-import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
-import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialActionDecisionService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialHistoryMode;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialInteractionService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.SplittableRandom;
 
+/**
+ * Campaign-scale/off-screen social simulation.
+ *
+ * SIM 05:
+ *
+ * Target selection is now delegated to SocialEncounterService and therefore
+ * uses persistent social structure instead of synthetic surnames.
+ */
 public final class AbstractSocialSimulationService {
 
     private static final double BASE_DAILY_INTERACTION_CHANCE =
             0.18;
 
-    private static final double SAME_COHORT_TARGET_WEIGHT =
-            4.0;
-
     private final NpcRegistry registry;
 
-    private final NpcRelationshipManager relationships;
+    private final SocialEncounterService encounters;
 
     private final SocialInteractionService interactions;
 
@@ -32,7 +35,7 @@ public final class AbstractSocialSimulationService {
 
     public AbstractSocialSimulationService(
             NpcRegistry registry,
-            NpcRelationshipManager relationships,
+            SocialEncounterService encounters,
             SocialInteractionService interactions,
             SocialActionDecisionService decisions
     ) {
@@ -43,10 +46,10 @@ public final class AbstractSocialSimulationService {
                         "registry"
                 );
 
-        this.relationships =
+        this.encounters =
                 Objects.requireNonNull(
-                        relationships,
-                        "relationships"
+                        encounters,
+                        "encounters"
                 );
 
         this.interactions =
@@ -143,8 +146,13 @@ public final class AbstractSocialSimulationService {
 
             attempted++;
 
+            /*
+             * SIM 05:
+             *
+             * Encounter selection now comes from durable social context.
+             */
             NpcState target =
-                    chooseTarget(
+                    encounters.chooseTarget(
                             actor,
                             alive,
                             random
@@ -155,15 +163,6 @@ public final class AbstractSocialSimulationService {
                 continue;
             }
 
-            /*
-             * SIM 03:
-             *
-             * The abstract simulation no longer decides actions itself.
-             *
-             * The same reusable decision service can later be called by
-             * physical AI, court simulation, political encounters, journeys,
-             * armies and other contexts.
-             */
             SocialActionDecisionService.Decision decision =
                     decisions.choose(
                             actor.id(),
@@ -195,119 +194,6 @@ public final class AbstractSocialSimulationService {
                 attempted,
                 performed,
                 historyRecorded
-        );
-    }
-
-    private NpcState chooseTarget(
-            NpcState actor,
-            List<NpcState> alive,
-            SplittableRandom random
-    ) {
-
-        List<NpcState> candidates =
-                new ArrayList<>();
-
-        List<Double> weights =
-                new ArrayList<>();
-
-        double totalWeight =
-                0.0;
-
-        for (
-                NpcState candidate :
-                alive
-        ) {
-
-            if (candidate.id()
-                    .equals(
-                            actor.id()
-                    )) {
-
-                continue;
-            }
-
-            double weight =
-                    1.0;
-
-            /*
-             * This remains a temporary sandbox stand-in for real social
-             * context.
-             *
-             * Later this is replaced with household/settlement/court/unit/
-             * organization/travel/event candidate selection.
-             */
-            if (actor.identity()
-                    .familyName()
-                    .equals(
-                            candidate.identity()
-                                    .familyName()
-                    )) {
-
-                weight *=
-                        SAME_COHORT_TARGET_WEIGHT;
-            }
-
-            NpcRelationship existing =
-                    relationships.find(
-                                    actor.id(),
-                                    candidate.id()
-                            )
-                            .orElse(
-                                    null
-                            );
-
-            if (existing != null) {
-
-                weight +=
-                        existing.familiarity()
-                                * 2.0;
-            }
-
-            candidates.add(
-                    candidate
-            );
-
-            weights.add(
-                    weight
-            );
-
-            totalWeight +=
-                    weight;
-        }
-
-        if (candidates.isEmpty()
-                || totalWeight <= 0.0) {
-
-            return null;
-        }
-
-        double roll =
-                random.nextDouble(
-                        totalWeight
-                );
-
-        for (
-                int index = 0;
-                index < candidates.size();
-                index++
-        ) {
-
-            roll -=
-                    weights.get(
-                            index
-                    );
-
-            if (roll <= 0.0) {
-
-                return candidates.get(
-                        index
-                );
-            }
-        }
-
-        return candidates.get(
-                candidates.size()
-                        - 1
         );
     }
 

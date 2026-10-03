@@ -30,6 +30,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.need.NpcNeedManager;
 import dev.dtzudontsay.knownworld.simulation.npc.observation.NpcObservationService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileGenerationService;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.SkillPracticeService;
 import dev.dtzudontsay.knownworld.simulation.npc.psychology.CharacterPsychologyService;
 import dev.dtzudontsay.knownworld.simulation.npc.psychology.RegionalCharacterInfluenceService;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
@@ -39,6 +40,8 @@ import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousMembershipMan
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineManager;
 import dev.dtzudontsay.knownworld.simulation.npc.routine.NpcRoutineService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialActionDecisionService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialContextService;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialEncounterService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialInteractionService;
 import dev.dtzudontsay.knownworld.simulation.npc.social.SocialReactionService;
 import dev.dtzudontsay.knownworld.simulation.persistence.AuthoredIdPersistence;
@@ -106,6 +109,7 @@ public final class NpcSimulation {
     private final CharacterProfileManager profileManager;
     private final CharacterLegalStateManager legalStateManager;
     private final CharacterProfileGenerationService profileGenerationService;
+    private final SkillPracticeService skillPracticeService;
     private final NpcRelationshipManager relationshipManager;
     private final ReligiousMembershipManager religiousMembershipManager;
     private final UpbringingManager upbringingManager;
@@ -122,6 +126,8 @@ public final class NpcSimulation {
     private final NpcRoutineManager routineManager;
     private final WorldEventManager eventManager;
 
+    private final SocialContextService socialContextService;
+    private final SocialEncounterService socialEncounterService;
     private final SocialReactionService socialReactionService;
     private final SocialActionDecisionService socialActionDecisionService;
     private final SocialInteractionService socialInteractionService;
@@ -265,6 +271,12 @@ public final class NpcSimulation {
                         profileManager
                 );
 
+        this.skillPracticeService =
+                new SkillPracticeService(
+                        registry,
+                        profileManager
+                );
+
         this.relationshipManager =
                 new NpcRelationshipManager(
                         registry
@@ -368,11 +380,19 @@ public final class NpcSimulation {
                 );
 
         /*
-         * SIM 03.
-         *
-         * Reaction and action selection are deliberately separate from the
-         * interaction executor.
+         * SIM 05 social topology layer.
          */
+        this.socialContextService =
+                new SocialContextService(
+                        affiliationManager
+                );
+
+        this.socialEncounterService =
+                new SocialEncounterService(
+                        socialContextService,
+                        relationshipManager
+                );
+
         this.socialReactionService =
                 new SocialReactionService(
                         registry,
@@ -396,7 +416,8 @@ public final class NpcSimulation {
                         relationshipManager,
                         memoryManager,
                         eventManager,
-                        socialReactionService
+                        socialReactionService,
+                        skillPracticeService
                 );
 
         this.successionService =
@@ -498,13 +519,15 @@ public final class NpcSimulation {
                 new SyntheticPopulationService(
                         registry,
                         profileManager,
-                        lifeHistoryManager
+                        lifeHistoryManager,
+                        organizationManager,
+                        affiliationManager
                 );
 
         this.abstractSocialSimulationService =
                 new AbstractSocialSimulationService(
                         registry,
-                        relationshipManager,
+                        socialEncounterService,
                         socialInteractionService,
                         socialActionDecisionService
                 );
@@ -520,7 +543,9 @@ public final class NpcSimulation {
         this.simulationReportService =
                 new SimulationReportService(
                         registry,
-                        relationshipManager
+                        relationshipManager,
+                        profileManager,
+                        socialContextService
                 );
 
         this.activationManager =
@@ -826,6 +851,14 @@ public final class NpcSimulation {
         return characterGenerationService;
     }
 
+    public CharacterProfileGenerationService profileGeneration() {
+        return profileGenerationService;
+    }
+
+    public SkillPracticeService skillPractice() {
+        return skillPracticeService;
+    }
+
     public NpcRelationshipManager relationships() {
         return relationshipManager;
     }
@@ -884,6 +917,14 @@ public final class NpcSimulation {
 
     public WorldEventManager events() {
         return eventManager;
+    }
+
+    public SocialContextService socialContexts() {
+        return socialContextService;
+    }
+
+    public SocialEncounterService socialEncounters() {
+        return socialEncounterService;
     }
 
     public SocialReactionService socialReactions() {

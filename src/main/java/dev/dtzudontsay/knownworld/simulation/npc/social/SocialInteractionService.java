@@ -8,6 +8,8 @@ import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryManager;
 import dev.dtzudontsay.knownworld.simulation.npc.memory.NpcMemoryType;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSkill;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.SkillPracticeService;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
 
@@ -28,12 +30,15 @@ public final class SocialInteractionService {
 
     private final SocialReactionService reactions;
 
+    private final SkillPracticeService skillPractice;
+
     public SocialInteractionService(
             NpcRegistry registry,
             NpcRelationshipManager relationships,
             NpcMemoryManager memories,
             WorldEventManager events,
-            SocialReactionService reactions
+            SocialReactionService reactions,
+            SkillPracticeService skillPractice
     ) {
 
         this.registry =
@@ -64,6 +69,12 @@ public final class SocialInteractionService {
                 Objects.requireNonNull(
                         reactions,
                         "reactions"
+                );
+
+        this.skillPractice =
+                Objects.requireNonNull(
+                        skillPractice,
+                        "skillPractice"
                 );
     }
 
@@ -155,10 +166,6 @@ public final class SocialInteractionService {
                         targetTowardActor
                 );
 
-        /*
-         * The same objective action can now produce different emotional
-         * consequences depending on the target.
-         */
         SocialReactionService.Reaction reaction =
                 reactions.react(
                         actor,
@@ -187,12 +194,6 @@ public final class SocialInteractionService {
                 reaction.familiarityGain()
         );
 
-        /*
-         * Actor familiarity still increases simply because the interaction
-         * occurred.
-         *
-         * Emotional effects remain directional.
-         */
         relationships.getOrCreate(
                         actor,
                         target
@@ -200,6 +201,27 @@ public final class SocialInteractionService {
                 .increaseFamiliarity(
                         reaction.familiarityGain()
                                 * 0.50
+                );
+
+        /*
+         * SIM 04:
+         *
+         * Performing social actions is now also experience.
+         *
+         * The progression system itself is generic and can later be invoked
+         * by combat, hunting, administration, sailing, crafting, education,
+         * medicine, trade and other gameplay systems.
+         */
+        SkillPracticeService.Result practiceResult =
+                skillPractice.practice(
+                        actor,
+                        practicedSkill(
+                                type
+                        ),
+                        practiceIntensity(
+                                type,
+                                magnitude
+                        )
                 );
 
         double importance =
@@ -299,7 +321,65 @@ public final class SocialInteractionService {
                         targetTowardActor
                 ),
                 reaction,
+                practiceResult,
                 recordHistory
+        );
+    }
+
+    private static CharacterSkill practicedSkill(
+            SocialInteractionType type
+    ) {
+
+        return switch (
+                type
+                ) {
+
+            case HELP ->
+                    CharacterSkill.DIPLOMACY;
+
+            case PRAISE ->
+                    CharacterSkill.DIPLOMACY;
+
+            case INSULT ->
+                    CharacterSkill.DIPLOMACY;
+
+            case THREATEN ->
+                    CharacterSkill.LEADERSHIP;
+
+            case BETRAY ->
+                    CharacterSkill.INTRIGUE;
+        };
+    }
+
+    private static double practiceIntensity(
+            SocialInteractionType type,
+            double magnitude
+    ) {
+
+        double multiplier =
+                switch (
+                        type
+                        ) {
+
+                    case HELP ->
+                            0.55;
+
+                    case PRAISE ->
+                            0.45;
+
+                    case INSULT ->
+                            0.40;
+
+                    case THREATEN ->
+                            0.65;
+
+                    case BETRAY ->
+                            0.90;
+                };
+
+        return clampUnit(
+                magnitude
+                        * multiplier
         );
     }
 
@@ -374,6 +454,7 @@ public final class SocialInteractionService {
             RelationshipSnapshot before,
             RelationshipSnapshot after,
             SocialReactionService.Reaction reaction,
+            SkillPracticeService.Result practice,
             boolean historyRecorded
     ) {
     }

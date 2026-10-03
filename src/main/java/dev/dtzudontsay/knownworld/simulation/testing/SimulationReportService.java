@@ -3,8 +3,12 @@ package dev.dtzudontsay.knownworld.simulation.testing;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSkill;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationship;
 import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipManager;
+import dev.dtzudontsay.knownworld.simulation.npc.social.SocialContextService;
 
 import java.util.Comparator;
 import java.util.List;
@@ -17,9 +21,15 @@ public final class SimulationReportService {
 
     private final NpcRelationshipManager relationships;
 
+    private final CharacterProfileManager profiles;
+
+    private final SocialContextService contexts;
+
     public SimulationReportService(
             NpcRegistry registry,
-            NpcRelationshipManager relationships
+            NpcRelationshipManager relationships,
+            CharacterProfileManager profiles,
+            SocialContextService contexts
     ) {
 
         this.registry =
@@ -32,6 +42,18 @@ public final class SimulationReportService {
                 Objects.requireNonNull(
                         relationships,
                         "relationships"
+                );
+
+        this.profiles =
+                Objects.requireNonNull(
+                        profiles,
+                        "profiles"
+                );
+
+        this.contexts =
+                Objects.requireNonNull(
+                        contexts,
+                        "contexts"
                 );
     }
 
@@ -79,6 +101,15 @@ public final class SimulationReportService {
                 0;
 
         int saturated =
+                0;
+
+        int sameHousehold =
+                0;
+
+        int sameNobleHouse =
+                0;
+
+        int crossNobleHouse =
                 0;
 
         double affectionTotal =
@@ -145,6 +176,26 @@ public final class SimulationReportService {
 
                 saturated++;
             }
+
+            SocialContextService.Context context =
+                    contexts.between(
+                            relation.subject(),
+                            relation.target()
+                    );
+
+            if (context.sameHousehold()) {
+
+                sameHousehold++;
+            }
+
+            if (context.sameNobleHouse()) {
+
+                sameNobleHouse++;
+
+            } else {
+
+                crossNobleHouse++;
+            }
         }
 
         int count =
@@ -181,6 +232,11 @@ public final class SimulationReportService {
                         )
                         .toList();
 
+        SkillReport skills =
+                buildSkillReport(
+                        population
+                );
+
         return new Report(
                 population.size(),
                 alive,
@@ -188,6 +244,9 @@ public final class SimulationReportService {
                 positive,
                 hostile,
                 saturated,
+                sameHousehold,
+                sameNobleHouse,
+                crossNobleHouse,
                 average(
                         affectionTotal,
                         count
@@ -205,7 +264,113 @@ public final class SimulationReportService {
                         count
                 ),
                 strongestPositive,
-                strongestNegative
+                strongestNegative,
+                skills
+        );
+    }
+
+    private SkillReport buildSkillReport(
+            List<NpcId> population
+    ) {
+
+        double diplomacy =
+                0.0;
+
+        double intrigue =
+                0.0;
+
+        double leadership =
+                0.0;
+
+        double highest =
+                0.0;
+
+        String highestNpc =
+                "none";
+
+        CharacterSkill highestSkill =
+                null;
+
+        int counted =
+                0;
+
+        for (
+                NpcId npc :
+                population
+        ) {
+
+            CharacterProfile profile =
+                    profiles.find(
+                                    npc
+                            )
+                            .orElse(
+                                    null
+                            );
+
+            if (profile == null) {
+
+                continue;
+            }
+
+            counted++;
+
+            diplomacy +=
+                    profile.skill(
+                            CharacterSkill.DIPLOMACY
+                    );
+
+            intrigue +=
+                    profile.skill(
+                            CharacterSkill.INTRIGUE
+                    );
+
+            leadership +=
+                    profile.skill(
+                            CharacterSkill.LEADERSHIP
+                    );
+
+            for (
+                    CharacterSkill skill :
+                    CharacterSkill.values()
+            ) {
+
+                double value =
+                        profile.skill(
+                                skill
+                        );
+
+                if (value > highest) {
+
+                    highest =
+                            value;
+
+                    highestSkill =
+                            skill;
+
+                    highestNpc =
+                            nameOf(
+                                    npc
+                            );
+                }
+            }
+        }
+
+        return new SkillReport(
+                average(
+                        diplomacy,
+                        counted
+                ),
+                average(
+                        intrigue,
+                        counted
+                ),
+                average(
+                        leadership,
+                        counted
+                ),
+                highestNpc,
+                highestSkill,
+                highest
         );
     }
 
@@ -282,6 +447,16 @@ public final class SimulationReportService {
     ) {
     }
 
+    public record SkillReport(
+            double averageDiplomacy,
+            double averageIntrigue,
+            double averageLeadership,
+            String highestNpc,
+            CharacterSkill highestSkill,
+            double highestSkillValue
+    ) {
+    }
+
     public record Report(
             int population,
             long alive,
@@ -289,12 +464,16 @@ public final class SimulationReportService {
             int positiveRelationships,
             int hostileRelationships,
             int saturatedRelationships,
+            int sameHouseholdRelationships,
+            int sameNobleHouseRelationships,
+            int crossNobleHouseRelationships,
             double averageAffection,
             double averageTrust,
             double averageRespect,
             double averageFear,
             List<RelationshipSummary> strongestPositive,
-            List<RelationshipSummary> strongestNegative
+            List<RelationshipSummary> strongestNegative,
+            SkillReport skills
     ) {
     }
 }

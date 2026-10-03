@@ -105,7 +105,7 @@ public final class SimulationHarnessDebugCommand {
                                                                                                                                                                 + created.size()
                                                                                                                                                                 + " synthetic NPCs across "
                                                                                                                                                                 + cohorts
-                                                                                                                                                                + " abstract cohorts. Seed="
+                                                                                                                                                                + " noble houses with persistent household affiliations. Seed="
                                                                                                                                                                 + seed
                                                                                                                                                 ),
                                                                                                                                         false
@@ -156,8 +156,8 @@ public final class SimulationHarnessDebugCommand {
                                                                                             java.util.Optional::stream
                                                                                     )
                                                                                     .filter(
-                                                                                            npc ->
-                                                                                                    npc.isAlive()
+                                                                                            NpcState ->
+                                                                                                    NpcState.isAlive()
                                                                                     )
                                                                                     .count();
 
@@ -393,11 +393,62 @@ public final class SimulationHarnessDebugCommand {
                                                                                             Component.literal(
                                                                                                     String.format(
                                                                                                             Locale.ROOT,
-                                                                                                            "Averages | affection=%.3f trust=%.3f respect=%.3f fear=%.3f",
+                                                                                                            "Social topology | sameHousehold=%d sameNobleHouse=%d crossNobleHouse=%d",
+                                                                                                            report.sameHouseholdRelationships(),
+                                                                                                            report.sameNobleHouseRelationships(),
+                                                                                                            report.crossNobleHouseRelationships()
+                                                                                                    )
+                                                                                            ),
+                                                                                    false
+                                                                            );
+
+                                                                    context.getSource()
+                                                                            .sendSuccess(
+                                                                                    () ->
+                                                                                            Component.literal(
+                                                                                                    String.format(
+                                                                                                            Locale.ROOT,
+                                                                                                            "Relationship averages | affection=%.3f trust=%.3f respect=%.3f fear=%.3f",
                                                                                                             report.averageAffection(),
                                                                                                             report.averageTrust(),
                                                                                                             report.averageRespect(),
                                                                                                             report.averageFear()
+                                                                                                    )
+                                                                                            ),
+                                                                                    false
+                                                                            );
+
+                                                                    SimulationReportService.SkillReport skills =
+                                                                            report.skills();
+
+                                                                    context.getSource()
+                                                                            .sendSuccess(
+                                                                                    () ->
+                                                                                            Component.literal(
+                                                                                                    String.format(
+                                                                                                            Locale.ROOT,
+                                                                                                            "Skill averages | diplomacy=%.5f intrigue=%.5f leadership=%.5f",
+                                                                                                            skills.averageDiplomacy(),
+                                                                                                            skills.averageIntrigue(),
+                                                                                                            skills.averageLeadership()
+                                                                                                    )
+                                                                                            ),
+                                                                                    false
+                                                                            );
+
+                                                                    context.getSource()
+                                                                            .sendSuccess(
+                                                                                    () ->
+                                                                                            Component.literal(
+                                                                                                    String.format(
+                                                                                                            Locale.ROOT,
+                                                                                                            "Highest learned skill | %s %s = %.5f",
+                                                                                                            skills.highestNpc(),
+                                                                                                            skills.highestSkill() == null
+                                                                                                                    ? "NONE"
+                                                                                                                    : skills.highestSkill()
+                                                                                                                    .name(),
+                                                                                                            skills.highestSkillValue()
                                                                                                     )
                                                                                             ),
                                                                                     false

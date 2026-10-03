@@ -13,12 +13,26 @@ import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfile;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterProfileManager;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterSocialNorm;
 import dev.dtzudontsay.knownworld.simulation.npc.profile.CharacterValue;
+import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
+import dev.dtzudontsay.knownworld.simulation.social.Organization;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Development-only population generator.
+ *
+ * Synthetic NPCs are ordinary persistent runtime NPCs.
+ *
+ * SIM 05:
+ *
+ * They now receive genuine Organization/NpcAffiliation structure instead of
+ * relying on matching surnames for social encounters.
+ */
 public final class SyntheticPopulationService {
 
     public static final String SANDBOX_DIMENSION =
@@ -30,16 +44,25 @@ public final class SyntheticPopulationService {
     private static final int MAX_AGE =
             60;
 
+    private static final int HOUSEHOLDS_PER_HOUSE =
+            2;
+
     private final NpcRegistry registry;
 
     private final CharacterProfileManager profiles;
 
     private final LifeHistoryManager lifeHistory;
 
+    private final OrganizationManager organizations;
+
+    private final NpcAffiliationManager affiliations;
+
     public SyntheticPopulationService(
             NpcRegistry registry,
             CharacterProfileManager profiles,
-            LifeHistoryManager lifeHistory
+            LifeHistoryManager lifeHistory,
+            OrganizationManager organizations,
+            NpcAffiliationManager affiliations
     ) {
 
         this.registry =
@@ -58,6 +81,18 @@ public final class SyntheticPopulationService {
                 Objects.requireNonNull(
                         lifeHistory,
                         "lifeHistory"
+                );
+
+        this.organizations =
+                Objects.requireNonNull(
+                        organizations,
+                        "organizations"
+                );
+
+        this.affiliations =
+                Objects.requireNonNull(
+                        affiliations,
+                        "affiliations"
                 );
     }
 
@@ -99,6 +134,77 @@ public final class SyntheticPopulationService {
                         seed
                 );
 
+        /*
+         * Each sandbox cohort now has a REAL persistent noble-house
+         * organization.
+         */
+        List<Organization> nobleHouses =
+                new ArrayList<>(
+                        cohortCount
+                );
+
+        /*
+         * And multiple REAL household organizations inside each house.
+         */
+        List<List<Organization>> households =
+                new ArrayList<>(
+                        cohortCount
+                );
+
+        for (
+                int cohort = 0;
+                cohort < cohortCount;
+                cohort++
+        ) {
+
+            Organization nobleHouse =
+                    organizations.create(
+                            String.format(
+                                    "Sandbox House %02d",
+                                    cohort + 1
+                            ),
+                            OrganizationType.NOBLE_HOUSE,
+                            null
+                    );
+
+            nobleHouses.add(
+                    nobleHouse
+            );
+
+            List<Organization> houseHouseholds =
+                    new ArrayList<>(
+                            HOUSEHOLDS_PER_HOUSE
+                    );
+
+            for (
+                    int householdIndex = 0;
+                    householdIndex < HOUSEHOLDS_PER_HOUSE;
+                    householdIndex++
+            ) {
+
+                Organization household =
+                        organizations.create(
+                                String.format(
+                                        "Sandbox House %02d Household %02d",
+                                        cohort + 1,
+                                        householdIndex + 1
+                                ),
+                                OrganizationType.HOUSEHOLD,
+                                null
+                        );
+
+                houseHouseholds.add(
+                        household
+                );
+            }
+
+            households.add(
+                    List.copyOf(
+                            houseHouseholds
+                    )
+            );
+        }
+
         List<NpcId> created =
                 new ArrayList<>(
                         count
@@ -113,6 +219,13 @@ public final class SyntheticPopulationService {
             int cohort =
                     index
                             % cohortCount;
+
+            int householdIndex =
+                    (
+                            index
+                                    / cohortCount
+                    )
+                            % HOUSEHOLDS_PER_HOUSE;
 
             int age =
                     MIN_AGE
@@ -155,19 +268,19 @@ public final class SyntheticPopulationService {
                     );
 
             /*
-             * Cohorts are deliberately placed 10 km apart.
+             * Physical coordinates remain deliberately far apart.
              *
-             * They will STILL socially interact because the abstract
-             * simulator does not depend upon Minecraft block distance.
-             *
-             * This explicitly tests the architecture we need for the
-             * continent-scale Known World.
+             * Encounter generation must therefore be driven by simulation
+             * context, not Minecraft block proximity.
              */
             SimulationPosition position =
                     new SimulationPosition(
                             SANDBOX_DIMENSION,
                             cohort
-                                    * 10_000.0,
+                                    * 10_000.0
+                                    +
+                                    householdIndex
+                                            * 1_000.0,
                             64.0,
                             0.0
                     );
@@ -204,6 +317,32 @@ public final class SyntheticPopulationService {
                             (long) birthYear
                     )
                             * daysPerYear
+            );
+
+            /*
+             * SIM 05:
+             *
+             * The surname no longer drives encounters.
+             *
+             * These persistent affiliations do.
+             */
+            affiliations.setNobleHouse(
+                    npc.id(),
+                    nobleHouses.get(
+                                    cohort
+                            )
+                            .id()
+            );
+
+            affiliations.setHousehold(
+                    npc.id(),
+                    households.get(
+                                    cohort
+                            )
+                            .get(
+                                    householdIndex
+                            )
+                            .id()
             );
 
             created.add(
