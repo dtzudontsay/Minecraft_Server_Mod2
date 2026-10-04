@@ -17,6 +17,7 @@ import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
 import dev.dtzudontsay.knownworld.simulation.social.Organization;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationManager;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
+import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +29,9 @@ import java.util.Random;
  *
  * Synthetic NPCs are ordinary persistent runtime NPCs.
  *
- * SIM 06:
- *
  * Sandbox houses and households remain genuine persistent organizations.
  *
- * A shared faction now provides the controlled wider social context through
+ * A shared faction provides the controlled wider social context through
  * which members of different noble houses can occasionally encounter one
  * another without permitting arbitrary world-wide random contact.
  */
@@ -137,13 +136,6 @@ public final class SyntheticPopulationService {
                         seed
                 );
 
-        /*
-         * Controlled broad context.
-         *
-         * This is NOT a fake surname shortcut. It is a real persistent
-         * organization affiliation that uses the same faction field available
-         * to ordinary runtime NPCs.
-         */
         Organization sandboxFaction =
                 organizations.create(
                         "Sandbox Realm",
@@ -277,12 +269,6 @@ public final class SyntheticPopulationService {
                             )
                     );
 
-            /*
-             * Deliberately far apart in Minecraft coordinates.
-             *
-             * Abstract social structure — not block proximity — drives this
-             * sandbox simulation.
-             */
             SimulationPosition position =
                     new SimulationPosition(
                             SANDBOX_DIMENSION,
@@ -352,6 +338,24 @@ public final class SyntheticPopulationService {
                     npc.id(),
                     sandboxFaction.id()
             );
+
+            /*
+             * Give generated sandbox NPCs exactly the same society-side
+             * identity initialization opportunity as naturally born NPCs.
+             *
+             * Sandbox noble-house organizations intentionally do not require
+             * a Dynasty record. CharacterSocialIdentity therefore retains the
+             * organization placement even when currentDynasty is null.
+             */
+            SocietyStructureRuntime society =
+                    SocietyStructureRuntime.getNullable();
+
+            if (society != null) {
+
+                society.onNpcCreated(
+                        npc.id()
+                );
+            }
 
             created.add(
                     npc.id()

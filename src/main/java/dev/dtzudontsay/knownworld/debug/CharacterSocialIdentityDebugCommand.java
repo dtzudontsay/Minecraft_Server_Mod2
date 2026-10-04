@@ -1,12 +1,16 @@
 package dev.dtzudontsay.knownworld.debug;
 
+import com.mojang.brigadier.arguments.LongArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.Dynasty;
 import dev.dtzudontsay.knownworld.simulation.social.dynasty.DynastyId;
 import dev.dtzudontsay.knownworld.simulation.social.identity.CharacterSocialIdentitySnapshot;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 
@@ -83,138 +87,202 @@ public final class CharacterSocialIdentityDebugCommand {
                                                                                                     "npc"
                                                                                             );
 
-                                                                                    var npc =
+                                                                                    NpcId npc =
                                                                                             NpcSimulation.get()
                                                                                                     .authoredIds()
                                                                                                     .requireNpc(
                                                                                                             authoredNpc
                                                                                                     );
 
-                                                                                    CharacterSocialIdentitySnapshot snapshot =
-                                                                                            SocietyStructureRuntime.get()
-                                                                                                    .characterSocialIdentityService()
-                                                                                                    .snapshot(
-                                                                                                            npc
-                                                                                                    );
-
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "=== "
-                                                                                                    + authoredNpc
-                                                                                                    + " social identity ==="
+                                                                                    return showIdentity(
+                                                                                            context,
+                                                                                            authoredNpc,
+                                                                                            npc
                                                                                     );
+                                                                                }
+                                                                        )
+                                                        )
+                                        )
 
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "birthDynasty="
-                                                                                                    + dynastyName(
-                                                                                                    snapshot.birthDynasty()
-                                                                                            )
-                                                                                                    + " currentDynasty="
-                                                                                                    + dynastyName(
-                                                                                                    snapshot.currentDynasty()
-                                                                                            )
-                                                                                    );
+                                        .then(
+                                                Commands.literal(
+                                                                "showid"
+                                                        )
+                                                        .then(
+                                                                Commands.argument(
+                                                                                "npc",
+                                                                                LongArgumentType.longArg(
+                                                                                        1
+                                                                                )
+                                                                        )
+                                                                        .executes(
+                                                                                context -> {
 
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "marriedInto="
-                                                                                                    + dynastyName(
-                                                                                                    snapshot.marriedIntoDynasty()
-                                                                                            )
-                                                                                                    + " legalFamily="
-                                                                                                    + dynastyName(
-                                                                                                    snapshot.legalFamilyDynasty()
-                                                                                            )
-                                                                                    );
-
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "biologicalParents="
-                                                                                                    + snapshot.biologicalMother()
-                                                                                                    + "/"
-                                                                                                    + snapshot.biologicalFather()
-                                                                                                    + " legalParents="
-                                                                                                    + snapshot.legalMother()
-                                                                                                    + "/"
-                                                                                                    + snapshot.legalFather()
-                                                                                    );
-
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "household="
-                                                                                                    + snapshot.householdOrganization()
-                                                                                                    + " houseOrg="
-                                                                                                    + snapshot.houseOrganization()
-                                                                                    );
-
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "allegiance="
-                                                                                                    + snapshot.primaryAllegianceOrganization()
-                                                                                                    + " strength="
-                                                                                                    + snapshot.allegianceStrength()
-                                                                                    );
-
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "culture="
-                                                                                                    + snapshot.cultureId()
-                                                                                                    + " personalReligion="
-                                                                                                    + snapshot.personalReligionId()
-                                                                                    );
-
-                                                                                    send(
-                                                                                            context.getSource(),
-                                                                                            "organizations="
-                                                                                                    + snapshot.organizationMemberships()
-                                                                                                    .size()
-                                                                                                    + " societies="
-                                                                                                    + snapshot.societyMemberships()
-                                                                                                    .size()
-                                                                                                    + " governments/factions="
-                                                                                                    + snapshot.governmentAndFactionMemberships()
-                                                                                                    .size()
-                                                                                                    + " religiousInstitutions="
-                                                                                                    + snapshot.religiousMemberships()
-                                                                                                    .size()
-                                                                                    );
-
-                                                                                    snapshot.organizationMemberships()
-                                                                                            .forEach(
-                                                                                                    membership ->
-                                                                                                            send(
-                                                                                                                    context.getSource(),
-                                                                                                                    "ORG #"
-                                                                                                                            + membership.organization()
-                                                                                                                            + " loyalty="
-                                                                                                                            + membership.loyalty()
-                                                                                                                            + " roles="
-                                                                                                                            + membership.roles()
-                                                                                                            )
+                                                                                    NpcId npc =
+                                                                                            new NpcId(
+                                                                                                    LongArgumentType.getLong(
+                                                                                                            context,
+                                                                                                            "npc"
+                                                                                                    )
                                                                                             );
 
-                                                                                    snapshot.religiousMemberships()
-                                                                                            .forEach(
-                                                                                                    membership ->
-                                                                                                            send(
-                                                                                                                    context.getSource(),
-                                                                                                                    "REL "
-                                                                                                                            + membership.orderId()
-                                                                                                                            + " role="
-                                                                                                                            + membership.roleId()
-                                                                                                                            + " commitment="
-                                                                                                                            + membership.commitment()
-                                                                                                            )
-                                                                                            );
-
-                                                                                    return 1;
+                                                                                    return showIdentity(
+                                                                                            context,
+                                                                                            "NPC #" + npc,
+                                                                                            npc
+                                                                                    );
                                                                                 }
                                                                         )
                                                         )
                                         )
                         )
         );
+    }
+
+    private static int showIdentity(
+            CommandContext<CommandSourceStack> context,
+            String label,
+            NpcId npc
+    ) {
+
+        try {
+
+            CharacterSocialIdentitySnapshot snapshot =
+                    SocietyStructureRuntime.get()
+                            .characterSocialIdentityService()
+                            .snapshot(
+                                    npc
+                            );
+
+            send(
+                    context.getSource(),
+                    "=== "
+                            + label
+                            + " social identity ==="
+            );
+
+            send(
+                    context.getSource(),
+                    "birthDynasty="
+                            + dynastyName(
+                            snapshot.birthDynasty()
+                    )
+                            + " currentDynasty="
+                            + dynastyName(
+                            snapshot.currentDynasty()
+                    )
+            );
+
+            send(
+                    context.getSource(),
+                    "marriedInto="
+                            + dynastyName(
+                            snapshot.marriedIntoDynasty()
+                    )
+                            + " legalFamily="
+                            + dynastyName(
+                            snapshot.legalFamilyDynasty()
+                    )
+            );
+
+            send(
+                    context.getSource(),
+                    "biologicalParents="
+                            + snapshot.biologicalMother()
+                            + "/"
+                            + snapshot.biologicalFather()
+                            + " legalParents="
+                            + snapshot.legalMother()
+                            + "/"
+                            + snapshot.legalFather()
+            );
+
+            send(
+                    context.getSource(),
+                    "household="
+                            + snapshot.householdOrganization()
+                            + " houseOrg="
+                            + snapshot.houseOrganization()
+            );
+
+            send(
+                    context.getSource(),
+                    "allegiance="
+                            + snapshot.primaryAllegianceOrganization()
+                            + " strength="
+                            + snapshot.allegianceStrength()
+            );
+
+            send(
+                    context.getSource(),
+                    "culture="
+                            + snapshot.cultureId()
+                            + " personalReligion="
+                            + snapshot.personalReligionId()
+            );
+
+            send(
+                    context.getSource(),
+                    "organizations="
+                            + snapshot.organizationMemberships()
+                            .size()
+                            + " societies="
+                            + snapshot.societyMemberships()
+                            .size()
+                            + " governments/factions="
+                            + snapshot.governmentAndFactionMemberships()
+                            .size()
+                            + " religiousInstitutions="
+                            + snapshot.religiousMemberships()
+                            .size()
+            );
+
+            snapshot.organizationMemberships()
+                    .forEach(
+                            membership ->
+                                    send(
+                                            context.getSource(),
+                                            "ORG #"
+                                                    + membership.organization()
+                                                    + " loyalty="
+                                                    + membership.loyalty()
+                                                    + " roles="
+                                                    + membership.roles()
+                                    )
+                    );
+
+            snapshot.religiousMemberships()
+                    .forEach(
+                            membership ->
+                                    send(
+                                            context.getSource(),
+                                            "REL "
+                                                    + membership.orderId()
+                                                    + " role="
+                                                    + membership.roleId()
+                                                    + " commitment="
+                                                    + membership.commitment()
+                                    )
+                    );
+
+            return 1;
+
+        } catch (
+                RuntimeException exception
+        ) {
+
+            context.getSource()
+                    .sendFailure(
+                            Component.literal(
+                                    exception.getMessage() == null
+                                            ? exception.getClass()
+                                            .getSimpleName()
+                                            : exception.getMessage()
+                            )
+                    );
+
+            return 0;
+        }
     }
 
     private static String dynastyName(
@@ -239,7 +307,7 @@ public final class CharacterSocialIdentityDebugCommand {
     }
 
     private static void send(
-            net.minecraft.commands.CommandSourceStack source,
+            CommandSourceStack source,
             String text
     ) {
 

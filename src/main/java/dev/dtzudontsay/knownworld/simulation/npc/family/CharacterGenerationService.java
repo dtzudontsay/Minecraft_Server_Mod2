@@ -15,6 +15,7 @@ import dev.dtzudontsay.knownworld.simulation.npc.relationship.NpcRelationshipMan
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliation;
 import dev.dtzudontsay.knownworld.simulation.social.NpcAffiliationManager;
 import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
+import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 
 import java.util.List;
 import java.util.Objects;
@@ -51,6 +52,7 @@ public final class CharacterGenerationService {
             WorldEventManager events,
             CharacterProfileGenerationService profileGeneration
     ) {
+
         this.registry =
                 Objects.requireNonNull(
                         registry,
@@ -108,6 +110,7 @@ public final class CharacterGenerationService {
             NpcId father,
             long tick
     ) {
+
         NpcState motherState =
                 requireNpc(
                         mother
@@ -143,6 +146,10 @@ public final class CharacterGenerationService {
                         personality
                 );
 
+        /*
+         * Biological genealogy must exist before society-side identity is
+         * inferred.
+         */
         genealogy.registerBirth(
                 child.id(),
                 mother,
@@ -150,11 +157,46 @@ public final class CharacterGenerationService {
                 tick
         );
 
+        /*
+         * The legacy affiliation layer remains the immediate source of
+         * household / noble-house / faction placement during character
+         * creation.
+         *
+         * CharacterSocialIdentityService subsequently converts these into
+         * the newer persistent identity + organization-membership model.
+         */
         inheritAffiliations(
                 child.id(),
                 motherState,
                 fatherState
         );
+
+        /*
+         * ---------------------------------------------------------
+         * RUNTIME SOCIAL IDENTITY BRIDGE
+         * ---------------------------------------------------------
+         *
+         * Generated characters must not wait for a save/reload before
+         * becoming real members of the political/social simulation.
+         *
+         * At this point the two prerequisites needed by identity inference
+         * already exist:
+         *
+         * - biological parentage;
+         * - inherited affiliations.
+         *
+         * The society runtime starts after NpcSimulation, therefore the
+         * null-safe bridge also remains valid during startup/bootstrap.
+         */
+        SocietyStructureRuntime society =
+                SocietyStructureRuntime.getNullable();
+
+        if (society != null) {
+
+            society.onNpcCreated(
+                    child.id()
+            );
+        }
 
         initializeFamilyRelationships(
                 child.id(),
@@ -206,6 +248,7 @@ public final class CharacterGenerationService {
             NpcId father,
             long tick
     ) {
+
         Random random =
                 randomFor(
                         mother,
@@ -234,6 +277,7 @@ public final class CharacterGenerationService {
             NpcState father,
             long tick
     ) {
+
         Random random =
                 randomFor(
                         mother.id(),
@@ -291,6 +335,7 @@ public final class CharacterGenerationService {
             double father,
             Random random
     ) {
+
         double parentalMean =
                 (
                         mother
@@ -317,6 +362,7 @@ public final class CharacterGenerationService {
             NpcState mother,
             NpcState father
     ) {
+
         NpcAffiliation motherAffiliation =
                 affiliations.getOrCreate(
                         mother.id()
@@ -355,6 +401,7 @@ public final class CharacterGenerationService {
             NpcId mother,
             NpcId father
     ) {
+
         createParentRelationship(
                 mother,
                 child
@@ -384,6 +431,7 @@ public final class CharacterGenerationService {
             NpcId mother,
             NpcId father
     ) {
+
         List<NpcId> candidates =
                 genealogy.childrenOf(
                         mother
@@ -452,6 +500,7 @@ public final class CharacterGenerationService {
             NpcId parent,
             NpcId child
     ) {
+
         relationships.registerLoaded(
                 new NpcRelationship(
                         parent,
@@ -469,6 +518,7 @@ public final class CharacterGenerationService {
             NpcId child,
             NpcId parent
     ) {
+
         relationships.registerLoaded(
                 new NpcRelationship(
                         child,
@@ -486,6 +536,7 @@ public final class CharacterGenerationService {
             NpcId subject,
             NpcId sibling
     ) {
+
         relationships.registerLoaded(
                 new NpcRelationship(
                         subject,
@@ -505,6 +556,7 @@ public final class CharacterGenerationService {
             NpcId father,
             long tick
     ) {
+
         memories.remember(
                 mother,
                 NpcMemoryType.PERSONAL_EXPERIENCE,
@@ -537,6 +589,7 @@ public final class CharacterGenerationService {
     private NpcState requireNpc(
             NpcId id
     ) {
+
         Objects.requireNonNull(
                 id,
                 "id"
@@ -560,6 +613,7 @@ public final class CharacterGenerationService {
             long tick,
             long salt
     ) {
+
         long seed =
                 salt;
 
@@ -587,6 +641,7 @@ public final class CharacterGenerationService {
     private static double clampSigned(
             double value
     ) {
+
         return Math.max(
                 -1.0,
                 Math.min(

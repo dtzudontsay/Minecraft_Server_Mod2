@@ -421,6 +421,38 @@ public final class SocietyStructureRuntime {
     }
 
     /**
+     * Initializes society-side state for an NPC that has just been created
+     * during runtime.
+     *
+     * The creation pipeline must call this only after basic genealogy and
+     * affiliation data have been written. That allows identity inference to
+     * obtain the correct:
+     *
+     * - birth dynasty;
+     * - current dynasty;
+     * - legal family dynasty;
+     * - legal parents;
+     * - household;
+     * - house organization;
+     * - primary allegiance;
+     * - generic organization memberships.
+     *
+     * This is intentionally incremental. We do not run a world-wide
+     * reconciliation merely because one child was born.
+     *
+     * That matters once the simulation contains tens or hundreds of
+     * thousands of NPCs.
+     */
+    public void onNpcCreated(
+            NpcId npc
+    ) {
+
+        characterSocialIdentityService.ensureIdentity(
+                npc
+        );
+    }
+
+    /**
      * Full reconciliation of society-side projections.
      *
      * Safe to call repeatedly.
@@ -434,12 +466,6 @@ public final class SocietyStructureRuntime {
 
         characterSocialIdentityService.ensureAll();
 
-        /*
-         * Leadership first.
-         *
-         * Holdings may subsequently use the newly reconciled living
-         * dynasty head/heir as supported runtime succession evidence.
-         */
         lastDynastyLeadershipReconciliationReport =
                 dynastyLeadershipReconciliation.reconcileAll(
                         simulation.serverTickCounter()
@@ -452,9 +478,6 @@ public final class SocietyStructureRuntime {
     /**
      * Immediate death-time bridge from the NPC lifecycle into political
      * state.
-     *
-     * This prevents dynasty/holding state from remaining stale until the
-     * next save or restart.
      */
     public void onNpcDeath(
             NpcId deceased,
@@ -492,12 +515,6 @@ public final class SocietyStructureRuntime {
 
         try {
 
-            /*
-             * -----------------------------------------------------
-             * DYNASTIES
-             * -----------------------------------------------------
-             */
-
             dynastyPersistence.loadInto(
                     dynasties
             );
@@ -508,32 +525,14 @@ public final class SocietyStructureRuntime {
                             dynasties
                     );
 
-            /*
-             * -----------------------------------------------------
-             * AUTHORED / DE-JURE DYNASTY HIERARCHY
-             * -----------------------------------------------------
-             */
-
             lastHierarchyReport =
                     DynastyHierarchyBootstrapService.apply(
                             dynasties
                     );
 
-            /*
-             * -----------------------------------------------------
-             * CURRENT POLITICAL ALLEGIANCE
-             * -----------------------------------------------------
-             */
-
             dynastyAllegiancePersistence.loadInto(
                     dynastyAllegiances
             );
-
-            /*
-             * -----------------------------------------------------
-             * LANDED HOLDINGS
-             * -----------------------------------------------------
-             */
 
             landedHoldingPersistence.loadInto(
                     holdings
@@ -545,12 +544,6 @@ public final class SocietyStructureRuntime {
                             dynasties,
                             holdings
                     );
-
-            /*
-             * -----------------------------------------------------
-             * NON-DYNASTIC SOCIETIES
-             * -----------------------------------------------------
-             */
 
             nonDynasticSocietyPersistence.loadInto(
                     nonDynasticSocieties
@@ -566,12 +559,6 @@ public final class SocietyStructureRuntime {
                     memberships
             );
 
-            /*
-             * -----------------------------------------------------
-             * CHARACTER SOCIAL IDENTITY
-             * -----------------------------------------------------
-             */
-
             characterSocialIdentityPersistence.loadInto(
                     characterSocialIdentities
             );
@@ -585,16 +572,9 @@ public final class SocietyStructureRuntime {
             );
 
             /*
-             * -----------------------------------------------------
-             * RUNTIME POLITICAL RECONCILIATION
-             * -----------------------------------------------------
-             *
-             * This must occur before strict integrity validation.
-             *
-             * A world that has been simulated for years may legitimately
-             * contain old political records referring to NPCs who have
-             * since died. Reconciliation converts that historical runtime
-             * transition into the current political state.
+             * Existing saves may predate one or more runtime projection
+             * systems. Reconciliation repairs those projections before
+             * strict integrity validation.
              */
             reconcile();
 
@@ -631,12 +611,6 @@ public final class SocietyStructureRuntime {
                 );
             }
 
-            /*
-             * -----------------------------------------------------
-             * DYNASTY INTEGRITY
-             * -----------------------------------------------------
-             */
-
             lastIntegrityReport =
                     dynastyIntegrity.auditStrict();
 
@@ -647,12 +621,6 @@ public final class SocietyStructureRuntime {
                     lastIntegrityReport.inactiveAtScenarioStart(),
                     lastIntegrityReport.warningCount()
             );
-
-            /*
-             * -----------------------------------------------------
-             * POLITICAL STRUCTURE INTEGRITY
-             * -----------------------------------------------------
-             */
 
             lastPoliticalStructureReport =
                     politicalStructureIntegrity.auditStrict();
@@ -690,9 +658,6 @@ public final class SocietyStructureRuntime {
 
             /*
              * Permanent safety boundary.
-             *
-             * No known dead political projection should be persisted merely
-             * because a death-time hook was missed.
              */
             reconcile();
 
