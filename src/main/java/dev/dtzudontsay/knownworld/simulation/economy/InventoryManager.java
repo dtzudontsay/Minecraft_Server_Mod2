@@ -9,18 +9,12 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 /**
- * Batch 21.0
+ * Authoritative inventory operations.
  *
- * Authoritative resource inventory operations.
+ * Batch 21.1:
+ * Adds validated restoration for persistence.
  *
- * Transfers must conserve resource quantity.
- * Failed operations must leave state unchanged.
- *
- * Production and consumption are explicit changes
- * with required cause strings.
- *
- * This manager is not yet attached to NpcSimulation
- * or runtime persistence.
+ * This manager is not yet connected to NpcSimulation.
  */
 public final class InventoryManager {
 
@@ -33,7 +27,8 @@ public final class InventoryManager {
 
     public InventoryManager(ResourceCatalog resources) {
         this.resources = Objects.requireNonNull(
-                resources, "resources"
+                resources,
+                "resources"
         );
     }
 
@@ -51,11 +46,15 @@ public final class InventoryManager {
         }
 
         InventoryId id = new InventoryId(nextId++);
+
         ResourceInventory inventory = new ResourceInventory(
-                id, owner, location
+                id,
+                owner,
+                location
         );
 
         inventories.put(id, inventory);
+
         return inventory;
     }
 
@@ -79,11 +78,102 @@ public final class InventoryManager {
         return java.util.List.copyOf(inventories.values());
     }
 
+    public synchronized long nextId() {
+        return nextId;
+    }
+
     /**
-     * Introduce newly produced resources.
+     * Restore one previously saved inventory.
      *
-     * This must not be used for moving existing stock.
+     * Only persistence code in this package should
+     * invoke this operation.
+     *
+     * All validation occurs before registration.
      */
+    synchronized ResourceInventory restoreInventory(
+            InventoryId id,
+            EconomicOwner owner,
+            SettlementId location,
+            Map<ResourceId, Long> balances
+    ) {
+        Objects.requireNonNull(id, "id");
+        Objects.requireNonNull(owner, "owner");
+        Objects.requireNonNull(location, "location");
+        Objects.requireNonNull(balances, "balances");
+
+        if (inventories.containsKey(id)) {
+            throw new IllegalArgumentException(
+                    "Duplicate inventory ID: " + id
+            );
+        }
+
+        if (id.value() == Long.MAX_VALUE) {
+            throw new IllegalArgumentException(
+                    "Inventory ID cannot be Long.MAX_VALUE"
+            );
+        }
+
+        for (Map.Entry<ResourceId, Long> entry :
+                balances.entrySet()) {
+
+            resources.require(entry.getKey());
+
+            Long quantity = Objects.requireNonNull(
+                    entry.getValue(),
+                    "quantity"
+            );
+
+            if (quantity <= 0L) {
+                throw new IllegalArgumentException(
+                        "Stored resource quantity must be positive"
+                );
+            }
+        }
+
+        ResourceInventory inventory = new ResourceInventory(
+                id,
+                owner,
+                location
+        );
+
+        for (Map.Entry<ResourceId, Long> entry :
+                balances.entrySet()) {
+
+            inventory.setQuantity(
+                    entry.getKey(),
+                    entry.getValue()
+            );
+        }
+
+        inventories.put(id, inventory);
+
+        nextId = Math.max(
+                nextId,
+                id.value() + 1L
+        );
+
+        return inventory;
+    }
+
+    /**
+     * Restore the saved next-ID counter.
+     *
+     * Prevents future IDs from being reused even when
+     * the highest previously allocated inventory was
+     * removed before a save.
+     */
+    synchronized void restoreNextId(long savedNextId) {
+        if (savedNextId < nextId
+                || savedNextId <= 0L) {
+
+            throw new IllegalArgumentException(
+                    "Invalid saved next inventory ID"
+            );
+        }
+
+        nextId = savedNextId;
+    }
+
     public synchronized void produce(
             InventoryId destination,
             ResourceId resource,
@@ -102,9 +192,6 @@ public final class InventoryManager {
         inventory.setQuantity(resource, updated);
     }
 
-    /**
-     * Consume or destroy existing resources.
-     */
     public synchronized void consume(
             InventoryId source,
             ResourceId resource,
@@ -129,10 +216,6 @@ public final class InventoryManager {
         );
     }
 
-    /**
-     * Move stock between two inventories atomically
-     * with respect to this manager's synchronized calls.
-     */
     public synchronized void transfer(
             InventoryId source,
             InventoryId destination,
@@ -159,7 +242,6 @@ public final class InventoryManager {
             );
         }
 
-        // Validate destination overflow before mutation.
         long updatedDestination = Math.addExact(
                 to.quantity(resource),
                 quantity
@@ -185,6 +267,7 @@ public final class InventoryManager {
 
         for (ResourceInventory inventory :
                 inventories.values()) {
+
             total = Math.addExact(
                     total,
                     inventory.quantity(resource)
