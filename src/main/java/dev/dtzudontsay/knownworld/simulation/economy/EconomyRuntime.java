@@ -13,26 +13,27 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Batch 21.9.
+ * Batch 22.0.
  *
- * Economy lifecycle with explicit save selection.
+ * Economy runtime with explicit persistent authority.
  *
- * Legacy inventory saves remain authoritative.
- * Snapshot-only or conflicting states fail closed.
+ * Existing worlds use legacy compatibility unless
+ * snapshot authority has been explicitly activated.
  *
- * No automatic migration or resource creation.
+ * Never seeds resources or migrates automatically.
  */
 public final class EconomyRuntime implements ModInitializer {
 
     private static EconomyRuntime active;
 
     private MinecraftServer server;
+    private Path saveDirectory;
+
+    private ResourceCatalog catalog;
     private InventoryManager inventories;
-    private InventoryPersistence persistence;
     private EconomyReferenceValidator validator;
     private EconomyInventoryProvisioner provisioner;
-
-    private EconomySaveSelector.Selection saveSelection;
+    private EconomyAuthorityService.Loaded loaded;
 
     @Override
     public void onInitialize() {
@@ -76,27 +77,27 @@ public final class EconomyRuntime implements ModInitializer {
         if (simulation == null
                 || simulation.server() != server) {
             throw new IllegalStateException(
-                    "NPC simulation must initialize "
-                            + "before the economy"
+                    "NPC simulation must initialize first"
             );
         }
 
         if (society == null) {
             throw new IllegalStateException(
-                    "Society structure runtime must initialize "
-                            + "before the economy"
+                    "Society structures must initialize first"
             );
         }
 
         EconomyRuntime runtime = new EconomyRuntime();
+
         runtime.server = server;
 
-        Path directory = server.getWorldPath(
-                LevelResource.ROOT
-        ).resolve("knownworld").resolve("npc");
+        runtime.saveDirectory =
+                server.getWorldPath(LevelResource.ROOT)
+                        .resolve("knownworld")
+                        .resolve("npc");
 
-        runtime.persistence =
-                new InventoryPersistence(directory);
+        runtime.catalog =
+                ResourceCatalog.benchmarkDefaults();
 
         runtime.validator =
                 new EconomyReferenceValidator(
@@ -113,14 +114,14 @@ public final class EconomyRuntime implements ModInitializer {
                 );
 
         try {
-            EconomySaveSelector.Result selected =
-                    EconomySaveSelector.load(
-                            directory,
-                            ResourceCatalog.benchmarkDefaults()
+            runtime.loaded =
+                    EconomyAuthorityService.load(
+                            runtime.saveDirectory,
+                            runtime.catalog
                     );
 
-            runtime.inventories = selected.manager();
-            runtime.saveSelection = selected.selection();
+            runtime.inventories =
+                    runtime.loaded.manager();
 
             runtime.validator.validate(
                     runtime.inventories
@@ -128,14 +129,13 @@ public final class EconomyRuntime implements ModInitializer {
 
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
-                    "Economy initialization failed. "
-                            + "Economic files were not reset.",
+                    "Economy authority or inventory validation "
+                            + "failed. No economic save was reset.",
                     exception
             );
 
             throw new IllegalStateException(
-                    "Unsafe economy save or references. "
-                            + "Initialization rejected.",
+                    "Unsafe economic state: startup rejected",
                     exception
             );
         }
@@ -150,12 +150,11 @@ public final class EconomyRuntime implements ModInitializer {
 
         KnownWorld.LOGGER.info(
                 "Known World economy ready: {} inventories; "
-                        + "existing economy save: {}; "
-                        + "holding validation enabled; "
-                        + "save selection: {}",
+                        + "authority mode: {}; selection: {}; "
+                        + "holding validation enabled",
                 runtime.inventories.all().size(),
-                runtime.persistence.exists(),
-                runtime.saveSelection
+                runtime.loaded.mode(),
+                runtime.loaded.description()
         );
     }
 
@@ -163,19 +162,10 @@ public final class EconomyRuntime implements ModInitializer {
         return active;
     }
 
-    public EconomySaveSelector.Selection saveSelection() {
-        if (saveSelection == null) {
-            throw new IllegalStateException(
-                    "Economy runtime is not initialized"
-            );
-        }
-        return saveSelection;
-    }
-
     public InventoryManager inventories() {
         if (inventories == null) {
             throw new IllegalStateException(
-                    "Economy runtime is not initialized"
+                    "Economy runtime not initialized"
             );
         }
 
@@ -185,17 +175,29 @@ public final class EconomyRuntime implements ModInitializer {
     public EconomyInventoryProvisioner provisioner() {
         if (provisioner == null) {
             throw new IllegalStateException(
-                    "Economy provisioner is not initialized"
+                    "Economy provisioner not initialized"
             );
         }
 
         return provisioner;
     }
 
+    public EconomyAuthorityService.Mode authorityMode() {
+        if (loaded == null) {
+            throw new IllegalStateException(
+                    "Economy authority not initialized"
+            );
+        }
+
+        return loaded.mode();
+    }
+
     private static void saveActive(MinecraftServer server) {
+
         EconomyRuntime runtime = active;
 
-        if (runtime == null || runtime.server != server) {
+        if (runtime == null
+                || runtime.server != server) {
             return;
         }
 
@@ -204,32 +206,16 @@ public final class EconomyRuntime implements ModInitializer {
                     runtime.inventories
             );
 
-            /*
-             * In the presence of a matching snapshot,
-             * this session does not write the legacy
-             * save. No autonomous economic operations
-             * are enabled in this batch.
-             */
-            if (runtime.saveSelection
-                    == EconomySaveSelector.Selection
-                    .LEGACY_WITH_MATCHING_SNAPSHOT) {
-
-                return;
-            }
-
-            if (!runtime.persistence.exists()
-                    && runtime.inventories.all().isEmpty()) {
-                return;
-            }
-
-            runtime.persistence.save(
-                    runtime.inventories
+            EconomyAuthorityService.save(
+                    runtime.saveDirectory,
+                    runtime.catalog,
+                    runtime.loaded
             );
 
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
-                    "Failed to save Known World economy. "
-                            + "Existing economic data must be preserved.",
+                    "Economy save failed; existing economic "
+                            + "files must be preserved.",
                     exception
             );
 
