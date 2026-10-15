@@ -3,7 +3,9 @@ package dev.dtzudontsay.knownworld.simulation.economy;
 
 import dev.dtzudontsay.knownworld.simulation.world.settlement.SettlementId;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -11,10 +13,13 @@ import java.util.TreeMap;
 /**
  * Authoritative inventory operations.
  *
- * Batch 21.1:
- * Adds validated restoration for persistence.
+ * Batch 21.4:
+ * Adds a session-local mutation journal.
  *
- * This manager is not yet connected to NpcSimulation.
+ * The journal is not persisted. After loading a save,
+ * a new recording session begins.
+ *
+ * No autonomous economy is activated here.
  */
 public final class InventoryManager {
 
@@ -23,12 +28,15 @@ public final class InventoryManager {
     private final Map<InventoryId, ResourceInventory> inventories =
             new TreeMap<>();
 
+    private final List<EconomicTransaction> transactions =
+            new ArrayList<>();
+
     private long nextId = 1L;
+    private long nextTransactionSequence = 1L;
 
     public InventoryManager(ResourceCatalog resources) {
         this.resources = Objects.requireNonNull(
-                resources,
-                "resources"
+                resources, "resources"
         );
     }
 
@@ -47,14 +55,10 @@ public final class InventoryManager {
 
         InventoryId id = new InventoryId(nextId++);
 
-        ResourceInventory inventory = new ResourceInventory(
-                id,
-                owner,
-                location
-        );
+        ResourceInventory inventory =
+                new ResourceInventory(id, owner, location);
 
         inventories.put(id, inventory);
-
         return inventory;
     }
 
@@ -75,7 +79,7 @@ public final class InventoryManager {
     }
 
     public synchronized Collection<ResourceInventory> all() {
-        return java.util.List.copyOf(inventories.values());
+        return List.copyOf(inventories.values());
     }
 
     public synchronized long nextId() {
@@ -83,12 +87,19 @@ public final class InventoryManager {
     }
 
     /**
-     * Restore one previously saved inventory.
-     *
-     * Only persistence code in this package should
-     * invoke this operation.
-     *
-     * All validation occurs before registration.
+     * Returns an immutable snapshot of this session's
+     * successful economic mutations.
+     */
+    public synchronized List<EconomicTransaction> transactions() {
+        return List.copyOf(transactions);
+    }
+
+    public synchronized long transactionCount() {
+        return transactions.size();
+    }
+
+    /**
+     * Used only by trusted persistence code.
      */
     synchronized ResourceInventory restoreInventory(
             InventoryId id,
@@ -119,8 +130,7 @@ public final class InventoryManager {
             resources.require(entry.getKey());
 
             Long quantity = Objects.requireNonNull(
-                    entry.getValue(),
-                    "quantity"
+                    entry.getValue(), "quantity"
             );
 
             if (quantity <= 0L) {
@@ -130,42 +140,26 @@ public final class InventoryManager {
             }
         }
 
-        ResourceInventory inventory = new ResourceInventory(
-                id,
-                owner,
-                location
-        );
+        ResourceInventory inventory =
+                new ResourceInventory(id, owner, location);
 
         for (Map.Entry<ResourceId, Long> entry :
                 balances.entrySet()) {
-
             inventory.setQuantity(
-                    entry.getKey(),
-                    entry.getValue()
+                    entry.getKey(), entry.getValue()
             );
         }
 
         inventories.put(id, inventory);
 
-        nextId = Math.max(
-                nextId,
-                id.value() + 1L
-        );
+        nextId = Math.max(nextId, id.value() + 1L);
 
         return inventory;
     }
 
-    /**
-     * Restore the saved next-ID counter.
-     *
-     * Prevents future IDs from being reused even when
-     * the highest previously allocated inventory was
-     * removed before a save.
-     */
     synchronized void restoreNextId(long savedNextId) {
         if (savedNextId < nextId
                 || savedNextId <= 0L) {
-
             throw new IllegalArgumentException(
                     "Invalid saved next inventory ID"
             );
@@ -181,6 +175,7 @@ public final class InventoryManager {
             String cause
     ) {
         validateOperation(resource, quantity, cause);
+        ensureTransactionCapacity();
 
         ResourceInventory inventory = require(destination);
 
@@ -189,7 +184,19 @@ public final class InventoryManager {
                 quantity
         );
 
+        EconomicTransaction transaction =
+                new EconomicTransaction(
+                        nextTransactionSequence,
+                        EconomicTransaction.Kind.PRODUCTION,
+                        null,
+                        destination,
+                        resource,
+                        quantity,
+                        cause
+                );
+
         inventory.setQuantity(resource, updated);
+        append(transaction);
     }
 
     public synchronized void consume(
@@ -199,9 +206,9 @@ public final class InventoryManager {
             String cause
     ) {
         validateOperation(resource, quantity, cause);
+        ensureTransactionCapacity();
 
         ResourceInventory inventory = require(source);
-
         long available = inventory.quantity(resource);
 
         if (available < quantity) {
@@ -210,10 +217,21 @@ public final class InventoryManager {
             );
         }
 
+        EconomicTransaction transaction =
+                new EconomicTransaction(
+                        nextTransactionSequence,
+                        EconomicTransaction.Kind.CONSUMPTION,
+                        source,
+                        null,
+                        resource,
+                        quantity,
+                        cause
+                );
+
         inventory.setQuantity(
-                resource,
-                available - quantity
+                resource, available - quantity
         );
+        append(transaction);
     }
 
     public synchronized void transfer(
@@ -224,6 +242,7 @@ public final class InventoryManager {
             String cause
     ) {
         validateOperation(resource, quantity, cause);
+        ensureTransactionCapacity();
 
         ResourceInventory from = require(source);
         ResourceInventory to = require(destination);
@@ -242,20 +261,32 @@ public final class InventoryManager {
             );
         }
 
+        // Check overflow before changing either balance.
         long updatedDestination = Math.addExact(
                 to.quantity(resource),
                 quantity
         );
 
+        EconomicTransaction transaction =
+                new EconomicTransaction(
+                        nextTransactionSequence,
+                        EconomicTransaction.Kind.TRANSFER,
+                        source,
+                        destination,
+                        resource,
+                        quantity,
+                        cause
+                );
+
         from.setQuantity(
-                resource,
-                available - quantity
+                resource, available - quantity
         );
 
         to.setQuantity(
-                resource,
-                updatedDestination
+                resource, updatedDestination
         );
+
+        append(transaction);
     }
 
     public synchronized long totalQuantity(
@@ -269,8 +300,7 @@ public final class InventoryManager {
                 inventories.values()) {
 
             total = Math.addExact(
-                    total,
-                    inventory.quantity(resource)
+                    total, inventory.quantity(resource)
             );
         }
 
@@ -295,5 +325,19 @@ public final class InventoryManager {
                     "Economic operation requires a cause"
             );
         }
+    }
+
+    private void ensureTransactionCapacity() {
+        if (nextTransactionSequence <= 0L
+                || nextTransactionSequence == Long.MAX_VALUE) {
+            throw new IllegalStateException(
+                    "Transaction sequence space exhausted"
+            );
+        }
+    }
+
+    private void append(EconomicTransaction transaction) {
+        transactions.add(transaction);
+        nextTransactionSequence++;
     }
 }
