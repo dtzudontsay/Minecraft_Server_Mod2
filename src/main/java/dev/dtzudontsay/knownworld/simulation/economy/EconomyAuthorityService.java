@@ -8,13 +8,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Batch 22.1.
+ * Batch 22.3.
  *
- * Authoritative save selection plus bounded
- * cross-session transaction continuity.
+ * Authority selection and verified snapshot commits.
  *
- * Legacy saves remain authoritative unless
- * snapshot mode was explicitly activated.
+ * Legacy compatibility remains unchanged.
+ * Snapshot mode requires explicit activation.
  */
 public final class EconomyAuthorityService {
 
@@ -33,26 +32,18 @@ public final class EconomyAuthorityService {
             Objects.requireNonNull(mode, "mode");
             Objects.requireNonNull(manager, "manager");
             Objects.requireNonNull(description, "description");
+
             previousTransactions = List.copyOf(
                     previousTransactions
             );
         }
 
-        /**
-         * Preserve the old three-argument constructor
-         * for existing callers and tests.
-         */
         public Loaded(
                 Mode mode,
                 InventoryManager manager,
                 String description
         ) {
-            this(
-                    mode,
-                    manager,
-                    description,
-                    List.of()
-            );
+            this(mode, manager, description, List.of());
         }
     }
 
@@ -94,15 +85,13 @@ public final class EconomyAuthorityService {
 
         marker.read();
 
-        EconomySnapshotStore store =
-                new EconomySnapshotStore(directory);
-
         /*
-         * A corrupted or missing primary does not
-         * trigger automatic fallback to a backup.
+         * Deliberately do not use an automatic
+         * previous-generation fallback.
          */
         EconomySnapshotStore.Snapshot snapshot =
-                store.read(catalog);
+                new EconomySnapshotStore(directory)
+                        .read(catalog);
 
         InventoryManager manager =
                 EconomySnapshotStore.restore(
@@ -119,7 +108,10 @@ public final class EconomyAuthorityService {
     }
 
     /**
-     * Explicit offline activation of snapshot authority.
+     * Explicit activation only.
+     *
+     * Must be called with the server stopped after
+     * taking a complete world backup.
      */
     public static void activateMatchingSnapshot(
             Path directory,
@@ -168,10 +160,7 @@ public final class EconomyAuthorityService {
     }
 
     /**
-     * Save using the active authoritative format.
-     *
-     * In snapshot mode, combine previously persisted
-     * records and this session's journal.
+     * Save using the selected authority.
      */
     public static void save(
             Path directory,
@@ -187,6 +176,7 @@ public final class EconomyAuthorityService {
                 new EconomyAuthorityMarker(directory);
 
         if (loaded.mode() == Mode.SNAPSHOT_PRIMARY) {
+
             if (!marker.exists()) {
                 throw new IOException(
                         "Snapshot authority marker disappeared"
@@ -195,16 +185,21 @@ public final class EconomyAuthorityService {
 
             marker.read();
 
-            EconomySnapshotRecovery recovery =
-                    new EconomySnapshotRecovery(directory);
+            /*
+             * Batch 22.3:
+             * No incomplete current-session journal
+             * may be written to the snapshot.
+             *
+             * The committer verifies the snapshot
+             * both before and after publication.
+             */
+            EconomySnapshotCommitter.commit(
+                    directory,
+                    catalog,
+                    loaded.manager(),
+                    loaded.previousTransactions()
+            );
 
-            EconomySnapshotStore.Snapshot snapshot =
-                    EconomyJournalContinuity.capture(
-                            loaded.manager(),
-                            loaded.previousTransactions()
-                    );
-
-            recovery.save(snapshot, catalog);
             return;
         }
 
@@ -215,10 +210,10 @@ public final class EconomyAuthorityService {
         }
 
         /*
-         * Preserve the Batch 21.9 restriction.
+         * Matched legacy/snapshot representations
+         * remain read-only in legacy compatibility.
          *
-         * Matched legacy and snapshot files must
-         * not silently diverge.
+         * No automatic divergence is permitted.
          */
         if ("LEGACY_WITH_MATCHING_SNAPSHOT".equals(
                 loaded.description()
@@ -234,8 +229,6 @@ public final class EconomyAuthorityService {
             return;
         }
 
-        persistence.save(
-                loaded.manager()
-        );
+        persistence.save(loaded.manager());
     }
 }
