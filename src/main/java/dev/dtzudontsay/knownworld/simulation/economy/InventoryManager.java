@@ -11,19 +11,25 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 /**
- * Authoritative inventory operations.
+ * Authoritative resource inventories and session journal.
  *
- * Batch 21.4:
- * Adds a session-local mutation journal.
+ * Batch 22.2:
+ * Enforces a configurable hard transaction limit.
  *
- * The journal is not persisted. After loading a save,
- * a new recording session begins.
+ * No operation may change inventory balances if it
+ * cannot also append its transaction record.
  *
- * No autonomous economy is activated here.
+ * Restored inventory balances begin with an empty
+ * current-session journal.
  */
 public final class InventoryManager {
 
+    public static final int DEFAULT_MAX_JOURNAL_ENTRIES =
+            100_000;
+
     private final ResourceCatalog resources;
+
+    private final int maxJournalEntries;
 
     private final Map<InventoryId, ResourceInventory> inventories =
             new TreeMap<>();
@@ -35,9 +41,24 @@ public final class InventoryManager {
     private long nextTransactionSequence = 1L;
 
     public InventoryManager(ResourceCatalog resources) {
+        this(resources, DEFAULT_MAX_JOURNAL_ENTRIES);
+    }
+
+    public InventoryManager(
+            ResourceCatalog resources,
+            int maxJournalEntries
+    ) {
         this.resources = Objects.requireNonNull(
                 resources, "resources"
         );
+
+        if (maxJournalEntries <= 0) {
+            throw new IllegalArgumentException(
+                    "Maximum journal entries must be positive"
+            );
+        }
+
+        this.maxJournalEntries = maxJournalEntries;
     }
 
     public synchronized ResourceInventory create(
@@ -59,6 +80,7 @@ public final class InventoryManager {
                 new ResourceInventory(id, owner, location);
 
         inventories.put(id, inventory);
+
         return inventory;
     }
 
@@ -86,10 +108,18 @@ public final class InventoryManager {
         return nextId;
     }
 
-    /**
-     * Returns an immutable snapshot of this session's
-     * successful economic mutations.
-     */
+    public synchronized int maxJournalEntries() {
+        return maxJournalEntries;
+    }
+
+    public synchronized int remainingJournalCapacity() {
+        return maxJournalEntries - transactions.size();
+    }
+
+    public synchronized boolean journalFull() {
+        return transactions.size() >= maxJournalEntries;
+    }
+
     public synchronized List<EconomicTransaction> transactions() {
         return List.copyOf(transactions);
     }
@@ -99,7 +129,10 @@ public final class InventoryManager {
     }
 
     /**
-     * Used only by trusted persistence code.
+     * Trusted persistence restoration.
+     *
+     * Restored balances are not new production and
+     * must not generate transaction entries.
      */
     synchronized ResourceInventory restoreInventory(
             InventoryId id,
@@ -145,6 +178,7 @@ public final class InventoryManager {
 
         for (Map.Entry<ResourceId, Long> entry :
                 balances.entrySet()) {
+
             inventory.setQuantity(
                     entry.getKey(), entry.getValue()
             );
@@ -152,7 +186,9 @@ public final class InventoryManager {
 
         inventories.put(id, inventory);
 
-        nextId = Math.max(nextId, id.value() + 1L);
+        nextId = Math.max(
+                nextId, id.value() + 1L
+        );
 
         return inventory;
     }
@@ -175,7 +211,7 @@ public final class InventoryManager {
             String cause
     ) {
         validateOperation(resource, quantity, cause);
-        ensureTransactionCapacity();
+        requireJournalCapacity();
 
         ResourceInventory inventory = require(destination);
 
@@ -206,7 +242,7 @@ public final class InventoryManager {
             String cause
     ) {
         validateOperation(resource, quantity, cause);
-        ensureTransactionCapacity();
+        requireJournalCapacity();
 
         ResourceInventory inventory = require(source);
         long available = inventory.quantity(resource);
@@ -231,6 +267,7 @@ public final class InventoryManager {
         inventory.setQuantity(
                 resource, available - quantity
         );
+
         append(transaction);
     }
 
@@ -242,7 +279,7 @@ public final class InventoryManager {
             String cause
     ) {
         validateOperation(resource, quantity, cause);
-        ensureTransactionCapacity();
+        requireJournalCapacity();
 
         ResourceInventory from = require(source);
         ResourceInventory to = require(destination);
@@ -261,7 +298,6 @@ public final class InventoryManager {
             );
         }
 
-        // Check overflow before changing either balance.
         long updatedDestination = Math.addExact(
                 to.quantity(resource),
                 quantity
@@ -327,7 +363,20 @@ public final class InventoryManager {
         }
     }
 
-    private void ensureTransactionCapacity() {
+    /**
+     * This check happens before any inventory
+     * balance is modified.
+     */
+    private void requireJournalCapacity() {
+        if (transactions.size() >= maxJournalEntries) {
+            throw new IllegalStateException(
+                    "Economic transaction journal is full "
+                            + "(" + maxJournalEntries + " entries). "
+                            + "A durable checkpoint and journal "
+                            + "rotation are required."
+            );
+        }
+
         if (nextTransactionSequence <= 0L
                 || nextTransactionSequence == Long.MAX_VALUE) {
             throw new IllegalStateException(
