@@ -4,8 +4,11 @@ package dev.dtzudontsay.knownworld.simulation.economy;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.storage.LevelResource;
 
@@ -13,14 +16,16 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Batch 22.0.
+ * Batch 22.5.
  *
- * Economy runtime with explicit persistent authority.
+ * Economy runtime with checkpoint scheduling for
+ * explicitly activated snapshot-primary worlds.
  *
- * Existing worlds use legacy compatibility unless
- * snapshot authority has been explicitly activated.
+ * Legacy worlds remain compatible and are not
+ * automatically migrated.
  *
- * Never seeds resources or migrates automatically.
+ * No automatic production, consumption or
+ * inventory provisioning is activated here.
  */
 public final class EconomyRuntime implements ModInitializer {
 
@@ -31,9 +36,11 @@ public final class EconomyRuntime implements ModInitializer {
 
     private ResourceCatalog catalog;
     private InventoryManager inventories;
+
     private EconomyReferenceValidator validator;
     private EconomyInventoryProvisioner provisioner;
     private EconomyAuthorityService.Loaded loaded;
+    private EconomyCheckpointScheduler scheduler;
 
     @Override
     public void onInitialize() {
@@ -57,6 +64,10 @@ public final class EconomyRuntime implements ModInitializer {
                         active = null;
                     }
                 }
+        );
+
+        ServerTickEvents.END_SERVER_TICK.register(
+                EconomyRuntime::tickActive
         );
     }
 
@@ -83,12 +94,11 @@ public final class EconomyRuntime implements ModInitializer {
 
         if (society == null) {
             throw new IllegalStateException(
-                    "Society structures must initialize first"
+                    "Society structure runtime must initialize first"
             );
         }
 
         EconomyRuntime runtime = new EconomyRuntime();
-
         runtime.server = server;
 
         runtime.saveDirectory =
@@ -129,8 +139,8 @@ public final class EconomyRuntime implements ModInitializer {
 
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
-                    "Economy authority or inventory validation "
-                            + "failed. No economic save was reset.",
+                    "Economy initialization rejected. "
+                            + "Existing economic files were not reset.",
                     exception
             );
 
@@ -146,15 +156,26 @@ public final class EconomyRuntime implements ModInitializer {
                         runtime.validator
                 );
 
+        runtime.scheduler =
+                new EconomyCheckpointScheduler(
+                        runtime.loaded.mode(),
+                        runtime.inventories,
+                        runtime::saveEconomy
+                );
+
         active = runtime;
 
         KnownWorld.LOGGER.info(
                 "Known World economy ready: {} inventories; "
                         + "authority mode: {}; selection: {}; "
-                        + "holding validation enabled",
+                        + "holding validation enabled; "
+                        + "checkpoint interval: {} ticks; "
+                        + "threshold: {} transactions",
                 runtime.inventories.all().size(),
                 runtime.loaded.mode(),
-                runtime.loaded.description()
+                runtime.loaded.description(),
+                runtime.scheduler.checkIntervalTicks(),
+                runtime.scheduler.checkpointThreshold()
         );
     }
 
@@ -192,30 +213,77 @@ public final class EconomyRuntime implements ModInitializer {
         return loaded.mode();
     }
 
-    private static void saveActive(MinecraftServer server) {
+    public EconomyCheckpointScheduler scheduler() {
+        if (scheduler == null) {
+            throw new IllegalStateException(
+                    "Economy scheduler not initialized"
+            );
+        }
+
+        return scheduler;
+    }
+
+    private static void tickActive(MinecraftServer server) {
 
         EconomyRuntime runtime = active;
 
-        if (runtime == null
-                || runtime.server != server) {
+        if (runtime == null || runtime.server != server) {
             return;
         }
 
         try {
-            runtime.validator.validate(
-                    runtime.inventories
-            );
+            EconomyCheckpointScheduler.Decision result =
+                    runtime.scheduler.tick();
 
-            EconomyAuthorityService.save(
-                    runtime.saveDirectory,
-                    runtime.catalog,
-                    runtime.loaded
-            );
+            if (result ==
+                    EconomyCheckpointScheduler.Decision
+                            .CHECKPOINT_REQUIRED) {
+
+                KnownWorld.LOGGER.info(
+                        "Known World economic checkpoint committed "
+                                + "and journal rotated; total scheduled "
+                                + "checkpoints this session: {}",
+                        runtime.scheduler.successfulCheckpoints()
+                );
+            }
 
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
-                    "Economy save failed; existing economic "
-                            + "files must be preserved.",
+                    "Scheduled economic checkpoint failed. "
+                            + "Economic transactions must not "
+                            + "continue without a verified save.",
+                    exception
+            );
+
+            /*
+             * Fail closed instead of continuing with
+             * an at-risk economic journal.
+             *
+             * Existing authoritative economic files
+             * are not deliberately reset.
+             */
+            throw new IllegalStateException(
+                    "Scheduled economic checkpoint failed",
+                    exception
+            );
+        }
+    }
+
+    private static void saveActive(MinecraftServer server) {
+
+        EconomyRuntime runtime = active;
+
+        if (runtime == null || runtime.server != server) {
+            return;
+        }
+
+        try {
+            runtime.saveEconomy();
+
+        } catch (IOException | RuntimeException exception) {
+            KnownWorld.LOGGER.error(
+                    "Economy save failed. Existing economic "
+                            + "data must be preserved.",
                     exception
             );
 
@@ -224,5 +292,20 @@ public final class EconomyRuntime implements ModInitializer {
                     exception
             );
         }
+    }
+
+    private void saveEconomy() throws IOException {
+
+        /*
+         * Every economy checkpoint validates current
+         * owner and location references.
+         */
+        validator.validate(inventories);
+
+        EconomyAuthorityService.save(
+                saveDirectory,
+                catalog,
+                loaded
+        );
     }
 }
