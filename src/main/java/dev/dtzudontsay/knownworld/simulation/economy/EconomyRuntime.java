@@ -13,12 +13,14 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Batch 21.3.
+ * Batch 21.9.
  *
- * Economy lifecycle with validation against authoritative
- * NPC, settlement, organization and holding registries.
+ * Economy lifecycle with explicit save selection.
  *
- * No automatic inventory or resource initialization.
+ * Legacy inventory saves remain authoritative.
+ * Snapshot-only or conflicting states fail closed.
+ *
+ * No automatic migration or resource creation.
  */
 public final class EconomyRuntime implements ModInitializer {
 
@@ -29,6 +31,8 @@ public final class EconomyRuntime implements ModInitializer {
     private InventoryPersistence persistence;
     private EconomyReferenceValidator validator;
     private EconomyInventoryProvisioner provisioner;
+
+    private EconomySaveSelector.Selection saveSelection;
 
     @Override
     public void onInitialize() {
@@ -109,9 +113,14 @@ public final class EconomyRuntime implements ModInitializer {
                 );
 
         try {
-            runtime.inventories = runtime.persistence.load(
-                    ResourceCatalog.benchmarkDefaults()
-            );
+            EconomySaveSelector.Result selected =
+                    EconomySaveSelector.load(
+                            directory,
+                            ResourceCatalog.benchmarkDefaults()
+                    );
+
+            runtime.inventories = selected.manager();
+            runtime.saveSelection = selected.selection();
 
             runtime.validator.validate(
                     runtime.inventories
@@ -120,7 +129,7 @@ public final class EconomyRuntime implements ModInitializer {
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
                     "Economy initialization failed. "
-                            + "Existing inventory data was not reset.",
+                            + "Economic files were not reset.",
                     exception
             );
 
@@ -142,14 +151,25 @@ public final class EconomyRuntime implements ModInitializer {
         KnownWorld.LOGGER.info(
                 "Known World economy ready: {} inventories; "
                         + "existing economy save: {}; "
-                        + "holding validation enabled",
+                        + "holding validation enabled; "
+                        + "save selection: {}",
                 runtime.inventories.all().size(),
-                runtime.persistence.exists()
+                runtime.persistence.exists(),
+                runtime.saveSelection
         );
     }
 
     public static EconomyRuntime getNullable() {
         return active;
+    }
+
+    public EconomySaveSelector.Selection saveSelection() {
+        if (saveSelection == null) {
+            throw new IllegalStateException(
+                    "Economy runtime is not initialized"
+            );
+        }
+        return saveSelection;
     }
 
     public InventoryManager inventories() {
@@ -162,12 +182,6 @@ public final class EconomyRuntime implements ModInitializer {
         return inventories;
     }
 
-    /**
-     * The supported entry point for provisioning
-     * a validated empty inventory.
-     *
-     * Does not add resource balances.
-     */
     public EconomyInventoryProvisioner provisioner() {
         if (provisioner == null) {
             throw new IllegalStateException(
@@ -190,8 +204,19 @@ public final class EconomyRuntime implements ModInitializer {
                     runtime.inventories
             );
 
-            // Opening an old world must not by itself
-            // generate an economy save file.
+            /*
+             * In the presence of a matching snapshot,
+             * this session does not write the legacy
+             * save. No autonomous economic operations
+             * are enabled in this batch.
+             */
+            if (runtime.saveSelection
+                    == EconomySaveSelector.Selection
+                    .LEGACY_WITH_MATCHING_SNAPSHOT) {
+
+                return;
+            }
+
             if (!runtime.persistence.exists()
                     && runtime.inventories.all().isEmpty()) {
                 return;
@@ -204,7 +229,7 @@ public final class EconomyRuntime implements ModInitializer {
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
                     "Failed to save Known World economy. "
-                            + "Existing data must be preserved.",
+                            + "Existing economic data must be preserved.",
                     exception
             );
 
