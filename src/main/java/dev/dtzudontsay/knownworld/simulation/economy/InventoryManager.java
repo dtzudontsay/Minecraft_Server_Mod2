@@ -11,16 +11,14 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 /**
- * Authoritative resource inventories and session journal.
+ * Authoritative inventory state and transaction journal.
  *
- * Batch 22.2:
- * Enforces a configurable hard transaction limit.
+ * Batch 22.4:
+ * Adds controlled in-memory journal rotation after
+ * an externally verified durable snapshot commit.
  *
- * No operation may change inventory balances if it
- * cannot also append its transaction record.
- *
- * Restored inventory balances begin with an empty
- * current-session journal.
+ * The rotation method has package-private visibility.
+ * Ordinary economic callers cannot clear journals.
  */
 public final class InventoryManager {
 
@@ -28,7 +26,6 @@ public final class InventoryManager {
             100_000;
 
     private final ResourceCatalog resources;
-
     private final int maxJournalEntries;
 
     private final Map<InventoryId, ResourceInventory> inventories =
@@ -39,6 +36,7 @@ public final class InventoryManager {
 
     private long nextId = 1L;
     private long nextTransactionSequence = 1L;
+    private long journalGeneration = 0L;
 
     public InventoryManager(ResourceCatalog resources) {
         this(resources, DEFAULT_MAX_JOURNAL_ENTRIES);
@@ -129,10 +127,56 @@ public final class InventoryManager {
     }
 
     /**
-     * Trusted persistence restoration.
+     * Number of successfully completed in-memory
+     * journal rotations during this manager session.
      *
-     * Restored balances are not new production and
-     * must not generate transaction entries.
+     * This is diagnostic only and is not a persistent
+     * transaction identity.
+     */
+    public synchronized long journalGeneration() {
+        return journalGeneration;
+    }
+
+    /**
+     * Called only by trusted checkpoint coordination
+     * after the new authoritative snapshot was written,
+     * reread and verified.
+     *
+     * The caller must hold this manager's monitor
+     * throughout capture, commit and rotation.
+     *
+     * This method does not change inventory balances.
+     */
+    synchronized void rotateCommittedJournal(
+            List<EconomicTransaction> committedSession
+    ) {
+        Objects.requireNonNull(
+                committedSession, "committedSession"
+        );
+
+        if (!transactions.equals(committedSession)) {
+            throw new IllegalStateException(
+                    "Cannot rotate journal: transactions changed "
+                            + "since the verified checkpoint"
+            );
+        }
+
+        if (journalGeneration == Long.MAX_VALUE) {
+            throw new IllegalStateException(
+                    "Journal generation space exhausted"
+            );
+        }
+
+        transactions.clear();
+        nextTransactionSequence = 1L;
+        journalGeneration++;
+    }
+
+    /**
+     * Trusted inventory persistence restoration.
+     *
+     * Loading balances must never fabricate
+     * production transactions.
      */
     synchronized ResourceInventory restoreInventory(
             InventoryId id,
@@ -186,16 +230,13 @@ public final class InventoryManager {
 
         inventories.put(id, inventory);
 
-        nextId = Math.max(
-                nextId, id.value() + 1L
-        );
+        nextId = Math.max(nextId, id.value() + 1L);
 
         return inventory;
     }
 
     synchronized void restoreNextId(long savedNextId) {
-        if (savedNextId < nextId
-                || savedNextId <= 0L) {
+        if (savedNextId < nextId || savedNextId <= 0L) {
             throw new IllegalArgumentException(
                     "Invalid saved next inventory ID"
             );
@@ -363,17 +404,12 @@ public final class InventoryManager {
         }
     }
 
-    /**
-     * This check happens before any inventory
-     * balance is modified.
-     */
     private void requireJournalCapacity() {
         if (transactions.size() >= maxJournalEntries) {
             throw new IllegalStateException(
                     "Economic transaction journal is full "
                             + "(" + maxJournalEntries + " entries). "
-                            + "A durable checkpoint and journal "
-                            + "rotation are required."
+                            + "A verified checkpoint is required."
             );
         }
 

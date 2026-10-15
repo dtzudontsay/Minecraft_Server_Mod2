@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Batch 22.3.
+ * Batch 22.4.
  *
- * Authority selection and verified snapshot commits.
+ * Economy authority selection and verified journal
+ * checkpoint rotation.
  *
- * Legacy compatibility remains unchanged.
- * Snapshot mode requires explicit activation.
+ * Legacy authority remains backward compatible.
+ * Snapshot authority requires explicit activation.
  */
 public final class EconomyAuthorityService {
 
@@ -22,18 +23,41 @@ public final class EconomyAuthorityService {
         SNAPSHOT_PRIMARY
     }
 
-    public record Loaded(
-            Mode mode,
-            InventoryManager manager,
-            String description,
-            List<EconomicTransaction> previousTransactions
-    ) {
-        public Loaded {
-            Objects.requireNonNull(mode, "mode");
-            Objects.requireNonNull(manager, "manager");
-            Objects.requireNonNull(description, "description");
+    /**
+     * The current economy session.
+     *
+     * Unlike the former record, its committed journal
+     * baseline may advance after verified saves.
+     *
+     * Callers must not replace the InventoryManager.
+     */
+    public static final class Loaded {
 
-            previousTransactions = List.copyOf(
+        private final Mode mode;
+        private final InventoryManager manager;
+        private final String description;
+
+        private List<EconomicTransaction> previousTransactions;
+
+        public Loaded(
+                Mode mode,
+                InventoryManager manager,
+                String description,
+                List<EconomicTransaction> previousTransactions
+        ) {
+            this.mode = Objects.requireNonNull(
+                    mode, "mode"
+            );
+
+            this.manager = Objects.requireNonNull(
+                    manager, "manager"
+            );
+
+            this.description = Objects.requireNonNull(
+                    description, "description"
+            );
+
+            this.previousTransactions = List.copyOf(
                     previousTransactions
             );
         }
@@ -43,7 +67,51 @@ public final class EconomyAuthorityService {
                 InventoryManager manager,
                 String description
         ) {
-            this(mode, manager, description, List.of());
+            this(
+                    mode,
+                    manager,
+                    description,
+                    List.of()
+            );
+        }
+
+        public Mode mode() {
+            return mode;
+        }
+
+        public InventoryManager manager() {
+            return manager;
+        }
+
+        public String description() {
+            return description;
+        }
+
+        /**
+         * Immutable copy of the latest committed
+         * historical transaction baseline.
+         */
+        public List<EconomicTransaction> previousTransactions() {
+            synchronized (manager) {
+                return previousTransactions;
+            }
+        }
+
+        /**
+         * Called under the manager lock, and only
+         * after a successful verified snapshot commit.
+         */
+        private void advanceCommittedBaseline(
+                List<EconomicTransaction> committed
+        ) {
+            if (!Thread.holdsLock(manager)) {
+                throw new IllegalStateException(
+                        "Committed baseline update requires "
+                                + "the inventory manager monitor"
+                );
+            }
+
+            previousTransactions = List.copyOf(committed);
         }
     }
 
@@ -86,8 +154,8 @@ public final class EconomyAuthorityService {
         marker.read();
 
         /*
-         * Deliberately do not use an automatic
-         * previous-generation fallback.
+         * Do not automatically recover from an
+         * invalid primary snapshot.
          */
         EconomySnapshotStore.Snapshot snapshot =
                 new EconomySnapshotStore(directory)
@@ -108,10 +176,10 @@ public final class EconomyAuthorityService {
     }
 
     /**
-     * Explicit activation only.
+     * Explicit offline snapshot-authority activation.
      *
-     * Must be called with the server stopped after
-     * taking a complete world backup.
+     * The caller must stop the server and back up
+     * the complete world before activation.
      */
     public static void activateMatchingSnapshot(
             Path directory,
@@ -160,7 +228,18 @@ public final class EconomyAuthorityService {
     }
 
     /**
-     * Save using the selected authority.
+     * Save through the selected authoritative format.
+     *
+     * In snapshot-primary mode:
+     *
+     * 1. Hold the manager lock.
+     * 2. Capture pending journal records.
+     * 3. Commit and verify the snapshot.
+     * 4. Rotate exactly those committed records.
+     * 5. Advance the committed historical baseline.
+     *
+     * A failed commit leaves the journal and baseline
+     * unchanged.
      */
     public static void save(
             Path directory,
@@ -185,20 +264,55 @@ public final class EconomyAuthorityService {
 
             marker.read();
 
-            /*
-             * Batch 22.3:
-             * No incomplete current-session journal
-             * may be written to the snapshot.
-             *
-             * The committer verifies the snapshot
-             * both before and after publication.
-             */
-            EconomySnapshotCommitter.commit(
-                    directory,
-                    catalog,
-                    loaded.manager(),
-                    loaded.previousTransactions()
-            );
+            InventoryManager manager = loaded.manager();
+
+            synchronized (manager) {
+                if (manager.journalGeneration()
+                        == Long.MAX_VALUE) {
+                    throw new IOException(
+                            "Journal generation space exhausted"
+                    );
+                }
+
+                /*
+                 * Exact journal state that this
+                 * checkpoint must include.
+                 */
+                List<EconomicTransaction> pending =
+                        manager.transactions();
+
+                /*
+                 * This method performs a verified
+                 * snapshot commit and throws if
+                 * publication or verification fails.
+                 *
+                 * The current journal is not changed
+                 * by the committer itself.
+                 */
+                EconomySnapshotStore.Snapshot committed =
+                        EconomySnapshotCommitter.commit(
+                                directory,
+                                catalog,
+                                manager,
+                                loaded.previousTransactions()
+                        );
+
+                /*
+                 * The manager monitor has been held
+                 * continuously since pending was read.
+                 *
+                 * Thus no other thread can append an
+                 * economic transaction during commit.
+                 *
+                 * Move the committed baseline forward
+                 * and rotate the exactly matched journal.
+                 */
+                manager.rotateCommittedJournal(pending);
+
+                loaded.advanceCommittedBaseline(
+                        committed.transactions()
+                );
+            }
 
             return;
         }
@@ -210,10 +324,9 @@ public final class EconomyAuthorityService {
         }
 
         /*
-         * Matched legacy/snapshot representations
-         * remain read-only in legacy compatibility.
-         *
-         * No automatic divergence is permitted.
+         * Preserve the existing no-divergence rule:
+         * matching legacy and snapshot files are
+         * read-only until snapshot activation.
          */
         if ("LEGACY_WITH_MATCHING_SNAPSHOT".equals(
                 loaded.description()
