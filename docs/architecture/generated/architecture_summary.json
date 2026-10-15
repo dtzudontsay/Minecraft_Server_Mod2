@@ -1,0 +1,489 @@
+{
+  "analysis_type": "static_java_imports",
+  "cross_domain_imports": [
+    {
+      "import_count": 23,
+      "source_domain": "debug",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "debug",
+      "target_domain": "simulation.bootstrap"
+    },
+    {
+      "import_count": 5,
+      "source_domain": "debug",
+      "target_domain": "simulation.event"
+    },
+    {
+      "import_count": 67,
+      "source_domain": "debug",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 33,
+      "source_domain": "debug",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "debug",
+      "target_domain": "simulation.testing"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "debug",
+      "target_domain": "simulation.world"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "debug",
+      "target_domain": "world.data"
+    },
+    {
+      "import_count": 23,
+      "source_domain": "debug",
+      "target_domain": "world.geography"
+    },
+    {
+      "import_count": 14,
+      "source_domain": "debug",
+      "target_domain": "world.reference"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "debug",
+      "target_domain": "world.terrain"
+    },
+    {
+      "import_count": 29,
+      "source_domain": "root",
+      "target_domain": "debug"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "root",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "root",
+      "target_domain": "simulation.bootstrap"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "root",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "root",
+      "target_domain": "simulation.persistence"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "root",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "root",
+      "target_domain": "world.biome"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "root",
+      "target_domain": "world.generation"
+    },
+    {
+      "import_count": 14,
+      "source_domain": "root",
+      "target_domain": "world.geography"
+    },
+    {
+      "import_count": 8,
+      "source_domain": "root",
+      "target_domain": "world.reference"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation",
+      "target_domain": "simulation.bootstrap"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation",
+      "target_domain": "simulation.event"
+    },
+    {
+      "import_count": 45,
+      "source_domain": "simulation",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 14,
+      "source_domain": "simulation",
+      "target_domain": "simulation.persistence"
+    },
+    {
+      "import_count": 7,
+      "source_domain": "simulation",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "simulation",
+      "target_domain": "simulation.testing"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation",
+      "target_domain": "simulation.time"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation",
+      "target_domain": "simulation.world"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 39,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 8,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "simulation.time"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "simulation.world"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.bootstrap",
+      "target_domain": "world.reference"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.event",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "simulation.event",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation.npc",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 15,
+      "source_domain": "simulation.npc",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 13,
+      "source_domain": "simulation.npc",
+      "target_domain": "simulation.event"
+    },
+    {
+      "import_count": 26,
+      "source_domain": "simulation.npc",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 5,
+      "source_domain": "simulation.npc",
+      "target_domain": "simulation.time"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "simulation.npc",
+      "target_domain": "simulation.world"
+    },
+    {
+      "import_count": 23,
+      "source_domain": "simulation.npc",
+      "target_domain": "world.reference"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation.persistence",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation.bootstrap"
+    },
+    {
+      "import_count": 6,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation.event"
+    },
+    {
+      "import_count": 74,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 56,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation.time"
+    },
+    {
+      "import_count": 6,
+      "source_domain": "simulation.persistence",
+      "target_domain": "simulation.world"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.persistence",
+      "target_domain": "world.reference"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "simulation.social",
+      "target_domain": "debug"
+    },
+    {
+      "import_count": 9,
+      "source_domain": "simulation.social",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 14,
+      "source_domain": "simulation.social",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.social",
+      "target_domain": "simulation.bootstrap"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "simulation.social",
+      "target_domain": "simulation.event"
+    },
+    {
+      "import_count": 57,
+      "source_domain": "simulation.social",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 7,
+      "source_domain": "simulation.social",
+      "target_domain": "simulation.persistence"
+    },
+    {
+      "import_count": 9,
+      "source_domain": "simulation.social",
+      "target_domain": "simulation.world"
+    },
+    {
+      "import_count": 12,
+      "source_domain": "simulation.social",
+      "target_domain": "world.reference"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "simulation.testing",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 36,
+      "source_domain": "simulation.testing",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 5,
+      "source_domain": "simulation.testing",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.testing",
+      "target_domain": "simulation.time"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "simulation.world",
+      "target_domain": "simulation"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "world.biome",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "world.biome",
+      "target_domain": "world.data"
+    },
+    {
+      "import_count": 6,
+      "source_domain": "world.biome",
+      "target_domain": "world.geography"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "world.biome",
+      "target_domain": "world.terrain"
+    },
+    {
+      "import_count": 5,
+      "source_domain": "world.data",
+      "target_domain": "world.geography"
+    },
+    {
+      "import_count": 3,
+      "source_domain": "world.data",
+      "target_domain": "world.terrain"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "world.generation",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "world.generation",
+      "target_domain": "world.data"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "world.generation",
+      "target_domain": "world.geography"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "world.generation",
+      "target_domain": "world.terrain"
+    },
+    {
+      "import_count": 1,
+      "source_domain": "world.geography",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 7,
+      "source_domain": "world.reference",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "world.reference",
+      "target_domain": "simulation.bootstrap"
+    },
+    {
+      "import_count": 12,
+      "source_domain": "world.reference",
+      "target_domain": "simulation.npc"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "world.reference",
+      "target_domain": "simulation.social"
+    },
+    {
+      "import_count": 22,
+      "source_domain": "world.reference",
+      "target_domain": "world.geography"
+    },
+    {
+      "import_count": 4,
+      "source_domain": "world.terrain",
+      "target_domain": "root"
+    },
+    {
+      "import_count": 2,
+      "source_domain": "world.terrain",
+      "target_domain": "world.data"
+    },
+    {
+      "import_count": 29,
+      "source_domain": "world.terrain",
+      "target_domain": "world.geography"
+    }
+  ],
+  "domains": {
+    "debug": 32,
+    "root": 1,
+    "simulation": 4,
+    "simulation.bootstrap": 7,
+    "simulation.event": 5,
+    "simulation.npc": 106,
+    "simulation.persistence": 22,
+    "simulation.social": 65,
+    "simulation.testing": 4,
+    "simulation.time": 2,
+    "simulation.world": 4,
+    "world.biome": 4,
+    "world.data": 2,
+    "world.generation": 2,
+    "world.geography": 43,
+    "world.reference": 23,
+    "world.terrain": 13
+  },
+  "limitations": [
+    "Imports do not prove runtime usage.",
+    "Implicit same-package references are omitted.",
+    "Nested types may be unresolved.",
+    "Static member imports may be unresolved.",
+    "Reflection is not analyzed.",
+    "Resource dependencies are not analyzed.",
+    "Runtime registration is not analyzed.",
+    "No mutation ownership is inferred."
+  ],
+  "schema_version": 1,
+  "total_external_imports": 1252,
+  "total_internal_imports": 1375,
+  "total_java_files": 339,
+  "total_java_source_lines": 106998,
+  "unresolved_internal_imports": [
+    {
+      "import": "dev.dtzudontsay.knownworld.world.terrain.mountain.MountainRegionProfileProvider.MountainProfileSample",
+      "source": "dev.dtzudontsay.knownworld.world.terrain.mountain.MountainTerrainGenerator"
+    },
+    {
+      "import": "dev.dtzudontsay.knownworld.world.terrain.mountain.MountainRegionProfileProvider.MountainStyle",
+      "source": "dev.dtzudontsay.knownworld.world.terrain.mountain.MountainTerrainGenerator"
+    }
+  ]
+}
