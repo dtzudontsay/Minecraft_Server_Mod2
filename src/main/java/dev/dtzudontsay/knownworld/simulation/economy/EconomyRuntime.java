@@ -3,6 +3,7 @@ package dev.dtzudontsay.knownworld.simulation.economy;
 
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
@@ -12,16 +13,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Batch 21.2
+ * Batch 21.3.
  *
- * Economy persistence lifecycle.
+ * Economy lifecycle with validation against authoritative
+ * NPC, settlement, organization and holding registries.
  *
- * Loads after the NPC simulation's registration,
- * validates references, and saves only when an
- * economy file already exists or runtime inventories
- * have explicitly been created.
- *
- * No resources or inventories are seeded here.
+ * No automatic inventory or resource initialization.
  */
 public final class EconomyRuntime implements ModInitializer {
 
@@ -31,6 +28,7 @@ public final class EconomyRuntime implements ModInitializer {
     private InventoryManager inventories;
     private InventoryPersistence persistence;
     private EconomyReferenceValidator validator;
+    private EconomyInventoryProvisioner provisioner;
 
     @Override
     public void onInitialize() {
@@ -58,6 +56,7 @@ public final class EconomyRuntime implements ModInitializer {
     }
 
     private static void start(MinecraftServer server) {
+
         if (active != null) {
             throw new IllegalStateException(
                     "Economy runtime already active"
@@ -67,16 +66,25 @@ public final class EconomyRuntime implements ModInitializer {
         NpcSimulation simulation =
                 NpcSimulation.getNullable();
 
+        SocietyStructureRuntime society =
+                SocietyStructureRuntime.getNullable();
+
         if (simulation == null
                 || simulation.server() != server) {
             throw new IllegalStateException(
                     "NPC simulation must initialize "
-                            + "before economy runtime"
+                            + "before the economy"
+            );
+        }
+
+        if (society == null) {
+            throw new IllegalStateException(
+                    "Society structure runtime must initialize "
+                            + "before the economy"
             );
         }
 
         EconomyRuntime runtime = new EconomyRuntime();
-
         runtime.server = server;
 
         Path directory = server.getWorldPath(
@@ -89,11 +97,15 @@ public final class EconomyRuntime implements ModInitializer {
         runtime.validator =
                 new EconomyReferenceValidator(
                         simulation.registry()::contains,
+
                         id -> simulation.settlements()
                                 .find(id).isPresent(),
+
                         id -> simulation.organizations()
                                 .find(id).isPresent(),
-                        id -> false
+
+                        id -> society.holdings()
+                                .find(id).isPresent()
                 );
 
         try {
@@ -108,22 +120,29 @@ public final class EconomyRuntime implements ModInitializer {
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
                     "Economy initialization failed. "
-                            + "Existing inventories were not reset.",
+                            + "Existing inventory data was not reset.",
                     exception
             );
 
             throw new IllegalStateException(
                     "Unsafe economy save or references. "
-                            + "World startup rejected to protect data.",
+                            + "Initialization rejected.",
                     exception
             );
         }
+
+        runtime.provisioner =
+                new EconomyInventoryProvisioner(
+                        runtime.inventories,
+                        runtime.validator
+                );
 
         active = runtime;
 
         KnownWorld.LOGGER.info(
                 "Known World economy ready: {} inventories; "
-                        + "existing economy save: {}",
+                        + "existing economy save: {}; "
+                        + "holding validation enabled",
                 runtime.inventories.all().size(),
                 runtime.persistence.exists()
         );
@@ -144,11 +163,21 @@ public final class EconomyRuntime implements ModInitializer {
     }
 
     /**
-     * Validate before writing.
+     * The supported entry point for provisioning
+     * a validated empty inventory.
      *
-     * Empty new economies are not automatically
-     * persisted merely because a world was opened.
+     * Does not add resource balances.
      */
+    public EconomyInventoryProvisioner provisioner() {
+        if (provisioner == null) {
+            throw new IllegalStateException(
+                    "Economy provisioner is not initialized"
+            );
+        }
+
+        return provisioner;
+    }
+
     private static void saveActive(MinecraftServer server) {
         EconomyRuntime runtime = active;
 
@@ -157,14 +186,20 @@ public final class EconomyRuntime implements ModInitializer {
         }
 
         try {
-            runtime.validator.validate(runtime.inventories);
+            runtime.validator.validate(
+                    runtime.inventories
+            );
 
+            // Opening an old world must not by itself
+            // generate an economy save file.
             if (!runtime.persistence.exists()
                     && runtime.inventories.all().isEmpty()) {
                 return;
             }
 
-            runtime.persistence.save(runtime.inventories);
+            runtime.persistence.save(
+                    runtime.inventories
+            );
 
         } catch (IOException | RuntimeException exception) {
             KnownWorld.LOGGER.error(
