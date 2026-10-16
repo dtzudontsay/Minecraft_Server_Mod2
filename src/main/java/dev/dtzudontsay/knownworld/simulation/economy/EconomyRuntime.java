@@ -4,6 +4,8 @@ package dev.dtzudontsay.knownworld.simulation.economy;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.social.SocietyStructureRuntime;
+import dev.dtzudontsay.knownworld.simulation.time.SimulationClock;
+import dev.dtzudontsay.knownworld.simulation.time.SimulationTimeContract;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -14,24 +16,31 @@ import net.minecraft.world.level.storage.LevelResource;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.function.Consumer;
 
 /**
- * Batch 22.5.
+ * Batch 22.10.
  *
- * Economy runtime with checkpoint scheduling for
- * explicitly activated snapshot-primary worlds.
+ * Economy runtime with:
  *
- * Legacy worlds remain compatible and are not
- * automatically migrated.
+ * - Existing economy authority selection
+ * - Inventory reference validation
+ * - Existing checkpoint scheduling
+ * - Shared campaign-day observation
+ * - Fast-forward day-boundary integration
  *
- * No automatic production, consumption or
- * inventory provisioning is activated here.
+ * Agricultural day observation is MONITOR_ONLY.
+ *
+ * No automatic agricultural inventory provisioning,
+ * population consumption or resource generation.
  */
 public final class EconomyRuntime implements ModInitializer {
 
     private static EconomyRuntime active;
 
     private MinecraftServer server;
+    private NpcSimulation simulation;
+
     private Path saveDirectory;
 
     private ResourceCatalog catalog;
@@ -39,8 +48,15 @@ public final class EconomyRuntime implements ModInitializer {
 
     private EconomyReferenceValidator validator;
     private EconomyInventoryProvisioner provisioner;
+
     private EconomyAuthorityService.Loaded loaded;
     private EconomyCheckpointScheduler scheduler;
+
+    private CampaignAgricultureDayCoordinator
+            campaignDays;
+
+    private Consumer<SimulationTimeContract>
+            fastForwardObserver;
 
     @Override
     public void onInitialize() {
@@ -50,7 +66,8 @@ public final class EconomyRuntime implements ModInitializer {
         );
 
         ServerLifecycleEvents.BEFORE_SAVE.register(
-                (server, flush, force) -> saveActive(server)
+                (server, flush, force) ->
+                        saveActive(server)
         );
 
         ServerLifecycleEvents.SERVER_STOPPING.register(
@@ -58,12 +75,7 @@ public final class EconomyRuntime implements ModInitializer {
         );
 
         ServerLifecycleEvents.SERVER_STOPPED.register(
-                server -> {
-                    if (active != null
-                            && active.server == server) {
-                        active = null;
-                    }
-                }
+                EconomyRuntime::stop
         );
 
         ServerTickEvents.END_SERVER_TICK.register(
@@ -87,6 +99,7 @@ public final class EconomyRuntime implements ModInitializer {
 
         if (simulation == null
                 || simulation.server() != server) {
+
             throw new IllegalStateException(
                     "NPC simulation must initialize first"
             );
@@ -94,12 +107,15 @@ public final class EconomyRuntime implements ModInitializer {
 
         if (society == null) {
             throw new IllegalStateException(
-                    "Society structure runtime must initialize first"
+                    "Society structure runtime must "
+                            + "initialize first"
             );
         }
 
         EconomyRuntime runtime = new EconomyRuntime();
+
         runtime.server = server;
+        runtime.simulation = simulation;
 
         runtime.saveDirectory =
                 server.getWorldPath(LevelResource.ROOT)
@@ -138,6 +154,7 @@ public final class EconomyRuntime implements ModInitializer {
             );
 
         } catch (IOException | RuntimeException exception) {
+
             KnownWorld.LOGGER.error(
                     "Economy initialization rejected. "
                             + "Existing economic files were not reset.",
@@ -156,11 +173,47 @@ public final class EconomyRuntime implements ModInitializer {
                         runtime.validator
                 );
 
+        /*
+         * Preserve the existing economic checkpoint
+         * scheduler from Batch 22.5.
+         */
         runtime.scheduler =
                 new EconomyCheckpointScheduler(
                         runtime.loaded.mode(),
                         runtime.inventories,
                         runtime::saveEconomy
+                );
+
+        /*
+         * NEW:
+         * Monitor authoritative campaign progression.
+         *
+         * The initial day is captured from the real
+         * campaign calendar. No startup callback
+         * pretends that a new day has already passed.
+         */
+        runtime.campaignDays =
+                CampaignAgricultureDayCoordinator
+                        .monitorOnly(
+                                simulation.campaignCalendar()
+                                        .absoluteDay()
+                        );
+
+        /*
+         * Reuse this exact same coordinator for
+         * accelerated campaign progression.
+         *
+         * The observer does not execute agriculture
+         * because the coordinator is MONITOR_ONLY.
+         */
+        runtime.fastForwardObserver =
+                time -> runtime.campaignDays.observe(
+                        time
+                );
+
+        simulation.fastForward()
+                .registerCampaignDayObserver(
+                        runtime.fastForwardObserver
                 );
 
         active = runtime;
@@ -170,13 +223,42 @@ public final class EconomyRuntime implements ModInitializer {
                         + "authority mode: {}; selection: {}; "
                         + "holding validation enabled; "
                         + "checkpoint interval: {} ticks; "
-                        + "threshold: {} transactions",
+                        + "threshold: {} transactions; "
+                        + "campaign agriculture: MONITOR_ONLY",
                 runtime.inventories.all().size(),
                 runtime.loaded.mode(),
                 runtime.loaded.description(),
                 runtime.scheduler.checkIntervalTicks(),
                 runtime.scheduler.checkpointThreshold()
         );
+    }
+
+    private static void stop(MinecraftServer server) {
+
+        EconomyRuntime runtime = active;
+
+        if (runtime == null
+                || runtime.server != server) {
+            return;
+        }
+
+        /*
+         * Release the callback from the existing
+         * fast-forward service on world shutdown.
+         *
+         * Prevent stale economy sessions from
+         * receiving later campaign-day events.
+         */
+        if (runtime.simulation != null
+                && runtime.fastForwardObserver != null) {
+
+            runtime.simulation.fastForward()
+                    .removeCampaignDayObserver(
+                            runtime.fastForwardObserver
+                    );
+        }
+
+        active = null;
     }
 
     public static EconomyRuntime getNullable() {
@@ -223,15 +305,53 @@ public final class EconomyRuntime implements ModInitializer {
         return scheduler;
     }
 
-    private static void tickActive(MinecraftServer server) {
+    public CampaignAgricultureDayCoordinator campaignDays() {
+        if (campaignDays == null) {
+            throw new IllegalStateException(
+                    "Campaign agriculture coordinator "
+                            + "not initialized"
+            );
+        }
+
+        return campaignDays;
+    }
+
+    private static void tickActive(
+            MinecraftServer server
+    ) {
 
         EconomyRuntime runtime = active;
 
-        if (runtime == null || runtime.server != server) {
+        if (runtime == null
+                || runtime.server != server) {
             return;
         }
 
         try {
+            /*
+             * Observe the existing NPC simulation's
+             * time after its normal tick processing.
+             *
+             * Reconstructing a read-only SimulationClock
+             * from the authoritative current tick does
+             * not introduce another mutable timeline.
+             */
+            SimulationTimeContract time =
+                    SimulationTimeContract.capture(
+                            new SimulationClock(
+                                    runtime.simulation
+                                            .serverTickCounter()
+                            ),
+                            runtime.simulation
+                                    .campaignCalendar()
+                    );
+
+            runtime.campaignDays.observe(time);
+
+            /*
+             * Existing transaction journal checkpoint
+             * scheduling remains unchanged.
+             */
             EconomyCheckpointScheduler.Decision result =
                     runtime.scheduler.tick();
 
@@ -241,39 +361,35 @@ public final class EconomyRuntime implements ModInitializer {
 
                 KnownWorld.LOGGER.info(
                         "Known World economic checkpoint committed "
-                                + "and journal rotated; total scheduled "
-                                + "checkpoints this session: {}",
+                                + "and journal rotated; "
+                                + "scheduled checkpoints: {}",
                         runtime.scheduler.successfulCheckpoints()
                 );
             }
 
         } catch (IOException | RuntimeException exception) {
+
             KnownWorld.LOGGER.error(
-                    "Scheduled economic checkpoint failed. "
-                            + "Economic transactions must not "
-                            + "continue without a verified save.",
+                    "Economic tick processing failed. "
+                            + "No economic state was deliberately reset.",
                     exception
             );
 
-            /*
-             * Fail closed instead of continuing with
-             * an at-risk economic journal.
-             *
-             * Existing authoritative economic files
-             * are not deliberately reset.
-             */
             throw new IllegalStateException(
-                    "Scheduled economic checkpoint failed",
+                    "Economic tick processing failed",
                     exception
             );
         }
     }
 
-    private static void saveActive(MinecraftServer server) {
+    private static void saveActive(
+            MinecraftServer server
+    ) {
 
         EconomyRuntime runtime = active;
 
-        if (runtime == null || runtime.server != server) {
+        if (runtime == null
+                || runtime.server != server) {
             return;
         }
 
@@ -281,6 +397,7 @@ public final class EconomyRuntime implements ModInitializer {
             runtime.saveEconomy();
 
         } catch (IOException | RuntimeException exception) {
+
             KnownWorld.LOGGER.error(
                     "Economy save failed. Existing economic "
                             + "data must be preserved.",
@@ -296,10 +413,6 @@ public final class EconomyRuntime implements ModInitializer {
 
     private void saveEconomy() throws IOException {
 
-        /*
-         * Every economy checkpoint validates current
-         * owner and location references.
-         */
         validator.validate(inventories);
 
         EconomyAuthorityService.save(
