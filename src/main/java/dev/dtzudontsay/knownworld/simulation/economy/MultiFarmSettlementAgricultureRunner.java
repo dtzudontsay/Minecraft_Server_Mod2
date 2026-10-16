@@ -15,25 +15,26 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Batch 22.12.
+ * Batch 22.13.
  *
- * Explicit, guarded multi-farm settlement runner.
+ * Guarded agricultural runner for one settlement
+ * containing ONE OR MORE enrolled holdings.
  *
- * All enrolled holdings belong to one settlement.
- * Household population is resolved once from
- * existing NPC affiliations and organizations.
+ * All holdings contribute to one settlement food
+ * operation. Household demand is calculated once.
  *
- * All farm intervals are marked PREPARED before
- * the first resource mutation.
+ * Reuses the authoritative:
  *
- * The complete settlement resource flow is then
- * committed through EconomyAuthorityService.
+ * - NPC and household identity registries
+ * - Holding and settlement identity registries
+ * - InventoryManager resource accounting
+ * - EconomyAuthorityService snapshot checkpoints
+ * - AgriculturalIntervalLedger replay protection
  *
- * This runner does not register Minecraft hooks
- * and does not activate agriculture automatically.
+ * No automatic runtime activation.
  *
- * Separate ledger and economy files still do not
- * provide cross-domain atomicity.
+ * Economy and ledger files are not a single
+ * cross-domain atomic transaction.
  */
 public final class MultiFarmSettlementAgricultureRunner
         implements CampaignAgricultureDayCoordinator.DayOperation {
@@ -49,6 +50,7 @@ public final class MultiFarmSettlementAgricultureRunner
     private final List<AgriculturalDayEnrollment> farms;
 
     private boolean blocked;
+
     private MultiFarmSettlementFoodCycle.Result lastResult;
 
     public MultiFarmSettlementAgricultureRunner(
@@ -63,28 +65,39 @@ public final class MultiFarmSettlementAgricultureRunner
         this.directory = Objects.requireNonNull(
                 directory, "directory"
         );
+
         this.catalog = Objects.requireNonNull(
                 catalog, "catalog"
         );
+
         this.economy = Objects.requireNonNull(
                 economy, "economy"
         );
+
         this.validator = Objects.requireNonNull(
                 validator, "validator"
         );
+
         this.adapter = Objects.requireNonNull(
                 adapter, "adapter"
         );
+
         this.ledger = Objects.requireNonNull(
                 ledger, "ledger"
         );
 
         Objects.requireNonNull(farms, "farms");
 
-        if (farms.size() < 2) {
+        /*
+         * Batch 22.13:
+         * Accept one or more farms so the same runner
+         * handles both single-farm and multi-farm
+         * settlements.
+         */
+        if (farms.isEmpty()) {
             throw new IllegalArgumentException(
-                    "Multi-farm runner requires at least "
-                            + "two enrolled holdings"
+                    "At least one agricultural holding "
+                            + "must be enrolled"
             );
         }
 
@@ -117,10 +130,11 @@ public final class MultiFarmSettlementAgricultureRunner
         Set<InventoryId> inventoryIds = new HashSet<>();
 
         for (AgriculturalDayEnrollment farm : sorted) {
+
             if (!settlement.equals(farm.settlement())) {
                 throw new IllegalArgumentException(
-                        "Multi-farm runner only supports "
-                                + "one settlement at a time"
+                        "A settlement runner cannot contain "
+                                + "farms from different settlements"
                 );
             }
 
@@ -155,9 +169,10 @@ public final class MultiFarmSettlementAgricultureRunner
     }
 
     /**
-     * Read-only settlement readiness check.
+     * Read-only preflight.
      *
-     * No ledger claim and no economic mutation.
+     * Does not claim intervals, mutate inventories,
+     * or create economic transactions.
      */
     public synchronized MultiFarmSettlementFoodCycle.Result
     inspect(
@@ -167,7 +182,7 @@ public final class MultiFarmSettlementAgricultureRunner
 
         if (blocked) {
             throw new IllegalStateException(
-                    "Multi-farm runner is blocked"
+                    "Agricultural settlement runner is blocked"
             );
         }
 
@@ -188,11 +203,6 @@ public final class MultiFarmSettlementAgricultureRunner
     ) {
     }
 
-    /**
-     * Validate every farm, household, interval and
-     * projected economic transaction before claiming
-     * a single interval.
-     */
     private Prepared prepareInputs(
             InventoryManager manager,
             long startDayInclusive,
@@ -221,8 +231,8 @@ public final class MultiFarmSettlementAgricultureRunner
                 > EconomyJournalContinuity
                 .DEFAULT_RETAINED_TRANSACTIONS) {
             throw new IOException(
-                    "Existing pending journal cannot "
-                            + "fit in a verified snapshot"
+                    "Existing pending journal cannot fit "
+                            + "in a verified snapshot"
             );
         }
 
@@ -235,19 +245,24 @@ public final class MultiFarmSettlementAgricultureRunner
                 farmInputs = new ArrayList<>();
 
         for (AgriculturalDayEnrollment farm : farms) {
+
             AgriculturalInterval interval =
                     farm.interval(
                             startDayInclusive,
                             endDayExclusive
                     );
 
-            var progress = ledger.progress(farm.holding());
+            var progress = ledger.progress(
+                    farm.holding()
+            );
 
             if (progress.isPresent()) {
+
                 if (progress.get().pending()) {
                     throw new IOException(
                             "Unresolved PREPARED interval "
-                                    + "for holding " + farm.holding()
+                                    + "for holding "
+                                    + farm.holding()
                     );
                 }
 
@@ -262,43 +277,41 @@ public final class MultiFarmSettlementAgricultureRunner
                 }
             }
 
-            /*
-             * The existing adapter confirms:
-             *
-             * - Holding exists
-             * - Farm inventory belongs to holding
-             * - Farm and household locations match
-             * - Household identities are organizations
-             * - Household population uses living NPCs
-             */
-            SettlementFoodScenarioAdapter.Resolved resolved =
-                    adapter.resolve(
-                            manager,
-                            farm.holding(),
-                            farm.farmInventory(),
-                            farm.settlement(),
-                            interval,
-                            farm.harvestInputs(),
-                            farm.protectedReserveKg(),
-                            farm.gramsPerPersonPerDay()
-                    );
+            SettlementFoodScenarioAdapter.Resolved
+                    resolved = adapter.resolve(
+                    manager,
+                    farm.holding(),
+                    farm.farmInventory(),
+                    farm.settlement(),
+                    interval,
+                    farm.harvestInputs(),
+                    farm.protectedReserveKg(),
+                    farm.gramsPerPersonPerDay()
+            );
 
             if (resolved.unassignedResidents() != 0L) {
                 throw new IllegalStateException(
-                        "Unassigned residents in settlement "
-                                + settlement
+                        "Unassigned living residents in "
+                                + "settlement " + settlement
                 );
             }
 
             List<SettlementFoodCycle.Household> current =
                     resolved.cycleInputs().households();
 
+            /*
+             * Every farm in a settlement must resolve
+             * the same population and food requirements.
+             *
+             * Consumption will happen only once.
+             */
             if (households == null) {
                 households = current;
+
             } else if (!households.equals(current)) {
                 throw new IllegalStateException(
                         "Farm enrollments disagree about "
-                                + "household population or food demand"
+                                + "household population or demand"
                 );
             }
 
@@ -341,12 +354,14 @@ public final class MultiFarmSettlementAgricultureRunner
     }
 
     /**
-     * Execute and durably checkpoint one complete
-     * settlement agricultural day.
+     * Execute and checkpoint exactly one agricultural
+     * day for this settlement.
+     *
+     * All farm ledgers are marked PREPARED before any
+     * agricultural balance is changed.
      *
      * Any failure blocks this runner instance.
-     * Prepared ledger markers block unsafe retries
-     * across process restarts.
+     * The persistent ledger also blocks unsafe replay.
      */
     public synchronized MultiFarmSettlementFoodCycle.Result
     executeDay(
@@ -357,7 +372,7 @@ public final class MultiFarmSettlementAgricultureRunner
 
         if (blocked) {
             throw new IllegalStateException(
-                    "Multi-farm runner is blocked "
+                    "Agricultural settlement runner is blocked "
                             + "after a previous failure"
             );
         }
@@ -372,6 +387,7 @@ public final class MultiFarmSettlementAgricultureRunner
             InventoryManager manager = economy.manager();
 
             synchronized (manager) {
+
                 Prepared prepared = prepareInputs(
                         manager,
                         startDayInclusive,
@@ -379,8 +395,8 @@ public final class MultiFarmSettlementAgricultureRunner
                 );
 
                 /*
-                 * Commit and rotate earlier pending
-                 * transactions before claiming the day.
+                 * Verified checkpoint of any earlier
+                 * pending economic activity.
                  */
                 EconomyAuthorityService.save(
                         directory,
@@ -389,34 +405,37 @@ public final class MultiFarmSettlementAgricultureRunner
                 );
 
                 /*
-                 * Claim ALL holdings before production
-                 * or consumption begins.
-                 *
-                 * If any claim fails, no resources
-                 * have been changed by this day.
-                 * Earlier claims remain PREPARED and
-                 * must be reconciled explicitly.
+                 * Claim every enrolled holding BEFORE
+                 * the settlement's resource changes.
                  */
                 for (AgriculturalDayEnrollment farm : farms) {
-                    AgriculturalIntervalLedger.BeginResult claim =
-                            ledger.begin(
-                                    farm.holding(),
-                                    farm.interval(
-                                            startDayInclusive,
-                                            endDayExclusive
-                                    )
-                            );
+
+                    AgriculturalIntervalLedger.BeginResult
+                            claim = ledger.begin(
+                            farm.holding(),
+                            farm.interval(
+                                    startDayInclusive,
+                                    endDayExclusive
+                            )
+                    );
 
                     if (claim !=
                             AgriculturalIntervalLedger.BeginResult
                                     .STARTED) {
                         throw new IOException(
-                                "Unexpected already completed "
-                                        + "farm interval"
+                                "Unexpected completed "
+                                        + "agricultural interval"
                         );
                     }
                 }
 
+                /*
+                 * One settlement-level operation.
+                 *
+                 * Harvest multiple farms.
+                 * Distribute grain from actual owners.
+                 * Consume each household's food once.
+                 */
                 MultiFarmSettlementFoodCycle.Result result =
                         MultiFarmSettlementFoodCycle.execute(
                                 manager,
@@ -426,8 +445,9 @@ public final class MultiFarmSettlementAgricultureRunner
                 validator.validate(manager);
 
                 /*
-                 * Commit the FULL settlement operation
-                 * in one verified economy snapshot.
+                 * Save all farm and household balances
+                 * together in one verified economic
+                 * snapshot.
                  */
                 EconomyAuthorityService.save(
                         directory,
@@ -436,11 +456,11 @@ public final class MultiFarmSettlementAgricultureRunner
                 );
 
                 /*
-                 * Separate holding-ledger writes are
-                 * not cross-file atomic.
+                 * These ledger writes are separate
+                 * and not cross-file atomic.
                  *
-                 * Partial completion on disk blocks
-                 * further execution until reconciled.
+                 * Any interruption must remain
+                 * fail-closed.
                  */
                 for (AgriculturalDayEnrollment farm : farms) {
                     ledger.complete(
@@ -453,6 +473,7 @@ public final class MultiFarmSettlementAgricultureRunner
                 }
 
                 lastResult = result;
+
                 return result;
             }
 
@@ -463,15 +484,13 @@ public final class MultiFarmSettlementAgricultureRunner
     }
 
     /**
-     * Attach the exact same durable day operation
-     * to the coordinator used by normal and
-     * accelerated campaign-day progression.
+     * Explicit coordinator construction only.
      *
-     * This method only constructs a coordinator.
-     * It does not register a live server callback.
+     * Does not register server tick callbacks.
      */
     public CampaignAgricultureDayCoordinator
     strictCoordinator(long initialCampaignDay) {
+
         return new CampaignAgricultureDayCoordinator(
                 initialCampaignDay,
                 this
@@ -490,9 +509,10 @@ public final class MultiFarmSettlementAgricultureRunner
                     endDayExclusive,
                     simulationTick
             );
+
         } catch (IOException exception) {
             throw new UncheckedIOException(
-                    "Multi-farm agricultural checkpoint failed",
+                    "Agricultural settlement checkpoint failed",
                     exception
             );
         }
