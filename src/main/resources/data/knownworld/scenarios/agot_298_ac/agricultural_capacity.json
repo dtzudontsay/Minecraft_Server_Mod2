@@ -1,0 +1,76 @@
+
+{
+  "schemaVersion": 1,
+  "note": "All quantities here are provisional MOD_ESTIMATE balancing values, not ASOIAF canon, geographic measurements, or verified demographic data. No farms are automatically enrolled.",
+  "regionalProfiles": [
+    {
+      "locationId": "the_north",
+      "provenance": "MOD_ESTIMATE",
+      "farmableHectaresByType": {
+        "CASTLE": 600,
+        "FORTRESS": 150,
+        "CITY": 250,
+        "TOWN": 180,
+        "VILLAGE": 100,
+        "ESTATE": 180,
+        "PORT": 120
+      },
+      "cultivationPermille": 600,
+      "grainKgPerHectare": 700,
+      "grainKgPerWorker": 1100,
+      "fertilityPermille": 850,
+      "harvestPeriodDays": 120,
+      "protectedReserveKg": 50,
+      "gramsPerPersonPerDay": 800
+    },
+    {
+      "locationId": "the_reach",
+      "provenance": "MOD_ESTIMATE",
+      "farmableHectaresByType": {
+        "CASTLE": 900,
+        "FORTRESS": 200,
+        "CITY": 400,
+        "TOWN": 300,
+        "VILLAGE": 160,
+        "ESTATE": 350,
+        "PORT": 180
+      },
+      "cultivationPermille": 800,
+      "grainKgPerHectare": 1000,
+      "grainKgPerWorker": 1600,
+      "fertilityPermille": 1100,
+      "harvestPeriodDays": 120,
+      "protectedReserveKg": 50,
+      "gramsPerPersonPerDay": 800
+    },
+    {
+      "locationId": "dorne",
+      "provenance": "MOD_ESTIMATE",
+      "farmableHectaresByType": {
+        "CASTLE": 350,
+        "FORTRESS": 100,
+        "CITY": 200,
+        "TOWN": 150,
+        "VILLAGE": 80,
+        "ESTATE": 130,
+        "PORT": 100
+      },
+      "cultivationPermille": 650,
+      "grainKgPerHectare": 700,
+      "grainKgPerWorker": 1000,
+      "fertilityPermille": 900,
+      "harvestPeriodDays": 120,
+      "protectedReserveKg": 50,
+      "gramsPerPersonPerDay": 800
+    }
+  ],
+  "holdingOverrides": [
+    {
+      "holdingId": "winterfell_domain",
+      "provenance": "MOD_ESTIMATE",
+      "farmableHectares": 1500,
+      "cultivatedHectares": 750,
+      "fertilityPermille": 850
+    }
+  ]
+}
