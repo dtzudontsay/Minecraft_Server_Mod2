@@ -1,4 +1,3 @@
-
 package dev.dtzudontsay.knownworld.simulation.economy;
 
 import dev.dtzudontsay.knownworld.simulation.social.holding.HoldingId;
@@ -17,26 +16,23 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- * Batch 22.13.
+ * Campaign-wide agricultural dispatcher.
  *
- * Unified campaign-day agricultural dispatcher.
+ * Groups existing farm enrollments by SettlementId.
  *
- * Groups holding enrollments by existing SettlementId.
+ * Batch 22.21:
+ * Each settlement can independently opt into
+ * anonymous-population food consumption.
  *
- * One MultiFarmSettlementAgricultureRunner is used
- * per settlement, even when the settlement contains
- * only one enrolled farm.
+ * A single settlement runner serves one or more farms
+ * and one complete set of consumers.
  *
- * Household demand is calculated once per settlement.
+ * All settlements are inspected before execution.
  *
- * All settlement groups are preflighted before
- * the first group is executed.
+ * No automatic Fabric hooks or implicit enrollment.
  *
- * No automatic Fabric registration or enrollment.
- *
- * Cross-settlement execution is NOT an atomic
- * transaction. Unexpected partial failures require
- * manual recovery.
+ * Cross-settlement economic execution remains
+ * non-atomic; partial failures block further use.
  */
 public final class CampaignSettlementAgricultureDispatcher
         implements CampaignAgricultureDayCoordinator.DayOperation {
@@ -46,8 +42,8 @@ public final class CampaignSettlementAgricultureDispatcher
             MultiFarmSettlementFoodCycle.Result food
     ) {
         public SettlementPreview {
-            Objects.requireNonNull(settlement, "settlement");
-            Objects.requireNonNull(food, "food");
+            Objects.requireNonNull(settlement);
+            Objects.requireNonNull(food);
         }
     }
 
@@ -66,8 +62,8 @@ public final class CampaignSettlementAgricultureDispatcher
             MultiFarmSettlementFoodCycle.Result food
     ) {
         public SettlementResult {
-            Objects.requireNonNull(settlement, "settlement");
-            Objects.requireNonNull(food, "food");
+            Objects.requireNonNull(settlement);
+            Objects.requireNonNull(food);
         }
     }
 
@@ -90,9 +86,14 @@ public final class CampaignSettlementAgricultureDispatcher
             settlementRunners;
 
     private boolean blocked;
-
     private DayResult lastResult;
 
+    /**
+     * Original dispatcher constructor.
+     *
+     * Preserves existing behavior for campaigns
+     * using only represented NPC households.
+     */
     public CampaignSettlementAgricultureDispatcher(
             Path directory,
             ResourceCatalog catalog,
@@ -102,15 +103,55 @@ public final class CampaignSettlementAgricultureDispatcher
             AgriculturalIntervalLedger ledger,
             List<AgriculturalDayEnrollment> enrollments
     ) {
+        this(
+                directory,
+                catalog,
+                economy,
+                validator,
+                adapter,
+                ledger,
+                enrollments,
+                Map.of()
+        );
+    }
+
+    /**
+     * Batch 22.21 constructor.
+     *
+     * Each map key must be an enrolled settlement.
+     *
+     * A map entry tells the corresponding settlement
+     * runner to include anonymous residents through
+     * the existing SettlementCohortFoodIntegration.
+     *
+     * Settlements without entries retain their
+     * original named-household-only behavior.
+     */
+    public CampaignSettlementAgricultureDispatcher(
+            Path directory,
+            ResourceCatalog catalog,
+            EconomyAuthorityService.Loaded economy,
+            EconomyReferenceValidator validator,
+            SettlementFoodScenarioAdapter adapter,
+            AgriculturalIntervalLedger ledger,
+            List<AgriculturalDayEnrollment> enrollments,
+            Map<SettlementId, SettlementCohortFoodIntegration>
+                    cohortIntegrations
+    ) {
         Objects.requireNonNull(directory, "directory");
         Objects.requireNonNull(catalog, "catalog");
+
         this.economy = Objects.requireNonNull(
                 economy, "economy"
         );
+
         Objects.requireNonNull(validator, "validator");
         Objects.requireNonNull(adapter, "adapter");
         Objects.requireNonNull(ledger, "ledger");
         Objects.requireNonNull(enrollments, "enrollments");
+        Objects.requireNonNull(
+                cohortIntegrations, "cohortIntegrations"
+        );
 
         if (enrollments.isEmpty()) {
             throw new IllegalArgumentException(
@@ -119,15 +160,13 @@ public final class CampaignSettlementAgricultureDispatcher
             );
         }
 
+        Map<SettlementId, SettlementCohortFoodIntegration>
+                configuredCohorts =
+                Map.copyOf(cohortIntegrations);
+
         List<AgriculturalDayEnrollment> sorted =
                 new ArrayList<>(List.copyOf(enrollments));
 
-        /*
-         * Global deterministic ordering:
-         *
-         * 1. SettlementId
-         * 2. HoldingId
-         */
         sorted.sort(
                 Comparator.comparingLong(
                         (AgriculturalDayEnrollment farm) ->
@@ -153,8 +192,7 @@ public final class CampaignSettlementAgricultureDispatcher
             }
 
             if (!farmInventoryIds.add(
-                    farm.farmInventory()
-            )) {
+                    farm.farmInventory())) {
                 throw new IllegalArgumentException(
                         "Farm inventory enrolled more than once: "
                                 + farm.farmInventory()
@@ -167,19 +205,64 @@ public final class CampaignSettlementAgricultureDispatcher
             ).add(farm);
         }
 
+        /*
+         * Reject cohort configurations targeting
+         * settlements without any enrolled farm.
+         *
+         * A misspelled or unrelated SettlementId must
+         * not silently disable its residents' food demand.
+         */
+        Set<InventoryId> cohortPantryIds = new HashSet<>();
+
+        for (var entry : configuredCohorts.entrySet()) {
+
+            SettlementId settlementId = entry.getKey();
+
+            if (!grouped.containsKey(
+                    settlementId.value())) {
+                throw new IllegalArgumentException(
+                        "Cohort food integration targets "
+                                + "an unenrolled settlement: "
+                                + settlementId
+                );
+            }
+
+            InventoryId pantry =
+                    entry.getValue().cohortPantry();
+
+            if (pantry != null) {
+
+                if (!cohortPantryIds.add(pantry)) {
+                    throw new IllegalArgumentException(
+                            "Aggregate pantry configured for "
+                                    + "multiple settlements: "
+                                    + pantry
+                    );
+                }
+
+                if (farmInventoryIds.contains(pantry)) {
+                    throw new IllegalArgumentException(
+                            "Aggregate pantry also enrolled "
+                                    + "as a farm: "
+                                    + pantry
+                    );
+                }
+            }
+        }
+
         List<MultiFarmSettlementAgricultureRunner> runners =
                 new ArrayList<>();
 
+        /*
+         * Settlement order is deterministic because
+         * grouped is a TreeMap keyed by SettlementId.
+         */
         for (List<AgriculturalDayEnrollment> group :
                 grouped.values()) {
 
-            /*
-             * The same runner handles ONE farm and
-             * MANY farms.
-             *
-             * No separate household consumption path
-             * is selected for single-farm settlements.
-             */
+            SettlementId settlementId =
+                    group.get(0).settlement();
+
             runners.add(
                     new MultiFarmSettlementAgricultureRunner(
                             directory,
@@ -188,7 +271,8 @@ public final class CampaignSettlementAgricultureDispatcher
                             validator,
                             adapter,
                             ledger,
-                            group
+                            group,
+                            configuredCohorts.get(settlementId)
                     )
             );
         }
@@ -219,14 +303,11 @@ public final class CampaignSettlementAgricultureDispatcher
     }
 
     /**
-     * Global read-only preflight.
+     * Read-only campaign-wide preflight.
      *
-     * No settlement may be executed unless every
-     * enrolled settlement first passes inspection.
-     *
-     * This includes farm/household identities,
-     * inventory balances, journal capacity, and
-     * persistent interval progression.
+     * Named households, anonymous residents,
+     * inventories, agriculture intervals and journal
+     * capacity are checked before any execution.
      */
     public synchronized Readiness inspect(
             long startDayInclusive,
@@ -278,17 +359,17 @@ public final class CampaignSettlementAgricultureDispatcher
     }
 
     /**
-     * Execute one complete campaign-day transition.
+     * Execute one complete campaign day.
      *
-     * Phase 1: inspect ALL settlements.
-     * Phase 2: execute each settlement in ID order.
+     * Phase 1:
+     * Preflight every settlement, including all
+     * anonymous-population integrations.
      *
-     * This ordering is deterministic but not
-     * cross-settlement atomic.
+     * Phase 2:
+     * Execute each settlement in ID order through
+     * its existing guarded runner.
      *
-     * Any failure blocks this dispatcher instance.
-     * Durable interval state prevents unsafe retry
-     * after a process restart.
+     * This is not a cross-settlement transaction.
      */
     public synchronized DayResult executeDay(
             long startDayInclusive,
@@ -299,6 +380,7 @@ public final class CampaignSettlementAgricultureDispatcher
         requireNotBlocked();
 
         try {
+
             if (simulationTick < 0L) {
                 throw new IllegalArgumentException(
                         "Simulation tick cannot be negative"
@@ -310,8 +392,9 @@ public final class CampaignSettlementAgricultureDispatcher
             synchronized (manager) {
 
                 /*
-                 * No mutation or ledger claim occurs
-                 * until ALL groups are ready.
+                 * Critical:
+                 * No farm ledger is claimed and no grain
+                 * is changed until ALL settlements pass.
                  */
                 inspectLocked(
                         startDayInclusive,
@@ -360,21 +443,12 @@ public final class CampaignSettlementAgricultureDispatcher
     private void requireNotBlocked() {
         if (blocked) {
             throw new IllegalStateException(
-                    "Campaign agricultural dispatcher "
-                            + "is blocked after a failed operation"
+                    "Campaign agricultural dispatcher is "
+                            + "blocked after a failed operation"
             );
         }
     }
 
-    /**
-     * Existing strict campaign-day coordinator.
-     *
-     * Both normal and accelerated simulation can
-     * dispatch through the same callback contract.
-     *
-     * Construction is explicit; no live-world
-     * registration occurs here.
-     */
     public CampaignAgricultureDayCoordinator
     strictCoordinator(long initialCampaignDay) {
 

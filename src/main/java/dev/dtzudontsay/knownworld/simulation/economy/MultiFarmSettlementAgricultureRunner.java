@@ -1,4 +1,3 @@
-
 package dev.dtzudontsay.knownworld.simulation.economy;
 
 import dev.dtzudontsay.knownworld.simulation.social.holding.HoldingId;
@@ -15,22 +14,20 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Guarded agricultural runner for one settlement
- * containing one or more enrolled holdings.
+ * Guarded settlement agricultural operation.
  *
- * Batch 22.20:
+ * One or more farms produce food for one settlement.
+ * Every consumer participates in one shared food cycle.
  *
- * Optionally includes anonymous settlement residents
- * in the SAME MultiFarmSettlementFoodCycle as existing
- * persistent-NPC households.
+ * Batch 22.21:
+ * Supports settlements containing no persistent NPC
+ * households, provided a verified anonymous population
+ * and a valid settlement pantry are configured.
  *
- * Reuses existing InventoryManager, economy snapshots
- * and AgriculturalIntervalLedger.
+ * The existing economy, snapshot persistence, farm
+ * interval ledger, and replay protection are reused.
  *
- * No automatic runtime activation.
- *
- * Economy and agricultural ledger files are not
- * one cross-domain atomic transaction.
+ * Not automatically registered with Minecraft.
  */
 public final class MultiFarmSettlementAgricultureRunner
         implements CampaignAgricultureDayCoordinator.DayOperation {
@@ -53,9 +50,8 @@ public final class MultiFarmSettlementAgricultureRunner
     /**
      * Original constructor.
      *
-     * Existing controlled agricultural scenarios
-     * continue functioning without demographic
-     * cohort integration.
+     * Existing named-household agricultural scenarios
+     * remain supported without modification.
      */
     public MultiFarmSettlementAgricultureRunner(
             Path directory,
@@ -79,13 +75,11 @@ public final class MultiFarmSettlementAgricultureRunner
     }
 
     /**
-     * Batch 22.20 constructor.
+     * Cohort-enabled constructor from Batch 22.20.
      *
-     * cohortFood supplies a read-only demographic
-     * connection and a pre-existing aggregate pantry.
-     *
-     * Both named and anonymous residents then consume
-     * resources in one guarded settlement operation.
+     * The optional cohort integration supplies
+     * validated anonymous inhabitants and their
+     * pre-existing settlement-owned pantry.
      */
     public MultiFarmSettlementAgricultureRunner(
             Path directory,
@@ -140,7 +134,6 @@ public final class MultiFarmSettlementAgricultureRunner
                                 .toAbsolutePath()
                                 .normalize()
                 )) {
-
             throw new IllegalArgumentException(
                     "Agricultural ledger must use "
                             + "the economy save directory"
@@ -174,7 +167,6 @@ public final class MultiFarmSettlementAgricultureRunner
                     || !inventoryIds.add(
                     farm.farmInventory()
             )) {
-
                 throw new IllegalArgumentException(
                         "Duplicate holding or farm inventory"
                 );
@@ -202,10 +194,8 @@ public final class MultiFarmSettlementAgricultureRunner
     }
 
     /**
-     * Read-only inspection of the complete
-     * economic operation.
-     *
-     * Includes anonymous consumers when configured.
+     * Preflight without modifying inventory balances,
+     * farm ledgers, or economic journals.
      */
     public synchronized MultiFarmSettlementFoodCycle.Result
     inspect(
@@ -245,7 +235,6 @@ public final class MultiFarmSettlementAgricultureRunner
         if (startDayInclusive < 0L
                 || startDayInclusive == Long.MAX_VALUE
                 || endDayExclusive != startDayInclusive + 1L) {
-
             throw new IllegalArgumentException(
                     "Exactly one campaign day is required"
             );
@@ -254,20 +243,17 @@ public final class MultiFarmSettlementAgricultureRunner
         if (economy.mode()
                 != EconomyAuthorityService.Mode
                 .SNAPSHOT_PRIMARY) {
-
             throw new IOException(
-                    "Snapshot-primary economy authority "
-                            + "is required"
+                    "Snapshot-primary economy authority required"
             );
         }
 
         if (manager.transactionCount()
                 > EconomyJournalContinuity
                 .DEFAULT_RETAINED_TRANSACTIONS) {
-
             throw new IOException(
-                    "Existing pending journal cannot fit "
-                            + "in a verified snapshot"
+                    "Pending journal exceeds verified "
+                            + "snapshot retention"
             );
         }
 
@@ -276,8 +262,8 @@ public final class MultiFarmSettlementAgricultureRunner
         List<SettlementFoodCycle.Household> households =
                 null;
 
-        List<MultiFarmSettlementFoodCycle.Farm>
-                farmInputs = new ArrayList<>();
+        List<MultiFarmSettlementFoodCycle.Farm> farmInputs =
+                new ArrayList<>();
 
         for (AgriculturalDayEnrollment farm : farms) {
 
@@ -304,15 +290,21 @@ public final class MultiFarmSettlementAgricultureRunner
                 if (progress.get()
                         .lastCompletedEndDay()
                         != startDayInclusive) {
-
                     throw new IOException(
                             "Agricultural ledger and campaign "
-                                    + "time disagree for "
+                                    + "time disagree for holding "
                                     + farm.holding()
                     );
                 }
             }
 
+            /*
+             * With cohort integration, zero persistent
+             * NPC households is permitted.
+             *
+             * Without cohort integration, the adapter
+             * retains its previous strict behavior.
+             */
             SettlementFoodScenarioAdapter.Resolved resolved =
                     adapter.resolve(
                             manager,
@@ -322,7 +314,8 @@ public final class MultiFarmSettlementAgricultureRunner
                             interval,
                             farm.harvestInputs(),
                             farm.protectedReserveKg(),
-                            farm.gramsPerPersonPerDay()
+                            farm.gramsPerPersonPerDay(),
+                            cohortFood != null
                     );
 
             if (resolved.unassignedResidents() != 0L) {
@@ -337,8 +330,11 @@ public final class MultiFarmSettlementAgricultureRunner
                     resolved.cycleInputs().households();
 
             /*
-             * Each farm must see identical existing
-             * household demand. It is counted once.
+             * Every farm must resolve exactly the same
+             * named household consumers.
+             *
+             * Their food requirement is calculated
+             * only once for the settlement.
              */
             if (households == null) {
                 households = current;
@@ -365,19 +361,16 @@ public final class MultiFarmSettlementAgricultureRunner
                 Objects.requireNonNull(households);
 
         /*
-         * Batch 22.20:
+         * This is the only place where anonymous
+         * settlement consumers are appended.
          *
-         * Resolve anonymous population ONCE after all
-         * individual farm enrollments have been checked.
+         * They are NOT appended once per farm.
          *
-         * Do not append the anonymous population once
-         * per farm, as that would duplicate consumption.
-         *
-         * The returned list is passed to the SAME
-         * multi-farm cycle as named NPC households.
+         * SettlementCohortFoodIntegration checks the
+         * population survey, named-person count,
+         * pantry owner, pantry location and collisions.
          */
         if (cohortFood != null) {
-
             consumers = cohortFood.appendHouseholds(
                     manager,
                     settlement,
@@ -403,7 +396,6 @@ public final class MultiFarmSettlementAgricultureRunner
         if (preview.journalEntries()
                 > EconomyJournalContinuity
                 .DEFAULT_RETAINED_TRANSACTIONS) {
-
             throw new IllegalStateException(
                     "Complete settlement cycle exceeds "
                             + "verified snapshot journal retention"
@@ -414,11 +406,13 @@ public final class MultiFarmSettlementAgricultureRunner
     }
 
     /**
-     * Execute one agricultural day.
+     * Execute and checkpoint one campaign day.
      *
-     * Existing interval claims and snapshot saves
-     * protect the COMPLETE food operation, including
-     * both named and anonymous consumers.
+     * The existing interval ledger protects against
+     * replay. The economy snapshot includes the
+     * aggregate pantry and every named household.
+     *
+     * Cross-file atomic recovery is not implemented.
      */
     public synchronized MultiFarmSettlementFoodCycle.Result
     executeDay(
@@ -435,7 +429,6 @@ public final class MultiFarmSettlementAgricultureRunner
         }
 
         try {
-
             if (simulationTick < 0L) {
                 throw new IllegalArgumentException(
                         "Negative simulation tick"
@@ -453,8 +446,8 @@ public final class MultiFarmSettlementAgricultureRunner
                 );
 
                 /*
-                 * Verified checkpoint of any earlier
-                 * pending economic activity.
+                 * Commit any earlier pending economic
+                 * activity before beginning this day.
                  */
                 EconomyAuthorityService.save(
                         directory,
@@ -463,24 +456,23 @@ public final class MultiFarmSettlementAgricultureRunner
                 );
 
                 /*
-                 * Claim all farm intervals before
-                 * performing resource changes.
+                 * Claim every participating holding
+                 * before changing any food balance.
                  */
                 for (AgriculturalDayEnrollment farm : farms) {
 
-                    AgriculturalIntervalLedger.BeginResult
-                            claim = ledger.begin(
-                            farm.holding(),
-                            farm.interval(
-                                    startDayInclusive,
-                                    endDayExclusive
-                            )
-                    );
+                    AgriculturalIntervalLedger.BeginResult claim =
+                            ledger.begin(
+                                    farm.holding(),
+                                    farm.interval(
+                                            startDayInclusive,
+                                            endDayExclusive
+                                    )
+                            );
 
                     if (claim !=
                             AgriculturalIntervalLedger.BeginResult
                                     .STARTED) {
-
                         throw new IOException(
                                 "Unexpected completed "
                                         + "agricultural interval"
@@ -489,15 +481,16 @@ public final class MultiFarmSettlementAgricultureRunner
                 }
 
                 /*
-                 * One unified operation:
+                 * The same existing food engine:
                  *
-                 * - Harvest all participating farms
-                 * - Distribute actual available grain
-                 * - Feed named NPC households
-                 * - Feed surveyed anonymous residents
-                 * - Record shortages for both groups
+                 * - Produces farm grain
+                 * - Allocates scarce food proportionally
+                 * - Feeds represented NPC households
+                 * - Feeds anonymous settlement residents
+                 * - Reports actual unmet demand
                  *
-                 * There is one economic journal.
+                 * All resource mutations go through
+                 * InventoryManager.
                  */
                 MultiFarmSettlementFoodCycle.Result result =
                         MultiFarmSettlementFoodCycle.execute(
@@ -507,10 +500,6 @@ public final class MultiFarmSettlementAgricultureRunner
 
                 validator.validate(manager);
 
-                /*
-                 * Commit all updated resource balances,
-                 * including the aggregate cohort pantry.
-                 */
                 EconomyAuthorityService.save(
                         directory,
                         catalog,
@@ -518,14 +507,13 @@ public final class MultiFarmSettlementAgricultureRunner
                 );
 
                 /*
-                 * Existing replay protection.
+                 * Mark completed intervals after the
+                 * economic balances are saved.
                  *
-                 * These ledger writes are separate from
-                 * the economic checkpoint; interrupted
-                 * commits remain fail-closed.
+                 * An interrupted interval remains
+                 * fail-closed, as in previous batches.
                  */
                 for (AgriculturalDayEnrollment farm : farms) {
-
                     ledger.complete(
                             farm.holding(),
                             farm.interval(
@@ -536,7 +524,6 @@ public final class MultiFarmSettlementAgricultureRunner
                 }
 
                 lastResult = result;
-
                 return result;
             }
 
@@ -546,11 +533,6 @@ public final class MultiFarmSettlementAgricultureRunner
         }
     }
 
-    /**
-     * Existing strict campaign-day coordinator.
-     *
-     * No automatic Fabric/server registration occurs.
-     */
     public CampaignAgricultureDayCoordinator
     strictCoordinator(long initialCampaignDay) {
 
@@ -567,7 +549,6 @@ public final class MultiFarmSettlementAgricultureRunner
             long simulationTick
     ) {
         try {
-
             executeDay(
                     startDayInclusive,
                     endDayExclusive,

@@ -1,4 +1,3 @@
-
 package dev.dtzudontsay.knownworld.simulation.economy;
 
 import dev.dtzudontsay.knownworld.simulation.npc.NpcRegistry;
@@ -21,19 +20,16 @@ import java.util.TreeMap;
 import java.util.function.Predicate;
 
 /**
- * Batch 22.9.
+ * Read-only bridge between authoritative NPC/social state
+ * and the existing agricultural food cycle.
  *
- * Read-only bridge between existing Known World
- * social identities and settlement agriculture.
+ * Batch 22.21:
+ * An explicitly enabled cohort integration may operate
+ * without named NPC households.
  *
- * Household identity remains OrganizationId.
- * Residence remains NpcAffiliation state.
- * Farm ownership remains HoldingId.
- *
- * Only living, persistent NPCs are counted.
- *
- * Abstract population cohorts are NOT silently
- * inferred from population weights.
+ * This does not create, infer, or count anonymous cohorts.
+ * SettlementCohortFoodIntegration remains responsible for
+ * validating and including those inhabitants.
  */
 public final class SettlementFoodScenarioAdapter {
 
@@ -64,26 +60,17 @@ public final class SettlementFoodScenarioAdapter {
             Predicate<HoldingId> holdingExists
     ) {
         this.npcs = Objects.requireNonNull(npcs);
-        this.affiliations =
-                Objects.requireNonNull(affiliations);
-        this.organizations =
-                Objects.requireNonNull(organizations);
-        this.settlements =
-                Objects.requireNonNull(settlements);
-        this.holdingExists =
-                Objects.requireNonNull(holdingExists);
+        this.affiliations = Objects.requireNonNull(affiliations);
+        this.organizations = Objects.requireNonNull(organizations);
+        this.settlements = Objects.requireNonNull(settlements);
+        this.holdingExists = Objects.requireNonNull(holdingExists);
     }
 
     /**
-     * Resolve existing social state into food-cycle
-     * inputs without modifying any manager.
+     * Original API.
      *
-     * A holding-to-settlement association must be
-     * supplied explicitly and represented by the
-     * farm inventory's owner and location.
-     *
-     * This does NOT infer geography from
-     * LandedHolding.populationWeight or taxBase.
+     * Preserves the requirement that at least one
+     * represented NPC household exists.
      */
     public Resolved resolve(
             InventoryManager inventories,
@@ -94,6 +81,43 @@ public final class SettlementFoodScenarioAdapter {
             AgriculturalYieldModel.Inputs harvestInputs,
             long protectedReserveKg,
             long gramsPerPersonPerDay
+    ) {
+        return resolve(
+                inventories,
+                farmHolding,
+                farmInventory,
+                settlement,
+                interval,
+                harvestInputs,
+                protectedReserveKg,
+                gramsPerPersonPerDay,
+                false
+        );
+    }
+
+    /**
+     * Batch 22.21:
+     *
+     * If allowEmptyNamedHouseholds is true, an empty
+     * represented household list is permitted.
+     *
+     * This is intended only for callers that separately
+     * verify the anonymous population census and its
+     * settlement-owned pantry.
+     *
+     * All existing farm identity, residence, household
+     * ownership, and inventory checks still apply.
+     */
+    public Resolved resolve(
+            InventoryManager inventories,
+            HoldingId farmHolding,
+            InventoryId farmInventory,
+            SettlementId settlement,
+            AgriculturalInterval interval,
+            AgriculturalYieldModel.Inputs harvestInputs,
+            long protectedReserveKg,
+            long gramsPerPersonPerDay,
+            boolean allowEmptyNamedHouseholds
     ) {
         Objects.requireNonNull(inventories);
         Objects.requireNonNull(farmHolding);
@@ -129,31 +153,27 @@ public final class SettlementFoodScenarioAdapter {
                     inventories.require(farmInventory);
 
             if (!farm.owner().equals(
-                    EconomicOwner.holding(farmHolding)
-            )) {
+                    EconomicOwner.holding(farmHolding))) {
                 throw new IllegalStateException(
-                        "Farm inventory is not owned by "
+                        "Farm inventory owner does not match "
                                 + "the selected holding"
                 );
             }
 
             if (!farm.location().equals(settlement)) {
                 throw new IllegalStateException(
-                        "Farm inventory belongs to "
-                                + "a different settlement"
+                        "Farm inventory belongs to another settlement"
                 );
             }
 
             /*
-             * Count only existing living individuals
-             * whose authoritative residence matches
-             * the requested settlement.
+             * Named inhabitants remain authoritative
+             * in NpcRegistry and NpcAffiliationManager.
              *
-             * OrganizationId, not a new HouseholdId,
-             * identifies the household.
+             * Nothing about population cohorts is
+             * inferred from political or geography data.
              */
-            Map<Long, Long> populations =
-                    new TreeMap<>();
+            Map<Long, Long> populations = new TreeMap<>();
 
             long unassigned = 0L;
 
@@ -161,8 +181,7 @@ public final class SettlementFoodScenarioAdapter {
                     affiliations.all()) {
 
                 if (!settlement.equals(
-                        affiliation.residenceSettlement()
-                )) {
+                        affiliation.residenceSettlement())) {
                     continue;
                 }
 
@@ -210,8 +229,7 @@ public final class SettlementFoodScenarioAdapter {
                         && !organization.seatSettlement()
                         .equals(settlement)) {
                     throw new IllegalStateException(
-                            "Household seat and NPC "
-                                    + "residence disagree"
+                            "Household seat and NPC residence disagree"
                     );
                 }
 
@@ -222,7 +240,14 @@ public final class SettlementFoodScenarioAdapter {
                 );
             }
 
-            if (populations.isEmpty()) {
+            /*
+             * Existing behavior remains the default.
+             *
+             * Only the cohort-enabled runner may ask
+             * for a zero-named-resident operation.
+             */
+            if (populations.isEmpty()
+                    && !allowEmptyNamedHouseholds) {
                 throw new IllegalStateException(
                         "No living household population "
                                 + "resolved for settlement"
@@ -238,11 +263,9 @@ public final class SettlementFoodScenarioAdapter {
             long represented = 0L;
 
             /*
-             * Each represented household requires
-             * exactly one pre-existing inventory at
-             * the selected settlement.
-             *
-             * No automatic provisioning occurs.
+             * Named households each require exactly
+             * one pre-existing organization-owned
+             * inventory in the selected settlement.
              */
             for (Map.Entry<Long, Long> entry :
                     populations.entrySet()) {
@@ -268,8 +291,7 @@ public final class SettlementFoodScenarioAdapter {
 
                     if (found != null) {
                         throw new IllegalStateException(
-                                "Multiple inventories for "
-                                        + "household "
+                                "Multiple inventories for household "
                                         + organizationId
                         );
                     }
