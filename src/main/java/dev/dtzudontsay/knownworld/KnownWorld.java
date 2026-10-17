@@ -33,6 +33,7 @@ import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileOverlayService;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.NamedCharacterAuthoringRuntime;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
+import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellCaseStudyInteraction;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.simulation.persistence.HistoricalChroniclePersistence;
@@ -161,6 +162,11 @@ public final class KnownWorld implements ModInitializer {
         LegalStateDebugCommand.register();
 
         NpcSimulation.registerLifecycle();
+
+        // Read-only interaction with tagged case-study proxy villagers.
+        // The handler registers no new simulation identities and is independently
+        // disabled by WinterfellCaseStudyInteraction.ENABLED = false.
+        WinterfellCaseStudyInteraction.register();
 
         /*
          * Register immediately after NpcSimulation so SERVER_STARTED first

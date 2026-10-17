@@ -1,0 +1,25 @@
+{
+  "people": 1200,
+  "residentialUnitsOccupied": 257,
+  "allBuildingSlots": 631,
+  "townSummerOccupiedHomes": 57,
+  "townTotalHomes": 320,
+  "zoneDemographics": {
+    "castle": {
+      "child": 75,
+      "worker": 190,
+      "elder": 35
+    },
+    "wintertown": {
+      "child": 70,
+      "worker": 145,
+      "elder": 25
+    },
+    "hinterland": {
+      "child": 185,
+      "worker": 409,
+      "elder": 66
+    }
+  },
+  "status": "AUTHORING_CALIBRATION_NOT_CANON"
+}

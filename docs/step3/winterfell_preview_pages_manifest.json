@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "mode": "NON_AUTHORITATIVE_DISPOSABLE_WORLD_ONLY",
+  "residentsRepresented": 1200,
+  "pageSize": 24,
+  "numberOfPages": 50,
+  "realNpcsRegistered": 0,
+  "residencesPhysicallyBuilt": 0,
+  "instructions": [
+    "Run /function knownworld:case_study/winterfell_page_001",
+    "Continue through winterfell_page_050 to inspect every person.",
+    "Each page removes ONLY tagged villagers within 80 blocks.",
+    "Run /function knownworld:case_study/winterfell_preview_clear to remove current test proxies."
+  ]
+}
