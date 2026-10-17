@@ -1,0 +1,17 @@
+setblock ~-122 ~2 ~-78 minecraft:mossy_stone_bricks
+setblock ~-122 ~2 ~97 minecraft:mossy_stone_bricks
+setblock ~-107 ~2 ~-102 minecraft:mossy_stone_bricks
+setblock ~-107 ~2 ~-78 minecraft:mossy_stone_bricks
+setblock ~-107 ~2 ~72 minecraft:mossy_stone_bricks
+setblock ~-90 ~2 ~-102 minecraft:mossy_stone_bricks
+setblock ~-90 ~2 ~-78 minecraft:mossy_stone_bricks
+setblock ~-90 ~2 ~72 minecraft:mossy_stone_bricks
+setblock ~92 ~2 ~-102 minecraft:mossy_stone_bricks
+setblock ~112 ~2 ~-102 minecraft:mossy_stone_bricks
+setblock ~112 ~2 ~-78 minecraft:mossy_stone_bricks
+setblock ~131 ~2 ~-102 minecraft:mossy_stone_bricks
+setblock ~131 ~2 ~-78 minecraft:mossy_stone_bricks
+setblock ~-20 ~1 ~115 minecraft:lantern
+setblock ~20 ~1 ~115 minecraft:lantern
+setblock ~-70 ~1 ~20 minecraft:lantern
+setblock ~60 ~1 ~-10 minecraft:lantern
