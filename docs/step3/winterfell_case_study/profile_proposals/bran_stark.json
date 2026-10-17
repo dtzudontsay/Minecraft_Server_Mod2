@@ -2,27 +2,53 @@
   "id": "bran_stark",
   "authoringVersion": 2,
   "identity": {
-    "givenName": "Bran",
+    "givenName": "Brandon",
     "familyName": "Stark",
     "sex": "MALE",
     "birthYear": 290
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.62,
+    "ambition": 0.2,
+    "compassion": 0.68,
+    "honor": 0.48,
+    "patience": 0.2,
+    "sociability": 0.35
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_childhood",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.72,
+    "socialStatus": 0.79,
+    "reputation": 0.35,
     "skills": {
       "martial": 0.21,
       "diplomacy": 0.23,
       "stewardship": 0.213,
       "intrigue": 0.232,
-      "learning": 0.229,
-      "combat": 0.5,
+      "learning": 0.38,
+      "combat": 0.2,
       "leadership": 0.108,
-      "riding": 0.223,
+      "riding": 0.32,
       "sailing": 0.183,
       "navigation": 0.243,
       "trade": 0.166,
       "crafting": 0.284,
       "agriculture": 0.241,
-      "hunting": 0.295,
+      "hunting": 0.24,
       "medicine": 0.148,
       "religious_study": 0.29,
       "language": 0.128,
@@ -30,17 +56,40 @@
       "command": 0.316,
       "logistics": 0.122
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.217,
-    "socialStatus": 0.167,
-    "reputation": 0.377,
+    "traits": [
+      "curious",
+      "kind",
+      "adventurous",
+      "imaginative",
+      "climber",
+      "observant"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.58,
+      "culture.heritage_attachment": 0.6,
+      "culture.assimilation_openness": 0.62,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.42,
+      "religion.identity_importance": 0.46,
+      "religion.tolerance": 0.76,
+      "religion.conversion_openness": 0.5,
+      "religion.observance": 0.36
+    },
+    "motivations": [
+      "Explore Winterfell and understand the world around me.",
+      "Grow into a capable member of House Stark."
+    ],
+    "dialogue": {
+      "formality": -0.1,
+      "verbosity": 0.05,
+      "warmth": 0.55,
+      "directness": 0.35,
+      "preferredAddress": "Bran",
+      "guidance": "Speak as an intelligent, curious noble child who is fascinated by stories, climbing, knights and the wider world."
+    },
     "aptitudes": {
       "martial": 0.444,
       "diplomacy": 0.262,
@@ -153,29 +202,13 @@
       "political_exposure": 0.346,
       "migratory": -0.456
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "curious",
-      "young"
-    ],
     "aliases": [],
     "occupations": [],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Learn and play while helping the household."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -185,17 +218,12 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Bran",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
   }
 }

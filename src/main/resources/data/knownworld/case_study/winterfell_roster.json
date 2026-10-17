@@ -22,16 +22,316 @@
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
       "religion": "old_gods",
-      "traits": [],
+      "traits": [
+        "honorable",
+        "dutiful",
+        "reserved",
+        "brave",
+        "family_oriented",
+        "just",
+        "loyal",
+        "austere",
+        "responsible",
+        "reluctant_politician"
+      ],
       "skills": {
-        "combat": 0.5
+        "martial": 0.8,
+        "diplomacy": 0.61,
+        "stewardship": 0.72,
+        "intrigue": 0.28,
+        "learning": 0.6,
+        "combat": 0.78,
+        "leadership": 0.82,
+        "riding": 0.75,
+        "sailing": 0.2,
+        "navigation": 0.35,
+        "trade": 0.25,
+        "crafting": 0.2,
+        "agriculture": 0.35,
+        "hunting": 0.72,
+        "medicine": 0.2,
+        "religious_study": 0.45,
+        "language": 0.85,
+        "performance": 0.2,
+        "command": 0.84,
+        "logistics": 0.78
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.8,
+        "ambition": -0.45,
+        "compassion": 0.7,
+        "honor": 0.96,
+        "patience": 0.72,
+        "sociability": -0.15
       },
       "profile": {
+        "culture": "northman",
+        "religion": "old_gods",
+        "education": "noble_martial",
+        "birthplaceLocationId": "unknown",
+        "upbringingLocationId": "vale",
+        "orientation": "HETEROSEXUAL",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.82,
+        "socialStatus": 0.95,
+        "reputation": 0.9,
         "skills": {
-          "combat": 0.5
+          "martial": 0.8,
+          "diplomacy": 0.61,
+          "stewardship": 0.72,
+          "intrigue": 0.28,
+          "learning": 0.6,
+          "combat": 0.78,
+          "leadership": 0.82,
+          "riding": 0.75,
+          "sailing": 0.2,
+          "navigation": 0.35,
+          "trade": 0.25,
+          "crafting": 0.2,
+          "agriculture": 0.35,
+          "hunting": 0.72,
+          "medicine": 0.2,
+          "religious_study": 0.45,
+          "language": 0.85,
+          "performance": 0.2,
+          "command": 0.84,
+          "logistics": 0.78
+        },
+        "aptitudes": {
+          "martial": 0.82,
+          "diplomacy": 0.64,
+          "stewardship": 0.75,
+          "intrigue": 0.32,
+          "learning": 0.64,
+          "combat": 0.82,
+          "leadership": 0.82,
+          "riding": 0.76,
+          "sailing": 0.25,
+          "navigation": 0.42,
+          "trade": 0.3,
+          "crafting": 0.25,
+          "agriculture": 0.4,
+          "hunting": 0.76,
+          "medicine": 0.28,
+          "religious_study": 0.52,
+          "languages": 0.65,
+          "performance": 0.25,
+          "command": 0.84,
+          "logistics": 0.82
+        },
+        "dispositions": {
+          "independence": 0.55,
+          "assertiveness": 0.45,
+          "impulsivity": -0.75,
+          "discipline": 0.9,
+          "curiosity": 0.15,
+          "risk_tolerance": 0.25,
+          "emotional_stability": 0.75,
+          "suspiciousness": 0.15,
+          "empathy": 0.68,
+          "aggression": -0.15,
+          "adaptability": 0.35,
+          "persistence": 0.85,
+          "pride": 0.15,
+          "humility": 0.7,
+          "greed": -0.85,
+          "generosity": 0.55,
+          "forgiveness": 0.45,
+          "vindictiveness": -0.55,
+          "deceitfulness": -0.8,
+          "gullibility": -0.1,
+          "conformity": 0.35,
+          "dominance": 0.25,
+          "obedience": 0.55,
+          "jealousy": -0.4,
+          "romanticism": 0.25,
+          "sensuality": -0.25
+        },
+        "characterValues": {
+          "duty": 0.98,
+          "family_loyalty": 0.98,
+          "house_loyalty": 0.98,
+          "dynastic_loyalty": 0.75,
+          "clan_loyalty": 0.45,
+          "friendship_loyalty": 0.85,
+          "personal_freedom": 0.25,
+          "authority_respect": 0.55,
+          "hierarchy_acceptance": 0.55,
+          "egalitarianism": 0.05,
+          "traditionalism": 0.85,
+          "innovation": -0.55,
+          "religiosity": 0.6,
+          "religious_tolerance": 0.65,
+          "cultural_tolerance": 0.4,
+          "honor_culture": 0.98,
+          "hospitality": 0.65,
+          "mercy": 0.65,
+          "vengeance": -0.35,
+          "justice": 0.9,
+          "law_obedience": 0.75,
+          "wealth_seeking": -0.8,
+          "prestige_seeking": -0.65,
+          "power_seeking": -0.8,
+          "knowledge_seeking": 0.3,
+          "martial_glory": 0.15,
+          "pacifism": 0.1,
+          "family_formation": 0.9,
+          "romantic_love": 0.55,
+          "political_stability": 0.85,
+          "social_mobility": -0.1,
+          "communal_solidarity": 0.65,
+          "individualism": 0.05
+        },
+        "socialNorms": {
+          "martial": 0.55,
+          "courtly": 0.05,
+          "mercantile": -0.2,
+          "naval": -0.35,
+          "raiding": -0.85,
+          "scholarly": 0.2,
+          "equestrian": 0.45,
+          "clan_based": 0.3,
+          "dynastic": 0.7,
+          "religious": 0.45,
+          "hospitality": 0.55,
+          "vengeance": -0.25,
+          "bureaucratic": 0.2,
+          "urban": -0.35,
+          "rural": 0.6,
+          "cosmopolitan": -0.15,
+          "isolationist": 0.2,
+          "collectivist": 0.55,
+          "individualist": -0.1,
+          "social_mobility": -0.1,
+          "authority": 0.55,
+          "traditional": 0.8,
+          "foreign_exposure": 0.2,
+          "political_exposure": 0.65,
+          "migratory": -0.8
+        },
+        "values": {
+          "family": 0.95,
+          "honor": 1.0,
+          "duty": 0.95,
+          "power": 0.2,
+          "wealth": 0.15,
+          "faith": 0.65,
+          "justice": 0.9,
+          "culture.identity_importance": 0.85,
+          "culture.heritage_attachment": 0.9,
+          "culture.assimilation_openness": 0.18,
+          "culture.multicultural_identity": 0.25,
+          "culture.affinity.northman": 1.0,
+          "culture.affinity.valeman": 0.68,
+          "culture.affinity.westerosi": 0.85,
+          "religion.devotion": 0.62,
+          "religion.doctrinal_knowledge": 0.55,
+          "religion.identity_importance": 0.68,
+          "religion.tolerance": 0.72,
+          "religion.conversion_openness": 0.1,
+          "religion.concealment_willingness": 0.2,
+          "religion.syncretism": 0.1,
+          "religion.observance": 0.7
+        },
+        "politicalPreferences": {
+          "royal_service": -0.3,
+          "northern_autonomy": 0.7,
+          "dynastic_security": 0.82,
+          "court_intrigue": -0.92,
+          "war_as_policy": -0.55,
+          "lawful_succession": 0.9,
+          "political_compromise": 0.3
+        },
+        "traits": [
+          "honorable",
+          "dutiful",
+          "reserved",
+          "brave",
+          "family_oriented",
+          "just",
+          "loyal",
+          "austere",
+          "responsible",
+          "reluctant_politician"
+        ],
+        "aliases": [
+          "Ned"
+        ],
+        "occupations": [
+          "ruler",
+          "soldier"
+        ],
+        "offices": [
+          "head_house_stark",
+          "lord_of_winterfell",
+          "warden_of_the_north"
+        ],
+        "courtRoles": [
+          "lord_of_winterfell"
+        ],
+        "militaryRoles": [],
+        "combatSpecialties": [
+          "sword",
+          "mounted_combat",
+          "field_command"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "motivations": [
+          "Protect House Stark and every member of my family.",
+          "Fulfill my obligations to the North and the people who depend upon me.",
+          "Act honorably even when doing so carries a personal or political cost.",
+          "Preserve stability rather than pursue power for its own sake."
+        ],
+        "goals": [
+          "Keep House Stark secure.",
+          "Rule the North justly.",
+          "Protect the children entrusted to me.",
+          "Avoid unnecessary war and political chaos."
+        ],
+        "fears": [
+          "Failing my family through a breach of duty.",
+          "The people I love suffering because of my decisions.",
+          "Being forced to choose between honor and protecting my family.",
+          "Political intrigue placing innocent people in danger."
+        ],
+        "desires": [
+          "A secure and peaceful future for House Stark.",
+          "To return to family life rather than remain trapped in southern politics.",
+          "To be worthy of the trust placed in me."
+        ],
+        "secrets": [
+          "jon_snow_parentage"
+        ],
+        "knownSecrets": [
+          "jon_snow_parentage"
+        ],
+        "publicFacts": {
+          "house": "house_stark",
+          "seat": "winterfell",
+          "office": "warden_of_the_north",
+          "public_reputation": "honorable_and_dutiful_northern_lord"
+        },
+        "privateFacts": {
+          "jon_snow_parentage": "lyanna_stark_and_rhaegar_targaryen",
+          "jon_snow_protection": "eddard_claims_jon_as_his_own_son_to_protect_him",
+          "political_preference": "prefers_duty_and_home_over_court_power"
+        },
+        "appearance": {
+          "description": "A solemn, long-faced northern noble with a restrained bearing and little taste for display.",
+          "hair": "dark_brown",
+          "eyes": "grey",
+          "build": "lean_and_martial"
+        },
+        "dialogue": {
+          "formality": 0.45,
+          "verbosity": -0.4,
+          "warmth": 0.1,
+          "directness": 0.7,
+          "preferredAddress": "Lord Stark",
+          "guidance": "Speak plainly, carefully and with restraint. Avoid boasting, theatrics and unnecessary threats. Treat promises, duties and family obligations as serious matters. Show warmth sparingly but sincerely. Dislike political games, evasive court language and casual dishonor."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -54,18 +354,106 @@
       "homeHouseholdId": "wf_castle_h001",
       "homeBuildingId": "wf_castle_b001",
       "lordAuthoredId": "eddard_stark",
-      "culture": "northman",
-      "religion": "old_gods",
-      "traits": [],
+      "culture": "riverlander",
+      "religion": "faith_of_the_seven",
+      "traits": [
+        "family_oriented",
+        "dutiful",
+        "protective",
+        "politically_aware",
+        "devout",
+        "proud",
+        "determined"
+      ],
       "skills": {
-        "combat": 0.5
+        "diplomacy": 0.72,
+        "stewardship": 0.68,
+        "intrigue": 0.55,
+        "learning": 0.55,
+        "leadership": 0.58,
+        "religious_study": 0.55,
+        "language": 0.88
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.62,
+        "ambition": 0.2,
+        "compassion": 0.72,
+        "honor": 0.72,
+        "patience": 0.58,
+        "sociability": 0.45
       },
       "profile": {
+        "culture": "riverlander",
+        "religion": "faith_of_the_seven",
+        "education": "noble_courtly",
+        "birthplaceLocationId": "riverrun",
+        "upbringingLocationId": "riverrun",
+        "orientation": "HETEROSEXUAL",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.8,
+        "socialStatus": 0.92,
+        "reputation": 0.78,
         "skills": {
-          "combat": 0.5
+          "diplomacy": 0.72,
+          "stewardship": 0.68,
+          "intrigue": 0.55,
+          "learning": 0.55,
+          "leadership": 0.58,
+          "religious_study": 0.55,
+          "language": 0.88
+        },
+        "traits": [
+          "family_oriented",
+          "dutiful",
+          "protective",
+          "politically_aware",
+          "devout",
+          "proud",
+          "determined"
+        ],
+        "occupations": [
+          "courtier",
+          "administrator"
+        ],
+        "courtRoles": [
+          "lady_of_winterfell"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.75,
+          "culture.heritage_attachment": 0.72,
+          "culture.assimilation_openness": 0.42,
+          "culture.multicultural_identity": 0.35,
+          "culture.affinity.riverlander": 1.0,
+          "culture.affinity.northman": 0.72,
+          "religion.devotion": 0.78,
+          "religion.doctrinal_knowledge": 0.68,
+          "religion.identity_importance": 0.78,
+          "religion.tolerance": 0.62,
+          "religion.conversion_openness": 0.12,
+          "religion.observance": 0.82
+        },
+        "motivations": [
+          "Protect my children and House Stark.",
+          "Preserve the security and inheritance of my family.",
+          "Fulfill my duties as Lady of Winterfell."
+        ],
+        "appearance": {
+          "description": "A highborn woman of House Tully with auburn hair and blue eyes.",
+          "hair": "auburn",
+          "eyes": "blue",
+          "build": "graceful"
+        },
+        "dialogue": {
+          "formality": 0.55,
+          "verbosity": 0.15,
+          "warmth": 0.45,
+          "directness": 0.45,
+          "preferredAddress": "Lady Stark",
+          "guidance": "Speak with dignity and intelligence. Family, duty and protection of the children dominate difficult decisions. Be warmer in private than in formal political conversation."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -90,16 +478,89 @@
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
       "religion": "old_gods",
-      "traits": [],
+      "traits": [
+        "dutiful",
+        "brave",
+        "protective",
+        "honorable",
+        "competitive",
+        "family_oriented"
+      ],
       "skills": {
-        "combat": 0.5
+        "martial": 0.62,
+        "diplomacy": 0.45,
+        "stewardship": 0.42,
+        "combat": 0.62,
+        "leadership": 0.6,
+        "riding": 0.68,
+        "hunting": 0.55,
+        "command": 0.52
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.74,
+        "ambition": 0.2,
+        "compassion": 0.48,
+        "honor": 0.76,
+        "patience": 0.38,
+        "sociability": 0.48
       },
       "profile": {
+        "culture": "northman",
+        "religion": "old_gods",
+        "education": "noble_martial",
+        "birthplaceLocationId": "riverrun",
+        "upbringingLocationId": "winterfell",
+        "orientation": "UNSPECIFIED",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.76,
+        "socialStatus": 0.88,
+        "reputation": 0.58,
         "skills": {
-          "combat": 0.5
+          "martial": 0.62,
+          "diplomacy": 0.45,
+          "stewardship": 0.42,
+          "combat": 0.62,
+          "leadership": 0.6,
+          "riding": 0.68,
+          "hunting": 0.55,
+          "command": 0.52
+        },
+        "traits": [
+          "dutiful",
+          "brave",
+          "protective",
+          "honorable",
+          "competitive",
+          "family_oriented"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.72,
+          "culture.heritage_attachment": 0.72,
+          "culture.assimilation_openness": 0.38,
+          "culture.affinity.northman": 1.0,
+          "culture.affinity.riverlander": 0.55,
+          "religion.devotion": 0.52,
+          "religion.identity_importance": 0.58,
+          "religion.tolerance": 0.72,
+          "religion.conversion_openness": 0.28,
+          "religion.observance": 0.48
+        },
+        "motivations": [
+          "Become worthy of House Stark.",
+          "Protect my siblings.",
+          "Earn my father's trust."
+        ],
+        "dialogue": {
+          "formality": 0.2,
+          "verbosity": -0.1,
+          "warmth": 0.35,
+          "directness": 0.5,
+          "preferredAddress": "Robb",
+          "guidance": "Sound like a well-raised young northern heir: confident but still young, strongly influenced by duty, family and his father's example."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -122,17 +583,83 @@
       "homeBuildingId": "wf_castle_b001",
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
-      "religion": "old_gods",
-      "traits": [],
+      "religion": "faith_of_the_seven",
+      "traits": [
+        "courteous",
+        "romantic",
+        "idealistic",
+        "social",
+        "well_mannered",
+        "naive"
+      ],
       "skills": {
-        "combat": 0.5
+        "diplomacy": 0.48,
+        "learning": 0.5,
+        "language": 0.72,
+        "performance": 0.45
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.1,
+        "ambition": 0.35,
+        "compassion": 0.58,
+        "honor": 0.5,
+        "patience": 0.48,
+        "sociability": 0.72
       },
       "profile": {
+        "culture": "northman",
+        "religion": "faith_of_the_seven",
+        "education": "noble_courtly",
+        "birthplaceLocationId": "winterfell",
+        "upbringingLocationId": "winterfell",
+        "orientation": "UNSPECIFIED",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.74,
+        "socialStatus": 0.84,
+        "reputation": 0.55,
         "skills": {
-          "combat": 0.5
+          "diplomacy": 0.48,
+          "learning": 0.5,
+          "language": 0.72,
+          "performance": 0.45
+        },
+        "traits": [
+          "courteous",
+          "romantic",
+          "idealistic",
+          "social",
+          "well_mannered",
+          "naive"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.55,
+          "culture.heritage_attachment": 0.5,
+          "culture.assimilation_openness": 0.62,
+          "culture.affinity.northman": 1.0,
+          "culture.affinity.westerosi": 0.82,
+          "religion.devotion": 0.62,
+          "religion.identity_importance": 0.6,
+          "religion.tolerance": 0.7,
+          "religion.conversion_openness": 0.38,
+          "religion.syncretism": 0.38,
+          "religion.observance": 0.62
+        },
+        "motivations": [
+          "Live up to the ideals of a proper noble lady.",
+          "Experience the courtly world described in songs and stories.",
+          "Make my family proud."
+        ],
+        "dialogue": {
+          "formality": 0.62,
+          "verbosity": 0.15,
+          "warmth": 0.5,
+          "directness": -0.25,
+          "preferredAddress": "Lady Sansa",
+          "guidance": "At the beginning of the story speak politely and idealistically, with strong interest in courtesy, songs, knights and courtly expectations."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -156,16 +683,84 @@
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
       "religion": "old_gods",
-      "traits": [],
+      "traits": [
+        "brave",
+        "independent",
+        "curious",
+        "stubborn",
+        "protective",
+        "impatient",
+        "nonconformist"
+      ],
       "skills": {
-        "combat": 0.5
+        "combat": 0.22,
+        "riding": 0.42,
+        "hunting": 0.34,
+        "intrigue": 0.24,
+        "language": 0.55
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.82,
+        "ambition": 0.18,
+        "compassion": 0.62,
+        "honor": 0.42,
+        "patience": -0.35,
+        "sociability": 0.18
       },
       "profile": {
+        "culture": "northman",
+        "religion": "old_gods",
+        "education": "noble_childhood",
+        "birthplaceLocationId": "winterfell",
+        "upbringingLocationId": "winterfell",
+        "orientation": "UNSPECIFIED",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.72,
+        "socialStatus": 0.8,
+        "reputation": 0.4,
         "skills": {
-          "combat": 0.5
+          "combat": 0.22,
+          "riding": 0.42,
+          "hunting": 0.34,
+          "intrigue": 0.24,
+          "language": 0.55
+        },
+        "traits": [
+          "brave",
+          "independent",
+          "curious",
+          "stubborn",
+          "protective",
+          "impatient",
+          "nonconformist"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.72,
+          "culture.heritage_attachment": 0.72,
+          "culture.assimilation_openness": 0.55,
+          "culture.affinity.northman": 1.0,
+          "religion.devotion": 0.44,
+          "religion.identity_importance": 0.48,
+          "religion.tolerance": 0.78,
+          "religion.conversion_openness": 0.42,
+          "religion.observance": 0.38
+        },
+        "motivations": [
+          "Be allowed to choose who I become.",
+          "Protect people I care about.",
+          "Avoid being forced into the role others expect of a noble girl."
+        ],
+        "dialogue": {
+          "formality": -0.45,
+          "verbosity": -0.15,
+          "warmth": 0.18,
+          "directness": 0.78,
+          "preferredAddress": "Arya",
+          "guidance": "Speak directly, impatiently and without much interest in noble etiquette. Strongly resist condescension and restrictive expectations."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -175,7 +770,7 @@
     },
     {
       "id": "bran_stark",
-      "name": "Bran Stark",
+      "name": "Brandon Stark",
       "sex": "MALE",
       "birthYear": 290,
       "age": 8,
@@ -189,16 +784,79 @@
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
       "religion": "old_gods",
-      "traits": [],
+      "traits": [
+        "curious",
+        "kind",
+        "adventurous",
+        "imaginative",
+        "climber",
+        "observant"
+      ],
       "skills": {
-        "combat": 0.5
+        "riding": 0.32,
+        "hunting": 0.24,
+        "learning": 0.38,
+        "combat": 0.2
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.62,
+        "ambition": 0.2,
+        "compassion": 0.68,
+        "honor": 0.48,
+        "patience": 0.2,
+        "sociability": 0.35
       },
       "profile": {
+        "culture": "northman",
+        "religion": "old_gods",
+        "education": "noble_childhood",
+        "birthplaceLocationId": "winterfell",
+        "upbringingLocationId": "winterfell",
+        "orientation": "UNSPECIFIED",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.72,
+        "socialStatus": 0.79,
+        "reputation": 0.35,
         "skills": {
-          "combat": 0.5
+          "riding": 0.32,
+          "hunting": 0.24,
+          "learning": 0.38,
+          "combat": 0.2
+        },
+        "traits": [
+          "curious",
+          "kind",
+          "adventurous",
+          "imaginative",
+          "climber",
+          "observant"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.58,
+          "culture.heritage_attachment": 0.6,
+          "culture.assimilation_openness": 0.62,
+          "culture.affinity.northman": 1.0,
+          "religion.devotion": 0.42,
+          "religion.identity_importance": 0.46,
+          "religion.tolerance": 0.76,
+          "religion.conversion_openness": 0.5,
+          "religion.observance": 0.36
+        },
+        "motivations": [
+          "Explore Winterfell and understand the world around me.",
+          "Grow into a capable member of House Stark."
+        ],
+        "dialogue": {
+          "formality": -0.1,
+          "verbosity": 0.05,
+          "warmth": 0.55,
+          "directness": 0.35,
+          "preferredAddress": "Bran",
+          "guidance": "Speak as an intelligent, curious noble child who is fascinated by stories, climbing, knights and the wider world."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -222,16 +880,64 @@
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
       "religion": "old_gods",
-      "traits": [],
-      "skills": {
-        "combat": 0.5
-      },
+      "traits": [
+        "young",
+        "emotional",
+        "stubborn",
+        "energetic"
+      ],
+      "skills": {},
       "personality": {
-        "courage": 0.6
+        "courage": 0.35,
+        "ambition": 0.0,
+        "compassion": 0.45,
+        "honor": 0.05,
+        "patience": -0.55,
+        "sociability": 0.15
       },
       "profile": {
-        "skills": {
-          "combat": 0.5
+        "culture": "northman",
+        "religion": "old_gods",
+        "education": "early_childhood",
+        "birthplaceLocationId": "winterfell",
+        "upbringingLocationId": "winterfell",
+        "orientation": "UNSPECIFIED",
+        "healthState": "HEALTHY",
+        "legalStatus": "LEGITIMATE",
+        "wealth": 0.7,
+        "socialStatus": 0.74,
+        "reputation": 0.1,
+        "traits": [
+          "young",
+          "emotional",
+          "stubborn",
+          "energetic"
+        ],
+        "languages": {
+          "common_tongue": 0.72
+        },
+        "values": {
+          "culture.identity_importance": 0.22,
+          "culture.heritage_attachment": 0.28,
+          "culture.assimilation_openness": 0.72,
+          "culture.affinity.northman": 1.0,
+          "religion.devotion": 0.12,
+          "religion.identity_importance": 0.18,
+          "religion.tolerance": 0.75,
+          "religion.conversion_openness": 0.72,
+          "religion.observance": 0.12
+        },
+        "motivations": [
+          "Stay close to my family.",
+          "Explore and play."
+        ],
+        "dialogue": {
+          "formality": -0.7,
+          "verbosity": -0.45,
+          "warmth": 0.2,
+          "directness": 0.55,
+          "preferredAddress": "Rickon",
+          "guidance": "Speak as a very young child. Use simple ideas and strong emotions rather than adult political reasoning."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -255,16 +961,92 @@
       "lordAuthoredId": "eddard_stark",
       "culture": "northman",
       "religion": "old_gods",
-      "traits": [],
+      "traits": [
+        "reserved",
+        "honorable",
+        "protective",
+        "sensitive_to_status",
+        "observant",
+        "brave",
+        "stubborn"
+      ],
       "skills": {
-        "combat": 0.5
+        "martial": 0.62,
+        "combat": 0.68,
+        "riding": 0.66,
+        "hunting": 0.52,
+        "leadership": 0.42,
+        "learning": 0.48,
+        "language": 0.72
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.72,
+        "ambition": 0.35,
+        "compassion": 0.58,
+        "honor": 0.76,
+        "patience": 0.25,
+        "sociability": -0.18
       },
       "profile": {
+        "culture": "northman",
+        "religion": "old_gods",
+        "education": "noble_martial",
+        "birthplaceLocationId": "unknown",
+        "upbringingLocationId": "winterfell",
+        "orientation": "UNSPECIFIED",
+        "healthState": "HEALTHY",
+        "legalStatus": "ACKNOWLEDGED_BASTARD",
+        "wealth": 0.48,
+        "socialStatus": 0.52,
+        "reputation": 0.42,
         "skills": {
-          "combat": 0.5
+          "martial": 0.62,
+          "combat": 0.68,
+          "riding": 0.66,
+          "hunting": 0.52,
+          "leadership": 0.42,
+          "learning": 0.48,
+          "language": 0.72
+        },
+        "traits": [
+          "reserved",
+          "honorable",
+          "protective",
+          "sensitive_to_status",
+          "observant",
+          "brave",
+          "stubborn"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.8,
+          "culture.heritage_attachment": 0.82,
+          "culture.assimilation_openness": 0.4,
+          "culture.affinity.northman": 1.0,
+          "religion.devotion": 0.62,
+          "religion.identity_importance": 0.68,
+          "religion.tolerance": 0.72,
+          "religion.conversion_openness": 0.18,
+          "religion.observance": 0.58
+        },
+        "motivations": [
+          "Find a place where my birth does not define my worth.",
+          "Protect the Stark children I consider my siblings.",
+          "Live honorably and prove myself."
+        ],
+        "publicFacts": {
+          "status": "acknowledged_bastard_of_eddard_stark",
+          "upbringing": "raised_at_winterfell"
+        },
+        "dialogue": {
+          "formality": 0.05,
+          "verbosity": -0.3,
+          "warmth": 0.05,
+          "directness": 0.48,
+          "preferredAddress": "Jon",
+          "guidance": "Speak quietly and seriously. Be particularly sensitive to questions of legitimacy, belonging and personal worth. Show loyalty strongly but without theatricality."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -277,8 +1059,8 @@
       "id": "theon_greyjoy",
       "name": "Theon Greyjoy",
       "sex": "MALE",
-      "birthYear": 279,
-      "age": 19,
+      "birthYear": 278,
+      "age": 20,
       "zone": "castle",
       "status": "AUTHORED_SCENARIO",
       "ageGroup": "worker",
@@ -287,18 +1069,100 @@
       "homeHouseholdId": "wf_castle_h001",
       "homeBuildingId": "wf_castle_b001",
       "lordAuthoredId": "eddard_stark",
-      "culture": "northman",
-      "religion": "old_gods",
-      "traits": [],
+      "culture": "ironborn",
+      "religion": "drowned_god",
+      "traits": [
+        "proud",
+        "insecure",
+        "ambitious",
+        "boastful",
+        "status_conscious",
+        "reckless",
+        "social"
+      ],
       "skills": {
-        "combat": 0.5
+        "martial": 0.58,
+        "combat": 0.65,
+        "riding": 0.58,
+        "sailing": 0.42,
+        "leadership": 0.42,
+        "hunting": 0.55
       },
       "personality": {
-        "courage": 0.6
+        "courage": 0.55,
+        "ambition": 0.72,
+        "compassion": -0.1,
+        "honor": -0.05,
+        "patience": -0.45,
+        "sociability": 0.62
       },
       "profile": {
+        "culture": "ironborn",
+        "religion": "drowned_god",
+        "education": "noble_martial",
+        "birthplaceLocationId": "pyke",
+        "upbringingLocationId": "winterfell",
+        "orientation": "HETEROSEXUAL",
+        "healthState": "HEALTHY",
+        "legalStatus": "HOSTAGE",
+        "wealth": 0.58,
+        "socialStatus": 0.7,
+        "reputation": 0.36,
         "skills": {
-          "combat": 0.5
+          "martial": 0.58,
+          "combat": 0.65,
+          "riding": 0.58,
+          "sailing": 0.42,
+          "leadership": 0.42,
+          "hunting": 0.55
+        },
+        "traits": [
+          "proud",
+          "insecure",
+          "ambitious",
+          "boastful",
+          "status_conscious",
+          "reckless",
+          "social"
+        ],
+        "occupations": [
+          "courtier"
+        ],
+        "courtRoles": [
+          "ward"
+        ],
+        "combatSpecialties": [
+          "archery",
+          "mounted_combat"
+        ],
+        "languages": {
+          "common_tongue": 1.0
+        },
+        "values": {
+          "culture.identity_importance": 0.72,
+          "culture.heritage_attachment": 0.66,
+          "culture.assimilation_openness": 0.38,
+          "culture.multicultural_identity": 0.55,
+          "culture.affinity.ironborn": 1.0,
+          "culture.affinity.northman": 0.68,
+          "religion.devotion": 0.32,
+          "religion.identity_importance": 0.52,
+          "religion.tolerance": 0.55,
+          "religion.conversion_openness": 0.42,
+          "religion.observance": 0.28
+        },
+        "motivations": [
+          "Be recognized as a true Greyjoy.",
+          "Win admiration and status.",
+          "Prove that years at Winterfell have not erased my identity."
+        ],
+        "dialogue": {
+          "formality": -0.2,
+          "verbosity": 0.2,
+          "warmth": 0.05,
+          "directness": 0.5,
+          "preferredAddress": "Theon",
+          "guidance": "Speak confidently and often boastfully, especially when insecure. Seek recognition and react strongly to challenges to Greyjoy identity or status."
         }
       },
       "biologicalFamilyUnverified": false,
@@ -291759,7 +292623,7 @@
       "name": "Robert Baratheon",
       "presentAtWinterfell": true,
       "residentOfWinterfell": false,
-      "homeHouseholdId": null,
+      "homeHouseholdId": "royal_household",
       "origin": "AUTHORED_SCENARIO",
       "housing": "guest_quarters"
     },
@@ -291768,7 +292632,7 @@
       "name": "Cersei Lannister",
       "presentAtWinterfell": true,
       "residentOfWinterfell": false,
-      "homeHouseholdId": null,
+      "homeHouseholdId": "royal_household",
       "origin": "AUTHORED_SCENARIO",
       "housing": "guest_quarters"
     },
@@ -291777,7 +292641,7 @@
       "name": "Jaime Lannister",
       "presentAtWinterfell": true,
       "residentOfWinterfell": false,
-      "homeHouseholdId": null,
+      "homeHouseholdId": "royal_household",
       "origin": "AUTHORED_SCENARIO",
       "housing": "guest_quarters"
     },
@@ -291786,7 +292650,7 @@
       "name": "Tyrion Lannister",
       "presentAtWinterfell": true,
       "residentOfWinterfell": false,
-      "homeHouseholdId": null,
+      "homeHouseholdId": "royal_household",
       "origin": "AUTHORED_SCENARIO",
       "housing": "guest_quarters"
     },

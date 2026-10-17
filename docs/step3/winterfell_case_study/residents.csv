@@ -1,13 +1,13 @@
 id,name,zone,age,ageGroup,job,homeHouseholdId,homeBuildingId,culture,religion,status
 eddard_stark,Eddard Stark,castle,35,worker,administration,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
-catelyn_stark,Catelyn Stark,castle,34,worker,household_service,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
+catelyn_stark,Catelyn Stark,castle,34,worker,household_service,wf_castle_h001,wf_castle_b001,riverlander,faith_of_the_seven,AUTHORED_SCENARIO
 robb_stark,Robb Stark,castle,15,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
-sansa_stark,Sansa Stark,castle,12,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
+sansa_stark,Sansa Stark,castle,12,child,child,wf_castle_h001,wf_castle_b001,northman,faith_of_the_seven,AUTHORED_SCENARIO
 arya_stark,Arya Stark,castle,9,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
-bran_stark,Bran Stark,castle,8,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
+bran_stark,Brandon Stark,castle,8,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
 rickon_stark,Rickon Stark,castle,3,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
 jon_snow,Jon Snow,castle,15,child,child,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
-theon_greyjoy,Theon Greyjoy,castle,19,worker,other,wf_castle_h001,wf_castle_b001,northman,old_gods,AUTHORED_SCENARIO
+theon_greyjoy,Theon Greyjoy,castle,20,worker,other,wf_castle_h001,wf_castle_b001,ironborn,drowned_god,AUTHORED_SCENARIO
 wf_named_luwin,Luwin,castle,52,worker,healer_religious,wf_castle_h002,wf_castle_b002,northman,old_gods,BOOK_NAMED_PROPOSED_NOT_IN_SCENARIO
 wf_named_vayon_poole,Vayon Poole,castle,48,worker,administration,wf_castle_h003,wf_castle_b003,northman,old_gods,BOOK_NAMED_PROPOSED_NOT_IN_SCENARIO
 wf_named_jeyne_poole,Jeyne Poole,castle,11,child,child,wf_castle_h003,wf_castle_b003,northman,old_gods,BOOK_NAMED_PROPOSED_NOT_IN_SCENARIO

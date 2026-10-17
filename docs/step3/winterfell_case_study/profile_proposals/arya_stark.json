@@ -7,40 +7,91 @@
     "sex": "FEMALE",
     "birthYear": 289
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.82,
+    "ambition": 0.18,
+    "compassion": 0.62,
+    "honor": 0.42,
+    "patience": -0.35,
+    "sociability": 0.18
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_childhood",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.72,
+    "socialStatus": 0.8,
+    "reputation": 0.4,
     "skills": {
       "martial": 0.102,
       "diplomacy": 0.294,
       "stewardship": 0.084,
-      "intrigue": 0.131,
+      "intrigue": 0.24,
       "learning": 0.316,
-      "combat": 0.5,
+      "combat": 0.22,
       "leadership": 0.123,
-      "riding": 0.325,
+      "riding": 0.42,
       "sailing": 0.223,
       "navigation": 0.213,
       "trade": 0.083,
       "crafting": 0.213,
       "agriculture": 0.246,
-      "hunting": 0.174,
+      "hunting": 0.34,
       "medicine": 0.31,
       "religious_study": 0.181,
-      "language": 0.178,
+      "language": 0.55,
       "performance": 0.133,
       "command": 0.351,
       "logistics": 0.246
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.174,
-    "socialStatus": 0.293,
-    "reputation": 0.278,
+    "traits": [
+      "brave",
+      "independent",
+      "curious",
+      "stubborn",
+      "protective",
+      "impatient",
+      "nonconformist"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.72,
+      "culture.assimilation_openness": 0.55,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.44,
+      "religion.identity_importance": 0.48,
+      "religion.tolerance": 0.78,
+      "religion.conversion_openness": 0.42,
+      "religion.observance": 0.38
+    },
+    "motivations": [
+      "Be allowed to choose who I become.",
+      "Protect people I care about.",
+      "Avoid being forced into the role others expect of a noble girl."
+    ],
+    "dialogue": {
+      "formality": -0.45,
+      "verbosity": -0.15,
+      "warmth": 0.18,
+      "directness": 0.78,
+      "preferredAddress": "Arya",
+      "guidance": "Speak directly, impatiently and without much interest in noble etiquette. Strongly resist condescension and restrictive expectations."
+    },
     "aptitudes": {
       "martial": 0.638,
       "diplomacy": 0.255,
@@ -153,29 +204,13 @@
       "political_exposure": 0.171,
       "migratory": -0.395
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "curious",
-      "young"
-    ],
     "aliases": [],
     "occupations": [],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Learn and play while helping the household."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -185,17 +220,30 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Arya",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+  "relationships": [
+    {
+      "target": "jon_snow",
+      "affection": 0.93,
+      "trust": 0.92,
+      "respect": 0.87,
+      "fear": 0.0,
+      "familiarity": 0.99
+    },
+    {
+      "target": "sansa_stark",
+      "affection": 0.2,
+      "trust": 0.35,
+      "respect": 0.1,
+      "fear": 0.0,
+      "familiarity": 0.98
+    }
+  ]
 }

@@ -7,7 +7,7 @@ summon minecraft:villager ~4 ~ ~0 {Tags:["kwf_case","kwfid_catelyn_stark"],NoAI:
 summon minecraft:villager ~8 ~ ~0 {Tags:["kwf_case","kwfid_robb_stark"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Robb Stark"}',CustomNameVisible:1b}
 summon minecraft:villager ~12 ~ ~0 {Tags:["kwf_case","kwfid_sansa_stark"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Sansa Stark"}',CustomNameVisible:1b}
 summon minecraft:villager ~16 ~ ~0 {Tags:["kwf_case","kwfid_arya_stark"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Arya Stark"}',CustomNameVisible:1b}
-summon minecraft:villager ~20 ~ ~0 {Tags:["kwf_case","kwfid_bran_stark"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Bran Stark"}',CustomNameVisible:1b}
+summon minecraft:villager ~20 ~ ~0 {Tags:["kwf_case","kwfid_bran_stark"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Brandon Stark"}',CustomNameVisible:1b}
 summon minecraft:villager ~0 ~ ~5 {Tags:["kwf_case","kwfid_rickon_stark"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Rickon Stark"}',CustomNameVisible:1b}
 summon minecraft:villager ~4 ~ ~5 {Tags:["kwf_case","kwfid_jon_snow"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Jon Snow"}',CustomNameVisible:1b}
 summon minecraft:villager ~8 ~ ~5 {Tags:["kwf_case","kwfid_theon_greyjoy"],NoAI:1b,PersistenceRequired:1b,CustomName:'{"text":"Theon Greyjoy"}',CustomNameVisible:1b}

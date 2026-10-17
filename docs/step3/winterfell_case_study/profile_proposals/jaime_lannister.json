@@ -7,16 +7,47 @@
     "sex": "MALE",
     "birthYear": 266
   },
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
+  },
+  "personality": {
+    "courage": 0.92,
+    "ambition": 0.22,
+    "compassion": 0.05,
+    "honor": -0.18,
+    "patience": -0.35,
+    "sociability": 0.42
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "westerman",
+    "religion": "faith_of_the_seven",
+    "education": "elite_martial",
+    "birthplaceLocationId": "casterly_rock",
+    "upbringingLocationId": "casterly_rock",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.92,
+    "socialStatus": 0.94,
+    "reputation": 0.25,
     "skills": {
-      "martial": 0.483,
-      "diplomacy": 0.199,
+      "martial": 0.92,
+      "diplomacy": 0.4,
       "stewardship": 0.531,
       "intrigue": 0.364,
       "learning": 0.194,
-      "combat": 0.5,
-      "leadership": 0.353,
-      "riding": 0.488,
+      "combat": 0.98,
+      "leadership": 0.62,
+      "riding": 0.88,
       "sailing": 0.346,
       "navigation": 0.443,
       "trade": 0.194,
@@ -27,20 +58,63 @@
       "religious_study": 0.368,
       "language": 0.365,
       "performance": 0.254,
-      "command": 0.161,
+      "command": 0.58,
       "logistics": 0.201
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "northern_commoner",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.214,
-    "socialStatus": 0.1,
-    "reputation": 0.344,
+    "traits": [
+      "brave",
+      "proud",
+      "sarcastic",
+      "reckless",
+      "exceptional_swordsman",
+      "loyal_to_cersei",
+      "cynical"
+    ],
+    "occupations": [
+      "knight",
+      "guard"
+    ],
+    "offices": [
+      "kingsguard_member"
+    ],
+    "courtRoles": [
+      "kingsguard_member"
+    ],
+    "militaryRoles": [
+      "kingsguard_member"
+    ],
+    "combatSpecialties": [
+      "sword",
+      "mounted_combat",
+      "dueling"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.64,
+      "culture.heritage_attachment": 0.68,
+      "culture.assimilation_openness": 0.38,
+      "culture.affinity.westerman": 1.0,
+      "religion.devotion": 0.16,
+      "religion.identity_importance": 0.18,
+      "religion.tolerance": 0.55,
+      "religion.conversion_openness": 0.45,
+      "religion.observance": 0.16
+    },
+    "motivations": [
+      "Remain close to Cersei.",
+      "Maintain my identity as an exceptional warrior.",
+      "Resist the judgment others place upon my past."
+    ],
+    "dialogue": {
+      "formality": -0.1,
+      "verbosity": 0.05,
+      "warmth": -0.08,
+      "directness": 0.68,
+      "preferredAddress": "Ser Jaime",
+      "guidance": "Speak confidently, often sarcastically, with little fear of confrontation. Martial pride and indifference toward public condemnation are important parts of the starting persona."
+    },
     "aptitudes": {
       "martial": 0.288,
       "diplomacy": 0.324,
@@ -153,31 +227,8 @@
       "political_exposure": -0.027,
       "migratory": -0.035
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "patient",
-      "observant"
-    ],
     "aliases": [],
-    "occupations": [
-      "visitor"
-    ],
-    "offices": [],
-    "courtRoles": [],
-    "militaryRoles": [],
-    "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Support the people of the household and live securely."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -187,17 +238,29 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Jaime",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "household": "royal_household",
+    "nobleHouse": "house_lannister",
+    "faction": "iron_throne"
+  },
+  "relationships": [
+    {
+      "target": "cersei_lannister",
+      "affection": 0.96,
+      "trust": 0.94,
+      "respect": 0.86,
+      "fear": 0.0,
+      "familiarity": 1.0
+    },
+    {
+      "target": "tyrion_lannister",
+      "affection": 0.72,
+      "trust": 0.7,
+      "respect": 0.68,
+      "fear": 0.0,
+      "familiarity": 0.96
+    }
+  ]
 }

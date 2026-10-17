@@ -7,40 +7,95 @@
     "sex": "MALE",
     "birthYear": 283
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.72,
+    "ambition": 0.35,
+    "compassion": 0.58,
+    "honor": 0.76,
+    "patience": 0.25,
+    "sociability": -0.18
+  },
+  "legal": {
+    "birth": "ACKNOWLEDGED_BASTARD",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "ACKNOWLEDGED_BASTARD",
+    "wealth": 0.48,
+    "socialStatus": 0.52,
+    "reputation": 0.42,
     "skills": {
-      "martial": 0.143,
+      "martial": 0.62,
       "diplomacy": 0.112,
       "stewardship": 0.19,
       "intrigue": 0.103,
-      "learning": 0.341,
-      "combat": 0.5,
-      "leadership": 0.171,
-      "riding": 0.315,
+      "learning": 0.48,
+      "combat": 0.68,
+      "leadership": 0.42,
+      "riding": 0.66,
       "sailing": 0.125,
       "navigation": 0.141,
       "trade": 0.254,
       "crafting": 0.228,
       "agriculture": 0.141,
-      "hunting": 0.152,
+      "hunting": 0.52,
       "medicine": 0.087,
       "religious_study": 0.356,
-      "language": 0.145,
+      "language": 0.72,
       "performance": 0.088,
       "command": 0.279,
       "logistics": 0.098
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.119,
-    "socialStatus": 0.362,
-    "reputation": 0.552,
+    "traits": [
+      "reserved",
+      "honorable",
+      "protective",
+      "sensitive_to_status",
+      "observant",
+      "brave",
+      "stubborn"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.8,
+      "culture.heritage_attachment": 0.82,
+      "culture.assimilation_openness": 0.4,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.62,
+      "religion.identity_importance": 0.68,
+      "religion.tolerance": 0.72,
+      "religion.conversion_openness": 0.18,
+      "religion.observance": 0.58
+    },
+    "motivations": [
+      "Find a place where my birth does not define my worth.",
+      "Protect the Stark children I consider my siblings.",
+      "Live honorably and prove myself."
+    ],
+    "publicFacts": {
+      "status": "acknowledged_bastard_of_eddard_stark",
+      "upbringing": "raised_at_winterfell"
+    },
+    "dialogue": {
+      "formality": 0.05,
+      "verbosity": -0.3,
+      "warmth": 0.05,
+      "directness": 0.48,
+      "preferredAddress": "Jon",
+      "guidance": "Speak quietly and seriously. Be particularly sensitive to questions of legitimacy, belonging and personal worth. Show loyalty strongly but without theatricality."
+    },
     "aptitudes": {
       "martial": 0.62,
       "diplomacy": 0.697,
@@ -153,49 +208,52 @@
       "political_exposure": 0.257,
       "migratory": -0.412
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "curious",
-      "young"
-    ],
     "aliases": [],
     "occupations": [],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Learn and play while helping the household."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
     "secrets": [],
     "knownSecrets": [],
-    "publicFacts": {},
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Jon",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "faction": "the_north"
+  },
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.88,
+      "trust": 0.9,
+      "respect": 0.96,
+      "fear": 0.03,
+      "familiarity": 0.98
+    },
+    {
+      "target": "arya_stark",
+      "affection": 0.93,
+      "trust": 0.92,
+      "respect": 0.85,
+      "fear": 0.0,
+      "familiarity": 0.99
+    },
+    {
+      "target": "robb_stark",
+      "affection": 0.91,
+      "trust": 0.91,
+      "respect": 0.87,
+      "fear": 0.0,
+      "familiarity": 0.99
+    }
+  ]
 }

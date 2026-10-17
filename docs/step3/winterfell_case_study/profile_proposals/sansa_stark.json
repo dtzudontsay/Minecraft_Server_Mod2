@@ -7,14 +7,40 @@
     "sex": "FEMALE",
     "birthYear": 286
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.1,
+    "ambition": 0.35,
+    "compassion": 0.58,
+    "honor": 0.5,
+    "patience": 0.48,
+    "sociability": 0.72
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "northman",
+    "religion": "faith_of_the_seven",
+    "education": "noble_courtly",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.74,
+    "socialStatus": 0.84,
+    "reputation": 0.55,
     "skills": {
       "martial": 0.114,
-      "diplomacy": 0.153,
+      "diplomacy": 0.48,
       "stewardship": 0.275,
       "intrigue": 0.12,
-      "learning": 0.268,
-      "combat": 0.5,
+      "learning": 0.5,
+      "combat": 0.246,
       "leadership": 0.319,
       "riding": 0.24,
       "sailing": 0.284,
@@ -25,22 +51,48 @@
       "hunting": 0.269,
       "medicine": 0.256,
       "religious_study": 0.293,
-      "language": 0.161,
-      "performance": 0.325,
+      "language": 0.72,
+      "performance": 0.45,
       "command": 0.358,
       "logistics": 0.29
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.303,
-    "socialStatus": 0.415,
-    "reputation": 0.584,
+    "traits": [
+      "courteous",
+      "romantic",
+      "idealistic",
+      "social",
+      "well_mannered",
+      "naive"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.55,
+      "culture.heritage_attachment": 0.5,
+      "culture.assimilation_openness": 0.62,
+      "culture.affinity.northman": 1.0,
+      "culture.affinity.westerosi": 0.82,
+      "religion.devotion": 0.62,
+      "religion.identity_importance": 0.6,
+      "religion.tolerance": 0.7,
+      "religion.conversion_openness": 0.38,
+      "religion.syncretism": 0.38,
+      "religion.observance": 0.62
+    },
+    "motivations": [
+      "Live up to the ideals of a proper noble lady.",
+      "Experience the courtly world described in songs and stories.",
+      "Make my family proud."
+    ],
+    "dialogue": {
+      "formality": 0.62,
+      "verbosity": 0.15,
+      "warmth": 0.5,
+      "directness": -0.25,
+      "preferredAddress": "Lady Sansa",
+      "guidance": "At the beginning of the story speak politely and idealistically, with strong interest in courtesy, songs, knights and courtly expectations."
+    },
     "aptitudes": {
       "martial": 0.325,
       "diplomacy": 0.327,
@@ -153,29 +205,13 @@
       "political_exposure": 0.335,
       "migratory": 0.403
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "curious",
-      "young"
-    ],
     "aliases": [],
     "occupations": [],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Learn and play while helping the household."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -185,17 +221,12 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Sansa",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
   }
 }

@@ -7,40 +7,101 @@
     "sex": "MALE",
     "birthYear": 273
   },
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
+  },
+  "personality": {
+    "courage": 0.45,
+    "ambition": 0.36,
+    "compassion": 0.42,
+    "honor": 0.05,
+    "patience": 0.32,
+    "sociability": 0.55
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "westerman",
+    "religion": "faith_of_the_seven",
+    "education": "noble_scholarly",
+    "birthplaceLocationId": "casterly_rock",
+    "upbringingLocationId": "casterly_rock",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.86,
+    "socialStatus": 0.7,
+    "reputation": 0.22,
     "skills": {
       "martial": 0.158,
-      "diplomacy": 0.368,
-      "stewardship": 0.361,
-      "intrigue": 0.545,
-      "learning": 0.533,
-      "combat": 0.5,
-      "leadership": 0.54,
+      "diplomacy": 0.72,
+      "stewardship": 0.7,
+      "intrigue": 0.76,
+      "learning": 0.9,
+      "combat": 0.556,
+      "leadership": 0.58,
       "riding": 0.506,
       "sailing": 0.499,
       "navigation": 0.206,
-      "trade": 0.278,
+      "trade": 0.52,
       "crafting": 0.406,
       "agriculture": 0.48,
       "hunting": 0.219,
       "medicine": 0.343,
       "religious_study": 0.161,
-      "language": 0.558,
+      "language": 0.88,
       "performance": 0.443,
       "command": 0.526,
       "logistics": 0.318
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "northern_commoner",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.214,
-    "socialStatus": 0.02,
-    "reputation": 0.361,
+    "traits": [
+      "intelligent",
+      "witty",
+      "cynical",
+      "curious",
+      "socially_observant",
+      "hedonistic",
+      "resentful",
+      "empathetic_to_outcasts"
+    ],
+    "occupations": [
+      "courtier",
+      "scholar"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.52,
+      "culture.heritage_attachment": 0.5,
+      "culture.assimilation_openness": 0.62,
+      "culture.affinity.westerman": 1.0,
+      "religion.devotion": 0.08,
+      "religion.identity_importance": 0.12,
+      "religion.tolerance": 0.76,
+      "religion.conversion_openness": 0.62,
+      "religion.observance": 0.08
+    },
+    "motivations": [
+      "Use knowledge and wit to overcome contempt directed at me.",
+      "Enjoy the freedoms my wealth and name provide.",
+      "Earn recognition for my intelligence rather than my appearance."
+    ],
+    "dialogue": {
+      "formality": -0.28,
+      "verbosity": 0.52,
+      "warmth": 0.1,
+      "directness": 0.55,
+      "preferredAddress": "Tyrion",
+      "guidance": "Speak intelligently and wittily, often using humor or sarcasm as defense. Be highly observant of hypocrisy, status and the vulnerabilities of other people."
+    },
     "aptitudes": {
       "martial": 0.466,
       "diplomacy": 0.763,
@@ -153,31 +214,12 @@
       "political_exposure": -0.574,
       "migratory": 0.176
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "gregarious",
-      "generous"
-    ],
     "aliases": [],
-    "occupations": [
-      "visitor"
-    ],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Support the people of the household and live securely."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -187,17 +229,29 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Tyrion",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "household": "royal_household",
+    "nobleHouse": "house_lannister",
+    "faction": "iron_throne"
+  },
+  "relationships": [
+    {
+      "target": "jaime_lannister",
+      "affection": 0.78,
+      "trust": 0.78,
+      "respect": 0.74,
+      "fear": 0.0,
+      "familiarity": 0.96
+    },
+    {
+      "target": "cersei_lannister",
+      "affection": -0.58,
+      "trust": -0.72,
+      "respect": -0.2,
+      "fear": 0.22,
+      "familiarity": 0.95
+    }
+  ]
 }

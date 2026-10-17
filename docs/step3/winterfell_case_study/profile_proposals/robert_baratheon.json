@@ -1,203 +1,371 @@
 {
   "id": "robert_baratheon",
-  "authoringVersion": 2,
+  "authoringVersion": 3,
   "identity": {
     "givenName": "Robert",
     "familyName": "Baratheon",
     "sex": "MALE",
     "birthYear": 262
   },
-  "profile": {
-    "skills": {
-      "martial": 0.42,
-      "diplomacy": 0.397,
-      "stewardship": 0.205,
-      "intrigue": 0.177,
-      "learning": 0.321,
-      "combat": 0.5,
-      "leadership": 0.314,
-      "riding": 0.415,
-      "sailing": 0.298,
-      "navigation": 0.41,
-      "trade": 0.239,
-      "crafting": 0.292,
-      "agriculture": 0.229,
-      "hunting": 0.303,
-      "medicine": 0.434,
-      "religious_study": 0.329,
-      "language": 0.191,
-      "performance": 0.404,
-      "command": 0.528,
-      "logistics": 0.521
-    },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "northern_commoner",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.307,
-    "socialStatus": 0.473,
-    "reputation": 0.454,
-    "aptitudes": {
-      "martial": 0.663,
-      "diplomacy": 0.683,
-      "stewardship": 0.343,
-      "intrigue": 0.554,
-      "learning": 0.762,
-      "combat": 0.653,
-      "leadership": 0.765,
-      "riding": 0.58,
-      "sailing": 0.586,
-      "navigation": 0.261,
-      "trade": 0.587,
-      "crafting": 0.587,
-      "agriculture": 0.453,
-      "hunting": 0.719,
-      "medicine": 0.434,
-      "religious_study": 0.655,
-      "languages": 0.467,
-      "performance": 0.524,
-      "command": 0.695,
-      "logistics": 0.446
-    },
-    "dispositions": {
-      "independence": 0.465,
-      "assertiveness": 0.189,
-      "impulsivity": 0.068,
-      "discipline": 0.154,
-      "curiosity": 0.39,
-      "risk_tolerance": -0.58,
-      "emotional_stability": 0.548,
-      "suspiciousness": -0.479,
-      "empathy": -0.333,
-      "aggression": 0.285,
-      "adaptability": -0.388,
-      "persistence": -0.283,
-      "pride": -0.462,
-      "humility": 0.032,
-      "greed": 0.178,
-      "generosity": 0.544,
-      "forgiveness": 0.649,
-      "vindictiveness": 0.494,
-      "deceitfulness": -0.306,
-      "gullibility": -0.065,
-      "conformity": -0.027,
-      "dominance": -0.527,
-      "obedience": -0.525,
-      "jealousy": 0.027,
-      "romanticism": -0.197,
-      "sensuality": 0.57
-    },
-    "characterValues": {
-      "duty": 0.022,
-      "family_loyalty": -0.623,
-      "house_loyalty": -0.267,
-      "dynastic_loyalty": -0.646,
-      "clan_loyalty": 0.52,
-      "friendship_loyalty": 0.411,
-      "personal_freedom": -0.191,
-      "authority_respect": 0.558,
-      "hierarchy_acceptance": -0.356,
-      "egalitarianism": -0.461,
-      "traditionalism": -0.375,
-      "innovation": -0.403,
-      "religiosity": 0.025,
-      "religious_tolerance": 0.098,
-      "cultural_tolerance": 0.198,
-      "honor_culture": -0.053,
-      "hospitality": 0.252,
-      "mercy": 0.104,
-      "vengeance": -0.545,
-      "justice": -0.525,
-      "law_obedience": -0.352,
-      "wealth_seeking": -0.349,
-      "prestige_seeking": -0.194,
-      "power_seeking": -0.364,
-      "knowledge_seeking": 0.365,
-      "martial_glory": -0.534,
-      "pacifism": -0.11,
-      "family_formation": -0.183,
-      "romantic_love": -0.139,
-      "political_stability": -0.139,
-      "social_mobility": 0.13,
-      "communal_solidarity": 0.246,
-      "individualism": -0.376
-    },
-    "socialNorms": {
-      "martial": -0.406,
-      "courtly": 0.571,
-      "mercantile": -0.281,
-      "naval": -0.593,
-      "raiding": -0.285,
-      "scholarly": -0.329,
-      "equestrian": 0.431,
-      "clan_based": 0.189,
-      "dynastic": 0.23,
-      "religious": 0.222,
-      "hospitality": -0.151,
-      "vengeance": -0.359,
-      "bureaucratic": 0.272,
-      "urban": -0.593,
-      "rural": 0.33,
-      "cosmopolitan": -0.196,
-      "isolationist": 0.337,
-      "collectivist": 0.022,
-      "individualist": 0.058,
-      "social_mobility": -0.345,
-      "authority": -0.305,
-      "traditional": 0.299,
-      "foreign_exposure": -0.552,
-      "political_exposure": 0.408,
-      "migratory": 0.474
-    },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
-    "politicalPreferences": {},
-    "traits": [
-      "brave",
-      "gentle"
-    ],
-    "aliases": [],
-    "occupations": [
-      "visitor"
-    ],
-    "offices": [],
-    "courtRoles": [],
-    "militaryRoles": [],
-    "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Support the people of the household and live securely."
-    ],
-    "goals": [],
-    "fears": [],
-    "desires": [],
-    "secrets": [],
-    "knownSecrets": [],
-    "publicFacts": {},
-    "privateFacts": {},
-    "appearance": {
-      "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Robert",
-      "guidance": "Speak according to occupation, age and local custom."
-    }
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
   },
   "personality": {
-    "courage": 0.6
-  }
+    "courage": 0.94,
+    "ambition": 0.18,
+    "compassion": 0.05,
+    "honor": 0.05,
+    "patience": -0.72,
+    "sociability": 0.88
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
+  "profile": {
+    "culture": "stormlander",
+    "religion": "faith_of_the_seven",
+    "education": "noble_martial",
+    "birthplaceLocationId": "unknown",
+    "upbringingLocationId": "stormlands",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.62,
+    "socialStatus": 1.0,
+    "reputation": 0.45,
+    "skills": {
+      "martial": 0.9,
+      "diplomacy": 0.6,
+      "stewardship": 0.2,
+      "intrigue": 0.22,
+      "learning": 0.25,
+      "combat": 0.95,
+      "leadership": 0.88,
+      "riding": 0.86,
+      "sailing": 0.3,
+      "navigation": 0.3,
+      "trade": 0.2,
+      "crafting": 0.15,
+      "agriculture": 0.1,
+      "hunting": 0.82,
+      "medicine": 0.08,
+      "religious_study": 0.15,
+      "language": 0.8,
+      "performance": 0.7,
+      "command": 0.9,
+      "logistics": 0.55
+    },
+    "aptitudes": {
+      "martial": 0.95,
+      "diplomacy": 0.7,
+      "stewardship": 0.3,
+      "intrigue": 0.3,
+      "learning": 0.3,
+      "combat": 0.98,
+      "leadership": 0.92,
+      "riding": 0.92,
+      "sailing": 0.35,
+      "navigation": 0.35,
+      "trade": 0.25,
+      "crafting": 0.2,
+      "agriculture": 0.15,
+      "hunting": 0.88,
+      "medicine": 0.1,
+      "religious_study": 0.18,
+      "languages": 0.62,
+      "performance": 0.82,
+      "command": 0.94,
+      "logistics": 0.62
+    },
+    "dispositions": {
+      "independence": 0.78,
+      "assertiveness": 0.92,
+      "impulsivity": 0.82,
+      "discipline": -0.68,
+      "curiosity": -0.1,
+      "risk_tolerance": 0.92,
+      "emotional_stability": -0.42,
+      "suspiciousness": -0.15,
+      "empathy": 0.05,
+      "aggression": 0.68,
+      "adaptability": 0.35,
+      "persistence": 0.25,
+      "pride": 0.88,
+      "humility": -0.78,
+      "greed": 0.05,
+      "generosity": 0.68,
+      "forgiveness": 0.25,
+      "vindictiveness": 0.45,
+      "deceitfulness": -0.25,
+      "gullibility": 0.1,
+      "conformity": -0.35,
+      "dominance": 0.92,
+      "obedience": -0.82,
+      "jealousy": 0.15,
+      "romanticism": 0.55,
+      "sensuality": 0.95
+    },
+    "characterValues": {
+      "duty": -0.35,
+      "family_loyalty": 0.05,
+      "house_loyalty": 0.4,
+      "dynastic_loyalty": 0.25,
+      "clan_loyalty": 0.1,
+      "friendship_loyalty": 0.9,
+      "personal_freedom": 0.9,
+      "authority_respect": -0.25,
+      "hierarchy_acceptance": 0.45,
+      "egalitarianism": -0.05,
+      "traditionalism": -0.1,
+      "innovation": -0.05,
+      "religiosity": -0.65,
+      "religious_tolerance": 0.45,
+      "cultural_tolerance": 0.25,
+      "honor_culture": 0.05,
+      "hospitality": 0.75,
+      "mercy": 0.1,
+      "vengeance": 0.55,
+      "justice": -0.15,
+      "law_obedience": -0.4,
+      "wealth_seeking": 0.05,
+      "prestige_seeking": 0.55,
+      "power_seeking": 0.35,
+      "knowledge_seeking": -0.65,
+      "martial_glory": 0.95,
+      "pacifism": -0.9,
+      "family_formation": -0.35,
+      "romantic_love": 0.65,
+      "political_stability": 0.15,
+      "social_mobility": 0.1,
+      "communal_solidarity": 0.15,
+      "individualism": 0.8
+    },
+    "socialNorms": {
+      "martial": 0.9,
+      "courtly": -0.3,
+      "mercantile": -0.25,
+      "naval": -0.2,
+      "raiding": 0.1,
+      "scholarly": -0.65,
+      "equestrian": 0.75,
+      "clan_based": -0.15,
+      "dynastic": 0.25,
+      "religious": -0.5,
+      "hospitality": 0.7,
+      "vengeance": 0.45,
+      "bureaucratic": -0.88,
+      "urban": 0.05,
+      "rural": 0.1,
+      "cosmopolitan": 0.25,
+      "isolationist": -0.35,
+      "collectivist": -0.25,
+      "individualist": 0.82,
+      "social_mobility": 0.1,
+      "authority": 0.55,
+      "traditional": -0.05,
+      "foreign_exposure": 0.2,
+      "political_exposure": 0.8,
+      "migratory": -0.65
+    },
+    "values": {
+      "family": 0.45,
+      "honor": 0.35,
+      "duty": 0.3,
+      "power": 0.5,
+      "wealth": 0.35,
+      "faith": 0.25,
+      "friendship": 0.8,
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.65,
+      "culture.assimilation_openness": 0.45,
+      "culture.multicultural_identity": 0.25,
+      "culture.affinity.stormlander": 1.0,
+      "culture.affinity.crownlander": 0.55,
+      "culture.affinity.westerosi": 0.9,
+      "religion.devotion": 0.15,
+      "religion.doctrinal_knowledge": 0.25,
+      "religion.identity_importance": 0.2,
+      "religion.tolerance": 0.65,
+      "religion.conversion_openness": 0.55,
+      "religion.concealment_willingness": 0.3,
+      "religion.syncretism": 0.2,
+      "religion.observance": 0.2
+    },
+    "politicalPreferences": {
+      "royal_service": -0.7,
+      "northern_autonomy": 0.0,
+      "dynastic_security": 0.2,
+      "court_intrigue": -0.72,
+      "war_as_policy": 0.48,
+      "lawful_succession": 0.1,
+      "political_compromise": -0.2,
+      "personal_rule": 0.55
+    },
+    "traits": [
+      "brave",
+      "gregarious",
+      "impatient",
+      "charismatic",
+      "indulgent",
+      "lustful",
+      "martial",
+      "boisterous",
+      "generous_to_friends",
+      "administratively_disinterested",
+      "vengeful",
+      "nostalgic"
+    ],
+    "aliases": [
+      "Demon of the Trident",
+      "The Usurper"
+    ],
+    "occupations": [
+      "ruler",
+      "soldier",
+      "hunter"
+    ],
+    "offices": [
+      "king_of_the_seven_kingdoms"
+    ],
+    "courtRoles": [
+      "king_of_the_seven_kingdoms"
+    ],
+    "militaryRoles": [],
+    "combatSpecialties": [
+      "warhammer",
+      "mounted_combat",
+      "shock_combat",
+      "field_command"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "motivations": [
+      "Enjoy life rather than spend it buried in administration.",
+      "Remain fiercely loyal to the friends who fought beside me.",
+      "Escape tedious royal obligations whenever possible.",
+      "Preserve the victory and identity forged during the rebellion.",
+      "Seek excitement, companionship and immediate pleasure."
+    ],
+    "goals": [
+      "Keep the realm from becoming troublesome enough to demand constant attention.",
+      "Keep trusted old friends close.",
+      "Enjoy hunting, feasting, fighting and companionship.",
+      "Avoid being consumed by court administration."
+    ],
+    "fears": [
+      "A return of the dynasty I overthrew.",
+      "Being trapped permanently in tedious governance.",
+      "Losing the friends connected to the best years of my life.",
+      "Being confronted with responsibilities I would rather ignore."
+    ],
+    "desires": [
+      "The freedom and vitality of my youth.",
+      "Battle, hunting, feasting and uncomplicated companionship.",
+      "The idealized life I associate with Lyanna Stark and the rebellion.",
+      "Relief from the daily burdens of kingship."
+    ],
+    "secrets": [],
+    "knownSecrets": [],
+    "publicFacts": {
+      "house": "house_baratheon",
+      "office": "king_of_the_seven_kingdoms",
+      "faction": "iron_throne",
+      "public_reputation": "warrior_king_and_victor_of_the_rebellion"
+    },
+    "privateFacts": {
+      "governance_attitude": "strongly_dislikes_administration",
+      "lyanna_stark": "idealized_lost_love",
+      "personal_priority": "pleasure_and_old_friendships_often_outweigh_governance"
+    },
+    "appearance": {
+      "description": "An exceptionally tall former warrior whose once formidable athletic build has become very heavy by the opening of the scenario.",
+      "hair": "black",
+      "eyes": "blue",
+      "build": "very_tall_heavily_overweight_but_still_physically_powerful"
+    },
+    "dialogue": {
+      "formality": -0.55,
+      "verbosity": 0.3,
+      "warmth": 0.3,
+      "directness": 0.82,
+      "preferredAddress": "Your Grace",
+      "guidance": "Speak loudly, boldly and informally. Joke, boast, complain and swear more readily than a restrained courtier. Show genuine warmth toward old friends and little patience for administrative detail. Anger can rise quickly, especially when pride, old grievances or the Targaryens are involved. Prefer direct action, feasting, hunting and martial stories to careful political discussion."
+    }
+  },
+  "social": {
+    "household": "royal_household",
+    "nobleHouse": "house_baratheon",
+    "faction": "iron_throne"
+  },
+  "titles": [
+    "king_of_the_seven_kingdoms"
+  ],
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.85,
+      "trust": 0.85,
+      "respect": 0.86,
+      "fear": 0.0,
+      "familiarity": 0.97
+    },
+    {
+      "target": "cersei_lannister",
+      "affection": -0.65,
+      "trust": -0.8,
+      "respect": -0.4,
+      "fear": 0.02,
+      "familiarity": 0.97
+    },
+    {
+      "target": "jaime_lannister",
+      "affection": -0.05,
+      "trust": -0.2,
+      "respect": 0.25,
+      "fear": 0.02,
+      "familiarity": 0.75
+    }
+  ],
+  "beliefs": [
+    {
+      "factKey": "person.eddard_stark.identity",
+      "value": "eddard_stark",
+      "confidence": 1.0
+    },
+    {
+      "factKey": "house.baratheon",
+      "value": "house_baratheon",
+      "confidence": 1.0
+    }
+  ],
+  "memories": [
+    {
+      "type": "PERSONAL_EXPERIENCE",
+      "summary": "Eddard Stark fought beside me during the rebellion.",
+      "importance": 0.95,
+      "relatedNpc": "eddard_stark"
+    },
+    {
+      "type": "COMBAT",
+      "summary": "I defeated Rhaegar Targaryen at the Trident during the rebellion.",
+      "importance": 1.0
+    },
+    {
+      "type": "POLITICAL",
+      "summary": "The rebellion ended with me taking the Iron Throne.",
+      "importance": 1.0
+    },
+    {
+      "type": "PERSONAL_EXPERIENCE",
+      "summary": "The death of Lyanna Stark remains bound up with my memory of the rebellion and the life I imagined I would have.",
+      "importance": 1.0
+    }
+  ]
 }

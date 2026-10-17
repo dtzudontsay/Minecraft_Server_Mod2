@@ -7,14 +7,72 @@
     "sex": "MALE",
     "birthYear": 295
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.35,
+    "ambition": 0.0,
+    "compassion": 0.45,
+    "honor": 0.05,
+    "patience": -0.55,
+    "sociability": 0.15
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "early_childhood",
+    "birthplaceLocationId": "winterfell",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.7,
+    "socialStatus": 0.74,
+    "reputation": 0.1,
+    "traits": [
+      "young",
+      "emotional",
+      "stubborn",
+      "energetic"
+    ],
+    "languages": {
+      "common_tongue": 0.72
+    },
+    "values": {
+      "culture.identity_importance": 0.22,
+      "culture.heritage_attachment": 0.28,
+      "culture.assimilation_openness": 0.72,
+      "culture.affinity.northman": 1.0,
+      "religion.devotion": 0.12,
+      "religion.identity_importance": 0.18,
+      "religion.tolerance": 0.75,
+      "religion.conversion_openness": 0.72,
+      "religion.observance": 0.12
+    },
+    "motivations": [
+      "Stay close to my family.",
+      "Explore and play."
+    ],
+    "dialogue": {
+      "formality": -0.7,
+      "verbosity": -0.45,
+      "warmth": 0.2,
+      "directness": 0.55,
+      "preferredAddress": "Rickon",
+      "guidance": "Speak as a very young child. Use simple ideas and strong emotions rather than adult political reasoning."
+    },
     "skills": {
       "martial": 0.0,
       "diplomacy": 0.0,
       "stewardship": 0.0,
       "intrigue": 0.0,
       "learning": 0.0,
-      "combat": 0.5,
+      "combat": 0.0,
       "leadership": 0.0,
       "riding": 0.0,
       "sailing": 0.0,
@@ -30,17 +88,6 @@
       "command": 0.0,
       "logistics": 0.0
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.409,
-    "socialStatus": 0.263,
-    "reputation": 0.453,
     "aptitudes": {
       "martial": 0.316,
       "diplomacy": 0.549,
@@ -153,29 +200,13 @@
       "political_exposure": -0.37,
       "migratory": -0.317
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "curious",
-      "young"
-    ],
     "aliases": [],
     "occupations": [],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Learn and play while helping the household."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -185,17 +216,12 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Rickon",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
   }
 }

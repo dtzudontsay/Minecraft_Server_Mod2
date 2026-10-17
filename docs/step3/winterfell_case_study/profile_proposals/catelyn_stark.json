@@ -7,15 +7,41 @@
     "sex": "FEMALE",
     "birthYear": 264
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.62,
+    "ambition": 0.2,
+    "compassion": 0.72,
+    "honor": 0.72,
+    "patience": 0.58,
+    "sociability": 0.45
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "riverlander",
+    "religion": "faith_of_the_seven",
+    "education": "noble_courtly",
+    "birthplaceLocationId": "riverrun",
+    "upbringingLocationId": "riverrun",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.8,
+    "socialStatus": 0.92,
+    "reputation": 0.78,
     "skills": {
       "martial": 0.493,
-      "diplomacy": 0.264,
-      "stewardship": 0.418,
-      "intrigue": 0.413,
-      "learning": 0.31,
-      "combat": 0.5,
-      "leadership": 0.504,
+      "diplomacy": 0.72,
+      "stewardship": 0.68,
+      "intrigue": 0.55,
+      "learning": 0.55,
+      "combat": 0.281,
+      "leadership": 0.58,
       "riding": 0.538,
       "sailing": 0.49,
       "navigation": 0.321,
@@ -24,23 +50,64 @@
       "agriculture": 0.357,
       "hunting": 0.353,
       "medicine": 0.33,
-      "religious_study": 0.297,
-      "language": 0.193,
+      "religious_study": 0.55,
+      "language": 0.88,
       "performance": 0.355,
       "command": 0.27,
       "logistics": 0.319
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.471,
-    "socialStatus": 0.213,
-    "reputation": 0.299,
+    "traits": [
+      "family_oriented",
+      "dutiful",
+      "protective",
+      "politically_aware",
+      "devout",
+      "proud",
+      "determined"
+    ],
+    "occupations": [
+      "courtier",
+      "administrator"
+    ],
+    "courtRoles": [
+      "lady_of_winterfell"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.75,
+      "culture.heritage_attachment": 0.72,
+      "culture.assimilation_openness": 0.42,
+      "culture.multicultural_identity": 0.35,
+      "culture.affinity.riverlander": 1.0,
+      "culture.affinity.northman": 0.72,
+      "religion.devotion": 0.78,
+      "religion.doctrinal_knowledge": 0.68,
+      "religion.identity_importance": 0.78,
+      "religion.tolerance": 0.62,
+      "religion.conversion_openness": 0.12,
+      "religion.observance": 0.82
+    },
+    "motivations": [
+      "Protect my children and House Stark.",
+      "Preserve the security and inheritance of my family.",
+      "Fulfill my duties as Lady of Winterfell."
+    ],
+    "appearance": {
+      "description": "A highborn woman of House Tully with auburn hair and blue eyes.",
+      "hair": "auburn",
+      "eyes": "blue",
+      "build": "graceful"
+    },
+    "dialogue": {
+      "formality": 0.55,
+      "verbosity": 0.15,
+      "warmth": 0.45,
+      "directness": 0.45,
+      "preferredAddress": "Lady Stark",
+      "guidance": "Speak with dignity and intelligence. Family, duty and protection of the children dominate difficult decisions. Be warmer in private than in formal political conversation."
+    },
     "aptitudes": {
       "martial": 0.778,
       "diplomacy": 0.735,
@@ -153,49 +220,44 @@
       "political_exposure": 0.262,
       "migratory": 0.553
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "cautious",
-      "observant"
-    ],
     "aliases": [],
-    "occupations": [],
     "offices": [],
-    "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Support the people of the household and live securely."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
     "secrets": [],
     "knownSecrets": [],
     "publicFacts": {},
-    "privateFacts": {},
-    "appearance": {
-      "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Catelyn",
-      "guidance": "Speak according to occupation, age and local custom."
-    }
+    "privateFacts": {}
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+  "titles": [
+    "lady_of_winterfell"
+  ],
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.88,
+      "trust": 0.93,
+      "respect": 0.91,
+      "fear": 0.02,
+      "familiarity": 0.99
+    },
+    {
+      "target": "jon_snow",
+      "affection": -0.3,
+      "trust": -0.25,
+      "respect": 0.1,
+      "fear": 0.18,
+      "familiarity": 0.9
+    }
+  ]
 }

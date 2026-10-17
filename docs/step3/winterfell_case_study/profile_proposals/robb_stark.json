@@ -7,40 +7,91 @@
     "sex": "MALE",
     "birthYear": 283
   },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.74,
+    "ambition": 0.2,
+    "compassion": 0.48,
+    "honor": 0.76,
+    "patience": 0.38,
+    "sociability": 0.48
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "northman",
+    "religion": "old_gods",
+    "education": "noble_martial",
+    "birthplaceLocationId": "riverrun",
+    "upbringingLocationId": "winterfell",
+    "orientation": "UNSPECIFIED",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.76,
+    "socialStatus": 0.88,
+    "reputation": 0.58,
     "skills": {
-      "martial": 0.342,
-      "diplomacy": 0.307,
-      "stewardship": 0.241,
+      "martial": 0.62,
+      "diplomacy": 0.45,
+      "stewardship": 0.42,
       "intrigue": 0.102,
       "learning": 0.132,
-      "combat": 0.5,
-      "leadership": 0.32,
-      "riding": 0.186,
+      "combat": 0.62,
+      "leadership": 0.6,
+      "riding": 0.68,
       "sailing": 0.232,
       "navigation": 0.31,
       "trade": 0.26,
       "crafting": 0.262,
       "agriculture": 0.091,
-      "hunting": 0.24,
+      "hunting": 0.55,
       "medicine": 0.087,
       "religious_study": 0.186,
       "language": 0.26,
       "performance": 0.099,
-      "command": 0.241,
+      "command": 0.52,
       "logistics": 0.097
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.381,
-    "socialStatus": 0.347,
-    "reputation": 0.381,
+    "traits": [
+      "dutiful",
+      "brave",
+      "protective",
+      "honorable",
+      "competitive",
+      "family_oriented"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.72,
+      "culture.assimilation_openness": 0.38,
+      "culture.affinity.northman": 1.0,
+      "culture.affinity.riverlander": 0.55,
+      "religion.devotion": 0.52,
+      "religion.identity_importance": 0.58,
+      "religion.tolerance": 0.72,
+      "religion.conversion_openness": 0.28,
+      "religion.observance": 0.48
+    },
+    "motivations": [
+      "Become worthy of House Stark.",
+      "Protect my siblings.",
+      "Earn my father's trust."
+    ],
+    "dialogue": {
+      "formality": 0.2,
+      "verbosity": -0.1,
+      "warmth": 0.35,
+      "directness": 0.5,
+      "preferredAddress": "Robb",
+      "guidance": "Sound like a well-raised young northern heir: confident but still young, strongly influenced by duty, family and his father's example."
+    },
     "aptitudes": {
       "martial": 0.49,
       "diplomacy": 0.768,
@@ -153,29 +204,13 @@
       "political_exposure": -0.261,
       "migratory": -0.109
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "curious",
-      "young"
-    ],
     "aliases": [],
     "occupations": [],
     "offices": [],
     "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Learn and play while helping the household."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -185,17 +220,30 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Robb",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_stark",
+    "faction": "the_north"
+  },
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.88,
+      "trust": 0.92,
+      "respect": 0.95,
+      "fear": 0.05,
+      "familiarity": 0.98
+    },
+    {
+      "target": "jon_snow",
+      "affection": 0.91,
+      "trust": 0.91,
+      "respect": 0.84,
+      "fear": 0.0,
+      "familiarity": 0.99
+    }
+  ]
 }

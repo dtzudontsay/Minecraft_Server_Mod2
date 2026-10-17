@@ -7,14 +7,45 @@
     "sex": "FEMALE",
     "birthYear": 266
   },
+  "position": {
+    "dimension": "minecraft:overworld",
+    "x": 8.5,
+    "y": 106.0,
+    "z": 8.5
+  },
+  "personality": {
+    "courage": 0.35,
+    "ambition": 0.92,
+    "compassion": -0.62,
+    "honor": -0.68,
+    "patience": -0.42,
+    "sociability": 0.3
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "NONE",
+    "civil": "NORMAL"
+  },
   "profile": {
+    "culture": "westerman",
+    "religion": "faith_of_the_seven",
+    "education": "noble_courtly",
+    "birthplaceLocationId": "casterly_rock",
+    "upbringingLocationId": "casterly_rock",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "LEGITIMATE",
+    "wealth": 0.98,
+    "socialStatus": 1.0,
+    "reputation": 0.58,
     "skills": {
       "martial": 0.52,
-      "diplomacy": 0.398,
-      "stewardship": 0.154,
-      "intrigue": 0.441,
-      "learning": 0.533,
-      "combat": 0.5,
+      "diplomacy": 0.52,
+      "stewardship": 0.35,
+      "intrigue": 0.7,
+      "learning": 0.42,
+      "combat": 0.279,
       "leadership": 0.486,
       "riding": 0.501,
       "sailing": 0.218,
@@ -25,22 +56,58 @@
       "hunting": 0.21,
       "medicine": 0.527,
       "religious_study": 0.151,
-      "language": 0.229,
+      "language": 0.82,
       "performance": 0.21,
       "command": 0.306,
       "logistics": 0.29
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "northern_commoner",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.278,
-    "socialStatus": 0.376,
-    "reputation": 0.477,
+    "traits": [
+      "ambitious",
+      "proud",
+      "suspicious",
+      "possessive",
+      "status_conscious",
+      "vengeful",
+      "protective_of_children"
+    ],
+    "occupations": [
+      "courtier",
+      "ruler"
+    ],
+    "offices": [
+      "queen_of_the_seven_kingdoms"
+    ],
+    "courtRoles": [
+      "queen_of_the_seven_kingdoms"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.76,
+      "culture.heritage_attachment": 0.82,
+      "culture.assimilation_openness": 0.3,
+      "culture.affinity.westerman": 1.0,
+      "culture.affinity.crownlander": 0.58,
+      "religion.devotion": 0.2,
+      "religion.identity_importance": 0.26,
+      "religion.tolerance": 0.42,
+      "religion.conversion_openness": 0.4,
+      "religion.observance": 0.26
+    },
+    "motivations": [
+      "Protect my children and their position.",
+      "Preserve Lannister power and dignity.",
+      "Avoid being controlled or humiliated by others."
+    ],
+    "dialogue": {
+      "formality": 0.58,
+      "verbosity": 0.05,
+      "warmth": -0.38,
+      "directness": 0.4,
+      "preferredAddress": "Your Grace",
+      "guidance": "Speak with aristocratic confidence and sharp judgment. Be especially sensitive to disrespect, threats to family, and challenges to status."
+    },
     "aptitudes": {
       "martial": 0.491,
       "diplomacy": 0.333,
@@ -153,31 +220,10 @@
       "political_exposure": 0.324,
       "migratory": -0.321
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "cautious",
-      "gentle"
-    ],
     "aliases": [],
-    "occupations": [
-      "visitor"
-    ],
-    "offices": [],
-    "courtRoles": [],
     "militaryRoles": [],
     "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Support the people of the household and live securely."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -187,17 +233,40 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Cersei",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "household": "royal_household",
+    "nobleHouse": "house_lannister",
+    "faction": "iron_throne"
+  },
+  "titles": [
+    "queen_of_the_seven_kingdoms"
+  ],
+  "relationships": [
+    {
+      "target": "robert_baratheon",
+      "affection": -0.7,
+      "trust": -0.82,
+      "respect": -0.42,
+      "fear": 0.08,
+      "familiarity": 0.98
+    },
+    {
+      "target": "jaime_lannister",
+      "affection": 0.96,
+      "trust": 0.94,
+      "respect": 0.88,
+      "fear": 0.0,
+      "familiarity": 1.0
+    },
+    {
+      "target": "tyrion_lannister",
+      "affection": -0.72,
+      "trust": -0.8,
+      "respect": -0.35,
+      "fear": 0.15,
+      "familiarity": 0.95
+    }
+  ]
 }

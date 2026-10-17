@@ -1,28 +1,54 @@
 {
   "id": "theon_greyjoy",
-  "authoringVersion": 2,
+  "authoringVersion": 3,
   "identity": {
     "givenName": "Theon",
     "familyName": "Greyjoy",
     "sex": "MALE",
-    "birthYear": 279
+    "birthYear": 278
+  },
+  "startingSettlement": "winterfell",
+  "personality": {
+    "courage": 0.55,
+    "ambition": 0.72,
+    "compassion": -0.1,
+    "honor": -0.05,
+    "patience": -0.45,
+    "sociability": 0.62
+  },
+  "legal": {
+    "birth": "LEGITIMATE",
+    "freedom": "FREEBORN",
+    "custody": "HOSTAGE",
+    "civil": "NORMAL"
   },
   "profile": {
+    "culture": "ironborn",
+    "religion": "drowned_god",
+    "education": "noble_martial",
+    "birthplaceLocationId": "pyke",
+    "upbringingLocationId": "winterfell",
+    "orientation": "HETEROSEXUAL",
+    "healthState": "HEALTHY",
+    "legalStatus": "HOSTAGE",
+    "wealth": 0.58,
+    "socialStatus": 0.7,
+    "reputation": 0.36,
     "skills": {
-      "martial": 0.365,
+      "martial": 0.58,
       "diplomacy": 0.331,
       "stewardship": 0.453,
       "intrigue": 0.534,
       "learning": 0.405,
-      "combat": 0.5,
-      "leadership": 0.465,
-      "riding": 0.442,
-      "sailing": 0.493,
+      "combat": 0.65,
+      "leadership": 0.42,
+      "riding": 0.58,
+      "sailing": 0.42,
       "navigation": 0.262,
       "trade": 0.185,
       "crafting": 0.268,
       "agriculture": 0.205,
-      "hunting": 0.379,
+      "hunting": 0.55,
       "medicine": 0.252,
       "religious_study": 0.282,
       "language": 0.221,
@@ -30,17 +56,54 @@
       "command": 0.139,
       "logistics": 0.321
     },
-    "culture": "northman",
-    "religion": "old_gods",
-    "education": "childhood",
-    "birthplaceLocationId": "unknown",
-    "upbringingLocationId": "winterfell",
-    "orientation": "UNSPECIFIED",
-    "healthState": "HEALTHY",
-    "legalStatus": "LEGITIMATE",
-    "wealth": 0.161,
-    "socialStatus": 0.267,
-    "reputation": 0.47,
+    "traits": [
+      "proud",
+      "insecure",
+      "ambitious",
+      "boastful",
+      "status_conscious",
+      "reckless",
+      "social"
+    ],
+    "occupations": [
+      "courtier"
+    ],
+    "courtRoles": [
+      "ward"
+    ],
+    "combatSpecialties": [
+      "archery",
+      "mounted_combat"
+    ],
+    "languages": {
+      "common_tongue": 1.0
+    },
+    "values": {
+      "culture.identity_importance": 0.72,
+      "culture.heritage_attachment": 0.66,
+      "culture.assimilation_openness": 0.38,
+      "culture.multicultural_identity": 0.55,
+      "culture.affinity.ironborn": 1.0,
+      "culture.affinity.northman": 0.68,
+      "religion.devotion": 0.32,
+      "religion.identity_importance": 0.52,
+      "religion.tolerance": 0.55,
+      "religion.conversion_openness": 0.42,
+      "religion.observance": 0.28
+    },
+    "motivations": [
+      "Be recognized as a true Greyjoy.",
+      "Win admiration and status.",
+      "Prove that years at Winterfell have not erased my identity."
+    ],
+    "dialogue": {
+      "formality": -0.2,
+      "verbosity": 0.2,
+      "warmth": 0.05,
+      "directness": 0.5,
+      "preferredAddress": "Theon",
+      "guidance": "Speak confidently and often boastfully, especially when insecure. Seek recognition and react strongly to challenges to Greyjoy identity or status."
+    },
     "aptitudes": {
       "martial": 0.289,
       "diplomacy": 0.324,
@@ -153,29 +216,10 @@
       "political_exposure": 0.053,
       "migratory": 0.23
     },
-    "values": {
-      "family": 0.65,
-      "honor": 0.5,
-      "duty": 0.45,
-      "faith": 0.6
-    },
     "politicalPreferences": {},
-    "traits": [
-      "cautious",
-      "frugal"
-    ],
     "aliases": [],
-    "occupations": [],
     "offices": [],
-    "courtRoles": [],
     "militaryRoles": [],
-    "combatSpecialties": [],
-    "languages": {
-      "common_tongue": 1
-    },
-    "motivations": [
-      "Support the people of the household and live securely."
-    ],
     "goals": [],
     "fears": [],
     "desires": [],
@@ -185,17 +229,29 @@
     "privateFacts": {},
     "appearance": {
       "description": "Northern resident; appearance not attested."
-    },
-    "dialogue": {
-      "formality": 0,
-      "verbosity": 0,
-      "warmth": 0,
-      "directness": 0,
-      "preferredAddress": "Theon",
-      "guidance": "Speak according to occupation, age and local custom."
     }
   },
-  "personality": {
-    "courage": 0.6
-  }
+  "social": {
+    "residence": "winterfell",
+    "household": "stark_household",
+    "nobleHouse": "house_greyjoy"
+  },
+  "relationships": [
+    {
+      "target": "eddard_stark",
+      "affection": 0.1,
+      "trust": 0.1,
+      "respect": 0.45,
+      "fear": 0.3,
+      "familiarity": 0.9
+    },
+    {
+      "target": "robb_stark",
+      "affection": 0.68,
+      "trust": 0.62,
+      "respect": 0.58,
+      "fear": 0.0,
+      "familiarity": 0.94
+    }
+  ]
 }
