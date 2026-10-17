@@ -364,3 +364,13 @@ The existing source repository remains unchanged. This file is meant to be commi
 - [ ] Global population balancing, actual residents and implementation Step 2.2 — **future work**.
 
 **Research conclusion:** SO must contain **living Naathi and indigenous Sothoryi communities, shifting pirate economies, roughly a score of hazardous coastal trade towns, the active island port Zabhad, and several distinct monumental ruins**. It must **not** portray all of Sothoryos as abandoned, invent a single Sothoryi empire, populate devastated Ghiscari cities, merge the Isle of Elephants into the mainland, or treat the unknown far-southern coast as surveyed. This document preserves researched worldbuilding for the eventual geographically verified, persistent simulation.
+
+
+---
+
+## 2026-10-17 — AUTHORITATIVE USER SOURCE-MARKER CORRECTIONS
+
+- **SO-004: Gogossos** (`gogossos`), ruined settlement on the Isle of Tears in the Basilisk Isles, not an active 298 AC urban population or functioning port government. The 298 AC *ruin* generation class must preserve scale, abandoned masonry and biodiversity without auto-generating urban households.
+- **SO-005: Yeen** (`yeen`), ancient ruined city on mainland Sothoryos. Do not generate a staffed city or dynasty based on the old urban plan. Ancient monumental footprint and isolated ruin ecology are distinct from contemporary villages.
+- SO-001..003 retain known shared observations with SE. SO-004 and SO-005 are independently real sites, not crossmap duplicates or detector errors.
+- The author confirmed these map labels, but the final terrain-approved building footprints, elevations and Y positions are not surveyed.

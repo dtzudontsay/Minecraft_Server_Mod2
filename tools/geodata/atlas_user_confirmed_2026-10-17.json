@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "user_supplied": "2026-10-17",
+  "confirmed_markers": [
+    {
+      "id": "NW-021",
+      "display_name": "Westwatch-by-the-Bridge",
+      "canonical_place_id": "wall_westwatch_by_the_bridge",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-020",
+      "display_name": "Shadow Tower",
+      "canonical_place_id": "wall_shadow_tower",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-019",
+      "display_name": "Shieldwatch",
+      "canonical_place_id": "wall_sentinel_stand",
+      "book_reference_name": "Sentinel Stand",
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-018",
+      "display_name": "Greywatch",
+      "canonical_place_id": "wall_greyguard",
+      "book_reference_name": "Greyguard",
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-012",
+      "display_name": "Stonegate",
+      "canonical_place_id": "wall_stonedoor",
+      "book_reference_name": "Stonedoor",
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-015",
+      "display_name": "Hoarfrost Hill",
+      "canonical_place_id": "wall_hoarfrost_hill",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-013",
+      "display_name": "Icemark",
+      "canonical_place_id": "wall_icemark",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-016",
+      "display_name": "The Nightfort",
+      "canonical_place_id": "wall_nightfort",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "NW-014",
+      "display_name": "Deep Lake",
+      "canonical_place_id": "wall_deep_lake",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "SO-004",
+      "display_name": "Gogossos",
+      "canonical_place_id": "gogossos",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    },
+    {
+      "id": "SO-005",
+      "display_name": "Yeen",
+      "canonical_place_id": "yeen",
+      "book_reference_name": null,
+      "user_name_preserved": true
+    }
+  ],
+  "provisional_anchor_overrides": {
+    "NW-008": {
+      "id": "NW-008",
+      "place": "Castle Black",
+      "master_x": 409.7,
+      "master_y": 223.8,
+      "reason": "Approximate south of the Wall between Deep Lake NW-014 and Oakenshield NW-009, per user; not visually remeasured",
+      "status": "PROVISIONAL_VISUAL_ATLAS_ONLY",
+      "original_master_x": 401.3997,
+      "original_master_y": 214.85223
+    }
+  },
+  "not_applied_until_user_confirms": [
+    {
+      "id": "NW-049",
+      "proposed_name": "Strongsong",
+      "reason": "User repeated NW-020 for Strongson; repo has NW-049 unlinked at Vale, near Heart's Home. Belmore seat is Strongsong."
+    }
+  ],
+  "provenance_notes": [
+    "The 19 Wall castles canonical list differs in spelling from three user-provided labels; keep both, do not silently replace user labels.",
+    "All five Forts NEE-005..009 remain distinct.",
+    "SO 004/005 are ruins, not living city settlements."
+  ]
+}

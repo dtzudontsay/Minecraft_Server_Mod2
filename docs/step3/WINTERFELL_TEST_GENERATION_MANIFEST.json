@@ -1,0 +1,42 @@
+{
+  "version": "step3_winterfell_test_v1",
+  "status": "EXPLICIT_MANUAL_TEST_ONLY_NOT_REAL_WORLDGEN",
+  "type": "DATA_PACK_FUNCTIONS",
+  "entrypoint": "knownworld:step3/winterfell_test",
+  "function_count": 10,
+  "command_counts_by_phase": {
+    "00_test_pad": 44,
+    "01_footings": 5,
+    "02_outer_defenses": 608,
+    "03_inner_defenses": 538,
+    "04_great_hall_and_keep": 216,
+    "05_godswood_gardens": 93,
+    "06_service_buildings": 97,
+    "07_winter_town": 545,
+    "08_finishing": 17
+  },
+  "total_commands": 2163,
+  "plot_count": 55,
+  "layout_coordinate_system": "relative to player execution position (x=0,z=0), north is negative z",
+  "size_envelope_test_metres": {
+    "xmin": -166,
+    "xmax": 166,
+    "zmin": -169,
+    "zmax": 330
+  },
+  "original_in_world_site_NW_029": {
+    "x": -4050173,
+    "y": null,
+    "z": -1976496,
+    "approved": false
+  },
+  "rules": [
+    "No automatic world edits",
+    "Do not use on permanent world",
+    "All structures are first bespoke geometry test, not exact book footprint",
+    "Creative flat test pad required",
+    "No player edit protection, no undo",
+    "Run in world copy or disposable test world",
+    "No NPC generation"
+  ]
+}

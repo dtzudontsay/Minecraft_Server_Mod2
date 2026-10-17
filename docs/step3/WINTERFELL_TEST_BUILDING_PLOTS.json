@@ -1,0 +1,868 @@
+{
+  "site": "winterfell",
+  "date": "298 AC",
+  "plots": [
+    {
+      "id": "winterfell_entrance_causeway",
+      "kind": "ROAD",
+      "bounds": {
+        "xmin": -12,
+        "xmax": 12,
+        "zmin": 146,
+        "zmax": 314
+      },
+      "style": "STARK_NORTH",
+      "estimated_capacity": null,
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_outer_ramparts",
+      "kind": "DEFENSIVE_ENVELOPE",
+      "bounds": {
+        "xmin": -150,
+        "xmax": 148,
+        "zmin": -145,
+        "zmax": 151
+      },
+      "style": "NORTHERN_GREY_GRANITE",
+      "estimated_capacity": null,
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_inner_ramparts",
+      "kind": "DEFENSIVE_ENVELOPE",
+      "bounds": {
+        "xmin": -123,
+        "xmax": 123,
+        "zmin": -110,
+        "zmax": 118
+      },
+      "style": "NORTHERN_GREY_GRANITE",
+      "estimated_capacity": null,
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_great_keep",
+      "kind": "LORDLY_RESIDENCE",
+      "bounds": {
+        "xmin": 34,
+        "xmax": 81,
+        "zmin": -18,
+        "zmax": 19
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 165
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_great_hall",
+      "kind": "FEASTING_HALL",
+      "bounds": {
+        "xmin": -45,
+        "xmax": 15,
+        "zmin": 28,
+        "zmax": 65
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 210
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_guardhall",
+      "kind": "WATCH_BARRACK",
+      "bounds": {
+        "xmin": -89,
+        "xmax": -60,
+        "zmin": 49,
+        "zmax": 70
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 60
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_first_keep",
+      "kind": "ANCIENT_KEEP",
+      "bounds": {
+        "xmin": -101,
+        "xmax": -74,
+        "zmin": 12,
+        "zmax": 41
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 76
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_broken_tower",
+      "kind": "RUINED_ANCIENT_TOWER",
+      "bounds": {
+        "xmin": -103,
+        "xmax": -83,
+        "zmin": -103,
+        "zmax": -85
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": null,
+      "status": "RUINED_298AC",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_crypts",
+      "kind": "ANCIENT_CRYPT",
+      "bounds": {
+        "xmin": -50,
+        "xmax": -4,
+        "zmin": -22,
+        "zmax": 5
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": null,
+      "status": "ANCIENT_ACTIVE_FAMILY_BURIAL",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_godswood",
+      "kind": "SACRED_GODS_WOOD",
+      "bounds": {
+        "xmin": -111,
+        "xmax": -25,
+        "zmin": -84,
+        "zmax": -5
+      },
+      "style": "NORTH_FOREST",
+      "estimated_capacity": null,
+      "status": "PERMANENT_PROTECTED_NATURAL_COMPOUND",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_glass_gardens",
+      "kind": "HEATED_GREENHOUSE",
+      "bounds": {
+        "xmin": 42,
+        "xmax": 89,
+        "zmin": -87,
+        "zmax": -41
+      },
+      "style": "GLASS_GEOTHERMAL",
+      "estimated_capacity": null,
+      "status": "GROWING_SPACE_CAPACITY_ONLY",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_hot_springs",
+      "kind": "GEOTHERMAL_POOL",
+      "bounds": {
+        "xmin": 27,
+        "xmax": 38,
+        "zmin": -93,
+        "zmax": -81
+      },
+      "style": "WARM_WATER",
+      "estimated_capacity": null,
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_smithy",
+      "kind": "METALWORKING_SHOP",
+      "bounds": {
+        "xmin": 68,
+        "xmax": 95,
+        "zmin": 53,
+        "zmax": 73
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 53
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_stables",
+      "kind": "HORSE_STABLE",
+      "bounds": {
+        "xmin": -106,
+        "xmax": -73,
+        "zmin": 72,
+        "zmax": 96
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 77
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_kennels",
+      "kind": "ANIMAL_SHELTER",
+      "bounds": {
+        "xmin": -146,
+        "xmax": -127,
+        "zmin": 72,
+        "zmax": 91
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 36
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_kitchens",
+      "kind": "FOOD_SERVICE_AND_STORAGE",
+      "bounds": {
+        "xmin": 25,
+        "xmax": 53,
+        "zmin": 64,
+        "zmax": 88
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 65
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_winterfell_sept",
+      "kind": "SMALL_SEPT",
+      "bounds": {
+        "xmin": -18,
+        "xmax": 4,
+        "zmin": -11,
+        "zmax": 10
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 46
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_guesthouse",
+      "kind": "GUEST_LODGING",
+      "bounds": {
+        "xmin": -13,
+        "xmax": 8,
+        "zmin": -83,
+        "zmax": -59
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 50
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_01",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 127,
+        "xmax": 142,
+        "zmin": 274,
+        "zmax": 291
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 26
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_02",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -56,
+        "xmax": -41,
+        "zmin": 279,
+        "zmax": 294
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 23
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_03",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -107,
+        "xmax": -89,
+        "zmin": 233,
+        "zmax": 246
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 24
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_04",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 88,
+        "xmax": 108,
+        "zmin": 244,
+        "zmax": 256
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 24
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_05",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -126,
+        "xmax": -116,
+        "zmin": 193,
+        "zmax": 206
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 14
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_06",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -58,
+        "xmax": -42,
+        "zmin": 223,
+        "zmax": 236
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 21
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_07",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 57,
+        "xmax": 70,
+        "zmin": 276,
+        "zmax": 291
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 20
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_08",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -110,
+        "xmax": -92,
+        "zmin": 279,
+        "zmax": 295
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 29
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_09",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -137,
+        "xmax": -126,
+        "zmin": 252,
+        "zmax": 265
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 15
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_10",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 132,
+        "xmax": 141,
+        "zmin": 198,
+        "zmax": 214
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 15
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_11",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -138,
+        "xmax": -118,
+        "zmin": 281,
+        "zmax": 292
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 22
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_12",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -65,
+        "xmax": -46,
+        "zmin": 250,
+        "zmax": 264
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 27
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_13",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 58,
+        "xmax": 74,
+        "zmin": 206,
+        "zmax": 217
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 18
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_14",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -139,
+        "xmax": -119,
+        "zmin": 219,
+        "zmax": 232
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 26
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_15",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -84,
+        "xmax": -69,
+        "zmin": 206,
+        "zmax": 221
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 23
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_16",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 98,
+        "xmax": 107,
+        "zmin": 218,
+        "zmax": 230
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 11
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_17",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -39,
+        "xmax": -26,
+        "zmin": 250,
+        "zmax": 268
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 24
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_18",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -53,
+        "xmax": -33,
+        "zmin": 302,
+        "zmax": 318
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 32
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_19",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 106,
+        "xmax": 115,
+        "zmin": 278,
+        "zmax": 295
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 16
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_20",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -120,
+        "xmax": -106,
+        "zmin": 256,
+        "zmax": 268
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 17
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_21",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -110,
+        "xmax": -92,
+        "zmin": 207,
+        "zmax": 225
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 32
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_22",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 63,
+        "xmax": 77,
+        "zmin": 228,
+        "zmax": 239
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 16
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_23",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -81,
+        "xmax": -66,
+        "zmin": 295,
+        "zmax": 309
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 21
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_24",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -86,
+        "xmax": -73,
+        "zmin": 261,
+        "zmax": 276
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 20
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_25",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 84,
+        "xmax": 98,
+        "zmin": 188,
+        "zmax": 204
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 23
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_26",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -116,
+        "xmax": -97,
+        "zmin": 302,
+        "zmax": 313
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 21
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_27",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -152,
+        "xmax": -136,
+        "zmin": 187,
+        "zmax": 198
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 18
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_28",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 104,
+        "xmax": 115,
+        "zmin": 193,
+        "zmax": 212
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 21
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_29",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -148,
+        "xmax": -138,
+        "zmin": 299,
+        "zmax": 318
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 20
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_30",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -108,
+        "xmax": -94,
+        "zmin": 189,
+        "zmax": 201
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 17
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_31",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 132,
+        "xmax": 144,
+        "zmin": 246,
+        "zmax": 261
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 18
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_32",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -87,
+        "xmax": -74,
+        "zmin": 186,
+        "zmax": 197
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 15
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_33",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": -77,
+        "xmax": -64,
+        "zmin": 233,
+        "zmax": 244
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 15
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_cottage_34",
+      "kind": "SEASONALLY_OCCUPIED_HOUSE",
+      "bounds": {
+        "xmin": 37,
+        "xmax": 52,
+        "zmin": 235,
+        "zmax": 249
+      },
+      "style": "NORTHERN_TIMBER",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 21
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_inn",
+      "kind": "INN_TAVERN",
+      "bounds": {
+        "xmin": -47,
+        "xmax": -20,
+        "zmin": 183,
+        "zmax": 204
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 56
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_granary",
+      "kind": "FOOD_STORE",
+      "bounds": {
+        "xmin": 18,
+        "xmax": 41,
+        "zmin": 162,
+        "zmax": 181
+      },
+      "style": "NORTH_STONE",
+      "estimated_capacity": {
+        "bed_space_max_estimate": 43
+      },
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    },
+    {
+      "id": "winterfell_wintertown_road",
+      "kind": "SETTLEMENT_ROAD",
+      "bounds": {
+        "xmin": -16,
+        "xmax": 16,
+        "zmin": 160,
+        "zmax": 325
+      },
+      "style": "WINTER_TOWN",
+      "estimated_capacity": null,
+      "status": "ACTIVE_STRUCTURE_TEST",
+      "source": "AUTHORING_ESTIMATE_NOT_CANON"
+    }
+  ]
+}

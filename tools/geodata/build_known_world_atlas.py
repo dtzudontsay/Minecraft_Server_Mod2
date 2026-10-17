@@ -161,7 +161,8 @@ def main():
             if identifier in overrides:
                 names.append((3, overrides[identifier], 'MANUAL_OVERRIDE'))
             elif item.get('name', '').strip():
-                names.append((2, item['name'].strip(), 'CATALOGUE_NAME'))
+                names.append((2, item['name'].strip(),
+                              'USER_CONFIRMED' if 'USER_CONFIRMED' in item.get('source_name_status','') else 'CATALOGUE_NAME'))
             elif identifier in research:
                 names.append((1, research[identifier], 'RESEARCH_TABLE_PROVISIONAL'))
         names.sort(reverse=True)
@@ -176,10 +177,16 @@ def main():
             status = names[0][2] + '_PLACEMENT_PROVISIONAL'
         else:
             status = 'NAME_UNLINKED_PLACEMENT_PROVISIONAL'
+        if raw.get('atlas_master_x') and raw.get('atlas_master_y'):
+            status += '_VISUAL_ANCHOR_UNAPPROVED'
         output.append({
             'id': raw['id'], 'name': name, 'named': linked,
             'sources': ','.join(row['id'] for row in obs),
-            'masterX': float(raw['master_x']), 'masterY': float(raw['master_y']),
+            'masterX': float(raw.get('atlas_master_x') or raw['master_x']),
+            'masterY': float(raw.get('atlas_master_y') or raw['master_y']),
+            'sourceMasterX': float(raw['master_x']),
+            'sourceMasterY': float(raw['master_y']),
+            'coordinateStatus': raw.get('atlas_coordinate_status') or 'SOURCE_OBSERVATION_UNAPPROVED',
             'placeId': stable, 'status': status
         })
     output.sort(key=lambda item: (item['sources'].split(',')[0].split('-')[0], item['id']))

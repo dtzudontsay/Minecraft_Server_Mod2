@@ -309,3 +309,29 @@ The 19 were historically raised along the Wall; **only three** remain manned. [C
 **Primary source directions:** George R. R. Martin, *A Game of Thrones* (particularly Bran, Eddard, Catelyn and Jon viewpoints), later books solely for backward-looking facts with dates; *The World of Ice & Fire* (North, Vale, Wall and lands beyond); *The Lands of Ice and Fire* printed maps. No claims should be treated as supported solely because a Telltale title or current mod registry contains the name.
 
 **Repository files inspected:** `NorthFeatureRegistry.java`, `MapZoneRegistry.java`, `reference/locations_holdings.json`, `scenarios/agot_298_ac/landed_holdings.json`, `scenarios/agot_298_ac/settlements.json`, master roadmap, population/economy architecture and previous research documents. **No code or GitHub files modified.**
+
+
+---
+
+## 2026-10-17 — AUTHORITATIVE USER MARKER CORRECTIONS (supersedes previous "unlinked" entries)
+
+*These labels were provided by the map author. They are NOT inferred from a nearest-place lookup. Original detector Xs are preserved and final 3D build placements remain pending.*
+
+| ID | User-supplied source-map name | Known book/reference label, if different | Baseline 298 AC | Location data status |
+|---|---|---|---|---|
+| NW-021 | Westwatch-by-the-Bridge | Westwatch-by-the-Bridge | Abandoned Night's Watch castle | Source X associated |
+| NW-020 | Shadowtower | Shadow Tower | Inhabited; commander Denys Mallister | Source X associated |
+| NW-019 | Shieldwatch | **Sentinel Stand** (possible cartographic/user-name variant, NOT silently substituted) | Abandoned | Source X associated |
+| NW-018 | Greywatch | **Greyguard** (possible cartographic/user-name variant) | Abandoned | Source X associated |
+| NW-012 | Stonegate | **Stonedoor** (possible cartographic/user-name variant) | Abandoned | Source X associated; original land-mask water warning to check |
+| NW-015 | Hoarfrost Hill | Hoarfrost Hill | Abandoned | Source X associated |
+| NW-013 | Icemark | Icemark | Abandoned | Source X associated |
+| NW-016 | The Nightfort | Nightfort | Abandoned in 298 AC | Source X associated |
+| NW-014 | Deep Lake | Deep Lake | Abandoned in 298 AC | Source X associated |
+| NW-008 | Castle Black | Castle Black | **Active** | Old detector point (401.3997, 214.85223 master) wrongly north of Wall. New **approximate visual-only** atlas marker (409.70, 223.80), south of Wall between NW-014 Deep Lake and NW-009 Oakenshield; needs map/terrain approval. Source pixel unchanged. |
+
+**Conflict unresolved:** user also wrote `NW-020: Strongson` after assigning NW-020 to Shadowtower. The available remaining unlinked marker is **NW-049**, in the Vale map margin near Heart's Home. The repo's `strongsong_domain` and book site **Strongsong** (House Belmore) are a compelling match, but this is explicitly **unconfirmed** until the user verifies NW-049. Never rename NW-020 to Strongsong, and never spawn two structures from this ambiguity.
+
+**Interpretation rule:** book-valid Wall castles are Sentinel Stand, Greyguard, Stonedoor (among the historic nineteen); the user's Shieldwatch / Greywatch / Stonegate are preserved as user transcriptions, with book labels separately recorded. Before Step 3 Wall construction, inspect the original annotated Xs to choose final display aliases. Only Castle Black, Shadow Tower, Eastwatch are staffed in the 298 AC opening. Newly detected eastern Wall marks NW-MISSING-WALL-01..04 still have only hand-estimated pixel positions, not survey quality.
+
+**Implementation source of truth:** `tools/geodata/atlas_user_confirmed_2026-10-17.json`, `marker_catalog_active_253.csv`, `src/main/resources/assets/knownworld/maps/atlas_markers.json`. These are **geographical observation coordinates**, never approved building anchors. `RegionalFeatureLocationRegistry.java` also has a provisional Castle Black location adjustment; the Winterfell anchor remains separate and unapproved.

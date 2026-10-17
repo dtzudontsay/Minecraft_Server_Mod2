@@ -11,6 +11,9 @@
       "sources": "NE-001",
       "masterX": 1340.60894,
       "masterY": 326.02024,
+      "sourceMasterX": 1340.60894,
+      "sourceMasterY": 326.02024,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -21,6 +24,9 @@
       "sources": "NE-002",
       "masterX": 1321.93356,
       "masterY": 390.38426,
+      "sourceMasterX": 1321.93356,
+      "sourceMasterY": 390.38426,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -31,6 +37,9 @@
       "sources": "NE-003",
       "masterX": 1424.93502,
       "masterY": 456.68128,
+      "sourceMasterX": 1424.93502,
+      "sourceMasterY": 456.68128,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -41,6 +50,9 @@
       "sources": "NE-004",
       "masterX": 1317.90207,
       "masterY": 483.71248,
+      "sourceMasterX": 1317.90207,
+      "sourceMasterY": 483.71248,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -51,6 +63,9 @@
       "sources": "NE-005",
       "masterX": 1368.27674,
       "masterY": 509.9418,
+      "sourceMasterX": 1368.27674,
+      "sourceMasterY": 509.9418,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-005",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -61,6 +76,9 @@
       "sources": "NE-006",
       "masterX": 1202.65907,
       "masterY": 530.85739,
+      "sourceMasterX": 1202.65907,
+      "sourceMasterY": 530.85739,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-006",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -71,6 +89,9 @@
       "sources": "NE-007",
       "masterX": 1308.23208,
       "masterY": 640.60038,
+      "sourceMasterX": 1308.23208,
+      "sourceMasterY": 640.60038,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-007",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -81,6 +102,9 @@
       "sources": "NE-009",
       "masterX": 1490.58317,
       "masterY": 682.27938,
+      "sourceMasterX": 1490.58317,
+      "sourceMasterY": 682.27938,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NE-009",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -91,6 +115,9 @@
       "sources": "NEE-001",
       "masterX": 1781.93627,
       "masterY": 676.00041,
+      "sourceMasterX": 1781.93627,
+      "sourceMasterY": 676.00041,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NEE-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -101,6 +128,9 @@
       "sources": "NEE-002",
       "masterX": 1889.93316,
       "masterY": 784.46295,
+      "sourceMasterX": 1889.93316,
+      "sourceMasterY": 784.46295,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NEE-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -111,6 +141,9 @@
       "sources": "NEE-003",
       "masterX": 1617.25932,
       "masterY": 811.01263,
+      "sourceMasterX": 1617.25932,
+      "sourceMasterY": 811.01263,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NEE-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -121,6 +154,9 @@
       "sources": "NEE-004",
       "masterX": 1934.51673,
       "masterY": 821.63639,
+      "sourceMasterX": 1934.51673,
+      "sourceMasterY": 821.63639,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NEE-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -131,8 +167,11 @@
       "sources": "NEE-005",
       "masterX": 1831.82089,
       "masterY": 837.40583,
+      "sourceMasterX": 1831.82089,
+      "sourceMasterY": 837.40583,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "five_forts_site_01",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NEE-006",
@@ -141,8 +180,11 @@
       "sources": "NEE-006",
       "masterX": 1839.38528,
       "masterY": 847.54399,
+      "sourceMasterX": 1839.38528,
+      "sourceMasterY": 847.54399,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "five_forts_site_02",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NEE-007",
@@ -151,8 +193,11 @@
       "sources": "NEE-007",
       "masterX": 1847.11087,
       "masterY": 854.94648,
+      "sourceMasterX": 1847.11087,
+      "sourceMasterY": 854.94648,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "five_forts_site_03",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NEE-008",
@@ -161,8 +206,11 @@
       "sources": "NEE-008",
       "masterX": 1858.37793,
       "masterY": 859.13056,
+      "sourceMasterX": 1858.37793,
+      "sourceMasterY": 859.13056,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "five_forts_site_04",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NEE-009",
@@ -171,8 +219,11 @@
       "sources": "NEE-009",
       "masterX": 1870.61073,
       "masterY": 863.79742,
+      "sourceMasterX": 1870.61073,
+      "sourceMasterY": 863.79742,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "five_forts_site_05",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NEE-010",
@@ -181,6 +232,9 @@
       "sources": "NEE-010",
       "masterX": 1598.42065,
       "masterY": 880.209,
+      "sourceMasterX": 1598.42065,
+      "sourceMasterY": 880.209,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NEE-010",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -191,6 +245,9 @@
       "sources": "NW-001",
       "masterX": 315.60317,
       "masterY": 85.73689,
+      "sourceMasterX": 315.60317,
+      "sourceMasterY": 85.73689,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "thenn",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -201,6 +258,9 @@
       "sources": "NW-004",
       "masterX": 360.5661,
       "masterY": 177.08924,
+      "sourceMasterX": 360.5661,
+      "sourceMasterY": 177.08924,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "fist_of_the_first_men",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -211,6 +271,9 @@
       "sources": "NW-005",
       "masterX": 451.40076,
       "masterY": 178.01476,
+      "sourceMasterX": 451.40076,
+      "sourceMasterY": 178.01476,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "hardhome",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -221,6 +284,9 @@
       "sources": "NW-007",
       "masterX": 389.69473,
       "masterY": 202.22013,
+      "sourceMasterX": 389.69473,
+      "sourceMasterY": 202.22013,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "crasters_keep",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -229,10 +295,13 @@
       "name": "Castle Black",
       "named": true,
       "sources": "NW-008",
-      "masterX": 401.3997,
-      "masterY": 214.85223,
+      "masterX": 409.7,
+      "masterY": 223.8,
+      "sourceMasterX": 401.3997,
+      "sourceMasterY": 214.85223,
+      "coordinateStatus": "USER_DIRECTION_APPROXIMATE_NOT_BUILD_APPROVED",
       "placeId": "castle_black",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL_VISUAL_ANCHOR_UNAPPROVED"
     },
     {
       "id": "NW-009",
@@ -241,6 +310,9 @@
       "sources": "NW-009",
       "masterX": 412.04005,
       "masterY": 222.03234,
+      "sourceMasterX": 412.04005,
+      "sourceMasterY": 222.03234,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_oakenshield",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -251,6 +323,9 @@
       "sources": "NW-010",
       "masterX": 415.63092,
       "masterY": 222.43106,
+      "sourceMasterX": 415.63092,
+      "sourceMasterY": 222.43106,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_woodswatch_by_the_pool",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -261,58 +336,76 @@
       "sources": "NW-011",
       "masterX": 420.68468,
       "masterY": 222.43077,
+      "sourceMasterX": 420.68468,
+      "sourceMasterY": 222.43077,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_sable_hall",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-012",
-      "name": "Unlinked NW-012",
-      "named": false,
+      "name": "Stonegate",
+      "named": true,
       "sources": "NW-012",
       "masterX": 389.69729,
       "masterY": 223.23044,
-      "placeId": "unlinked:NW-012",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 389.69729,
+      "sourceMasterY": 223.23044,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_stonedoor",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-013",
-      "name": "Unlinked NW-013",
-      "named": false,
+      "name": "Icemark",
+      "named": true,
       "sources": "NW-013",
       "masterX": 397.677,
       "masterY": 224.02783,
-      "placeId": "unlinked:NW-013",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 397.677,
+      "sourceMasterY": 224.02783,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_icemark",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-014",
-      "name": "Unlinked NW-014",
-      "named": false,
+      "name": "Deep Lake",
+      "named": true,
       "sources": "NW-014",
       "masterX": 407.38552,
       "masterY": 224.02727,
-      "placeId": "unlinked:NW-014",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 407.38552,
+      "sourceMasterY": 224.02727,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_deep_lake",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-015",
-      "name": "Unlinked NW-015",
-      "named": false,
+      "name": "Hoarfrost Hill",
+      "named": true,
       "sources": "NW-015",
       "masterX": 394.48517,
       "masterY": 224.161,
-      "placeId": "unlinked:NW-015",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 394.48517,
+      "sourceMasterY": 224.161,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_hoarfrost_hill",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-016",
-      "name": "Unlinked NW-016",
-      "named": false,
+      "name": "The Nightfort",
+      "named": true,
       "sources": "NW-016",
       "masterX": 402.19879,
       "masterY": 224.16055,
-      "placeId": "unlinked:NW-016",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 402.19879,
+      "sourceMasterY": 224.16055,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_nightfort",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-017",
@@ -321,48 +414,63 @@
       "sources": "NW-017",
       "masterX": 436.64412,
       "masterY": 224.29151,
+      "sourceMasterX": 436.64412,
+      "sourceMasterY": 224.29151,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "eastwatch_by_the_sea",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-018",
-      "name": "Unlinked NW-018",
-      "named": false,
+      "name": "Greywatch",
+      "named": true,
       "sources": "NW-018",
       "masterX": 381.58488,
       "masterY": 224.82663,
-      "placeId": "unlinked:NW-018",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 381.58488,
+      "sourceMasterY": 224.82663,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_greyguard",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-019",
-      "name": "Unlinked NW-019",
-      "named": false,
+      "name": "Shieldwatch",
+      "named": true,
       "sources": "NW-019",
       "masterX": 376.79731,
       "masterY": 226.42263,
-      "placeId": "unlinked:NW-019",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 376.79731,
+      "sourceMasterY": 226.42263,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_sentinel_stand",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-020",
-      "name": "Unlinked NW-020",
-      "named": false,
+      "name": "Shadow Tower",
+      "named": true,
       "sources": "NW-020",
       "masterX": 371.07898,
       "masterY": 229.61441,
-      "placeId": "unlinked:NW-020",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 371.07898,
+      "sourceMasterY": 229.61441,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_shadow_tower",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-021",
-      "name": "Unlinked NW-021",
-      "named": false,
+      "name": "Westwatch-by-the-Bridge",
+      "named": true,
       "sources": "NW-021",
       "masterX": 364.56264,
       "masterY": 232.4073,
-      "placeId": "unlinked:NW-021",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 364.56264,
+      "sourceMasterY": 232.4073,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "wall_westwatch_by_the_bridge",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-022",
@@ -371,6 +479,9 @@
       "sources": "NW-022",
       "masterX": 409.24858,
       "masterY": 233.4685,
+      "sourceMasterX": 409.24858,
+      "sourceMasterY": 233.4685,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "moles_town",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -381,6 +492,9 @@
       "sources": "NW-023",
       "masterX": 398.21132,
       "masterY": 243.30942,
+      "sourceMasterX": 398.21132,
+      "sourceMasterY": 243.30942,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "queenscrown",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -391,6 +505,9 @@
       "sources": "NW-024",
       "masterX": 275.7274,
       "masterY": 268.58215,
+      "sourceMasterX": 275.7274,
+      "sourceMasterY": 268.58215,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "hall_of_the_mormonts",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -401,6 +518,9 @@
       "sources": "NW-025",
       "masterX": 414.97203,
       "masterY": 272.29736,
+      "sourceMasterX": 414.97203,
+      "sourceMasterY": 272.29736,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "last_hearth",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -411,6 +531,9 @@
       "sources": "NW-026",
       "masterX": 486.52674,
       "masterY": 306.86711,
+      "sourceMasterX": 486.52674,
+      "sourceMasterY": 306.86711,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "karhold",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -421,6 +544,9 @@
       "sources": "NW-027",
       "masterX": 285.97411,
       "masterY": 319.51162,
+      "sourceMasterX": 285.97411,
+      "sourceMasterY": 319.51162,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "deepwood_motte",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -431,6 +557,9 @@
       "sources": "NW-028",
       "masterX": 431.33781,
       "masterY": 334.52948,
+      "sourceMasterX": 431.33781,
+      "sourceMasterY": 334.52948,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "dreadfort",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -441,6 +570,9 @@
       "sources": "NW-029",
       "masterX": 349.94763,
       "masterY": 349.56061,
+      "sourceMasterX": 349.94763,
+      "sourceMasterY": 349.56061,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "winterfell",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -451,6 +583,9 @@
       "sources": "NW-030",
       "masterX": 297.15301,
       "masterY": 380.68024,
+      "sourceMasterX": 297.15301,
+      "sourceMasterY": 380.68024,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "torrhens_square",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -461,6 +596,9 @@
       "sources": "NW-031",
       "masterX": 449.03563,
       "masterY": 414.0485,
+      "sourceMasterX": 449.03563,
+      "sourceMasterY": 414.0485,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "ramsgate",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -471,6 +609,9 @@
       "sources": "NW-032",
       "masterX": 501.03693,
       "masterY": 420.96025,
+      "sourceMasterX": 501.03693,
+      "sourceMasterY": 420.96025,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "widows_watch",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -481,6 +622,9 @@
       "sources": "NW-033",
       "masterX": 288.2476,
       "masterY": 422.96734,
+      "sourceMasterX": 288.2476,
+      "sourceMasterY": 422.96734,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "barrowtown",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -491,6 +635,9 @@
       "sources": "NW-034",
       "masterX": 392.38252,
       "masterY": 431.33878,
+      "sourceMasterX": 392.38252,
+      "sourceMasterY": 431.33878,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "white_harbor",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -501,6 +648,9 @@
       "sources": "NW-035",
       "masterX": 350.89077,
       "masterY": 449.55901,
+      "sourceMasterX": 350.89077,
+      "sourceMasterY": 449.55901,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "moat_cailin",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -511,6 +661,9 @@
       "sources": "NW-036",
       "masterX": 406.74943,
       "masterY": 460.99174,
+      "sourceMasterX": 406.74943,
+      "sourceMasterY": 460.99174,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "oldcastle",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -521,6 +674,9 @@
       "sources": "NW-037",
       "masterX": 237.98233,
       "masterY": 474.43225,
+      "sourceMasterX": 237.98233,
+      "sourceMasterY": 474.43225,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "flints_finger",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -531,8 +687,11 @@
       "sources": "NW-038",
       "masterX": 420.71608,
       "masterY": 480.13956,
+      "sourceMasterX": 420.71608,
+      "sourceMasterY": 480.13956,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "sisterton",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-039",
@@ -541,6 +700,9 @@
       "sources": "NW-039",
       "masterX": 333.34176,
       "masterY": 499.82522,
+      "sourceMasterX": 333.34176,
+      "sourceMasterY": 499.82522,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "greywater_watch",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -551,8 +713,11 @@
       "sources": "NW-042",
       "masterX": 464.6083,
       "masterY": 516.0407,
+      "sourceMasterX": 464.6083,
+      "sourceMasterY": 516.0407,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "coldwater_burn",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-045",
@@ -561,8 +726,11 @@
       "sources": "NW-045",
       "masterX": 464.87591,
       "masterY": 529.33835,
+      "sourceMasterX": 464.87591,
+      "sourceMasterY": 529.33835,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "snakewood",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-047",
@@ -571,8 +739,11 @@
       "sources": "NW-047",
       "masterX": 491.21014,
       "masterY": 541.83662,
+      "sourceMasterX": 491.21014,
+      "sourceMasterY": 541.83662,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "longbow_hall",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-048",
@@ -581,8 +752,11 @@
       "sources": "NW-048",
       "masterX": 449.18449,
       "masterY": 544.23266,
+      "sourceMasterX": 449.18449,
+      "sourceMasterY": 544.23266,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "hearts_home",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-049",
@@ -591,6 +765,9 @@
       "sources": "NW-049",
       "masterX": 412.87732,
       "masterY": 544.63371,
+      "sourceMasterX": 412.87732,
+      "sourceMasterY": 544.63371,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NW-049",
       "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
     },
@@ -601,8 +778,11 @@
       "sources": "NW-MISSING-TWINS-01",
       "masterX": 336.13928,
       "masterY": 538.12234,
+      "sourceMasterX": 336.13928,
+      "sourceMasterY": 538.12234,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "the_twins",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-MISSING-WALL-01",
@@ -611,8 +791,11 @@
       "sources": "NW-MISSING-WALL-01",
       "masterX": 424.1427,
       "masterY": 224.02629,
+      "sourceMasterX": 424.1427,
+      "sourceMasterY": 224.02629,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_rimegate",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-MISSING-WALL-02",
@@ -621,8 +804,11 @@
       "sources": "NW-MISSING-WALL-02",
       "masterX": 427.33454,
       "masterY": 224.0261,
+      "sourceMasterX": 427.33454,
+      "sourceMasterY": 224.0261,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_long_barrow",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-MISSING-WALL-03",
@@ -631,8 +817,11 @@
       "sources": "NW-MISSING-WALL-03",
       "masterX": 430.52639,
       "masterY": 224.02591,
+      "sourceMasterX": 430.52639,
+      "sourceMasterY": 224.02591,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_the_torches",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NW-MISSING-WALL-04",
@@ -641,8 +830,11 @@
       "sources": "NW-MISSING-WALL-04",
       "masterX": 433.71823,
       "masterY": 224.02573,
+      "sourceMasterX": 433.71823,
+      "sourceMasterY": 224.02573,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "wall_greenguard",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "NWE-001",
@@ -651,6 +843,9 @@
       "sources": "NWE-001",
       "masterX": 603.28946,
       "masterY": 514.96194,
+      "sourceMasterX": 603.28946,
+      "sourceMasterY": 514.96194,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -661,6 +856,9 @@
       "sources": "NWE-002",
       "masterX": 956.06364,
       "masterY": 529.19936,
+      "sourceMasterX": 956.06364,
+      "sourceMasterY": 529.19936,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -671,6 +869,9 @@
       "sources": "NWE-003",
       "masterX": 683.32546,
       "masterY": 535.8902,
+      "sourceMasterX": 683.32546,
+      "sourceMasterY": 535.8902,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -681,6 +882,9 @@
       "sources": "NWE-004",
       "masterX": 974.2067,
       "masterY": 557.43276,
+      "sourceMasterX": 974.2067,
+      "sourceMasterY": 557.43276,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -691,6 +895,9 @@
       "sources": "NWE-005",
       "masterX": 922.8488,
       "masterY": 559.9123,
+      "sourceMasterX": 922.8488,
+      "sourceMasterY": 559.9123,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-005",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -701,6 +908,9 @@
       "sources": "NWE-006",
       "masterX": 712.73402,
       "masterY": 628.33945,
+      "sourceMasterX": 712.73402,
+      "sourceMasterY": 628.33945,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-006",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -711,6 +921,9 @@
       "sources": "NWE-007",
       "masterX": 1096.0888,
       "masterY": 642.87366,
+      "sourceMasterX": 1096.0888,
+      "sourceMasterY": 642.87366,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-007",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -721,6 +934,9 @@
       "sources": "NWE-008,NE-008",
       "masterX": 1116.42668,
       "masterY": 669.2058,
+      "sourceMasterX": 1116.42668,
+      "sourceMasterY": 669.2058,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "vaes_leqse",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -731,6 +947,9 @@
       "sources": "NWE-009",
       "masterX": 663.71647,
       "masterY": 676.60309,
+      "sourceMasterX": 663.71647,
+      "sourceMasterY": 676.60309,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-009",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -741,6 +960,9 @@
       "sources": "NWE-010",
       "masterX": 1075.01815,
       "masterY": 689.38588,
+      "sourceMasterX": 1075.01815,
+      "sourceMasterY": 689.38588,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-010",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -751,6 +973,9 @@
       "sources": "NWE-011",
       "masterX": 608.70042,
       "masterY": 689.76013,
+      "sourceMasterX": 608.70042,
+      "sourceMasterY": 689.76013,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-011",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -761,6 +986,9 @@
       "sources": "NWE-012",
       "masterX": 812.6687,
       "masterY": 689.93465,
+      "sourceMasterX": 812.6687,
+      "sourceMasterY": 689.93465,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-012",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -771,6 +999,9 @@
       "sources": "NWE-013",
       "masterX": 1011.22295,
       "masterY": 704.73582,
+      "sourceMasterX": 1011.22295,
+      "sourceMasterY": 704.73582,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-013",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -781,6 +1012,9 @@
       "sources": "NWE-014,NE-010",
       "masterX": 1123.88834,
       "masterY": 705.77533,
+      "sourceMasterX": 1123.88834,
+      "sourceMasterY": 705.77533,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "yalli_qamayi",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -791,6 +1025,9 @@
       "sources": "NWE-015",
       "masterX": 722.97502,
       "masterY": 709.2304,
+      "sourceMasterX": 722.97502,
+      "sourceMasterY": 709.2304,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-015",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -801,6 +1038,9 @@
       "sources": "NWE-016",
       "masterX": 773.45473,
       "masterY": 724.01106,
+      "sourceMasterX": 773.45473,
+      "sourceMasterY": 724.01106,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:NWE-016",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -811,6 +1051,9 @@
       "sources": "SE-001",
       "masterX": 1279.41101,
       "masterY": 761.40498,
+      "sourceMasterX": 1279.41101,
+      "sourceMasterY": 761.40498,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -821,6 +1064,9 @@
       "sources": "SE-002",
       "masterX": 1105.85451,
       "masterY": 764.21726,
+      "sourceMasterX": 1105.85451,
+      "sourceMasterY": 764.21726,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -831,6 +1077,9 @@
       "sources": "SE-003",
       "masterX": 1402.13912,
       "masterY": 780.83104,
+      "sourceMasterX": 1402.13912,
+      "sourceMasterY": 780.83104,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -841,6 +1090,9 @@
       "sources": "SE-004",
       "masterX": 1258.33975,
       "masterY": 787.49406,
+      "sourceMasterX": 1258.33975,
+      "sourceMasterY": 787.49406,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -851,6 +1103,9 @@
       "sources": "SE-005",
       "masterX": 1224.23968,
       "masterY": 795.55825,
+      "sourceMasterX": 1224.23968,
+      "sourceMasterY": 795.55825,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-005",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -861,6 +1116,9 @@
       "sources": "SE-006",
       "masterX": 1381.8721,
       "masterY": 800.64127,
+      "sourceMasterX": 1381.8721,
+      "sourceMasterY": 800.64127,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-006",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -871,6 +1129,9 @@
       "sources": "SE-007",
       "masterX": 1465.51379,
       "masterY": 800.76588,
+      "sourceMasterX": 1465.51379,
+      "sourceMasterY": 800.76588,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-007",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -881,6 +1142,9 @@
       "sources": "SE-008",
       "masterX": 1113.25361,
       "masterY": 844.7076,
+      "sourceMasterX": 1113.25361,
+      "sourceMasterY": 844.7076,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-008",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -891,6 +1155,9 @@
       "sources": "SE-009",
       "masterX": 1255.12279,
       "masterY": 847.38267,
+      "sourceMasterX": 1255.12279,
+      "sourceMasterY": 847.38267,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-009",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -901,6 +1168,9 @@
       "sources": "SE-010",
       "masterX": 1182.74056,
       "masterY": 847.89712,
+      "sourceMasterX": 1182.74056,
+      "sourceMasterY": 847.89712,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-010",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -911,6 +1181,9 @@
       "sources": "SE-011",
       "masterX": 1085.58753,
       "masterY": 870.79955,
+      "sourceMasterX": 1085.58753,
+      "sourceMasterY": 870.79955,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-011",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -921,6 +1194,9 @@
       "sources": "SE-012",
       "masterX": 1212.33687,
       "masterY": 888.29201,
+      "sourceMasterX": 1212.33687,
+      "sourceMasterY": 888.29201,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-012",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -931,6 +1207,9 @@
       "sources": "SE-013",
       "masterX": 1501.2224,
       "masterY": 899.43545,
+      "sourceMasterX": 1501.2224,
+      "sourceMasterY": 899.43545,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-013",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -941,6 +1220,9 @@
       "sources": "SE-014",
       "masterX": 1320.10599,
       "masterY": 936.54127,
+      "sourceMasterX": 1320.10599,
+      "sourceMasterY": 936.54127,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-014",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -951,6 +1233,9 @@
       "sources": "SE-015",
       "masterX": 1071.91536,
       "masterY": 937.77613,
+      "sourceMasterX": 1071.91536,
+      "sourceMasterY": 937.77613,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-015",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -961,6 +1246,9 @@
       "sources": "SE-016",
       "masterX": 1297.74794,
       "masterY": 969.87533,
+      "sourceMasterX": 1297.74794,
+      "sourceMasterY": 969.87533,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-016",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -971,6 +1259,9 @@
       "sources": "SE-017",
       "masterX": 1372.54291,
       "masterY": 976.28228,
+      "sourceMasterX": 1372.54291,
+      "sourceMasterY": 976.28228,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-017",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -981,6 +1272,9 @@
       "sources": "SE-018",
       "masterX": 1263.16532,
       "masterY": 979.06663,
+      "sourceMasterX": 1263.16532,
+      "sourceMasterY": 979.06663,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-018",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -991,6 +1285,9 @@
       "sources": "SE-019",
       "masterX": 1332.81312,
       "masterY": 989.66149,
+      "sourceMasterX": 1332.81312,
+      "sourceMasterY": 989.66149,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-019",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1001,6 +1298,9 @@
       "sources": "SE-020",
       "masterX": 1506.69133,
       "masterY": 998.92311,
+      "sourceMasterX": 1506.69133,
+      "sourceMasterY": 998.92311,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-020",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1011,6 +1311,9 @@
       "sources": "SE-021",
       "masterX": 1255.44456,
       "masterY": 1002.57411,
+      "sourceMasterX": 1255.44456,
+      "sourceMasterY": 1002.57411,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-021",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1021,6 +1324,9 @@
       "sources": "SE-022",
       "masterX": 1405.51705,
       "masterY": 1006.21154,
+      "sourceMasterX": 1405.51705,
+      "sourceMasterY": 1006.21154,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-022",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1031,6 +1337,9 @@
       "sources": "SE-023",
       "masterX": 1426.91003,
       "masterY": 1009.90494,
+      "sourceMasterX": 1426.91003,
+      "sourceMasterY": 1009.90494,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-023",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1041,6 +1350,9 @@
       "sources": "SE-024",
       "masterX": 1086.87439,
       "masterY": 1014.72147,
+      "sourceMasterX": 1086.87439,
+      "sourceMasterY": 1014.72147,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-024",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1051,6 +1363,9 @@
       "sources": "SE-025",
       "masterX": 1448.9464,
       "masterY": 1017.62273,
+      "sourceMasterX": 1448.9464,
+      "sourceMasterY": 1017.62273,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-025",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1061,6 +1376,9 @@
       "sources": "SE-026",
       "masterX": 1101.02916,
       "masterY": 1076.53437,
+      "sourceMasterX": 1101.02916,
+      "sourceMasterY": 1076.53437,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-026",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1071,6 +1389,9 @@
       "sources": "SE-027",
       "masterX": 1386.37601,
       "masterY": 1086.71342,
+      "sourceMasterX": 1386.37601,
+      "sourceMasterY": 1086.71342,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-027",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1081,6 +1402,9 @@
       "sources": "SE-028,SO-001",
       "masterX": 1374.63402,
       "masterY": 1126.32136,
+      "sourceMasterX": 1374.63402,
+      "sourceMasterY": 1126.32136,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "vahar",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -1091,6 +1415,9 @@
       "sources": "SE-029,SO-002",
       "masterX": 1273.13807,
       "masterY": 1181.74508,
+      "sourceMasterX": 1273.13807,
+      "sourceMasterY": 1181.74508,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "gorosh",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -1101,6 +1428,9 @@
       "sources": "SE-030",
       "masterX": 1468.73096,
       "masterY": 1202.26635,
+      "sourceMasterX": 1468.73096,
+      "sourceMasterY": 1202.26635,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SE-030",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1111,6 +1441,9 @@
       "sources": "SE-031,SO-003",
       "masterX": 1060.81687,
       "masterY": 1205.9855,
+      "sourceMasterX": 1060.81687,
+      "sourceMasterY": 1205.9855,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "zamettar",
       "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
     },
@@ -1121,6 +1454,9 @@
       "sources": "SEE-001",
       "masterX": 1965.11472,
       "masterY": 958.07443,
+      "sourceMasterX": 1965.11472,
+      "sourceMasterY": 958.07443,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1131,6 +1467,9 @@
       "sources": "SEE-002",
       "masterX": 2023.06064,
       "masterY": 1007.79521,
+      "sourceMasterX": 2023.06064,
+      "sourceMasterY": 1007.79521,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1141,6 +1480,9 @@
       "sources": "SEE-003",
       "masterX": 1756.17479,
       "masterY": 1041.91983,
+      "sourceMasterX": 1756.17479,
+      "sourceMasterY": 1041.91983,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1151,6 +1493,9 @@
       "sources": "SEE-004",
       "masterX": 1726.23348,
       "masterY": 1069.92038,
+      "sourceMasterX": 1726.23348,
+      "sourceMasterY": 1069.92038,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1161,6 +1506,9 @@
       "sources": "SEE-005",
       "masterX": 1600.19503,
       "masterY": 1087.62606,
+      "sourceMasterX": 1600.19503,
+      "sourceMasterY": 1087.62606,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-005",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1171,6 +1519,9 @@
       "sources": "SEE-006",
       "masterX": 1717.37773,
       "masterY": 1122.54026,
+      "sourceMasterX": 1717.37773,
+      "sourceMasterY": 1122.54026,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-006",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1181,6 +1532,9 @@
       "sources": "SEE-007",
       "masterX": 1719.46836,
       "masterY": 1162.76918,
+      "sourceMasterX": 1719.46836,
+      "sourceMasterY": 1162.76918,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-007",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1191,6 +1545,9 @@
       "sources": "SEE-008",
       "masterX": 1999.7112,
       "masterY": 1197.51608,
+      "sourceMasterX": 1999.7112,
+      "sourceMasterY": 1197.51608,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-008",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1201,6 +1558,9 @@
       "sources": "SEE-009",
       "masterX": 1856.93229,
       "masterY": 1211.84319,
+      "sourceMasterX": 1856.93229,
+      "sourceMasterY": 1211.84319,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-009",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1211,6 +1571,9 @@
       "sources": "SEE-010",
       "masterX": 1814.75658,
       "masterY": 1257.70589,
+      "sourceMasterX": 1814.75658,
+      "sourceMasterY": 1257.70589,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SEE-010",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1221,6 +1584,9 @@
       "sources": "SI-001",
       "masterX": 525.491,
       "masterY": 1096.93959,
+      "sourceMasterX": 525.491,
+      "sourceMasterY": 1096.93959,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SI-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1231,6 +1597,9 @@
       "sources": "SI-002",
       "masterX": 558.46985,
       "masterY": 1120.45836,
+      "sourceMasterX": 558.46985,
+      "sourceMasterY": 1120.45836,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SI-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1241,6 +1610,9 @@
       "sources": "SI-003",
       "masterX": 596.17773,
       "masterY": 1147.33695,
+      "sourceMasterX": 596.17773,
+      "sourceMasterY": 1147.33695,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SI-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1251,28 +1623,37 @@
       "sources": "SI-004",
       "masterX": 595.04837,
       "masterY": 1308.84429,
+      "sourceMasterX": 595.04837,
+      "sourceMasterY": 1308.84429,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SI-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
     {
       "id": "SO-004",
-      "name": "Unlinked SO-004",
-      "named": false,
+      "name": "Gogossos",
+      "named": true,
       "sources": "SO-004",
       "masterX": 1007.41716,
       "masterY": 1244.87471,
-      "placeId": "unlinked:SO-004",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 1007.41716,
+      "sourceMasterY": 1244.87471,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "gogossos",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "SO-005",
-      "name": "Unlinked SO-005",
-      "named": false,
+      "name": "Yeen",
+      "named": true,
       "sources": "SO-005",
       "masterX": 1078.89549,
       "masterY": 1263.02619,
-      "placeId": "unlinked:SO-005",
-      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+      "sourceMasterX": 1078.89549,
+      "sourceMasterY": 1263.02619,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
+      "placeId": "yeen",
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "SW-001",
@@ -1281,6 +1662,9 @@
       "sources": "SW-001",
       "masterX": 323.73155,
       "masterY": 550.37914,
+      "sourceMasterX": 323.73155,
+      "sourceMasterY": 550.37914,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1291,6 +1675,9 @@
       "sources": "SW-002",
       "masterX": 497.75674,
       "masterY": 561.82612,
+      "sourceMasterX": 497.75674,
+      "sourceMasterY": 561.82612,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1301,6 +1688,9 @@
       "sources": "SW-003",
       "masterX": 435.76436,
       "masterY": 568.66846,
+      "sourceMasterX": 435.76436,
+      "sourceMasterY": 568.66846,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1311,6 +1701,9 @@
       "sources": "SW-004",
       "masterX": 346.01283,
       "masterY": 569.16559,
+      "sourceMasterX": 346.01283,
+      "sourceMasterY": 569.16559,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1321,6 +1714,9 @@
       "sources": "SW-005",
       "masterX": 466.38664,
       "masterY": 574.01839,
+      "sourceMasterX": 466.38664,
+      "sourceMasterY": 574.01839,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-005",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1331,6 +1727,9 @@
       "sources": "SW-006",
       "masterX": 506.59414,
       "masterY": 577.37776,
+      "sourceMasterX": 506.59414,
+      "sourceMasterY": 577.37776,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-006",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1341,6 +1740,9 @@
       "sources": "SW-007",
       "masterX": 431.53144,
       "masterY": 578.62145,
+      "sourceMasterX": 431.53144,
+      "sourceMasterY": 578.62145,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-007",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1351,6 +1753,9 @@
       "sources": "SW-008",
       "masterX": 229.8706,
       "masterY": 579.49116,
+      "sourceMasterX": 229.8706,
+      "sourceMasterY": 579.49116,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-008",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1361,6 +1766,9 @@
       "sources": "SW-009",
       "masterX": 354.47696,
       "masterY": 581.35808,
+      "sourceMasterX": 354.47696,
+      "sourceMasterY": 581.35808,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-009",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1371,6 +1779,9 @@
       "sources": "SW-010",
       "masterX": 504.10404,
       "masterY": 586.08664,
+      "sourceMasterX": 504.10404,
+      "sourceMasterY": 586.08664,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-010",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1381,6 +1792,9 @@
       "sources": "SW-011",
       "masterX": 458.16982,
       "masterY": 593.05348,
+      "sourceMasterX": 458.16982,
+      "sourceMasterY": 593.05348,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-011",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1391,6 +1805,9 @@
       "sources": "SW-012",
       "masterX": 243.56287,
       "masterY": 593.54988,
+      "sourceMasterX": 243.56287,
+      "sourceMasterY": 593.54988,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-012",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1401,6 +1818,9 @@
       "sources": "SW-013",
       "masterX": 344.14413,
       "masterY": 596.7852,
+      "sourceMasterX": 344.14413,
+      "sourceMasterY": 596.7852,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-013",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1411,6 +1831,9 @@
       "sources": "SW-014",
       "masterX": 390.94897,
       "masterY": 604.00141,
+      "sourceMasterX": 390.94897,
+      "sourceMasterY": 604.00141,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-014",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1421,6 +1844,9 @@
       "sources": "SW-015",
       "masterX": 320.98993,
       "masterY": 607.36014,
+      "sourceMasterX": 320.98993,
+      "sourceMasterY": 607.36014,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-015",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1431,6 +1857,9 @@
       "sources": "SW-016",
       "masterX": 385.22255,
       "masterY": 608.72906,
+      "sourceMasterX": 385.22255,
+      "sourceMasterY": 608.72906,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-016",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1441,6 +1870,9 @@
       "sources": "SW-017",
       "masterX": 418.20991,
       "masterY": 615.57195,
+      "sourceMasterX": 418.20991,
+      "sourceMasterY": 615.57195,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-017",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1451,6 +1883,9 @@
       "sources": "SW-018",
       "masterX": 241.44541,
       "masterY": 617.43711,
+      "sourceMasterX": 241.44541,
+      "sourceMasterY": 617.43711,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-018",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1461,6 +1896,9 @@
       "sources": "SW-019",
       "masterX": 463.6456,
       "masterY": 620.05107,
+      "sourceMasterX": 463.6456,
+      "sourceMasterY": 620.05107,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-019",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1471,6 +1909,9 @@
       "sources": "SW-020",
       "masterX": 384.47478,
       "masterY": 625.27595,
+      "sourceMasterX": 384.47478,
+      "sourceMasterY": 625.27595,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-020",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1481,6 +1922,9 @@
       "sources": "SW-021",
       "masterX": 421.19693,
       "masterY": 626.02264,
+      "sourceMasterX": 421.19693,
+      "sourceMasterY": 626.02264,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-021",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1491,6 +1935,9 @@
       "sources": "SW-022",
       "masterX": 255.76016,
       "masterY": 630.2517,
+      "sourceMasterX": 255.76016,
+      "sourceMasterY": 630.2517,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-022",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1501,6 +1948,9 @@
       "sources": "SW-023",
       "masterX": 339.03855,
       "masterY": 631.12308,
+      "sourceMasterX": 339.03855,
+      "sourceMasterY": 631.12308,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-023",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1511,6 +1961,9 @@
       "sources": "SW-024",
       "masterX": 218.78886,
       "masterY": 633.11298,
+      "sourceMasterX": 218.78886,
+      "sourceMasterY": 633.11298,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-024",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1521,6 +1974,9 @@
       "sources": "SW-025",
       "masterX": 278.66462,
       "masterY": 634.48187,
+      "sourceMasterX": 278.66462,
+      "sourceMasterY": 634.48187,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-025",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1531,6 +1987,9 @@
       "sources": "SW-026",
       "masterX": 434.88945,
       "masterY": 635.22926,
+      "sourceMasterX": 434.88945,
+      "sourceMasterY": 635.22926,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-026",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1541,6 +2000,9 @@
       "sources": "SW-027",
       "masterX": 315.63545,
       "masterY": 640.32948,
+      "sourceMasterX": 315.63545,
+      "sourceMasterY": 640.32948,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-027",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1551,6 +2013,9 @@
       "sources": "SW-028",
       "masterX": 251.6514,
       "masterY": 646.42533,
+      "sourceMasterX": 251.6514,
+      "sourceMasterY": 646.42533,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-028",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1561,6 +2026,9 @@
       "sources": "SW-029",
       "masterX": 457.54454,
       "masterY": 647.17301,
+      "sourceMasterX": 457.54454,
+      "sourceMasterY": 647.17301,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-029",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1571,6 +2039,9 @@
       "sources": "SW-030",
       "masterX": 416.34082,
       "masterY": 650.78074,
+      "sourceMasterX": 416.34082,
+      "sourceMasterY": 650.78074,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-030",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1581,6 +2052,9 @@
       "sources": "SW-031",
       "masterX": 279.16156,
       "masterY": 653.14378,
+      "sourceMasterX": 279.16156,
+      "sourceMasterY": 653.14378,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-031",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1591,6 +2065,9 @@
       "sources": "SW-032",
       "masterX": 488.78915,
       "masterY": 654.01589,
+      "sourceMasterX": 488.78915,
+      "sourceMasterY": 654.01589,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-032",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1601,6 +2078,9 @@
       "sources": "SW-033",
       "masterX": 335.30279,
       "masterY": 655.75677,
+      "sourceMasterX": 335.30279,
+      "sourceMasterY": 655.75677,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-033",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1611,6 +2091,9 @@
       "sources": "SW-035",
       "masterX": 478.33234,
       "masterY": 660.23647,
+      "sourceMasterX": 478.33234,
+      "sourceMasterY": 660.23647,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-035",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1621,6 +2104,9 @@
       "sources": "SW-036",
       "masterX": 280.53033,
       "masterY": 663.0968,
+      "sourceMasterX": 280.53033,
+      "sourceMasterY": 663.0968,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-036",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1631,6 +2117,9 @@
       "sources": "SW-037",
       "masterX": 200.3639,
       "masterY": 663.84281,
+      "sourceMasterX": 200.3639,
+      "sourceMasterY": 663.84281,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-037",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1641,8 +2130,11 @@
       "sources": "SW-038",
       "masterX": 227.00303,
       "masterY": 664.09179,
+      "sourceMasterX": 227.00303,
+      "sourceMasterY": 664.09179,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "casterly_rock",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "SW-039",
@@ -1651,6 +2143,9 @@
       "sources": "SW-039",
       "masterX": 439.61806,
       "masterY": 667.45218,
+      "sourceMasterX": 439.61806,
+      "sourceMasterY": 667.45218,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-039",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1661,6 +2156,9 @@
       "sources": "SW-040",
       "masterX": 192.77029,
       "masterY": 667.69956,
+      "sourceMasterX": 192.77029,
+      "sourceMasterY": 667.69956,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-040",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1671,6 +2169,9 @@
       "sources": "SW-041",
       "masterX": 226.50462,
       "masterY": 673.0495,
+      "sourceMasterX": 226.50462,
+      "sourceMasterY": 673.0495,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-041",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1681,6 +2182,9 @@
       "sources": "SW-042",
       "masterX": 487.91663,
       "masterY": 675.6637,
+      "sourceMasterX": 487.91663,
+      "sourceMasterY": 675.6637,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-042",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1691,6 +2195,9 @@
       "sources": "SW-043",
       "masterX": 278.91092,
       "masterY": 684.74461,
+      "sourceMasterX": 278.91092,
+      "sourceMasterY": 684.74461,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-043",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1701,6 +2208,9 @@
       "sources": "SW-044",
       "masterX": 494.63814,
       "masterY": 685.36793,
+      "sourceMasterX": 494.63814,
+      "sourceMasterY": 685.36793,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-044",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1711,6 +2221,9 @@
       "sources": "SW-045",
       "masterX": 421.44273,
       "masterY": 685.61633,
+      "sourceMasterX": 421.44273,
+      "sourceMasterY": 685.61633,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-045",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1721,6 +2234,9 @@
       "sources": "SW-046",
       "masterX": 411.98154,
       "masterY": 696.06694,
+      "sourceMasterX": 411.98154,
+      "sourceMasterY": 696.06694,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-046",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1731,6 +2247,9 @@
       "sources": "SW-047",
       "masterX": 242.68559,
       "masterY": 704.89925,
+      "sourceMasterX": 242.68559,
+      "sourceMasterY": 704.89925,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-047",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1741,6 +2260,9 @@
       "sources": "SW-048",
       "masterX": 208.70162,
       "masterY": 712.36382,
+      "sourceMasterX": 208.70162,
+      "sourceMasterY": 712.36382,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-048",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1751,6 +2273,9 @@
       "sources": "SW-049",
       "masterX": 375.38264,
       "masterY": 718.70984,
+      "sourceMasterX": 375.38264,
+      "sourceMasterY": 718.70984,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-049",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1761,6 +2286,9 @@
       "sources": "SW-050",
       "masterX": 247.78818,
       "masterY": 727.04475,
+      "sourceMasterX": 247.78818,
+      "sourceMasterY": 727.04475,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-050",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1771,6 +2299,9 @@
       "sources": "SW-051",
       "masterX": 279.90404,
       "masterY": 736.25147,
+      "sourceMasterX": 279.90404,
+      "sourceMasterY": 736.25147,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-051",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1781,6 +2312,9 @@
       "sources": "SW-052",
       "masterX": 462.02117,
       "masterY": 736.25254,
+      "sourceMasterX": 462.02117,
+      "sourceMasterY": 736.25254,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-052",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1791,6 +2325,9 @@
       "sources": "SW-053",
       "masterX": 340.40219,
       "masterY": 737.86919,
+      "sourceMasterX": 340.40219,
+      "sourceMasterY": 737.86919,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-053",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1801,6 +2338,9 @@
       "sources": "SW-054",
       "masterX": 457.91285,
       "masterY": 743.9661,
+      "sourceMasterX": 457.91285,
+      "sourceMasterY": 743.9661,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-054",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1811,6 +2351,9 @@
       "sources": "SW-055",
       "masterX": 437.37308,
       "masterY": 748.56925,
+      "sourceMasterX": 437.37308,
+      "sourceMasterY": 748.56925,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-055",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1821,6 +2364,9 @@
       "sources": "SW-056",
       "masterX": 369.15692,
       "masterY": 749.31533,
+      "sourceMasterX": 369.15692,
+      "sourceMasterY": 749.31533,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-056",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1831,6 +2377,9 @@
       "sources": "SW-057",
       "masterX": 222.76597,
       "masterY": 752.17597,
+      "sourceMasterX": 222.76597,
+      "sourceMasterY": 752.17597,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-057",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1841,6 +2390,9 @@
       "sources": "SW-058",
       "masterX": 506.0867,
       "masterY": 756.78089,
+      "sourceMasterX": 506.0867,
+      "sourceMasterY": 756.78089,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-058",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1851,6 +2403,9 @@
       "sources": "SW-059",
       "masterX": 327.82844,
       "masterY": 758.14839,
+      "sourceMasterX": 327.82844,
+      "sourceMasterY": 758.14839,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-059",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1861,6 +2416,9 @@
       "sources": "SW-060",
       "masterX": 473.72099,
       "masterY": 764.24547,
+      "sourceMasterX": 473.72099,
+      "sourceMasterY": 764.24547,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-060",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1871,6 +2429,9 @@
       "sources": "SW-061",
       "masterX": 307.16356,
       "masterY": 774.57075,
+      "sourceMasterX": 307.16356,
+      "sourceMasterY": 774.57075,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-061",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1881,6 +2442,9 @@
       "sources": "SW-062",
       "masterX": 456.66634,
       "masterY": 775.94016,
+      "sourceMasterX": 456.66634,
+      "sourceMasterY": 775.94016,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-062",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1891,6 +2455,9 @@
       "sources": "SW-063",
       "masterX": 405.13073,
       "masterY": 777.3084,
+      "sourceMasterX": 405.13073,
+      "sourceMasterY": 777.3084,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-063",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1901,6 +2468,9 @@
       "sources": "SW-064",
       "masterX": 336.2921,
       "masterY": 779.04978,
+      "sourceMasterX": 336.2921,
+      "sourceMasterY": 779.04978,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-064",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1911,6 +2481,9 @@
       "sources": "SW-065",
       "masterX": 506.95637,
       "masterY": 788.87938,
+      "sourceMasterX": 506.95637,
+      "sourceMasterY": 788.87938,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-065",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1921,6 +2494,9 @@
       "sources": "SW-066",
       "masterX": 444.21735,
       "masterY": 790.86961,
+      "sourceMasterX": 444.21735,
+      "sourceMasterY": 790.86961,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-066",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1931,6 +2507,9 @@
       "sources": "SW-067",
       "masterX": 275.41973,
       "masterY": 791.98834,
+      "sourceMasterX": 275.41973,
+      "sourceMasterY": 791.98834,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-067",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1941,6 +2520,9 @@
       "sources": "SW-068",
       "masterX": 430.15021,
       "masterY": 803.55963,
+      "sourceMasterX": 430.15021,
+      "sourceMasterY": 803.55963,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-068",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1951,6 +2533,9 @@
       "sources": "SW-069",
       "masterX": 476.83073,
       "masterY": 807.78993,
+      "sourceMasterX": 476.83073,
+      "sourceMasterY": 807.78993,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-069",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1961,6 +2546,9 @@
       "sources": "SW-070",
       "masterX": 367.78442,
       "masterY": 809.65549,
+      "sourceMasterX": 367.78442,
+      "sourceMasterY": 809.65549,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-070",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1971,6 +2559,9 @@
       "sources": "SW-071",
       "masterX": 323.96668,
       "masterY": 811.2726,
+      "sourceMasterX": 323.96668,
+      "sourceMasterY": 811.2726,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-071",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1981,6 +2572,9 @@
       "sources": "SW-072",
       "masterX": 205.8331,
       "masterY": 814.75546,
+      "sourceMasterX": 205.8331,
+      "sourceMasterY": 814.75546,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-072",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -1991,6 +2585,9 @@
       "sources": "SW-073",
       "masterX": 231.84981,
       "masterY": 815.12885,
+      "sourceMasterX": 231.84981,
+      "sourceMasterY": 815.12885,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-073",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2001,6 +2598,9 @@
       "sources": "SW-074",
       "masterX": 501.60216,
       "masterY": 816.87221,
+      "sourceMasterX": 501.60216,
+      "sourceMasterY": 816.87221,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-074",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2011,6 +2611,9 @@
       "sources": "SW-075",
       "masterX": 391.43551,
       "masterY": 818.86217,
+      "sourceMasterX": 391.43551,
+      "sourceMasterY": 818.86217,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-075",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2021,6 +2624,9 @@
       "sources": "SW-076",
       "masterX": 477.57679,
       "masterY": 823.46594,
+      "sourceMasterX": 477.57679,
+      "sourceMasterY": 823.46594,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-076",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2031,6 +2637,9 @@
       "sources": "SW-077",
       "masterX": 356.58028,
       "masterY": 823.96288,
+      "sourceMasterX": 356.58028,
+      "sourceMasterY": 823.96288,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-077",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2041,6 +2650,9 @@
       "sources": "SW-078",
       "masterX": 334.2979,
       "masterY": 825.95336,
+      "sourceMasterX": 334.2979,
+      "sourceMasterY": 825.95336,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-078",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2051,6 +2663,9 @@
       "sources": "SW-079",
       "masterX": 235.5834,
       "masterY": 831.55135,
+      "sourceMasterX": 235.5834,
+      "sourceMasterY": 831.55135,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-079",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2061,6 +2676,9 @@
       "sources": "SW-080",
       "masterX": 335.16876,
       "masterY": 835.78197,
+      "sourceMasterX": 335.16876,
+      "sourceMasterY": 835.78197,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-080",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2071,6 +2689,9 @@
       "sources": "SW-081",
       "masterX": 407.6169,
       "masterY": 842.7495,
+      "sourceMasterX": 407.6169,
+      "sourceMasterY": 842.7495,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-081",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2081,6 +2702,9 @@
       "sources": "SW-082",
       "masterX": 297.07678,
       "masterY": 845.1127,
+      "sourceMasterX": 297.07678,
+      "sourceMasterY": 845.1127,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-082",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2091,6 +2715,9 @@
       "sources": "SW-083",
       "masterX": 252.76117,
       "masterY": 845.61009,
+      "sourceMasterX": 252.76117,
+      "sourceMasterY": 845.61009,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-083",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2101,6 +2728,9 @@
       "sources": "SW-084",
       "masterX": 227.61578,
       "masterY": 846.23201,
+      "sourceMasterX": 227.61578,
+      "sourceMasterY": 846.23201,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-084",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2111,6 +2741,9 @@
       "sources": "SW-085",
       "masterX": 337.78209,
       "masterY": 850.71151,
+      "sourceMasterX": 337.78209,
+      "sourceMasterY": 850.71151,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-085",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2121,6 +2754,9 @@
       "sources": "SW-086",
       "masterX": 380.23024,
       "masterY": 854.56855,
+      "sourceMasterX": 380.23024,
+      "sourceMasterY": 854.56855,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-086",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2131,6 +2767,9 @@
       "sources": "SW-087",
       "masterX": 204.21257,
       "masterY": 857.55343,
+      "sourceMasterX": 204.21257,
+      "sourceMasterY": 857.55343,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-087",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2141,6 +2780,9 @@
       "sources": "SW-088",
       "masterX": 294.83523,
       "masterY": 861.65958,
+      "sourceMasterX": 294.83523,
+      "sourceMasterY": 861.65958,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-088",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2151,6 +2793,9 @@
       "sources": "SW-089",
       "masterX": 492.1389,
       "masterY": 866.51282,
+      "sourceMasterX": 492.1389,
+      "sourceMasterY": 866.51282,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-089",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2161,6 +2806,9 @@
       "sources": "SW-090",
       "masterX": 435.74855,
       "masterY": 866.76132,
+      "sourceMasterX": 435.74855,
+      "sourceMasterY": 866.76132,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-090",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2171,6 +2819,9 @@
       "sources": "SW-091",
       "masterX": 212.9257,
       "masterY": 868.87503,
+      "sourceMasterX": 212.9257,
+      "sourceMasterY": 868.87503,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-091",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2181,6 +2832,9 @@
       "sources": "SW-092",
       "masterX": 280.51923,
       "masterY": 872.35899,
+      "sourceMasterX": 280.51923,
+      "sourceMasterY": 872.35899,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-092",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2191,6 +2845,9 @@
       "sources": "SW-093",
       "masterX": 439.60638,
       "masterY": 887.66268,
+      "sourceMasterX": 439.60638,
+      "sourceMasterY": 887.66268,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-093",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2201,6 +2858,9 @@
       "sources": "SW-094",
       "masterX": 499.85558,
       "masterY": 889.15598,
+      "sourceMasterX": 499.85558,
+      "sourceMasterY": 889.15598,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-094",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2211,6 +2871,9 @@
       "sources": "SW-095",
       "masterX": 506.82636,
       "masterY": 893.01282,
+      "sourceMasterX": 506.82636,
+      "sourceMasterY": 893.01282,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-095",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2221,6 +2884,9 @@
       "sources": "SW-096",
       "masterX": 354.21143,
       "masterY": 893.63399,
+      "sourceMasterX": 354.21143,
+      "sourceMasterY": 893.63399,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-096",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2231,6 +2897,9 @@
       "sources": "SW-097",
       "masterX": 406.36936,
       "masterY": 894.00753,
+      "sourceMasterX": 406.36936,
+      "sourceMasterY": 894.00753,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-097",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2241,6 +2910,9 @@
       "sources": "SW-098",
       "masterX": 316.86681,
       "masterY": 894.13142,
+      "sourceMasterX": 316.86681,
+      "sourceMasterY": 894.13142,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-098",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2251,6 +2923,9 @@
       "sources": "SW-099",
       "masterX": 184.7914,
       "masterY": 894.87713,
+      "sourceMasterX": 184.7914,
+      "sourceMasterY": 894.87713,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-099",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2261,6 +2936,9 @@
       "sources": "SW-100",
       "masterX": 246.28549,
       "masterY": 894.87749,
+      "sourceMasterX": 246.28549,
+      "sourceMasterY": 894.87749,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-100",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2271,6 +2949,9 @@
       "sources": "SW-101",
       "masterX": 192.50884,
       "masterY": 903.21282,
+      "sourceMasterX": 192.50884,
+      "sourceMasterY": 903.21282,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-101",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2281,6 +2962,9 @@
       "sources": "SW-102",
       "masterX": 485.78835,
       "masterY": 903.58777,
+      "sourceMasterX": 485.78835,
+      "sourceMasterY": 903.58777,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-102",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2291,6 +2975,9 @@
       "sources": "SW-103",
       "masterX": 439.35628,
       "masterY": 909.06166,
+      "sourceMasterX": 439.35628,
+      "sourceMasterY": 909.06166,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-103",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2301,6 +2988,9 @@
       "sources": "SW-104",
       "masterX": 198.60811,
       "masterY": 909.80673,
+      "sourceMasterX": 198.60811,
+      "sourceMasterY": 909.80673,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SW-104",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2311,6 +3001,9 @@
       "sources": "SWE-001",
       "masterX": 743.48626,
       "masterY": 788.43124,
+      "sourceMasterX": 743.48626,
+      "sourceMasterY": 788.43124,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-001",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2321,6 +3014,9 @@
       "sources": "SWE-002",
       "masterX": 645.05424,
       "masterY": 797.8826,
+      "sourceMasterX": 645.05424,
+      "sourceMasterY": 797.8826,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-002",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2331,6 +3027,9 @@
       "sources": "SWE-003",
       "masterX": 564.51876,
       "masterY": 812.13661,
+      "sourceMasterX": 564.51876,
+      "sourceMasterY": 812.13661,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-003",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2341,6 +3040,9 @@
       "sources": "SWE-004",
       "masterX": 756.2443,
       "masterY": 840.94507,
+      "sourceMasterX": 756.2443,
+      "sourceMasterY": 840.94507,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-004",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2351,6 +3053,9 @@
       "sources": "SWE-005",
       "masterX": 1021.71136,
       "masterY": 851.1929,
+      "sourceMasterX": 1021.71136,
+      "sourceMasterY": 851.1929,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-005",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2361,6 +3066,9 @@
       "sources": "SWE-006",
       "masterX": 751.43794,
       "masterY": 865.79484,
+      "sourceMasterX": 751.43794,
+      "sourceMasterY": 865.79484,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-006",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2371,6 +3079,9 @@
       "sources": "SWE-007",
       "masterX": 925.76443,
       "masterY": 878.70124,
+      "sourceMasterX": 925.76443,
+      "sourceMasterY": 878.70124,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-007",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2381,6 +3092,9 @@
       "sources": "SWE-008",
       "masterX": 770.16273,
       "masterY": 879.8745,
+      "sourceMasterX": 770.16273,
+      "sourceMasterY": 879.8745,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-008",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2391,8 +3105,11 @@
       "sources": "SWE-009",
       "masterX": 762.70551,
       "masterY": 888.48959,
+      "sourceMasterX": 762.70551,
+      "sourceMasterY": 888.48959,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "volon_therys",
-      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+      "status": "USER_CONFIRMED_PLACEMENT_PROVISIONAL"
     },
     {
       "id": "SWE-010",
@@ -2401,6 +3118,9 @@
       "sources": "SWE-010",
       "masterX": 613.40065,
       "masterY": 894.30084,
+      "sourceMasterX": 613.40065,
+      "sourceMasterY": 894.30084,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-010",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2411,6 +3131,9 @@
       "sources": "SWE-011",
       "masterX": 790.0474,
       "masterY": 896.77031,
+      "sourceMasterX": 790.0474,
+      "sourceMasterY": 896.77031,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-011",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2421,6 +3144,9 @@
       "sources": "SWE-014",
       "masterX": 971.33389,
       "masterY": 904.04359,
+      "sourceMasterX": 971.33389,
+      "sourceMasterY": 904.04359,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-014",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2431,6 +3157,9 @@
       "sources": "SWE-015",
       "masterX": 945.15161,
       "masterY": 907.35912,
+      "sourceMasterX": 945.15161,
+      "sourceMasterY": 907.35912,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-015",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2441,6 +3170,9 @@
       "sources": "SWE-016",
       "masterX": 997.84642,
       "masterY": 938.33336,
+      "sourceMasterX": 997.84642,
+      "sourceMasterY": 938.33336,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-016",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2451,6 +3183,9 @@
       "sources": "SWE-017",
       "masterX": 1005.3024,
       "masterY": 969.47723,
+      "sourceMasterX": 1005.3024,
+      "sourceMasterY": 969.47723,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-017",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2461,6 +3196,9 @@
       "sources": "SWE-018",
       "masterX": 916.64685,
       "masterY": 992.67771,
+      "sourceMasterX": 916.64685,
+      "sourceMasterY": 992.67771,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-018",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2471,6 +3209,9 @@
       "sources": "SWE-019",
       "masterX": 905.87487,
       "masterY": 1019.35028,
+      "sourceMasterX": 905.87487,
+      "sourceMasterY": 1019.35028,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-019",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     },
@@ -2481,6 +3222,9 @@
       "sources": "SWE-020",
       "masterX": 890.4628,
       "masterY": 1052.98108,
+      "sourceMasterX": 890.4628,
+      "sourceMasterY": 1052.98108,
+      "coordinateStatus": "SOURCE_OBSERVATION_UNAPPROVED",
       "placeId": "unlinked:SWE-020",
       "status": "RESEARCH_NAME_NEEDS_REVIEW"
     }
