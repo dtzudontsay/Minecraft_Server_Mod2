@@ -63,11 +63,18 @@ public final class KnownWorldAtlasScreen extends Screen {
         double drawTop = viewMiddleY() - centerY * scale;
 
         gfx.enableScissor(left, top, right, bottom);
+        // IMPORTANT: the destination size changes with zoom, but the sampled
+        // source area must ALWAYS remain the whole 2048x1357 atlas texture.
+        // The old 10-argument blit implicitly set srcWidth/srcHeight to the
+        // zoomed destination width/height, causing the map image to drift
+        // and/or tile while all pins continued to use the correct transform.
+        // Minecraft 26.3: use the 12-argument overload specifying both sizes.
         gfx.blit(RenderPipelines.GUI_TEXTURED, ATLAS,
                 (int)Math.round(drawLeft), (int)Math.round(drawTop),
-                0, 0,
+                0.0F, 0.0F,
                 Math.max(1, (int)Math.round(KnownWorldAtlasConfig.MAP_WIDTH * scale)),
                 Math.max(1, (int)Math.round(KnownWorldAtlasConfig.MAP_HEIGHT * scale)),
+                KnownWorldAtlasConfig.MAP_WIDTH, KnownWorldAtlasConfig.MAP_HEIGHT,
                 KnownWorldAtlasConfig.MAP_WIDTH, KnownWorldAtlasConfig.MAP_HEIGHT);
 
         // All markers are pre-computed from the regional Xs. Draw regardless of exploration.
