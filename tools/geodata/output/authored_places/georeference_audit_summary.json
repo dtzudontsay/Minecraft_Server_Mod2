@@ -1,0 +1,19 @@
+{
+  "candidate_count": 259,
+  "original_names_filled": 0,
+  "original_statuses": {
+    "NEEDS_REVIEW": 259
+  },
+  "mask_used": "D:\\GameOfThronesMod2\\src\\main\\resources\\assets\\knownworld\\geodata\\land_mask.png",
+  "land_audit": {
+    "LAND_AT_RAW_X": 253,
+    "WATER_NO_NEARBY_LAND": 2,
+    "WATER_SNAP_PROPOSAL_ONLY": 4
+  },
+  "coordinate_checks": {
+    "CONSISTENT": 259
+  },
+  "crossmap_near_pair_count": 5,
+  "crossmap_pairs_threshold_metres": 10000.0,
+  "warning": "NO LOCATIONS HAVE BEEN APPROVED; snapping suggestions require human map verification. Y not computed."
+}

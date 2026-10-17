@@ -1,0 +1,37 @@
+{
+  "raw_candidates": 259,
+  "false_positives": 11,
+  "new_manually_recognized_xs": 5,
+  "active_source_observations": 253,
+  "active_by_submap": {
+    "NE": 10,
+    "NEE": 10,
+    "NW": 46,
+    "NWE": 16,
+    "SE": 31,
+    "SEE": 10,
+    "SI": 4,
+    "SO": 5,
+    "SW": 103,
+    "SWE": 18
+  },
+  "name_link_coverage_by_evidence": {
+    "IMAGE_READ_ASSISTANT_NEEDS_REVIEW": 26,
+    "UNASSIGNED_IN_SOURCE_CSV": 200,
+    "USER_CONFIRMED": 7,
+    "PRIOR_RESEARCH_CROSSMAP_MATCH": 10,
+    "USER_CONFIRMED_GROUP": 5,
+    "USER_CONFIRMED_IDENTITY_NOT_PIXEL": 5
+  },
+  "five_confirmed_crossmap_pairs": 5,
+  "current_canonical_identity_groups": 48,
+  "other_duplicate_ids_review_not_yet_performed": true,
+  "remaining_approved_placement_count": 0,
+  "existing_land_audit_statuses_of_active": {
+    "LAND_AT_RAW_X": 247,
+    "WATER_SNAP_PROPOSAL_ONLY": 1,
+    "NOT_AUDITED": 5
+  },
+  "new_manual_points_have_no_land_audit": true,
+  "warning": "All final_approved_XYZ intentionally empty. Run land audit after integrating five points; do not use as settled spawn coordinates."
+}

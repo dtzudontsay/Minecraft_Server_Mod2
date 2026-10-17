@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "source": "User's manual review of numbered review maps, 2026-10-17, supplemented by explicitly provisional assistant reading of crowded map X centers",
+  "input_expected_count": 259,
+  "false_positive_ids": ["NW-002", "NW-003", "NW-006", "NW-040", "NW-041", "NW-043", "NW-044", "NW-046", "SW-034", "SWE-012", "SWE-013"],
+  "user_confirmed_names": {
+    "NW-038": {"name": "Sisterton", "canonical_place_id": "sisterton"},
+    "NW-042": {"name": "Coldwater Burn", "canonical_place_id": "coldwater_burn"},
+    "NW-045": {"name": "Snakewood", "canonical_place_id": "snakewood"},
+    "NW-047": {"name": "Longbow Hall", "canonical_place_id": "longbow_hall"},
+    "NW-048": {"name": "Heart's Home", "canonical_place_id": "hearts_home"},
+    "SW-038": {"name": "Casterly Rock", "canonical_place_id": "casterly_rock"},
+    "SWE-009": {"name": "Volon Therys", "canonical_place_id": "volon_therys"}
+  },
+  "visually_recovered_names_to_verify": {
+    "NW-001": {"name":"Thenn", "canonical_place_id":"thenn"},
+    "NW-004": {"name":"Fist of the First Men", "canonical_place_id":"fist_of_the_first_men"},
+    "NW-005": {"name":"Hardhome", "canonical_place_id":"hardhome"},
+    "NW-007": {"name":"Craster's Keep", "canonical_place_id":"crasters_keep"},
+    "NW-008": {"name":"Castle Black", "canonical_place_id":"castle_black"},
+    "NW-022": {"name":"Mole's Town", "canonical_place_id":"moles_town"},
+    "NW-023": {"name":"Queenscrown", "canonical_place_id":"queenscrown"},
+    "NW-024": {"name":"Mormont's Castle", "canonical_place_id":"hall_of_the_mormonts"},
+    "NW-025": {"name":"Last Hearth", "canonical_place_id":"last_hearth"},
+    "NW-026": {"name":"Karhold", "canonical_place_id":"karhold"},
+    "NW-027": {"name":"Deepwood Motte", "canonical_place_id":"deepwood_motte"},
+    "NW-028": {"name":"Dreadfort", "canonical_place_id":"dreadfort"},
+    "NW-029": {"name":"Winterfell", "canonical_place_id":"winterfell"},
+    "NW-030": {"name":"Torrhen's Square", "canonical_place_id":"torrhens_square"},
+    "NW-031": {"name":"Ramsgate", "canonical_place_id":"ramsgate"},
+    "NW-032": {"name":"Widow's Watch", "canonical_place_id":"widows_watch"},
+    "NW-033": {"name":"Barrowton", "canonical_place_id":"barrowtown"},
+    "NW-034": {"name":"White Harbor", "canonical_place_id":"white_harbor"},
+    "NW-035": {"name":"Moat Cailin", "canonical_place_id":"moat_cailin"},
+    "NW-036": {"name":"Oldcastle", "canonical_place_id":"oldcastle"},
+    "NW-037": {"name":"Flint's Finger", "canonical_place_id":"flints_finger"},
+    "NW-039": {"name":"Greywater Watch", "canonical_place_id":"greywater_watch"},
+    "NW-009": {"name":"Oakenshield", "canonical_place_id":"wall_oakenshield"},
+    "NW-010": {"name":"Woodswatch-by-the-Pool", "canonical_place_id":"wall_woodswatch_by_the_pool"},
+    "NW-011": {"name":"Sable Hall", "canonical_place_id":"wall_sable_hall"},
+    "NW-017": {"name":"Eastwatch-by-the-Sea", "canonical_place_id":"eastwatch_by_the_sea"}
+  },
+  "multi_site_group": {
+    "NEE-005": {"name":"The Five Forts — individual fort 1", "canonical_place_id":"five_forts_site_01", "group_id":"five_forts"},
+    "NEE-006": {"name":"The Five Forts — individual fort 2", "canonical_place_id":"five_forts_site_02", "group_id":"five_forts"},
+    "NEE-007": {"name":"The Five Forts — individual fort 3", "canonical_place_id":"five_forts_site_03", "group_id":"five_forts"},
+    "NEE-008": {"name":"The Five Forts — individual fort 4", "canonical_place_id":"five_forts_site_04", "group_id":"five_forts"},
+    "NEE-009": {"name":"The Five Forts — individual fort 5", "canonical_place_id":"five_forts_site_05", "group_id":"five_forts"}
+  },
+  "manual_additions": [
+    {"id":"NW-MISSING-WALL-01", "zone":"NW", "pixel_x":1521.0,"pixel_y":746.0,"name":"Rimegate","canonical_place_id":"wall_rimegate","method":"VISUAL_ESTIMATE_NOT_EXACT","note":"One of four tightly adjacent eastern Wall Xs between NW-011 and NW-017. Pixel center estimated; not final."},
+    {"id":"NW-MISSING-WALL-02", "zone":"NW", "pixel_x":1533.0,"pixel_y":746.0,"name":"Long Barrow","canonical_place_id":"wall_long_barrow","method":"VISUAL_ESTIMATE_NOT_EXACT","note":"Tightly adjacent red crossing/letter. Pixel center estimated; not final."},
+    {"id":"NW-MISSING-WALL-03", "zone":"NW", "pixel_x":1545.0,"pixel_y":746.0,"name":"The Torches","canonical_place_id":"wall_the_torches","method":"VISUAL_ESTIMATE_NOT_EXACT","note":"Tightly adjacent red crossing/letter. Pixel center estimated; not final."},
+    {"id":"NW-MISSING-WALL-04", "zone":"NW", "pixel_x":1557.0,"pixel_y":746.0,"name":"Greenguard","canonical_place_id":"wall_greenguard","method":"VISUAL_ESTIMATE_NOT_EXACT","note":"User wrote Greyguard; the eastern castle is Greenguard per map lettering and west-to-east canon; verify image."},
+    {"id":"NW-MISSING-TWINS-01", "zone":"NW", "pixel_x":1190.0,"pixel_y":1927.0,"name":"The Twins","canonical_place_id":"the_twins","method":"VISUAL_CENTROID_ESTIMATE_NOT_EXACT","note":"Broad hand-painted red X near bottom NW map, across the Green Fork. Source X center approximate; also physically Riverlands and likely SW overlap."}
+  ],
+  "crossmap_same_site_verified_in_prior_research": [
+    {"canonical_place_id":"yalli_qamayi","name":"Yalli Qamayi / Sathar","ids":["NE-010","NWE-014"]},
+    {"canonical_place_id":"vaes_leqse","name":"Vaes Leqse / Gornath","ids":["NE-008","NWE-008"]},
+    {"canonical_place_id":"zamettar","name":"Zamettar","ids":["SE-031","SO-003"]},
+    {"canonical_place_id":"gorosh","name":"Gorosh","ids":["SE-029","SO-002"]},
+    {"canonical_place_id":"vahar","name":"Vahar","ids":["SE-028","SO-001"]}
+  ],
+  "cautions": [
+    "One user-named individual historical feature may exist on two submaps; crossmaps are observations, not extra sites.",
+    "All world coordinates are provisional until source location, coastline, preferred source observation and terrain-safe footprint are approved.",
+    "No Y or structure placement is approved by this correction manifest.",
+    "A blue review circle denotes detection method COMPONENT, not a human-approved name or site.",
+    "The Five Forts are five distinct physical buildings with one shared grouping; do not deduplicate them into a single fortress."
+  ]
+}

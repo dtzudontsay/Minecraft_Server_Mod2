@@ -1,0 +1,2488 @@
+{
+  "schemaVersion": 1,
+  "sourceObservations": 253,
+  "siteGroups": 248,
+  "buildCoordinatesApproved": 0,
+  "markers": [
+    {
+      "id": "NE-001",
+      "name": "Ib Nor",
+      "named": true,
+      "sources": "NE-001",
+      "masterX": 1340.60894,
+      "masterY": 326.02024,
+      "placeId": "unlinked:NE-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-002",
+      "name": "Port of Ibben",
+      "named": true,
+      "sources": "NE-002",
+      "masterX": 1321.93356,
+      "masterY": 390.38426,
+      "placeId": "unlinked:NE-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-003",
+      "name": "Ib Sar",
+      "named": true,
+      "sources": "NE-003",
+      "masterX": 1424.93502,
+      "masterY": 456.68128,
+      "placeId": "unlinked:NE-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-004",
+      "name": "New Ibbish",
+      "named": true,
+      "sources": "NE-004",
+      "masterX": 1317.90207,
+      "masterY": 483.71248,
+      "placeId": "unlinked:NE-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-005",
+      "name": "Vaes Aresak / Ibbish",
+      "named": true,
+      "sources": "NE-005",
+      "masterX": 1368.27674,
+      "masterY": 509.9418,
+      "placeId": "unlinked:NE-005",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-006",
+      "name": "Vaes Leisi",
+      "named": true,
+      "sources": "NE-006",
+      "masterX": 1202.65907,
+      "masterY": 530.85739,
+      "placeId": "unlinked:NE-006",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-007",
+      "name": "Vaes Dothrak",
+      "named": true,
+      "sources": "NE-007",
+      "masterX": 1308.23208,
+      "masterY": 640.60038,
+      "placeId": "unlinked:NE-007",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NE-009",
+      "name": "Kayakayanaya",
+      "named": true,
+      "sources": "NE-009",
+      "masterX": 1490.58317,
+      "masterY": 682.27938,
+      "placeId": "unlinked:NE-009",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NEE-001",
+      "name": "Nefer",
+      "named": true,
+      "sources": "NEE-001",
+      "masterX": 1781.93627,
+      "masterY": 676.00041,
+      "placeId": "unlinked:NEE-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NEE-002",
+      "name": "K'Dath (legendary/unconfirmed)",
+      "named": true,
+      "sources": "NEE-002",
+      "masterX": 1889.93316,
+      "masterY": 784.46295,
+      "placeId": "unlinked:NEE-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NEE-003",
+      "name": "Trader Town",
+      "named": true,
+      "sources": "NEE-003",
+      "masterX": 1617.25932,
+      "masterY": 811.01263,
+      "placeId": "unlinked:NEE-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NEE-004",
+      "name": "Bonetown (reported/unconfirmed)",
+      "named": true,
+      "sources": "NEE-004",
+      "masterX": 1934.51673,
+      "masterY": 821.63639,
+      "placeId": "unlinked:NEE-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NEE-005",
+      "name": "The Five Forts — individual fort 1",
+      "named": true,
+      "sources": "NEE-005",
+      "masterX": 1831.82089,
+      "masterY": 837.40583,
+      "placeId": "five_forts_site_01",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NEE-006",
+      "name": "The Five Forts — individual fort 2",
+      "named": true,
+      "sources": "NEE-006",
+      "masterX": 1839.38528,
+      "masterY": 847.54399,
+      "placeId": "five_forts_site_02",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NEE-007",
+      "name": "The Five Forts — individual fort 3",
+      "named": true,
+      "sources": "NEE-007",
+      "masterX": 1847.11087,
+      "masterY": 854.94648,
+      "placeId": "five_forts_site_03",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NEE-008",
+      "name": "The Five Forts — individual fort 4",
+      "named": true,
+      "sources": "NEE-008",
+      "masterX": 1858.37793,
+      "masterY": 859.13056,
+      "placeId": "five_forts_site_04",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NEE-009",
+      "name": "The Five Forts — individual fort 5",
+      "named": true,
+      "sources": "NEE-009",
+      "masterX": 1870.61073,
+      "masterY": 863.79742,
+      "placeId": "five_forts_site_05",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NEE-010",
+      "name": "Tiqui",
+      "named": true,
+      "sources": "NEE-010",
+      "masterX": 1598.42065,
+      "masterY": 880.209,
+      "placeId": "unlinked:NEE-010",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NW-001",
+      "name": "Thenn",
+      "named": true,
+      "sources": "NW-001",
+      "masterX": 315.60317,
+      "masterY": 85.73689,
+      "placeId": "thenn",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-004",
+      "name": "Fist of the First Men",
+      "named": true,
+      "sources": "NW-004",
+      "masterX": 360.5661,
+      "masterY": 177.08924,
+      "placeId": "fist_of_the_first_men",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-005",
+      "name": "Hardhome",
+      "named": true,
+      "sources": "NW-005",
+      "masterX": 451.40076,
+      "masterY": 178.01476,
+      "placeId": "hardhome",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-007",
+      "name": "Craster's Keep",
+      "named": true,
+      "sources": "NW-007",
+      "masterX": 389.69473,
+      "masterY": 202.22013,
+      "placeId": "crasters_keep",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-008",
+      "name": "Castle Black",
+      "named": true,
+      "sources": "NW-008",
+      "masterX": 401.3997,
+      "masterY": 214.85223,
+      "placeId": "castle_black",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-009",
+      "name": "Oakenshield",
+      "named": true,
+      "sources": "NW-009",
+      "masterX": 412.04005,
+      "masterY": 222.03234,
+      "placeId": "wall_oakenshield",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-010",
+      "name": "Woodswatch-by-the-Pool",
+      "named": true,
+      "sources": "NW-010",
+      "masterX": 415.63092,
+      "masterY": 222.43106,
+      "placeId": "wall_woodswatch_by_the_pool",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-011",
+      "name": "Sable Hall",
+      "named": true,
+      "sources": "NW-011",
+      "masterX": 420.68468,
+      "masterY": 222.43077,
+      "placeId": "wall_sable_hall",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-012",
+      "name": "Unlinked NW-012",
+      "named": false,
+      "sources": "NW-012",
+      "masterX": 389.69729,
+      "masterY": 223.23044,
+      "placeId": "unlinked:NW-012",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-013",
+      "name": "Unlinked NW-013",
+      "named": false,
+      "sources": "NW-013",
+      "masterX": 397.677,
+      "masterY": 224.02783,
+      "placeId": "unlinked:NW-013",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-014",
+      "name": "Unlinked NW-014",
+      "named": false,
+      "sources": "NW-014",
+      "masterX": 407.38552,
+      "masterY": 224.02727,
+      "placeId": "unlinked:NW-014",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-015",
+      "name": "Unlinked NW-015",
+      "named": false,
+      "sources": "NW-015",
+      "masterX": 394.48517,
+      "masterY": 224.161,
+      "placeId": "unlinked:NW-015",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-016",
+      "name": "Unlinked NW-016",
+      "named": false,
+      "sources": "NW-016",
+      "masterX": 402.19879,
+      "masterY": 224.16055,
+      "placeId": "unlinked:NW-016",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-017",
+      "name": "Eastwatch-by-the-Sea",
+      "named": true,
+      "sources": "NW-017",
+      "masterX": 436.64412,
+      "masterY": 224.29151,
+      "placeId": "eastwatch_by_the_sea",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-018",
+      "name": "Unlinked NW-018",
+      "named": false,
+      "sources": "NW-018",
+      "masterX": 381.58488,
+      "masterY": 224.82663,
+      "placeId": "unlinked:NW-018",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-019",
+      "name": "Unlinked NW-019",
+      "named": false,
+      "sources": "NW-019",
+      "masterX": 376.79731,
+      "masterY": 226.42263,
+      "placeId": "unlinked:NW-019",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-020",
+      "name": "Unlinked NW-020",
+      "named": false,
+      "sources": "NW-020",
+      "masterX": 371.07898,
+      "masterY": 229.61441,
+      "placeId": "unlinked:NW-020",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-021",
+      "name": "Unlinked NW-021",
+      "named": false,
+      "sources": "NW-021",
+      "masterX": 364.56264,
+      "masterY": 232.4073,
+      "placeId": "unlinked:NW-021",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-022",
+      "name": "Mole's Town",
+      "named": true,
+      "sources": "NW-022",
+      "masterX": 409.24858,
+      "masterY": 233.4685,
+      "placeId": "moles_town",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-023",
+      "name": "Queenscrown",
+      "named": true,
+      "sources": "NW-023",
+      "masterX": 398.21132,
+      "masterY": 243.30942,
+      "placeId": "queenscrown",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-024",
+      "name": "Mormont's Castle",
+      "named": true,
+      "sources": "NW-024",
+      "masterX": 275.7274,
+      "masterY": 268.58215,
+      "placeId": "hall_of_the_mormonts",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-025",
+      "name": "Last Hearth",
+      "named": true,
+      "sources": "NW-025",
+      "masterX": 414.97203,
+      "masterY": 272.29736,
+      "placeId": "last_hearth",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-026",
+      "name": "Karhold",
+      "named": true,
+      "sources": "NW-026",
+      "masterX": 486.52674,
+      "masterY": 306.86711,
+      "placeId": "karhold",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-027",
+      "name": "Deepwood Motte",
+      "named": true,
+      "sources": "NW-027",
+      "masterX": 285.97411,
+      "masterY": 319.51162,
+      "placeId": "deepwood_motte",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-028",
+      "name": "Dreadfort",
+      "named": true,
+      "sources": "NW-028",
+      "masterX": 431.33781,
+      "masterY": 334.52948,
+      "placeId": "dreadfort",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-029",
+      "name": "Winterfell",
+      "named": true,
+      "sources": "NW-029",
+      "masterX": 349.94763,
+      "masterY": 349.56061,
+      "placeId": "winterfell",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-030",
+      "name": "Torrhen's Square",
+      "named": true,
+      "sources": "NW-030",
+      "masterX": 297.15301,
+      "masterY": 380.68024,
+      "placeId": "torrhens_square",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-031",
+      "name": "Ramsgate",
+      "named": true,
+      "sources": "NW-031",
+      "masterX": 449.03563,
+      "masterY": 414.0485,
+      "placeId": "ramsgate",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-032",
+      "name": "Widow's Watch",
+      "named": true,
+      "sources": "NW-032",
+      "masterX": 501.03693,
+      "masterY": 420.96025,
+      "placeId": "widows_watch",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-033",
+      "name": "Barrowton",
+      "named": true,
+      "sources": "NW-033",
+      "masterX": 288.2476,
+      "masterY": 422.96734,
+      "placeId": "barrowtown",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-034",
+      "name": "White Harbor",
+      "named": true,
+      "sources": "NW-034",
+      "masterX": 392.38252,
+      "masterY": 431.33878,
+      "placeId": "white_harbor",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-035",
+      "name": "Moat Cailin",
+      "named": true,
+      "sources": "NW-035",
+      "masterX": 350.89077,
+      "masterY": 449.55901,
+      "placeId": "moat_cailin",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-036",
+      "name": "Oldcastle",
+      "named": true,
+      "sources": "NW-036",
+      "masterX": 406.74943,
+      "masterY": 460.99174,
+      "placeId": "oldcastle",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-037",
+      "name": "Flint's Finger",
+      "named": true,
+      "sources": "NW-037",
+      "masterX": 237.98233,
+      "masterY": 474.43225,
+      "placeId": "flints_finger",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-038",
+      "name": "Sisterton",
+      "named": true,
+      "sources": "NW-038",
+      "masterX": 420.71608,
+      "masterY": 480.13956,
+      "placeId": "sisterton",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-039",
+      "name": "Greywater Watch",
+      "named": true,
+      "sources": "NW-039",
+      "masterX": 333.34176,
+      "masterY": 499.82522,
+      "placeId": "greywater_watch",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-042",
+      "name": "Coldwater Burn",
+      "named": true,
+      "sources": "NW-042",
+      "masterX": 464.6083,
+      "masterY": 516.0407,
+      "placeId": "coldwater_burn",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-045",
+      "name": "Snakewood",
+      "named": true,
+      "sources": "NW-045",
+      "masterX": 464.87591,
+      "masterY": 529.33835,
+      "placeId": "snakewood",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-047",
+      "name": "Longbow Hall",
+      "named": true,
+      "sources": "NW-047",
+      "masterX": 491.21014,
+      "masterY": 541.83662,
+      "placeId": "longbow_hall",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-048",
+      "name": "Heart's Home",
+      "named": true,
+      "sources": "NW-048",
+      "masterX": 449.18449,
+      "masterY": 544.23266,
+      "placeId": "hearts_home",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-049",
+      "name": "Unlinked NW-049",
+      "named": false,
+      "sources": "NW-049",
+      "masterX": 412.87732,
+      "masterY": 544.63371,
+      "placeId": "unlinked:NW-049",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-MISSING-TWINS-01",
+      "name": "The Twins",
+      "named": true,
+      "sources": "NW-MISSING-TWINS-01",
+      "masterX": 336.13928,
+      "masterY": 538.12234,
+      "placeId": "the_twins",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-MISSING-WALL-01",
+      "name": "Rimegate",
+      "named": true,
+      "sources": "NW-MISSING-WALL-01",
+      "masterX": 424.1427,
+      "masterY": 224.02629,
+      "placeId": "wall_rimegate",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-MISSING-WALL-02",
+      "name": "Long Barrow",
+      "named": true,
+      "sources": "NW-MISSING-WALL-02",
+      "masterX": 427.33454,
+      "masterY": 224.0261,
+      "placeId": "wall_long_barrow",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-MISSING-WALL-03",
+      "name": "The Torches",
+      "named": true,
+      "sources": "NW-MISSING-WALL-03",
+      "masterX": 430.52639,
+      "masterY": 224.02591,
+      "placeId": "wall_the_torches",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NW-MISSING-WALL-04",
+      "name": "Greenguard",
+      "named": true,
+      "sources": "NW-MISSING-WALL-04",
+      "masterX": 433.71823,
+      "masterY": 224.02573,
+      "placeId": "wall_greenguard",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NWE-001",
+      "name": "Braavos",
+      "named": true,
+      "sources": "NWE-001",
+      "masterX": 603.28946,
+      "masterY": 514.96194,
+      "placeId": "unlinked:NWE-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-002",
+      "name": "Morosh",
+      "named": true,
+      "sources": "NWE-002",
+      "masterX": 956.06364,
+      "masterY": 529.19936,
+      "placeId": "unlinked:NWE-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-003",
+      "name": "Lorath",
+      "named": true,
+      "sources": "NWE-003",
+      "masterX": 683.32546,
+      "masterY": 535.8902,
+      "placeId": "unlinked:NWE-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-004",
+      "name": "Vaes Graddakh / Sarys",
+      "named": true,
+      "sources": "NWE-004",
+      "masterX": 974.2067,
+      "masterY": 557.43276,
+      "placeId": "unlinked:NWE-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-005",
+      "name": "Saath",
+      "named": true,
+      "sources": "NWE-005",
+      "masterX": 922.8488,
+      "masterY": 559.9123,
+      "placeId": "unlinked:NWE-005",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-006",
+      "name": "Norvos",
+      "named": true,
+      "sources": "NWE-006",
+      "masterX": 712.73402,
+      "masterY": 628.33945,
+      "placeId": "unlinked:NWE-006",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-007",
+      "name": "Vaes Athjikhari / Sallosh",
+      "named": true,
+      "sources": "NWE-007",
+      "masterX": 1096.0888,
+      "masterY": 642.87366,
+      "placeId": "unlinked:NWE-007",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-008",
+      "name": "Vaes Leqse / Gornath",
+      "named": true,
+      "sources": "NWE-008,NE-008",
+      "masterX": 1116.42668,
+      "masterY": 669.2058,
+      "placeId": "vaes_leqse",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NWE-009",
+      "name": "Ghoyan Drohe",
+      "named": true,
+      "sources": "NWE-009",
+      "masterX": 663.71647,
+      "masterY": 676.60309,
+      "placeId": "unlinked:NWE-009",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-010",
+      "name": "Vojjor Samvi / Kasath",
+      "named": true,
+      "sources": "NWE-010",
+      "masterX": 1075.01815,
+      "masterY": 689.38588,
+      "placeId": "unlinked:NWE-010",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-011",
+      "name": "Pentos",
+      "named": true,
+      "sources": "NWE-011",
+      "masterX": 608.70042,
+      "masterY": 689.76013,
+      "placeId": "unlinked:NWE-011",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-012",
+      "name": "Qohor",
+      "named": true,
+      "sources": "NWE-012",
+      "masterX": 812.6687,
+      "masterY": 689.93465,
+      "placeId": "unlinked:NWE-012",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-013",
+      "name": "Vaes Khewo / Sarnath",
+      "named": true,
+      "sources": "NWE-013",
+      "masterX": 1011.22295,
+      "masterY": 704.73582,
+      "placeId": "unlinked:NWE-013",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-014",
+      "name": "Yalli Qamayi / Sathar",
+      "named": true,
+      "sources": "NWE-014,NE-010",
+      "masterX": 1123.88834,
+      "masterY": 705.77533,
+      "placeId": "yalli_qamayi",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "NWE-015",
+      "name": "Ny Sar",
+      "named": true,
+      "sources": "NWE-015",
+      "masterX": 722.97502,
+      "masterY": 709.2304,
+      "placeId": "unlinked:NWE-015",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "NWE-016",
+      "name": "Ar Noy",
+      "named": true,
+      "sources": "NWE-016",
+      "masterX": 773.45473,
+      "masterY": 724.01106,
+      "placeId": "unlinked:NWE-016",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-001",
+      "name": "Vaes Efe",
+      "named": true,
+      "sources": "SE-001",
+      "masterX": 1279.41101,
+      "masterY": 761.40498,
+      "placeId": "unlinked:SE-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-002",
+      "name": "Vaes Diaf / Hazdahn Mo",
+      "named": true,
+      "sources": "SE-002",
+      "masterX": 1105.85451,
+      "masterY": 764.21726,
+      "placeId": "unlinked:SE-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-003",
+      "name": "Vaes Jini / Yinishar",
+      "named": true,
+      "sources": "SE-003",
+      "masterX": 1402.13912,
+      "masterY": 780.83104,
+      "placeId": "unlinked:SE-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-004",
+      "name": "Vaes Mejhah",
+      "named": true,
+      "sources": "SE-004",
+      "masterX": 1258.33975,
+      "masterY": 787.49406,
+      "placeId": "unlinked:SE-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-005",
+      "name": "Krazaaj Has / Ghardaq",
+      "named": true,
+      "sources": "SE-005",
+      "masterX": 1224.23968,
+      "masterY": 795.55825,
+      "placeId": "unlinked:SE-005",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-006",
+      "name": "Adakhakileki",
+      "named": true,
+      "sources": "SE-006",
+      "masterX": 1381.8721,
+      "masterY": 800.64127,
+      "placeId": "unlinked:SE-006",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-007",
+      "name": "Samyriana",
+      "named": true,
+      "sources": "SE-007",
+      "masterX": 1465.51379,
+      "masterY": 800.76588,
+      "placeId": "unlinked:SE-007",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-008",
+      "name": "Meereen",
+      "named": true,
+      "sources": "SE-008",
+      "masterX": 1113.25361,
+      "masterY": 844.7076,
+      "placeId": "unlinked:SE-008",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-009",
+      "name": "Kosrak",
+      "named": true,
+      "sources": "SE-009",
+      "masterX": 1255.12279,
+      "masterY": 847.38267,
+      "placeId": "unlinked:SE-009",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-010",
+      "name": "Hesh",
+      "named": true,
+      "sources": "SE-010",
+      "masterX": 1182.74056,
+      "masterY": 847.89712,
+      "placeId": "unlinked:SE-010",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-011",
+      "name": "Yunkai",
+      "named": true,
+      "sources": "SE-011",
+      "masterX": 1085.58753,
+      "masterY": 870.79955,
+      "placeId": "unlinked:SE-011",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-012",
+      "name": "Lhazosh",
+      "named": true,
+      "sources": "SE-012",
+      "masterX": 1212.33687,
+      "masterY": 888.29201,
+      "placeId": "unlinked:SE-012",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-013",
+      "name": "Bayasabhad",
+      "named": true,
+      "sources": "SE-013",
+      "masterX": 1501.2224,
+      "masterY": 899.43545,
+      "placeId": "unlinked:SE-013",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-014",
+      "name": "Vaes Tolorro",
+      "named": true,
+      "sources": "SE-014",
+      "masterX": 1320.10599,
+      "masterY": 936.54127,
+      "placeId": "unlinked:SE-014",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-015",
+      "name": "Astapor",
+      "named": true,
+      "sources": "SE-015",
+      "masterX": 1071.91536,
+      "masterY": 937.77613,
+      "placeId": "unlinked:SE-015",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-016",
+      "name": "Vaes Shirosi",
+      "named": true,
+      "sources": "SE-016",
+      "masterX": 1297.74794,
+      "masterY": 969.87533,
+      "placeId": "unlinked:SE-016",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-017",
+      "name": "Vaes Qosar / Qolahn",
+      "named": true,
+      "sources": "SE-017",
+      "masterX": 1372.54291,
+      "masterY": 976.28228,
+      "placeId": "unlinked:SE-017",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-018",
+      "name": "Vaes Orvik",
+      "named": true,
+      "sources": "SE-018",
+      "masterX": 1263.16532,
+      "masterY": 979.06663,
+      "placeId": "unlinked:SE-018",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-019",
+      "name": "Qarkash",
+      "named": true,
+      "sources": "SE-019",
+      "masterX": 1332.81312,
+      "masterY": 989.66149,
+      "placeId": "unlinked:SE-019",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-020",
+      "name": "Asabhad",
+      "named": true,
+      "sources": "SE-020",
+      "masterX": 1506.69133,
+      "masterY": 998.92311,
+      "placeId": "unlinked:SE-020",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-021",
+      "name": "Port Yhos",
+      "named": true,
+      "sources": "SE-021",
+      "masterX": 1255.44456,
+      "masterY": 1002.57411,
+      "placeId": "unlinked:SE-021",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-022",
+      "name": "Qarth",
+      "named": true,
+      "sources": "SE-022",
+      "masterX": 1405.51705,
+      "masterY": 1006.21154,
+      "placeId": "unlinked:SE-022",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-023",
+      "name": "Qal (harbor group)",
+      "named": true,
+      "sources": "SE-023",
+      "masterX": 1426.91003,
+      "masterY": 1009.90494,
+      "placeId": "unlinked:SE-023",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-024",
+      "name": "Old Ghis",
+      "named": true,
+      "sources": "SE-024",
+      "masterX": 1086.87439,
+      "masterY": 1014.72147,
+      "placeId": "unlinked:SE-024",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-025",
+      "name": "East Qal (eastern harbor observation)",
+      "named": true,
+      "sources": "SE-025",
+      "masterX": 1448.9464,
+      "masterY": 1017.62273,
+      "placeId": "unlinked:SE-025",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-026",
+      "name": "New Ghis",
+      "named": true,
+      "sources": "SE-026",
+      "masterX": 1101.02916,
+      "masterY": 1076.53437,
+      "placeId": "unlinked:SE-026",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-027",
+      "name": "Faros",
+      "named": true,
+      "sources": "SE-027",
+      "masterX": 1386.37601,
+      "masterY": 1086.71342,
+      "placeId": "unlinked:SE-027",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-028",
+      "name": "Vahar",
+      "named": true,
+      "sources": "SE-028,SO-001",
+      "masterX": 1374.63402,
+      "masterY": 1126.32136,
+      "placeId": "vahar",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SE-029",
+      "name": "Gorosh",
+      "named": true,
+      "sources": "SE-029,SO-002",
+      "masterX": 1273.13807,
+      "masterY": 1181.74508,
+      "placeId": "gorosh",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SE-030",
+      "name": "Port Moraq",
+      "named": true,
+      "sources": "SE-030",
+      "masterX": 1468.73096,
+      "masterY": 1202.26635,
+      "placeId": "unlinked:SE-030",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SE-031",
+      "name": "Zamettar",
+      "named": true,
+      "sources": "SE-031,SO-003",
+      "masterX": 1060.81687,
+      "masterY": 1205.9855,
+      "placeId": "zamettar",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SEE-001",
+      "name": "City of the Winged Men (legendary)",
+      "named": true,
+      "sources": "SEE-001",
+      "masterX": 1965.11472,
+      "masterY": 958.07443,
+      "placeId": "unlinked:SEE-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-002",
+      "name": "Carcosa",
+      "named": true,
+      "sources": "SEE-002",
+      "masterX": 2023.06064,
+      "masterY": 1007.79521,
+      "placeId": "unlinked:SEE-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-003",
+      "name": "Jinqi",
+      "named": true,
+      "sources": "SEE-003",
+      "masterX": 1756.17479,
+      "masterY": 1041.91983,
+      "placeId": "unlinked:SEE-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-004",
+      "name": "Leng Yi",
+      "named": true,
+      "sources": "SEE-004",
+      "masterX": 1726.23348,
+      "masterY": 1069.92038,
+      "placeId": "unlinked:SEE-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-005",
+      "name": "Yin",
+      "named": true,
+      "sources": "SEE-005",
+      "masterX": 1600.19503,
+      "masterY": 1087.62606,
+      "placeId": "unlinked:SEE-005",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-006",
+      "name": "Leng Ma",
+      "named": true,
+      "sources": "SEE-006",
+      "masterX": 1717.37773,
+      "masterY": 1122.54026,
+      "placeId": "unlinked:SEE-006",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-007",
+      "name": "Turrani",
+      "named": true,
+      "sources": "SEE-007",
+      "masterX": 1719.46836,
+      "masterY": 1162.76918,
+      "placeId": "unlinked:SEE-007",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-008",
+      "name": "Ulos (island/ruin)",
+      "named": true,
+      "sources": "SEE-008",
+      "masterX": 1999.7112,
+      "masterY": 1197.51608,
+      "placeId": "unlinked:SEE-008",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-009",
+      "name": "Stygai (ruined)",
+      "named": true,
+      "sources": "SEE-009",
+      "masterX": 1856.93229,
+      "masterY": 1211.84319,
+      "placeId": "unlinked:SEE-009",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SEE-010",
+      "name": "Asshai",
+      "named": true,
+      "sources": "SEE-010",
+      "masterX": 1814.75658,
+      "masterY": 1257.70589,
+      "placeId": "unlinked:SEE-010",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SI-001",
+      "name": "Last Lament",
+      "named": true,
+      "sources": "SI-001",
+      "masterX": 525.491,
+      "masterY": 1096.93959,
+      "placeId": "unlinked:SI-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SI-002",
+      "name": "Lotus Point (map labels Lotus Port)",
+      "named": true,
+      "sources": "SI-002",
+      "masterX": 558.46985,
+      "masterY": 1120.45836,
+      "placeId": "unlinked:SI-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SI-003",
+      "name": "Tall Trees Town",
+      "named": true,
+      "sources": "SI-003",
+      "masterX": 596.17773,
+      "masterY": 1147.33695,
+      "placeId": "unlinked:SI-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SI-004",
+      "name": "Ebonhead",
+      "named": true,
+      "sources": "SI-004",
+      "masterX": 595.04837,
+      "masterY": 1308.84429,
+      "placeId": "unlinked:SI-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SO-004",
+      "name": "Unlinked SO-004",
+      "named": false,
+      "sources": "SO-004",
+      "masterX": 1007.41716,
+      "masterY": 1244.87471,
+      "placeId": "unlinked:SO-004",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SO-005",
+      "name": "Unlinked SO-005",
+      "named": false,
+      "sources": "SO-005",
+      "masterX": 1078.89549,
+      "masterY": 1263.02619,
+      "placeId": "unlinked:SO-005",
+      "status": "NAME_UNLINKED_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SW-001",
+      "name": "Seagard",
+      "named": true,
+      "sources": "SW-001",
+      "masterX": 323.73155,
+      "masterY": 550.37914,
+      "placeId": "unlinked:SW-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-002",
+      "name": "Old Anchor",
+      "named": true,
+      "sources": "SW-002",
+      "masterX": 497.75674,
+      "masterY": 561.82612,
+      "placeId": "unlinked:SW-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-003",
+      "name": "The Eyrie",
+      "named": true,
+      "sources": "SW-003",
+      "masterX": 435.76436,
+      "masterY": 568.66846,
+      "placeId": "unlinked:SW-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-004",
+      "name": "Oldstones",
+      "named": true,
+      "sources": "SW-004",
+      "masterX": 346.01283,
+      "masterY": 569.16559,
+      "placeId": "unlinked:SW-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-005",
+      "name": "Ninestars Castle",
+      "named": true,
+      "sources": "SW-005",
+      "masterX": 466.38664,
+      "masterY": 574.01839,
+      "placeId": "unlinked:SW-005",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-006",
+      "name": "Runestone",
+      "named": true,
+      "sources": "SW-006",
+      "masterX": 506.59414,
+      "masterY": 577.37776,
+      "placeId": "unlinked:SW-006",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-007",
+      "name": "Bloody Gate",
+      "named": true,
+      "sources": "SW-007",
+      "masterX": 431.53144,
+      "masterY": 578.62145,
+      "placeId": "unlinked:SW-007",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-008",
+      "name": "Pyke",
+      "named": true,
+      "sources": "SW-008",
+      "masterX": 229.8706,
+      "masterY": 579.49116,
+      "placeId": "unlinked:SW-008",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-009",
+      "name": "Fairmarket",
+      "named": true,
+      "sources": "SW-009",
+      "masterX": 354.47696,
+      "masterY": 581.35808,
+      "placeId": "unlinked:SW-009",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-010",
+      "name": "Gulltown",
+      "named": true,
+      "sources": "SW-010",
+      "masterX": 504.10404,
+      "masterY": 586.08664,
+      "placeId": "unlinked:SW-010",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-011",
+      "name": "Redfort",
+      "named": true,
+      "sources": "SW-011",
+      "masterX": 458.16982,
+      "masterY": 593.05348,
+      "placeId": "unlinked:SW-011",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-012",
+      "name": "Banefort",
+      "named": true,
+      "sources": "SW-012",
+      "masterX": 243.56287,
+      "masterY": 593.54988,
+      "placeId": "unlinked:SW-012",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-013",
+      "name": "Kneeling Man's Inn",
+      "named": true,
+      "sources": "SW-013",
+      "masterX": 344.14413,
+      "masterY": 596.7852,
+      "placeId": "unlinked:SW-013",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-014",
+      "name": "Crossroads Inn",
+      "named": true,
+      "sources": "SW-014",
+      "masterX": 390.94897,
+      "masterY": 604.00141,
+      "placeId": "unlinked:SW-014",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-015",
+      "name": "Riverrun",
+      "named": true,
+      "sources": "SW-015",
+      "masterX": 320.98993,
+      "masterY": 607.36014,
+      "placeId": "unlinked:SW-015",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-016",
+      "name": "Lord Harroway's Town",
+      "named": true,
+      "sources": "SW-016",
+      "masterX": 385.22255,
+      "masterY": 608.72906,
+      "placeId": "unlinked:SW-016",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-017",
+      "name": "Saltpans",
+      "named": true,
+      "sources": "SW-017",
+      "masterX": 418.20991,
+      "masterY": 615.57195,
+      "placeId": "unlinked:SW-017",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-018",
+      "name": "The Crag",
+      "named": true,
+      "sources": "SW-018",
+      "masterX": 241.44541,
+      "masterY": 617.43711,
+      "placeId": "unlinked:SW-018",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-019",
+      "name": "Wickenden",
+      "named": true,
+      "sources": "SW-019",
+      "masterX": 463.6456,
+      "masterY": 620.05107,
+      "placeId": "unlinked:SW-019",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-020",
+      "name": "Harrenhal",
+      "named": true,
+      "sources": "SW-020",
+      "masterX": 384.47478,
+      "masterY": 625.27595,
+      "placeId": "unlinked:SW-020",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-021",
+      "name": "Quiet Isle",
+      "named": true,
+      "sources": "SW-021",
+      "masterX": 421.19693,
+      "masterY": 626.02264,
+      "placeId": "unlinked:SW-021",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-022",
+      "name": "Ashemark",
+      "named": true,
+      "sources": "SW-022",
+      "masterX": 255.76016,
+      "masterY": 630.2517,
+      "placeId": "unlinked:SW-022",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-023",
+      "name": "Acorn Hall",
+      "named": true,
+      "sources": "SW-023",
+      "masterX": 339.03855,
+      "masterY": 631.12308,
+      "placeId": "unlinked:SW-023",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-024",
+      "name": "Faircastle",
+      "named": true,
+      "sources": "SW-024",
+      "masterX": 218.78886,
+      "masterY": 633.11298,
+      "placeId": "unlinked:SW-024",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-025",
+      "name": "Golden Tooth",
+      "named": true,
+      "sources": "SW-025",
+      "masterX": 278.66462,
+      "masterY": 634.48187,
+      "placeId": "unlinked:SW-025",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-026",
+      "name": "Maidenpool",
+      "named": true,
+      "sources": "SW-026",
+      "masterX": 434.88945,
+      "masterY": 635.22926,
+      "placeId": "unlinked:SW-026",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-027",
+      "name": "Pinkmaiden Castle",
+      "named": true,
+      "sources": "SW-027",
+      "masterX": 315.63545,
+      "masterY": 640.32948,
+      "placeId": "unlinked:SW-027",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-028",
+      "name": "Sarsfield",
+      "named": true,
+      "sources": "SW-028",
+      "masterX": 251.6514,
+      "masterY": 646.42533,
+      "placeId": "unlinked:SW-028",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-029",
+      "name": "Rook's Rest",
+      "named": true,
+      "sources": "SW-029",
+      "masterX": 457.54454,
+      "masterY": 647.17301,
+      "placeId": "unlinked:SW-029",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-030",
+      "name": "Antlers",
+      "named": true,
+      "sources": "SW-030",
+      "masterX": 416.34082,
+      "masterY": 650.78074,
+      "placeId": "unlinked:SW-030",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-031",
+      "name": "Hornvale",
+      "named": true,
+      "sources": "SW-031",
+      "masterX": 279.16156,
+      "masterY": 653.14378,
+      "placeId": "unlinked:SW-031",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-032",
+      "name": "Dragonstone",
+      "named": true,
+      "sources": "SW-032",
+      "masterX": 488.78915,
+      "masterY": 654.01589,
+      "placeId": "unlinked:SW-032",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-033",
+      "name": "Stoney Sept",
+      "named": true,
+      "sources": "SW-033",
+      "masterX": 335.30279,
+      "masterY": 655.75677,
+      "placeId": "unlinked:SW-033",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-035",
+      "name": "Driftmark",
+      "named": true,
+      "sources": "SW-035",
+      "masterX": 478.33234,
+      "masterY": 660.23647,
+      "placeId": "unlinked:SW-035",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-036",
+      "name": "Deep Den",
+      "named": true,
+      "sources": "SW-036",
+      "masterX": 280.53033,
+      "masterY": 663.0968,
+      "placeId": "unlinked:SW-036",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-037",
+      "name": "Kayce",
+      "named": true,
+      "sources": "SW-037",
+      "masterX": 200.3639,
+      "masterY": 663.84281,
+      "placeId": "unlinked:SW-037",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-038",
+      "name": "Casterly Rock",
+      "named": true,
+      "sources": "SW-038",
+      "masterX": 227.00303,
+      "masterY": 664.09179,
+      "placeId": "casterly_rock",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SW-039",
+      "name": "Duskendale",
+      "named": true,
+      "sources": "SW-039",
+      "masterX": 439.61806,
+      "masterY": 667.45218,
+      "placeId": "unlinked:SW-039",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-040",
+      "name": "Feastfires",
+      "named": true,
+      "sources": "SW-040",
+      "masterX": 192.77029,
+      "masterY": 667.69956,
+      "placeId": "unlinked:SW-040",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-041",
+      "name": "Lannisport",
+      "named": true,
+      "sources": "SW-041",
+      "masterX": 226.50462,
+      "masterY": 673.0495,
+      "placeId": "unlinked:SW-041",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-042",
+      "name": "Sharp Point",
+      "named": true,
+      "sources": "SW-042",
+      "masterX": 487.91663,
+      "masterY": 675.6637,
+      "placeId": "unlinked:SW-042",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-043",
+      "name": "Silverhill",
+      "named": true,
+      "sources": "SW-043",
+      "masterX": 278.91092,
+      "masterY": 684.74461,
+      "placeId": "unlinked:SW-043",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-044",
+      "name": "Stonedance",
+      "named": true,
+      "sources": "SW-044",
+      "masterX": 494.63814,
+      "masterY": 685.36793,
+      "placeId": "unlinked:SW-044",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-045",
+      "name": "Rosby",
+      "named": true,
+      "sources": "SW-045",
+      "masterX": 421.44273,
+      "masterY": 685.61633,
+      "placeId": "unlinked:SW-045",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-046",
+      "name": "King's Landing",
+      "named": true,
+      "sources": "SW-046",
+      "masterX": 411.98154,
+      "masterY": 696.06694,
+      "placeId": "unlinked:SW-046",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-047",
+      "name": "Cornfield",
+      "named": true,
+      "sources": "SW-047",
+      "masterX": 242.68559,
+      "masterY": 704.89925,
+      "placeId": "unlinked:SW-047",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-048",
+      "name": "Crakehall",
+      "named": true,
+      "sources": "SW-048",
+      "masterX": 208.70162,
+      "masterY": 712.36382,
+      "placeId": "unlinked:SW-048",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-049",
+      "name": "Tumbleton",
+      "named": true,
+      "sources": "SW-049",
+      "masterX": 375.38264,
+      "masterY": 718.70984,
+      "placeId": "unlinked:SW-049",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-050",
+      "name": "Red Lake",
+      "named": true,
+      "sources": "SW-050",
+      "masterX": 247.78818,
+      "masterY": 727.04475,
+      "placeId": "unlinked:SW-050",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-051",
+      "name": "Goldengrove",
+      "named": true,
+      "sources": "SW-051",
+      "masterX": 279.90404,
+      "masterY": 736.25147,
+      "placeId": "unlinked:SW-051",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-052",
+      "name": "Haystack Hall",
+      "named": true,
+      "sources": "SW-052",
+      "masterX": 462.02117,
+      "masterY": 736.25254,
+      "placeId": "unlinked:SW-052",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-053",
+      "name": "Bitterbridge",
+      "named": true,
+      "sources": "SW-053",
+      "masterX": 340.40219,
+      "masterY": 737.86919,
+      "placeId": "unlinked:SW-053",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-054",
+      "name": "Bronzegate",
+      "named": true,
+      "sources": "SW-054",
+      "masterX": 457.91285,
+      "masterY": 743.9661,
+      "placeId": "unlinked:SW-054",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-055",
+      "name": "Felwood",
+      "named": true,
+      "sources": "SW-055",
+      "masterX": 437.37308,
+      "masterY": 748.56925,
+      "placeId": "unlinked:SW-055",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-056",
+      "name": "Grassy Vale",
+      "named": true,
+      "sources": "SW-056",
+      "masterX": 369.15692,
+      "masterY": 749.31533,
+      "placeId": "unlinked:SW-056",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-057",
+      "name": "Old Oak",
+      "named": true,
+      "sources": "SW-057",
+      "masterX": 222.76597,
+      "masterY": 752.17597,
+      "placeId": "unlinked:SW-057",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-058",
+      "name": "Evenfall Hall",
+      "named": true,
+      "sources": "SW-058",
+      "masterX": 506.0867,
+      "masterY": 756.78089,
+      "placeId": "unlinked:SW-058",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-059",
+      "name": "Longtable",
+      "named": true,
+      "sources": "SW-059",
+      "masterX": 327.82844,
+      "masterY": 758.14839,
+      "placeId": "unlinked:SW-059",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-060",
+      "name": "Storm's End",
+      "named": true,
+      "sources": "SW-060",
+      "masterX": 473.72099,
+      "masterY": 764.24547,
+      "placeId": "unlinked:SW-060",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-061",
+      "name": "Cider Hall",
+      "named": true,
+      "sources": "SW-061",
+      "masterX": 307.16356,
+      "masterY": 774.57075,
+      "placeId": "unlinked:SW-061",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-062",
+      "name": "Griffin's Roost",
+      "named": true,
+      "sources": "SW-062",
+      "masterX": 456.66634,
+      "masterY": 775.94016,
+      "placeId": "unlinked:SW-062",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-063",
+      "name": "Summerhall",
+      "named": true,
+      "sources": "SW-063",
+      "masterX": 405.13073,
+      "masterY": 777.3084,
+      "placeId": "unlinked:SW-063",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-064",
+      "name": "Ashford",
+      "named": true,
+      "sources": "SW-064",
+      "masterX": 336.2921,
+      "masterY": 779.04978,
+      "placeId": "unlinked:SW-064",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-065",
+      "name": "Rain House",
+      "named": true,
+      "sources": "SW-065",
+      "masterX": 506.95637,
+      "masterY": 788.87938,
+      "placeId": "unlinked:SW-065",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-066",
+      "name": "Crow's Nest",
+      "named": true,
+      "sources": "SW-066",
+      "masterX": 444.21735,
+      "masterY": 790.86961,
+      "placeId": "unlinked:SW-066",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-067",
+      "name": "Highgarden",
+      "named": true,
+      "sources": "SW-067",
+      "masterX": 275.41973,
+      "masterY": 791.98834,
+      "placeId": "unlinked:SW-067",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-068",
+      "name": "Stonehelm",
+      "named": true,
+      "sources": "SW-068",
+      "masterX": 430.15021,
+      "masterY": 803.55963,
+      "placeId": "unlinked:SW-068",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-069",
+      "name": "Mistwood",
+      "named": true,
+      "sources": "SW-069",
+      "masterX": 476.83073,
+      "masterY": 807.78993,
+      "placeId": "unlinked:SW-069",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-070",
+      "name": "Blackhaven",
+      "named": true,
+      "sources": "SW-070",
+      "masterX": 367.78442,
+      "masterY": 809.65549,
+      "placeId": "unlinked:SW-070",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-071",
+      "name": "Nightsong",
+      "named": true,
+      "sources": "SW-071",
+      "masterX": 323.96668,
+      "masterY": 811.2726,
+      "placeId": "unlinked:SW-071",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-072",
+      "name": "Bandallon",
+      "named": true,
+      "sources": "SW-072",
+      "masterX": 205.8331,
+      "masterY": 814.75546,
+      "placeId": "unlinked:SW-072",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-073",
+      "name": "Castle Clearwater",
+      "named": true,
+      "sources": "SW-073",
+      "masterX": 231.84981,
+      "masterY": 815.12885,
+      "placeId": "unlinked:SW-073",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-074",
+      "name": "Greenstone",
+      "named": true,
+      "sources": "SW-074",
+      "masterX": 501.60216,
+      "masterY": 816.87221,
+      "placeId": "unlinked:SW-074",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-075",
+      "name": "Wyl",
+      "named": true,
+      "sources": "SW-075",
+      "masterX": 391.43551,
+      "masterY": 818.86217,
+      "placeId": "unlinked:SW-075",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-076",
+      "name": "Weeping Town",
+      "named": true,
+      "sources": "SW-076",
+      "masterX": 477.57679,
+      "masterY": 823.46594,
+      "placeId": "unlinked:SW-076",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-077",
+      "name": "Vulture's Roost",
+      "named": true,
+      "sources": "SW-077",
+      "masterX": 356.58028,
+      "masterY": 823.96288,
+      "placeId": "unlinked:SW-077",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-078",
+      "name": "Tower of Joy",
+      "named": true,
+      "sources": "SW-078",
+      "masterX": 334.2979,
+      "masterY": 825.95336,
+      "placeId": "unlinked:SW-078",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-079",
+      "name": "Honeyholt",
+      "named": true,
+      "sources": "SW-079",
+      "masterX": 235.5834,
+      "masterY": 831.55135,
+      "placeId": "unlinked:SW-079",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-080",
+      "name": "Kingsgrave",
+      "named": true,
+      "sources": "SW-080",
+      "masterX": 335.16876,
+      "masterY": 835.78197,
+      "placeId": "unlinked:SW-080",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-081",
+      "name": "Ghaston Grey",
+      "named": true,
+      "sources": "SW-081",
+      "masterX": 407.6169,
+      "masterY": 842.7495,
+      "placeId": "unlinked:SW-081",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-082",
+      "name": "Blackmont",
+      "named": true,
+      "sources": "SW-082",
+      "masterX": 297.07678,
+      "masterY": 845.1127,
+      "placeId": "unlinked:SW-082",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-083",
+      "name": "Uplands",
+      "named": true,
+      "sources": "SW-083",
+      "masterX": 252.76117,
+      "masterY": 845.61009,
+      "placeId": "unlinked:SW-083",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-084",
+      "name": "Oldtown",
+      "named": true,
+      "sources": "SW-084",
+      "masterX": 227.61578,
+      "masterY": 846.23201,
+      "placeId": "unlinked:SW-084",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-085",
+      "name": "Skyreach",
+      "named": true,
+      "sources": "SW-085",
+      "masterX": 337.78209,
+      "masterY": 850.71151,
+      "placeId": "unlinked:SW-085",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-086",
+      "name": "Yronwood",
+      "named": true,
+      "sources": "SW-086",
+      "masterX": 380.23024,
+      "masterY": 854.56855,
+      "placeId": "unlinked:SW-086",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-087",
+      "name": "Blackcrown",
+      "named": true,
+      "sources": "SW-087",
+      "masterX": 204.21257,
+      "masterY": 857.55343,
+      "placeId": "unlinked:SW-087",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-088",
+      "name": "High Hermitage",
+      "named": true,
+      "sources": "SW-088",
+      "masterX": 294.83523,
+      "masterY": 861.65958,
+      "placeId": "unlinked:SW-088",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-089",
+      "name": "Ghost Hill",
+      "named": true,
+      "sources": "SW-089",
+      "masterX": 492.1389,
+      "masterY": 866.51282,
+      "placeId": "unlinked:SW-089",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-090",
+      "name": "The Tor",
+      "named": true,
+      "sources": "SW-090",
+      "masterX": 435.74855,
+      "masterY": 866.76132,
+      "placeId": "unlinked:SW-090",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-091",
+      "name": "Three Towers",
+      "named": true,
+      "sources": "SW-091",
+      "masterX": 212.9257,
+      "masterY": 868.87503,
+      "placeId": "unlinked:SW-091",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-092",
+      "name": "Starfall",
+      "named": true,
+      "sources": "SW-092",
+      "masterX": 280.51923,
+      "masterY": 872.35899,
+      "placeId": "unlinked:SW-092",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-093",
+      "name": "Godsgrace",
+      "named": true,
+      "sources": "SW-093",
+      "masterX": 439.60638,
+      "masterY": 887.66268,
+      "placeId": "unlinked:SW-093",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-094",
+      "name": "Water Gardens",
+      "named": true,
+      "sources": "SW-094",
+      "masterX": 499.85558,
+      "masterY": 889.15598,
+      "placeId": "unlinked:SW-094",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-095",
+      "name": "Sunspear",
+      "named": true,
+      "sources": "SW-095",
+      "masterX": 506.82636,
+      "masterY": 893.01282,
+      "placeId": "unlinked:SW-095",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-096",
+      "name": "Hellholt",
+      "named": true,
+      "sources": "SW-096",
+      "masterX": 354.21143,
+      "masterY": 893.63399,
+      "placeId": "unlinked:SW-096",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-097",
+      "name": "Vaith",
+      "named": true,
+      "sources": "SW-097",
+      "masterX": 406.36936,
+      "masterY": 894.00753,
+      "placeId": "unlinked:SW-097",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-098",
+      "name": "Sandstone",
+      "named": true,
+      "sources": "SW-098",
+      "masterX": 316.86681,
+      "masterY": 894.13142,
+      "placeId": "unlinked:SW-098",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-099",
+      "name": "North Arbor",
+      "named": true,
+      "sources": "SW-099",
+      "masterX": 184.7914,
+      "masterY": 894.87713,
+      "placeId": "unlinked:SW-099",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-100",
+      "name": "Sunhouse",
+      "named": true,
+      "sources": "SW-100",
+      "masterX": 246.28549,
+      "masterY": 894.87749,
+      "placeId": "unlinked:SW-100",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-101",
+      "name": "Central Arbor",
+      "named": true,
+      "sources": "SW-101",
+      "masterX": 192.50884,
+      "masterY": 903.21282,
+      "placeId": "unlinked:SW-101",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-102",
+      "name": "Lemonwood",
+      "named": true,
+      "sources": "SW-102",
+      "masterX": 485.78835,
+      "masterY": 903.58777,
+      "placeId": "unlinked:SW-102",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-103",
+      "name": "Salt Shore",
+      "named": true,
+      "sources": "SW-103",
+      "masterX": 439.35628,
+      "masterY": 909.06166,
+      "placeId": "unlinked:SW-103",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SW-104",
+      "name": "South Arbor",
+      "named": true,
+      "sources": "SW-104",
+      "masterX": 198.60811,
+      "masterY": 909.80673,
+      "placeId": "unlinked:SW-104",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-001",
+      "name": "The Sorrows",
+      "named": true,
+      "sources": "SWE-001",
+      "masterX": 743.48626,
+      "masterY": 788.43124,
+      "placeId": "unlinked:SWE-001",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-002",
+      "name": "Myr",
+      "named": true,
+      "sources": "SWE-002",
+      "masterX": 645.05424,
+      "masterY": 797.8826,
+      "placeId": "unlinked:SWE-002",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-003",
+      "name": "Tyrosh",
+      "named": true,
+      "sources": "SWE-003",
+      "masterX": 564.51876,
+      "masterY": 812.13661,
+      "placeId": "unlinked:SWE-003",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-004",
+      "name": "Selhorys",
+      "named": true,
+      "sources": "SWE-004",
+      "masterX": 756.2443,
+      "masterY": 840.94507,
+      "placeId": "unlinked:SWE-004",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-005",
+      "name": "Bhorash",
+      "named": true,
+      "sources": "SWE-005",
+      "masterX": 1021.71136,
+      "masterY": 851.1929,
+      "placeId": "unlinked:SWE-005",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-006",
+      "name": "Valysar",
+      "named": true,
+      "sources": "SWE-006",
+      "masterX": 751.43794,
+      "masterY": 865.79484,
+      "placeId": "unlinked:SWE-006",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-007",
+      "name": "Mantarys",
+      "named": true,
+      "sources": "SWE-007",
+      "masterX": 925.76443,
+      "masterY": 878.70124,
+      "placeId": "unlinked:SWE-007",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-008",
+      "name": "Sar Mell",
+      "named": true,
+      "sources": "SWE-008",
+      "masterX": 770.16273,
+      "masterY": 879.8745,
+      "placeId": "unlinked:SWE-008",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-009",
+      "name": "Volon Therys",
+      "named": true,
+      "sources": "SWE-009",
+      "masterX": 762.70551,
+      "masterY": 888.48959,
+      "placeId": "volon_therys",
+      "status": "CATALOGUE_NAME_PLACEMENT_PROVISIONAL"
+    },
+    {
+      "id": "SWE-010",
+      "name": "Lys",
+      "named": true,
+      "sources": "SWE-010",
+      "masterX": 613.40065,
+      "masterY": 894.30084,
+      "placeId": "unlinked:SWE-010",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-011",
+      "name": "Volantis",
+      "named": true,
+      "sources": "SWE-011",
+      "masterX": 790.0474,
+      "masterY": 896.77031,
+      "placeId": "unlinked:SWE-011",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-014",
+      "name": "Tolos",
+      "named": true,
+      "sources": "SWE-014",
+      "masterX": 971.33389,
+      "masterY": 904.04359,
+      "placeId": "unlinked:SWE-014",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-015",
+      "name": "Elyria",
+      "named": true,
+      "sources": "SWE-015",
+      "masterX": 945.15161,
+      "masterY": 907.35912,
+      "placeId": "unlinked:SWE-015",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-016",
+      "name": "Ghozai",
+      "named": true,
+      "sources": "SWE-016",
+      "masterX": 997.84642,
+      "masterY": 938.33336,
+      "placeId": "unlinked:SWE-016",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-017",
+      "name": "Velos",
+      "named": true,
+      "sources": "SWE-017",
+      "masterX": 1005.3024,
+      "masterY": 969.47723,
+      "placeId": "unlinked:SWE-017",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-018",
+      "name": "Oros",
+      "named": true,
+      "sources": "SWE-018",
+      "masterX": 916.64685,
+      "masterY": 992.67771,
+      "placeId": "unlinked:SWE-018",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-019",
+      "name": "Tyria",
+      "named": true,
+      "sources": "SWE-019",
+      "masterX": 905.87487,
+      "masterY": 1019.35028,
+      "placeId": "unlinked:SWE-019",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    },
+    {
+      "id": "SWE-020",
+      "name": "Valyria",
+      "named": true,
+      "sources": "SWE-020",
+      "masterX": 890.4628,
+      "masterY": 1052.98108,
+      "placeId": "unlinked:SWE-020",
+      "status": "RESEARCH_NAME_NEEDS_REVIEW"
+    }
+  ]
+}
