@@ -1,0 +1,17 @@
+{
+  "total_candidates": 259,
+  "by_zone": {
+    "NW": 49,
+    "SW": 104,
+    "SI": 4,
+    "NWE": 16,
+    "SWE": 20,
+    "NE": 10,
+    "SE": 31,
+    "NEE": 10,
+    "SEE": 10,
+    "SO": 5,
+    "UL": 0
+  },
+  "warning": "Candidates are not validated settlements."
+}
