@@ -91,8 +91,8 @@ public final class WinterfellWorldgenV3 {
 
     public static void decorate(WorldGenLevel level, ChunkAccess chunk) {
         if (!ENABLED) return;
-        int chunkX = chunk.getPos().x;
-        int chunkZ = chunk.getPos().z;
+        int chunkX = chunk.getPos().x();
+        int chunkZ = chunk.getPos().z();
         // Avoid even loading the large atlas-town index in distant Essos chunks.
         int relX = (chunkX << 4) - X;
         int relZ = (chunkZ << 4) - Z;
@@ -424,7 +424,7 @@ public final class WinterfellWorldgenV3 {
 
     private static void block(ChunkAccess chunk,int x,int y,int z,BlockState block) {
         if(y<chunk.getMinY() || y>=chunk.getMaxY())return;
-        int cx=chunk.getPos().x,cz=chunk.getPos().z;
+        int cx=chunk.getPos().x(),cz=chunk.getPos().z();
         if((x>>4)!=cx||(z>>4)!=cz)return;
         chunk.setBlockState(new BlockPos(x,y,z),block,0);
     }

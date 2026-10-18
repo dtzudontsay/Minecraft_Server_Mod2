@@ -10,6 +10,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Relative;
@@ -50,11 +51,11 @@ public final class KnownWorldUiPackets {
         PayloadTypeRegistry.clientboundPlay().register(CharacterSheet.TYPE, CharacterSheet.CODEC);
         PayloadTypeRegistry.serverboundPlay().register(AtlasTeleportRequest.TYPE, AtlasTeleportRequest.CODEC);
         ServerPlayNetworking.registerGlobalReceiver(AtlasTeleportRequest.TYPE,
-                (packet, context) -> teleport(context.player(), packet.x(), packet.z()));
+                (packet, context) -> teleport(context.player(), context.server(), packet.x(), packet.z()));
     }
 
     /** Creative + game-master permission: client-supplied positions are never trusted. */
-    private static void teleport(ServerPlayer player, int requestedX, int requestedZ) {
+    private static void teleport(ServerPlayer player, MinecraftServer server, int requestedX, int requestedZ) {
         if (!player.isCreative() || !Commands.LEVEL_GAMEMASTERS.check(
                 player.createCommandSourceStack().permissions())) {
             player.sendSystemMessage(Component.literal("[Atlas] Teleport requires Creative mode and gamemaster permissions."));
@@ -67,7 +68,7 @@ public final class KnownWorldUiPackets {
             return;
         }
         lastTeleportNanos.put(player.getUUID(),now);
-        ServerLevel level = player.getServer().getLevel(Level.OVERWORLD);
+        ServerLevel level = server.getLevel(Level.OVERWORLD);
         if (level == null) return;
         if (Math.abs((long) requestedX) > 29_999_980L ||
                 Math.abs((long) requestedZ) > 29_999_980L ||
