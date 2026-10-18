@@ -34,6 +34,7 @@ import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileO
 import dev.dtzudontsay.knownworld.simulation.bootstrap.NamedCharacterAuthoringRuntime;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellCaseStudyInteraction;
+import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV2;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.simulation.persistence.HistoricalChroniclePersistence;
@@ -167,6 +168,9 @@ public final class KnownWorld implements ModInitializer {
         // The handler registers no new simulation identities and is independently
         // disabled by WinterfellCaseStudyInteraction.ENABLED = false.
         WinterfellCaseStudyInteraction.register();
+
+        // Opt-in 5000-resident Winterfell test-world village, home and NPC vertical slice.
+        WinterfellV2.register();
 
         /*
          * Register immediately after NpcSimulation so SERVER_STARTED first
