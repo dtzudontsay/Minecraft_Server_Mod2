@@ -48,8 +48,12 @@ import java.util.*;
 /**
  * OPT-IN / TEST-WORLD-ONLY physical projection of 5000 existing/candidate person records.
  * The NpcRegistry owns person identity. Entities are disposable projections, never population.
- * The geographic marker coordinates are not written: layout is relative to the player's TEST origin.
- * Basic road/house terrain fitting uses WORLD_SURFACE, not worldgen elevation assumptions.
+ * Two explicit TEST layouts: the original player-anchored Superflat trial,
+ * and a mapped terrain trial whose origin is exactly atlas marker NW-029.
+ * The mapped command requires nearby Creative player + non-flat overworld,
+ * a loaded/non-water castle terrain survey, and explicit confirmation.
+ * It must ONLY be run on a throwaway copy of the Known World save.
+ * Basic road/house terrain fitting uses WORLD_SURFACE, not a true engineered grading plan.
  */
 public final class WinterfellV2 {
     public static final boolean ENABLED = true;
@@ -58,6 +62,15 @@ public final class WinterfellV2 {
     public static final int FULL_RADIUS = 140;
     public static final int REDUCED_RADIUS = 260;
     public static final int BUILDER_RADIUS = 120;
+
+    // Source: assets/knownworld/maps/atlas_markers.json NW-029 master
+    // (349.94763,349.56061), origin (1024,678.5), Wall-derived
+    // 482803.2/hypot(80,-7.5) metres/master pixel, 1 block = 1 metre.
+    // Atlas positioning is PROVISIONAL; not a surveyed castle footprint.
+    public static final int WINTERFELL_MAP_X = -4_050_173;
+    public static final int WINTERFELL_MAP_Z = -1_976_496;
+    private static final int MAPPED_START_MAX_DISTANCE = 384;
+    private static final int MAPPED_CASTLE_SURVEY_RADIUS = 168;
     private static final String DATA_PATH = "/data/knownworld/case_study/winterfell_v2.json";
     private static final String STATE_NAME = "knownworld_winterfell_v2_test.json";
     private static final String ENTITY_MARKER = "kwf2_actor";
@@ -94,10 +107,12 @@ public final class WinterfellV2 {
     private static final class State {
         int anchorX, anchorZ;
         String dimension;
-        boolean active, building;
+        boolean active, building, mapped;
         int importedCursor;
         Set<String> built = new HashSet<>();
+        Set<String> skipped = new HashSet<>(); // steep/wet plot; never treated as built
         Set<Integer> roadsDone = new HashSet<>();
+        Set<Integer> roadsBlocked = new HashSet<>(); // water tiles, never turn into causeways
         Set<Integer> wallsDone = new HashSet<>();
         int castleWallStep;
         boolean keepBuilt;
@@ -117,7 +132,13 @@ public final class WinterfellV2 {
                         .executes(c -> begin(c.getSource(),false)))
                     .then(Commands.literal("terrain")
                         .then(Commands.literal("confirm")
-                            .executes(c -> begin(c.getSource(),true)))))
+                            .executes(c -> begin(c.getSource(),true))))
+                    .then(Commands.literal("mapped")
+                        .then(Commands.literal("confirm")
+                            .executes(c -> beginMapped(c.getSource())))))
+                .then(Commands.literal("survey")
+                    .then(Commands.literal("mapped")
+                        .executes(c -> surveyMapped(c.getSource()))))
                 .then(Commands.literal("pause").executes(c -> toggle(c.getSource(), false)))
                 .then(Commands.literal("resume").executes(c -> toggle(c.getSource(), true)))
                 .then(Commands.literal("status").executes(c -> status(c.getSource())))
@@ -228,13 +249,16 @@ public final class WinterfellV2 {
             s.anchorX=integer(v,"anchorX");s.anchorZ=integer(v,"anchorZ");
             s.dimension=get(v,"dimension");s.active=v.get("active").getAsBoolean();
             s.building=v.get("building").getAsBoolean();
+            s.mapped=v.has("mapped")&&v.get("mapped").getAsBoolean();
             s.importedCursor=integer(v,"importedCursor");
             s.castleWallStep=integer(v,"castleWallStep");s.keepBuilt=v.get("keepBuilt").getAsBoolean();
             s.parentageApplied=v.has("parentageApplied")&&v.get("parentageApplied").getAsBoolean();
             s.keepSlice=v.has("keepSlice")?v.get("keepSlice").getAsInt():0;
             s.keepBaseY=v.has("keepBaseY")?v.get("keepBaseY").getAsInt():0;
             for (JsonElement e:v.getAsJsonArray("built"))s.built.add(e.getAsString());
+            if(v.has("skipped"))for(JsonElement e:v.getAsJsonArray("skipped"))s.skipped.add(e.getAsString());
             for (JsonElement e:v.getAsJsonArray("roadsDone"))s.roadsDone.add(e.getAsInt());
+            if(v.has("roadsBlocked"))for(JsonElement e:v.getAsJsonArray("roadsBlocked"))s.roadsBlocked.add(e.getAsInt());
             if(v.has("wallsDone"))for(JsonElement e:v.getAsJsonArray("wallsDone"))s.wallsDone.add(e.getAsInt());
             state=s;
         } catch (Exception e) {
@@ -247,12 +271,15 @@ public final class WinterfellV2 {
         JsonObject v=new JsonObject();
         v.addProperty("anchorX",state.anchorX);v.addProperty("anchorZ",state.anchorZ);
         v.addProperty("dimension",state.dimension);v.addProperty("active",state.active);
-        v.addProperty("building",state.building);v.addProperty("importedCursor",state.importedCursor);
+        v.addProperty("building",state.building);v.addProperty("mapped",state.mapped);
+        v.addProperty("importedCursor",state.importedCursor);
         v.addProperty("castleWallStep",state.castleWallStep);v.addProperty("keepBuilt",state.keepBuilt);
         v.addProperty("parentageApplied",state.parentageApplied);
         v.addProperty("keepSlice",state.keepSlice);v.addProperty("keepBaseY",state.keepBaseY);
         JsonArray built=new JsonArray();for(String id:state.built)built.add(id);v.add("built",built);
+        JsonArray skipped=new JsonArray();for(String id:state.skipped)skipped.add(id);v.add("skipped",skipped);
         JsonArray roads=new JsonArray();for(int id:state.roadsDone)roads.add(id);v.add("roadsDone",roads);
+        JsonArray blocked=new JsonArray();for(int id:state.roadsBlocked)blocked.add(id);v.add("roadsBlocked",blocked);
         JsonArray walls=new JsonArray();for(int id:state.wallsDone)walls.add(id);v.add("wallsDone",walls);
         try {
             Path path=statePath(currentServer);Files.createDirectories(path.getParent());
@@ -264,7 +291,98 @@ public final class WinterfellV2 {
             }
         } catch(IOException e){KnownWorld.LOGGER.error("Winterfell V2 state save failed",e);}
     }
+    private record SiteSurvey(int sampled, int wet, int minY, int maxY, boolean centreWet) {
+        boolean acceptable() {
+            return sampled>=60 && !centreWet && wet*10<=sampled && maxY-minY<=32;
+        }
+    }
+
+    // Only reads already-loaded chunks: no forced chunk generation and no block modifications.
+    private static SiteSurvey surveyCastleTerrain(ServerLevel level) {
+        int sampled=0,wet=0,min=Integer.MAX_VALUE,max=Integer.MIN_VALUE;
+        boolean centreWet=false;
+        for(int dx=-MAPPED_CASTLE_SURVEY_RADIUS;dx<=MAPPED_CASTLE_SURVEY_RADIUS;dx+=24) {
+            for(int dz=-MAPPED_CASTLE_SURVEY_RADIUS;dz<=MAPPED_CASTLE_SURVEY_RADIUS;dz+=24) {
+                int x=WINTERFELL_MAP_X+dx,z=WINTERFELL_MAP_Z+dz;
+                if(!level.isLoaded(new BlockPos(x,64,z))) continue;
+                int y=level.getHeight(Heightmap.Types.WORLD_SURFACE,x,z);
+                sampled++;
+                min=Math.min(min,y);max=Math.max(max,y);
+                if(!level.getBlockState(new BlockPos(x,y-1,z)).getFluidState().isEmpty())wet++;
+            }
+        }
+        if(level.isLoaded(new BlockPos(WINTERFELL_MAP_X,64,WINTERFELL_MAP_Z))) {
+            int cy=level.getHeight(Heightmap.Types.WORLD_SURFACE,WINTERFELL_MAP_X,WINTERFELL_MAP_Z);
+            centreWet=!level.getBlockState(new BlockPos(WINTERFELL_MAP_X,cy-1,WINTERFELL_MAP_Z))
+                .getFluidState().isEmpty();
+        }
+        if(sampled==0) return new SiteSurvey(0,0,0,0,false);
+        return new SiteSurvey(sampled,wet,min,max,centreWet);
+    }
+
+    // Verify the anchor against the bundled atlas, so a future marker update
+    // cannot silently construct at the old position.
+    private static boolean mappedAnchorMatchesAtlas() {
+        try (InputStream stream = WinterfellV2.class.getResourceAsStream(
+                "/assets/knownworld/maps/atlas_markers.json")) {
+            if (stream == null) return false;
+            JsonObject atlas = JsonParser.parseReader(
+                new InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+            for (JsonElement element : atlas.getAsJsonArray("markers")) {
+                JsonObject marker = element.getAsJsonObject();
+                if (!"NW-029".equals(get(marker,"id"))) continue;
+                double metresPerPixel=482803.2/Math.hypot(80.0,-7.5);
+                int mappedX=(int)Math.round((marker.get("masterX").getAsDouble()-1024.0)*metresPerPixel);
+                int mappedZ=(int)Math.round((marker.get("masterY").getAsDouble()-678.5)*metresPerPixel);
+                return mappedX==WINTERFELL_MAP_X && mappedZ==WINTERFELL_MAP_Z;
+            }
+        } catch (IOException | RuntimeException failure) {
+            KnownWorld.LOGGER.error("Cannot validate Winterfell NW-029 atlas marker",failure);
+        }
+        return false;
+    }
+
+    private static int surveyMapped(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player=source.getPlayerOrException();
+        if (!mappedAnchorMatchesAtlas()) {
+            message(source,"Bundled atlas NW-029 no longer matches the hardcoded Winterfell mapped coordinates. Refusing to build.");
+            return 0;
+        }
+        if(!"minecraft:overworld".equals(player.level().dimension().identifier().toString())) {
+            message(source,"Mapped Winterfell requires the overworld.");return 0;
+        }
+        if(player.level().isFlat()) {
+            message(source,"Mapped survey requires your copied Known World save, not Superflat.");return 0;
+        }
+        int px=player.blockPosition().getX(),pz=player.blockPosition().getZ();
+        long dx=(long)px-WINTERFELL_MAP_X,dz=(long)pz-WINTERFELL_MAP_Z;
+        if(dx*dx+dz*dz>(long)MAPPED_START_MAX_DISTANCE*MAPPED_START_MAX_DISTANCE) {
+            message(source,"Go near atlas NW-029 first: /tp @s " + WINTERFELL_MAP_X
+                + " 300 " + WINTERFELL_MAP_Z + " (Creative/Spectator). No blocks changed.");return 0;
+        }
+        SiteSurvey survey=surveyCastleTerrain((ServerLevel)player.level());
+        message(source,"NW-029 atlas X="+WINTERFELL_MAP_X+" Z="+WINTERFELL_MAP_Z
+            +" | castle surface samples="+survey.sampled+" | wet="+survey.wet
+            +" | height span="+(survey.maxY-survey.minY)+" (Y "
+            +survey.minY+".."+survey.maxY+") | centre wet="+survey.centreWet
+            +" | "+(survey.acceptable()?"PRELIMINARY PASS":"UNSUITABLE or chunks not loaded")
+            +". No blocks changed. Remote hamlets NOT surveyed.");
+        return survey.acceptable()?1:0;
+    }
+
+    private static int beginMapped(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player=source.getPlayerOrException();
+        if(!player.isCreative()) {message(source,"Creative mode required in a COPY of your Known World save.");return 0;}
+        if(surveyMapped(source)==0) {
+            message(source,"Mapped construction REFUSED: first pass the non-destructive site survey.");return 0;
+        }
+        return begin(source,true,true);
+    }
+
     private static int begin(CommandSourceStack source, boolean permitNonFlat) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        return begin(source,permitNonFlat,false);
+    }
+    private static int begin(CommandSourceStack source, boolean permitNonFlat, boolean mapped) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
         ServerPlayer player=source.getPlayerOrException();
         if (!player.isCreative()) {message(source,"Creative mode required. Use a disposable TEST WORLD only.");return 0;}
         if (!player.level().isFlat() && !permitNonFlat) {
@@ -275,10 +393,15 @@ public final class WinterfellV2 {
         if (Files.exists(statePath(server))) {
             message(source,"Existing V2 state file is unreadable. Resolve it manually; refusing to overwrite a saved world layout.");return 0;
         }
-        State s=new State();s.anchorX=player.blockPosition().getX();s.anchorZ=player.blockPosition().getZ();
-        s.dimension=player.level().dimension().identifier().toString();s.active=true;s.building=true;
+        State s=new State();
+        s.anchorX=mapped?WINTERFELL_MAP_X:player.blockPosition().getX();
+        s.anchorZ=mapped?WINTERFELL_MAP_Z:player.blockPosition().getZ();
+        s.dimension=player.level().dimension().identifier().toString();
+        s.mapped=mapped;s.active=true;s.building=true;
         state=s;saveState();
-        message(source,"Winterfell V2 started. TEST WORLD ONLY. Importing 5000 persons incrementally; nearby houses/roads build as you explore. /kwinterfell2 status");
+        message(source,"Winterfell V2 started at X="+s.anchorX+" Z="+s.anchorZ
+            +" ("+(mapped?"NW-029 MAPPED COPY":"PLAYER ORIGIN")+"). "
+            +"Importing 5000 people; nearby buildings/roads construct as you explore. /kwinterfell2 status");
         return 1;
     }
     private static int toggle(CommandSourceStack source,boolean desired) {
@@ -290,8 +413,17 @@ public final class WinterfellV2 {
         state.building=desired;saveState();message(source,"Physical construction "+(desired?"enabled":"paused"));return 1;
     }
     private static int status(CommandSourceStack source) {
-        loadState(source.getServer());loadPlan();if(state==null){message(source,"Winterfell V2 not initialized. Plan: 5000 / 1136 households. Run /kwinterfell2 begin confirm in a disposable Creative world.");return 0;}
-        message(source,"Winterfell V2: "+state.importedCursor+"/5000 imported; built "+state.built.size()+"/"+plan.buildings.size()+" home/work plots, "+state.roadsDone.size()+"/"+plan.roads.size()+" road tiles; full "+recentFull+"/128, reduced "+recentReduced+"/128; last controller "+lastTickDurationMs+"ms.");
+        loadState(source.getServer());loadPlan();if(state==null){message(source,
+            "Not initialized. For the real atlas location, use /kwinterfell2 survey mapped "
+            + "then /kwinterfell2 begin mapped confirm in a COPIED Known World save. "
+            + "For a separate Superflat test use /kwinterfell2 begin confirm.");return 0;}
+        message(source,"Winterfell V2 ["+(state.mapped?"ATLAS NW-029":"PLAYER-ANCHORED")+"] X="
+            +state.anchorX+" Z="+state.anchorZ+": " + state.importedCursor
+            +"/5000 imported; built "+state.built.size()+"/"+plan.buildings.size()
+            +" plots; unsuitable "+state.skipped.size()
+            +"; roads "+state.roadsDone.size()+"/"+plan.roads.size()
+            +" (blocked/wet "+state.roadsBlocked.size()+"); full "
+            +recentFull+"/128, reduced "+recentReduced+"/128; controller "+lastTickDurationMs+"ms.");
         return 1;
     }
     private static void message(CommandSourceStack s,String msg) {
@@ -374,7 +506,10 @@ public final class WinterfellV2 {
                     household=org.id();sim.authoredIds().registerOrganization(hid,household);
                 }
                 sim.affiliations().setHousehold(id,household);
-                sim.authoredIds().findSettlement("winterfell").ifPresent(sid->sim.affiliations().setResidence(id,sid));
+                var winterfellSettlement = sim.authoredIds().findSettlement("winterfell");
+                if (winterfellSettlement.isPresent()) {
+                    sim.affiliations().setResidence(id, winterfellSettlement.get());
+                }
             }
             state.importedCursor++;
         }
@@ -521,21 +656,27 @@ public final class WinterfellV2 {
         int homes=0;
         // Terrain-aware, incremental placement. Maximum one plot per controller step.
         for(Home home:plan.buildings) {
-            if(state.built.contains(home.id))continue;
+            if(state.built.contains(home.id)||state.skipped.contains(home.id))continue;
             int x=state.anchorX+home.x,z=state.anchorZ+home.z;
             if(!nearAnyPlayer(server,x+home.w/2,z+home.d/2,BUILDER_RADIUS))continue;
             if(!level.isLoaded(new BlockPos(x,64,z))||!level.isLoaded(new BlockPos(x+home.w,64,z+home.d)))continue;
             if(buildHome(level,home)) {state.built.add(home.id);homes++;}
+            else {state.skipped.add(home.id);} // loaded + wet or steep; never occupied
             if(homes>=1)break;
         }
         // Build visible road tiles on demand. Always follow surveyed surface.
         int roads=0;
         for(int i=0;i<plan.roads.size();i++) {
-            if(state.roadsDone.contains(i))continue;
+            if(state.roadsDone.contains(i)||state.roadsBlocked.contains(i))continue;
             Road r=plan.roads.get(i);int x=state.anchorX+r.x,z=state.anchorZ+r.z;
             if(!nearAnyPlayer(server,x,z,BUILDER_RADIUS))continue;
             if(!level.isLoaded(new BlockPos(x,64,z)))continue;
             int y=level.getHeight(Heightmap.Types.WORLD_SURFACE,x,z)-1;
+            // Do not turn lakes/rivers into gigantic unintended gravel causeways.
+            if(y<=level.getMinY()+1 ||
+                !level.getBlockState(new BlockPos(x,y,z)).getFluidState().isEmpty()) {
+                state.roadsBlocked.add(i);continue;
+            }
             if(y>level.getMinY()+1) {
                 level.setBlock(new BlockPos(x,y,z),Blocks.GRAVEL.defaultBlockState(),3);
                 state.roadsDone.add(i);roads++;
@@ -548,10 +689,19 @@ public final class WinterfellV2 {
     private static int safeHeight(ServerLevel l,int x,int z) {return l.getHeight(Heightmap.Types.WORLD_SURFACE,x,z);}
     private static boolean buildHome(ServerLevel level,Home h) {
         int x=state.anchorX+h.x,z=state.anchorZ+h.z;
-        int a=safeHeight(level,x,z),b=safeHeight(level,x+h.w-1,z),
-            c=safeHeight(level,x,z+h.d-1),d=safeHeight(level,x+h.w-1,z+h.d-1);
-        int low=Math.min(Math.min(a,b),Math.min(c,d)),high=Math.max(Math.max(a,b),Math.max(c,d));
-        if(high-low>7) return false; // do NOT bury houses in cliffs; candidate stays unbuilt.
+        // Survey nine positions across each footprint, not just its corners.
+        // This catches steep ridges, ponds and ravines inside a seemingly flat plot.
+        int low=Integer.MAX_VALUE,high=Integer.MIN_VALUE;
+        for(int ox:new int[]{0,(h.w-1)/2,h.w-1}) {
+            for(int oz:new int[]{0,(h.d-1)/2,h.d-1}) {
+                int sx=x+ox,sz=z+oz;
+                int elevation=safeHeight(level,sx,sz);
+                low=Math.min(low,elevation);high=Math.max(high,elevation);
+                if(!level.getBlockState(new BlockPos(sx,elevation-1,sz))
+                    .getFluidState().isEmpty()) return false;
+            }
+        }
+        if(high-low>7) return false; // no unsurveyed cliff foundations
         int ground=high;
         // Room for foundation columns; never assume all corners have same elevation.
         BlockState foot=Blocks.COBBLESTONE.defaultBlockState();
