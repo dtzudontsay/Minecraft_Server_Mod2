@@ -3,6 +3,7 @@ package dev.dtzudontsay.knownworld.world.generation;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
+import dev.dtzudontsay.knownworld.world.generation.settlement.WinterfellWorldgenV3;
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSample;
@@ -683,6 +684,9 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
                 chunk,
                 structureManager
         );
+
+        // Chunk-local, deterministic Winterfell V3 settlement construction.
+        WinterfellWorldgenV3.decorate(level, chunk);
     }
 
     @Override

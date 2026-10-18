@@ -56,7 +56,7 @@ import java.util.*;
  * Basic road/house terrain fitting uses WORLD_SURFACE, not a true engineered grading plan.
  */
 public final class WinterfellV2 {
-    public static final boolean ENABLED = true;
+    public static final boolean ENABLED = false; // V3 chunk-worldgen replaces live V2 construction.
     public static final int FULL_ACTIVE_BUDGET = 128;
     public static final int REDUCED_ACTIVE_BUDGET = 128;
     public static final int FULL_RADIUS = 140;

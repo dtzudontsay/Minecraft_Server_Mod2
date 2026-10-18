@@ -35,6 +35,8 @@ import dev.dtzudontsay.knownworld.simulation.bootstrap.NamedCharacterAuthoringRu
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellCaseStudyInteraction;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV2;
+import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV3Runtime;
+import dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.simulation.persistence.HistoricalChroniclePersistence;
@@ -43,6 +45,7 @@ import dev.dtzudontsay.knownworld.simulation.social.relationship.GlobalRelations
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeSources;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
+import dev.dtzudontsay.knownworld.world.generation.settlement.WinterfellWorldgenV3;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoData;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
@@ -85,6 +88,8 @@ public final class KnownWorld implements ModInitializer {
         KnownWorldBiomeSources.register();
 
         KnownWorldChunkGenerators.register();
+
+        WinterfellWorldgenV3.registerDebugCommands();
 
         NorthFeatureRegistry.bootstrap();
         SouthFeatureRegistry.bootstrap();
@@ -164,13 +169,10 @@ public final class KnownWorld implements ModInitializer {
 
         NpcSimulation.registerLifecycle();
 
-        // Read-only interaction with tagged case-study proxy villagers.
-        // The handler registers no new simulation identities and is independently
-        // disabled by WinterfellCaseStudyInteraction.ENABLED = false.
-        WinterfellCaseStudyInteraction.register();
-
-        // Opt-in 5000-resident Winterfell test-world village, home and NPC vertical slice.
-        WinterfellV2.register();
+        // V3: worldgen alone constructs blocks; V3Runtime materializes authoritative NPCs.
+        // The two old V2/preview handlers are deliberately NOT registered.
+        KnownWorldUiPackets.registerCommon();
+        WinterfellV3Runtime.register();
 
         /*
          * Register immediately after NpcSimulation so SERVER_STARTED first

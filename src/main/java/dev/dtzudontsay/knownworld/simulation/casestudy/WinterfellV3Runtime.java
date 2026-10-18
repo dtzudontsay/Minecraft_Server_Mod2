@@ -1,0 +1,482 @@
+package dev.dtzudontsay.knownworld.simulation.casestudy;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.SimulationPosition;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcSex;
+import dev.dtzudontsay.knownworld.simulation.npc.NpcState;
+import dev.dtzudontsay.knownworld.simulation.npc.personality.NpcPersonality;
+import dev.dtzudontsay.knownworld.simulation.npc.profile.*;
+import dev.dtzudontsay.knownworld.simulation.social.Organization;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationId;
+import dev.dtzudontsay.knownworld.simulation.social.OrganizationType;
+import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
+import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
+import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerator;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.commands.Commands;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.npc.villager.Villager;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.Heightmap;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+
+/**
+ * Stage 3 of the WINTERFELL V3 vertical slice. NO block modifications.
+ * Uses existing ScenarioBootstrapper, NpcRegistry, AuthoredIdRegistry,
+ * CharacterProfileManager, genealogy and regular persistence.
+ * Physical villagers are temporary projections with stable person IDs.
+ * Construction is exclusively the V3 chunk-decoration generator.
+ */
+public final class WinterfellV3Runtime {
+    public static final int FULL_BUDGET = 128;
+    public static final int REDUCED_BUDGET = 128;
+    private static final int FULL_RADIUS = 140;
+    private static final int REDUCED_RADIUS = 260;
+    private static final int RESIDENTS = 5000;
+    private static final int ORIGIN_X = -4_050_173, ORIGIN_Z = -1_976_496;
+    private static final String DATA = "/data/knownworld/case_study/winterfell_v2.json";
+    private static final String TAG = "kwf3_actor";
+    private static final String ID_TAG = "kwf3_id_";
+    private static final String[] VISITORS = {
+            "robert_baratheon", "cersei_lannister", "jaime_lannister", "tyrion_lannister", "benjen_stark"
+    };
+
+    private record Home(String id, int x, int z, int w, int d) { }
+    private record Person(String id, String name, int birthYear, String sex, String homeId,
+                          String householdId, String job, String culture, String religion,
+                          String status, JsonObject raw) { }
+    private record Candidate(Person person, double distSq) { }
+
+    private static final Map<String, Home> HOMES = new HashMap<>();
+    private static final List<Person> PEOPLE = new ArrayList<>();
+    private static final Map<String, Person> BY_ID = new HashMap<>();
+    private static final Map<String, UUID> ENTITIES = new HashMap<>();
+    private static final Set<UUID> NEW_ENTITIES = new HashSet<>();
+    private static boolean rosterReady;
+    private static MinecraftServer server;
+    private static int cursor, ticks, fullCount, reducedCount;
+    private static long controllerNanos;
+    private static boolean projectionsEnabled = true;
+    private static boolean initializeNamedPositions;
+    private static boolean importModeKnown;
+
+    private WinterfellV3Runtime() { }
+
+    public static void register() {
+        CommandRegistrationCallback.EVENT.register((dispatcher, access, environment) ->
+                dispatcher.register(Commands.literal("kwinterfell3npc")
+                        .then(Commands.literal("status").executes(c -> status(c.getSource())))
+                        .then(Commands.literal("pause").executes(c -> toggle(c.getSource(), false)))
+                        .then(Commands.literal("resume").executes(c -> toggle(c.getSource(), true)))));
+        ServerTickEvents.END_SERVER_TICK.register(WinterfellV3Runtime::tick);
+        ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
+            // A saved projection from an earlier server session must not be counted
+            // as a second person. Freshly spawned projections are pre-authorized.
+            if (entity.entityTags().contains(TAG) && !NEW_ENTITIES.remove(entity.getUUID())) {
+                entity.discard();
+            }
+        });
+        UseEntityCallback.EVENT.register((player, level, hand, entity, hit) -> {
+            if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
+            if (level.isClientSide()) {
+                // Scoreboard entity tags are not necessarily synchronized to clients.
+                // V3 projections always have a custom name, even if not visible.
+                return entity instanceof Villager && entity.getCustomName() != null
+                        ? InteractionResult.SUCCESS : InteractionResult.PASS;
+            }
+            if (!entity.entityTags().contains(TAG)) return InteractionResult.PASS;
+            if (player instanceof ServerPlayer sp) inspect(sp, entity);
+            return InteractionResult.SUCCESS;
+        });
+        ServerLifecycleEvents.SERVER_STOPPED.register(s -> {
+            if (s == server) {
+                ENTITIES.clear(); NEW_ENTITIES.clear();
+                server = null; cursor = 0; ticks = 0;
+                fullCount = reducedCount = 0;
+            }
+        });
+    }
+
+    private static boolean isKnownWorld(MinecraftServer s) {
+        ServerLevel overworld = s.getLevel(Level.OVERWORLD);
+        return overworld != null &&
+                overworld.getChunkSource().getGenerator() instanceof KnownWorldChunkGenerator;
+    }
+
+    private static void readRoster() {
+        if (rosterReady) return;
+        try (InputStream in = WinterfellV3Runtime.class.getResourceAsStream(DATA)) {
+            if (in == null) throw new IllegalStateException("Missing winterfell_v2.json; run build_winterfell_v2.py");
+            JsonObject root = JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8))
+                    .getAsJsonObject();
+            for (JsonElement el : root.getAsJsonArray("homes")) {
+                JsonObject v = el.getAsJsonObject();
+                Home h = new Home(string(v, "id"), number(v, "x"), number(v, "z"),
+                        number(v, "w"), number(v, "d"));
+                if (HOMES.putIfAbsent(h.id, h) != null) throw new IllegalStateException("Duplicate home " + h.id);
+            }
+            for (JsonElement el : root.getAsJsonArray("residents")) {
+                JsonObject v = el.getAsJsonObject();
+                Person p = new Person(string(v,"id"), string(v,"name"), number(v,"birthYear"),
+                        string(v,"sex"), string(v,"homeId"), string(v,"householdId"),
+                        string(v,"job"), string(v,"culture"), string(v,"religion"),
+                        string(v,"status"), v);
+                if (!HOMES.containsKey(p.homeId) || BY_ID.putIfAbsent(p.id,p) != null)
+                    throw new IllegalStateException("Duplicate or homeless resident " + p.id);
+                PEOPLE.add(p);
+            }
+            if (PEOPLE.size() != RESIDENTS || HOMES.size() != 1136)
+                throw new IllegalStateException("Expected 5000 residents / 1136 households");
+            for (String guest : VISITORS) {
+                // Visitors are authored elsewhere, NOT additional resident census members.
+                BY_ID.put(guest, new Person(guest, guest.replace('_',' '), -1, "UNKNOWN",
+                        "castle_home_0001", "visiting_royal_party", "VISITOR",
+                        "", "", "SCENARIO_VISITOR", new JsonObject()));
+            }
+            rosterReady = true;
+            KnownWorld.LOGGER.info("Winterfell V3 NPC runtime: {} residents / {} occupied homes", PEOPLE.size(), HOMES.size());
+        } catch (Exception e) {
+            throw new IllegalStateException("Winterfell V3 roster validation failed", e);
+        }
+    }
+
+    private static String string(JsonObject j, String k) {
+        JsonElement e = j.get(k);
+        return e == null || e.isJsonNull() ? "" : e.getAsString();
+    }
+    private static int number(JsonObject j, String k) { return j.get(k).getAsInt(); }
+    private static double numberOr(JsonObject j, String k, double fallback) {
+        JsonElement e = j == null ? null : j.get(k);
+        return e == null || e.isJsonNull() ? fallback : e.getAsDouble();
+    }
+
+    // The Stark household was incorporated architecturally into the V3 Great Keep,
+    // not rendered as the original cottage plot castle_home_0001.
+    // Use the southern keep arch at relative (+17,+58) as its real entrance.
+    private static double doorX(Home home) {
+        return ORIGIN_X + ("castle_home_0001".equals(home.id) ? 17.5 : home.x + home.w/2.0);
+    }
+    private static double doorZ(Home home) {
+        return ORIGIN_Z + ("castle_home_0001".equals(home.id) ? 54.5 : home.z + home.d + 2.5);
+    }
+
+    private static int yFromPristineMap(double x, double z) {
+        return (int) Math.round(GeographicDataManager.getInstance().sample(
+                WorldProjection.fromMinecraft(x,z)).elevationMetres()) + 1;
+    }
+
+    private static void tick(MinecraftServer s) {
+        if (server != s) {
+            server = s; cursor = ticks = fullCount = reducedCount = 0;
+            ENTITIES.clear(); NEW_ENTITIES.clear(); projectionsEnabled = true;
+            importModeKnown = false;
+            initializeNamedPositions = false;
+        }
+        if (++ticks % 20 != 0 || !isKnownWorld(s)) return;
+        long start = System.nanoTime();
+        try {
+            readRoster();
+            NpcSimulation sim = NpcSimulation.getNullable();
+            if (sim == null) return;
+            if (!importModeKnown) {
+                // Only the first import into a pristine world may place authored
+                // Stark characters at their initial Winterfell residences.
+                // Never snap them back after a later reload or campaign journey.
+                initializeNamedPositions = sim.authoredIds().npcs().keySet().stream()
+                        .noneMatch(k -> k.startsWith("wf2_gen_") || k.startsWith("wf2_book_"));
+                importModeKnown = true;
+            }
+            if (cursor < PEOPLE.size()) {
+                importBatch(sim, 125);
+                if (cursor == PEOPLE.size()) {
+                    applyModeledParentage(sim);
+                    sim.save();
+                }
+            }
+            if (projectionsEnabled && cursor == PEOPLE.size()) project(s, sim);
+            else clear(s);
+        } catch (RuntimeException e) {
+            KnownWorld.LOGGER.error("Winterfell V3 NPC runtime stopped after an error; buildings are unaffected", e);
+            projectionsEnabled = false;
+        } finally {
+            controllerNanos = System.nanoTime() - start;
+        }
+    }
+
+    private static void importBatch(NpcSimulation sim, int max) {
+        int count = 0, added = 0;
+        while (cursor < PEOPLE.size() && count++ < max) {
+            Person p = PEOPLE.get(cursor++);
+            NpcId id = sim.authoredIds().findNpc(p.id).orElse(null);
+            Home h = HOMES.get(p.homeId);
+            double x = doorX(h);
+            double z = doorZ(h);
+            if (id == null) {
+                JsonObject traits = p.raw.getAsJsonObject("personality");
+                NpcPersonality personality = new NpcPersonality(
+                        numberOr(traits,"courage",0), numberOr(traits,"ambition",0),
+                        numberOr(traits,"compassion",0), numberOr(traits,"honor",0),
+                        numberOr(traits,"patience",0), numberOr(traits,"sociability",0));
+                String[] names = p.name.split(" ", 2);
+                NpcState n = sim.registry().create(names[0], names.length > 1 ? names[1] : "",
+                        "FEMALE".equals(p.sex) ? NpcSex.FEMALE : NpcSex.MALE,
+                        p.birthYear, SimulationPosition.overworld(x, yFromPristineMap(x,z), z), personality);
+                id = n.id();
+                sim.authoredIds().registerNpc(p.id, id);
+                CharacterProfile cp = sim.profiles().getOrCreate(id);
+                cp.setCulture(p.culture); cp.setReligion(p.religion);
+                cp.setEducation("northern_household");
+                JsonArray tags = p.raw.getAsJsonArray("traits");
+                if (tags != null) for (JsonElement e : tags) cp.addTrait(e.getAsString());
+                if (!Set.of("CHILD","DEPENDENT","WARD","LORD","LADY").contains(p.job))
+                    cp.addOccupation(p.job.toLowerCase(Locale.ROOT));
+                JsonObject skills = p.raw.getAsJsonObject("skills");
+                if (skills != null) for (var e : skills.entrySet()) {
+                    try { cp.setSkill(CharacterSkill.valueOf(e.getKey().toUpperCase(Locale.ROOT)),
+                            e.getValue().getAsDouble()); }
+                    catch (IllegalArgumentException ignored) { }
+                }
+                Random random = new Random(2985000L ^ p.id.hashCode());
+                for (CharacterAptitude a : CharacterAptitude.values()) cp.setAptitude(a,.25 + random.nextDouble() * .52);
+                for (CharacterDisposition d : CharacterDisposition.values()) cp.setDisposition(d,random.nextDouble() * 1.2 - .6);
+                for (CharacterValue v : CharacterValue.values()) cp.setCharacterValue(v,random.nextDouble() * 1.1 - .55);
+                for (CharacterSocialNorm v : CharacterSocialNorm.values()) cp.setSocialNorm(v,random.nextDouble() * 1.1 - .55);
+                added++;
+            }
+            if (!"AUTHORED_EXISTING".equals(p.status)) {
+                OrganizationId hid = sim.authoredIds().findOrganization(p.householdId).orElse(null);
+                if (hid == null) {
+                    Organization household = sim.organizations().create("Winterfell: " + p.householdId,
+                            OrganizationType.HOUSEHOLD, null);
+                    hid = household.id();
+                    sim.authoredIds().registerOrganization(p.householdId, hid);
+                }
+                sim.affiliations().setHousehold(id, hid);
+                var residence = sim.authoredIds().findSettlement("winterfell");
+                if (residence.isPresent()) sim.affiliations().setResidence(id, residence.get());
+            } else if (initializeNamedPositions) {
+                sim.registry().move(id, SimulationPosition.overworld(x, yFromPristineMap(x,z), z));
+            }
+        }
+        // Existing identities are not re-created, and existing profiles are not overwritten.
+        if (cursor % 1000 == 0 || cursor == RESIDENTS) {
+            if (added > 0) sim.save();
+            KnownWorld.LOGGER.info("Winterfell V3 NPC import {}/{}", cursor, RESIDENTS);
+        }
+    }
+
+    private static void applyModeledParentage(NpcSimulation sim) {
+        for (Person child : PEOPLE) {
+            if (!"GENERATED_MOD_CALIBRATION".equals(child.status)) continue;
+            String mother = string(child.raw,"motherId"), father = string(child.raw,"fatherId");
+            if (mother.isBlank() && father.isBlank()) continue;
+            NpcId c = sim.authoredIds().findNpc(child.id).orElse(null);
+            if (c == null || sim.genealogy().parentsOf(c).isPresent()) continue;
+            NpcId m = mother.isBlank() ? null : sim.authoredIds().findNpc(mother).orElse(null);
+            NpcId f = father.isBlank() ? null : sim.authoredIds().findNpc(father).orElse(null);
+            if (m != null || f != null) sim.genealogy().registerBirth(c,m,f,0L);
+        }
+    }
+
+    private static double nearbyDistanceSq(MinecraftServer s, Home h) {
+        double x = doorX(h);
+        double z = doorZ(h);
+        double closest = Double.POSITIVE_INFINITY;
+        for (ServerPlayer player : s.getPlayerList().getPlayers()) {
+            if (!player.level().dimension().equals(Level.OVERWORLD)) continue;
+            double dx = player.getX()-x, dz = player.getZ()-z;
+            closest = Math.min(closest, dx*dx + dz*dz);
+        }
+        return closest;
+    }
+
+    private static void project(MinecraftServer s, NpcSimulation sim) {
+        ServerLevel level = s.getLevel(Level.OVERWORLD);
+        if (level == null) return;
+        List<Candidate> candidates = new ArrayList<>();
+        for (Person p : PEOPLE) {
+            Home h = HOMES.get(p.homeId);
+            double d = nearbyDistanceSq(s, h);
+            if (d < (double) REDUCED_RADIUS*REDUCED_RADIUS) candidates.add(new Candidate(p,d));
+        }
+        for (String name : VISITORS) {
+            Person p = BY_ID.get(name);
+            double d = nearbyDistanceSq(s, HOMES.get(p.homeId));
+            if (d < (double) REDUCED_RADIUS*REDUCED_RADIUS) candidates.add(new Candidate(p,d));
+        }
+        candidates.sort(Comparator.comparingDouble(Candidate::distSq));
+        Set<String> wanted = new HashSet<>();
+        int full = 0, reduced = 0;
+        int campaignYear = sim.campaignCalendar().year();
+        for (Candidate c : candidates) {
+            Person p = c.person;
+            NpcId npcId = sim.authoredIds().findNpc(p.id).orElse(null);
+            if (npcId == null) continue;
+            NpcState n = sim.registry().find(npcId).orElse(null);
+            if (n == null || !n.isAlive()) continue;
+            Home h = HOMES.get(p.homeId);
+            int x = (int)Math.floor(doorX(h)), z = (int)Math.floor(doorZ(h));
+            if (!level.isLoaded(new BlockPos(x,64,z))) continue;
+            boolean detailed = c.distSq <= (double)FULL_RADIUS*FULL_RADIUS && full < FULL_BUDGET;
+            boolean simplified = !detailed && reduced < REDUCED_BUDGET;
+            if (!detailed && !simplified) continue;
+            if (detailed) full++; else reduced++;
+            wanted.add(p.id);
+            UUID uuid = ENTITIES.get(p.id);
+            Entity existing = uuid == null ? null : level.getEntity(uuid);
+            int age = Math.max(0, campaignYear - n.identity().birthYear());
+            if (existing instanceof Villager mob) {
+                mob.setNoAi(!detailed);
+                mob.setBaby(age < 16);
+                continue;
+            }
+            ENTITIES.remove(p.id);
+            int y = level.getHeight(Heightmap.Types.WORLD_SURFACE,x,z);
+            BlockPos spot = new BlockPos(x,y,z);
+            if (y < level.getMinY()+1 || y >= level.getMaxY()-2 ||
+                    !level.getBlockState(spot.below()).getFluidState().isEmpty() ||
+                    !level.getBlockState(spot).getCollisionShape(level,spot).isEmpty()) continue;
+            Villager mob = new Villager(EntityTypes.VILLAGER, level);
+            mob.snapTo(x + .5,y,z + .5,0.0F,0.0F);
+            mob.setCustomName(Component.literal(displayName(p,n)));
+            mob.setCustomNameVisible(false);
+            mob.setBaby(age < 16);
+            mob.setPersistenceRequired();
+            mob.setNoAi(!detailed);
+            mob.addTag(TAG);
+            mob.addTag(ID_TAG + p.id);
+            NEW_ENTITIES.add(mob.getUUID());
+            ENTITIES.put(p.id,mob.getUUID());
+            if (!level.addFreshEntity(mob)) {
+                NEW_ENTITIES.remove(mob.getUUID());
+                ENTITIES.remove(p.id);
+            }
+        }
+        for (Iterator<Map.Entry<String,UUID>> it = ENTITIES.entrySet().iterator();it.hasNext();) {
+            var entry = it.next();
+            if (wanted.contains(entry.getKey())) continue;
+            Entity e = level.getEntity(entry.getValue());
+            if (e != null) e.discard();
+            it.remove();
+        }
+        fullCount = reducedCount = 0;
+        for (UUID uuid : ENTITIES.values()) {
+            Entity e = level.getEntity(uuid);
+            if (e instanceof Villager villager) {
+                if (villager.isNoAi()) reducedCount++; else fullCount++;
+            }
+        }
+    }
+
+    private static String displayName(Person p, NpcState state) {
+        if (!"SCENARIO_VISITOR".equals(p.status)) return p.name;
+        return state.identity().givenName() + " " + state.identity().familyName();
+    }
+
+    private static void inspect(ServerPlayer player, Entity entity) {
+        try {
+            if (!rosterReady) readRoster();
+            String authored = null;
+            for (String tag : entity.entityTags()) if (tag.startsWith(ID_TAG)) {
+                authored = tag.substring(ID_TAG.length()); break;
+            }
+            if (authored == null || !BY_ID.containsKey(authored)) {
+                player.sendSystemMessage(Component.literal("[Winterfell] No person record for this actor."));return;
+            }
+            NpcSimulation sim = NpcSimulation.getNullable();
+            NpcId npcId = sim == null ? null : sim.authoredIds().findNpc(authored).orElse(null);
+            if (npcId == null) {
+                player.sendSystemMessage(Component.literal("[Winterfell] Actor has no persisted simulation identity: " + authored));return;
+            }
+            NpcState npc = sim.registry().find(npcId).orElse(null);
+            if (npc == null) {player.sendSystemMessage(Component.literal("[Winterfell] Missing NPC " + npcId));return;}
+            CharacterProfile profile = sim.profiles().getOrCreate(npcId);
+            Person p = BY_ID.get(authored);
+            JsonObject sheet = new JsonObject();
+            sheet.addProperty("name", displayName(p,npc));
+            sheet.addProperty("id", authored);
+            sheet.addProperty("runtimeId", npcId.toString());
+            sheet.addProperty("age", Math.max(0,sim.campaignCalendar().year()-npc.identity().birthYear()));
+            sheet.addProperty("sex", npc.identity().sex().name());
+            sheet.addProperty("occupation", p.job);
+            sheet.addProperty("culture", profile.culture());
+            sheet.addProperty("religion", profile.religion());
+            sheet.addProperty("household", p.householdId);
+            sheet.addProperty("residence", p.homeId);
+            sheet.addProperty("workplace", string(p.raw,"workId"));
+            sheet.addProperty("lord", "Eddard Stark");
+            sheet.addProperty("status", p.status);
+            sheet.addProperty("reputation", profile.reputation());
+            sheet.addProperty("wealth", profile.wealth());
+            sheet.addProperty("socialStatus", profile.socialStatus());
+            JsonArray traits = new JsonArray(); for (String trait : profile.traits()) traits.add(trait);
+            sheet.add("traits",traits);
+            JsonObject skills = new JsonObject();
+            for (var e : profile.skills().entrySet()) skills.addProperty(e.getKey().name().toLowerCase(Locale.ROOT),e.getValue());
+            sheet.add("skills",skills);
+            JsonObject personality = new JsonObject();
+            personality.addProperty("courage",npc.personality().courage());
+            personality.addProperty("ambition",npc.personality().ambition());
+            personality.addProperty("compassion",npc.personality().compassion());
+            personality.addProperty("honor",npc.personality().honor());
+            personality.addProperty("patience",npc.personality().patience());
+            personality.addProperty("sociability",npc.personality().sociability());
+            sheet.add("personality",personality);
+            ServerPlayNetworking.send(player,new KnownWorldUiPackets.CharacterSheet(sheet.toString()));
+        } catch (Exception e) {
+            KnownWorld.LOGGER.error("Cannot inspect Winterfell NPC",e);
+            player.sendSystemMessage(Component.literal("[Winterfell] Unable to open this character sheet; check latest.log."));
+        }
+    }
+
+    private static void clear(MinecraftServer s) {
+        ServerLevel level = s.getLevel(Level.OVERWORLD);
+        if (level != null) for (UUID uuid : ENTITIES.values()) {
+            Entity e = level.getEntity(uuid);if (e != null) e.discard();
+        }
+        ENTITIES.clear();fullCount = reducedCount = 0;
+    }
+
+    private static int status(net.minecraft.commands.CommandSourceStack src) {
+        int registered = 0;
+        NpcSimulation sim = NpcSimulation.getNullable();
+        if (sim != null && rosterReady) for (Person p : PEOPLE) {
+            if (sim.authoredIds().findNpc(p.id).isPresent()) registered++;
+        }
+        final int actual = registered;
+        src.sendSuccess(() -> Component.literal("[Winterfell V3 NPC] " + actual + "/5000 persisted IDs"
+                + " | imported this session " + cursor + "/5000 | physical full " + fullCount
+                + "/128 reduced " + reducedCount + "/128 | controller "
+                + String.format(Locale.ROOT,"%.2f",controllerNanos/1_000_000.0) + " ms"
+                + " | projections " + (projectionsEnabled?"ON":"PAUSED")),false);
+        return 1;
+    }
+    private static int toggle(net.minecraft.commands.CommandSourceStack src, boolean enabled) {
+        projectionsEnabled = enabled;
+        src.sendSuccess(() -> Component.literal("[Winterfell V3 NPC] Projections " + (enabled?"resumed":"paused")),false);
+        return 1;
+    }
+}

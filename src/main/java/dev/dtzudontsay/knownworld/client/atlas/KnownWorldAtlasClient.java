@@ -6,12 +6,15 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.resources.Identifier;
+import dev.dtzudontsay.knownworld.client.casestudy.WinterfellClientUi;
 
 /** Registered only through the client entrypoint in fabric.mod.json. */
 public final class KnownWorldAtlasClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         if (!KnownWorldAtlasConfig.ENABLED) return;
+
+        WinterfellClientUi.register();
 
         KeyMapping.Category category = KeyMapping.Category.register(
                 Identifier.fromNamespaceAndPath("knownworld", "atlas"));

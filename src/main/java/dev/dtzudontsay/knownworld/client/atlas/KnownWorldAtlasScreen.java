@@ -30,6 +30,12 @@ public final class KnownWorldAtlasScreen extends Screen {
     private String selectedId = "";
     private boolean showUnlinked = true;
     private boolean dragging;
+    // Right-click any image pixel to open this explicit, permission-gated teleport menu.
+    private boolean teleportMenu;
+    private int teleportTargetX, teleportTargetZ;
+    private int teleportMenuX, teleportMenuY;
+    private static final int TELEPORT_MENU_W=196, TELEPORT_MENU_H=70;
+
 
     public KnownWorldAtlasScreen() {
         super(Component.literal("Known World Atlas"));
@@ -133,7 +139,7 @@ public final class KnownWorldAtlasScreen extends Screen {
             gfx.text(font, "Teleport: X/Z only; terrain height must be checked in game",
                     12, height - 32, 0xFFFFB668, false);
         }
-        gfx.text(font, "Wheel: zoom  |  Drag: pan  |  M/Esc: close  |  U: unlinked  |  F: full map",
+        gfx.text(font, "Wheel: zoom  |  Drag: pan  |  Right-click: teleport  |  M/Esc: close  |  U: unlinked",
                 12, height - 17, FAINT, false);
 
         if (minecraft.player != null) {
@@ -164,6 +170,16 @@ public final class KnownWorldAtlasScreen extends Screen {
             gfx.text(font, "Master: " + String.format(java.util.Locale.ROOT, "%.2f, %.2f",
                     info.masterX(), info.masterY()), tx + 8, ty + 65, FAINT, false);
             gfx.text(font, info.status(), tx + 8, ty + 79, 0xFFFFB668, false);
+        }
+        // Draw after marker tooltips so this button stays visible and clickable.
+        if (teleportMenu) {
+            int bx=teleportMenuX, by=teleportMenuY;
+            gfx.fill(bx,by,bx+TELEPORT_MENU_W,by+TELEPORT_MENU_H,0xF51B2730);
+            gfx.outline(bx,by,TELEPORT_MENU_W,TELEPORT_MENU_H,0xFFE6BF77);
+            gfx.text(font,"Teleport to X="+teleportTargetX, bx+9,by+9,0xFFF7E8CD,false);
+            gfx.text(font,"Z="+teleportTargetZ+" ?",bx+9,by+22,0xFFF7E8CD,false);
+            gfx.fill(bx+9,by+40,bx+TELEPORT_MENU_W-9,by+61,0xFF526849);
+            gfx.text(font,"TELEPORT  (Creative / OP)",bx+16,by+46,0xFFFFFFFF,false);
         }
     }
 
@@ -197,6 +213,41 @@ public final class KnownWorldAtlasScreen extends Screen {
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        // The popup catches left clicks before the marker selector/pan handler.
+        if (teleportMenu) {
+            if (event.button()==InputConstants.MOUSE_BUTTON_LEFT) {
+                boolean inside = event.x() >= teleportMenuX+9
+                        && event.x() < teleportMenuX+TELEPORT_MENU_W-9
+                        && event.y() >= teleportMenuY+40 && event.y() < teleportMenuY+61;
+                if (inside) {
+                    net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking.send(
+                            new dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets.AtlasTeleportRequest(
+                                    teleportTargetX,teleportTargetZ));
+                    teleportMenu=false;
+                    onClose();
+                } else teleportMenu=false;
+                return true;
+            }
+            teleportMenu=false;
+        }
+        if (event.button()==InputConstants.MOUSE_BUTTON_RIGHT) {
+            double px=event.x(), pz=event.y();
+            if (px >= PAD && px < width-PAD && pz >= HEADER && pz < height-FOOTER) {
+                double scale=pixelsPerMasterPixel();
+                double mx=centerX+(px-viewMiddleX())/scale;
+                double mz=centerY+(pz-viewMiddleY())/scale;
+                if(mx>=0 && mx<KnownWorldAtlasConfig.MAP_WIDTH && mz>=0 && mz<KnownWorldAtlasConfig.MAP_HEIGHT) {
+                    teleportTargetX=(int)Math.round((mx-KnownWorldAtlasConfig.MASTER_ORIGIN_X)
+                            * KnownWorldAtlasConfig.METRES_PER_MASTER_PIXEL);
+                    teleportTargetZ=(int)Math.round((mz-KnownWorldAtlasConfig.MASTER_ORIGIN_Y)
+                            * KnownWorldAtlasConfig.METRES_PER_MASTER_PIXEL);
+                    teleportMenuX=(int)Math.max(10,Math.min(width-TELEPORT_MENU_W-10,px));
+                    teleportMenuY=(int)Math.max(HEADER+1,Math.min(height-TELEPORT_MENU_H-10,pz));
+                    teleportMenu=true;dragging=false;return true;
+                }
+            }
+            return true;
+        }
         if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             KnownWorldAtlasMarkers.Marker marker = nearestMarker(event.x(), event.y());
             if (marker != null) selectedId = marker.id();
