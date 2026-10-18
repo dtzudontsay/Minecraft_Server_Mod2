@@ -35,7 +35,7 @@ public final class WinterfellCaseStudyInteraction {
         UseEntityCallback.EVENT.register((player, level, hand, entity, hit) -> {
             if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
             String personId = null;
-            for (String tag : entity.getTags()) {
+            for (String tag : entity.entityTags()) {
                 if (tag.startsWith(PREFIX)) {
                     personId = tag.substring(PREFIX.length());
                     break;
@@ -47,8 +47,8 @@ public final class WinterfellCaseStudyInteraction {
                 try {
                     JsonObject person = people().get(personId);
                     if (person == null) {
-                        player.displayClientMessage(Component.literal(
-                            "[Winterfell] No roster entry for " + personId), false);
+                        player.sendSystemMessage(Component.literal(
+                            "[Winterfell] No roster entry for " + personId));
                     } else {
                         String name = get(person, "name");
                         String age = get(person, "age");
@@ -58,27 +58,27 @@ public final class WinterfellCaseStudyInteraction {
                         String residence = get(person, "homeBuildingId");
                         String work = get(person, "workBuildingId");
                         String provenance = get(person, "status");
-                        player.displayClientMessage(Component.literal(
-                            "══ " + name + " — Winterfell character card (draft) ══"), false);
-                        player.displayClientMessage(Component.literal(
+                        player.sendSystemMessage(Component.literal(
+                            "══ " + name + " — Winterfell character card (draft) ══"));
+                        player.sendSystemMessage(Component.literal(
                             "ID: " + personId + " | Age: " + age +
-                            " | Status: " + provenance), false);
-                        player.displayClientMessage(Component.literal(
-                            "Occupation: " + role + " | Lord: Eddard Stark"), false);
-                        player.displayClientMessage(Component.literal(
-                            "Culture: " + culture + " | Faith: " + faith), false);
-                        player.displayClientMessage(Component.literal(
-                            "Residence: " + residence + " | Workplace: " + work), false);
-                        player.displayClientMessage(Component.literal(
-                            "Traits: " + traits(person)), false);
-                        player.displayClientMessage(Component.literal(
-                            "Skills: " + skills(person)), false);
-                        player.displayClientMessage(Component.literal(
-                            "Preview only: not yet linked to an authoritative NpcId."), false);
+                            " | Status: " + provenance));
+                        player.sendSystemMessage(Component.literal(
+                            "Occupation: " + role + " | Lord: Eddard Stark"));
+                        player.sendSystemMessage(Component.literal(
+                            "Culture: " + culture + " | Faith: " + faith));
+                        player.sendSystemMessage(Component.literal(
+                            "Residence: " + residence + " | Workplace: " + work));
+                        player.sendSystemMessage(Component.literal(
+                            "Traits: " + traits(person)));
+                        player.sendSystemMessage(Component.literal(
+                            "Skills: " + skills(person)));
+                        player.sendSystemMessage(Component.literal(
+                            "Preview only: not yet linked to an authoritative NpcId."));
                     }
                 } catch (RuntimeException e) {
-                    player.displayClientMessage(Component.literal(
-                        "[Winterfell] Character data unavailable: " + e.getMessage()), false);
+                    player.sendSystemMessage(Component.literal(
+                        "[Winterfell] Character data unavailable: " + e.getMessage()));
                 }
             }
             return InteractionResult.SUCCESS;

@@ -135,13 +135,13 @@ public final class WinterfellV2 {
         // Stale villagers from a preceding save/restart are discarded on load.
         // Newly created villagers are explicitly whitelisted BEFORE addFreshEntity.
         ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
-            if (!entity.getTags().contains(ENTITY_MARKER)) return;
+            if (!entity.entityTags().contains(ENTITY_MARKER)) return;
             if (!permittedLoads.remove(entity.getUUID())) {
                 entity.discard();
             }
         });
         UseEntityCallback.EVENT.register((player, level, hand, entity, hitResult) -> {
-            if (hand != InteractionHand.MAIN_HAND || !entity.getTags().contains(ENTITY_MARKER))
+            if (hand != InteractionHand.MAIN_HAND || !entity.entityTags().contains(ENTITY_MARKER))
                 return InteractionResult.PASS;
             if (!level.isClientSide()) inspect(player, entity);
             return InteractionResult.SUCCESS;
@@ -456,7 +456,7 @@ public final class WinterfellV2 {
             int x=state.anchorX+h.x+h.w/2,z=state.anchorZ+h.z+h.d+1;
             int y=level.getHeight(Heightmap.Types.WORLD_SURFACE,x,z);
             Villager mob=new Villager(EntityTypes.VILLAGER,level);
-            mob.moveTo(x+.5,y,z+.5,0,0);
+            mob.snapTo(x+.5,y,z+.5,0.0F,0.0F);
             mob.setCustomName(Component.literal(person.name));mob.setCustomNameVisible(false);
             // Display minors as baby villagers in the visual-only projection.
             mob.setBaby(298-person.birthYear<15);
@@ -497,21 +497,21 @@ public final class WinterfellV2 {
     }
     private static void inspect(net.minecraft.world.entity.player.Player player,Entity entity) {
         if(plan==null)return;
-        for(String tag:entity.getTags())if(tag.startsWith(ID_PREFIX)){
+        for(String tag:entity.entityTags())if(tag.startsWith(ID_PREFIX)){
             Person p=plan.peopleById.get(tag.substring(ID_PREFIX.length()));if(p==null)return;
             NpcSimulation sim=NpcSimulation.getNullable();
             NpcId id=sim==null?null:sim.authoredIds().findNpc(p.id).orElse(null);
             if(id==null)return;
             CharacterProfile cp=sim.profiles().getOrCreate(id);
-            player.displayClientMessage(Component.literal("§6[Winterfell] " + p.name + " §7#"+id+" / "+p.status),false);
+            player.sendSystemMessage(Component.literal("§6[Winterfell] " + p.name + " §7#"+id+" / "+p.status));
             NpcState real=sim.registry().find(id).orElse(null);
             int age=real==null?Math.max(0,298-p.birthYear):Math.max(0,298-real.identity().birthYear());
-            player.displayClientMessage(Component.literal("Age "+age+" | "+p.job+" | " +cp.culture()+" | "+cp.religion()),false);
-            player.displayClientMessage(Component.literal("Home "+p.home+" | Household "+p.household+" | Lord: Eddard Stark"),false);
-            player.displayClientMessage(Component.literal("Traits: "+cp.traits().stream().limit(5).toList()),false);
-            player.displayClientMessage(Component.literal("Skills: "+cp.skills().entrySet().stream()
-                .sorted((a,b)->Double.compare(b.getValue(),a.getValue())).limit(4).toList()),false);
-            player.displayClientMessage(Component.literal("Persona persists in authoritative NpcRegistry; body is a proximity projection."),false);
+            player.sendSystemMessage(Component.literal("Age "+age+" | "+p.job+" | " +cp.culture()+" | "+cp.religion()));
+            player.sendSystemMessage(Component.literal("Home "+p.home+" | Household "+p.household+" | Lord: Eddard Stark"));
+            player.sendSystemMessage(Component.literal("Traits: "+cp.traits().stream().limit(5).toList()));
+            player.sendSystemMessage(Component.literal("Skills: "+cp.skills().entrySet().stream()
+                .sorted((a,b)->Double.compare(b.getValue(),a.getValue())).limit(4).toList()));
+            player.sendSystemMessage(Component.literal("Persona persists in authoritative NpcRegistry; body is a proximity projection."));
             return;
         }
     }
@@ -591,7 +591,7 @@ public final class WinterfellV2 {
         int bedsPlaced=0;
         if(h.capacity>0)for(int bz:new int[]{z+2,z+5,z+7})for(int bx=x+2;bx<=x+h.w-3;bx+=3){
             if(bedsPlaced++>=h.capacity)break;
-            BlockState bed=Blocks.RED_BED.defaultBlockState().setValue(BedBlock.FACING,Direction.SOUTH);
+            BlockState bed=Blocks.BED.red().defaultBlockState().setValue(BedBlock.FACING,Direction.SOUTH);
             level.setBlock(new BlockPos(bx,ground+2,bz),bed.setValue(BedBlock.PART,BedPart.FOOT),2);
             level.setBlock(new BlockPos(bx,ground+2,bz+1),bed.setValue(BedBlock.PART,BedPart.HEAD),2);
         }
