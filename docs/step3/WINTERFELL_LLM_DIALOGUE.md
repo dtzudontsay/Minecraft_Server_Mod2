@@ -17,7 +17,7 @@ any active LLM process.
 ## Operation
 
 1. Look directly at a Winterfell villager from within 6 blocks and press K.
-2. Type your words and press Enter or click Say. Mouse-wheel scrolls history.
+2. The portrait panel renders the nearby villager's live 3D model (when client-side entity data is available). Type your words and press Enter or click Say. Mouse-wheel scrolls history.
 3. Esc, K or X closes the dialogue. Right-click still opens the profile screen.
 4. M still opens the Atlas, independently of conversation.
 
@@ -90,7 +90,7 @@ of a faith or culture are already loaded.
 
 - [ ] Build mod with Fabric 26.3; launch integrated and dedicated servers.
 - [ ] Right-click Eddard Stark, a guard and a commoner: inspection/GM intact.
-- [ ] Press K on each: different dialogue screen with matching persona.
+- [ ] Press K on each: different dialogue screen with live 3D NPC preview and matching persona.
 - [ ] Press K on an ordinary non-Winterfell mob: no conversation.
 - [ ] Open dialogue, then walk away: further messages rejected by server.
 - [ ] Unset API key: clear status and no provider calls.
