@@ -391,6 +391,19 @@ public final class WinterfellV3Runtime {
         }
     }
 
+    /** Read-only, server-side scenario metadata for the separate dialogue feature. */
+    public static String dialogueRole(String authoredId) {
+        if (!rosterReady) readRoster();
+        Person person = BY_ID.get(authoredId);
+        return person == null ? "" : person.job;
+    }
+
+    public static String dialogueHousehold(String authoredId) {
+        if (!rosterReady) readRoster();
+        Person person = BY_ID.get(authoredId);
+        return person == null ? "" : person.householdId;
+    }
+
     private static String displayName(Person p, NpcState state) {
         if (!"SCENARIO_VISITOR".equals(p.status)) return p.name;
         return state.identity().givenName() + " " + state.identity().familyName();
