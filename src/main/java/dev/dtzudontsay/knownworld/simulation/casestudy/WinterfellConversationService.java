@@ -286,7 +286,8 @@ public final class WinterfellConversationService {
     private static String makeInstructions(NpcSimulation sim, NpcState npc,
                                            CharacterProfile profile, String authoredId) {
         String name = npc.identity().fullName();
-        DialoguePersona voice = profile.dialoguePersona();
+        DialoguePersona voice = profile.dialoguePersona() == null
+                ? DialoguePersona.NEUTRAL : profile.dialoguePersona();
         StringBuilder b = new StringBuilder(2800);
         b.append("You are a living character in the A Song of Ice and Fire world, NOT an AI narrator.\n")
                 .append("Speak in first person as ").append(name).append(". Use natural, era-appropriate ")
