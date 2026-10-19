@@ -343,13 +343,12 @@ public final class WinterfellConversationService {
         b.append("Your remembered experiences (subjective, not necessarily true): ")
                 .append(limited(memories.stream().limit(6).map(NpcMemory::summary).toList(), 6))
                 .append('\n');
-        b.append("Private knowledge; do NOT volunteer it. Reveal only when genuinely justified ")
-                .append("by personality, trust, situation, and consequences: ")
-                .append(limited(profile.secrets(), 4)).append("; ")
-                .append(limited(profile.knownSecrets(), 4)).append("; ")
-                .append(limited(profile.privateFacts().entrySet().stream()
-                        .map(e -> e.getKey() + "=" + e.getValue()).toList(), 4))
-                .append('\n');
+        // Do not send NPC secrets to a stochastic model until a future
+        // server-authoritative relationship/knowledge gate approves disclosure.
+        b.append("You may hold private information, but this conversation has not ")
+                .append("authorized private disclosures. Keep confidences; when ")
+                .append("asked about secrets, evade, refuse or simply say you cannot ")
+                .append("speak of the matter. Do not invent confidential knowledge.\n");
         return trim(b.toString(), 6500);
     }
 
