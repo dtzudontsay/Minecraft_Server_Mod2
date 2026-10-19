@@ -1,3 +1,4 @@
+
 package dev.dtzudontsay.knownworld.simulation.casestudy;
 
 import com.google.gson.JsonArray;
@@ -389,6 +390,19 @@ public final class WinterfellV3Runtime {
                 if (villager.isNoAi()) reducedCount++; else fullCount++;
             }
         }
+    }
+
+    /** Read-only, server-side scenario metadata for the separate dialogue feature. */
+    public static String dialogueRole(String authoredId) {
+        if (!rosterReady) readRoster();
+        Person person = BY_ID.get(authoredId);
+        return person == null ? "" : person.job;
+    }
+
+    public static String dialogueHousehold(String authoredId) {
+        if (!rosterReady) readRoster();
+        Person person = BY_ID.get(authoredId);
+        return person == null ? "" : publicHouseholdLabel(person);
     }
 
     private static String displayName(Person p, NpcState state) {

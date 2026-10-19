@@ -1,3 +1,4 @@
+
 package dev.dtzudontsay.knownworld;
 
 import dev.dtzudontsay.knownworld.debug.BootstrapDebugCommand;
@@ -37,6 +38,8 @@ import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellCaseStudyIntera
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV2;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV3Runtime;
 import dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets;
+import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellConversationPackets;
+import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellConversationService;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.simulation.persistence.HistoricalChroniclePersistence;
@@ -142,8 +145,8 @@ public final class KnownWorld implements ModInitializer {
                 "Known World reference system ready with {} geographic features, {} reference locations, {} cultures, {} religions, {} languages, {} occupations, {} roles, {} landmass zones, {} territory zones, {} subregion masks, {} subregion color entries, {} regional influence profiles and {} religious institution definitions.",
                 GeographicFeatureRegistry.getFeatureCount(),
                 WorldReferenceCatalog.get().locations().size(),
-                WorldReferenceCatalog.get().cultures().size(),
                 WorldReferenceCatalog.get().religions().size(),
+                WorldReferenceCatalog.get().cultures().size(),
                 WorldReferenceCatalog.get().languages().size(),
                 WorldReferenceCatalog.get().occupations().size(),
                 WorldReferenceCatalog.get().roles().size(),
@@ -172,6 +175,8 @@ public final class KnownWorld implements ModInitializer {
         // V3: worldgen alone constructs blocks; V3Runtime materializes authoritative NPCs.
         // The two old V2/preview handlers are deliberately NOT registered.
         KnownWorldUiPackets.registerCommon();
+        WinterfellConversationPackets.registerCommon();
+        WinterfellConversationService.register();
         WinterfellV3Runtime.register();
 
         /*

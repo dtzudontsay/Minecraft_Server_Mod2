@@ -1,4 +1,7 @@
+
 {
   "key.knownworld.open_atlas": "Open Known World Atlas",
-  "key.category.knownworld.atlas": "Known World"
+  "key.category.knownworld.atlas": "Known World",
+  "key.knownworld.talk_to_npc": "Talk to NPC",
+  "key.category.knownworld.dialogue": "Known World Dialogue"
 }
