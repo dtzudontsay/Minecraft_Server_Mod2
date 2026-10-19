@@ -34,7 +34,7 @@ public final class WinterfellConversationPackets {
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
-    public record Opened(String session, String name, String subtitle) implements CustomPacketPayload {
+    public record Opened(String session, String name, String subtitle, int entityId) implements CustomPacketPayload {
         public static final Type<Opened> TYPE = new Type<>(
                 Identifier.fromNamespaceAndPath("knownworld", "npc_chat_opened_v1"));
         public static final StreamCodec<RegistryFriendlyByteBuf, Opened> CODEC =
