@@ -401,7 +401,7 @@ public final class WinterfellV3Runtime {
     public static String dialogueHousehold(String authoredId) {
         if (!rosterReady) readRoster();
         Person person = BY_ID.get(authoredId);
-        return person == null ? "" : person.householdId;
+        return person == null ? "" : publicHouseholdLabel(person);
     }
 
     private static String displayName(Person p, NpcState state) {
