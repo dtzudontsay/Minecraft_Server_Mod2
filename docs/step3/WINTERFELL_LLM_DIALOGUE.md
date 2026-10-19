@@ -51,15 +51,17 @@ An individual request uses the selected NPC's live simulation identity
 and CharacterProfile. It supplies name, role, household, age, culture,
 religion, traits, six stable personality dimensions, DialoguePersona
 speech guidance, strongest skills, values, social norms, politics, goals,
-fears, selected public facts, six salient subjective memories, and guarded
-private facts. It also sends at most 12 rolling player/assistant dialogue
+fears, selected public facts and six salient subjective memories.
+**Secrets, known secrets, and private facts are not sent to the model** until
+an explicit server-side trust/knowledge disclosure system exists. It also sends
+at most 12 rolling player/assistant dialogue
 messages. The selected actor's own personality affects interpretation and
 speech; no template is shared between different characters.
 
 World events and private facts must be decided by the simulation, not
 fabricated by the language model. The instructions forbid treating speech
 as a world-changing action, claiming knowledge of future book events, or
-automatically revealing sensitive character secrets. These constraints
+claiming the NPC has disclosed private character secrets. These constraints
 guide a stochastic model but are NOT deterministic permission enforcement.
 Do not add gameplay tool execution until explicit server-side authorization
 and simulation state mutation exist.
