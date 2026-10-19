@@ -709,11 +709,16 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
          * Terrain shape remains entirely controlled by the Known
          * World terrain/elevation system.
          */
-        super.applyBiomeDecoration(
-                level,
-                chunk,
-                structureManager
-        );
+        // Winterfell V3: reserved settlement chunks must not receive natural
+        // trees/lava lakes from this or adjacent biome-decoration passes.
+        // The V3 overlay still runs immediately after this conditional.
+        if (!WinterfellWorldgenV3.suppressNaturalDecoration(chunk)) {
+            super.applyBiomeDecoration(
+                    level,
+                    chunk,
+                    structureManager
+            );
+        }
 
         // Chunk-local, deterministic Winterfell V3 settlement construction.
         WinterfellWorldgenV3.decorate(level, chunk);
