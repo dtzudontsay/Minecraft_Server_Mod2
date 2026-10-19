@@ -7,6 +7,9 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
 
@@ -30,6 +33,7 @@ public final class WinterfellDialogueScreen extends Screen {
     private final String session;
     private final String npcName;
     private final String subtitle;
+    private final int entityId;
     private final List<ChatLine> transcript = new ArrayList<>();
     private EditBox input;
     private Button sendButton;
@@ -38,11 +42,12 @@ public final class WinterfellDialogueScreen extends Screen {
     /** Zero pins the latest exchange to the bottom; positive values scroll upward. */
     private int scrollLines;
 
-    public WinterfellDialogueScreen(String session, String npcName, String subtitle) {
+    public WinterfellDialogueScreen(String session, String npcName, String subtitle, int entityId) {
         super(Component.literal("Speak with " + npcName));
         this.session = session;
         this.npcName = npcName;
         this.subtitle = subtitle;
+        this.entityId = entityId;
         transcript.add(new ChatLine("system", "You have approached " + npcName + "."));
     }
 
@@ -109,19 +114,29 @@ public final class WinterfellDialogueScreen extends Screen {
         gfx.text(font, "WINTERFELL  /  CONVERSATION", x + 14, y + 10, GOLD, true);
         gfx.text(font, npcName, x + 14, y + 29, LIGHT, true);
 
-        // Portrait stage: intentionally independent of renderer internals so the
-        // dialogue remains robust across Minecraft 26.3 GUI pipeline changes.
+        // Show the actual selected Minecraft villager, enlarged and reactive to
+        // mouse movement, instead of inventing an illustrated likeness.
         int px = x + 11, py = y + 62, pw = port - 10, ph = h - 78;
         gfx.fill(px, py, px + pw, py + ph, 0xFF232F32);
         gfx.outline(px, py, pw, ph, 0xFF786B55);
-        int mx = px + pw / 2;
-        int headW = Math.max(30, pw / 3);
-        int headH = Math.min(83, Math.max(45, ph / 4));
-        int headY = py + Math.max(34, ph / 5);
-        // Neutral close-up portrait silhouette, not a fabricated facial likeness.
-        gfx.fill(mx - headW / 2, headY, mx + headW / 2, headY + headH, 0xFF62625C);
-        gfx.fill(px + 23, headY + headH + 8, px + pw - 23,
-                Math.min(py + ph - 62, headY + headH + 120), 0xFF494D4B);
+        Entity target = minecraft == null || minecraft.level == null
+                ? null : minecraft.level.getEntity(entityId);
+        if (target instanceof LivingEntity living) {
+            InventoryScreen.extractEntityInInventoryFollowsMouse(
+                    gfx, px + 6, py + 8, px + pw - 6, py + ph - 56,
+                    Math.min(108, Math.max(50, ph / 3)), 0.0F,
+                    (float) mouseX, (float) mouseY, living);
+        } else {
+            // Fallback for a projection despawned while this screen is open.
+            int mx = px + pw / 2;
+            int headW = Math.max(30, pw / 3);
+            int headH = Math.min(83, Math.max(45, ph / 4));
+            int headY = py + Math.max(34, ph / 5);
+            gfx.fill(mx - headW / 2, headY, mx + headW / 2,
+                    headY + headH, 0xFF62625C);
+            gfx.fill(px + 23, headY + headH + 8, px + pw - 23,
+                    Math.min(py + ph - 62, headY + headH + 120), 0xFF494D4B);
+        }
         gfx.text(font, npcName, px + 9, py + ph - 47, GOLD, true);
         List<String> sub = wrap(subtitle, Math.max(30, pw - 18));
         for (int i = 0; i < Math.min(3, sub.size()); i++) {
