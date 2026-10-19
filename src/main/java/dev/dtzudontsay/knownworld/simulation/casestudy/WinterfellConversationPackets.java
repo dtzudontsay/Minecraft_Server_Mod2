@@ -42,6 +42,7 @@ public final class WinterfellConversationPackets {
                         ByteBufCodecs.stringUtf8(64), Opened::session,
                         ByteBufCodecs.stringUtf8(128), Opened::name,
                         ByteBufCodecs.stringUtf8(256), Opened::subtitle,
+                        ByteBufCodecs.VAR_INT, Opened::entityId,
                         Opened::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
