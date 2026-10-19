@@ -11,6 +11,11 @@ import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSampler;
 import dev.dtzudontsay.knownworld.world.terrain.TerrainSample;
 import dev.dtzudontsay.knownworld.world.terrain.surface.KnownWorldSurfaceResolver;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.LevelHeightAccessor;
@@ -658,6 +663,31 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
          *
          * This is independent from biome decoration.
          */
+    }
+
+    /** KnownWorld V3: reserve Winterfell estate against vanilla structure starts.
+     * This world-specific custom generator retains vanilla features elsewhere,
+     * but ensures pillager outposts and other vanilla structures cannot start
+     * on top of the Winterfell castle, winter town or satellite villages.
+     * A 4,200-block buffer encloses all existing V3 settlement centres.
+     */
+    @Override
+    public void createStructures(
+            RegistryAccess registryAccess,
+            ChunkGeneratorStructureState state,
+            StructureManager structureManager,
+            ChunkAccess centerChunk,
+            StructureTemplateManager structureTemplateManager,
+            ResourceKey<Level> level
+    ) {
+        final boolean allowVanillaStructuresAtWinterfell = false;
+        long x = (long) centerChunk.getPos().getMinBlockX() + 8L;
+        long z = (long) centerChunk.getPos().getMinBlockZ() + 8L;
+        boolean winterfellEstate = Math.abs(x - (-4_050_173L)) <= 4_200L
+                && Math.abs(z - (-1_976_496L)) <= 4_200L;
+        if (winterfellEstate && !allowVanillaStructuresAtWinterfell) return;
+        super.createStructures(registryAccess,state,structureManager,
+                centerChunk,structureTemplateManager,level);
     }
 
     @Override

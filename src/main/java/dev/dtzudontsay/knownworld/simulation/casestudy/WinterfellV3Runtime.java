@@ -445,11 +445,108 @@ public final class WinterfellV3Runtime {
             personality.addProperty("patience",npc.personality().patience());
             personality.addProperty("sociability",npc.personality().sociability());
             sheet.add("personality",personality);
+            // The UI is a WORLD record, not a display of internal code keys.
+            // IDs remain unchanged in NpcRegistry/households, but we send
+            // separate human-readable labels for the ordinary player tabs.
+            sheet.addProperty("education",profile.education());
+            sheet.addProperty("birthplace",profile.birthplaceLocationId());
+            sheet.addProperty("upbringing",profile.upbringingLocationId());
+            sheet.addProperty("health",profile.healthState().name());
+            sheet.addProperty("legalStatus",profile.legalStatus().name());
+            sheet.addProperty("appearance",profile.appearanceDescription());
+            sheet.addProperty("hair",profile.hairDescription());
+            sheet.addProperty("eyes",profile.eyeDescription());
+            sheet.addProperty("build",profile.buildDescription());
+            sheet.addProperty("householdLabel",publicHouseholdLabel(p));
+            sheet.addProperty("homeLabel",publicHomeLabel(p));
+            sheet.addProperty("workplaceLabel",publicWorkplaceLabel(p));
+            sheet.addProperty("wealth",String.format(Locale.ROOT,"%.2f",profile.wealth()));
+            sheet.addProperty("socialStatus",String.format(Locale.ROOT,"%.2f",profile.socialStatus()));
+            sheet.addProperty("reputation",String.format(Locale.ROOT,"%.2f",profile.reputation()));
+            jsonScores(sheet,"aptitudes",profile.aptitudes());
+            jsonScores(sheet,"dispositions",profile.dispositions());
+            jsonScores(sheet,"characterValues",profile.characterValues());
+            jsonScores(sheet,"socialNorms",profile.socialNorms());
+            jsonScores(sheet,"politics",profile.politicalPreferences());
+            jsonScores(sheet,"languages",profile.languages());
+            jsonScores(sheet,"customValues",profile.values());
+            jsonStrings(sheet,"occupations",profile.occupations());
+            jsonStrings(sheet,"offices",profile.offices());
+            jsonStrings(sheet,"courtRoles",profile.courtRoles());
+            jsonStrings(sheet,"militaryRoles",profile.militaryRoles());
+            jsonStrings(sheet,"combatSpecialties",profile.combatSpecialties());
+            jsonStrings(sheet,"aliases",profile.aliases());
+            jsonStrings(sheet,"motivations",profile.motivations());
+            jsonStrings(sheet,"goals",profile.goals());
+            jsonStrings(sheet,"fears",profile.fears());
+            jsonStrings(sheet,"desires",profile.desires());
+            jsonStringMap(sheet,"publicFacts",profile.publicFacts());
+            if (profile.dialoguePersona()!=null) {
+                JsonObject persona=new JsonObject();
+                persona.addProperty("formality",profile.dialoguePersona().formality());
+                persona.addProperty("verbosity",profile.dialoguePersona().verbosity());
+                persona.addProperty("warmth",profile.dialoguePersona().warmth());
+                persona.addProperty("directness",profile.dialoguePersona().directness());
+                sheet.add("dialogueStyle",persona);
+            }
+            boolean gm=player.isCreative() && net.minecraft.commands.Commands.LEVEL_GAMEMASTERS
+                    .check(player.createCommandSourceStack().permissions());
+            sheet.addProperty("gamemaster",gm);
+            // Secrets/private facts remain hidden from ordinary players.
+            // The GM tab is explicitly privileged diagnostic information.
+            if (gm) {
+                sheet.addProperty("orientation",profile.orientation().name());
+                sheet.addProperty("dialoguePreferredAddress",profile.dialoguePersona().preferredAddress());
+                sheet.addProperty("dialogueGuidance",profile.dialoguePersona().guidance());
+                jsonStrings(sheet,"secrets",profile.secrets());
+                jsonStrings(sheet,"knownSecrets",profile.knownSecrets());
+                jsonStringMap(sheet,"privateFacts",profile.privateFacts());
+            }
             ServerPlayNetworking.send(player,new KnownWorldUiPackets.CharacterSheet(sheet.toString()));
         } catch (Exception e) {
             KnownWorld.LOGGER.error("Cannot inspect Winterfell NPC",e);
             player.sendSystemMessage(Component.literal("[Winterfell] Unable to open this character sheet; check latest.log."));
         }
+    }
+
+    private static void jsonScores(JsonObject target, String key, Map<?,Double> scores) {
+        JsonObject o=new JsonObject();
+        for (var e : scores.entrySet())
+            o.addProperty(e.getKey().toString().toLowerCase(Locale.ROOT),e.getValue());
+        target.add(key,o);
+    }
+    private static void jsonStrings(JsonObject target,String key,Collection<String> values) {
+        JsonArray items=new JsonArray();
+        for(String v:values)items.add(v);
+        target.add(key,items);
+    }
+    private static void jsonStringMap(JsonObject target,String key,Map<String,String> values) {
+        JsonObject o=new JsonObject();
+        for(var e:values.entrySet())o.addProperty(e.getKey(),e.getValue());
+        target.add(key,o);
+    }
+    private static String publicHouseholdLabel(Person p) {
+        if("castle_home_0001".equals(p.homeId))return "House Stark • Winterfell";
+        // The census already assigns a named family to every house.
+        String[] parts=p.name.split(" ");
+        String surname=parts.length>1?parts[parts.length-1]:"Northern";
+        return surname + " household";
+    }
+    private static String publicHomeLabel(Person p) {
+        if("castle_home_0001".equals(p.homeId))return "Great Keep, Winterfell";
+        String settlement=p.homeId;
+        if(settlement.startsWith("wintertown_"))return "Winter Town residence";
+        if(settlement.startsWith("village5_"))return "Village residence near Winterfell";
+        if(settlement.startsWith("hamlet_"))return "Rural homestead near Winterfell";
+        if(settlement.startsWith("castle_"))return "Winterfell castle ward";
+        return "Residence near Winterfell";
+    }
+    private static String publicWorkplaceLabel(Person p) {
+        String work=string(p.raw,"workId");
+        if(work.isBlank())return "Not assigned";
+        if("castle_keep".equals(work))return "Winterfell castle";
+        String job=p.job.toLowerCase(Locale.ROOT).replace('_',' ');
+        return job.substring(0,1).toUpperCase(Locale.ROOT)+job.substring(1)+" workplace";
     }
 
     private static void clear(MinecraftServer s) {

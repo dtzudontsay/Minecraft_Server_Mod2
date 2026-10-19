@@ -18,6 +18,10 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.LadderBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -99,9 +103,20 @@ public final class WinterfellWorldgenV3 {
         if (Math.abs(relX) > 4_500 || Math.abs(relZ) > 4_500) return;
         var p = plan();
         ChunkPlan cp = p.chunks.get(key(chunkX, chunkZ));
-        if (cp == null) return;
         int wx = chunkX << 4;
         int wz = chunkZ << 4;
+        if (cp == null) {
+            // A narrow castle-side landscaping buffer need not contain a
+            // residential plot, but lava pools beside the walls are unsafe.
+            if (Math.abs(relX) <= 256 && Math.abs(relZ) <= 256)
+                cleanseSurfaceHazards(chunk, wx, wz,
+                        new ChunkPlan(new BitSet(256),new int[0]));
+            return;
+        }
+
+        // Make an occupied settlement block safe before installing its streets
+        // and houses. The operation is strictly chunk-local, on initial generation.
+        cleanseSurfaceHazards(chunk, wx, wz, cp);
 
         // 1. Prepare streets on natural heightmap, clearing incidental foliage.
         // 3-block corridors are indexed ahead of time (including chunk edges).
@@ -205,6 +220,29 @@ public final class WinterfellWorldgenV3 {
         };
         java.util.Arrays.sort(values);
         return values[values.length / 2];
+    }
+
+    /** Only clears exposed lava in settlement/courtyard or building chunks.
+     * Does not edit oceans, rivers, player builds or distant Wilderness chunks.
+     * Vanilla structures are a different generation stage (not suppressed here).
+     */
+    private static void cleanseSurfaceHazards(ChunkAccess chunk, int wx, int wz, ChunkPlan cp) {
+        if (cp.buildings.length == 0 &&
+                (wx > X + 240 || wx + 15 < X - 240 ||
+                 wz > Z + 240 || wz + 15 < Z - 240)) return;
+        for (int z=wz; z<wz+16; z++) for (int x=wx; x<wx+16; x++) {
+            boolean castle = Math.abs(x-X)<=240 && Math.abs(z-Z)<=240;
+            if (!castle && cp.buildings.length == 0) continue;
+            int surface=naturalTopY(x,z);
+            // Replace only lava: lakes/waterways outside actual plots are
+            // preserved. Filling the exposed source also prevents respreading.
+            for (int y=surface-5; y<=surface+4; y++) {
+                if (y<chunk.getMinY() || y>=chunk.getMaxY()) continue;
+                BlockPos at=new BlockPos(x,y,z);
+                if (chunk.getBlockState(at).getFluidState().is(FluidTags.LAVA))
+                    block(chunk,x,y,z,y>=surface-1 ? STONE : COBBLE);
+            }
+        }
     }
 
     private static void roadAt(ChunkAccess chunk, int x, int z) {
@@ -315,6 +353,23 @@ public final class WinterfellWorldgenV3 {
                         }
                     }
                 }
+                // Every furnished home/workplace has real interior lighting.
+                // Fixtures rest on solid floor blocks; the second-floor lanterns
+                // are supported by the timber deck installed above.
+                if ((xx==1 || xx==b.width-2) &&
+                        (zz==1 || zz==b.depth-2)) {
+                    block(chunk,x,floor+1,z,Blocks.LANTERN.defaultBlockState());
+                }
+                if (stone && xx==4 && zz==4) {
+                    block(chunk,x,floor+6,z,Blocks.LANTERN.defaultBlockState());
+                }
+                // Existing high-status house floor shaft becomes a real ladder;
+                // the floor-hole geometry (xx<=2 && zz<=3) is preserved.
+                if (stone && xx==1 && zz==2) {
+                    for (int h=1;h<=6;h++)
+                        block(chunk,x,floor+h,z,Blocks.LADDER.defaultBlockState()
+                                .setValue(LadderBlock.FACING,Direction.EAST));
+                }
                 if(xx==3 && zz==b.depth-2) {
                     block(chunk,x,floor+1,z, workshop?Blocks.FURNACE.defaultBlockState()
                             :farmhouse?Blocks.COMPOSTER.defaultBlockState()
@@ -342,12 +397,27 @@ public final class WinterfellWorldgenV3 {
             if(outer||inner){
                 int height=outer?23:29;
                 int wallFoot=naturalTopY(x,z);
-                int gateWidth=outer?10:7;
-                boolean eastGate=rx>0&&arx>=146&&(
-                        (arz>=15-gateWidth&&arz<=15+gateWidth)
-                        || (inner&&((rz>=88&&rz<=100)||(rz>=113&&rz<=124)||(rz>=136&&rz<=148))));
+                // The outer routes cross the wall at E(-23,15), W(15),
+                // N(+158) and S(+158). Internal court paths cross the inner
+                // east/west walls at z=15, with two additional east exits.
+                // These are derived from the UNCHANGED V3 road centre-lines.
+                boolean east=rx>=0 && arx>=166 && arx>=arz;
+                boolean west=rx<=0 && arx>=166 && arx>=arz;
+                boolean north=rz<=0 && arz>=166 && arz>=arx;
+                boolean south=rz>=0 && arz>=166 && arz>=arx;
+                boolean gate = outer
+                        ? ((east && (Math.abs(rz-15)<=5 || Math.abs(rz+23)<=4))
+                        || (west && Math.abs(rz-15)<=4)
+                        || (north && Math.abs(rx-158)<=4)
+                        || (south && Math.abs(rx-158)<=4))
+                        : ((rx>0 && arx>=146 &&
+                            (Math.abs(rz-15)<=5 || Math.abs(rz-94)<=4
+                                || Math.abs(rz-118)<=4))
+                        || (rx<0 && arx>=146 && Math.abs(rz-15)<=5));
                 for(int y=wallFoot-5;y<=wallFoot+height;y++) {
-                    if(eastGate && y>=wallFoot+1 && y<wallFoot+8) {
+                    // A 9-block-tall arched passage, framed by an intact
+                    // curtain wall. No infinite wall gaps or blocked roads.
+                    if(gate && y>=wallFoot+1 && y<=wallFoot+8) {
                         block(chunk,x,y,z,AIR);
                     } else {
                         block(chunk,x,y,z,BRICKS);
@@ -389,7 +459,25 @@ public final class WinterfellWorldgenV3 {
                 block(c,x,y,z,AIR);
             else block(c,x,y,z,BRICKS);
         }
-        if(dx==0 || dz==0)block(c,x,foot+height+1,z,BRICKS);
+        // Crenellated battlement and a tiered dark-slate pitched cap, rather
+        // than the original flat stone cross. All blocks stay in this chunk.
+        int edgeRadius2=(rad-2)*(rad-2);
+        if (d2>=edgeRadius2 && ((rx+rz)&3)<2)
+            block(c,x,foot+height+1,z,BRICKS);
+        for(int rise=1;rise<=5;rise++) {
+            int rr=Math.max(1,rad+1-(rise*2));
+            if(d2<=rr*rr) {
+                block(c,x,foot+height+rise,z,
+                    rise==5?Blocks.STONE_BRICKS.defaultBlockState()
+                           :Blocks.DEEPSLATE_TILES.defaultBlockState());
+            }
+        }
+        // A few defensive windows, without opening the floor or wall behind.
+        if (d2>(rad-1)*(rad-1) && d2<=rad*rad &&
+                ((rx+rz)%5==0)) {
+            for(int h:new int[]{9,19})
+                block(c,x,foot+h,z,Blocks.IRON_BARS.defaultBlockState());
+        }
     }
 
     private static void keep(ChunkAccess c,int x,int z,int rx,int rz,int centerGround) {
@@ -405,8 +493,37 @@ public final class WinterfellWorldgenV3 {
             for(int y=floor+1;y<=roofY+3;y++)block(c,x,y,z,AIR);
             boolean outer=borderX<3||borderZ<3;
             if(outer)for(int y=floor+1;y<=floor+22;y++)block(c,x,y,z,BRICKS);
-            for(int y:new int[]{8,16})if(y<roofY && !outer && !(rx>=14&&rx<=19&&rz>=58&&rz<=69))
-                block(c,x,floor+y,z,Blocks.SPRUCE_PLANKS.defaultBlockState());
+            boolean firstStair=rx>=28&&rx<=32&&rz>=63&&rz<=70;
+            boolean secondStair=rx>=-32&&rx<=-28&&rz>=104&&rz<=111;
+            // Walking stairs pass through a hole in the appropriate deck.
+            for(int deck:new int[]{8,16}) {
+                boolean stairOpening=(deck==8&&firstStair)||(deck==16&&secondStair);
+                if(deck<roofY && !outer &&
+                        !(rx>=14&&rx<=19&&rz>=58&&rz<=69) && !stairOpening)
+                    block(c,x,floor+deck,z,Blocks.SPRUCE_PLANKS.defaultBlockState());
+            }
+            // Grand Keep stair flights rise eight blocks and emerge through
+            // the corresponding floor opening. A centered 3m tread provides
+            // enough headroom to walk between the storeys.
+            if (rx>=28&&rx<=32&&rz>=63&&rz<=70) {
+                int step=rz-63;
+                block(c,x,floor+1+step,z,Blocks.STONE_BRICK_STAIRS.defaultBlockState()
+                        .setValue(StairBlock.FACING,Direction.SOUTH));
+                for(int yy=floor+2+step;yy<=floor+4+step;yy++)block(c,x,yy,z,AIR);
+            }
+            if (rx>=-32&&rx<=-28&&rz>=104&&rz<=111) {
+                int step=111-rz;
+                block(c,x,floor+9+step,z,Blocks.STONE_BRICK_STAIRS.defaultBlockState()
+                        .setValue(StairBlock.FACING,Direction.NORTH));
+                for(int yy=floor+10+step;yy<=floor+12+step;yy++)block(c,x,yy,z,AIR);
+            }
+            // Light fixtures on ground and upper floors. Palace interiors
+            // should not be completely dark even before NPCs move in.
+            if ((rx==-37||rx==-17||rx==0||rx==17||rx==37)
+                    && (rz==69||rz==91||rz==112)) {
+                for(int deck:new int[]{0,8,16})
+                    block(c,x,floor+deck+1,z,Blocks.LANTERN.defaultBlockState());
+            }
             if(borderZ<3&&inset>0)for(int y=floor+23;y<roofY;y++)block(c,x,y,z,BRICKS);
             block(c,x,roofY,z,Blocks.DEEPSLATE_TILES.defaultBlockState());
             // Two-storey narrow windows spaced on all four walls.
@@ -416,6 +533,16 @@ public final class WinterfellWorldgenV3 {
             }
             if(rz==58&&rx>=15&&rx<=19){
                 for(int y=floor+1;y<=floor+7;y++)block(c,x,y,z,AIR);
+                // Two solid double doors in the existing grand arch. The
+                // passage is not a hollow recess anymore.
+                if(rx==16||rx==17) {
+                    BlockState door=Blocks.SPRUCE_DOOR.defaultBlockState()
+                        .setValue(DoorBlock.FACING,Direction.NORTH)
+                        .setValue(DoorBlock.HINGE,
+                                rx==16?DoorHingeSide.LEFT:DoorHingeSide.RIGHT);
+                    block(c,x,floor+1,z,door.setValue(DoorBlock.HALF,DoubleBlockHalf.LOWER));
+                    block(c,x,floor+2,z,door.setValue(DoorBlock.HALF,DoubleBlockHalf.UPPER));
+                }
             }
         }
         for(int tx:new int[]{-44,44})for(int tz:new int[]{58,121})
