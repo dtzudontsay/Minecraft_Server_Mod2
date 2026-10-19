@@ -12,9 +12,9 @@ import dev.dtzudontsay.knownworld.client.casestudy.WinterfellClientUi;
 public final class KnownWorldAtlasClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        if (!KnownWorldAtlasConfig.ENABLED) return;
-
         WinterfellClientUi.register();
+
+        if (!KnownWorldAtlasConfig.ENABLED) return;
 
         KeyMapping.Category category = KeyMapping.Category.register(
                 Identifier.fromNamespaceAndPath("knownworld", "atlas"));
