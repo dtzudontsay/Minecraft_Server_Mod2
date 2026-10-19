@@ -13,11 +13,13 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.EntityHitResult;
 
 /**
- * Registered by the client entrypoint;
- * dedicated servers never load this class.
+ * Client registration for Winterfell character interactions.
  *
- * Right-click opens the original character inspection screen.
- * K opens the separate LLM dialogue interface.
+ * Right-click retains the existing character inspection.
+ * K starts dialogue only while playing normally.
+ *
+ * Once the dialogue is open, K is an ordinary typing key.
+ * Escape or the on-screen X closes the dialogue.
  */
 public final class WinterfellClientUi {
 
@@ -25,7 +27,7 @@ public final class WinterfellClientUi {
 
     public static void register() {
 
-        // Preserve the existing right-click character inspection screen.
+        // Preserve the original right-click character inspector.
         ClientPlayNetworking.registerGlobalReceiver(
                 KnownWorldUiPackets.CharacterSheet.TYPE,
                 (payload, context) -> context.client().execute(() ->
@@ -35,7 +37,7 @@ public final class WinterfellClientUi {
                 )
         );
 
-        // Open the dedicated dialogue screen after server validation.
+        // Server validates the selected NPC before opening dialogue.
         ClientPlayNetworking.registerGlobalReceiver(
                 WinterfellConversationPackets.Opened.TYPE,
                 (payload, context) -> context.client().execute(() ->
@@ -50,10 +52,11 @@ public final class WinterfellClientUi {
                 )
         );
 
-        // Receive a conversation line from the server.
+        // Receive dialogue lines.
         ClientPlayNetworking.registerGlobalReceiver(
                 WinterfellConversationPackets.Line.TYPE,
                 (payload, context) -> context.client().execute(() -> {
+
                     if (context.client().gui.screen()
                             instanceof WinterfellDialogueScreen screen
                             && screen.hasSession(payload.session())) {
@@ -70,6 +73,7 @@ public final class WinterfellClientUi {
         ClientPlayNetworking.registerGlobalReceiver(
                 WinterfellConversationPackets.Status.TYPE,
                 (payload, context) -> context.client().execute(() -> {
+
                     if (context.client().gui.screen()
                             instanceof WinterfellDialogueScreen screen
                             && screen.hasSession(payload.session())) {
@@ -82,7 +86,6 @@ public final class WinterfellClientUi {
                 })
         );
 
-        // Register K as the NPC conversation key.
         KeyMapping.Category category = KeyMapping.Category.register(
                 Identifier.fromNamespaceAndPath(
                         "knownworld",
@@ -107,35 +110,36 @@ public final class WinterfellClientUi {
                     continue;
                 }
 
-                // Close an existing dialogue screen.
-                if (client.gui.screen()
-                        instanceof WinterfellDialogueScreen) {
+                /*
+                 * Crucial fix:
+                 *
+                 * Never use K to close dialogue.
+                 * In fact, ignore the global dialogue shortcut
+                 * whenever ANY screen is currently open.
+                 *
+                 * This prevents typing "k" in a conversation
+                 * from triggering the world-level key binding.
+                 */
+                if (client.gui.screen() != null) {
+                    continue;
+                }
 
-                    client.gui.setScreen(null);
+                if (client.hitResult instanceof EntityHitResult hit) {
 
-                } else if (client.gui.screen() == null) {
+                    ClientPlayNetworking.send(
+                            new WinterfellConversationPackets.OpenRequest(
+                                    hit.getEntity().getId()
+                            )
+                    );
 
-                    // Request a conversation with the targeted entity.
-                    if (client.hitResult instanceof EntityHitResult hit) {
+                } else {
 
-                        ClientPlayNetworking.send(
-                                new WinterfellConversationPackets.OpenRequest(
-                                        hit.getEntity().getId()
-                                )
-                        );
-
-                    } else {
-
-                        // Minecraft 26.3:
-                        // LocalPlayer.displayClientMessage no longer exists.
-                        // Display the message through the HUD instead.
-                        client.gui.hud.setOverlayMessage(
-                                Component.literal(
-                                        "Look at a nearby Winterfell NPC and press K to speak."
-                                ),
-                                false
-                        );
-                    }
+                    client.gui.hud.setOverlayMessage(
+                            Component.literal(
+                                    "Look at a nearby Winterfell NPC and press K to speak."
+                            ),
+                            false
+                    );
                 }
             }
         });

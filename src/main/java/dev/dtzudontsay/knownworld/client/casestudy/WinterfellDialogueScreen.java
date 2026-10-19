@@ -18,13 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Dedicated K-key dialogue screen.
+ * Dedicated Winterfell NPC conversation screen.
  *
- * The right-click character inspector is a completely separate
- * screen and remains unchanged.
+ * K opens this screen from ordinary gameplay.
+ * While the screen is open, K is available for typing.
  *
- * Closing this screen sends a network message so that the server
- * can release the conversation actor's movement lock.
+ * Escape is the keyboard shortcut for closing.
+ * The on-screen X also closes the window.
+ *
+ * Closing sends a packet to release the NPC movement lock.
  */
 public final class WinterfellDialogueScreen extends Screen {
 
@@ -51,7 +53,7 @@ public final class WinterfellDialogueScreen extends Screen {
     private boolean busy;
     private boolean closeSent;
 
-    /** Zero = latest messages; positive = scroll upward. */
+    /** Zero means the latest lines; positive values scroll upward. */
     private int scrollLines;
 
     public WinterfellDialogueScreen(
@@ -86,7 +88,9 @@ public final class WinterfellDialogueScreen extends Screen {
             return;
         }
 
-        transcript.add(new ChatLine(speaker, text));
+        transcript.add(
+                new ChatLine(speaker, text)
+        );
 
         while (transcript.size() > 70) {
             transcript.removeFirst();
@@ -138,7 +142,9 @@ public final class WinterfellDialogueScreen extends Screen {
 
         super.init();
 
-        String draft = input == null ? "" : input.getValue();
+        String draft = input == null
+                ? ""
+                : input.getValue();
 
         int x = conversationX();
         int y = top();
@@ -158,6 +164,7 @@ public final class WinterfellDialogueScreen extends Screen {
 
         input.setMaxLength(400);
         input.setValue(draft);
+
         addRenderableWidget(input);
 
         sendButton = addRenderableWidget(
@@ -212,9 +219,10 @@ public final class WinterfellDialogueScreen extends Screen {
     }
 
     /**
-     * Closing the screen frees the selected NPC immediately.
-     * Do not send a second close packet if Minecraft invokes
-     * this method more than once.
+     * Release the NPC's server-side movement lock.
+     *
+     * This method is called by Escape via Screen's default
+     * keyboard handling and by the on-screen X button.
      */
     @Override
     public void onClose() {
@@ -296,9 +304,7 @@ public final class WinterfellDialogueScreen extends Screen {
         );
 
         /*
-         * Live portrait of the selected Minecraft entity.
-         * The selected NPC may be paused in the game world,
-         * but its render model remains available here.
+         * Live close-up of the selected physical NPC.
          */
         int px = x + 11;
         int py = y + 62;
@@ -341,7 +347,6 @@ public final class WinterfellDialogueScreen extends Screen {
 
         } else {
 
-            // Fallback if the physical projection disappears.
             int mx = px + pw / 2;
 
             int headW = Math.max(30, pw / 3);
@@ -441,6 +446,7 @@ public final class WinterfellDialogueScreen extends Screen {
             );
 
             for (String segment : segments) {
+
                 visibleRows.add(
                         new DrawLine(segment, color)
                 );
@@ -514,7 +520,7 @@ public final class WinterfellDialogueScreen extends Screen {
 
         gfx.text(
                 font,
-                "Enter / Say: speak  •  Mouse wheel: history  •  Esc / K: leave",
+                "Enter / Say: speak  •  Mouse wheel: history  •  Esc: leave",
                 cx + 5,
                 y + h - 30,
                 DIM,
@@ -603,12 +609,14 @@ public final class WinterfellDialogueScreen extends Screen {
             return true;
         }
 
-        if (event.key() == InputConstants.KEY_K) {
-
-            onClose();
-            return true;
-        }
-
+        /*
+         * No special KEY_K handling.
+         *
+         * The focused EditBox receives K just like any
+         * other letter, allowing normal typing.
+         *
+         * Screen's default Escape handling closes the UI.
+         */
         return super.keyPressed(event);
     }
 

@@ -1,15 +1,19 @@
+
 {
   "schemaVersion": 1,
   "id": "knownworld",
   "version": "${version}",
   "name": "Known World",
   "description": "A 1:1-scale Minecraft world project based primarily on A Song of Ice and Fire geography.",
-  "authors": ["Sandro"],
+  "authors": [
+    "Sandro"
+  ],
   "environment": "*",
   "entrypoints": {
     "main": [
       "dev.dtzudontsay.knownworld.KnownWorld",
-      "dev.dtzudontsay.knownworld.simulation.economy.EconomyRuntime"
+      "dev.dtzudontsay.knownworld.simulation.economy.EconomyRuntime",
+      "dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellOllamaPreloader"
     ],
     "client": [
       "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"
