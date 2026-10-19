@@ -372,3 +372,4 @@ public final class SocialWitnessRuntime implements ModInitializer {
         lastScanTick = 0;
     }
 }
+

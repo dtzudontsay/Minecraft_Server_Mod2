@@ -421,4 +421,4 @@ Do not let dialogue bypass server-side simulation rules.
 - A3 onward: not yet implemented in this integration programme.
 
 Do not mark a batch COMPLETE merely because its files were supplied.
-Completion requires the relevant acceptance tests to pass.
+Completion requires the relevant acceptance tests to pass
