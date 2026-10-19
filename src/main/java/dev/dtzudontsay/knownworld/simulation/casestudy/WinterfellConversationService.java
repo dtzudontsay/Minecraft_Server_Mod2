@@ -117,7 +117,7 @@ public final class WinterfellConversationService {
         String subtitle = pretty(role) + "  •  " + pretty(profile.culture())
                 + "  •  " + pretty(profile.religion());
         ServerPlayNetworking.send(player, new WinterfellConversationPackets.Opened(
-                session.token, name, trim(subtitle, 256)));
+                session.token, name, trim(subtitle, 256), actor.getId()));
         String key = apiKey();
         ServerPlayNetworking.send(player, new WinterfellConversationPackets.Status(session.token,
                 key.isEmpty() ? "Server API key not configured. See docs/step3/WINTERFELL_LLM_DIALOGUE.md."
