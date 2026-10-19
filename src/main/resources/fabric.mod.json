@@ -13,7 +13,8 @@
     "main": [
       "dev.dtzudontsay.knownworld.KnownWorld",
       "dev.dtzudontsay.knownworld.simulation.economy.EconomyRuntime",
-      "dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellOllamaPreloader"
+      "dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellOllamaPreloader",
+      "dev.dtzudontsay.knownworld.simulation.integration.SocialWitnessRuntime"
     ],
     "client": [
       "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"
