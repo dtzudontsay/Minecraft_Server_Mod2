@@ -24,7 +24,7 @@ public final class WinterfellClientUi {
         ClientPlayNetworking.registerGlobalReceiver(WinterfellConversationPackets.Opened.TYPE,
                 (payload, context) -> context.client().execute(() ->
                         context.client().gui.setScreen(new WinterfellDialogueScreen(
-                                payload.session(), payload.name(), payload.subtitle()))));
+                                payload.session(), payload.name(), payload.subtitle(), payload.entityId()))));
 
         ClientPlayNetworking.registerGlobalReceiver(WinterfellConversationPackets.Line.TYPE,
                 (payload, context) -> context.client().execute(() -> {
