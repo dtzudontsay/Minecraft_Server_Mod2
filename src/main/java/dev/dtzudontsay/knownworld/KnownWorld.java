@@ -37,6 +37,7 @@ import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV3Runtime;
 import dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellConversationPackets;
+import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellConversationService;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.npc.religion.ReligiousInstitutionCatalog;
 import dev.dtzudontsay.knownworld.simulation.persistence.HistoricalChroniclePersistence;
@@ -96,7 +97,6 @@ public final class KnownWorld implements ModInitializer {
         SummerIslesFeatureRegistry.bootstrap();
         SouthWestEssosFeatureRegistry.bootstrap();
         NorthWestEssosFeatureRegistry.bootstrap();
-        NorthEssosFeatureRegistry.bootstrap();
         SouthEssosFeatureRegistry.bootstrap();
         NorthEastEssosFeatureRegistry.bootstrap();
         SouthEastEssosFeatureRegistry.bootstrap();
