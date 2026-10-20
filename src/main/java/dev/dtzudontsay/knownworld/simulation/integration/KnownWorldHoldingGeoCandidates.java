@@ -49,48 +49,70 @@ public final class KnownWorldHoldingGeoCandidates implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, access, environment) ->
-                dispatcher.register(Commands.literal("kwgeolinks")
-                        .then(Commands.literal("status").executes(ctx -> {
-                            Map<String, Holding> all = all();
-                            long withCandidate = all.values().stream()
-                                    .filter(h -> !h.candidates().isEmpty()).count();
-                            long domains = all.values().stream()
-                                    .filter(Holding::domain).count();
-                            ctx.getSource().sendSuccess(() -> Component.literal(
-                                    "[Known World / Geo evidence] holdings=" + all.size()
-                                            + " | with candidate map markers=" + withCandidate
-                                            + " | domains=" + domains
-                                            + " | approved building sites=0"), false);
-                            return 1;
-                        }))
-                        .then(Commands.literal("holding")
-                                .then(Commands.argument("id", StringArgumentType.word())
-                                        .executes(ctx -> {
-                                            String id = StringArgumentType.getString(ctx, "id");
-                                            Holding h = all().get(id);
-                                            if (h == null) {
-                                                ctx.getSource().sendFailure(Component.literal(
-                                                        "Unknown authored holding ID: " + id));
-                                                return 0;
-                                            }
-                                            ctx.getSource().sendSuccess(() -> Component.literal(
-                                                    "[Geo evidence] " + h.authoredHoldingId()
-                                                            + " -> " + h.worldLocationId()
-                                                            + " | " + h.holdingType()
-                                                            + " | " + h.status()
-                                                            + " | markers=" + h.candidates().size()), false);
-                                            for (Marker marker : h.candidates()) {
-                                                ctx.getSource().sendSuccess(() -> Component.literal(
-                                                        "  " + marker.id() + " X=" + marker.candidateX()
-                                                                + " Z=" + marker.candidateZ()
-                                                                + " | " + marker.identityEvidence()
-                                                                + " | land=" + marker.landMaskStatus()
-                                                                + " | NOT BUILD-APPROVED"), false);
-                                            }
-                                            return 1;
-                                        }))));
+        CommandRegistrationCallback.EVENT.register((dispatcher, access, environment) -> {
+            var root = Commands.literal("kwgeolinks");
+
+            root.then(Commands.literal("status")
+                    .executes(context -> showStatus(context.getSource())));
+
+            var holding = Commands.literal("holding");
+            holding.then(Commands.argument("id", StringArgumentType.word())
+                    .executes(context -> showHolding(
+                            context.getSource(),
+                            StringArgumentType.getString(context, "id")
+                    )));
+            root.then(holding);
+            dispatcher.register(root);
+        });
+
         KnownWorld.LOGGER.info("B2.2 geographic-evidence commands registered");
+    }
+
+    private static int showStatus(net.minecraft.commands.CommandSourceStack source) {
+        Map<String, Holding> entries = all();
+        long linked = entries.values().stream()
+                .filter(holding -> !holding.candidates().isEmpty())
+                .count();
+        long domains = entries.values().stream()
+                .filter(Holding::domain)
+                .count();
+
+        source.sendSuccess(() -> Component.literal(
+                "[Known World / Geo evidence] holdings=" + entries.size()
+                        + " | with candidate map markers=" + linked
+                        + " | domains=" + domains
+                        + " | approved building sites=0"), false);
+        return 1;
+    }
+
+    private static int showHolding(
+            net.minecraft.commands.CommandSourceStack source,
+            String authoredId
+    ) {
+        Holding holding = all().get(authoredId);
+        if (holding == null) {
+            source.sendFailure(Component.literal(
+                    "Unknown authored holding ID: " + authoredId));
+            return 0;
+        }
+
+        source.sendSuccess(() -> Component.literal(
+                "[Geo evidence] " + holding.authoredHoldingId()
+                        + " -> " + holding.worldLocationId()
+                        + " | " + holding.holdingType()
+                        + " | " + holding.status()
+                        + " | markers=" + holding.candidates().size()), false);
+
+        for (Marker marker : holding.candidates()) {
+            source.sendSuccess(() -> Component.literal(
+                    "  " + marker.id()
+                            + " X=" + marker.candidateX()
+                            + " Z=" + marker.candidateZ()
+                            + " | " + marker.identityEvidence()
+                            + " | land=" + marker.landMaskStatus()
+                            + " | NOT BUILD-APPROVED"), false);
+        }
+        return 1;
     }
 
     public static synchronized Map<String, Holding> all() {
