@@ -1,0 +1,1483 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Authored B2.3 world research, field-level sources and provisional overrides, not world spawn authority",
+  "sources": {
+    "project:marker_catalog": "tools/geodata/output/authored_places/reconciled_2026-10-17/marker_catalog_active_253.csv",
+    "project:marker_name_crosswalk": "tools/geodata/research_marker_name_index.csv; tools/geodata/sw_marker_name_crosswalk.csv",
+    "project:b2_marker_links": "tools/geodata/output/b2_holding_links/markers_253_audit.csv",
+    "project:holding_geo_candidates": "src/main/resources/data/knownworld/scenarios/agot_298_ac/holding_geo_candidates.json",
+    "project:landed_holdings": "src/main/resources/data/knownworld/scenarios/agot_298_ac/landed_holdings.json",
+    "project:locations_reference": "src/main/resources/data/knownworld/reference/locations.json; src/main/resources/data/knownworld/reference/locations_holdings.json",
+    "project:research_dossiers": "docs/research/geography/KNOWN_WORLD_RESEARCH_2_1_{ZONE}_298AC.md",
+    "wiki:kings_landing": "https://awoiaf.westeros.org/index.php/King%27s_Landing",
+    "wiki:five_forts": "https://awoiaf.westeros.org/index.php/Five_Forts",
+    "wiki:asshai": "https://awoiaf.westeros.org/index.php/Asshai",
+    "wiki:stygai": "https://awoiaf.westeros.org/index.php/Stygai",
+    "wiki:braavos": "https://awoiaf.westeros.org/index.php/Braavos",
+    "wiki:old_ghis": "https://awoiaf.westeros.org/index.php/Old_Ghis",
+    "wiki:valyria": "https://awoiaf.westeros.org/index.php/Valyria",
+    "wiki:sarnor": "https://awoiaf.westeros.org/index.php/Kingdom_of_Sarnor",
+    "wiki:vaes_dothrak": "https://awoiaf.westeros.org/index.php/Vaes_Dothrak",
+    "wiki:greywater_watch": "https://awoiaf.westeros.org/index.php/Greywater_Watch",
+    "wiki:white_harbor": "https://awoiaf.westeros.org/index.php/White_Harbor",
+    "wiki:summer_isles": "https://awoiaf.westeros.org/index.php/Summer_Isles",
+    "wiki:tall_trees": "https://awoiaf.westeros.org/index.php/Tall_Trees_Town",
+    "wiki:yi_ti": "https://awoiaf.westeros.org/index.php/Yi_Ti",
+    "wiki:nefer": "https://awoiaf.westeros.org/index.php/Nefer",
+    "wiki:volantis": "https://awoiaf.westeros.org/index.php/Volantis",
+    "wiki:qarth": "https://awoiaf.westeros.org/index.php/Pureborn",
+    "wiki:storm_end": "https://awoiaf.westeros.org/index.php/Storm%27s_End",
+    "wiki:new_ghis": "https://awoiaf.westeros.org/index.php/New_Ghis",
+    "wiki:astapor": "https://awoiaf.westeros.org/index.php/Unsullied"
+  },
+  "sites": {
+    "NW-008": {
+      "siteKind": "ACTIVE_FORTRESS",
+      "siteKindGrade": "CONFIRMED",
+      "habitation": "INHABITED",
+      "habitationGrade": "CONFIRMED",
+      "culture": "Night's Watch sworn brothers and service personnel",
+      "religion": "Vows supersede lay affiliation; mixed old gods/Faith of Seven",
+      "government": "Night's Watch chain of command; commanders are appointed, not inheritable lords",
+      "governmentGrade": "CONTEXT",
+      "notes": "At 298 AC a manned Night Watch castle; guards, stewards and builders. Residents must be sworn individuals, not a duplicated civilian town.",
+      "occupationModel": "wall_active",
+      "population": {
+        "baseline": 300,
+        "min": 80,
+        "max": 700,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "kindSources": [
+        "project:dossier_nw"
+      ],
+      "habitationSources": [
+        "project:dossier_nw"
+      ]
+    },
+    "NW-017": {
+      "siteKind": "ACTIVE_FORTRESS",
+      "siteKindGrade": "CONFIRMED",
+      "habitation": "INHABITED",
+      "habitationGrade": "CONFIRMED",
+      "culture": "Night's Watch sworn brothers and service personnel",
+      "religion": "Vows supersede lay affiliation; mixed old gods/Faith of Seven",
+      "government": "Night's Watch chain of command; commanders are appointed, not inheritable lords",
+      "governmentGrade": "CONTEXT",
+      "notes": "At 298 AC a manned Night Watch castle; guards, stewards and builders. Residents must be sworn individuals, not a duplicated civilian town.",
+      "occupationModel": "wall_active",
+      "population": {
+        "baseline": 300,
+        "min": 80,
+        "max": 700,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "kindSources": [
+        "project:dossier_nw"
+      ],
+      "habitationSources": [
+        "project:dossier_nw"
+      ]
+    },
+    "NW-020": {
+      "siteKind": "ACTIVE_FORTRESS",
+      "siteKindGrade": "CONFIRMED",
+      "habitation": "INHABITED",
+      "habitationGrade": "CONFIRMED",
+      "culture": "Night's Watch sworn brothers and service personnel",
+      "religion": "Vows supersede lay affiliation; mixed old gods/Faith of Seven",
+      "government": "Night's Watch chain of command; commanders are appointed, not inheritable lords",
+      "governmentGrade": "CONTEXT",
+      "notes": "At 298 AC a manned Night Watch castle; guards, stewards and builders. Residents must be sworn individuals, not a duplicated civilian town.",
+      "occupationModel": "wall_active",
+      "population": {
+        "baseline": 300,
+        "min": 80,
+        "max": 700,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "kindSources": [
+        "project:dossier_nw"
+      ],
+      "habitationSources": [
+        "project:dossier_nw"
+      ]
+    },
+    "NW-009": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-010": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-011": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-012": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-013": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-014": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-015": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-016": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-018": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-019": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-021": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-MISSING-WALL-01": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-MISSING-WALL-02": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-MISSING-WALL-03": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-MISSING-WALL-04": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "government": "Night Watch historical jurisdiction; no independently staffed garrison assumed",
+      "notes": "One of the Wall castles not known to be garrisoned in 298 AC. Remains and potential future reoccupation, not a living 298 AC settlement."
+    },
+    "NW-004": {
+      "siteKind": "LANDMARK",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Fist of the First Men: historic ringfort/landmark; do not seed a permanent civilian town."
+    },
+    "NW-005": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Hardhome: destroyed wildling settlement before 298 AC; possible travelers only, no assumed civic census."
+    },
+    "NW-007": {
+      "siteKind": "VILLAGE",
+      "habitation": "INHABITED",
+      "government": "Craster autonomous homestead; not a feudal house",
+      "population": {
+        "baseline": 14,
+        "min": 4,
+        "max": 40,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Remote single-family/women-and-children homestead, not a castle garrison. Family and household model is exceptional."
+    },
+    "NW-029": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "siteKindGrade": "CONFIRMED",
+      "population": {
+        "baseline": 5000,
+        "min": 1200,
+        "max": 7000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "A5 screenshot shows ~5,012 NPC identities, but old case-study authored census calibrates 1,200; this is a MOD planning value, not canon."
+      },
+      "culture": "Northern First Men and Stark retainers; winter-town visitors",
+      "religion": "Predominantly old gods; Faith of the Seven minority",
+      "government": "Lord of Winterfell, House Stark (scenario holder Eddard Stark)",
+      "governmentGrade": "CONFIRMED",
+      "notes": "Historic Stark seat; Winter Town and castle must not be duplicated as independent 5,000-person cities. Reuse the existing V3 resident identity ledger.",
+      "kindSources": [
+        "project:dossier_nw"
+      ],
+      "governmentSources": [
+        "project:landed_holdings"
+      ]
+    },
+    "NW-034": {
+      "siteKind": "MAJOR_CITY",
+      "siteKindGrade": "CONFIRMED",
+      "culture": "North/Reach-influenced White Harbor merchant culture",
+      "religion": "Faith of the Seven prominent; old gods also present",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:white_harbor"
+      ],
+      "government": "House Manderly at New Castle; White Harbor is not a new castle-only site",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:white_harbor"
+      ],
+      "population": {
+        "baseline": 45000,
+        "min": 20000,
+        "max": 90000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Major North port, guilds, ships, customs, docks, New Castle, Wolf Den. Treat castle as subsite within city, not separate city population.",
+      "sources": [
+        "wiki:white_harbor"
+      ],
+      "kindSources": [
+        "wiki:white_harbor"
+      ],
+      "cultureGrade": "CONTEXT"
+    },
+    "NW-039": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "culture": "Crannogmen of the Neck",
+      "religion": "Old gods",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:greywater_watch"
+      ],
+      "government": "Howland Reed / House Reed",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:greywater_watch"
+      ],
+      "population": {
+        "baseline": 500,
+        "min": 60,
+        "max": 1700,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Greywater Watch is built on moving crannogs. A fixed map marker is a region-level locator only: never build a static castle at that exact pixel without an explicit exception.",
+      "sources": [
+        "wiki:greywater_watch"
+      ]
+    },
+    "NW-001": {
+      "siteKind": "VILLAGE",
+      "culture": "Thenn free folk / northern tribal society",
+      "government": "Thenn magnar tribal leadership rather than Westerosi feudal rule",
+      "population": {
+        "baseline": 1900,
+        "min": 400,
+        "max": 4800,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Beyond the Wall: free folk territory and tribal communities rather than one giant walled city."
+    },
+    "NW-022": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 650,
+        "min": 150,
+        "max": 2400,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Moles Town serving Castle Black, taverns and service trades, not a lordly castle."
+    },
+    "NW-023": {
+      "siteKind": "LANDMARK",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Queenscrown abandoned ruin, no automatic garrison or household."
+    },
+    "NW-035": {
+      "siteKind": "ACTIVE_FORTRESS",
+      "occupationModel": "fortress",
+      "population": {
+        "baseline": 125,
+        "min": 30,
+        "max": 500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Moat Cailin is a strategic ruin/fortification with variable 298 AC garrison, not a populous city. Do not preload future Greyjoy occupation."
+    },
+    "SW-046": {
+      "siteKind": "MAJOR_CITY",
+      "siteKindGrade": "CONFIRMED",
+      "habitation": "INHABITED",
+      "habitationGrade": "CONFIRMED",
+      "population": {
+        "baseline": 500000,
+        "min": 450000,
+        "max": 550000,
+        "grade": "CONFIRMED",
+        "sources": [
+          "wiki:kings_landing"
+        ],
+        "note": "~500,000 is the in-story approximate estimate, not precise individual enumeration."
+      },
+      "culture": "Cosmopolitan Crownlands and migrants from Westeros",
+      "religion": "Faith of the Seven with minority faiths",
+      "government": "Iron Throne under Robert Baratheon; City Watch, Small Council and guilds",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:kings_landing"
+      ],
+      "notes": "City contains Red Keep; do not create a second 500,000 population when linking royal castle. Keep Red Keep as a building/subholding.",
+      "sources": [
+        "wiki:kings_landing"
+      ],
+      "kindSources": [
+        "wiki:kings_landing"
+      ],
+      "habitationSources": [
+        "wiki:kings_landing"
+      ]
+    },
+    "SW-060": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "government": "Renly Baratheon holds Storm End in the 298 AC starting context",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:storm_end"
+      ],
+      "population": {
+        "baseline": 4000,
+        "min": 700,
+        "max": 12500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Monumental seat, military garrison and castle household. Stormlands political domain is separate from the castle.",
+      "sources": [
+        "wiki:storm_end"
+      ]
+    },
+    "SW-084": {
+      "siteKind": "MAJOR_CITY",
+      "population": {
+        "baseline": 210000,
+        "min": 75000,
+        "max": 490000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "government": "House Hightower city institutions / Citadel and Faith influence",
+      "notes": "Oldtown contains the Hightower, Citadel, Starry Sept. These are subsites, not duplicate city residents."
+    },
+    "SW-041": {
+      "siteKind": "MAJOR_CITY",
+      "population": {
+        "baseline": 135000,
+        "min": 30000,
+        "max": 310000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "West coast mercantile city under Lannister influence; do not count Casterly Rock separately as another city population."
+    },
+    "SW-010": {
+      "siteKind": "MAJOR_CITY",
+      "population": {
+        "baseline": 45000,
+        "min": 18000,
+        "max": 105000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Vale maritime city: multiple noble holdings in Gulltown are distinct political interests at ONE settlement/site; not three cities."
+    },
+    "SW-017": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 2500,
+        "min": 700,
+        "max": 8500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Saltpans: 2 holding records share ONE physical site, not duplicate town populations."
+    },
+    "SW-020": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "population": {
+        "baseline": 2300,
+        "min": 300,
+        "max": 8000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Harrenhal is a huge partially ruined but inhabited castle at scenario start. Do not treat structural decay as zero residents."
+    },
+    "SW-004": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Oldstones historical ruins; do not add resident ruling family merely because former kings once held the site."
+    },
+    "SW-063": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Summerhall ruined Targaryen summer palace in 298 AC."
+    },
+    "SW-078": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Tower of Joy historic ruin; no standing royal household at 298 AC."
+    },
+    "SW-007": {
+      "siteKind": "ACTIVE_FORTRESS",
+      "population": {
+        "baseline": 340,
+        "min": 80,
+        "max": 1100,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Bloody Gate: military pass fort, not a medium town."
+    },
+    "SW-013": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 80,
+        "min": 12,
+        "max": 360,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Roadside inn and dependent hamlet. Distinguish inn staff and transient travelers from permanent census."
+    },
+    "SW-014": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 80,
+        "min": 12,
+        "max": 360,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Roadside inn and dependent hamlet. Distinguish inn staff and transient travelers from permanent census."
+    },
+    "SW-021": {
+      "siteKind": "SACRED_CENTER",
+      "population": {
+        "baseline": 65,
+        "min": 15,
+        "max": 250,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Quiet Isle religious community and occasional visitors, no noble settlement-scale workforce."
+    },
+    "SW-032": {
+      "siteKind": "ACTIVE_FORTRESS",
+      "population": {
+        "baseline": 1700,
+        "min": 250,
+        "max": 5000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Dragonstone: ancient island fortress; Stannis and island hinterland households separated, no auto-claim of Targaryen possession at 298 AC."
+    },
+    "SW-038": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "population": {
+        "baseline": 5500,
+        "min": 700,
+        "max": 16000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Casterly Rock is immense Lannister fortress, distinct from nearby Lannisport city population."
+    },
+    "SW-067": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "population": {
+        "baseline": 8000,
+        "min": 1500,
+        "max": 24000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Highgarden includes noble household, garrison, servants and nearby agricultural villages. No precise book census."
+    },
+    "SW-094": {
+      "siteKind": "SACRED_CENTER",
+      "population": {
+        "baseline": 280,
+        "min": 50,
+        "max": 1200,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Water Gardens: royal Dornish gardens and staff; not independent city or town."
+    },
+    "SW-099": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 2200,
+        "min": 500,
+        "max": 6500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Arbor subdistrict/vineyard placement proposal, not independently ruling kingdom or city; red X identifies one part of an island territory."
+    },
+    "SW-101": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 2200,
+        "min": 500,
+        "max": 6500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Arbor subdistrict/vineyard placement proposal, not independently ruling kingdom or city; red X identifies one part of an island territory."
+    },
+    "SW-104": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 2200,
+        "min": 500,
+        "max": 6500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Arbor subdistrict/vineyard placement proposal, not independently ruling kingdom or city; red X identifies one part of an island territory."
+    },
+    "SW-079": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "occupationModel": "rural_south",
+      "notes": "House Beesbury landholdings support orchards and honey production; specific quantities entirely mod estimates."
+    },
+    "SW-095": {
+      "siteKind": "CASTLE_AND_TOWN",
+      "culture": "Dornish/Rhoynar political center",
+      "religion": "Faith of Seven with Rhoynish and local customs",
+      "population": {
+        "baseline": 6500,
+        "min": 1000,
+        "max": 17000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Sunspear is seat of House Martell; include Shadow City as adjacent settlement rather than identical castle footprint."
+    },
+    "NWE-001": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Braavosi multicultural freed-slave diaspora",
+      "cultureGrade": "CONFIRMED",
+      "cultureSources": [
+        "wiki:braavos"
+      ],
+      "religion": "Pluralistic mixed faiths; temples permitted",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:braavos"
+      ],
+      "government": "Elected Sealord, Iron Bank, city magistrates and maritime guilds",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:braavos"
+      ],
+      "population": {
+        "baseline": 105000,
+        "min": 30000,
+        "max": 250000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Trading, fishing, finance, shipbuilding; slavery forbidden. Do not assign a hereditary ruling Westerosi house.",
+      "sources": [
+        "wiki:braavos"
+      ]
+    },
+    "NWE-005": {
+      "siteKind": "VILLAGE",
+      "population": {
+        "baseline": 1800,
+        "min": 350,
+        "max": 6500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Saath: surviving Sarnori city, remnant polity, not an abandoned Dothraki ruin. Population estimate invented.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-004": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Ruined Sarnori settlements destroyed by Dothraki during post-Doom wars. Avoid preloading ancient civic population.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-007": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Ruined Sarnori settlements destroyed by Dothraki during post-Doom wars. Avoid preloading ancient civic population.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-008": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Ruined Sarnori settlements destroyed by Dothraki during post-Doom wars. Avoid preloading ancient civic population.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-010": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Ruined Sarnori settlements destroyed by Dothraki during post-Doom wars. Avoid preloading ancient civic population.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-013": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Ruined Sarnori settlements destroyed by Dothraki during post-Doom wars. Avoid preloading ancient civic population.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-014": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Ruined Sarnori settlements destroyed by Dothraki during post-Doom wars. Avoid preloading ancient civic population.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NWE-009": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Ancient Rhoynar city ruins; tourist/archaeological visits allowed, no automatic active government."
+    },
+    "NWE-015": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Ancient Rhoynar city ruins; tourist/archaeological visits allowed, no automatic active government."
+    },
+    "NWE-016": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Ancient Rhoynar city ruins; tourist/archaeological visits allowed, no automatic active government."
+    },
+    "NWE-011": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Pentoshi / Valyrian-derived Free City",
+      "government": "Pentoshi magister council and nominal prince",
+      "population": {
+        "baseline": 100000,
+        "min": 30000,
+        "max": 250000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Pentos Free City: commerce and estates; no single elected or hereditary Westerosi-style lord."
+    },
+    "NWE-012": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Qohorik Free City",
+      "religion": "Black Goat of Qohor and minority mixed faiths",
+      "population": {
+        "baseline": 75000,
+        "min": 15000,
+        "max": 180000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Qohor forest city; specialist steelworkers and Unsullied-linked military history."
+    },
+    "NE-007": {
+      "siteKind": "SACRED_CENTER",
+      "habitation": "INHABITED",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:vaes_dothrak"
+      ],
+      "culture": "Dothraki",
+      "religion": "Dothraki sacred tradition",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:vaes_dothrak"
+      ],
+      "government": "Dosh khaleen; visitors and khalasars are transient, not permanent residents",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:vaes_dothrak"
+      ],
+      "population": {
+        "baseline": 450,
+        "min": 150,
+        "max": 1800,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Enormous open sacred site with small permanent population; capacity for all khalasars does not equal current population.",
+      "sources": [
+        "wiki:vaes_dothrak"
+      ]
+    },
+    "NE-001": {
+      "culture": "Ibbenese maritime/northern traditions",
+      "religion": "Ibbenese local gods; exact cult varies",
+      "notes": "Ibbenese northern sea culture; fishermen, whalers and cold-coast traders. Specific political leadership not sourced, retain unresolved."
+    },
+    "NE-002": {
+      "culture": "Ibbenese maritime/northern traditions",
+      "religion": "Ibbenese local gods; exact cult varies",
+      "notes": "Ibbenese northern sea culture; fishermen, whalers and cold-coast traders. Specific political leadership not sourced, retain unresolved."
+    },
+    "NE-003": {
+      "culture": "Ibbenese maritime/northern traditions",
+      "religion": "Ibbenese local gods; exact cult varies",
+      "notes": "Ibbenese northern sea culture; fishermen, whalers and cold-coast traders. Specific political leadership not sourced, retain unresolved."
+    },
+    "NE-004": {
+      "culture": "Ibbenese maritime/northern traditions",
+      "religion": "Ibbenese local gods; exact cult varies",
+      "notes": "Ibbenese northern sea culture; fishermen, whalers and cold-coast traders. Specific political leadership not sourced, retain unresolved."
+    },
+    "NE-005": {
+      "culture": "Ibbenese maritime/northern traditions",
+      "religion": "Ibbenese local gods; exact cult varies",
+      "notes": "Ibbenese northern sea culture; fishermen, whalers and cold-coast traders. Specific political leadership not sourced, retain unresolved."
+    },
+    "NE-008": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Old Sarnori city, ruined after Dothraki conquest. Alternative city names preserved in source marker.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NE-010": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:sarnor"
+      ],
+      "notes": "Old Sarnori city, ruined after Dothraki conquest. Alternative city names preserved in source marker.",
+      "sources": [
+        "wiki:sarnor"
+      ]
+    },
+    "NEE-001": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "N'ghai people related to Jogos Nhai",
+      "government": "N'ghai royal administration; specific 298 AC monarch unverified",
+      "population": {
+        "baseline": 27000,
+        "min": 6000,
+        "max": 80000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Nefer is extant and much of the city is subterranean; do not model as surface-only town.",
+      "sources": [
+        "wiki:nefer"
+      ]
+    },
+    "NEE-002": {
+      "siteKind": "LEGENDARY_UNVERIFIED",
+      "habitation": "UNVERIFIED_EXISTENCE",
+      "notes": "K'Dath location/existence is reported in legends, not established as a populated 298 AC city. No NPC spawn."
+    },
+    "NEE-004": {
+      "siteKind": "LEGENDARY_UNVERIFIED",
+      "habitation": "UNVERIFIED_EXISTENCE",
+      "notes": "Bonetown existence and civic population not demonstrated; leave proposed physical site unpopulated until explicit mod adoption."
+    },
+    "NEE-005": {
+      "siteKind": "MONUMENTAL_FRONTIER_FORT",
+      "siteKindGrade": "CONFIRMED",
+      "kindSources": [
+        "wiki:five_forts"
+      ],
+      "culture": "YiTish imperial frontier and locally recruited garrisons",
+      "religion": "YiTish beliefs, with frontier variation unknown",
+      "government": "Yi Ti imperial frontier command; names of individual commanders are unknown",
+      "governmentGrade": "CONTEXT",
+      "population": {
+        "baseline": 1600,
+        "min": 700,
+        "max": 3500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "One of five immense occupied fortresses; 10,000 men is capacity of EACH fort, not a confirmed actual garrison or demographic census.",
+      "sources": [
+        "wiki:five_forts"
+      ]
+    },
+    "NEE-006": {
+      "siteKind": "MONUMENTAL_FRONTIER_FORT",
+      "siteKindGrade": "CONFIRMED",
+      "kindSources": [
+        "wiki:five_forts"
+      ],
+      "culture": "YiTish imperial frontier and locally recruited garrisons",
+      "religion": "YiTish beliefs, with frontier variation unknown",
+      "government": "Yi Ti imperial frontier command; names of individual commanders are unknown",
+      "governmentGrade": "CONTEXT",
+      "population": {
+        "baseline": 1600,
+        "min": 700,
+        "max": 3500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "One of five immense occupied fortresses; 10,000 men is capacity of EACH fort, not a confirmed actual garrison or demographic census.",
+      "sources": [
+        "wiki:five_forts"
+      ]
+    },
+    "NEE-007": {
+      "siteKind": "MONUMENTAL_FRONTIER_FORT",
+      "siteKindGrade": "CONFIRMED",
+      "kindSources": [
+        "wiki:five_forts"
+      ],
+      "culture": "YiTish imperial frontier and locally recruited garrisons",
+      "religion": "YiTish beliefs, with frontier variation unknown",
+      "government": "Yi Ti imperial frontier command; names of individual commanders are unknown",
+      "governmentGrade": "CONTEXT",
+      "population": {
+        "baseline": 1600,
+        "min": 700,
+        "max": 3500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "One of five immense occupied fortresses; 10,000 men is capacity of EACH fort, not a confirmed actual garrison or demographic census.",
+      "sources": [
+        "wiki:five_forts"
+      ]
+    },
+    "NEE-008": {
+      "siteKind": "MONUMENTAL_FRONTIER_FORT",
+      "siteKindGrade": "CONFIRMED",
+      "kindSources": [
+        "wiki:five_forts"
+      ],
+      "culture": "YiTish imperial frontier and locally recruited garrisons",
+      "religion": "YiTish beliefs, with frontier variation unknown",
+      "government": "Yi Ti imperial frontier command; names of individual commanders are unknown",
+      "governmentGrade": "CONTEXT",
+      "population": {
+        "baseline": 1600,
+        "min": 700,
+        "max": 3500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "One of five immense occupied fortresses; 10,000 men is capacity of EACH fort, not a confirmed actual garrison or demographic census.",
+      "sources": [
+        "wiki:five_forts"
+      ]
+    },
+    "NEE-009": {
+      "siteKind": "MONUMENTAL_FRONTIER_FORT",
+      "siteKindGrade": "CONFIRMED",
+      "kindSources": [
+        "wiki:five_forts"
+      ],
+      "culture": "YiTish imperial frontier and locally recruited garrisons",
+      "religion": "YiTish beliefs, with frontier variation unknown",
+      "government": "Yi Ti imperial frontier command; names of individual commanders are unknown",
+      "governmentGrade": "CONTEXT",
+      "population": {
+        "baseline": 1600,
+        "min": 700,
+        "max": 3500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "One of five immense occupied fortresses; 10,000 men is capacity of EACH fort, not a confirmed actual garrison or demographic census.",
+      "sources": [
+        "wiki:five_forts"
+      ]
+    },
+    "NEE-010": {
+      "siteKind": "TRADE_CITY",
+      "culture": "YiTish frontier/trading city",
+      "population": {
+        "baseline": 16000,
+        "min": 3000,
+        "max": 45000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Tiqui is an east-of-Bones YiTish settlement; ruler and actual population are not established.",
+      "sources": [
+        "wiki:yi_ti"
+      ]
+    },
+    "SWE-011": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Volantene Valyrian-derived and many other populations",
+      "government": "Three elected triarchs restricted to Old Blood eligibility; Black Walls patrician district",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:volantis"
+      ],
+      "population": {
+        "baseline": 260000,
+        "min": 85000,
+        "max": 650000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Free and enslaved populations with sharp inequalities. Slaves are individual residents, not workers invented on top of total.",
+      "sources": [
+        "wiki:volantis"
+      ]
+    },
+    "SWE-020": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:valyria"
+      ],
+      "notes": "Valyria was ruined in 102 BC; never spawn pre-Doom civilization in 298 AC.",
+      "sources": [
+        "wiki:valyria"
+      ]
+    },
+    "SWE-002": {
+      "siteKind": "MAJOR_CITY",
+      "population": {
+        "baseline": 95000,
+        "min": 25000,
+        "max": 270000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Free City maritime commerce, slavery and mixed local faiths; exact populations and internal job percentages are mod estimates."
+    },
+    "SWE-003": {
+      "siteKind": "MAJOR_CITY",
+      "population": {
+        "baseline": 95000,
+        "min": 25000,
+        "max": 270000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Free City maritime commerce, slavery and mixed local faiths; exact populations and internal job percentages are mod estimates."
+    },
+    "SWE-010": {
+      "siteKind": "MAJOR_CITY",
+      "population": {
+        "baseline": 95000,
+        "min": 25000,
+        "max": 270000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Free City maritime commerce, slavery and mixed local faiths; exact populations and internal job percentages are mod estimates."
+    },
+    "SWE-004": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 24000,
+        "min": 5000,
+        "max": 110000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Volantene-influenced river/city commercial center, not a separate kingdom. Source estimates provisional."
+    },
+    "SWE-006": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 24000,
+        "min": 5000,
+        "max": 110000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Volantene-influenced river/city commercial center, not a separate kingdom. Source estimates provisional."
+    },
+    "SWE-009": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 24000,
+        "min": 5000,
+        "max": 110000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Volantene-influenced river/city commercial center, not a separate kingdom. Source estimates provisional."
+    },
+    "SWE-007": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 7000,
+        "min": 1200,
+        "max": 30000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Mantarys survives in the hazardous aftermath of the Doom; do not confuse it with ruined Valyria."
+    },
+    "SE-008": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Ghiscari / Meereenese",
+      "religion": "Ghiscari cults and local syncretism",
+      "population": {
+        "baseline": 110000,
+        "min": 35000,
+        "max": 280000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Meereen 298 AC: Great Masters and slavery before Daenerys arrival. Noble pyramids are subsites, not independent full town populations."
+    },
+    "SE-011": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Ghiscari / Yunkish",
+      "population": {
+        "baseline": 90000,
+        "min": 20000,
+        "max": 240000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Yunkai Ghiscari slave city at scenario start; no Daenerys conquest preloaded."
+    },
+    "SE-015": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Ghiscari / Astapori",
+      "government": "Good Masters of Astapor; slave military markets and training",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:astapor"
+      ],
+      "population": {
+        "baseline": 90000,
+        "min": 15000,
+        "max": 240000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Pre-299 AC Astapor, Unsullied trade. Do not preload Daenerys conquest of the city or treat Unsullied as extra population.",
+      "sources": [
+        "wiki:astapor"
+      ]
+    },
+    "SE-022": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Qartheen merchant and noble guild culture",
+      "government": "Pureborn with Thirteen, Tourmaline Brotherhood, Guild of Spicers influence",
+      "governmentGrade": "CONFIRMED",
+      "governmentSources": [
+        "wiki:qarth"
+      ],
+      "population": {
+        "baseline": 190000,
+        "min": 50000,
+        "max": 420000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Qarth: major Jade Sea market and monumental city; detailed occupational shares mod-inferred.",
+      "sources": [
+        "wiki:qarth"
+      ]
+    },
+    "SE-024": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:old_ghis"
+      ],
+      "notes": "Old Ghis destroyed thousands of years before 298 AC. Do not place the active New Ghis government here.",
+      "sources": [
+        "wiki:old_ghis"
+      ]
+    },
+    "SE-026": {
+      "siteKind": "TRADE_CITY",
+      "culture": "New Ghiscari",
+      "religion": "Gods of Ghis",
+      "government": "New Ghiscari civic/legion leadership",
+      "population": {
+        "baseline": 22000,
+        "min": 6000,
+        "max": 90000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "New Ghis is extant; free iron legion soldiers. Do not mistake for Old Ghis ruins.",
+      "sources": [
+        "wiki:new_ghis"
+      ]
+    },
+    "SE-014": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Vaes Tolorro deserted/ruined site, but date/remaining population should be checked against source; no default spawn."
+    },
+    "SE-012": {
+      "siteKind": "VILLAGE",
+      "culture": "Lhazareen pastoral society",
+      "occupationModel": "steppe",
+      "population": {
+        "baseline": 2100,
+        "min": 400,
+        "max": 6500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Lhazosh is pastoral settlement; do not make a Ghiscari slave city of it."
+    },
+    "SE-023": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 1500,
+        "min": 200,
+        "max": 5000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Qal harbor group observations may be multiple harbor points of one settlement, not independent towns. Requires duplicate/parent resolution."
+    },
+    "SE-025": {
+      "siteKind": "TRADE_CITY",
+      "population": {
+        "baseline": 1500,
+        "min": 200,
+        "max": 5000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Qal harbor group observations may be multiple harbor points of one settlement, not independent towns. Requires duplicate/parent resolution."
+    },
+    "SEE-005": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "YiTish imperial center",
+      "government": "Yi Ti imperial bureaucracy; current palace/dynasty claims require scenario-specific review",
+      "population": {
+        "baseline": 230000,
+        "min": 60000,
+        "max": 650000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "notes": "Yin: one of the great YiTish cities, with complex imperial factional context; do not invent a named contemporary emperor.",
+      "sources": [
+        "wiki:yi_ti"
+      ]
+    },
+    "SEE-010": {
+      "siteKind": "MAJOR_CITY",
+      "culture": "Asshai'i / diverse shadow-cult practitioners and traders",
+      "cultureGrade": "CONFIRMED",
+      "cultureSources": [
+        "wiki:asshai"
+      ],
+      "religion": "Diverse faiths and esoteric orders",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:asshai"
+      ],
+      "government": "No verified single lord; scattered religious, mercantile and occult circles",
+      "population": {
+        "baseline": 6200,
+        "min": 1000,
+        "max": 14500,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "dependencyShares": {
+        "workingAgePercent": 85,
+        "childPercent": 0,
+        "elderPercent": 15
+      },
+      "occupationModel": "shadow_port",
+      "notes": "Asshai is enormous in area but inhabited at market-town scale; no children are recorded. Physical site density must be exceptionally low.",
+      "sources": [
+        "wiki:asshai"
+      ]
+    },
+    "SEE-009": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONFIRMED",
+      "habitationSources": [
+        "wiki:stygai"
+      ],
+      "notes": "Stygai is a feared ruined corpse city. Never auto-seed a normal trading population.",
+      "sources": [
+        "wiki:stygai"
+      ]
+    },
+    "SEE-001": {
+      "siteKind": "LEGENDARY_UNVERIFIED",
+      "habitation": "UNVERIFIED_EXISTENCE",
+      "notes": "The city of winged men is legendary. No confirmed 298 AC census, governance, or structure seed."
+    },
+    "SEE-008": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "notes": "Ulos island/ruin observation: no automatically established permanent contemporary town."
+    },
+    "SI-001": {
+      "culture": "Summer Islander",
+      "cultureGrade": "CONFIRMED",
+      "cultureSources": [
+        "wiki:summer_isles"
+      ],
+      "religion": "Summer Isles plural deities, love and fertility traditions",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:summer_isles"
+      ],
+      "government": "Local princes and shrine/temple networks; exact incumbent not established",
+      "population": {
+        "baseline": 10000,
+        "min": 1800,
+        "max": 36000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "sources": [
+        "wiki:summer_isles"
+      ]
+    },
+    "SI-002": {
+      "culture": "Summer Islander",
+      "cultureGrade": "CONFIRMED",
+      "cultureSources": [
+        "wiki:summer_isles"
+      ],
+      "religion": "Summer Isles plural deities, love and fertility traditions",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:summer_isles"
+      ],
+      "government": "Local princes and shrine/temple networks; exact incumbent not established",
+      "population": {
+        "baseline": 10000,
+        "min": 1800,
+        "max": 36000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "sources": [
+        "wiki:summer_isles"
+      ]
+    },
+    "SI-003": {
+      "culture": "Summer Islander",
+      "cultureGrade": "CONFIRMED",
+      "cultureSources": [
+        "wiki:summer_isles"
+      ],
+      "religion": "Summer Isles plural deities, love and fertility traditions",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:summer_isles"
+      ],
+      "government": "Priestesses and civic governance around the Talking Trees; local prince unspecified",
+      "population": {
+        "baseline": 10000,
+        "min": 1800,
+        "max": 36000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "sources": [
+        "wiki:tall_trees"
+      ],
+      "notes": "Tall Trees Town cultural/religious center. Talking Trees carry songs, laws and history, preserved in wooden temple/arboreal precincts."
+    },
+    "SI-004": {
+      "culture": "Summer Islander",
+      "cultureGrade": "CONFIRMED",
+      "cultureSources": [
+        "wiki:summer_isles"
+      ],
+      "religion": "Summer Isles plural deities, love and fertility traditions",
+      "religionGrade": "CONFIRMED",
+      "religionSources": [
+        "wiki:summer_isles"
+      ],
+      "government": "Local princes and shrine/temple networks; exact incumbent not established",
+      "population": {
+        "baseline": 10000,
+        "min": 1800,
+        "max": 36000,
+        "grade": "INVENTED",
+        "sources": [],
+        "note": "Scenario planning envelope, not an observed 298 AC census"
+      },
+      "sources": [
+        "wiki:summer_isles"
+      ]
+    },
+    "SO-004": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "notes": "Dangerous Sothoryos ancient/colonial site. Ruin status should be reconfirmed against books; do not spawn a permanent civic population by default."
+    },
+    "SO-005": {
+      "siteKind": "ABANDONED_RUIN",
+      "habitation": "RUIN_NO_ESTABLISHED_PERMANENT_POPULATION",
+      "habitationGrade": "CONTEXT",
+      "notes": "Dangerous Sothoryos ancient/colonial site. Ruin status should be reconfirmed against books; do not spawn a permanent civic population by default."
+    }
+  }
+}
