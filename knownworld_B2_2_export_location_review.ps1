@@ -1,0 +1,94 @@
+# Known World B2.2 - complete location/holding review export.
+# READ ONLY for inputs; never modifies the mod, save, or source audits.
+# Run from your repository root:
+#   powershell -ExecutionPolicy Bypass -File .\knownworld_B2_2_export_location_review.ps1
+# Or:
+#   pwsh -File .\knownworld_B2_2_export_location_review.ps1
+
+param(
+    [string]$RepositoryRoot = (Get-Location).Path
+)
+
+$ErrorActionPreference = 'Stop'
+$RepositoryRoot = [System.IO.Path]::GetFullPath($RepositoryRoot)
+$inputDir = Join-Path $RepositoryRoot 'tools\geodata\output\b2_holding_links'
+$holdingFile = Join-Path $inputDir 'holdings_259_audit.csv'
+$markerFile  = Join-Path $inputDir 'markers_253_audit.csv'
+$outputDir  = Join-Path $inputDir 'review_export'
+
+if (-not (Test-Path -LiteralPath $holdingFile)) { throw "Missing input: $holdingFile. Run py tools\geodata\build_b2_holding_links.py first." }
+if (-not (Test-Path -LiteralPath $markerFile)) { throw "Missing input: $markerFile. Run py tools\geodata\build_b2_holding_links.py first." }
+
+$holdings = @(Import-Csv -LiteralPath $holdingFile)
+$markers = @(Import-Csv -LiteralPath $markerFile)
+if ($holdings.Count -ne 259) { throw "Expected 259 holding records, received $($holdings.Count). Check the source audit." }
+if ($markers.Count -ne 253) { throw "Expected 253 marker records, received $($markers.Count). Check the source audit." }
+
+$byMarker = @{}
+foreach ($m in $markers) {
+    if ($byMarker.ContainsKey($m.marker_id)) { throw "Duplicate map marker: $($m.marker_id)" }
+    $byMarker[$m.marker_id] = $m
+}
+
+$markerUsage = @{}
+foreach ($h in $holdings) {
+    foreach ($id in @($h.marker_ids -split ';' | Where-Object { $_ -ne '' })) {
+        if (-not $markerUsage.ContainsKey($id)) { $markerUsage[$id] = 0 }
+        $markerUsage[$id] += 1
+    }
+}
+
+$allRows = @(foreach ($h in $holdings) {
+    $ids = @($h.marker_ids -split ';' | Where-Object { $_ -ne '' })
+    $hits = @($ids | ForEach-Object {
+        if (-not $byMarker.ContainsKey($_)) { throw "Holding $($h.holding_id) refers to missing map marker $_" }
+        $byMarker[$_]
+    })
+    $many = @($ids | Where-Object { $markerUsage[$_] -gt 1 })
+    $review = switch ($h.status) {
+        'CANDIDATE_NOT_APPROVED' { 'UNVERIFIED_CANDIDATE' }
+        'NO_MATCHED_MARKER'     { 'NEEDS_IDENTITY_RECONCILIATION' }
+        'DOMAIN_NOT_SETTLEMENT' { 'NOT_AUTOMATICALLY_BUILDABLE' }
+        default                 { 'UNCLASSIFIED_REVIEW_REQUIRED' }
+    }
+    [PSCustomObject][ordered]@{
+        Holding_Name                 = $h.holding_name
+        Holding_ID                   = $h.holding_id
+        Holding_Type                 = $h.holding_type
+        Canonical_Location_ID        = $h.world_location_id
+        Dynasty_or_House_ID          = $h.owner_dynasty_id
+        Holder_NPC_ID                = $h.holder_npc_id
+        Geographic_Reference_Exists  = $h.location_ref_exists
+        Match_Status                 = $h.status
+        Proposed_Review_Status       = $review
+        Marker_IDs                   = ($ids -join '; ')
+        Candidate_X                  = (($hits | ForEach-Object { $_.candidate_x }) -join '; ')
+        Candidate_Z                  = (($hits | ForEach-Object { $_.candidate_z }) -join '; ')
+        Match_Evidence               = (($hits | ForEach-Object { $_.link_status }) -join '; ')
+        Source_Marker_Names          = (($hits | ForEach-Object { $_.names_in_existing_sources }) -join ' || ')
+        Land_Mask_Status             = (($hits | ForEach-Object { $_.land_mask_status }) -join '; ')
+        Marker_Shared_By_Holdings    = if ($many.Count -gt 0) { ($many -join '; ') } else { '' }
+        Approved_For_Construction   = $h.approved_build_coordinates
+        Manual_Decision              = ''
+        Manual_Notes                 = ''
+    }
+})
+
+New-Item -ItemType Directory -Path $outputDir -Force | Out-Null
+function Export-Review([string]$filename, [object[]]$rows) {
+    $path = Join-Path $outputDir $filename
+    $rows | Export-Csv -LiteralPath $path -NoTypeInformation -Encoding UTF8
+    Write-Host ('  {0,-37} {1,3} rows' -f $filename, $rows.Count)
+}
+
+Write-Host 'Known World B2.2 - review exports:'
+Export-Review 'ALL_259_holding_status.csv' $allRows
+Export-Review 'MATCHED_112_verify_links.csv' @($allRows | Where-Object { $_.Match_Status -eq 'CANDIDATE_NOT_APPROVED' })
+Export-Review 'UNMATCHED_101_research.csv' @($allRows | Where-Object { $_.Match_Status -eq 'NO_MATCHED_MARKER' })
+Export-Review 'DOMAINS_46_non_settlements.csv' @($allRows | Where-Object { $_.Match_Status -eq 'DOMAIN_NOT_SETTLEMENT' })
+Export-Review 'MARKERS_143_not_linked.csv' @($markers | Where-Object { $_.link_status -eq 'NOT_LINKED_TO_HOLDING' })
+
+Write-Host "`nOutput folder: $outputDir"
+Write-Host 'Open ALL_259_holding_status.csv in Excel and enable filters.'
+Write-Host 'IMPORTANT: automated matches are NOT verified locations or approved building sites.'
+Write-Host 'Write manual notes in a COPY of the review export; the source audit is regenerated by Python.'
