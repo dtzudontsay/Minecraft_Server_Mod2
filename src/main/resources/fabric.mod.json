@@ -17,7 +17,8 @@
       "dev.dtzudontsay.knownworld.simulation.integration.SocialWitnessRuntime",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldPublicRumorRuntime",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldWorldDefaults",
-      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldCalendarBridge"
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldCalendarBridge",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldPlacesRuntime"
     ],
     "client": [
       "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"
