@@ -1,0 +1,4122 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Non-authoritative source observations for B2/B3, not settlement generation",
+  "physicalPlacementApproval": "NONE",
+  "sourceFiles": [
+    "tools/geodata/output/authored_places/reconciled_2026-10-17/marker_catalog_active_253.csv",
+    "tools/geodata/research_marker_name_index.csv",
+    "tools/geodata/sw_marker_name_crosswalk.csv",
+    "src/main/resources/data/knownworld/scenarios/agot_298_ac/landed_holdings.json",
+    "src/main/resources/data/knownworld/reference/locations.json",
+    "src/main/resources/data/knownworld/reference/locations_holdings.json"
+  ],
+  "summary": {
+    "holdingCount": 259,
+    "activeMarkerCount": 253,
+    "distinctReferencedLocations": 249,
+    "holdingStates": {
+      "CANDIDATE_NOT_APPROVED": 112,
+      "DOMAIN_NOT_SETTLEMENT": 46,
+      "NO_MATCHED_MARKER": 101
+    },
+    "markerLinkStates": {
+      "CANDIDATE_EXACT_NAME": 93,
+      "CANDIDATE_ID_MATCH": 17,
+      "NOT_LINKED_TO_HOLDING": 143
+    }
+  },
+  "holdings": [
+    {
+      "holdingId": "acorn_hall_domain",
+      "worldLocationId": "acorn_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_smallwood",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-023",
+          "candidateX": -4115723,
+          "candidateZ": -284673,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "amberly_domain",
+      "worldLocationId": "amberly",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_rogers",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "antlers_domain",
+      "worldLocationId": "antlers",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_buckwell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-030",
+          "candidateX": -3651237,
+          "candidateZ": -166557,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "appleton_domain",
+      "worldLocationId": "appleton",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_appleton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "arbor_domain",
+      "worldLocationId": "the_arbor",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_redwyne",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "arryn_gulltown_domain",
+      "worldLocationId": "gulltown",
+      "holdingType": "CITY",
+      "ownerDynastyId": "house_arryn_gulltown",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-010",
+          "candidateX": -3123895,
+          "candidateZ": -555283,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "ashemark_domain",
+      "worldLocationId": "ashemark",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_marbrand",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-022",
+          "candidateX": -4616117,
+          "candidateZ": -289909,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "ashford_domain",
+      "worldLocationId": "ashford",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_ashford",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-064",
+          "candidateX": -4132225,
+          "candidateZ": 604173,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "astapor_domain",
+      "worldLocationId": "astapor",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SE-015",
+          "candidateX": 287909,
+          "candidateZ": 1557911,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "atranta_domain",
+      "worldLocationId": "atranta",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_vance_atranta",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "bandallon_domain",
+      "worldLocationId": "bandallon",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_blackbar",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-072",
+          "candidateX": -4916113,
+          "candidateZ": 818717,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "banefort_domain",
+      "worldLocationId": "banefort",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_banefort",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-012",
+          "candidateX": -4689407,
+          "candidateZ": -510439,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "barrow_hall_domain",
+      "worldLocationId": "barrow_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_dustin",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "bitterbridge_domain",
+      "worldLocationId": "bitterbridge",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_caswell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-053",
+          "candidateX": -4107529,
+          "candidateZ": 356731,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "blackcrown_domain",
+      "worldLocationId": "blackcrown",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_bulwer",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-087",
+          "candidateX": -4925851,
+          "candidateZ": 1075877,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "blackhaven_domain",
+      "worldLocationId": "blackhaven",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_dondarrion",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-070",
+          "candidateX": -3942998,
+          "candidateZ": 788073,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "blackmont_domain",
+      "worldLocationId": "blackmont",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_blackmont",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-082",
+          "candidateX": -4367858,
+          "candidateZ": 1001124,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "blackpool_domain",
+      "worldLocationId": "blackpool",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_slate",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "blacktyde_holding",
+      "worldLocationId": "blacktyde",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_blacktyde",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "braavos_domain",
+      "worldLocationId": "braavos",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NWE-001",
+          "candidateX": -2527920,
+          "candidateZ": -982650,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "breakstone_hill_domain",
+      "worldLocationId": "breakstone_hill",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_flint_breakstone_hill",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "breakwater_domain",
+      "worldLocationId": "breakwater",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_borrell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "brightwater_keep_domain",
+      "worldLocationId": "brightwater_keep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_florent",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "broad_arch_domain",
+      "worldLocationId": "broad_arch",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_staedmon",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "bronzegate_domain",
+      "worldLocationId": "bronzegate",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_buckler",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-054",
+          "candidateX": -3401444,
+          "candidateZ": 393366,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "brownhollow_domain",
+      "worldLocationId": "brownhollow",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_brune_brownhollow",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "cape_wrath_brownhill_domain",
+      "worldLocationId": "cape_wrath",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_brownhill_stormlands",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "cape_wrath_seaworth_domain",
+      "worldLocationId": "cape_wrath",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_seaworth",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "carcosa_yellow_domain",
+      "worldLocationId": "carcosa",
+      "holdingType": "CITY",
+      "ownerDynastyId": "dynasty_yiti_yellow",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SEE-002",
+          "candidateX": 6003048,
+          "candidateZ": 1978634,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "casterly_rock_domain",
+      "worldLocationId": "casterly_rock",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_lannister",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-038",
+          "candidateX": -4788910,
+          "candidateZ": -86574,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "USER_CONFIRMED",
+          "reviewStatus": "IDENTITY_USER_CONFIRMED_COORDINATES_PROVISIONAL",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "castle_cerwyn_domain",
+      "worldLocationId": "castle_cerwyn",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_cerwyn",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "castlewood_domain",
+      "worldLocationId": "castlewood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_harlton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "cider_hall_domain",
+      "worldLocationId": "cider_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_fossoway_cider_hall",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-061",
+          "candidateX": -4307250,
+          "candidateZ": 577260,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "claw_isle_domain",
+      "worldLocationId": "claw_isle",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_celtigar",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "cleganes_keep_domain",
+      "worldLocationId": "cleganes_keep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_clegane",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "coldmoat_domain",
+      "worldLocationId": "coldmoat",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_webber",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "coldwater_burn_domain",
+      "worldLocationId": "coldwater_burn",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_coldwater",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-042",
+          "candidateX": -3361213,
+          "candidateZ": -976168,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "USER_CONFIRMED",
+          "reviewStatus": "IDENTITY_USER_CONFIRMED_COORDINATES_PROVISIONAL",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "cornfield_domain",
+      "worldLocationId": "cornfield",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_swyft",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-047",
+          "candidateX": -4694678,
+          "candidateZ": 158625,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "corpse_lake_domain",
+      "worldLocationId": "corpse_lake",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_goodbrother_corpse_lake",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "crag_domain",
+      "worldLocationId": "the_crag",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_westerling",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-018",
+          "candidateX": -4702130,
+          "candidateZ": -366908,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "crakehall_domain",
+      "worldLocationId": "crakehall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_crakehall",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-048",
+          "candidateX": -4898877,
+          "candidateZ": 203477,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "crow_spike_keep_domain",
+      "worldLocationId": "crow_spike_keep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_goodbrother_crow_spike",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "crownlands_domain",
+      "worldLocationId": "crownlands",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_baratheon_kings_landing",
+      "holderNpcId": "robert_baratheon",
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "crows_nest_domain",
+      "worldLocationId": "crows_nest",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_morrigen",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-066",
+          "candidateX": -3483736,
+          "candidateZ": 675194,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "darkdell_domain",
+      "worldLocationId": "darkdell",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_vyrwel",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "darry_domain",
+      "worldLocationId": "darry",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_darry",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "deep_den_domain",
+      "worldLocationId": "deep_den",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_lydden",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-036",
+          "candidateX": -4467281,
+          "candidateZ": -92553,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "deepdown_domain",
+      "worldLocationId": "deepdown",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_crowl",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "deepwood_motte_domain",
+      "worldLocationId": "deepwood_motte",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_glover",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-027",
+          "candidateX": -4434571,
+          "candidateZ": -2157051,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "dormand_hall_domain",
+      "worldLocationId": "dormand_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_dormand",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "dorne_domain",
+      "worldLocationId": "dorne",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_martell",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "downdelving_domain",
+      "worldLocationId": "downdelving",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_goodbrother_downdelving",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "dragonstone_domain",
+      "worldLocationId": "dragonstone",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_baratheon_dragonstone",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-032",
+          "candidateX": -3215917,
+          "candidateZ": -147117,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "dreadfort_domain",
+      "worldLocationId": "dreadfort",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_bolton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-028",
+          "candidateX": -3561125,
+          "candidateZ": -2066813,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "drearfort_domain",
+      "worldLocationId": "drearfort",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_baelish",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "driftmark_domain",
+      "worldLocationId": "driftmark",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_velaryon",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": [
+        {
+          "markerId": "SW-035",
+          "candidateX": -3278749,
+          "candidateZ": -109740,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "driftwood_hall_domain",
+      "worldLocationId": "driftwood_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_stane",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "dun_fort_domain",
+      "worldLocationId": "dun_fort",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_rykker",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "dyre_den_domain",
+      "worldLocationId": "dyre_den",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_brune_dyre_den",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "evenfall_hall_domain",
+      "worldLocationId": "evenfall_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_tarth",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-058",
+          "candidateX": -3111982,
+          "candidateZ": 470366,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "eyrie_domain",
+      "worldLocationId": "eyrie",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_arryn",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-003",
+          "candidateX": -3534527,
+          "candidateZ": -659944,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "faircastle_domain",
+      "worldLocationId": "faircastle",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_farman",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-024",
+          "candidateX": -4838266,
+          "candidateZ": -272717,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "fawnton_domain",
+      "worldLocationId": "fawnton",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_cafferen",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "feastfires_domain",
+      "worldLocationId": "feastfires",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_prester",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-040",
+          "candidateX": -4994604,
+          "candidateZ": -64897,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "felwood_domain",
+      "worldLocationId": "felwood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_fell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-055",
+          "candidateX": -3524861,
+          "candidateZ": 421025,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "flints_finger_domain",
+      "worldLocationId": "flints_finger",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_flint_flints_finger",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-037",
+          "candidateX": -4722938,
+          "candidateZ": -1226180,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "gallowsgrey_domain",
+      "worldLocationId": "gallowsgrey",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_trant",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "gates_of_moon_domain",
+      "worldLocationId": "gates_of_the_moon",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_royce_gates_moon",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "ghost_hill_domain",
+      "worldLocationId": "ghost_hill",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_toland",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-089",
+          "candidateX": -3195790,
+          "candidateZ": 1129711,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "godsgrace_domain",
+      "worldLocationId": "godsgrace",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_allyrion",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-093",
+          "candidateX": -3511441,
+          "candidateZ": 1256794,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "golden_tooth_domain",
+      "worldLocationId": "golden_tooth",
+      "holdingType": "FORTRESS",
+      "ownerDynastyId": "house_lefford",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-025",
+          "candidateX": -4478491,
+          "candidateZ": -264491,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "goldengrove_domain",
+      "worldLocationId": "goldengrove",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_rowan",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-051",
+          "candidateX": -4471044,
+          "candidateZ": 347011,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "goldgrass_domain",
+      "worldLocationId": "goldgrass",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_stout",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "goodbrother_orkmont_domain",
+      "worldLocationId": "orkmont",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_goodbrother_orkmont",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "grandview_domain",
+      "worldLocationId": "grandview",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_grandison",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "grassfield_keep_domain",
+      "worldLocationId": "grassfield_keep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_meadows",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "great_wyk_sparr_domain",
+      "worldLocationId": "great_wyk",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_sparr",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "greenfield_domain",
+      "worldLocationId": "greenfield",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_greenfield",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "greenshield_domain",
+      "worldLocationId": "greenshield",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_chester",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "greenstone_domain",
+      "worldLocationId": "greenstone",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_estermont",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-074",
+          "candidateX": -3138928,
+          "candidateZ": 831436,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "grey_garden_domain",
+      "worldLocationId": "grey_garden",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_harlaw_grey_garden",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "grey_glen_domain",
+      "worldLocationId": "grey_glen",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_tollett",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "greywater_watch_domain",
+      "worldLocationId": "greywater_watch",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_reed",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-039",
+          "candidateX": -4149953,
+          "candidateZ": -1073602,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "griffins_roost_domain",
+      "worldLocationId": "griffins_roost",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_connington",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-062",
+          "candidateX": -3408933,
+          "candidateZ": 585488,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "grimston_domain",
+      "worldLocationId": "grimston",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_grimm",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "gull_tower_domain",
+      "worldLocationId": "gull_tower",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_shett_gull_tower",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "gulltown_domain",
+      "worldLocationId": "gulltown",
+      "holdingType": "CITY",
+      "ownerDynastyId": "house_grafton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-010",
+          "candidateX": -3123895,
+          "candidateZ": -555283,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "hags_mire_domain",
+      "worldLocationId": "hags_mire",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_nayland",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "hall_of_mormonts_domain",
+      "worldLocationId": "hall_of_the_mormonts",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_mormont",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-024",
+          "candidateX": -4496140,
+          "candidateZ": -2463070,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "hammerhal_domain",
+      "worldLocationId": "hammerhal",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_cordwayner",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "hammerhorn_domain",
+      "worldLocationId": "hammerhorn",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_goodbrother",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "harlaw_hall_domain",
+      "worldLocationId": "harlaw_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_harlaw_harlaw_hall",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "harrenhal_domain",
+      "worldLocationId": "harrenhal",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_whent",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-020",
+          "candidateX": -3842710,
+          "candidateZ": -319807,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "harridan_hill_domain",
+      "worldLocationId": "harridan_hill",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_harlaw_harridan_hill",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "harvest_hall_domain",
+      "worldLocationId": "harvest_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_selmy",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "hayford_domain",
+      "worldLocationId": "hayford",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_hayford",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "haystack_hall_domain",
+      "worldLocationId": "haystack_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_errol",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-052",
+          "candidateX": -3376758,
+          "candidateZ": 347017,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "hearts_home_domain",
+      "worldLocationId": "hearts_home",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_corbray",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-048",
+          "candidateX": -3453890,
+          "candidateZ": -806771,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "USER_CONFIRMED",
+          "reviewStatus": "IDENTITY_USER_CONFIRMED_COORDINATES_PROVISIONAL",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "hellholt_domain",
+      "worldLocationId": "hellholt",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_uller",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-096",
+          "candidateX": -4024553,
+          "candidateZ": 1292674,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "high_hermitage_domain",
+      "worldLocationId": "high_hermitage",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_dayne_high_hermitage",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-088",
+          "candidateX": -4381327,
+          "candidateZ": 1100550,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "high_tide_domain",
+      "worldLocationId": "high_tide",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_velaryon",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "highgarden_domain",
+      "worldLocationId": "highgarden",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_tyrell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-067",
+          "candidateX": -4497989,
+          "candidateZ": 681917,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "highpoint_domain",
+      "worldLocationId": "highpoint",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_whitehill",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "hightower_domain",
+      "worldLocationId": "hightower",
+      "holdingType": "FORTRESS",
+      "ownerDynastyId": "house_hightower",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "holyhall_domain",
+      "worldLocationId": "holyhall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_graceford",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "honeyholt_domain",
+      "worldLocationId": "honeyholt",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_beesbury",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-079",
+          "candidateX": -4737353,
+          "candidateZ": 919639,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "horn_hill_domain",
+      "worldLocationId": "horn_hill",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_tarly",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "hornvale_domain",
+      "worldLocationId": "hornvale",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_brax",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-031",
+          "candidateX": -4475505,
+          "candidateZ": -152358,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "hornwood_domain",
+      "worldLocationId": "hornwood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_hornwood",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "illyrios_manse_domain",
+      "worldLocationId": "illyrios_manse",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_mopatis",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "iron_holt_domain",
+      "worldLocationId": "iron_holt",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_wynch",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "iron_islands_domain",
+      "worldLocationId": "iron_islands",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_greyjoy",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "ironoaks_domain",
+      "worldLocationId": "ironoaks",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_waynwood",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "ironrath_domain",
+      "worldLocationId": "ironrath",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_forrester",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "ivy_hall_domain",
+      "worldLocationId": "ivy_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_kidwell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "karhold_domain",
+      "worldLocationId": "karhold",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_karstark",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-026",
+          "candidateX": -3229511,
+          "candidateZ": -2233028,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "kayce_domain",
+      "worldLocationId": "kayce",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_kenning_kayce",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-037",
+          "candidateX": -4948976,
+          "candidateZ": -88071,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "kenning_harlaw_domain",
+      "worldLocationId": "harlaw",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_kenning_harlaw",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "kings_landing_domain",
+      "worldLocationId": "kings_landing",
+      "holdingType": "CITY",
+      "ownerDynastyId": "house_baratheon_kings_landing",
+      "holderNpcId": "robert_baratheon",
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-046",
+          "candidateX": -3677431,
+          "candidateZ": 105554,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "kingsgrave_domain",
+      "worldLocationId": "kingsgrave",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_manwoody",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-080",
+          "candidateX": -4138975,
+          "candidateZ": 945059,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "kingshouse_domain",
+      "worldLocationId": "kingshouse",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_magnar",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "koj_domain",
+      "worldLocationId": "koj",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_xaq",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "lannisport_domain",
+      "worldLocationId": "lannisport",
+      "holdingType": "CITY",
+      "ownerDynastyId": "house_lannister_lannisport",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-041",
+          "candidateX": -4791904,
+          "candidateZ": -32750,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "last_hearth_domain",
+      "worldLocationId": "last_hearth",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_umber",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-025",
+          "candidateX": -3659462,
+          "candidateZ": -2440747,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "lemonwood_domain",
+      "worldLocationId": "lemonwood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_dalt",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-102",
+          "candidateX": -3233948,
+          "candidateZ": 1352483,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "leng_domain",
+      "worldLocationId": "leng",
+      "holdingType": "REGION",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "littlesister_domain",
+      "worldLocationId": "littlesister",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_torrent",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "lonely_light_domain",
+      "worldLocationId": "lonely_light",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_farwynd_lonely_light",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "longbow_hall_domain",
+      "worldLocationId": "longbow_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_hunter_vale",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-047",
+          "candidateX": -3201370,
+          "candidateZ": -821168,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "USER_CONFIRMED",
+          "reviewStatus": "IDENTITY_USER_CONFIRMED_COORDINATES_PROVISIONAL",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "longsister_domain",
+      "worldLocationId": "longsister",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_longthorpe",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "longtable_domain",
+      "worldLocationId": "longtable",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_merryweather",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-059",
+          "candidateX": -4183081,
+          "candidateZ": 478583,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "lord_harroways_town_domain",
+      "worldLocationId": "lord_harroways_town",
+      "holdingType": "TOWN",
+      "ownerDynastyId": "house_roote",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-016",
+          "candidateX": -3838217,
+          "candidateZ": -419232,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "lord_hewetts_castle_domain",
+      "worldLocationId": "lord_hewetts_castle",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_hewett",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "lordsport_domain",
+      "worldLocationId": "lordsport",
+      "holdingType": "TOWN",
+      "ownerDynastyId": "house_botley",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "lychester_keep_domain",
+      "worldLocationId": "lychester_keep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_lychester",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "lys_domain",
+      "worldLocationId": "lys",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SWE-010",
+          "candidateX": -2467165,
+          "candidateZ": 1296681,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "maidenpool_domain",
+      "worldLocationId": "maidenpool",
+      "holdingType": "CITY",
+      "ownerDynastyId": "house_mooton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-026",
+          "candidateX": -3539784,
+          "candidateZ": -260001,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "meereen_domain",
+      "worldLocationId": "meereen",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SE-008",
+          "candidateX": 536298,
+          "candidateZ": 998690,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "mistwood_domain",
+      "worldLocationId": "mistwood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_mertyns",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-069",
+          "candidateX": -3287772,
+          "candidateZ": 776863,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "myre_harlaw_domain",
+      "worldLocationId": "harlaw",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_myre",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "new_barrel_domain",
+      "worldLocationId": "new_barrel",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_fossoway_new_barrel",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "new_castle_domain",
+      "worldLocationId": "new_castle",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_manderly",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "newkeep_domain",
+      "worldLocationId": "newkeep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_hersy",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "nightsong_domain",
+      "worldLocationId": "nightsong",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_caron",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-071",
+          "candidateX": -4206285,
+          "candidateZ": 797790,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "ninestars_domain",
+      "worldLocationId": "ninestars",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_templeton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "north_domain",
+      "worldLocationId": "the_north",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_stark",
+      "holderNpcId": "eddard_stark",
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "northern_mountains_flint_domain",
+      "worldLocationId": "northern_mountains",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_flint_mountains",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "old_anchor_domain",
+      "worldLocationId": "old_anchor",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_melcolm",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-002",
+          "candidateX": -3162034,
+          "candidateZ": -701057,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "old_oak_domain",
+      "worldLocationId": "old_oak",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_oakheart",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-057",
+          "candidateX": -4814369,
+          "candidateZ": 442696,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "old_wyk_drumm_domain",
+      "worldLocationId": "old_wyk",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_drumm",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "old_wyk_stonehouse_domain",
+      "worldLocationId": "old_wyk",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_stonehouse",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "oldcastle_domain",
+      "worldLocationId": "oldcastle",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_locke",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-036",
+          "candidateX": -3708869,
+          "candidateZ": -1306940,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "orkmont_domain",
+      "worldLocationId": "orkmont",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_orkwood",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "paps_domain",
+      "worldLocationId": "the_paps",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_elesham",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "parchments_domain",
+      "worldLocationId": "parchments",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_penrose",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pebble_domain",
+      "worldLocationId": "pebble",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_pryor",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "pebbleton_domain",
+      "worldLocationId": "pebbleton",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_merlyn",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pentos_domain",
+      "worldLocationId": "pentos",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NWE-011",
+          "candidateX": -2495407,
+          "candidateZ": 67659,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "pinkmaiden_domain",
+      "worldLocationId": "pinkmaiden_castle",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_piper",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-027",
+          "candidateX": -4256345,
+          "candidateZ": -229355,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "poddingfield_domain",
+      "worldLocationId": "poddingfield",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_peasebury",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyke_domain",
+      "worldLocationId": "pyke",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_greyjoy",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-008",
+          "candidateX": -4771679,
+          "candidateZ": -594914,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "pyramid_ghazeen_domain",
+      "worldLocationId": "pyramid_of_ghazeen",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_ghazeen",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_hazkar_domain",
+      "worldLocationId": "pyramid_of_hazkar",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_hazkar",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_kandaq_domain",
+      "worldLocationId": "pyramid_of_kandaq",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_kandaq",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_loraq_domain",
+      "worldLocationId": "pyramid_of_loraq",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_loraq",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_merreq_domain",
+      "worldLocationId": "pyramid_of_merreq",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_merreq",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_nakloz_domain",
+      "worldLocationId": "pyramid_of_nakloz",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_nakloz",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_naqqan_domain",
+      "worldLocationId": "pyramid_of_naqqan",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_naqqan",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_pahl_domain",
+      "worldLocationId": "pyramid_of_pahl",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_pahl",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_quazzar_domain",
+      "worldLocationId": "pyramid_of_quazzar",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_quazzar",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_rhazdar_domain",
+      "worldLocationId": "pyramid_of_rhazdar",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_rhazdar",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_uhlez_domain",
+      "worldLocationId": "pyramid_of_uhlez",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_uhlez",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_ullhor_domain",
+      "worldLocationId": "pyramid_of_ullhor",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_ullhor",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_yherizan_domain",
+      "worldLocationId": "pyramid_of_yherizan",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_yherizan",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "pyramid_zhak_domain",
+      "worldLocationId": "pyramid_of_zhak",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_zhak",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "qarth_domain",
+      "worldLocationId": "qarth",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SE-022",
+          "candidateX": 2292419,
+          "candidateZ": 1969118,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "rain_house_domain",
+      "worldLocationId": "rain_house",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_wylde",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-065",
+          "candidateX": -3106756,
+          "candidateZ": 663236,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "raventree_hall_domain",
+      "worldLocationId": "raventree_hall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_blackwood",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "reach_domain",
+      "worldLocationId": "the_reach",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_tyrell",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "red_flower_vale_domain",
+      "worldLocationId": "red_flower_vale",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_xho",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "red_keep_domain",
+      "worldLocationId": "red_keep",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_baratheon_kings_landing",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "red_lake_domain",
+      "worldLocationId": "red_lake",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_crane",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-050",
+          "candidateX": -4664018,
+          "candidateZ": 291690,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "redfort_domain",
+      "worldLocationId": "redfort",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_redfort",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-011",
+          "candidateX": -3399899,
+          "candidateZ": -513422,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "rills_domain",
+      "worldLocationId": "the_rills",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_ryswell",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "rillwater_crossing_domain",
+      "worldLocationId": "rillwater_crossing",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_glenmore",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "ring_domain",
+      "worldLocationId": "the_ring",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_roxton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "risley_glade_domain",
+      "worldLocationId": "risley_glade",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "house_risley",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "riverlands_domain",
+      "worldLocationId": "riverlands",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_tully",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "riverrun_domain",
+      "worldLocationId": "riverrun",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_tully",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-015",
+          "candidateX": -4224171,
+          "candidateZ": -427458,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "riverspring_domain",
+      "worldLocationId": "riverspring",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_sarwyck",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "rooks_rest_domain",
+      "worldLocationId": "rooks_rest",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_staunton",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-029",
+          "candidateX": -3403657,
+          "candidateZ": -188234,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "rosby_domain",
+      "worldLocationId": "rosby",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_rosby",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-045",
+          "candidateX": -3620581,
+          "candidateZ": 42760,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "runestone_domain",
+      "worldLocationId": "runestone",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_royce",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-006",
+          "candidateX": -3108933,
+          "candidateZ": -607612,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "salt_shore_domain",
+      "worldLocationId": "salt_shore",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_gargalen",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-103",
+          "candidateX": -3512944,
+          "candidateZ": 1385374,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "saltcliffe_domain",
+      "worldLocationId": "saltcliffe",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_saltcliffe",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "saltpans_cox_domain",
+      "worldLocationId": "saltpans",
+      "holdingType": "TOWN",
+      "ownerDynastyId": "house_cox",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-017",
+          "candidateX": -3640006,
+          "candidateZ": -378115,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "saltpans_hawick_domain",
+      "worldLocationId": "saltpans",
+      "holdingType": "TOWN",
+      "ownerDynastyId": "house_hawick",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-017",
+          "candidateX": -3640006,
+          "candidateZ": -378115,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "sandstone_domain",
+      "worldLocationId": "sandstone",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_qorgyle",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-098",
+          "candidateX": -4248946,
+          "candidateZ": 1295663,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "sarsfield_domain",
+      "worldLocationId": "sarsfield",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_sarsfield",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-028",
+          "candidateX": -4640805,
+          "candidateZ": -192727,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "seagard_domain",
+      "worldLocationId": "seagard",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_mallister",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-001",
+          "candidateX": -4207698,
+          "candidateZ": -769839,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "sealskin_point_domain",
+      "worldLocationId": "sealskin_point",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_farwynd_sealskin_point",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "sharp_point_domain",
+      "worldLocationId": "sharp_point",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_bar_emmon",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-042",
+          "candidateX": -3221160,
+          "candidateZ": -17042,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "shatterstone_domain",
+      "worldLocationId": "shatterstone",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_goodbrother_shatterstone",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "shett_gulltown_domain",
+      "worldLocationId": "gulltown",
+      "holdingType": "CITY",
+      "ownerDynastyId": "house_shett_gulltown",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-010",
+          "candidateX": -3123895,
+          "candidateZ": -555283,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "silverhill_domain",
+      "worldLocationId": "silverhill",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_serrett",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-043",
+          "candidateX": -4477011,
+          "candidateZ": 37522,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "skyreach_domain",
+      "worldLocationId": "skyreach",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_fowler",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-085",
+          "candidateX": -4123272,
+          "candidateZ": 1034766,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "smithyton_domain",
+      "worldLocationId": "smithyton",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_shermer",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "snakewood_domain",
+      "worldLocationId": "snakewood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_lynderly",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-045",
+          "candidateX": -3359605,
+          "candidateZ": -896266,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "USER_CONFIRMED",
+          "reviewStatus": "IDENTITY_USER_CONFIRMED_COORDINATES_PROVISIONAL",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "southshield_domain",
+      "worldLocationId": "southshield",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_serry",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "sows_horn_domain",
+      "worldLocationId": "sows_horn",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_hogg",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "spottswood_domain",
+      "worldLocationId": "spottswood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_santagar",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "standfast_domain",
+      "worldLocationId": "standfast",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_osgrey",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "starfall_domain",
+      "worldLocationId": "starfall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_dayne",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-092",
+          "candidateX": -4467347,
+          "candidateZ": 1164839,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "starpike_domain",
+      "worldLocationId": "starpike",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_peake",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "stokeworth_domain",
+      "worldLocationId": "stokeworth",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_stokeworth",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "stone_hedge_domain",
+      "worldLocationId": "stone_hedge",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_bracken",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "stonedance_domain",
+      "worldLocationId": "stonedance",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_massey",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-044",
+          "candidateX": -3180773,
+          "candidateZ": 41267,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "stonehelm_domain",
+      "worldLocationId": "stonehelm",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_swann",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-068",
+          "candidateX": -3568261,
+          "candidateZ": 751445,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "stonetree_harlaw_domain",
+      "worldLocationId": "harlaw",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_stonetree",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "stormlands_domain",
+      "worldLocationId": "stormlands",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_baratheon",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "storms_end_domain",
+      "worldLocationId": "storms_end",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_baratheon",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-060",
+          "candidateX": -3306457,
+          "candidateZ": 515218,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "strongsong_domain",
+      "worldLocationId": "strongsong",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_belmore",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "summer_isles_domain",
+      "worldLocationId": "summer_isles",
+      "holdingType": "REGION",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "sunderly_saltcliffe_domain",
+      "worldLocationId": "saltcliffe",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_sunderly",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "sunhouse_domain",
+      "worldLocationId": "sunhouse",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_cuy",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-100",
+          "candidateX": -4673047,
+          "candidateZ": 1300146,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "sunspear_domain",
+      "worldLocationId": "sunspear",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_martell",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-095",
+          "candidateX": -3107537,
+          "candidateZ": 1288942,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "sweet_lotus_vale_domain",
+      "worldLocationId": "sweet_lotus_vale",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_qo",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "sweetport_sound_domain",
+      "worldLocationId": "sweetport_sound",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_sunglass",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "tawney_orkmont_domain",
+      "worldLocationId": "orkmont",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_tawney",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "ten_towers_domain",
+      "worldLocationId": "ten_towers",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_harlaw",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "three_sisters_domain",
+      "worldLocationId": "three_sisters",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_sunderland",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "three_towers_domain",
+      "worldLocationId": "three_towers",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_costayne",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-091",
+          "candidateX": -4873496,
+          "candidateZ": 1143905,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "tor_domain",
+      "worldLocationId": "the_tor",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_jordayne",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-090",
+          "candidateX": -3534622,
+          "candidateZ": 1131204,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "torrhens_square_domain",
+      "worldLocationId": "torrhens_square",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_tallhart",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-030",
+          "candidateX": -4367400,
+          "candidateZ": -1789507,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "tower_of_glimmering_domain",
+      "worldLocationId": "tower_of_glimmering",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_harlaw_tower_glimmering",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "trader_town_orange_domain",
+      "worldLocationId": "trader_town",
+      "holdingType": "CITY",
+      "ownerDynastyId": "dynasty_yiti_orange",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NEE-003",
+          "candidateX": 3564713,
+          "candidateZ": 796228,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "tumbleton_domain",
+      "worldLocationId": "tumbleton",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_footly",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-049",
+          "candidateX": -3897342,
+          "candidateZ": 241609,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "twins_domain",
+      "worldLocationId": "the_twins",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_frey",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-MISSING-TWINS-01",
+          "candidateX": -4133143,
+          "candidateZ": -843486,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "USER_CONFIRMED_IDENTITY_NOT_PIXEL",
+          "reviewStatus": "MANUAL_ESTIMATE_NEEDS_PIXEL_CONFIRMATION",
+          "landMaskStatus": "NOT_AUDITED",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "uplands_domain",
+      "worldLocationId": "uplands",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_mullendore",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-083",
+          "candidateX": -4634137,
+          "candidateZ": 1004113,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "vaith_domain",
+      "worldLocationId": "vaith",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_vaith",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-097",
+          "candidateX": -3711153,
+          "candidateZ": 1294918,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "vale_domain",
+      "worldLocationId": "the_vale",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_arryn",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "volantis_domain",
+      "worldLocationId": "volantis",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SWE-011",
+          "candidateX": -1405749,
+          "candidateZ": 1311519,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "volmark_domain",
+      "worldLocationId": "volmark",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_volmark",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "wayfarers_rest_domain",
+      "worldLocationId": "wayfarers_rest",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_vance_wayfarers_rest",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "weeping_town_domain",
+      "worldLocationId": "weeping_town",
+      "holdingType": "TOWN",
+      "ownerDynastyId": "house_whitehead",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-076",
+          "candidateX": -3283289,
+          "candidateZ": 871056,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "westerlands_domain",
+      "worldLocationId": "westerlands",
+      "holdingType": "REGION",
+      "ownerDynastyId": "house_lannister",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "whispers_domain",
+      "worldLocationId": "the_whispers",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_crabb",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "wickenden_domain",
+      "worldLocationId": "wickenden",
+      "holdingType": "TOWN",
+      "ownerDynastyId": "house_waxley",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-019",
+          "candidateX": -3366997,
+          "candidateZ": -351202,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "widows_watch_domain",
+      "worldLocationId": "widows_watch",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_flint_widows_watch",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-032",
+          "candidateX": -3142324,
+          "candidateZ": -1547477,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "willow_wood_domain",
+      "worldLocationId": "willow_wood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_ryger",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "winterfell_domain",
+      "worldLocationId": "winterfell",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_stark",
+      "holderNpcId": "eddard_stark",
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "NW-029",
+          "candidateX": -4050173,
+          "candidateZ": -1976496,
+          "identityEvidence": "CANDIDATE_ID_MATCH",
+          "sourceNameStatus": "IMAGE_READ_ASSISTANT_NEEDS_REVIEW",
+          "reviewStatus": "NAME_SUGGESTED_NOT_APPROVED",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "witch_isle_domain",
+      "worldLocationId": "witch_isle",
+      "holdingType": "TERRITORY",
+      "ownerDynastyId": "house_upcliff",
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "wyl_domain",
+      "worldLocationId": "wyl",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_wyl",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-075",
+          "candidateX": -3800885,
+          "candidateZ": 843393,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "wyndhall_domain",
+      "worldLocationId": "wyndhall",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_estren",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "xaros_home_domain",
+      "worldLocationId": "xaros_home",
+      "holdingType": "ESTATE",
+      "ownerDynastyId": "family_daxos",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "NO_MATCHED_MARKER",
+      "candidates": []
+    },
+    {
+      "holdingId": "yi_ti_domain",
+      "worldLocationId": "yi_ti",
+      "holdingType": "REGION",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": true,
+      "locationReferenceExists": true,
+      "status": "DOMAIN_NOT_SETTLEMENT",
+      "candidates": []
+    },
+    {
+      "holdingId": "yin_azure_domain",
+      "worldLocationId": "yin",
+      "holdingType": "CITY",
+      "ownerDynastyId": "dynasty_yiti_azure",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SEE-005",
+          "candidateX": 3462179,
+          "candidateZ": 2458313,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "yronwood_domain",
+      "worldLocationId": "yronwood",
+      "holdingType": "CASTLE",
+      "ownerDynastyId": "house_yronwood",
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SW-086",
+          "candidateX": -3868214,
+          "candidateZ": 1057942,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    },
+    {
+      "holdingId": "yunkai_domain",
+      "worldLocationId": "yunkai",
+      "holdingType": "CITY",
+      "ownerDynastyId": null,
+      "holderNpcId": null,
+      "isDomain": false,
+      "locationReferenceExists": true,
+      "status": "CANDIDATE_NOT_APPROVED",
+      "candidates": [
+        {
+          "markerId": "SE-011",
+          "candidateX": 370061,
+          "candidateZ": 1155469,
+          "identityEvidence": "CANDIDATE_EXACT_NAME",
+          "sourceNameStatus": "UNASSIGNED_IN_SOURCE_CSV",
+          "reviewStatus": "NEEDS_NAME_LINK",
+          "landMaskStatus": "LAND_AT_RAW_X",
+          "physicalPlacementApproved": false
+        }
+      ]
+    }
+  ]
+}

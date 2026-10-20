@@ -1,0 +1,260 @@
+holding_id,holding_name,holding_type,world_location_id,owner_dynasty_id,holder_npc_id,location_ref_exists,status,marker_ids,approved_build_coordinates
+acorn_hall_domain,Acorn Hall,CASTLE,acorn_hall,house_smallwood,,YES,CANDIDATE_NOT_APPROVED,SW-023,NO
+amberly_domain,Amberly,CASTLE,amberly,house_rogers,,YES,NO_MATCHED_MARKER,,NO
+antlers_domain,Antlers,CASTLE,antlers,house_buckwell,,YES,CANDIDATE_NOT_APPROVED,SW-030,NO
+appleton_domain,Appleton,CASTLE,appleton,house_appleton,,YES,NO_MATCHED_MARKER,,NO
+arbor_domain,The Arbor,TERRITORY,the_arbor,house_redwyne,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+arryn_gulltown_domain,Gulltown,CITY,gulltown,house_arryn_gulltown,,YES,CANDIDATE_NOT_APPROVED,SW-010,NO
+ashemark_domain,Ashemark,CASTLE,ashemark,house_marbrand,,YES,CANDIDATE_NOT_APPROVED,SW-022,NO
+ashford_domain,Ashford,CASTLE,ashford,house_ashford,,YES,CANDIDATE_NOT_APPROVED,SW-064,NO
+astapor_domain,Astapor,CITY,astapor,,,YES,CANDIDATE_NOT_APPROVED,SE-015,NO
+atranta_domain,Atranta,CASTLE,atranta,house_vance_atranta,,YES,NO_MATCHED_MARKER,,NO
+bandallon_domain,Bandallon,CASTLE,bandallon,house_blackbar,,YES,CANDIDATE_NOT_APPROVED,SW-072,NO
+banefort_domain,Banefort,CASTLE,banefort,house_banefort,,YES,CANDIDATE_NOT_APPROVED,SW-012,NO
+barrow_hall_domain,Barrow Hall,CASTLE,barrow_hall,house_dustin,,YES,NO_MATCHED_MARKER,,NO
+bitterbridge_domain,Bitterbridge,CASTLE,bitterbridge,house_caswell,,YES,CANDIDATE_NOT_APPROVED,SW-053,NO
+blackcrown_domain,Blackcrown,CASTLE,blackcrown,house_bulwer,,YES,CANDIDATE_NOT_APPROVED,SW-087,NO
+blackhaven_domain,Blackhaven,CASTLE,blackhaven,house_dondarrion,,YES,CANDIDATE_NOT_APPROVED,SW-070,NO
+blackmont_domain,Blackmont,CASTLE,blackmont,house_blackmont,,YES,CANDIDATE_NOT_APPROVED,SW-082,NO
+blackpool_domain,Blackpool,CASTLE,blackpool,house_slate,,YES,NO_MATCHED_MARKER,,NO
+blacktyde_holding,Blacktyde,TERRITORY,blacktyde,house_blacktyde,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+braavos_domain,Braavos,CITY,braavos,,,YES,CANDIDATE_NOT_APPROVED,NWE-001,NO
+breakstone_hill_domain,Breakstone Hill,TERRITORY,breakstone_hill,house_flint_breakstone_hill,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+breakwater_domain,Breakwater,CASTLE,breakwater,house_borrell,,YES,NO_MATCHED_MARKER,,NO
+brightwater_keep_domain,Brightwater Keep,CASTLE,brightwater_keep,house_florent,,YES,NO_MATCHED_MARKER,,NO
+broad_arch_domain,Broad Arch,CASTLE,broad_arch,house_staedmon,,YES,NO_MATCHED_MARKER,,NO
+bronzegate_domain,Bronzegate,CASTLE,bronzegate,house_buckler,,YES,CANDIDATE_NOT_APPROVED,SW-054,NO
+brownhollow_domain,Brownhollow,CASTLE,brownhollow,house_brune_brownhollow,,YES,NO_MATCHED_MARKER,,NO
+cape_wrath_brownhill_domain,Cape Wrath,TERRITORY,cape_wrath,house_brownhill_stormlands,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+cape_wrath_seaworth_domain,Cape Wrath,TERRITORY,cape_wrath,house_seaworth,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+carcosa_yellow_domain,Carcosa,CITY,carcosa,dynasty_yiti_yellow,,YES,CANDIDATE_NOT_APPROVED,SEE-002,NO
+casterly_rock_domain,Casterly Rock,CASTLE,casterly_rock,house_lannister,,YES,CANDIDATE_NOT_APPROVED,SW-038,NO
+castle_cerwyn_domain,Castle Cerwyn,CASTLE,castle_cerwyn,house_cerwyn,,YES,NO_MATCHED_MARKER,,NO
+castlewood_domain,Castlewood,CASTLE,castlewood,house_harlton,,YES,NO_MATCHED_MARKER,,NO
+cider_hall_domain,Cider Hall,CASTLE,cider_hall,house_fossoway_cider_hall,,YES,CANDIDATE_NOT_APPROVED,SW-061,NO
+claw_isle_domain,Claw Isle,TERRITORY,claw_isle,house_celtigar,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+cleganes_keep_domain,Clegane's Keep,CASTLE,cleganes_keep,house_clegane,,YES,NO_MATCHED_MARKER,,NO
+coldmoat_domain,Coldmoat,CASTLE,coldmoat,house_webber,,YES,NO_MATCHED_MARKER,,NO
+coldwater_burn_domain,Coldwater Burn,CASTLE,coldwater_burn,house_coldwater,,YES,CANDIDATE_NOT_APPROVED,NW-042,NO
+cornfield_domain,Cornfield,CASTLE,cornfield,house_swyft,,YES,CANDIDATE_NOT_APPROVED,SW-047,NO
+corpse_lake_domain,Corpse Lake,CASTLE,corpse_lake,house_goodbrother_corpse_lake,,YES,NO_MATCHED_MARKER,,NO
+crag_domain,The Crag,CASTLE,the_crag,house_westerling,,YES,CANDIDATE_NOT_APPROVED,SW-018,NO
+crakehall_domain,Crakehall,CASTLE,crakehall,house_crakehall,,YES,CANDIDATE_NOT_APPROVED,SW-048,NO
+crow_spike_keep_domain,Crow Spike Keep,CASTLE,crow_spike_keep,house_goodbrother_crow_spike,,YES,NO_MATCHED_MARKER,,NO
+crownlands_domain,The Crownlands,REGION,crownlands,house_baratheon_kings_landing,robert_baratheon,YES,DOMAIN_NOT_SETTLEMENT,,NO
+crows_nest_domain,Crow's Nest,CASTLE,crows_nest,house_morrigen,,YES,CANDIDATE_NOT_APPROVED,SW-066,NO
+darkdell_domain,Darkdell,CASTLE,darkdell,house_vyrwel,,YES,NO_MATCHED_MARKER,,NO
+darry_domain,Darry,CASTLE,darry,house_darry,,YES,NO_MATCHED_MARKER,,NO
+deep_den_domain,Deep Den,CASTLE,deep_den,house_lydden,,YES,CANDIDATE_NOT_APPROVED,SW-036,NO
+deepdown_domain,Deepdown,CASTLE,deepdown,house_crowl,,YES,NO_MATCHED_MARKER,,NO
+deepwood_motte_domain,Deepwood Motte,CASTLE,deepwood_motte,house_glover,,YES,CANDIDATE_NOT_APPROVED,NW-027,NO
+dormand_hall_domain,Dormand Hall,CASTLE,dormand_hall,house_dormand,,YES,NO_MATCHED_MARKER,,NO
+dorne_domain,Dorne,REGION,dorne,house_martell,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+downdelving_domain,Downdelving,CASTLE,downdelving,house_goodbrother_downdelving,,YES,NO_MATCHED_MARKER,,NO
+dragonstone_domain,Dragonstone,CASTLE,dragonstone,house_baratheon_dragonstone,,YES,CANDIDATE_NOT_APPROVED,SW-032,NO
+dreadfort_domain,The Dreadfort,CASTLE,dreadfort,house_bolton,,YES,CANDIDATE_NOT_APPROVED,NW-028,NO
+drearfort_domain,The Drearfort,CASTLE,drearfort,house_baelish,,YES,NO_MATCHED_MARKER,,NO
+driftmark_domain,Driftmark,TERRITORY,driftmark,house_velaryon,,YES,DOMAIN_NOT_SETTLEMENT,SW-035,NO
+driftwood_hall_domain,Driftwood Hall,CASTLE,driftwood_hall,house_stane,,YES,NO_MATCHED_MARKER,,NO
+dun_fort_domain,Dun Fort,CASTLE,dun_fort,house_rykker,,YES,NO_MATCHED_MARKER,,NO
+dyre_den_domain,Dyre Den,CASTLE,dyre_den,house_brune_dyre_den,,YES,NO_MATCHED_MARKER,,NO
+evenfall_hall_domain,Evenfall Hall,CASTLE,evenfall_hall,house_tarth,,YES,CANDIDATE_NOT_APPROVED,SW-058,NO
+eyrie_domain,The Eyrie,CASTLE,eyrie,house_arryn,,YES,CANDIDATE_NOT_APPROVED,SW-003,NO
+faircastle_domain,Faircastle,CASTLE,faircastle,house_farman,,YES,CANDIDATE_NOT_APPROVED,SW-024,NO
+fawnton_domain,Fawnton,CASTLE,fawnton,house_cafferen,,YES,NO_MATCHED_MARKER,,NO
+feastfires_domain,Feastfires,CASTLE,feastfires,house_prester,,YES,CANDIDATE_NOT_APPROVED,SW-040,NO
+felwood_domain,Felwood,CASTLE,felwood,house_fell,,YES,CANDIDATE_NOT_APPROVED,SW-055,NO
+flints_finger_domain,Flint's Finger,CASTLE,flints_finger,house_flint_flints_finger,,YES,CANDIDATE_NOT_APPROVED,NW-037,NO
+gallowsgrey_domain,Gallowsgrey,CASTLE,gallowsgrey,house_trant,,YES,NO_MATCHED_MARKER,,NO
+gates_of_moon_domain,Gates of the Moon,CASTLE,gates_of_the_moon,house_royce_gates_moon,,YES,NO_MATCHED_MARKER,,NO
+ghost_hill_domain,Ghost Hill,CASTLE,ghost_hill,house_toland,,YES,CANDIDATE_NOT_APPROVED,SW-089,NO
+godsgrace_domain,Godsgrace,CASTLE,godsgrace,house_allyrion,,YES,CANDIDATE_NOT_APPROVED,SW-093,NO
+golden_tooth_domain,Golden Tooth,FORTRESS,golden_tooth,house_lefford,,YES,CANDIDATE_NOT_APPROVED,SW-025,NO
+goldengrove_domain,Goldengrove,CASTLE,goldengrove,house_rowan,,YES,CANDIDATE_NOT_APPROVED,SW-051,NO
+goldgrass_domain,Goldgrass,CASTLE,goldgrass,house_stout,,YES,NO_MATCHED_MARKER,,NO
+goodbrother_orkmont_domain,Orkmont,TERRITORY,orkmont,house_goodbrother_orkmont,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+grandview_domain,Grandview,CASTLE,grandview,house_grandison,,YES,NO_MATCHED_MARKER,,NO
+grassfield_keep_domain,Grassfield Keep,CASTLE,grassfield_keep,house_meadows,,YES,NO_MATCHED_MARKER,,NO
+great_wyk_sparr_domain,Great Wyk,TERRITORY,great_wyk,house_sparr,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+greenfield_domain,Greenfield,CASTLE,greenfield,house_greenfield,,YES,NO_MATCHED_MARKER,,NO
+greenshield_domain,Greenshield,TERRITORY,greenshield,house_chester,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+greenstone_domain,Greenstone,CASTLE,greenstone,house_estermont,,YES,CANDIDATE_NOT_APPROVED,SW-074,NO
+grey_garden_domain,Grey Garden,CASTLE,grey_garden,house_harlaw_grey_garden,,YES,NO_MATCHED_MARKER,,NO
+grey_glen_domain,Grey Glen,CASTLE,grey_glen,house_tollett,,YES,NO_MATCHED_MARKER,,NO
+greywater_watch_domain,Greywater Watch,CASTLE,greywater_watch,house_reed,,YES,CANDIDATE_NOT_APPROVED,NW-039,NO
+griffins_roost_domain,Griffin's Roost,CASTLE,griffins_roost,house_connington,,YES,CANDIDATE_NOT_APPROVED,SW-062,NO
+grimston_domain,Grimston,CASTLE,grimston,house_grimm,,YES,NO_MATCHED_MARKER,,NO
+gull_tower_domain,Gull Tower,CASTLE,gull_tower,house_shett_gull_tower,,YES,NO_MATCHED_MARKER,,NO
+gulltown_domain,Gulltown,CITY,gulltown,house_grafton,,YES,CANDIDATE_NOT_APPROVED,SW-010,NO
+hags_mire_domain,Hag's Mire,CASTLE,hags_mire,house_nayland,,YES,NO_MATCHED_MARKER,,NO
+hall_of_mormonts_domain,Hall of the Mormonts,CASTLE,hall_of_the_mormonts,house_mormont,,YES,CANDIDATE_NOT_APPROVED,NW-024,NO
+hammerhal_domain,Hammerhal,CASTLE,hammerhal,house_cordwayner,,YES,NO_MATCHED_MARKER,,NO
+hammerhorn_domain,Hammerhorn,CASTLE,hammerhorn,house_goodbrother,,YES,NO_MATCHED_MARKER,,NO
+harlaw_hall_domain,Harlaw Hall,CASTLE,harlaw_hall,house_harlaw_harlaw_hall,,YES,NO_MATCHED_MARKER,,NO
+harrenhal_domain,Harrenhal,CASTLE,harrenhal,house_whent,,YES,CANDIDATE_NOT_APPROVED,SW-020,NO
+harridan_hill_domain,Harridan Hill,CASTLE,harridan_hill,house_harlaw_harridan_hill,,YES,NO_MATCHED_MARKER,,NO
+harvest_hall_domain,Harvest Hall,CASTLE,harvest_hall,house_selmy,,YES,NO_MATCHED_MARKER,,NO
+hayford_domain,Hayford,CASTLE,hayford,house_hayford,,YES,NO_MATCHED_MARKER,,NO
+haystack_hall_domain,Haystack Hall,CASTLE,haystack_hall,house_errol,,YES,CANDIDATE_NOT_APPROVED,SW-052,NO
+hearts_home_domain,Heart's Home,CASTLE,hearts_home,house_corbray,,YES,CANDIDATE_NOT_APPROVED,NW-048,NO
+hellholt_domain,Hellholt,CASTLE,hellholt,house_uller,,YES,CANDIDATE_NOT_APPROVED,SW-096,NO
+high_hermitage_domain,High Hermitage,CASTLE,high_hermitage,house_dayne_high_hermitage,,YES,CANDIDATE_NOT_APPROVED,SW-088,NO
+high_tide_domain,High Tide,CASTLE,high_tide,house_velaryon,,YES,NO_MATCHED_MARKER,,NO
+highgarden_domain,Highgarden,CASTLE,highgarden,house_tyrell,,YES,CANDIDATE_NOT_APPROVED,SW-067,NO
+highpoint_domain,Highpoint,CASTLE,highpoint,house_whitehill,,YES,NO_MATCHED_MARKER,,NO
+hightower_domain,The Hightower,FORTRESS,hightower,house_hightower,,YES,NO_MATCHED_MARKER,,NO
+holyhall_domain,Holyhall,CASTLE,holyhall,house_graceford,,YES,NO_MATCHED_MARKER,,NO
+honeyholt_domain,Honeyholt,CASTLE,honeyholt,house_beesbury,,YES,CANDIDATE_NOT_APPROVED,SW-079,NO
+horn_hill_domain,Horn Hill,CASTLE,horn_hill,house_tarly,,YES,NO_MATCHED_MARKER,,NO
+hornvale_domain,Hornvale,CASTLE,hornvale,house_brax,,YES,CANDIDATE_NOT_APPROVED,SW-031,NO
+hornwood_domain,Hornwood,CASTLE,hornwood,house_hornwood,,YES,NO_MATCHED_MARKER,,NO
+illyrios_manse_domain,Illyrio's Manse,ESTATE,illyrios_manse,family_mopatis,,YES,NO_MATCHED_MARKER,,NO
+iron_holt_domain,Iron Holt,CASTLE,iron_holt,house_wynch,,YES,NO_MATCHED_MARKER,,NO
+iron_islands_domain,The Iron Islands,REGION,iron_islands,house_greyjoy,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+ironoaks_domain,Ironoaks,CASTLE,ironoaks,house_waynwood,,YES,NO_MATCHED_MARKER,,NO
+ironrath_domain,Ironrath,CASTLE,ironrath,house_forrester,,YES,NO_MATCHED_MARKER,,NO
+ivy_hall_domain,Ivy Hall,CASTLE,ivy_hall,house_kidwell,,YES,NO_MATCHED_MARKER,,NO
+karhold_domain,Karhold,CASTLE,karhold,house_karstark,,YES,CANDIDATE_NOT_APPROVED,NW-026,NO
+kayce_domain,Kayce,CASTLE,kayce,house_kenning_kayce,,YES,CANDIDATE_NOT_APPROVED,SW-037,NO
+kenning_harlaw_domain,Harlaw,TERRITORY,harlaw,house_kenning_harlaw,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+kings_landing_domain,King's Landing,CITY,kings_landing,house_baratheon_kings_landing,robert_baratheon,YES,CANDIDATE_NOT_APPROVED,SW-046,NO
+kingsgrave_domain,Kingsgrave,CASTLE,kingsgrave,house_manwoody,,YES,CANDIDATE_NOT_APPROVED,SW-080,NO
+kingshouse_domain,Kingshouse,CASTLE,kingshouse,house_magnar,,YES,NO_MATCHED_MARKER,,NO
+koj_domain,Koj,TERRITORY,koj,house_xaq,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+lannisport_domain,Lannisport,CITY,lannisport,house_lannister_lannisport,,YES,CANDIDATE_NOT_APPROVED,SW-041,NO
+last_hearth_domain,Last Hearth,CASTLE,last_hearth,house_umber,,YES,CANDIDATE_NOT_APPROVED,NW-025,NO
+lemonwood_domain,Lemonwood,CASTLE,lemonwood,house_dalt,,YES,CANDIDATE_NOT_APPROVED,SW-102,NO
+leng_domain,Leng,REGION,leng,,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+littlesister_domain,Littlesister,TERRITORY,littlesister,house_torrent,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+lonely_light_domain,Lonely Light,TERRITORY,lonely_light,house_farwynd_lonely_light,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+longbow_hall_domain,Longbow Hall,CASTLE,longbow_hall,house_hunter_vale,,YES,CANDIDATE_NOT_APPROVED,NW-047,NO
+longsister_domain,Longsister,TERRITORY,longsister,house_longthorpe,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+longtable_domain,Longtable,CASTLE,longtable,house_merryweather,,YES,CANDIDATE_NOT_APPROVED,SW-059,NO
+lord_harroways_town_domain,Lord Harroway's Town,TOWN,lord_harroways_town,house_roote,,YES,CANDIDATE_NOT_APPROVED,SW-016,NO
+lord_hewetts_castle_domain,Lord Hewett's Castle,CASTLE,lord_hewetts_castle,house_hewett,,YES,NO_MATCHED_MARKER,,NO
+lordsport_domain,Lordsport,TOWN,lordsport,house_botley,,YES,NO_MATCHED_MARKER,,NO
+lychester_keep_domain,Lychester's Keep,CASTLE,lychester_keep,house_lychester,,YES,NO_MATCHED_MARKER,,NO
+lys_domain,Lys,CITY,lys,,,YES,CANDIDATE_NOT_APPROVED,SWE-010,NO
+maidenpool_domain,Maidenpool,CITY,maidenpool,house_mooton,,YES,CANDIDATE_NOT_APPROVED,SW-026,NO
+meereen_domain,Meereen,CITY,meereen,,,YES,CANDIDATE_NOT_APPROVED,SE-008,NO
+mistwood_domain,Mistwood,CASTLE,mistwood,house_mertyns,,YES,CANDIDATE_NOT_APPROVED,SW-069,NO
+myre_harlaw_domain,Harlaw,TERRITORY,harlaw,house_myre,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+new_barrel_domain,New Barrel,CASTLE,new_barrel,house_fossoway_new_barrel,,YES,NO_MATCHED_MARKER,,NO
+new_castle_domain,New Castle,CASTLE,new_castle,house_manderly,,YES,NO_MATCHED_MARKER,,NO
+newkeep_domain,Newkeep,CASTLE,newkeep,house_hersy,,YES,NO_MATCHED_MARKER,,NO
+nightsong_domain,Nightsong,CASTLE,nightsong,house_caron,,YES,CANDIDATE_NOT_APPROVED,SW-071,NO
+ninestars_domain,Ninestars,CASTLE,ninestars,house_templeton,,YES,NO_MATCHED_MARKER,,NO
+north_domain,The North,REGION,the_north,house_stark,eddard_stark,YES,DOMAIN_NOT_SETTLEMENT,,NO
+northern_mountains_flint_domain,Northern Mountains,TERRITORY,northern_mountains,house_flint_mountains,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+old_anchor_domain,Old Anchor,CASTLE,old_anchor,house_melcolm,,YES,CANDIDATE_NOT_APPROVED,SW-002,NO
+old_oak_domain,Old Oak,CASTLE,old_oak,house_oakheart,,YES,CANDIDATE_NOT_APPROVED,SW-057,NO
+old_wyk_drumm_domain,Old Wyk,TERRITORY,old_wyk,house_drumm,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+old_wyk_stonehouse_domain,Old Wyk,TERRITORY,old_wyk,house_stonehouse,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+oldcastle_domain,Oldcastle,CASTLE,oldcastle,house_locke,,YES,CANDIDATE_NOT_APPROVED,NW-036,NO
+orkmont_domain,Orkmont,TERRITORY,orkmont,house_orkwood,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+paps_domain,The Paps,TERRITORY,the_paps,house_elesham,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+parchments_domain,Parchments,CASTLE,parchments,house_penrose,,YES,NO_MATCHED_MARKER,,NO
+pebble_domain,Pebble,TERRITORY,pebble,house_pryor,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+pebbleton_domain,Pebbleton,CASTLE,pebbleton,house_merlyn,,YES,NO_MATCHED_MARKER,,NO
+pentos_domain,Pentos,CITY,pentos,,,YES,CANDIDATE_NOT_APPROVED,NWE-011,NO
+pinkmaiden_domain,Pinkmaiden Castle,CASTLE,pinkmaiden_castle,house_piper,,YES,CANDIDATE_NOT_APPROVED,SW-027,NO
+poddingfield_domain,Poddingfield,CASTLE,poddingfield,house_peasebury,,YES,NO_MATCHED_MARKER,,NO
+pyke_domain,Pyke,CASTLE,pyke,house_greyjoy,,YES,CANDIDATE_NOT_APPROVED,SW-008,NO
+pyramid_ghazeen_domain,Pyramid of Ghazeen,ESTATE,pyramid_of_ghazeen,family_ghazeen,,YES,NO_MATCHED_MARKER,,NO
+pyramid_hazkar_domain,Pyramid of Hazkar,ESTATE,pyramid_of_hazkar,family_hazkar,,YES,NO_MATCHED_MARKER,,NO
+pyramid_kandaq_domain,Pyramid of Kandaq,ESTATE,pyramid_of_kandaq,family_kandaq,,YES,NO_MATCHED_MARKER,,NO
+pyramid_loraq_domain,Pyramid of Loraq,ESTATE,pyramid_of_loraq,family_loraq,,YES,NO_MATCHED_MARKER,,NO
+pyramid_merreq_domain,Pyramid of Merreq,ESTATE,pyramid_of_merreq,family_merreq,,YES,NO_MATCHED_MARKER,,NO
+pyramid_nakloz_domain,Pyramid of Nakloz,ESTATE,pyramid_of_nakloz,family_nakloz,,YES,NO_MATCHED_MARKER,,NO
+pyramid_naqqan_domain,Pyramid of Naqqan,ESTATE,pyramid_of_naqqan,family_naqqan,,YES,NO_MATCHED_MARKER,,NO
+pyramid_pahl_domain,Pyramid of Pahl,ESTATE,pyramid_of_pahl,family_pahl,,YES,NO_MATCHED_MARKER,,NO
+pyramid_quazzar_domain,Pyramid of Quazzar,ESTATE,pyramid_of_quazzar,family_quazzar,,YES,NO_MATCHED_MARKER,,NO
+pyramid_rhazdar_domain,Pyramid of Rhazdar,ESTATE,pyramid_of_rhazdar,family_rhazdar,,YES,NO_MATCHED_MARKER,,NO
+pyramid_uhlez_domain,Pyramid of Uhlez,ESTATE,pyramid_of_uhlez,family_uhlez,,YES,NO_MATCHED_MARKER,,NO
+pyramid_ullhor_domain,Pyramid of Ullhor,ESTATE,pyramid_of_ullhor,family_ullhor,,YES,NO_MATCHED_MARKER,,NO
+pyramid_yherizan_domain,Pyramid of Yherizan,ESTATE,pyramid_of_yherizan,family_yherizan,,YES,NO_MATCHED_MARKER,,NO
+pyramid_zhak_domain,Pyramid of Zhak,ESTATE,pyramid_of_zhak,family_zhak,,YES,NO_MATCHED_MARKER,,NO
+qarth_domain,Qarth,CITY,qarth,,,YES,CANDIDATE_NOT_APPROVED,SE-022,NO
+rain_house_domain,Rain House,CASTLE,rain_house,house_wylde,,YES,CANDIDATE_NOT_APPROVED,SW-065,NO
+raventree_hall_domain,Raventree Hall,CASTLE,raventree_hall,house_blackwood,,YES,NO_MATCHED_MARKER,,NO
+reach_domain,The Reach,REGION,the_reach,house_tyrell,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+red_flower_vale_domain,Red Flower Vale,TERRITORY,red_flower_vale,house_xho,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+red_keep_domain,Red Keep,CASTLE,red_keep,house_baratheon_kings_landing,,YES,NO_MATCHED_MARKER,,NO
+red_lake_domain,Red Lake,CASTLE,red_lake,house_crane,,YES,CANDIDATE_NOT_APPROVED,SW-050,NO
+redfort_domain,Redfort,CASTLE,redfort,house_redfort,,YES,CANDIDATE_NOT_APPROVED,SW-011,NO
+rills_domain,The Rills,TERRITORY,the_rills,house_ryswell,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+rillwater_crossing_domain,Rillwater Crossing,CASTLE,rillwater_crossing,house_glenmore,,YES,NO_MATCHED_MARKER,,NO
+ring_domain,The Ring,CASTLE,the_ring,house_roxton,,YES,NO_MATCHED_MARKER,,NO
+risley_glade_domain,Risley Glade,ESTATE,risley_glade,house_risley,,YES,NO_MATCHED_MARKER,,NO
+riverlands_domain,The Riverlands,REGION,riverlands,house_tully,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+riverrun_domain,Riverrun,CASTLE,riverrun,house_tully,,YES,CANDIDATE_NOT_APPROVED,SW-015,NO
+riverspring_domain,Riverspring,CASTLE,riverspring,house_sarwyck,,YES,NO_MATCHED_MARKER,,NO
+rooks_rest_domain,Rook's Rest,CASTLE,rooks_rest,house_staunton,,YES,CANDIDATE_NOT_APPROVED,SW-029,NO
+rosby_domain,Rosby,CASTLE,rosby,house_rosby,,YES,CANDIDATE_NOT_APPROVED,SW-045,NO
+runestone_domain,Runestone,CASTLE,runestone,house_royce,,YES,CANDIDATE_NOT_APPROVED,SW-006,NO
+salt_shore_domain,Salt Shore,CASTLE,salt_shore,house_gargalen,,YES,CANDIDATE_NOT_APPROVED,SW-103,NO
+saltcliffe_domain,Saltcliffe,TERRITORY,saltcliffe,house_saltcliffe,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+saltpans_cox_domain,Saltpans,TOWN,saltpans,house_cox,,YES,CANDIDATE_NOT_APPROVED,SW-017,NO
+saltpans_hawick_domain,Saltpans,TOWN,saltpans,house_hawick,,YES,CANDIDATE_NOT_APPROVED,SW-017,NO
+sandstone_domain,Sandstone,CASTLE,sandstone,house_qorgyle,,YES,CANDIDATE_NOT_APPROVED,SW-098,NO
+sarsfield_domain,Sarsfield,CASTLE,sarsfield,house_sarsfield,,YES,CANDIDATE_NOT_APPROVED,SW-028,NO
+seagard_domain,Seagard,CASTLE,seagard,house_mallister,,YES,CANDIDATE_NOT_APPROVED,SW-001,NO
+sealskin_point_domain,Sealskin Point,TERRITORY,sealskin_point,house_farwynd_sealskin_point,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+sharp_point_domain,Sharp Point,CASTLE,sharp_point,house_bar_emmon,,YES,CANDIDATE_NOT_APPROVED,SW-042,NO
+shatterstone_domain,Shatterstone,CASTLE,shatterstone,house_goodbrother_shatterstone,,YES,NO_MATCHED_MARKER,,NO
+shett_gulltown_domain,Gulltown,CITY,gulltown,house_shett_gulltown,,YES,CANDIDATE_NOT_APPROVED,SW-010,NO
+silverhill_domain,Silverhill,CASTLE,silverhill,house_serrett,,YES,CANDIDATE_NOT_APPROVED,SW-043,NO
+skyreach_domain,Skyreach,CASTLE,skyreach,house_fowler,,YES,CANDIDATE_NOT_APPROVED,SW-085,NO
+smithyton_domain,Smithyton,CASTLE,smithyton,house_shermer,,YES,NO_MATCHED_MARKER,,NO
+snakewood_domain,Snakewood,CASTLE,snakewood,house_lynderly,,YES,CANDIDATE_NOT_APPROVED,NW-045,NO
+southshield_domain,Southshield,TERRITORY,southshield,house_serry,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+sows_horn_domain,Sow's Horn,CASTLE,sows_horn,house_hogg,,YES,NO_MATCHED_MARKER,,NO
+spottswood_domain,Spottswood,CASTLE,spottswood,house_santagar,,YES,NO_MATCHED_MARKER,,NO
+standfast_domain,Standfast,CASTLE,standfast,house_osgrey,,YES,NO_MATCHED_MARKER,,NO
+starfall_domain,Starfall,CASTLE,starfall,house_dayne,,YES,CANDIDATE_NOT_APPROVED,SW-092,NO
+starpike_domain,Starpike,CASTLE,starpike,house_peake,,YES,NO_MATCHED_MARKER,,NO
+stokeworth_domain,Stokeworth,CASTLE,stokeworth,house_stokeworth,,YES,NO_MATCHED_MARKER,,NO
+stone_hedge_domain,Stone Hedge,CASTLE,stone_hedge,house_bracken,,YES,NO_MATCHED_MARKER,,NO
+stonedance_domain,Stonedance,CASTLE,stonedance,house_massey,,YES,CANDIDATE_NOT_APPROVED,SW-044,NO
+stonehelm_domain,Stonehelm,CASTLE,stonehelm,house_swann,,YES,CANDIDATE_NOT_APPROVED,SW-068,NO
+stonetree_harlaw_domain,Harlaw,TERRITORY,harlaw,house_stonetree,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+stormlands_domain,The Stormlands,REGION,stormlands,house_baratheon,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+storms_end_domain,Storm's End,CASTLE,storms_end,house_baratheon,,YES,CANDIDATE_NOT_APPROVED,SW-060,NO
+strongsong_domain,Strongsong,CASTLE,strongsong,house_belmore,,YES,NO_MATCHED_MARKER,,NO
+summer_isles_domain,Summer Isles,REGION,summer_isles,,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+sunderly_saltcliffe_domain,Saltcliffe,TERRITORY,saltcliffe,house_sunderly,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+sunhouse_domain,Sunhouse,CASTLE,sunhouse,house_cuy,,YES,CANDIDATE_NOT_APPROVED,SW-100,NO
+sunspear_domain,Sunspear,CASTLE,sunspear,house_martell,,YES,CANDIDATE_NOT_APPROVED,SW-095,NO
+sweet_lotus_vale_domain,Sweet Lotus Vale,TERRITORY,sweet_lotus_vale,house_qo,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+sweetport_sound_domain,Sweetport Sound,TERRITORY,sweetport_sound,house_sunglass,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+tawney_orkmont_domain,Orkmont,TERRITORY,orkmont,house_tawney,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+ten_towers_domain,Ten Towers,CASTLE,ten_towers,house_harlaw,,YES,NO_MATCHED_MARKER,,NO
+three_sisters_domain,Three Sisters,TERRITORY,three_sisters,house_sunderland,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+three_towers_domain,Three Towers,CASTLE,three_towers,house_costayne,,YES,CANDIDATE_NOT_APPROVED,SW-091,NO
+tor_domain,The Tor,CASTLE,the_tor,house_jordayne,,YES,CANDIDATE_NOT_APPROVED,SW-090,NO
+torrhens_square_domain,Torrhen's Square,CASTLE,torrhens_square,house_tallhart,,YES,CANDIDATE_NOT_APPROVED,NW-030,NO
+tower_of_glimmering_domain,Tower of Glimmering,CASTLE,tower_of_glimmering,house_harlaw_tower_glimmering,,YES,NO_MATCHED_MARKER,,NO
+trader_town_orange_domain,Trader Town,CITY,trader_town,dynasty_yiti_orange,,YES,CANDIDATE_NOT_APPROVED,NEE-003,NO
+tumbleton_domain,Tumbleton,CASTLE,tumbleton,house_footly,,YES,CANDIDATE_NOT_APPROVED,SW-049,NO
+twins_domain,The Twins,CASTLE,the_twins,house_frey,,YES,CANDIDATE_NOT_APPROVED,NW-MISSING-TWINS-01,NO
+uplands_domain,Uplands,CASTLE,uplands,house_mullendore,,YES,CANDIDATE_NOT_APPROVED,SW-083,NO
+vaith_domain,Vaith,CASTLE,vaith,house_vaith,,YES,CANDIDATE_NOT_APPROVED,SW-097,NO
+vale_domain,The Vale,REGION,the_vale,house_arryn,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+volantis_domain,Volantis,CITY,volantis,,,YES,CANDIDATE_NOT_APPROVED,SWE-011,NO
+volmark_domain,Volmark,CASTLE,volmark,house_volmark,,YES,NO_MATCHED_MARKER,,NO
+wayfarers_rest_domain,Wayfarer's Rest,CASTLE,wayfarers_rest,house_vance_wayfarers_rest,,YES,NO_MATCHED_MARKER,,NO
+weeping_town_domain,Weeping Town,TOWN,weeping_town,house_whitehead,,YES,CANDIDATE_NOT_APPROVED,SW-076,NO
+westerlands_domain,The Westerlands,REGION,westerlands,house_lannister,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+whispers_domain,The Whispers,CASTLE,the_whispers,house_crabb,,YES,NO_MATCHED_MARKER,,NO
+wickenden_domain,Wickenden,TOWN,wickenden,house_waxley,,YES,CANDIDATE_NOT_APPROVED,SW-019,NO
+widows_watch_domain,Widow's Watch,CASTLE,widows_watch,house_flint_widows_watch,,YES,CANDIDATE_NOT_APPROVED,NW-032,NO
+willow_wood_domain,Willow Wood,CASTLE,willow_wood,house_ryger,,YES,NO_MATCHED_MARKER,,NO
+winterfell_domain,Winterfell,CASTLE,winterfell,house_stark,eddard_stark,YES,CANDIDATE_NOT_APPROVED,NW-029,NO
+witch_isle_domain,Witch Isle,TERRITORY,witch_isle,house_upcliff,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+wyl_domain,Wyl,CASTLE,wyl,house_wyl,,YES,CANDIDATE_NOT_APPROVED,SW-075,NO
+wyndhall_domain,Wyndhall,CASTLE,wyndhall,house_estren,,YES,NO_MATCHED_MARKER,,NO
+xaros_home_domain,Xaro's Home,ESTATE,xaros_home,family_daxos,,YES,NO_MATCHED_MARKER,,NO
+yi_ti_domain,Yi Ti,REGION,yi_ti,,,YES,DOMAIN_NOT_SETTLEMENT,,NO
+yin_azure_domain,Yin,CITY,yin,dynasty_yiti_azure,,YES,CANDIDATE_NOT_APPROVED,SEE-005,NO
+yronwood_domain,Yronwood,CASTLE,yronwood,house_yronwood,,YES,CANDIDATE_NOT_APPROVED,SW-086,NO
+yunkai_domain,Yunkai,CITY,yunkai,,,YES,CANDIDATE_NOT_APPROVED,SE-011,NO
