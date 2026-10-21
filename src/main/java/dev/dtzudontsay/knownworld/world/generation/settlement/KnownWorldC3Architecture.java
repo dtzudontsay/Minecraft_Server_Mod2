@@ -314,7 +314,7 @@ public final class KnownWorldC3Architecture {
             if (corner) for (int y = floor + 1; y <= floor + 4; y++)
                 put(c, x, y, z, Blocks.OAK_FENCE.defaultBlockState());
             int slope = Math.min(3, Math.min(dx, lot.width() - 1 - dx));
-            put(c, x, floor + 5 + slope, z, Blocks.BROWN_WOOL.defaultBlockState());
+            put(c, x, floor + 5 + slope, z, Blocks.WOOL.brown().defaultBlockState());
         }
         int middleX = lot.x() + lot.width() / 2;
         int middleZ = lot.z() + lot.depth() / 2;
