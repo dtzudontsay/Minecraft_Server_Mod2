@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.chunk.ChunkAccess;
@@ -356,7 +356,7 @@ public final class KnownWorldUniversalWorldgenC2 {
                 if (water) {
                     put(c, x, floor, z, Blocks.WATER.defaultBlockState());
                 } else {
-                    put(c, x, floor, z, Blocks.FARMLAND.defaultBlockState().setValue(FarmBlock.MOISTURE, 7));
+                    put(c, x, floor, z, Blocks.FARMLAND.defaultBlockState().setValue(BlockStateProperties.MOISTURE, 7));
                     put(c, x, floor + 1, z, Blocks.WHEAT.defaultBlockState());
                 }
                 for (int y = floor + 2; y <= Math.max(floor + 8, ground + 8); y++) put(c, x, y, z, AIR);
