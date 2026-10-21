@@ -1,0 +1,103 @@
+{
+  "purpose": "C4_1_COMPACT_FIRST_DISTRICTS_C2_PAINTER",
+  "pilots": [
+    {
+      "phase": "C4_1_COMPACT_FIRST_DISTRICTS",
+      "realBuildingsPlanned": 74,
+      "homes": 48,
+      "housingCapacityEstimate": 240,
+      "workplaces": {
+        "ADMINISTRATION": 1,
+        "ARMORY": 1,
+        "BAKERY": 1,
+        "BARRACKS": 1,
+        "CARPENTRY": 1,
+        "CART_DEPOT": 1,
+        "FARM": 4,
+        "GRANARY": 1,
+        "INN": 1,
+        "KITCHEN": 1,
+        "MARKET": 1,
+        "MASONRY": 1,
+        "PUBLIC_BATH": 1,
+        "SCHOOL": 1,
+        "SERVICE_HALL": 1,
+        "SMITHY": 2,
+        "TEMPLE": 1,
+        "WELL": 1
+      },
+      "farmFields": 4,
+      "roadsConnectedInPlan": true,
+      "roadsTerrainApproved": false,
+      "plotYApproved": false,
+      "actualNpcsCreated": 0,
+      "actualWorkersAssigned": 0,
+      "firstPhaseNotFullSettlementCensus": true,
+      "householdNamesNotInvented": true,
+      "siteId": "site_nw_031",
+      "name": "Ramsgate",
+      "tier": "SMALL",
+      "anchor": {
+        "x": -3454784,
+        "z": -1589008
+      },
+      "markers": [
+        "NW-031"
+      ],
+      "plannedChunks": 322,
+      "housingBacklog": 62
+    },
+    {
+      "phase": "C4_1_COMPACT_FIRST_DISTRICTS",
+      "realBuildingsPlanned": 241,
+      "homes": 180,
+      "housingCapacityEstimate": 1800,
+      "workplaces": {
+        "ADMINISTRATION": 2,
+        "ARMORY": 1,
+        "BAKERY": 2,
+        "BARRACKS": 2,
+        "CARPENTRY": 4,
+        "CART_DEPOT": 2,
+        "COURTYARD": 1,
+        "FARM": 8,
+        "GRANARY": 2,
+        "GUARD_TOWER": 1,
+        "INN": 3,
+        "KITCHEN": 2,
+        "MARKET": 3,
+        "MASONRY": 3,
+        "MILL": 1,
+        "PUBLIC_BATH": 1,
+        "SCHOOL": 1,
+        "SERVICE_HALL": 1,
+        "SMITHY": 6,
+        "STABLE": 1,
+        "TAVERN": 1,
+        "TEMPLE": 1,
+        "WAREHOUSE": 1,
+        "WELL": 3
+      },
+      "farmFields": 8,
+      "roadsConnectedInPlan": true,
+      "roadsTerrainApproved": false,
+      "plotYApproved": false,
+      "actualNpcsCreated": 0,
+      "actualWorkersAssigned": 0,
+      "firstPhaseNotFullSettlementCensus": true,
+      "householdNamesNotInvented": true,
+      "siteId": "site_sw_023",
+      "name": "Acorn Hall",
+      "tier": "MEDIUM",
+      "anchor": {
+        "x": -4115723,
+        "z": -284673
+      },
+      "markers": [
+        "SW-023"
+      ],
+      "plannedChunks": 1046,
+      "housingBacklog": 39
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+﻿**********************
+nStart der Windows PowerShell-Aufzeichnung
+Startzeit: 20261021143850
+Benutzername: DESKTOP-SA35U0A\Sandro
+RunAs-Benutzer: DESKTOP-SA35U0A\Sandro
+Konfigurationsname: 
+Computer: DESKTOP-SA35U0A (Microsoft Windows NT 10.0.26300.0)
+Hostanwendung: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\RUN_C4_CHECK.ps1
+Prozess-ID: 45616
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+[C4] Check project files, pilot identities and hooks
+C4 PREFLIGHT PASSED
+
+[C4] Run C4 layout regression suite
+test_guarded_java_patch_is_idempotent_and_does_not_touch_other_sources (test_c4_settlement_layouts.LayoutTests.test_guar
+ded_java_patch_is_idempotent_and_does_not_touch_other_sources) ... C4 resource selected; FIELD painting repaired; previo
+us C2 saved to backups
+C4 hooks already installed (no changes)
+C4 INTEGRATION CHECK PASSED
+ok
+test_large_buildings_and_plaza_still_fit_lots (test_c4_settlement_layouts.LayoutTests.test_large_buildings_and_plaza_sti
+ll_fit_lots) ... ok
+test_no_lot_collisions_or_road_overlaps_and_connected (test_c4_settlement_layouts.LayoutTests.test_no_lot_collisions_or_
+road_overlaps_and_connected) ... ok
+test_plan_is_reproducible (test_c4_settlement_layouts.LayoutTests.test_plan_is_reproducible) ... ok
+test_special_sites_and_winterfell_cannot_be_selected (test_c4_settlement_layouts.LayoutTests.test_special_sites_and_wint
+erfell_cannot_be_selected) ... ok
+test_two_pilots_are_retained_with_exact_coordinates (test_c4_settlement_layouts.LayoutTests.test_two_pilots_are_retained
+_with_exact_coordinates) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.590s
+
+OK
+
+[C4] Generate C4 construction manifest
+
+
+[C4] Check generated resource is deterministic
+
+
+[C4] Connect C4 resource and farmland painter to C2
+
+
+[C4] Check integration is installed once
+
+
+[C4] Verify live construction wiring and show two exact anchors
+
+
+[C4] Build and test Fabric mod
+
+
+C4 SUCCESS. Use a NEW Known World TEST WORLD for first physical inspection.
+Run /kwc2 sites in-game, then spectator-teleport to the coordinates printed above.
+Full log: D:\GameOfThronesMod2\C4_INSTALL_LOG.txt
+**********************
+Ende der Windows PowerShell-Aufzeichnung
+Endzeit: 20261021143904
+**********************

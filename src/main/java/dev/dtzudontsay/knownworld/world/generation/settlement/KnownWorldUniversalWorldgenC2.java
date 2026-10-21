@@ -46,7 +46,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public final class KnownWorldUniversalWorldgenC2 {
     private static final String RESOURCE =
-            "data/knownworld/scenarios/agot_298_ac/settlement_construction_c2_v1.json";
+            "data/knownworld/scenarios/agot_298_ac/settlement_construction_c4_v1.json";
     private static volatile Map<String, Pilot> pilots;
     private static final AtomicInteger DECORATED_CHUNKS = new AtomicInteger();
     private static final AtomicInteger SKIPPED_UNSAFE_PLOT_FRAGMENTS = new AtomicInteger();
@@ -161,7 +161,7 @@ public final class KnownWorldUniversalWorldgenC2 {
         List<PilotInfo> infos = new ArrayList<>();
         for (Pilot p : data().values()) {
             int safe = 0;
-            for (Lot l : p.lots) if (survey(l).safe) safe++;
+            for (Lot l : p.lots) if (approvedSurvey(l).safe) safe++;
             infos.add(new PilotInfo(p.id, p.name, p.tier, p.markers, p.x, p.z,
                     p.lots.size(), p.chunks.size(), safe, p.lots.size() - safe, p.housingBacklog));
         }
@@ -205,18 +205,25 @@ public final class KnownWorldUniversalWorldgenC2 {
             // Only new chunk generation. We do not load or modify neighbours.
             // Suppression above prevents natural trees/lava from being generated
             // inside the reservations of this and its nearby source chunks.
+            List<KnownWorldC4RoadPainter.Entrance> entrances = entrancesNear(p, wx, wz);
             for (int index = cp.roads.nextSetBit(0); index >= 0; index = cp.roads.nextSetBit(index + 1)) {
                 int x = wx + (index & 15), z = wz + (index >>> 4);
-                road(chunk, x, z, p);
+                road(chunk, x, z, p, entrances);
             }
             for (int id : cp.lots) {
                 Lot lot = p.lots.get(id);
-                Survey terrain = survey(lot);
+                Survey terrain = approvedSurvey(lot);
                 if (!terrain.safe) {
                     SKIPPED_UNSAFE_PLOT_FRAGMENTS.incrementAndGet();
                     continue;
                 }
-                KnownWorldC3Architecture.buildLot(chunk, lot, terrain.floor, p.palette, p.tier);
+                if ("FIELD".equals(lot.kind())) {
+                    // FIELD uses the C2 irrigated-field painter; C3 intentionally
+                    // rejects it as a building template.
+                    buildLot(chunk, lot, terrain.floor, p.palette, wx, wz);
+                } else {
+                    KnownWorldC3Architecture.buildLot(chunk, lot, terrain.floor, p.palette, p.tier);
+                }
             }
             DECORATED_CHUNKS.incrementAndGet();
         }
@@ -294,37 +301,37 @@ public final class KnownWorldUniversalWorldgenC2 {
         return Blocks.DARK_OAK_PLANKS.defaultBlockState();
     }
 
-    private static void road(ChunkAccess c, int x, int z, Pilot p) {
-        if (!isLand(x, z)) return;
-        int natural = top(x, z);
-        int y = natural;
-        // Door approaches rise at most one block per road tile, and are
-        // evaluated identically no matter which chunk is currently building.
-        for (Lot lot : p.lots) {
-            if ("FIELD".equals(lot.kind)) continue;
-            int doorX = lot.x + lot.width / 2;
-            if (Math.abs(x - doorX) > 1) continue;
-            boolean north = "NORTH".equals(lot.face);
-            int edge = north ? lot.z - 1 : lot.z + lot.depth;
-            int start = "FARM".equals(lot.kind) ? p.z + 30 : p.z;
-            if (z < Math.min(start, edge) || z > Math.max(start, edge)) continue;
-            Survey grade = survey(lot);
-            if (!grade.safe) break;
-            int length = Math.max(1, Math.abs(edge - start));
-            double part = Math.abs(z - start) / (double) length;
-            int base = top(doorX, start);
-            int target = (int) Math.round(base + (grade.floor - base) * part);
-            if (Math.abs(target - natural) <= 5 && Math.abs(grade.floor - base) <= length) y = target;
-            break;
+    // C4.2 APPROVED STREET ENTRANCE CONNECTIONS
+    private static final java.util.concurrent.ConcurrentMap<String, Survey> SURVEY_CACHE =
+            new java.util.concurrent.ConcurrentHashMap<>();
+
+    private static Survey approvedSurvey(Lot lot) {
+        return SURVEY_CACHE.computeIfAbsent(lot.id(), ignored -> survey(lot));
+    }
+
+    /** Only entrances near the current chunk; no O(roads * all buildings) surveys. */
+    private static List<KnownWorldC4RoadPainter.Entrance> entrancesNear(
+            Pilot pilot, int worldX, int worldZ) {
+        List<KnownWorldC4RoadPainter.Entrance> nearby = new ArrayList<>();
+        for (Lot lot : pilot.lots) {
+            if ("FIELD".equals(lot.kind())) continue;
+            int doorX = lot.x() + lot.width() / 2;
+            int doorZ = "NORTH".equals(lot.face())
+                    ? lot.z() - 1 : lot.z() + lot.depth();
+            if (doorX < worldX - 5 || doorX > worldX + 20
+                    || doorZ < worldZ - 5 || doorZ > worldZ + 20) continue;
+            Survey survey = approvedSurvey(lot);
+            if (survey.safe())
+                nearby.add(new KnownWorldC4RoadPainter.Entrance(doorX, doorZ, survey.floor()));
         }
-        // Skip unplanned steep road sections; do not bridge valleys via fill.
-        if (Math.abs(y - natural) > 5 || Math.abs(natural - top(x + 2, z)) > 5
-                || Math.abs(natural - top(x, z + 2)) > 5) return;
-        for (int yy = Math.min(natural, y) - 3; yy <= y; yy++) put(c, x, yy, z,
-                yy == y ? (p.palette.contains("DORN") ? Blocks.SANDSTONE.defaultBlockState()
-                    : Blocks.GRAVEL.defaultBlockState()) : COBBLE);
-        for (int yy = y + 1; yy <= y + 8; yy++) put(c, x, yy, z, AIR);
-        clearHazards(c, x, z, y);
+        return nearby;
+    }
+
+    private static void road(ChunkAccess chunk, int x, int z, Pilot pilot,
+                             List<KnownWorldC4RoadPainter.Entrance> entrances) {
+        KnownWorldC4RoadPainter.paint(chunk, x, z, pilot.palette,
+                KnownWorldUniversalWorldgenC2::top,
+                KnownWorldUniversalWorldgenC2::isLand, entrances);
     }
 
     private static void clearHazards(ChunkAccess c, int x, int z, int terrainY) {

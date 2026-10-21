@@ -1,0 +1,49 @@
+﻿**********************
+nStart der Windows PowerShell-Aufzeichnung
+Startzeit: 20261021180157
+Benutzername: DESKTOP-SA35U0A\Sandro
+RunAs-Benutzer: DESKTOP-SA35U0A\Sandro
+Konfigurationsname: 
+Computer: DESKTOP-SA35U0A (Microsoft Windows NT 10.0.26300.0)
+Hostanwendung: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\RUN_C4_2.ps1
+Prozess-ID: 57772
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+[C4.2] Source and patch tests
+test_bad_install_fails_without_modifying_java (test_c4_terrain_roads.C42Tests.test_bad_install_fails_without_modifying_j
+ava) ... ok
+test_never_mutates_worlds_or_winterfell (test_c4_terrain_roads.C42Tests.test_never_mutates_worlds_or_winterfell) ... ok
+test_rejects_missing_c4_manifest_hook (test_c4_terrain_roads.C42Tests.test_rejects_missing_c4_manifest_hook) ... ok
+test_rejects_missing_field_dispatch (test_c4_terrain_roads.C42Tests.test_rejects_missing_field_dispatch) ... ok
+test_source_patch_is_idempotent (test_c4_terrain_roads.C42Tests.test_source_patch_is_idempotent) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.009s
+
+OK
+
+[C4.2] Install guarded road painter
+C4.2 connected road/door painting; backed up existing C2 Java source
+
+[C4.2] Verify guarded installation
+C4.2 CHECK PASSED: two sites and chunk-local street connection
+
+[C4.2] Full Fabric build
+arnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 20s
+8 actionable tasks: 8 executed
+C4.2 BUILD SUCCESSFUL. Inspect fresh Ramsgate and Acorn Hall chunks.
+Full log: D:\GameOfThronesMod2\C4_2_BUILD_LOG.txt
+**********************
+Ende der Windows PowerShell-Aufzeichnung
+Endzeit: 20261021180218
+**********************
