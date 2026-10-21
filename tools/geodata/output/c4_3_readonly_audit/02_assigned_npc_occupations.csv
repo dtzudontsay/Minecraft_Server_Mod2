@@ -1,0 +1,41 @@
+﻿source;identifier;occupation_or_role;person_count;status
+authored_character_profile;aemon_targaryen;maester, healer, scholar;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;alliser_thorne;knight, drillmaster, soldier;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;arya_stark;;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;benjen_stark;soldier, scout, hunter;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;bowen_marsh;steward, administrator;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;bran_stark;;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;catelyn_stark;courtier, administrator;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;cersei_lannister;courtier, ruler;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;denys_mallister;knight, soldier;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;eddard_stark;ruler, soldier;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;jaime_lannister;knight, guard;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;jeor_mormont;soldier, ruler;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;jon_snow;;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;qhorin_halfhand;soldier, scout, hunter;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;rickon_stark;;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;robb_stark;;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;robert_baratheon;ruler, soldier, hunter;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;sansa_stark;;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;theon_greyjoy;courtier;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;tyrion_lannister;courtier, scholar;1;profile metadata, not proof of an actual staffed workplace
+authored_character_profile;yoren;soldier, messenger;1;profile metadata, not proof of an actual staffed workplace
+winterfell_v2_roster;winterfell;ADMIN;70;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;CARPENTER;129;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;CHILD;1850;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;COOK;102;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;DEPENDENT;376;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;FARMER;950;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;FORESTER;135;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;GUARD;228;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;HEALER;62;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;LADY;1;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;LIVESTOCK;280;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;LORD;1;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;MASON;63;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;MERCHANT;198;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;SERVANT;298;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;SMITH;123;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;STABLE;2;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;TRANSPORT;131;"roster plan; native NPC import may depend on opted-in runtime state"
+winterfell_v2_roster;winterfell;WARD;1;"roster plan; native NPC import may depend on opted-in runtime state"
