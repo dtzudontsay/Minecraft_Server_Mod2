@@ -1,0 +1,401 @@
+﻿reference_id;name;kind;parent;provenance;mapped_marker_ids;linked_holding_ids;physical_site_ids
+acorn_hall;Acorn Hall;SETTLEMENT;riverlands;CANON;SW-023;acorn_hall_domain;site_sw_023
+amberly;Amberly;SETTLEMENT;stormlands;CANON;;amberly_domain;
+andalos;Andalos;REGION;essos;CANON;;;
+antlers;Antlers;SETTLEMENT;crownlands;CANON;SW-030;antlers_domain;site_sw_030
+appleton;Appleton;SETTLEMENT;the_reach;CANON;;appleton_domain;
+ashemark;Ashemark;SETTLEMENT;westerlands;CANON;SW-022;ashemark_domain;site_sw_022
+ashford;Ashford;SETTLEMENT;the_reach;CANON;SW-064;ashford_domain;site_sw_064
+asshai;Asshai;SETTLEMENT;shadow_lands;CANON;;;
+astapor;Astapor;SETTLEMENT;slavers_bay_region;CANON;SE-015;astapor_domain;site_se_015
+atranta;Atranta;SETTLEMENT;riverlands;CANON;;atranta_domain;
+ax_ilse;Ax Ilse;SUBREGION;north_sothoryos;CANON;;;
+bandallon;Bandallon;SETTLEMENT;the_reach;CANON;SW-072;bandallon_domain;site_sw_072
+banefort;Banefort;SETTLEMENT;westerlands;CANON;SW-012;banefort_domain;site_sw_012
+barrow_hall;Barrow Hall;SETTLEMENT;the_north;CANON;;barrow_hall_domain;
+barrowlands;Barrowlands;SUBREGION;the_north;CANON;;;
+basilisk_isles;Basilisk Isles;REGION;sothoryos;CANON;;;
+basilisk_point;Basilisk Point;SUBREGION;north_sothoryos;CANON;;;
+bear_island;Bear Island;SUBREGION;the_north;CANON;;;
+beyond_the_wall;Beyond the Wall;REGION;westeros;CANON;;;
+bitterbridge;Bitterbridge;SETTLEMENT;the_reach;CANON;SW-053;bitterbridge_domain;site_sw_053
+blackcrown;Blackcrown;SETTLEMENT;the_reach;CANON;SW-087;blackcrown_domain;site_sw_087
+blackhaven;Blackhaven;SETTLEMENT;stormlands;CANON;SW-070;blackhaven_domain;site_sw_070
+blackmont;Blackmont;SETTLEMENT;dorne;CANON;SW-082;blackmont_domain;site_sw_082
+blackpool;Blackpool;SETTLEMENT;the_north;CANON;;blackpool_domain;
+blacktyde;Blacktyde;SUBREGION;iron_islands;CANON;;blacktyde_holding;
+bloodstone;Bloodstone;SUBREGION;stepstones;CANON;;;
+bone_mountains;Bone Mountains;SUBREGION;essos;CANON;;;
+braavos;Braavos;SETTLEMENT;free_cities;CANON;NWE-001;braavos_domain;site_nwe_001
+braavosian_coastlands;Braavosian Coastlands;SUBREGION;free_cities;CANON;;;
+brandons_gift;Brandon's Gift;SUBREGION;the_north;CANON;;;
+breakstone_hill;Breakstone Hill;SUBREGION;the_north;CANON;;breakstone_hill_domain;
+breakwater;Breakwater;SETTLEMENT;three_sisters;CANON;;breakwater_domain;
+brightwater_keep;Brightwater Keep;SETTLEMENT;the_reach;CANON;;brightwater_keep_domain;
+broad_arch;Broad Arch;SETTLEMENT;stormlands;CANON;;broad_arch_domain;
+bronzegate;Bronzegate;SETTLEMENT;stormlands;CANON;SW-054;bronzegate_domain;site_sw_054
+brownhollow;Brownhollow;SETTLEMENT;crownlands;CANON;;brownhollow_domain;
+cannibal_sands;Cannibal Sands;REGION;essos;CANON;;;
+cape_kraken;Cape Kraken;SUBREGION;the_north;CANON;;;
+cape_wrath;Cape Wrath;SUBREGION;stormlands;CANON;;"cape_wrath_brownhill_domain;cape_wrath_seaworth_domain";
+carcosa;Carcosa;SETTLEMENT;yi_ti;CANON;SEE-002;carcosa_yellow_domain;site_see_002
+casterly_rock;Casterly Rock;SETTLEMENT;westerlands;CANON;SW-038;casterly_rock_domain;site_sw_038
+castle_black;Castle Black;SETTLEMENT;beyond_the_wall;CANON;NW-008;;site_nw_008
+castle_cerwyn;Castle Cerwyn;SETTLEMENT;the_north;CANON;;castle_cerwyn_domain;
+castlewood;Castlewood;SETTLEMENT;riverlands;CANON;;castlewood_domain;
+cider_hall;Cider Hall;SETTLEMENT;the_reach;CANON;SW-061;cider_hall_domain;site_sw_061
+cities_of_the_bloodless_men;Cities of the Bloodless Men;REGION;essos;CANON;;;
+claw_isle;Claw Isle;SUBREGION;crownlands;CANON;;claw_isle_domain;
+cleganes_keep;Clegane's Keep;SETTLEMENT;westerlands;CANON;;cleganes_keep_domain;
+coldmoat;Coldmoat;SETTLEMENT;goldengrove;CANON;;coldmoat_domain;
+coldwater_burn;Coldwater Burn;SETTLEMENT;the_vale;CANON;NW-042;coldwater_burn_domain;site_nw_042
+cornfield;Cornfield;SETTLEMENT;westerlands;CANON;SW-047;cornfield_domain;site_sw_047
+corpse_lake;Corpse Lake;SETTLEMENT;iron_islands;CANON;;corpse_lake_domain;
+crackclaw_point;Crackclaw Point;SUBREGION;crownlands;CANON;;;
+crakehall;Crakehall;SETTLEMENT;westerlands;CANON;SW-048;crakehall_domain;site_sw_048
+crow_spike_keep;Crow Spike Keep;SETTLEMENT;iron_islands;CANON;;crow_spike_keep_domain;
+crownlands;The Crownlands;REALM;westeros;CANON;;crownlands_domain;
+crows_nest;Crow's Nest;SETTLEMENT;stormlands;CANON;SW-066;crows_nest_domain;site_sw_066
+darkdell;Darkdell;SETTLEMENT;the_reach;CANON;;darkdell_domain;
+darry;Darry;SETTLEMENT;riverlands;CANON;;darry_domain;
+deep_den;Deep Den;SETTLEMENT;westerlands;CANON;SW-036;deep_den_domain;site_sw_036
+deepdown;Deepdown;SETTLEMENT;the_north;CANON;;deepdown_domain;
+deepwood_motte;Deepwood Motte;SETTLEMENT;the_north;CANON;NW-027;deepwood_motte_domain;site_nw_027
+disputed_lands;The Disputed Lands;REGION;essos;CANON;;;
+doquu;Doquu;SUBREGION;summer_isles;CANON;;;
+dormand_hall;Dormand Hall;SETTLEMENT;the_north;HYBRID_CANON;;dormand_hall_domain;
+dorne;Dorne;REALM;westeros;CANON;;dorne_domain;
+dornish_marches;Dornish Marches;SUBREGION;the_reach;CANON;;;
+dothraki_sea_region;Dothraki Sea;REGION;essos;CANON;;;
+downdelving;Downdelving;SETTLEMENT;iron_islands;CANON;;downdelving_domain;
+dragonstone;Dragonstone;SETTLEMENT;crownlands;CANON;SW-032;dragonstone_domain;site_sw_032
+dreadfort;The Dreadfort;SETTLEMENT;the_north;CANON;NW-028;dreadfort_domain;site_nw_028
+drearfort;The Drearfort;SETTLEMENT;the_vale;CANON;;drearfort_domain;
+driftmark;Driftmark;SUBREGION;crownlands;CANON;SW-035;driftmark_domain;site_sw_035
+driftwood_hall;Driftwood Hall;SETTLEMENT;the_north;CANON;;driftwood_hall_domain;
+dun_fort;Dun Fort;SETTLEMENT;crownlands;CANON;;dun_fort_domain;
+dyre_den;Dyre Den;SETTLEMENT;crownlands;CANON;;dyre_den_domain;
+essos;Essos;CONTINENT;known_world;CANON;;;
+estermont;Estermont;SUBREGION;stormlands;CANON;;;
+evenfall_hall;Evenfall Hall;SETTLEMENT;stormlands;CANON;SW-058;evenfall_hall_domain;site_sw_058
+eyrie;The Eyrie;SETTLEMENT;the_vale;CANON;SW-003;eyrie_domain;site_sw_003
+fair_isle;Fair Isle;SUBREGION;westerlands;CANON;;;
+faircastle;Faircastle;SETTLEMENT;westerlands;CANON;SW-024;faircastle_domain;site_sw_024
+far_ib;Far Ib;SUBREGION;ib_region;CANON;;;
+fawnton;Fawnton;SETTLEMENT;stormlands;CANON;;fawnton_domain;
+feastfires;Feastfires;SETTLEMENT;westerlands;CANON;SW-040;feastfires_domain;site_sw_040
+felwood;Felwood;SETTLEMENT;stormlands;CANON;SW-055;felwood_domain;site_sw_055
+flea_bottom;Flea Bottom;DISTRICT;kings_landing;CANON;;;
+flints_finger;Flint's Finger;SETTLEMENT;the_north;CANON;NW-037;flints_finger_domain;site_nw_037
+forest_of_qohor;Forest of Qohor;SUBREGION;free_cities;CANON;;;
+free_cities;Free Cities;REGION;essos;HYBRID_CANON;;;
+gallowsgrey;Gallowsgrey;SETTLEMENT;stormlands;CANON;;gallowsgrey_domain;
+gates_of_the_moon;Gates of the Moon;SETTLEMENT;the_vale;CANON;;gates_of_moon_domain;
+ghaen;Ghaen;SUBREGION;ghiscar;CANON;;;
+ghiscar;Ghiscar;REGION;essos;CANON;;;
+ghost_grass;Ghost Grass;SUBREGION;yi_ti;CANON;;;
+ghost_hill;Ghost Hill;SETTLEMENT;dorne;CANON;SW-089;ghost_hill_domain;site_sw_089
+godsgrace;Godsgrace;SETTLEMENT;dorne;CANON;SW-093;godsgrace_domain;site_sw_093
+gogossos;Gogossos;SETTLEMENT;basilisk_isles;CANON;SO-004;;site_so_004
+golden_fields;The Golden Fields;SUBREGION;lands_of_long_summer;CANON;;;
+golden_head;Golden Head;SUBREGION;summer_isles;CANON;;;
+golden_tooth;Golden Tooth;SETTLEMENT;westerlands;CANON;SW-025;golden_tooth_domain;site_sw_025
+goldengrove;Goldengrove;SETTLEMENT;the_reach;CANON;SW-051;goldengrove_domain;site_sw_051
+goldgrass;Goldgrass;SETTLEMENT;the_north;HYBRID_CANON;;goldgrass_domain;
+grandview;Grandview;SETTLEMENT;stormlands;CANON;;grandview_domain;
+grassfield_keep;Grassfield Keep;SETTLEMENT;the_reach;CANON;;grassfield_keep_domain;
+gray_cliffs;Gray Cliffs;SUBREGION;the_north;CANON;;;
+gray_shield;Gray Shield;SUBREGION;the_reach;CANON;;;
+great_moraq;Great Moraq;SUBREGION;moraq_region;CANON;;;
+great_sand_sea;Great Sand Sea;REGION;essos;CANON;;;
+great_sept_of_baelor;Great Sept of Baelor;BUILDING;kings_landing;CANON;;;
+great_wyk;Great Wyk;SUBREGION;iron_islands;CANON;;great_wyk_sparr_domain;
+green_shield;Green Shield;SUBREGION;the_reach;CANON;;;
+greenfield;Greenfield;SETTLEMENT;westerlands;CANON;;greenfield_domain;
+greenshield;Greenshield;SUBREGION;the_reach;CANON;;greenshield_domain;
+greenstone;Greenstone;SETTLEMENT;stormlands;CANON;SW-074;greenstone_domain;site_sw_074
+grey_garden;Grey Garden;SETTLEMENT;ten_towers;CANON;;grey_garden_domain;
+grey_glen;Grey Glen;SETTLEMENT;the_vale;CANON;;grey_glen_domain;
+grey_waste;Grey Waste;REGION;essos;CANON;;;
+greywater_watch;Greywater Watch;SETTLEMENT;the_north;CANON;NW-039;greywater_watch_domain;site_nw_039
+griffins_roost;Griffin's Roost;SETTLEMENT;stormlands;CANON;SW-062;griffins_roost_domain;site_sw_062
+grimston;Grimston;SETTLEMENT;the_reach;CANON;;grimston_domain;
+gull_tower;Gull Tower;SETTLEMENT;the_vale;CANON;;gull_tower_domain;
+gulltown;Gulltown;SETTLEMENT;the_vale;CANON;SW-010;"arryn_gulltown_domain;gulltown_domain;shett_gulltown_domain";site_sw_010
+hags_mire;Hag's Mire;SETTLEMENT;riverlands;CANON;;hags_mire_domain;
+hall_of_the_mormonts;Hall of the Mormonts;SETTLEMENT;the_north;CANON;NW-024;hall_of_mormonts_domain;site_nw_024
+hammerhal;Hammerhal;SETTLEMENT;the_reach;CANON;;hammerhal_domain;
+hammerhorn;Hammerhorn;SETTLEMENT;iron_islands;CANON;;hammerhorn_domain;
+harlaw;Harlaw;SUBREGION;iron_islands;CANON;;"kenning_harlaw_domain;myre_harlaw_domain;stonetree_harlaw_domain";
+harlaw_hall;Harlaw Hall;SETTLEMENT;ten_towers;CANON;;harlaw_hall_domain;
+harrenhal;Harrenhal;SETTLEMENT;riverlands;CANON;SW-020;harrenhal_domain;site_sw_020
+harridan_hill;Harridan Hill;SETTLEMENT;ten_towers;CANON;;harridan_hill_domain;
+harvest_hall;Harvest Hall;SETTLEMENT;stormlands;CANON;;harvest_hall_domain;
+hayford;Hayford;SETTLEMENT;crownlands;CANON;;hayford_domain;
+haystack_hall;Haystack Hall;SETTLEMENT;stormlands;CANON;SW-052;haystack_hall_domain;site_sw_052
+hearts_home;Heart's Home;SETTLEMENT;the_vale;CANON;NW-048;hearts_home_domain;site_nw_048
+hellholt;Hellholt;SETTLEMENT;dorne;CANON;SW-096;hellholt_domain;site_sw_096
+high_hermitage;High Hermitage;SETTLEMENT;starfall;CANON;SW-088;high_hermitage_domain;site_sw_088
+high_tide;High Tide;SETTLEMENT;crownlands;CANON;;high_tide_domain;
+highgarden;Highgarden;SETTLEMENT;the_reach;CANON;SW-067;highgarden_domain;site_sw_067
+highpoint;Highpoint;SETTLEMENT;the_north;HYBRID_CANON;;highpoint_domain;
+hightower;The Hightower;SETTLEMENT;the_reach;CANON;;hightower_domain;
+hills_of_norvos;Hills of Norvos;SUBREGION;free_cities;CANON;;;
+holyhall;Holyhall;SETTLEMENT;the_reach;CANON;;holyhall_domain;
+honeyholt;Honeyholt;SETTLEMENT;the_reach;CANON;SW-079;honeyholt_domain;site_sw_079
+horn_hill;Horn Hill;SETTLEMENT;the_reach;CANON;;horn_hill_domain;
+hornvale;Hornvale;SETTLEMENT;westerlands;CANON;SW-031;hornvale_domain;site_sw_031
+hornwood;Hornwood;SETTLEMENT;the_north;CANON;;hornwood_domain;
+howling_hills;Howling Hills;SUBREGION;dothraki_sea_region;CANON;;;
+ib_region;Ib;REGION;essos;CANON;;;
+illyrios_manse;Illyrio's Manse;BUILDING;pentos;CANON;;illyrios_manse_domain;
+iron_holt;Iron Holt;SETTLEMENT;iron_islands;CANON;;iron_holt_domain;
+iron_islands;The Iron Islands;REALM;westeros;CANON;;iron_islands_domain;
+ironoaks;Ironoaks;SETTLEMENT;the_vale;CANON;;ironoaks_domain;
+ironrath;Ironrath;SETTLEMENT;the_north;HYBRID_CANON;;ironrath_domain;
+isle_of_birds;Isle of Birds;SUBREGION;summer_isles;CANON;;;
+isle_of_cedars;Isle of Cedars;SUBREGION;lands_of_old_valyria;CANON;;;
+isle_of_elephants;Isle of Elephants;SUBREGION;north_sothoryos;CANON;;;
+isle_of_faces;Isle of Faces;SUBREGION;riverlands;CANON;;;
+isle_of_love;Isle of Love;SUBREGION;summer_isles;CANON;;;
+isle_of_tears;Isle of Tears;SUBREGION;basilisk_isles;CANON;;;
+isle_of_toads;Isle of Toads;SUBREGION;basilisk_isles;CANON;;;
+isle_of_whips;Isle of Whips;SUBREGION;north_sothoryos;CANON;;;
+isle_of_women;Isle of Women;SUBREGION;summer_isles;CANON;;;
+ivy_hall;Ivy Hall;SETTLEMENT;the_reach;CANON;;ivy_hall_domain;
+jhala;Jhala;SUBREGION;summer_isles;CANON;;;
+jogos_nhai;Jogos Nhai;REGION;essos;CANON;;;
+karhold;Karhold;SETTLEMENT;the_north;CANON;NW-026;karhold_domain;site_nw_026
+kayce;Kayce;SETTLEMENT;westerlands;CANON;SW-037;kayce_domain;site_sw_037
+khyzai_pass;Khyzai Pass;SUBREGION;qarth_region;CANON;;;
+kingdom_of_sarnor;Kingdom of Sarnor;REGION;essos;CANON;;;
+kingdoms_of_the_ifeqevron;Kingdoms of the Ifeqevron;REGION;essos;CANON;;;
+kings_landing;King's Landing;SETTLEMENT;crownlands;CANON;SW-046;kings_landing_domain;site_sw_046
+kingsgrave;Kingsgrave;SETTLEMENT;dorne;CANON;SW-080;kingsgrave_domain;site_sw_080
+kingshouse;Kingshouse;SETTLEMENT;the_north;CANON;;kingshouse_domain;
+kingswood;Kingswood;SUBREGION;crownlands;CANON;;;
+known_world;Known World;WORLD;;CANON;;;
+koj;Koj;SUBREGION;summer_isles;CANON;;koj_domain;
+krazaaj_zasqa;Krazaaj Zasqa;REGION;essos;CANON;;;
+land_of_the_shrykes;Land of the Shrykes;REGION;essos;CANON;;;
+lands_of_always_winter;The Lands of Always Winter;SUBREGION;beyond_the_wall;CANON;;;
+lands_of_long_summer;Lands of the Long Summer;REGION;essos;CANON;;;
+lands_of_old_valyria;The Lands of Old Valyria;REGION;essos;CANON;;;
+lannisport;Lannisport;SETTLEMENT;westerlands;CANON;SW-041;lannisport_domain;site_sw_041
+last_hearth;Last Hearth;SETTLEMENT;the_north;CANON;NW-025;last_hearth_domain;site_nw_025
+lemonwood;Lemonwood;SETTLEMENT;dorne;CANON;SW-102;lemonwood_domain;site_sw_102
+leng;Leng;REALM;essos;CANON;;leng_domain;
+lesser_moraq;Lesser Moraq;SUBREGION;moraq_region;CANON;;;
+lhazar;Lhazar;REGION;essos;CANON;;;
+littlesister;Littlesister;SUBREGION;vale;CANON;;littlesister_domain;
+lizard_head;Lizard Head;SUBREGION;summer_isles;CANON;;;
+lonely_hills;Lonely Hills;SUBREGION;the_north;CANON;;;
+lonely_light;Lonely Light;SUBREGION;iron_islands;CANON;;lonely_light_domain;
+longbow_hall;Longbow Hall;SETTLEMENT;the_vale;CANON;NW-047;longbow_hall_domain;site_nw_047
+longsister;Longsister;SUBREGION;vale;CANON;;longsister_domain;
+longtable;Longtable;SETTLEMENT;the_reach;CANON;SW-059;longtable_domain;site_sw_059
+lorath;Lorath;SETTLEMENT;free_cities;CANON;;;
+lord_harroways_town;Lord Harroway's Town;SETTLEMENT;riverlands;CANON;SW-016;lord_harroways_town_domain;site_sw_016
+lord_hewetts_castle;Lord Hewett's Castle;SETTLEMENT;the_reach;CANON;;lord_hewetts_castle_domain;
+lordsport;Lordsport;SETTLEMENT;iron_islands;CANON;;lordsport_domain;
+lychester_keep;Lychester's Keep;SETTLEMENT;riverlands;CANON;;lychester_keep_domain;
+lys;Lys;SETTLEMENT;free_cities;CANON;SWE-010;lys_domain;site_swe_010
+maidenpool;Maidenpool;SETTLEMENT;riverlands;CANON;SW-026;maidenpool_domain;site_sw_026
+manticore_isles;Manticore Isles;SUBREGION;shadow_lands;CANON;;;
+marahai;Marahai;SUBREGION;yi_ti;CANON;;;
+meereen;Meereen;SETTLEMENT;slavers_bay_region;CANON;SE-008;meereen_domain;site_se_008
+mistwood;Mistwood;SETTLEMENT;stormlands;CANON;SW-069;mistwood_domain;site_sw_069
+moluu;Moluu;SUBREGION;summer_isles;CANON;;;
+moraq_region;Moraq;REGION;essos;PLAUSIBLE;;;
+mossovy;Mossovy;REGION;essos;CANON;;;
+mother_of_mountains;Mother of Mountains;SUBREGION;dothraki_sea_region;CANON;;;
+mountains_of_the_moon;Mountains of the Moon;SUBREGION;vale;CANON;;;
+mountains_of_the_morn;Mountains of the Morn;SUBREGION;shadow_lands;CANON;;;
+myr;Myr;SETTLEMENT;free_cities;CANON;;;
+n_ghai;N Ghai;SUBREGION;jogos_nhai;CANON;;;
+naath;Naath;REGION;known_world;CANON;;;
+new_barrel;New Barrel;SETTLEMENT;the_reach;CANON;;new_barrel_domain;
+new_castle;New Castle;SETTLEMENT;the_north;CANON;;new_castle_domain;
+newkeep;Newkeep;SETTLEMENT;the_vale;CANON;;newkeep_domain;
+nightsong;Nightsong;SETTLEMENT;stormlands;CANON;SW-071;nightsong_domain;site_sw_071
+ninestars;Ninestars;SETTLEMENT;the_vale;CANON;;ninestars_domain;
+north_sothoryos;North Sothoryos;REGION;sothoryos;HYBRID_CANON;;;
+northern_mountains;Northern Mountains;SUBREGION;the_north;CANON;;northern_mountains_flint_domain;
+northwest_ulthos;Northwest Ulthos;REGION;ulthos;PLAUSIBLE;;;
+norvos;Norvos;SETTLEMENT;free_cities;CANON;;;
+oakenshield;Oakenshield;SUBREGION;the_reach;CANON;;;
+old_anchor;Old Anchor;SETTLEMENT;the_vale;CANON;SW-002;old_anchor_domain;site_sw_002
+old_oak;Old Oak;SETTLEMENT;the_reach;CANON;SW-057;old_oak_domain;site_sw_057
+old_wyk;Old Wyk;SUBREGION;iron_islands;CANON;;"old_wyk_drumm_domain;old_wyk_stonehouse_domain";
+oldcastle;Oldcastle;SETTLEMENT;the_north;CANON;NW-036;oldcastle_domain;site_nw_036
+oldtown;Oldtown;SETTLEMENT;the_reach;CANON;;;
+omber;Omber;SUBREGION;kingdom_of_sarnor;CANON;;;
+omboru;Omboru;SUBREGION;summer_isles;CANON;;;
+orange_emperor_domain;Orange Emperor Domain;REALM;essos;PLAUSIBLE;;;
+orange_shore;The Orange Shore;SUBREGION;lands_of_long_summer;CANON;;;
+orkmont;Orkmont;SUBREGION;iron_islands;CANON;;"goodbrother_orkmont_domain;orkmont_domain;tawney_orkmont_domain";
+painted_mountains;Painted Mountains;SUBREGION;lands_of_long_summer;CANON;;;
+parchments;Parchments;SETTLEMENT;stormlands;CANON;;parchments_domain;
+pebble;Pebble;SUBREGION;vale;CANON;;pebble_domain;
+pebbleton;Pebbleton;SETTLEMENT;iron_islands;CANON;;pebbleton_domain;
+pentos;Pentos;SETTLEMENT;free_cities;CANON;NWE-011;pentos_domain;site_nwe_011
+pinkmaiden_castle;Pinkmaiden Castle;SETTLEMENT;riverlands;CANON;SW-027;pinkmaiden_domain;site_sw_027
+plains_of_the_jogos_nhai;Plains of the Jogos Nhai;SUBREGION;jogos_nhai;CANON;;;
+poddingfield;Poddingfield;SETTLEMENT;stormlands;CANON;;poddingfield_domain;
+pyke;Pyke;SETTLEMENT;iron_islands;CANON;SW-008;pyke_domain;site_sw_008
+pyramid_of_ghazeen;Pyramid of Ghazeen;BUILDING;meereen;CANON;;pyramid_ghazeen_domain;
+pyramid_of_hazkar;Pyramid of Hazkar;BUILDING;meereen;CANON;;pyramid_hazkar_domain;
+pyramid_of_kandaq;Pyramid of Kandaq;BUILDING;meereen;CANON;;pyramid_kandaq_domain;
+pyramid_of_loraq;Pyramid of Loraq;BUILDING;meereen;CANON;;pyramid_loraq_domain;
+pyramid_of_merreq;Pyramid of Merreq;BUILDING;meereen;CANON;;pyramid_merreq_domain;
+pyramid_of_nakloz;Pyramid of Nakloz;BUILDING;astapor;CANON;;pyramid_nakloz_domain;
+pyramid_of_naqqan;Pyramid of Naqqan;BUILDING;meereen;CANON;;pyramid_naqqan_domain;
+pyramid_of_pahl;Pyramid of Pahl;BUILDING;meereen;CANON;;pyramid_pahl_domain;
+pyramid_of_quazzar;Pyramid of Quazzar;BUILDING;meereen;CANON;;pyramid_quazzar_domain;
+pyramid_of_rhazdar;Pyramid of Rhazdar;BUILDING;meereen;CANON;;pyramid_rhazdar_domain;
+pyramid_of_uhlez;Pyramid of Uhlez;BUILDING;meereen;CANON;;pyramid_uhlez_domain;
+pyramid_of_ullhor;Pyramid of Ullhor;BUILDING;astapor;CANON;;pyramid_ullhor_domain;
+pyramid_of_yherizan;Pyramid of Yherizan;BUILDING;meereen;CANON;;pyramid_yherizan_domain;
+pyramid_of_zhak;Pyramid of Zhak;BUILDING;meereen;CANON;;pyramid_zhak_domain;
+qal;Qal;SUBREGION;qarth_region;CANON;;;
+qarth;Qarth;SETTLEMENT;qarth_region;CANON;SE-022;qarth_domain;site_se_022
+qarth_region;Qarth and the Qaathi Lands;REGION;essos;HYBRID_CANON;;;
+qohor;Qohor;SETTLEMENT;free_cities;CANON;;;
+rain_house;Rain House;SETTLEMENT;stormlands;CANON;SW-065;rain_house_domain;site_sw_065
+rainwood;Rainwood;SUBREGION;stormlands;CANON;;;
+raventree_hall;Raventree Hall;SETTLEMENT;riverlands;CANON;;raventree_hall_domain;
+realm_of_jhogwin;Realm of Jhogwin;REGION;essos;CANON;;;
+red_flower_vale;Red Flower Vale;SUBREGION;summer_isles;CANON;;red_flower_vale_domain;
+red_keep;Red Keep;BUILDING;kings_landing;CANON;;red_keep_domain;
+red_lake;Red Lake;SETTLEMENT;the_reach;CANON;SW-050;red_lake_domain;site_sw_050
+red_waste_region;The Red Waste;REGION;essos;CANON;;;
+redfort;Redfort;SETTLEMENT;the_vale;CANON;SW-011;redfort_domain;site_sw_011
+rillwater_crossing;Rillwater Crossing;SETTLEMENT;the_north;HYBRID_CANON;;rillwater_crossing_domain;
+risley_glade;Risley Glade;BUILDING;the_reach;CANON;;risley_glade_domain;
+riverlands;The Riverlands;REALM;westeros;CANON;;riverlands_domain;
+riverrun;Riverrun;SETTLEMENT;riverlands;CANON;SW-015;riverrun_domain;site_sw_015
+riverspring;Riverspring;SETTLEMENT;westerlands;CANON;;riverspring_domain;
+rooks_rest;Rook's Rest;SETTLEMENT;crownlands;CANON;SW-029;rooks_rest_domain;site_sw_029
+rosby;Rosby;SETTLEMENT;crownlands;CANON;SW-045;rosby_domain;site_sw_045
+runestone;Runestone;SETTLEMENT;the_vale;CANON;SW-006;runestone_domain;site_sw_006
+salt_shore;Salt Shore;SETTLEMENT;dorne;CANON;SW-103;salt_shore_domain;site_sw_103
+saltcliffe;Saltcliffe;SUBREGION;iron_islands;CANON;;"saltcliffe_domain;sunderly_saltcliffe_domain";
+saltpans;Saltpans;SETTLEMENT;riverlands;CANON;SW-017;"saltpans_cox_domain;saltpans_hawick_domain";site_sw_017
+sandstone;Sandstone;SETTLEMENT;dorne;CANON;SW-098;sandstone_domain;site_sw_098
+sarsfield;Sarsfield;SETTLEMENT;westerlands;CANON;SW-028;sarsfield_domain;site_sw_028
+sea_dragon_point;Sea Dragon Point;SUBREGION;the_north;CANON;;;
+seagard;Seagard;SETTLEMENT;riverlands;CANON;SW-001;seagard_domain;site_sw_001
+sealskin_point;Sealskin Point;SUBREGION;iron_islands;CANON;;sealskin_point_domain;
+shadow_lands;Shadow Lands;REGION;essos;CANON;;;
+sharp_point;Sharp Point;SETTLEMENT;crownlands;CANON;SW-042;sharp_point_domain;site_sw_042
+shatterstone;Shatterstone;SETTLEMENT;iron_islands;CANON;;shatterstone_domain;
+sheepshead_hills;Sheepshead Hills;SUBREGION;the_north;CANON;;;
+silverhill;Silverhill;SETTLEMENT;westerlands;CANON;SW-043;silverhill_domain;site_sw_043
+skagos;Skagos;SUBREGION;the_north;CANON;;;
+skull_island;Skull Island;SUBREGION;basilisk_isles;CANON;;;
+skyreach;Skyreach;SETTLEMENT;dorne;CANON;SW-085;skyreach_domain;site_sw_085
+slavers_bay_region;Slaver's Bay;SUBREGION;ghiscar;CANON;;;
+smithyton;Smithyton;SETTLEMENT;the_reach;CANON;;smithyton_domain;
+snakewood;Snakewood;SETTLEMENT;the_vale;CANON;NW-045;snakewood_domain;site_nw_045
+sothoryos;Sothoryos;CONTINENT;known_world;CANON;;;
+south_shield;South Shield;SUBREGION;the_reach;CANON;;;
+southshield;Southshield;SUBREGION;the_reach;CANON;;southshield_domain;
+sows_horn;Sow's Horn;SETTLEMENT;crownlands;CANON;;sows_horn_domain;
+spottswood;Spottswood;SETTLEMENT;dorne;CANON;;spottswood_domain;
+standfast;Standfast;SETTLEMENT;goldengrove;CANON;;standfast_domain;
+starfall;Starfall;SETTLEMENT;dorne;CANON;SW-092;starfall_domain;site_sw_092
+starpike;Starpike;SETTLEMENT;the_reach;CANON;;starpike_domain;
+stepstones;Stepstones;REGION;known_world;CANON;;;
+stokeworth;Stokeworth;SETTLEMENT;crownlands;CANON;;stokeworth_domain;
+stone_head;Stone Head;SUBREGION;lands_of_old_valyria;CANON;;;
+stone_hedge;Stone Hedge;SETTLEMENT;riverlands;CANON;;stone_hedge_domain;
+stonedance;Stonedance;SETTLEMENT;crownlands;CANON;SW-044;stonedance_domain;site_sw_044
+stonehelm;Stonehelm;SETTLEMENT;stormlands;CANON;SW-068;stonehelm_domain;site_sw_068
+stony_shore;Stony Shore;SUBREGION;the_north;CANON;;;
+stormlands;The Stormlands;REALM;westeros;CANON;;stormlands_domain;
+storms_end;Storm's End;SETTLEMENT;stormlands;CANON;SW-060;storms_end_domain;site_sw_060
+strongsong;Strongsong;SETTLEMENT;the_vale;CANON;;strongsong_domain;
+summer_isles;Summer Isles;REGION;known_world;CANON;;summer_isles_domain;
+sunhouse;Sunhouse;SETTLEMENT;the_reach;CANON;SW-100;sunhouse_domain;site_sw_100
+sunspear;Sunspear;SETTLEMENT;dorne;CANON;SW-095;sunspear_domain;site_sw_095
+sweet_lotus_vale;Sweet Lotus Vale;SUBREGION;summer_isles;CANON;;sweet_lotus_vale_domain;
+sweetport_sound;Sweetport Sound;SUBREGION;crownlands;CANON;;sweetport_sound_domain;
+sweetsister;Sweetsister;SUBREGION;vale;CANON;;;
+tarth;Tarth;SUBREGION;stormlands;CANON;;;
+ten_towers;Ten Towers;SETTLEMENT;iron_islands;CANON;;ten_towers_domain;
+the_arbor;The Arbor;SUBREGION;the_reach;CANON;;arbor_domain;
+the_axe;The Axe;SUBREGION;andalos;CANON;;;
+the_black_cliffs;The Black Cliffs;SUBREGION;lands_of_old_valyria;CANON;;;
+the_bones;The Bones;SUBREGION;summer_isles;CANON;;;
+the_broken_arm;The Broken Arm;SUBREGION;dorne;CANON;;;
+the_crag;The Crag;SETTLEMENT;westerlands;CANON;SW-018;crag_domain;site_sw_018
+the_dry_deep;The Dry Deep;REGION;essos;CANON;;;
+the_eyrie;The Eyrie;SETTLEMENT;vale;CANON;;;
+the_fingers;The Fingers;SUBREGION;vale;CANON;;;
+the_flatlands;The Flatlands;SUBREGION;andalos;CANON;;;
+the_frostfangs;The Frostfangs;SUBREGION;beyond_the_wall;CANON;;;
+the_frozen_shore;The Frozen Shore;SUBREGION;beyond_the_wall;CANON;;;
+the_haunted_forest;The Haunted Forest;SUBREGION;beyond_the_wall;CANON;;;
+the_neck;The Neck;SUBREGION;the_north;CANON;;;
+the_new_gift;The New Gift;SUBREGION;the_north;CANON;;;
+the_north;The North;REALM;westeros;CANON;;north_domain;
+the_paps;The Paps;SUBREGION;vale;CANON;;paps_domain;
+the_prince_pass;The Prince Pass;SUBREGION;dorne;CANON;;;
+the_reach;The Reach;REALM;westeros;CANON;;reach_domain;
+the_red_mountains;The Red Mountains;SUBREGION;dorne;CANON;;;
+the_rills;The Rills;SUBREGION;the_north;CANON;;rills_domain;
+the_ring;The Ring;SETTLEMENT;the_reach;CANON;;ring_domain;
+the_shrinking_sea;The Shrinking Sea;REGION;essos;CANON;;;
+the_singing_stones;The Singing Stones;SUBREGION;summer_isles;CANON;;;
+the_thousand_islands;The Thousand Islands;SUBREGION;mossovy;CANON;;;
+the_tor;The Tor;SETTLEMENT;dorne;CANON;SW-090;tor_domain;site_sw_090
+the_twins;The Twins;SETTLEMENT;riverlands;CANON;NW-MISSING-TWINS-01;twins_domain;site_nw_missing_twins_01
+the_vale;The Vale;REALM;westeros;CANON;;vale_domain;
+the_wall;The Wall;SUBREGION;westeros;CANON;;;
+the_whispers;The Whispers;SETTLEMENT;crownlands;CANON;;whispers_domain;
+three_exiles;Three Exiles;SUBREGION;summer_isles;CANON;;;
+three_sisters;Three Sisters;SUBREGION;the_vale;CANON;;three_sisters_domain;
+three_towers;Three Towers;SETTLEMENT;the_reach;CANON;SW-091;three_towers_domain;site_sw_091
+torrhens_square;Torrhen's Square;SETTLEMENT;the_north;CANON;NW-030;torrhens_square_domain;site_nw_030
+tower_of_glimmering;Tower of Glimmering;SETTLEMENT;ten_towers;CANON;;tower_of_glimmering_domain;
+trader_town;Trader Town;SETTLEMENT;yi_ti;CANON;NEE-003;trader_town_orange_domain;site_nee_003
+tumbleton;Tumbleton;SETTLEMENT;the_reach;CANON;SW-049;tumbleton_domain;site_sw_049
+tyrosh;Tyrosh;SETTLEMENT;free_cities;CANON;;;
+ulos;Ulos;REGION;ulthos;CANON;;;
+ulthos;Ulthos;CONTINENT;known_world;CANON;;;
+uplands;Uplands;SETTLEMENT;the_reach;CANON;SW-083;uplands_domain;site_sw_083
+vaes_dothrak;Vaes Dothrak;SETTLEMENT;dothraki_sea_region;CANON;;;
+vaith;Vaith;SETTLEMENT;dorne;CANON;SW-097;vaith_domain;site_sw_097
+vale;The Vale of Arryn;REALM;westeros;CANON;;;
+vale_of_arryn;Vale of Arryn;SUBREGION;vale;CANON;;;
+velvet_hills;Velvet Hills;SUBREGION;andalos;CANON;;;
+volantis;Volantis;SETTLEMENT;free_cities;CANON;SWE-011;volantis_domain;site_swe_011
+volmark;Volmark;SETTLEMENT;ten_towers;CANON;;volmark_domain;
+walano;Walano;SUBREGION;summer_isles;CANON;;;
+wayfarers_rest;Wayfarer's Rest;SETTLEMENT;riverlands;CANON;;wayfarers_rest_domain;
+weeping_town;Weeping Town;SETTLEMENT;stormlands;CANON;SW-076;weeping_town_domain;site_sw_076
+westerlands;The Westerlands;REALM;westeros;CANON;;westerlands_domain;
+westeros;Westeros;CONTINENT;known_world;CANON;;;
+wickenden;Wickenden;SETTLEMENT;the_vale;CANON;SW-019;wickenden_domain;site_sw_019
+widows_watch;Widow's Watch;SETTLEMENT;the_north;CANON;NW-032;widows_watch_domain;site_nw_032
+willow_wood;Willow Wood;SETTLEMENT;riverlands;CANON;;willow_wood_domain;
+winterfell;Winterfell;SETTLEMENT;the_north;CANON;NW-029;winterfell_domain;site_nw_029
+winterfell_crypts;Crypts of Winterfell;SITE;winterfell;CANON;;;
+winterfell_godswood;Winterfell Godswood;SITE;winterfell;CANON;;;
+winterfell_great_keep;Great Keep;BUILDING;winterfell;CANON;;;
+winterfell_stables;Winterfell Stables;BUILDING;winterfell;CANON;;;
+winterfell_training_yard;Winterfell Training Yard;SITE;winterfell;CANON;;;
+witch_isle;Witch Isle;SUBREGION;the_vale;CANON;;witch_isle_domain;
+wolfswood;Wolfswood;SUBREGION;the_north;CANON;;;
+womb_of_the_world;Womb of the World;REGION;essos;CANON;;;
+wyl;Wyl;SETTLEMENT;dorne;CANON;SW-075;wyl_domain;site_sw_075
+wyndhall;Wyndhall;SETTLEMENT;westerlands;CANON;;wyndhall_domain;
+wyvern_point;Wyvern Point;SUBREGION;north_sothoryos;CANON;;;
+xaros_home;Xaro's Home;BUILDING;qarth;CANON;;xaros_home_domain;
+xon;Xon;SUBREGION;summer_isles;CANON;;;
+yaros;Yaros;SUBREGION;essos;CANON;;;
+yeen;Yeen;SETTLEMENT;sothoryos;CANON;SO-005;;site_so_005
+yi_ti;Yi Ti;REALM;essos;CANON;;yi_ti_domain;
+yin;Yin;SETTLEMENT;yi_ti;CANON;SEE-005;yin_azure_domain;site_see_005
+yronwood;Yronwood;SETTLEMENT;dorne;CANON;SW-086;yronwood_domain;site_sw_086
+yunkai;Yunkai;SETTLEMENT;slavers_bay_region;CANON;SE-011;yunkai_domain;site_se_011

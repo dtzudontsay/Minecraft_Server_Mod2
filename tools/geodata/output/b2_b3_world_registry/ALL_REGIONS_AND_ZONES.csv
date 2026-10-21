@@ -1,0 +1,174 @@
+﻿region_id;name;kind;parent_location_id;mapped_boundary_or_mask;regional_influence_source;connected_domain_holdings;descendant_physical_sites
+andalos;Andalos;REGION;essos;YES;andalos;;0
+ax_ilse;Ax Ilse;SUBREGION;north_sothoryos;YES;north_sothoryos;;0
+barrowlands;Barrowlands;SUBREGION;the_north;YES;the_north;;0
+basilisk_isles;Basilisk Isles;REGION;sothoryos;YES;basilisk_isles;;1
+basilisk_point;Basilisk Point;SUBREGION;north_sothoryos;YES;north_sothoryos;;0
+bear_island;Bear Island;SUBREGION;the_north;YES;the_north;;0
+beyond_the_wall;Beyond the Wall;REGION;westeros;YES;beyond_the_wall;;1
+blacktyde;Blacktyde;SUBREGION;iron_islands;YES;iron_islands;blacktyde_holding;0
+bloodstone;Bloodstone;SUBREGION;stepstones;YES;;;0
+bone_mountains;Bone Mountains;SUBREGION;essos;YES;;;0
+braavosian_coastlands;Braavosian Coastlands;SUBREGION;free_cities;YES;braavosian_coastlands;;0
+brandons_gift;Brandon's Gift;SUBREGION;the_north;YES;the_north;;0
+breakstone_hill;Breakstone Hill;SUBREGION;the_north;NO;the_north;breakstone_hill_domain;0
+cannibal_sands;Cannibal Sands;REGION;essos;YES;;;0
+cape_kraken;Cape Kraken;SUBREGION;the_north;YES;the_north;;0
+cape_wrath;Cape Wrath;SUBREGION;stormlands;YES;stormlands;"cape_wrath_brownhill_domain;cape_wrath_seaworth_domain";0
+cities_of_the_bloodless_men;Cities of the Bloodless Men;REGION;essos;YES;;;0
+claw_isle;Claw Isle;SUBREGION;crownlands;YES;crownlands;claw_isle_domain;0
+crackclaw_point;Crackclaw Point;SUBREGION;crownlands;YES;crownlands;;0
+crownlands;The Crownlands;REALM;westeros;YES;crownlands;crownlands_domain;8
+disputed_lands;The Disputed Lands;REGION;essos;YES;disputed_lands;;0
+doquu;Doquu;SUBREGION;summer_isles;YES;summer_isles;;0
+dorne;Dorne;REALM;westeros;YES;dorne;dorne_domain;16
+dornish_marches;Dornish Marches;SUBREGION;the_reach;YES;dornish_marches;;0
+dothraki_sea_region;Dothraki Sea;REGION;essos;YES;dothraki_sea_region;;0
+dragonstone;Dragonstone;SETTLEMENT;crownlands;YES;crownlands;dragonstone_domain;1
+driftmark;Driftmark;SUBREGION;crownlands;NO;crownlands;driftmark_domain;1
+essos;Essos;CONTINENT;known_world;NO;;;11
+estermont;Estermont;SUBREGION;stormlands;YES;stormlands;;0
+fair_isle;Fair Isle;SUBREGION;westerlands;YES;westerlands;;0
+far_ib;Far Ib;SUBREGION;ib_region;YES;ib_region;;0
+forest_of_qohor;Forest of Qohor;SUBREGION;free_cities;YES;forest_of_qohor;;0
+free_cities;Free Cities;REGION;essos;NO;;;4
+ghaen;Ghaen;SUBREGION;ghiscar;YES;ghiscar;;0
+ghiscar;Ghiscar;REGION;essos;YES;ghiscar;;3
+ghost_grass;Ghost Grass;SUBREGION;yi_ti;YES;yi_ti;;0
+golden_fields;The Golden Fields;SUBREGION;lands_of_long_summer;YES;lands_of_long_summer;;0
+golden_head;Golden Head;SUBREGION;summer_isles;YES;summer_isles;;0
+gray_cliffs;Gray Cliffs;SUBREGION;the_north;YES;the_north;;0
+gray_shield;Gray Shield;SUBREGION;the_reach;YES;the_reach;;0
+great_moraq;Great Moraq;SUBREGION;moraq_region;YES;moraq_region;;0
+great_sand_sea;Great Sand Sea;REGION;essos;YES;;;0
+great_wyk;Great Wyk;SUBREGION;iron_islands;YES;iron_islands;great_wyk_sparr_domain;0
+green_shield;Green Shield;SUBREGION;the_reach;YES;the_reach;;0
+greenshield;Greenshield;SUBREGION;the_reach;NO;the_reach;greenshield_domain;0
+grey_waste;Grey Waste;REGION;essos;YES;;;0
+harlaw;Harlaw;SUBREGION;iron_islands;YES;iron_islands;"kenning_harlaw_domain;myre_harlaw_domain;stonetree_harlaw_domain";0
+hills_of_norvos;Hills of Norvos;SUBREGION;free_cities;YES;hills_of_norvos;;0
+howling_hills;Howling Hills;SUBREGION;dothraki_sea_region;YES;dothraki_sea_region;;0
+ib_region;Ib;REGION;essos;YES;ib_region;;0
+iron_islands;The Iron Islands;REALM;westeros;YES;iron_islands;iron_islands_domain;1
+isle_of_birds;Isle of Birds;SUBREGION;summer_isles;YES;summer_isles;;0
+isle_of_cedars;Isle of Cedars;SUBREGION;lands_of_old_valyria;YES;;;0
+isle_of_elephants;Isle of Elephants;SUBREGION;north_sothoryos;YES;north_sothoryos;;0
+isle_of_faces;Isle of Faces;SUBREGION;riverlands;YES;riverlands;;0
+isle_of_love;Isle of Love;SUBREGION;summer_isles;YES;summer_isles;;0
+isle_of_tears;Isle of Tears;SUBREGION;basilisk_isles;YES;basilisk_isles;;0
+isle_of_toads;Isle of Toads;SUBREGION;basilisk_isles;YES;basilisk_isles;;0
+isle_of_whips;Isle of Whips;SUBREGION;north_sothoryos;YES;north_sothoryos;;0
+isle_of_women;Isle of Women;SUBREGION;summer_isles;YES;summer_isles;;0
+jhala;Jhala;SUBREGION;summer_isles;YES;summer_isles;;0
+jogos_nhai;Jogos Nhai;REGION;essos;YES;jogos_nhai;;0
+khyzai_pass;Khyzai Pass;SUBREGION;qarth_region;YES;qarth_region;;0
+kingdom_of_sarnor;Kingdom of Sarnor;REGION;essos;YES;kingdom_of_sarnor;;0
+kingdoms_of_the_ifeqevron;Kingdoms of the Ifeqevron;REGION;essos;YES;;;0
+kingswood;Kingswood;SUBREGION;crownlands;YES;crownlands;;0
+known_world;Known World;WORLD;;NO;;;113
+koj;Koj;SUBREGION;summer_isles;YES;summer_isles;koj_domain;0
+krazaaj_zasqa;Krazaaj Zasqa;REGION;essos;YES;;;0
+land_of_the_shrykes;Land of the Shrykes;REGION;essos;YES;;;0
+lands_of_always_winter;The Lands of Always Winter;SUBREGION;beyond_the_wall;YES;beyond_the_wall;;0
+lands_of_long_summer;Lands of the Long Summer;REGION;essos;YES;lands_of_long_summer;;0
+lands_of_old_valyria;The Lands of Old Valyria;REGION;essos;YES;;;0
+leng;Leng;REALM;essos;YES;;leng_domain;0
+lesser_moraq;Lesser Moraq;SUBREGION;moraq_region;YES;moraq_region;;0
+lhazar;Lhazar;REGION;essos;YES;lhazar;;0
+littlesister;Littlesister;SUBREGION;vale;YES;vale;littlesister_domain;0
+lizard_head;Lizard Head;SUBREGION;summer_isles;YES;summer_isles;;0
+lonely_hills;Lonely Hills;SUBREGION;the_north;YES;the_north;;0
+lonely_light;Lonely Light;SUBREGION;iron_islands;YES;iron_islands;lonely_light_domain;0
+longsister;Longsister;SUBREGION;vale;YES;vale;longsister_domain;0
+lys;Lys;SETTLEMENT;free_cities;YES;;lys_domain;1
+manticore_isles;Manticore Isles;SUBREGION;shadow_lands;YES;shadow_lands;;0
+marahai;Marahai;SUBREGION;yi_ti;YES;yi_ti;;0
+moluu;Moluu;SUBREGION;summer_isles;YES;summer_isles;;0
+moraq_region;Moraq;REGION;essos;YES;moraq_region;;0
+mossovy;Mossovy;REGION;essos;YES;mossovy;;0
+mother_of_mountains;Mother of Mountains;SUBREGION;dothraki_sea_region;YES;mother_of_mountains;;0
+mountains_of_the_moon;Mountains of the Moon;SUBREGION;vale;YES;vale;;0
+mountains_of_the_morn;Mountains of the Morn;SUBREGION;shadow_lands;YES;shadow_lands;;0
+n_ghai;N Ghai;SUBREGION;jogos_nhai;YES;jogos_nhai;;0
+naath;Naath;REGION;known_world;YES;;;0
+north_sothoryos;North Sothoryos;REGION;sothoryos;YES;north_sothoryos;;0
+northern_mountains;Northern Mountains;SUBREGION;the_north;NO;the_north;northern_mountains_flint_domain;0
+northwest_ulthos;Northwest Ulthos;REGION;ulthos;YES;northwest_ulthos;;0
+oakenshield;Oakenshield;SUBREGION;the_reach;YES;the_reach;;0
+old_wyk;Old Wyk;SUBREGION;iron_islands;YES;iron_islands;"old_wyk_drumm_domain;old_wyk_stonehouse_domain";0
+omber;Omber;SUBREGION;kingdom_of_sarnor;YES;kingdom_of_sarnor;;0
+omboru;Omboru;SUBREGION;summer_isles;YES;summer_isles;;0
+orange_emperor_domain;Orange Emperor Domain;REALM;essos;YES;orange_emperor_domain;;0
+orange_shore;The Orange Shore;SUBREGION;lands_of_long_summer;YES;lands_of_long_summer;;0
+orkmont;Orkmont;SUBREGION;iron_islands;YES;iron_islands;"goodbrother_orkmont_domain;orkmont_domain;tawney_orkmont_domain";0
+painted_mountains;Painted Mountains;SUBREGION;lands_of_long_summer;YES;lands_of_long_summer;;0
+pebble;Pebble;SUBREGION;vale;YES;vale;pebble_domain;0
+plains_of_the_jogos_nhai;Plains of the Jogos Nhai;SUBREGION;jogos_nhai;YES;plains_of_the_jogos_nhai;;0
+qal;Qal;SUBREGION;qarth_region;YES;qarth_region;;0
+qarth_region;Qarth and the Qaathi Lands;REGION;essos;YES;qarth_region;;1
+rainwood;Rainwood;SUBREGION;stormlands;YES;stormlands;;0
+realm_of_jhogwin;Realm of Jhogwin;REGION;essos;YES;;;0
+red_flower_vale;Red Flower Vale;SUBREGION;summer_isles;YES;summer_isles;red_flower_vale_domain;0
+red_waste_region;The Red Waste;REGION;essos;YES;red_waste_region;;0
+riverlands;The Riverlands;REALM;westeros;YES;riverlands;riverlands_domain;9
+saltcliffe;Saltcliffe;SUBREGION;iron_islands;NO;iron_islands;"saltcliffe_domain;sunderly_saltcliffe_domain";0
+sea_dragon_point;Sea Dragon Point;SUBREGION;the_north;YES;the_north;;0
+sealskin_point;Sealskin Point;SUBREGION;iron_islands;NO;iron_islands;sealskin_point_domain;0
+shadow_lands;Shadow Lands;REGION;essos;YES;shadow_lands;;0
+sheepshead_hills;Sheepshead Hills;SUBREGION;the_north;YES;the_north;;0
+skagos;Skagos;SUBREGION;the_north;YES;skagos;;0
+skull_island;Skull Island;SUBREGION;basilisk_isles;YES;basilisk_isles;;0
+slavers_bay_region;Slaver's Bay;SUBREGION;ghiscar;NO;slavers_bay_region;;3
+sothoryos;Sothoryos;CONTINENT;known_world;NO;;;2
+south_shield;South Shield;SUBREGION;the_reach;YES;the_reach;;0
+southshield;Southshield;SUBREGION;the_reach;NO;the_reach;southshield_domain;0
+stepstones;Stepstones;REGION;known_world;YES;;;0
+stone_head;Stone Head;SUBREGION;lands_of_old_valyria;YES;;;0
+stony_shore;Stony Shore;SUBREGION;the_north;YES;the_north;;0
+stormlands;The Stormlands;REALM;westeros;YES;stormlands;stormlands_domain;14
+summer_isles;Summer Isles;REGION;known_world;YES;summer_isles;summer_isles_domain;0
+sweet_lotus_vale;Sweet Lotus Vale;SUBREGION;summer_isles;YES;summer_isles;sweet_lotus_vale_domain;0
+sweetport_sound;Sweetport Sound;SUBREGION;crownlands;NO;crownlands;sweetport_sound_domain;0
+sweetsister;Sweetsister;SUBREGION;vale;YES;vale;;0
+tarth;Tarth;SUBREGION;stormlands;YES;stormlands;;0
+the_arbor;The Arbor;SUBREGION;the_reach;YES;the_reach;arbor_domain;0
+the_axe;The Axe;SUBREGION;andalos;YES;andalos;;0
+the_black_cliffs;The Black Cliffs;SUBREGION;lands_of_old_valyria;YES;;;0
+the_bones;The Bones;SUBREGION;summer_isles;YES;summer_isles;;0
+the_broken_arm;The Broken Arm;SUBREGION;dorne;YES;dorne;;0
+the_dry_deep;The Dry Deep;REGION;essos;YES;;;0
+the_fingers;The Fingers;SUBREGION;vale;YES;vale;;0
+the_flatlands;The Flatlands;SUBREGION;andalos;YES;andalos;;0
+the_frostfangs;The Frostfangs;SUBREGION;beyond_the_wall;YES;beyond_the_wall;;0
+the_frozen_shore;The Frozen Shore;SUBREGION;beyond_the_wall;YES;beyond_the_wall;;0
+the_haunted_forest;The Haunted Forest;SUBREGION;beyond_the_wall;YES;beyond_the_wall;;0
+the_neck;The Neck;SUBREGION;the_north;YES;the_neck;;0
+the_new_gift;The New Gift;SUBREGION;the_north;YES;the_new_gift;;0
+the_north;The North;REALM;westeros;YES;the_north;north_domain;11
+the_paps;The Paps;SUBREGION;vale;YES;vale;paps_domain;0
+the_prince_pass;The Prince Pass;SUBREGION;dorne;YES;dorne;;0
+the_reach;The Reach;REALM;westeros;YES;the_reach;reach_domain;15
+the_red_mountains;The Red Mountains;SUBREGION;dorne;YES;dorne;;0
+the_rills;The Rills;SUBREGION;the_north;YES;the_north;rills_domain;0
+the_shrinking_sea;The Shrinking Sea;REGION;essos;YES;;;0
+the_singing_stones;The Singing Stones;SUBREGION;summer_isles;YES;summer_isles;;0
+the_thousand_islands;The Thousand Islands;SUBREGION;mossovy;YES;mossovy;;0
+the_vale;The Vale;REALM;westeros;NO;;vale_domain;10
+the_wall;The Wall;SUBREGION;westeros;YES;the_wall;;0
+three_exiles;Three Exiles;SUBREGION;summer_isles;YES;summer_isles;;0
+three_sisters;Three Sisters;SUBREGION;the_vale;NO;;three_sisters_domain;0
+ulos;Ulos;REGION;ulthos;YES;;;0
+ulthos;Ulthos;CONTINENT;known_world;NO;;;0
+vale;The Vale of Arryn;REALM;westeros;YES;vale;;0
+vale_of_arryn;Vale of Arryn;SUBREGION;vale;YES;vale;;0
+velvet_hills;Velvet Hills;SUBREGION;andalos;YES;andalos;;0
+walano;Walano;SUBREGION;summer_isles;YES;summer_isles;;0
+westerlands;The Westerlands;REALM;westeros;YES;westerlands;westerlands_domain;15
+westeros;Westeros;CONTINENT;known_world;NO;;;100
+witch_isle;Witch Isle;SUBREGION;the_vale;NO;;witch_isle_domain;0
+wolfswood;Wolfswood;SUBREGION;the_north;YES;wolfswood;;0
+womb_of_the_world;Womb of the World;REGION;essos;YES;;;0
+wyvern_point;Wyvern Point;SUBREGION;north_sothoryos;YES;north_sothoryos;;0
+xon;Xon;SUBREGION;summer_isles;YES;summer_isles;;0
+yaros;Yaros;SUBREGION;essos;YES;;;0
+yi_ti;Yi Ti;REALM;essos;YES;yi_ti;yi_ti_domain;3

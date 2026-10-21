@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "notes": "Authoring decisions for generation size; CONTEXT/INVENTED are scenario design, NOT canon facts. Coordinates come unchanged from source map CSV. These never approve a build footprint.",
+  "sites": {
+    "NW-029": {"tier":"MAJOR","archetype":"NORTHERN_CASTLE_TOWN","evidence":"CONTEXT","note":"Preserve existing Winterfell V3. Do not regenerate or relocate current structures."},
+    "NW-034": {"tier":"MAJOR","archetype":"NORTHERN_PORT_CITY","evidence":"CONTEXT","note":"White Harbor commercial port and New Castle nested within one city population."},
+    "NW-039": {"tier":"SPECIAL","archetype":"MOBILE_CRANNOG_SEAT","evidence":"CONTEXT","note":"Greywater Watch moves within the Neck. Map anchor is regional, not a fixed castle footprint."},
+    "SW-046": {"tier":"MAJOR","archetype":"ROYAL_CAPITAL_CITY","evidence":"CONTEXT","note":"King's Landing; the Red Keep is nested within the city, not a second city."},
+    "SW-084": {"tier":"MAJOR","archetype":"OLDTOWN_PORT_CITY","evidence":"CONTEXT","note":"Hightower/Citadel are major nested buildings."},
+    "SW-038": {"tier":"MAJOR","archetype":"ROCK_FORTRESS_AND_CITY","evidence":"CONTEXT","note":"Casterly Rock is a rock-integrated monumental fortress, not a simple square castle."},
+    "SW-060": {"tier":"MAJOR","archetype":"STORMLANDS_FORTRESS","evidence":"CONTEXT","note":"Storm's End major fortified keep."},
+    "SW-067": {"tier":"MAJOR","archetype":"REACH_HIGHGARDEN","evidence":"CONTEXT","note":"Large noble castle complex with formal gardens."},
+    "SW-020": {"tier":"MAJOR","archetype":"HARRRENHAL_RUINED_FORTRESS","evidence":"CONTEXT","note":"Harrenhal is inhabited in 298 AC but sections remain ruined; don't treat as uninhabited ruin."},
+    "NW-035": {"tier":"SPECIAL","archetype":"ANCIENT_CAUSEWAY_FORTRESS","evidence":"CONTEXT","note":"Moat Cailin remnants defend the causeway; partial ruins and active military use require scenario validation."},
+    "SW-032": {"tier":"MAJOR","archetype":"VALYRIAN_ISLAND_FORTRESS","evidence":"CONTEXT","note":"Dragonstone distinct volcanic fortress."},
+    "SW-095": {"tier":"MAJOR","archetype":"DORNISH_PALACE_CITY","evidence":"CONTEXT","note":"Sunspear contains palace and surrounding city; Water Gardens elsewhere."},
+    "NWE-001": {"tier":"MAJOR","archetype":"BRAAVOSI_CANAL_CITY","evidence":"CONTEXT","note":"Canals and port, not a Westerosi castle town."},
+    "SE-008": {"tier":"MAJOR","archetype":"GHISCARI_PYRAMID_CITY","evidence":"CONTEXT","note":"Great Pyramids are nested sub-buildings, not duplicated populations."},
+    "SE-011": {"tier":"MAJOR","archetype":"GHISCARI_SLAVER_CITY","evidence":"CONTEXT","note":"Ghiscari urban typology, 298 AC status."},
+    "SE-015": {"tier":"MAJOR","archetype":"GHISCARI_SLAVER_CITY","evidence":"CONTEXT","note":"Unsullied barracks/training history; 298 AC conditions."},
+    "SEE-010": {"tier":"SPECIAL","archetype":"ASSHAI_DENSE_FOOTPRINT_SPARSE_POPULATION","evidence":"CONTEXT","note":"Enormous black-stone city with modest population; special spacing and low-density occupancy."},
+    "NE-007": {"tier":"SPECIAL","archetype":"VAES_DOTHRAK_SACRED_CITY","evidence":"CONTEXT","note":"Sacred Dothraki center, not ordinary permanent town population."},
+    "NEE-005": {"tier":"SPECIAL","archetype":"FIVE_FORTS_MONUMENTAL","evidence":"CONTEXT","note":"One of five individual Yi Ti frontier forts. Capacity != garrison."},
+    "NEE-006": {"tier":"SPECIAL","archetype":"FIVE_FORTS_MONUMENTAL","evidence":"CONTEXT","note":"One of five individual Yi Ti frontier forts. Capacity != garrison."},
+    "NEE-007": {"tier":"SPECIAL","archetype":"FIVE_FORTS_MONUMENTAL","evidence":"CONTEXT","note":"One of five individual Yi Ti frontier forts. Capacity != garrison."},
+    "NEE-008": {"tier":"SPECIAL","archetype":"FIVE_FORTS_MONUMENTAL","evidence":"CONTEXT","note":"One of five individual Yi Ti frontier forts. Capacity != garrison."},
+    "NEE-009": {"tier":"SPECIAL","archetype":"FIVE_FORTS_MONUMENTAL","evidence":"CONTEXT","note":"One of five individual Yi Ti frontier forts. Capacity != garrison."},
+    "SWE-020": {"tier":"SPECIAL","archetype":"DOOMED_VALYRIA_RUINS","evidence":"CONTEXT","note":"Dangerous ruined city. Do not create a normal Valyrian-era population."},
+    "SE-024": {"tier":"SPECIAL","archetype":"OLD_GHIS_RUINS","evidence":"CONTEXT","note":"Old Ghis ancient ruins, not New Ghis."},
+    "SEE-009": {"tier":"SPECIAL","archetype":"STYGAI_RUINS","evidence":"CONTEXT","note":"Stygai is ruined, not an inhabited city."},
+    "SW-078": {"tier":"SPECIAL","archetype":"TOWER_OF_JOY_RUIN","evidence":"CONTEXT","note":"At 298 AC the tower was destroyed; no functioning castle or garrison."}
+  },
+  "holdings": {
+    "winterfell_domain": {"tier":"MAJOR","archetype":"NORTHERN_CASTLE_TOWN","evidence":"CONTEXT","note":"Existing Winterfell physical case study, retain world save."},
+    "red_keep_domain": {"tier":"SPECIAL","archetype":"ROYAL_PALACE_SUBSITE","evidence":"CONTEXT","note":"Nested within King's Landing; no independent city population."},
+    "new_castle_domain": {"tier":"SPECIAL","archetype":"MANDERLY_NEW_CASTLE_SUBSITE","evidence":"CONTEXT","note":"Nested within White Harbor."},
+    "hightower_domain": {"tier":"SPECIAL","archetype":"HIGHTOWER_SUBSITE","evidence":"CONTEXT","note":"Nested within Oldtown."},
+    "north_domain": {"tier":"NO_SETTLEMENT","archetype":"ADMINISTRATIVE_DOMAIN","evidence":"CONTEXT","note":"The North contains many seats; region is not itself one town."}
+  }
+}

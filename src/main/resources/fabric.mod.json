@@ -1,4 +1,3 @@
-
 {
   "schemaVersion": 1,
   "id": "knownworld",
@@ -17,7 +16,8 @@
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldWorldDefaults",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldCalendarBridge",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldPlacesRuntime",
-      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldHoldingGeoCandidates"
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldHoldingGeoCandidates",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSiteRegistry"
     ],
     "client": [
       "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"
