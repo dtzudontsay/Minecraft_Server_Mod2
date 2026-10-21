@@ -21,7 +21,8 @@
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldHoldingGeoCandidates",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSiteRegistry",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSettlementPresets",
-      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldC2WorldgenRuntime"
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldC2WorldgenRuntime",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldC3ArchitectureRuntime"
     ],
     "client": [
       "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"

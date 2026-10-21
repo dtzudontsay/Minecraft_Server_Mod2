@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "knownworld",
+  "version": "${version}",
+  "name": "Known World",
+  "description": "A 1:1-scale Minecraft world project based primarily on A Song of Ice and Fire geography.",
+  "authors": [
+    "Sandro"
+  ],
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.dtzudontsay.knownworld.KnownWorld",
+      "dev.dtzudontsay.knownworld.simulation.economy.EconomyRuntime",
+      "dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellOllamaPreloader",
+      "dev.dtzudontsay.knownworld.simulation.integration.SocialWitnessRuntime",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldPublicRumorRuntime",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldWorldDefaults",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldCalendarBridge",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldPlacesRuntime",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldHoldingGeoCandidates",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSiteRegistry",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSettlementPresets",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldC2WorldgenRuntime"
+    ],
+    "client": [
+      "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

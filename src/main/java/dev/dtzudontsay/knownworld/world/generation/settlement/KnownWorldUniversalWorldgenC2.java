@@ -216,7 +216,7 @@ public final class KnownWorldUniversalWorldgenC2 {
                     SKIPPED_UNSAFE_PLOT_FRAGMENTS.incrementAndGet();
                     continue;
                 }
-                buildLot(chunk, lot, terrain.floor, p.palette, wx, wz);
+                KnownWorldC3Architecture.buildLot(chunk, lot, terrain.floor, p.palette, p.tier);
             }
             DECORATED_CHUNKS.incrementAndGet();
         }
