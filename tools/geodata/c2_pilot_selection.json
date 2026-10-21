@@ -1,0 +1,7 @@
+{
+  "purpose": "Controlled first physical worldgen pilots, not worldwide authorization",
+  "preferredMarkers": {
+    "SMALL": ["NW-031", "SW-023", "SW-033", "NW-038", "SW-056", "SW-022", "SW-030"],
+    "MEDIUM": ["SW-023", "NW-031", "SW-033", "NW-038", "SW-056", "SW-024", "SW-022", "SW-030"]
+  }
+}

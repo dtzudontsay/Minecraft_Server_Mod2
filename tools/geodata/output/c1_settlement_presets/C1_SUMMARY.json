@@ -1,0 +1,15 @@
+{
+  "markerCount": 253,
+  "physicalSiteCount": 248,
+  "holdingCount": 259,
+  "specialSiteCount": 65,
+  "safelyConstructedNow": 0,
+  "workerAssignmentsNow": 0,
+  "tierCounts": {
+    "MAJOR": 47,
+    "MEDIUM": 95,
+    "SMALL": 41,
+    "SPECIAL": 65
+  },
+  "unplacedHoldingSeats": 81
+}

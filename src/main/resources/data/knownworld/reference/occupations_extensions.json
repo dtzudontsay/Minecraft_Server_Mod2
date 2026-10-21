@@ -41,5 +41,369 @@
     "displayName": "Spy",
     "category": "INTELLIGENCE",
     "provenance": "HYBRID_CANON"
+  },
+  {
+    "id": "thatcher",
+    "displayName": "Thatcher",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "roofer",
+    "displayName": "Roofer",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "forester",
+    "displayName": "Forester",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "woodcutter",
+    "displayName": "Woodcutter",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "charcoal_burner",
+    "displayName": "Charcoal Burner",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "brickmaker",
+    "displayName": "Brickmaker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "lime_burner",
+    "displayName": "Lime Burner",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "plasterer",
+    "displayName": "Plasterer",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "glazier",
+    "displayName": "Glazier",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "locksmith",
+    "displayName": "Locksmith",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "farrier",
+    "displayName": "Farrier",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "stone_quarryman",
+    "displayName": "Stone Quarryman",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "mine_overseer",
+    "displayName": "Mine Overseer",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "land_surveyor",
+    "displayName": "Land Surveyor",
+    "category": "SCHOLARLY",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "road_warden",
+    "displayName": "Road Warden",
+    "category": "GOVERNANCE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "bridge_warden",
+    "displayName": "Bridge Warden",
+    "category": "GOVERNANCE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "canal_keeper",
+    "displayName": "Canal Keeper",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "ferryman",
+    "displayName": "Ferryman",
+    "category": "MARITIME",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "wagon_driver",
+    "displayName": "Wagon Driver",
+    "category": "TRADE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "caravan_guard",
+    "displayName": "Caravan Guard",
+    "category": "MILITARY",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "grain_thresher",
+    "displayName": "Grain Thresher",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "irrigation_keeper",
+    "displayName": "Irrigation Keeper",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "fishmonger",
+    "displayName": "Fishmonger",
+    "category": "TRADE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "salt_worker",
+    "displayName": "Salt Worker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "smokehouse_keeper",
+    "displayName": "Smokehouse Keeper",
+    "category": "FOOD",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "granary_keeper",
+    "displayName": "Granary Keeper",
+    "category": "FOOD",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "warehouse_keeper",
+    "displayName": "Warehouse Keeper",
+    "category": "TRADE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "quartermaster",
+    "displayName": "Quartermaster",
+    "category": "MILITARY",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "armory_keeper",
+    "displayName": "Armory Keeper",
+    "category": "MILITARY",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "siege_carrier",
+    "displayName": "Siege Carrier",
+    "category": "MILITARY",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "stable_master",
+    "displayName": "Stable Master",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "falconer",
+    "displayName": "Falconer",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "beekeeper_apprentice",
+    "displayName": "Beekeeper Apprentice",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "candle_maker",
+    "displayName": "Candle Maker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "soap_maker",
+    "displayName": "Soap Maker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "parchment_maker",
+    "displayName": "Parchment Maker",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "bookbinder",
+    "displayName": "Bookbinder",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "bell_ringer",
+    "displayName": "Bell Ringer",
+    "category": "RELIGIOUS",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "gravedigger",
+    "displayName": "Gravedigger",
+    "category": "RELIGIOUS",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "bathhouse_keeper",
+    "displayName": "Bathhouse Keeper",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "bathhouse_attendant",
+    "displayName": "Bathhouse Attendant",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "water_carrier",
+    "displayName": "Water Carrier",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "lamplighter",
+    "displayName": "Lamplighter",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "street_sweeper",
+    "displayName": "Street Sweeper",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "waste_collector",
+    "displayName": "Waste Collector",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "fire_warden",
+    "displayName": "Fire Warden",
+    "category": "SERVICE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "gatekeeper",
+    "displayName": "Gatekeeper",
+    "category": "MILITARY",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "market_inspector",
+    "displayName": "Market Inspector",
+    "category": "GOVERNANCE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "public_notary",
+    "displayName": "Public Notary",
+    "category": "GOVERNANCE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "harvest_overseer",
+    "displayName": "Harvest Overseer",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "lumber_yard_keeper",
+    "displayName": "Lumber Yard Keeper",
+    "category": "CRAFT",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
+  },
+  {
+    "id": "animal_trainer",
+    "displayName": "Animal Trainer",
+    "category": "AGRICULTURE",
+    "provenance": "PLAUSIBLE",
+    "sourceNote": "C1 occupation extension, contextual occupational role. Does not instantiate jobs or NPCs."
   }
 ]

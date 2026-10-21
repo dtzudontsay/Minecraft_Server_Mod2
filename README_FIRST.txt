@@ -1,50 +1,50 @@
-KNOWN WORLD — B2+B3 WORLDWIDE SITE REGISTRY
+KNOWN WORLD / C1-C3: UNIVERSAL SETTLEMENT PRESETS AND JOB CAPACITY PLANNING
 
-Purpose: accept all 253 existing X/Z map anchors for geographic PLANNING,
-connect every original marker to an independently addressable site identity,
-preserve all canonical geographic place/region identities,
-classify every site and all 259 political holdings as major/medium/small/
-special/non-settlement, and expose the researched culture, religion,
-regional influences, population target and 21 occupation categories.
+Extract into D:\GameOfThronesMod2 preserving folder structure.
+Do not delete your B2/B3 source files or previous Winterfell V3 worldgen.
 
-IMPORTANT:
-- NO EXISTING NPC OR BUILDING IS MOVED OR CREATED.
-- ALL ORIGINAL MARKER X/Z VALUES ARE RETAINED.
-- NO SETTLEMENT SITE IS AUTO BUILD APPROVED OR WORLDGEN ENABLED.
-- POPULATION NUMBERS ARE AUTHORING ESTIMATES, NOT EXTRA NPCS.
-- NO MISSING NAMED LORDS OR HOUSES ARE INVENTED.
+1. Run:  .\INSTALL_AND_VALIDATE_C1_PRESETS.bat
+2. Open: tools\geodata\output\c1_settlement_presets\KnownWorld_C1_Preset_Explorer.html
+3. In game: /kwpresets status
+            /kwpresets marker SW-046
+            /kwpresets marker NEE-005
+            /kwpresets marker SE-008
+            /kwpresets marker SEE-009
+            /kwpresets marker SI-003
+            /kwpresets holding castle_cerwyn_domain
+            /kwpresets workplace FARM
+            /kwpresets workplace BAKERY
 
-INSTALL:
-1. Back up any work-in-progress files and important Minecraft worlds.
-2. Extract this ZIP into D:\GameOfThronesMod2, preserving folders.
-3. Run from the repo root:
-     .\INSTALL_AND_VALIDATE_B2_B3.bat
-   or run these commands manually:
-     py tools\geodata\test_b2_b3_world_registry.py
-     py tools\geodata\build_b2_b3_world_registry.py
-     py tools\geodata\build_b2_b3_world_registry.py --check
-     .\gradlew.bat clean build
-4. Open:
-     tools\geodata\output\b2_b3_world_registry\KnownWorld_B2_B3_Overview.html
+THIS BATCH IS PRESET BLUEPRINTS + INSPECTION, NOT WORLD BUILDING.
+It intentionally does NOT generate buildings in newly explored chunks yet.
+Do not read any 'planned' home or workplace as an actual constructed building.
+No NPC simulation is initialized, edited or duplicated.
 
-REQUIRES PREVIOUSLY COMMITTED B2.2 AND B2.3 DATA:
-  tools/geodata/output/authored_places/reconciled_2026-10-17/marker_catalog_active_253.csv
-  tools/geodata/output/b2_holding_links/markers_253_audit.csv
-  src/main/resources/data/knownworld/scenarios/agot_298_ac/holding_geo_candidates.json
-  tools/geodata/output/b2_3_world_profiles/site_profiles_253.json
-  tools/geodata/output/b2_3_world_profiles/holding_profiles_259.json
-If missing, rerun their existing B2.2 / B2.3 Python generators first.
+Presets are source-derived from all 253 map observations and 259 holdings.
+Unique physical sites may number fewer than 253 due to shared positions.
 
-IN GAME COMMANDS (OPTIONAL):
-  /kwsites status
-  /kwsites marker NW-029
-  /kwsites marker NEE-005
-  /kwsites holding winterfell_domain
-  /kwsites holding red_keep_domain
-  /kwsites region the_north
-  /kwsites place winterfell
+EXACT FILES CHANGED:
+NEW tools/geodata/build_c1_settlement_presets.py
+NEW tools/geodata/test_c1_settlement_presets.py
+NEW tools/geodata/c1_settlement_preset_rules.json
+NEW tools/geodata/c1_building_grammars.json (43 building modules, 14 regional palettes)
+NEW tools/geodata/verify_c1_java_syntax.py (optional API-shape smoke test; not Gradle)
+NEW tools/geodata/c1_presets_dashboard_template.html
+NEW src/main/java/dev/dtzudontsay/knownworld/simulation/integration/KnownWorldSettlementPresets.java
+NEW src/test/java/dev/dtzudontsay/knownworld/simulation/integration/KnownWorldSettlementPresetsTest.java
+NEW tools/geodata/install_c1_integration.py (idempotently adds a ModInitializer entrypoint and merges occupations)
+NEW tools/geodata/c1_occupations_additions.json (52 new PLAUSIBLE occupations)
+LOCAL MERGE via installer: src/main/resources/fabric.mod.json
+LOCAL MERGE via installer: src/main/resources/data/knownworld/reference/occupations_extensions.json
+NEW docs/architecture/24_C1_SETTLEMENT_PRESETS_AND_CONSTRUCTION_BOUNDARIES.md
+NEW INSTALL_AND_VALIDATE_C1_PRESETS.bat
 
-See docs/architecture/23_5_B2_B3_WORLDWIDE_SITE_REGISTRY.md
-for exact source policy, provenance and what's left for B4/B5 and C.
+GENERATED (NOT PROVIDED IN ZIP; RUN BATCH):
+src/main/resources/data/knownworld/scenarios/agot_298_ac/settlement_presets_c1_v1.json
+tools/geodata/output/c1_settlement_presets/*
 
-All source read-only from the GitHub repo; no GitHub writes performed.
+Installer merges your existing fabric.mod.json and occupations_extensions.json.
+For rollback, it keeps backups under tools/geodata/output/c1_settlement_presets/backups/.
+If an occupation ID conflicts, installation stops before changing either file.
+
+Read-only GitHub access. No commits/pushes made.

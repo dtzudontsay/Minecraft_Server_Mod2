@@ -4,7 +4,9 @@
   "version": "${version}",
   "name": "Known World",
   "description": "A 1:1-scale Minecraft world project based primarily on A Song of Ice and Fire geography.",
-  "authors": ["Sandro"],
+  "authors": [
+    "Sandro"
+  ],
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -17,7 +19,8 @@
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldCalendarBridge",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldPlacesRuntime",
       "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldHoldingGeoCandidates",
-      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSiteRegistry"
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSiteRegistry",
+      "dev.dtzudontsay.knownworld.simulation.integration.KnownWorldSettlementPresets"
     ],
     "client": [
       "dev.dtzudontsay.knownworld.client.atlas.KnownWorldAtlasClient"

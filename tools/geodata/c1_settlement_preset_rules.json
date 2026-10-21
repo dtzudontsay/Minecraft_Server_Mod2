@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "permitBrothel": false,
+  "note": "Brothel construction is policy-dependent; no brothels or sex-worker NPCs are created by default. Turning this true only adjusts provisional worker/building demand, not legality or construction."
+}
