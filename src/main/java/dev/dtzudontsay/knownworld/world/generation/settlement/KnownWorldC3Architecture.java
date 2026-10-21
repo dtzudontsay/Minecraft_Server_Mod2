@@ -41,8 +41,16 @@ import java.util.Map;
 public final class KnownWorldC3Architecture {
     private static final String RESOURCE =
             "data/knownworld/scenarios/agot_298_ac/architecture_templates_c3_v1.json";
-    private static final BlockState AIR = Blocks.AIR.defaultBlockState();
-    private static final BlockState STONE = Blocks.COBBLESTONE.defaultBlockState();
+    /**
+     * Delay block-registry access until world generation actually paints a lot.
+     * C3 metadata queries (and ordinary JUnit tests) must not initialize
+     * Minecraft's registries before the game calls Bootstrap.bootStrap().
+     */
+    private static final class BuildingBlocks {
+        private static final BlockState AIR = Blocks.AIR.defaultBlockState();
+        private static final BlockState STONE = Blocks.COBBLESTONE.defaultBlockState();
+        private BuildingBlocks() { }
+    }
     private static volatile Map<String, Template> catalog;
 
     public record Template(String id, String family, int floors, int maxStaff,
@@ -172,9 +180,9 @@ public final class KnownWorldC3Architecture {
             // C2 accepts only plots whose sampled terrain differs by at most six blocks.
             // Bounded foundations/clearance avoid querying a mutable chunk heightmap.
             for (int y = floor - 8; y <= floor; y++)
-                put(c, x, y, z, y == floor ? deck : STONE);
+                put(c, x, y, z, y == floor ? deck : BuildingBlocks.STONE);
             for (int y = floor + 1; y <= Math.max(floor + 16, roofY + 4); y++)
-                put(c, x, y, z, AIR);
+                put(c, x, y, z, BuildingBlocks.AIR);
             boolean perimeter = xx == 0 || xx == b.width() - 1 || zz == 0 || zz == b.depth() - 1;
             if (perimeter) for (int y = floor + 1; y <= wallY; y++) put(c, x, y, z, wall);
             if ((zz == 0 || zz == b.depth() - 1) && slope > 0) {
@@ -259,8 +267,8 @@ public final class KnownWorldC3Architecture {
             int dx = x - lot.x(), dz = z - lot.z();
             clearHazards(c, x, z, floor);
             for (int y = floor - 3; y <= floor; y++) put(c, x, y, z,
-                    y == floor ? Blocks.GRASS_BLOCK.defaultBlockState() : STONE);
-            for (int y = floor + 1; y <= floor + 9; y++) put(c, x, y, z, AIR);
+                    y == floor ? Blocks.GRASS_BLOCK.defaultBlockState() : BuildingBlocks.STONE);
+            for (int y = floor + 1; y <= floor + 9; y++) put(c, x, y, z, BuildingBlocks.AIR);
             boolean edge = dx == 0 || dz == 0 || dx == lot.width() - 1 || dz == lot.depth() - 1;
             if ("PASTURE".equals(family) && edge) {
                 boolean gate = dx == lot.width() / 2 && dz == lot.depth() - 1;
@@ -307,8 +315,8 @@ public final class KnownWorldC3Architecture {
             int dx = x - lot.x(), dz = z - lot.z();
             clearHazards(c, x, z, floor);
             for (int y = floor - 3; y <= floor; y++) put(c, x, y, z,
-                    y == floor ? Blocks.COARSE_DIRT.defaultBlockState() : STONE);
-            for (int y = floor + 1; y <= floor + 10; y++) put(c, x, y, z, AIR);
+                    y == floor ? Blocks.COARSE_DIRT.defaultBlockState() : BuildingBlocks.STONE);
+            for (int y = floor + 1; y <= floor + 10; y++) put(c, x, y, z, BuildingBlocks.AIR);
             boolean corner = (dx == 0 || dx == lot.width() - 1)
                     && (dz == 0 || dz == lot.depth() - 1);
             if (corner) for (int y = floor + 1; y <= floor + 4; y++)
@@ -352,9 +360,9 @@ public final class KnownWorldC3Architecture {
              y <= Math.min(c.getMaxY() - 1, floor + 25); y++) {
             BlockState state = c.getBlockState(new BlockPos(x, y, z));
             if (state.getFluidState().is(FluidTags.LAVA))
-                put(c, x, y, z, y <= floor ? STONE : AIR);
+                put(c, x, y, z, y <= floor ? BuildingBlocks.STONE : BuildingBlocks.AIR);
             else if (y >= floor - 3 && (state.is(BlockTags.LOGS) || state.is(BlockTags.LEAVES)))
-                put(c, x, y, z, AIR);
+                put(c, x, y, z, BuildingBlocks.AIR);
         }
     }
 
