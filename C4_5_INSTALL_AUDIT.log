@@ -1,0 +1,32 @@
+========================================================================
+C4.5 INSTALLATION AUDIT (READ ONLY)
+Repository: D:\GameOfThronesMod2
+========================================================================
+[FAIL] C4 worldgen manifest: 0.8 MB, purpose C4.5=False, site count=2
+[NOTE] C4.5 settlement resource was not installed, or another generator overwrote it.
+[FAIL] Winterfell NPC roster: residents=5000, homes=1136, C4.5 reassigned=0, distinct reassigned jobs=0, employed-labelled residents=2771
+[NOTE] No C4.5 jobs in Winterfell roster -- changed NPC job diversity will not appear in fresh-world V3 import.
+[FAIL] Winterfell physical V3 index: total plots=1514, C4.5 specialized plots=0, C4.5 manifest=False
+[NOTE] This is exactly the old 1,514-plot layout; no new specialty workplaces were appended.
+[FAIL] C4.5 universal worldgen Java: missing markers variable site count
+[FAIL] C4.5 C3 signs Java: missing markers sign support
+[FAIL] C4.5 Winterfell V3 Java: missing markers special V3 templates, legacy labels
+[MISSING] C4.5 sign helper Java: src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java
+[NOTE] Winterfell projection budget = original/other value (not evidence of job failure)
+
+REPORTS FROM THE LAST RUN:
+[NOTE] No tools\geodata\output\c4_5_connected_rollout\winterfell_job_report.json -- stage or opposite mode may not have run
+[NOTE] No tools\geodata\output\c4_5_connected_rollout\winterfell_c45_venues_report.json -- stage or opposite mode may not have run
+[NOTE] No tools\geodata\output\c4_5_connected_rollout\C4_5_all-small-medium_report.json -- stage or opposite mode may not have run
+[NOTE] No tools\geodata\output\c4_5_connected_rollout\C4_5_pilots_report.json -- stage or opposite mode may not have run
+
+GRADLE OUTPUT JARS (existence does NOT prove build succeeded after changes):
+[NOTE] build\libs\knownworld-0.1.0-sources.jar (49.3 MB): compiled sign helper=False
+[NOTE] build\libs\knownworld-0.1.0.jar (50.3 MB): compiled sign helper=False
+
+========================================================================
+SUMMARY / NEXT STEP
+7 failure/missing markers. C4.5 appears incomplete or mixed.
+Do not repeat WORLD install yet. Share C4_5_INSTALL_AUDIT.log + C4_5_BUILD_CHECK.log.
+NOTE: Winterfell V3 retains 1,136 homes and its original walls by design.
+========================================================================
