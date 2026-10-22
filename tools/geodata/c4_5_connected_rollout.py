@@ -84,22 +84,33 @@ def line(roads,x1,z1,x2,z2,width=3):
 
 
 def indexed(site, lots, roads):
-    used=set()
+    """Chunk index without materializing every field and building footprint pixel.
+
+    The original set-of-every-occupied-square algorithm could require hundreds
+    of MB for a single agricultural settlement.  Test each road pixel against
+    rectangle rows via a coarse grid and index buildings by intersected chunks.
+    """
+    buckets=collections.defaultdict(list)
     for l in lots:
-        for x in range(l['x'],l['x']+l['width']):
-            for z in range(l['z'],l['z']+l['depth']):used.add((x,z))
-    clashes=used.intersection(roads)
-    if clashes:raise ValueError(f"{site}: {len(clashes)} road pixels intersect lots")
+        x0,x1=l['x'],l['x']+l['width']
+        z0,z1=l['z'],l['z']+l['depth']
+        for cx in range(x0//64,(x1-1)//64+1):
+            for cz in range(z0//64,(z1-1)//64+1):
+                buckets[(cx,cz)].append((x0,x1,z0,z1,l['id']))
+    for x,z in roads:
+        for x0,x1,z0,z1,n in buckets.get((x//64,z//64),()):
+            if x0<=x<x1 and z0<=z<z1:
+                raise ValueError(f'{site}: road overlaps lot {n} at {(x,z)}')
     chunks=collections.defaultdict(lambda:{'r':set(),'b':set()})
     for x,z in roads:
         cx,cz=x//16,z//16
         chunks[(cx,cz)]['r'].add((z-cz*16)*16+(x-cx*16))
     for i,l in enumerate(lots):
-        # 1 extra block around a lot is reserved for its exterior sign.
         for cx in range((l['x']-1)//16,(l['x']+l['width'])//16+1):
             for cz in range((l['z']-1)//16,(l['z']+l['depth'])//16+1):
                 chunks[(cx,cz)]['b'].add(i)
-    entries=[{'cx':cx,'cz':cz,'r':sorted(v['r']),'b':sorted(v['b'])} for (cx,cz),v in sorted(chunks.items())]
+    entries=[{'cx':cx,'cz':cz,'r':sorted(v['r']),'b':sorted(v['b'])}
+             for (cx,cz),v in sorted(chunks.items())]
     minx=min(min(l['x'] for l in lots),min(x for x,_ in roads))-40
     maxx=max(max(l['x']+l['width'] for l in lots),max(x for x,_ in roads))+40
     minz=min(min(l['z'] for l in lots),min(z for _,z in roads))-40
@@ -274,36 +285,52 @@ def build_all(scope,install):
     selected=['site_nw_031','site_sw_023'] if scope=='pilots' else [sid for sid,s in sorted(site_by.items())
                 if s['tier'] in ('SMALL','MEDIUM') and s['blueprintMode']=='GENERAL_COMPACT_SETTLEMENT']
     OUT.mkdir(parents=True,exist_ok=True)
-    all_sites=[];summary=[]
-    for idx,sid in enumerate(selected,1):
-        obj=build_site(site_by[sid],plan_by[sid],templates,source)
-        all_sites.append(obj)
-        summary.append({'siteId':sid,'name':obj['name'],'population':obj['c4']['plannedPopulation'],
-            'workers':obj['c4']['plannedWorkers'],'houses':obj['c4']['homes'],
-            'buildings':obj['c4']['plannedStructures'],'indexedChunks':len(obj['chunks']),
-            'deferredDemands':obj['c4']['deferredDemand']})
-        print(f'[{idx}/{len(selected)}] {obj["name"]}: {obj["c4"]["homes"]} houses, {obj["c4"]["plannedStructures"]} lots, {len(obj["chunks"])} chunks',flush=True)
-    assert len(all_sites)==len(selected)
-    # Retain safety policy and fixed atlas/holding assertions in existing Java loader;
-    # adjust expected count and explicit authorization separately via exact-match patch.
-    result={'schemaVersion':1,'purpose':'C4_5_NEW_CHUNK_GENERATION_C4_4_DISTRIBUTIONS',
-       'policy':{'pilotsOnly':True,'doNotModifyExistingChunks':True,'noNpcCreation':True,
-                 'noOther253SiteActivation':False,'winterfellExcluded':True},
-       'summary':{'allMapMarkers':253,'allPoliticalHoldings':259,'pilotCount':len(all_sites),
-                 'pilotMarkers':[p['markerIds'] for p in all_sites]},
-       'pilots':all_sites,
-       'c4Policy':{'siteSelection':scope,'newWorldOnly':True,'requiresPerPlotTerrainSurvey':True,
-                   'readC4_4JobDemands':True,'unreviewedExceptionalSitesExcluded':True,
-                   'noNPCsMaterializedHere':True}}
+    summary=[]
     preview=OUT/('C4_5_'+scope+'_preview.json')
-    preview.write_text(json.dumps(result,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf8')
+    with preview.open('w',encoding='utf-8') as stream:
+        # Stream the worldgen index directly; never keep 100+ regional
+        # settlement geometries in the same Python heap.
+        header={'schemaVersion':1,'purpose':'C4_5_NEW_CHUNK_GENERATION_C4_4_DISTRIBUTIONS',
+          'policy':{'pilotsOnly':True,'doNotModifyExistingChunks':True,
+                    'noNpcCreation':True,'noOther253SiteActivation':False,
+                    'winterfellExcluded':True},
+          'summary':{'allMapMarkers':253,'allPoliticalHoldings':259,
+                     'pilotCount':len(selected),
+                     'pilotMarkers':[site_by[s]['markerIds'] for s in selected]}}
+        prefix=json.dumps(header,separators=(',',':'),ensure_ascii=False)
+        stream.write(prefix[:-1]+',"pilots":[')
+        for idx,sid in enumerate(selected,1):
+            obj=build_site(site_by[sid],plan_by[sid],templates,source)
+            if idx>1:stream.write(',')
+            json.dump(obj,stream,ensure_ascii=False,separators=(',',':'))
+            summary.append({'siteId':sid,'name':obj['name'],
+                'population':obj['c4']['plannedPopulation'],
+                'workers':obj['c4']['plannedWorkers'],'houses':obj['c4']['homes'],
+                'buildings':obj['c4']['plannedStructures'],
+                'indexedChunks':len(obj['chunks']),
+                'deferredDemands':obj['c4']['deferredDemand']})
+            print(f'[{idx}/{len(selected)}] {obj["name"]}: {obj["c4"]["homes"]} houses, '
+                  f'{obj["c4"]["plannedStructures"]} lots, {len(obj["chunks"])} chunks',flush=True)
+            del obj
+        stream.write('],"c4Policy":'+json.dumps({
+           'siteSelection':scope,'newWorldOnly':True,
+           'requiresPerPlotTerrainSurvey':True,'readC4_4JobDemands':True,
+           'unreviewedExceptionalSitesExcluded':True,'noNPCsMaterializedHere':True},
+           separators=(',',':'))+'}\n')
     report=OUT/('C4_5_'+scope+'_report.json')
-    report.write_text(json.dumps({'sites':summary,'totalBuildings':sum(x['buildings'] for x in summary),
-        'totalHomes':sum(x['houses'] for x in summary),'totalIndexedChunks':sum(x['indexedChunks'] for x in summary),
+    report.write_text(json.dumps({'sites':summary,
+        'totalBuildings':sum(x['buildings'] for x in summary),
+        'totalHomes':sum(x['houses'] for x in summary),
+        'totalIndexedChunks':sum(x['indexedChunks'] for x in summary),
         'unapprovedTerrainWarning':True},ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print('Generated',preview,'size(MB)=',round(preview.stat().st_size/1048576,2))
     if install:
-        backup_and_install(C4,preview.read_text(encoding='utf8'))
+        saved=C4.with_name(C4.name+'.before_c4_5.bak')
+        if C4.exists() and not saved.exists():shutil.copy2(C4,saved)
+        staging=C4.with_name(C4.name+'.c4_5.tmp')
+        shutil.copyfile(preview,staging)
+        staging.replace(C4)
+        print('INSTALLED C4.5 worldgen manifest with backup',saved)
     return summary
 
 
@@ -312,6 +339,7 @@ def main():
     parser.add_argument('--scope',choices=['pilots','all-small-medium'],default='pilots')
     parser.add_argument('--install',action='store_true',help='back up and overwrite NEW WORLD resources')
     parser.add_argument('--winterfell',action='store_true',help='reassign only generated adults in 5000-person source roster; recompile V3 using existing generator')
+    parser.add_argument('--only-winterfell',action='store_true',help='Do not regenerate the SMALL/MEDIUM worldgen manifest')
     args=parser.parse_args()
     if args.install and os.environ.get('KNOWNWORLD_C45_CONFIRM')!='NEW_WORLD':
         raise SystemExit('For installation set KNOWNWORLD_C45_CONFIRM=NEW_WORLD. Back up your saves and use a FRESH world.')
@@ -326,12 +354,19 @@ def main():
         print(json.dumps(report,indent=2))
         if args.install:
             backup_and_install(V2,json.dumps(v2,separators=(',',':'),ensure_ascii=False)+'\n')
-            # Do not run build_winterfell_v2.py: that would reset job reassignment.
-            # Rebuilds structure-only V3 to keep roster/site invariants.
-            import subprocess
-            run=subprocess.run([sys.executable,str(ROOT/'tools/geodata/build_winterfell_v3_worldgen.py')],cwd=ROOT)
-            if run.returncode:raise RuntimeError('Winterfell V3 structure index recompile failed')
-            print('Winterfell V3 base structures unchanged. Specialty structure overlay is separate.')
-    build_all(args.scope,args.install)
+            # C4.5.1 ward relocations are an installed architectural overlay.
+            # NEVER erase them on a second installer run after a failed Gradle
+            # check. Only rebuild the original index BEFORE the ward step.
+            if v2.get('c451'):
+                if not read(V3).get('c451'):
+                    raise RuntimeError('Winterfell housing relocation ledger exists but V3 index missing; recover from backups')
+                print('Preserving existing castle-ward relocation and V3 specialty structures on retry')
+            else:
+                import subprocess
+                run=subprocess.run([sys.executable,str(ROOT/'tools/geodata/build_winterfell_v3_worldgen.py')],cwd=ROOT)
+                if run.returncode:raise RuntimeError('Winterfell V3 structure index recompile failed')
+                print('Winterfell V3 base structures compiled; relocation and specialty stages follow.')
+    if not args.only_winterfell:
+        build_all(args.scope,args.install)
 
 if __name__=='__main__':main()

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class KnownWorldC3ArchitectureTest {
     @Test
     void allFortyThreeC1TemplatesLoad() {
-        assertEquals(43, KnownWorldC3Architecture.allTemplates().size());
+        assertTrue(KnownWorldC3Architecture.allTemplates().size() >= 43, "Original C1 templates must remain after extension");
         assertEquals("HOME", KnownWorldC3Architecture.template("HOUSE").family());
         assertEquals("GARDEN", KnownWorldC3Architecture.template("FIELD").family());
     }

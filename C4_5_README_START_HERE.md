@@ -1,48 +1,38 @@
-# C4.5 — Occupation-connected NPC and new-world construction stress rollout
+# C4.5.1 — installation recovery, Winterfell ward reallocation, signed workplaces
 
-**Repository:** `dtzudontsay/Minecraft_Server_Mod2`, Minecraft **26.3**.  Read-only GitHub from assistant; apply these files locally and push them yourself.  This ZIP is NOT a replacement for `docs/architecture/KNOWN_WORLD_MASTER_ROADMAP.md` or `23_1_CONNECTED_WORLD_IMPLEMENTATION_PLAN.md`.
+This ZIP **supersedes** the previously issued C4.5 ZIP. Use it as one complete package.
+Unzip into the root of `Minecraft_Server_Mod2` **next to `gradlew.bat`** and double-click **`RUN_C4_5_1_KEEP_OPEN.bat`**. It retains its terminal window and records every stage in `C4_5_1_INSTALL.log`. A failure will identify which numbered stage stopped and will not silently continue. 
 
-## Run (Windows)
+Choose `PILOTS` first. It includes Winterfell's five-thousand-person existing case study, Ramsgate and Acorn Hall. When that complete build succeeds and the new Minecraft world works, repeat with `WORLD` for standard SMALL and MEDIUM sites. WORLD generation, disk size and Minecraft chunk-generation RAM usage have **not** been performance-tested at global scale; do not begin with WORLD unless you accept that stress-test risk.
 
-1. Make a backup of your existing Minecraft saves and your working Git branch.
-2. Extract this ZIP directly into the repository root so `RUN_C4_5_CONNECTED_NEW_WORLD.bat` sits beside `gradlew.bat`.
-3. Run `RUN_C4_5_CONNECTED_NEW_WORLD.bat`. Select **PILOTS** (Ramsgate + Acorn Hall + Winterfell) or **WORLD** (all C1 `SMALL`/`MEDIUM` **normal compact settlement** sites plus Winterfell). Confirm `NEW_WORLD`.
-4. The installer runs Python tests, guarded Java source-preflight, generates job-connected building plans, revises **only generated adult** occupations in Winterfell's V2 roster, recompiles the V3 worldgen index, adds new job-specific physical workplaces to V3, applies exterior building signs, and runs `gradlew.bat build`.
-5. **Only when `BUILD SUCCESSFUL`** run `gradlew.bat runClient` and create a brand-new Known World save. No additional `clean` required.
-6. Inspect `/kwinterfell3 status`, `/kwinterfell3npc status` and C2 inspection commands (if available) along with the installed reports under `tools/geodata/output/c4_5_connected_rollout/`.
+## What this installs
 
-**Ramsgate:** `/tp @s -3454784 180 -1589008`   **Acorn Hall:** `/tp @s -4115723 180 -284673`   **Winterfell:** `/tp @s -4050173 180 -1976496`. Use `/gamemode spectator` if ground height is different.
+- Fixes the old `KnownWorldC3ArchitectureTest` that incorrectly asserts exactly 43 architecture modules even though C4.3 legitimately supplies 61. All original C1 template IDs must still exist, and the generator separately requires at least 61 templates.
+- Changes `WORLD` planning to write site JSON progressively, instead of keeping every settlement's geometry in memory. Removes the old all-building-pixel collision bitmap to reduce farmland planner memory. It still requires substantial RAM in Minecraft at large sites.
+- Populates the original **5,000-person Winterfell roster** with C4.4 planned primary occupations for eligible newly generated adults. Named/authored characters and their existing authored occupations are preserved. 2,500 worldwide planning workers is NOT identical to the eligible resident count in the source roster; the import reports any mismatch.
+- Preserves all original 1,136 Winterfell household IDs. Moves **24 castle-ward residences** immediately outside the western wall (roughly 300–420 blocks from castle center); puts **12 appropriately sized C3 specialty workplaces** in the vacated paired footprints inside the castle. It preserves existing curtain-wall, gates, towers and central keep geometry, and extends accessible road plans via the existing west gate.
+- Adds other C4.4-demanded specialized Winterfell workplaces among the existing winter town, villages and hamlets where geometric and terrain policies permit. The unplaced or policy-blocked demands remain visible in the generation report; they are not silently counted as built.
+- Generates SMALL/MEDIUM standard settlement physical building programs from C4.4; preserves Winterfell as a separate major-seat V3 blueprint. New storefronts/workplaces display exterior name signs. No made-up family surnames are placed on residential signs.
+- Preserves the existing Winterfell physical-NPC projection budget safety model (C4.5 optionally raises the visible budget from 128 to 384/256); **does not spawn 5,000 simultaneous villagers** or pretend that all 198 inhabited sites already have individual people.
 
-## Exactly what this batch implements
+## Not yet implemented / constraints
 
-- Installs the prior C4.4 occupation catalogue and all **248** site-level occupation distributions. Unique worker target counts are conserved in C4.4; the 50 uninhabited/ruined sites still have **no synthetic permanent workforce**.
-- C4's **normal SMALL and MEDIUM** settlements derive **all planned housing buildings**, eligible workplaces and rural farm buildings from C1 housing demand + C4.4 `buildingDemand` (not from earlier 48-home/180-home test limits). **WORLD** activates all eligible normal SMALL/MEDIUM sites without requiring site-by-site editing. Regions, exact anchors and physical-footprint reports remain associated with each site.
-- The new generic layouts distribute workshops, civic buildings, farms and houses across multiple connected streets rather than segregating all specialized buildings to one end. Major special, shore-bound, policy-gated, unverified and mountain-only structures remain explicit `deferredDemand` records rather than spawning inland or on ruins.
-- Every eligible C3 workplace module gets a physical exterior sign or outdoor signpost with its **type name** (e.g. `SMITHY`, `BAKERY`, `BOOKBINDERY`) using the Minecraft 26.3 sign API. Outdoor facilities such as wells, gardens and pastures receive signposts; field annexes do not receive separate occupation signs. These are NOT household surname signs, which still require actual occupant binding.
-- **Winterfell** preserves its 5000 person IDs and 1136 households. Only adult, mod-generated residents are reclassified among C4.4 occupations, weighted according to C4.4 and prioritized towards rural versus central work. Existing named and canon-authored person jobs are unchanged. Profiles of **newly imported** generated NPCs contain their new occupation. The separate V3 blueprint retains its original **1514** homes/workplaces and appends **additional C3 specialized work buildings** distributed around existing villages and winter town. Castle interior posts are deliberately reserved as instance-relative future workrooms and not duplicated outside the walls.
-- **Fresh world only**: direct chunk-local decoration; no existing chunks or player construction is edited. Homes and NPCs are *not* silently invented at unpopulated C1 settlements.
-- `--npc-visual-stress` raises Winterfell's **nearby projection budget** from 128 to 384, without creating extra persistent people or requiring 5000 simultaneously loaded Minecraft villagers. If performance degrades, restore this source file from its backup and build again.
+- This does **not** reauthor every Winterfell outer hamlet/village into a 500-block radius. It relocates a specific castle-ward group close to the castle while retaining the preexisting 1,136-home layout elsewhere. The original V2 source already places some satellite villages and hamlets thousands of blocks away. A wider *outer districts compaction* is a separate geography / road / household migration and terrain-safety pass, not part of this repair.
+- This does **not** implement actual inside-keep room navigation, job reservations or household-based moving of beds. The new workplaces occupy real vacated **building footprints**. Court offices and maester's quarters that must be inside the main keep remain logical workplace requirements for later room authorities.
+- New people created by generic `NpcRegistry.create` do not yet read settlement distributions. Future employment must draw from CURRENT labor demands, age, skills and vacancies, update authoritative simulation/persistence, and avoid resetting existing occupations. The distributed-data component alone cannot do that.
+- Existing chunks are never rewritten. A **new Minecraft world** is required. Keep the prior saves as backups. The `WORLD` path excludes ruins, monuments, coastline-specific sites, large cities and the MAJOR generic archetype. It does NOT make every marker in the 253-observation atlas into a town.
+- The script cannot compile Minecraft 26.3 here. The full `gradlew.bat build` runs locally and must report success before gameplay testing. Sign code uses 26.3 `SignTextSlot` and mutable sign-text API; if a mapping-dependent Java error occurs, the line-level Gradle log will show it, and the installer will stop.
 
-## Important unfinished systems
+## Verify success
 
-**Do new residents automatically acquire jobs at all 248 locations? Not yet.** The current `NpcRegistry.create` and `NpcAffiliationManager.setResidence` do not consult site labor demand. The generic SMALL/MEDIUM sites have **planned populations**, but not bootstrapped unique persistent per-person rosters. The V3 Winterfell path is the *only* full NPC import connected in this installer. Automatic future migration/birth-to-adulthood employment assignment, per-building staffing, wage/productivity, persistent job changes, and actual individual simulation of the other 197 inhabited sites require a shared B4/D settlement employment authority and live saves; that authority is **not simulated by static JSON**.
+After a successful run, the log must include a `VERIFIED:` line with `5000 Winterfell residents`, `1136 homes`, `24 relocated castle homes`, more than 1,526 Winterfell plots, and a nonzero count of C4.5 job assignments. The last stage must report `BUILD SUCCESSFUL`.
 
-Also pending: `MAJOR` and `SPECIAL` archetype universality; castle-room relative coordinates, full wall gates and occupation-aware zoning; safe shoreline/dock/mine templates; rural land ledger to visual field-acreage reconciliation; true long-term live construction. Terrain checks may reject certain lots, meaning planned totals can exceed successfully built structures. The `WORLD` preview can be very large—its performance was not stress-tested against real Minecraft 26.3; prefer `PILOTS` first before opting into worldwide normal-site generation.
+You may rerun the read-only verification at any time:
 
-## No arbitrary housing quota, but simulation and projection have different scales
+```
+py -3 tools\geodata\c4_5_1_verify.py
+```
 
-All `SMALL`/`MEDIUM` C1 housing **demand** is now emitted rather than silently capped at the old first-phase numbers. This is only a geometric blueprint; it does **not** create resident NPCs, and does not guarantee all blocks survive terrain surveys. Fields are **64×64 blocks per plot**, six per farmhouse in this worldwide prototype. The visible annex is **24,576 m² per farmhouse**, slightly larger than C4.3’s 24 × 31×31 belt (23,064 m²); it is *not* a canonical productive acreage measurement. This significantly increases fresh-chunk generation costs. This is an intentionally larger physical field annex, not an authoritative farm-size model; economic acreage, yields, regional climate and infrastructure must still be reconciled.
+In Minecraft, verify `/kwinterfell3 status` lists more than 1,526 planned buildings. Look at the castle-ward rows near the west gate and the nearby new residential streets, as well as the existing town's specialized job buildings. The physical worldgen is chunk-local; visually inspect new terrain in a **new** save.
 
-Physical villagers remain bounded projections because 3.76 million simultaneously loaded Minecraft entities is not a viable representation of 3.76 million simulation identities. The long-term solution is off-screen identity/household simulation + nearby projection, not lifting Minecraft entity budgets blindly.
-
-## Rollback
-
-Modified files are backed up alongside the source under names ending `*.before_c4_5.bak`, retaining the original bytes from before the *first* C4.5 install. You can restore them manually, or use `git status` and `git restore` for files you are certain you want reverted. **Do not restore over unrelated edits made after installing**. Your world saves are untouched. If Java compilation fails, do not launch from the modified source tree until corrected/reverted. Do not rerun `build_winterfell_v2.py` after installing without rerunning C4.5: doing so would replace the generated diverse occupations with its legacy 13-job prior.
-
-## Testing done by assistant
-
-- Python `py_compile` for the batch scripts.
-- Data conservation for the 248 site-level C4.4 job plans.
-- Determinism, zero overlaps and complete C1 housing demand in **synthetic** SMALL (Ramsgate 550) and MEDIUM (Acorn Hall 2100) layout fixtures.
-- Synthetic Winterfell 5000-person generated adult reclassification, preserving named profiles.
-- **Not** compiled against Minecraft 26.3 Gradle, nor run inside a real game world, nor independently verified for all SMALL/MEDIUM terrains. Installer must run Gradle locally before game testing.
+Do **not** run `tools\geodata\build_winterfell_v2.py` or `build_winterfell_v3_worldgen.py` manually after installation: rerunning these baseline compilers independently can erase the intended C4.5.1 layout overlay until the installer sequence is repeated.

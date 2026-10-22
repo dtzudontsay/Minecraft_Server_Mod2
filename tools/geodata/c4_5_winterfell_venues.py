@@ -37,8 +37,10 @@ def append_venues(install=False):
   print('C4.5 Winterfell specialty venues are already present; no duplication.')
   return {'additionalWorkplaces':root['c45']['addedWorkplaces'],'unplaced':sum(root['c45']['unplacedByGeometry'].values()),
           'indexedChunks':len(root['chunks']),'alreadyInstalled':True}
- if len(root['buildings'])!=1514:
-  raise ValueError('Unexpected Winterfell V3 baseline; do not overwrite modified buildings')
+ if len(root['buildings'])<1514 or len(root['buildings'])>1514+100:
+  raise ValueError('Unexpected Winterfell V3 baseline; refuse unknown generated blueprint')
+ if root.get('c451') and root['c451'].get('newInnerWorkplaces')!=12:
+  raise ValueError('Unknown castle-ward swap version')
  labels={'SMITH':'Smithy','CARPENTER':'Carpentry','MASON':'Masonry','FARMER':'Farm',
    'LIVESTOCK':'Pasture','FORESTER':'Forest Camp','MERCHANT':'Market',
    'TRANSPORT':'Cart Depot','GUARD':'Barracks','SERVANT':'Service Hall',
@@ -142,7 +144,8 @@ def append_venues(install=False):
     'addedWorkplaces':len(root['buildings'])-baseline,'skippedByPolicy':deferred,
     'unplacedByGeometry':{f'{s}/{k}':v for (s,k),v in fail.items()},
     'authoritativeResidentCount':5000,'newPeopleCreated':0,'newWorldOnly':True,
-    'original1514Preserved':True,'castleRoomJobsAreLogicalOnly':True}
+    'original1514Preserved':not bool(root.get('c451')),'preservesHousingIds':True,
+    'castleRoomJobsAreLogicalOnly':True}
  OUT.mkdir(parents=True,exist_ok=True)
  preview=OUT/'winterfell_v3_c45_preview.json'
  preview.write_text(json.dumps(root,separators=(',',':'),ensure_ascii=False)+'\n',encoding='utf-8')
