@@ -1,0 +1,25 @@
+{
+  "population": 3760684,
+  "workers": 1880341,
+  "sites": 248,
+  "inhabited": 198,
+  "jobRows": 206,
+  "uniqueJobIds": 204,
+  "nonzeroDetails": 24390,
+  "activeJobTypes": 175,
+  "regionCounts": {
+    "rural_south": 108,
+    "island_port": 8,
+    "steppe": 2,
+    "sacred_city": 3,
+    "major_port": 16,
+    "trade_city": 23,
+    "frontier_fort": 5,
+    "rural_north": 21,
+    "wall_active": 3,
+    "fortress": 3,
+    "slaving_city": 5,
+    "shadow_port": 1,
+    "ruin": 50
+  }
+}
