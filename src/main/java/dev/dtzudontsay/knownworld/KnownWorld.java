@@ -47,6 +47,7 @@ import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeSources;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
 import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldStructureSigns;
+import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldBlueprintGallery;
 import dev.dtzudontsay.knownworld.world.generation.settlement.WinterfellWorldgenV3;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoData;
@@ -94,6 +95,8 @@ public final class KnownWorld implements ModInitializer {
         KnownWorldStructureSigns.register();
 
         WinterfellWorldgenV3.registerDebugCommands();
+
+        KnownWorldBlueprintGallery.register();
 
         NorthFeatureRegistry.bootstrap();
         SouthFeatureRegistry.bootstrap();

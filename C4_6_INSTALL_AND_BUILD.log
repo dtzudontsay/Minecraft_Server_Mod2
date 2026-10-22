@@ -1,0 +1,120 @@
+C4.6 start 22.10.2026 15:04:46,91 
+STAGE: Python conservation test
+PASS synthetic population conservation, 24 fields, compact world plan
+{
+  "version": "C4.6",
+  "population": 5000,
+  "households": 1136,
+  "existingPlotsBeforeFields": 1913,
+  "plotsAfterFields": 1937,
+  "movedExistingPlots": 1839,
+  "fixedCastlePlots": 74,
+  "visibleFarmFields": 24,
+  "maxStructureCoordinateMetresFromCastle": 1160,
+  "streetPoints": 206944,
+  "chunkIndexes": 12255,
+  "wallsAndKeep": "UNCHANGED_JAVA_GENERATOR",
+  "allNpcIdsAndHouseholdIds": "PRESERVED",
+  "productiveFarmAcreage": "NOT_YET_DERIVED_FROM_AGRICULTURAL_CAPACITY"
+}
+elapsed 0.76 seconds
+STAGE: Winterfell local geometry PREVIEW
+PREFLIGHT ONLY: no scenario manifests changed
+{
+  "version": "C4.6",
+  "population": 5000,
+  "households": 1136,
+  "existingPlotsBeforeFields": 1913,
+  "plotsAfterFields": 1937,
+  "movedExistingPlots": 1827,
+  "fixedCastlePlots": 86,
+  "visibleFarmFields": 24,
+  "maxStructureCoordinateMetresFromCastle": 1160,
+  "streetPoints": 210939,
+  "chunkIndexes": 12239,
+  "wallsAndKeep": "UNCHANGED_JAVA_GENERATOR",
+  "allNpcIdsAndHouseholdIds": "PRESERVED",
+  "productiveFarmAcreage": "NOT_YET_DERIVED_FROM_AGRICULTURAL_CAPACITY"
+}
+STAGE: Java patch compatibility PREVIEW
+CHANGE src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC3Architecture.java
+CHANGE src\main\java\dev\dtzudontsay\knownworld\KnownWorld.java
+CHANGE src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java
+NEW src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldBlueprintGallery.java
+NEW src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldBlueprintGalleryDimensions.java
+PREFLIGHT PASSED (read-only Java check)
+STAGE: Export all actual C3 template types
+Gallery blueprint catalogue: 61 building types; D:\GameOfThronesMod2\tools\geodata\output\c4_6_winterfell\C46_ALL_BUILDINGS_REVIEW.csv
+STAGE: Install C4.6 Java and safe bounded signage
+CHANGE src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC3Architecture.java
+CHANGE src\main\java\dev\dtzudontsay\knownworld\KnownWorld.java
+CHANGE src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java
+NEW src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldBlueprintGallery.java
+NEW src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldBlueprintGalleryDimensions.java
+C4.6 Java safely installed. Run Gradle build before opening Minecraft.
+STAGE: Install compact Winterfell ring geometry
+INSTALLED fresh-world Winterfell compact rings; V2+V3 backed up
+{
+  "version": "C4.6",
+  "population": 5000,
+  "households": 1136,
+  "existingPlotsBeforeFields": 1913,
+  "plotsAfterFields": 1937,
+  "movedExistingPlots": 1827,
+  "fixedCastlePlots": 86,
+  "visibleFarmFields": 24,
+  "maxStructureCoordinateMetresFromCastle": 1160,
+  "streetPoints": 210939,
+  "chunkIndexes": 12239,
+  "wallsAndKeep": "UNCHANGED_JAVA_GENERATOR",
+  "allNpcIdsAndHouseholdIds": "PRESERVED",
+  "productiveFarmAcreage": "NOT_YET_DERIVED_FROM_AGRICULTURAL_CAPACITY"
+}
+STAGE: Minecraft 26.3 Gradle build and regression tests
+
+> Configure project :
+Fabric Loom: 1.17.21
+
+> Task :compileJava
+D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldBlueprintGallery.java:52: Fehler: Symbol nicht gefunden
+                    .requires(source -> source.hasPermission(2))
+                                              ^
+  Symbol: Methode hasPermission(int)
+  Ort: Variable source von Typ CommandSourceStack
+Hinweis: Einige Eingabedateien verwenden oder überschreiben eine veraltete API.
+Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+1 Fehler
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/GameOfThronesMod2/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+  Hinweis: Einige Eingabedateien verwenden oder überschreiben eine veraltete API.
+  D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldBlueprintGallery.java:52: Fehler: Symbol nicht gefunden
+                      .requires(source -> source.hasPermission(2))
+                                                ^
+    Symbol: Methode hasPermission(int)
+    Ort: Variable source von Typ CommandSourceStack
+  1 Fehler
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 3s
+1 actionable task: 1 executed
+BUILD/INSTALL ERROR � RESTORING ALL FIVE ORIGINAL SOURCE AND SCENARIO FILES
+All five original files restored and any new gallery Java classes removed. No save edited.
+STOPPED: RuntimeError Minecraft 26.3 Gradle build and regression tests FAILED (1)

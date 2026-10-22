@@ -62,8 +62,8 @@ import java.util.*;
  */
 public final class WinterfellV3Runtime {
 
-    public static final int FULL_BUDGET = 384;
-    public static final int REDUCED_BUDGET = 256;
+    public static final int FULL_BUDGET = 128;
+    public static final int REDUCED_BUDGET = 128;
 
     private static final int FULL_RADIUS = 140;
     private static final int REDUCED_RADIUS = 260;

@@ -1,0 +1,16 @@
+{
+  "version": "C4.6",
+  "population": 5000,
+  "households": 1136,
+  "existingPlotsBeforeFields": 1913,
+  "plotsAfterFields": 1937,
+  "movedExistingPlots": 1827,
+  "fixedCastlePlots": 86,
+  "visibleFarmFields": 24,
+  "maxStructureCoordinateMetresFromCastle": 1160,
+  "streetPoints": 210939,
+  "chunkIndexes": 12239,
+  "wallsAndKeep": "UNCHANGED_JAVA_GENERATOR",
+  "allNpcIdsAndHouseholdIds": "PRESERVED",
+  "productiveFarmAcreage": "NOT_YET_DERIVED_FROM_AGRICULTURAL_CAPACITY"
+}

@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldUniversalWorldgenC2.Lot;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -52,6 +53,23 @@ public final class KnownWorldC3Architecture {
         private BuildingBlocks() { }
     }
     private static volatile Map<String, Template> catalog;
+    // C4_6_LIVE_GALLERY_SINK: render the SAME C3 template into a loaded
+    // superflat inspection world via ServerLevel.setBlock (client-sync safe).
+    // Thread-local only, always cleared after the one gallery structure.
+    private static final ThreadLocal<ServerLevel> GALLERY_LEVEL = new ThreadLocal<>();
+
+    public static void buildLiveGalleryLot(ServerLevel level, Lot lot, int floor,
+                                           String palette, String tier) {
+        if (GALLERY_LEVEL.get() != null) throw new IllegalStateException("Nested gallery painter");
+        GALLERY_LEVEL.set(level);
+        try {
+            int minCX=lot.x()>>4, maxCX=(lot.x()+lot.width()+2)>>4;
+            int minCZ=lot.z()>>4, maxCZ=(lot.z()+lot.depth()+3)>>4;
+            for (int cx=minCX;cx<=maxCX;cx++)
+                for (int cz=minCZ;cz<=maxCZ;cz++)
+                    buildLot(level.getChunk(cx,cz),lot,floor,palette,tier);
+        } finally { GALLERY_LEVEL.remove(); }
+    }
 
     public record Template(String id, String family, int floors, int maxStaff,
                            boolean openAir, boolean requiresShore,
@@ -121,7 +139,7 @@ public final class KnownWorldC3Architecture {
         Template template = template(requested);
         // A special module may be defined and inspectable without being
         // permitted at an unreviewed C2 pilot site.
-        if (template.requiresShore() || template.requiresMountainResource() || template.requiresPolicy()) {
+        if (GALLERY_LEVEL.get() == null && (template.requiresShore() || template.requiresMountainResource() || template.requiresPolicy())) {
             throw new IllegalStateException("Module " + requested
                     + " requires separate C4 site/policy approval, not a C2 pilot");
         }
@@ -135,8 +153,9 @@ public final class KnownWorldC3Architecture {
             buildHouse(c, lot, floor, palette, template);
         }
         // C4.5 - instance-local public building signs for new chunks only.
-        KnownWorldStructureSigns.attach(c, lot.x(), lot.z(), lot.width(),
-                lot.depth(), floor, lot.face(), requested);
+        if (GALLERY_LEVEL.get() == null)
+            KnownWorldStructureSigns.attach(c, lot.x(), lot.z(), lot.width(),
+                    lot.depth(), floor, lot.face(), requested);
     }
 
     private static BlockState regionalWall(String palette, String family) {
@@ -372,6 +391,8 @@ public final class KnownWorldC3Architecture {
     private static void put(ChunkAccess c, int x, int y, int z, BlockState value) {
         if (y < c.getMinY() || y >= c.getMaxY()) return;
         if ((x >> 4) != c.getPos().x() || (z >> 4) != c.getPos().z()) return;
-        c.setBlockState(new BlockPos(x, y, z), value, 0);
+        ServerLevel live = GALLERY_LEVEL.get();
+        if (live == null) c.setBlockState(new BlockPos(x, y, z), value, 0);
+        else live.setBlock(new BlockPos(x, y, z), value, 2);
     }
 }
