@@ -145,6 +145,7 @@ public final class KnownWorldC3Architecture {
         }
         if ("FIELD".equals(lot.kind()))
             throw new IllegalArgumentException("C2 farmland remains its own safe field renderer");
+        // C4_7_ARCHITECTURAL_DETAILS: preserve all existing C3 structure dispatch.
         if (template.openAir()) {
             buildOutdoor(c, lot, floor, template);
         } else if ("SHELTER".equals(template.family())) {
@@ -152,6 +153,7 @@ public final class KnownWorldC3Architecture {
         } else {
             buildHouse(c, lot, floor, palette, template);
         }
+        KnownWorldC47ArchitecturalDetails.decorate(c, lot, floor, template, palette);
         // C4.5 - instance-local public building signs for new chunks only.
         if (GALLERY_LEVEL.get() == null)
             KnownWorldStructureSigns.attach(c, lot.x(), lot.z(), lot.width(),
@@ -183,9 +185,10 @@ public final class KnownWorldC3Architecture {
         int floors = t.floors();
         int wallY = floor + floors * 6;
         boolean flat = palette.toUpperCase(Locale.ROOT).contains("DORN")
-                || "STORE".equals(t.family());
-        BlockState wall = regionalWall(palette, t.family());
-        BlockState roof = regionalRoof(palette);
+                || "STORE".equals(t.family())
+                || KnownWorldC47ArchitecturalDetails.flatRoof(t.id());
+        BlockState wall = KnownWorldC47ArchitecturalDetails.wall(t.id(), regionalWall(palette, t.family()));
+        BlockState roof = KnownWorldC47ArchitecturalDetails.roof(t.id(), regionalRoof(palette));
         BlockState deck = Blocks.SPRUCE_PLANKS.defaultBlockState();
         int x0 = b.x(), z0 = b.z();
         int x1 = x0 + b.width() - 1, z1 = z0 + b.depth() - 1;
@@ -197,7 +200,7 @@ public final class KnownWorldC3Architecture {
         for (int z = minZ; z <= maxZ; z++) for (int x = minX; x <= maxX; x++) {
             int xx = x - x0, zz = z - z0;
             clearHazards(c, x, z, floor);
-            int slope = flat ? 0 : Math.min(3, Math.min(xx, b.width() - 1 - xx));
+            int slope = KnownWorldC47ArchitecturalDetails.roofRise(t.id(),xx,zz,b.width(),b.depth(),flat);
             int roofY = wallY + 1 + slope;
             // C2 accepts only plots whose sampled terrain differs by at most six blocks.
             // Bounded foundations/clearance avoid querying a mutable chunk heightmap.
@@ -207,7 +210,7 @@ public final class KnownWorldC3Architecture {
                 put(c, x, y, z, BuildingBlocks.AIR);
             boolean perimeter = xx == 0 || xx == b.width() - 1 || zz == 0 || zz == b.depth() - 1;
             if (perimeter) for (int y = floor + 1; y <= wallY; y++) put(c, x, y, z, wall);
-            if ((zz == 0 || zz == b.depth() - 1) && slope > 0) {
+            if (KnownWorldC47ArchitecturalDetails.gable(t.id(),xx,zz,b.width(),b.depth()) && slope > 0) {
                 for (int y = wallY + 1; y < roofY; y++) put(c, x, y, z, wall);
             }
             put(c, x, roofY, z, roof);
@@ -255,6 +258,9 @@ public final class KnownWorldC3Architecture {
             int xx = 3 + 2 * i;
             int zz = north ? lot.depth() - 3 : 2;
             if (xx >= lot.width() - 1 || zz >= lot.depth() - 1) continue;
+            // C4.7 public bath supplies contained water from its constructed basin.
+            // Never place the original free-flowing indoor water workstation.
+            if ("PUBLIC_BATH".equals(t.id()) && "WATER".equals(t.stations().get(i))) continue;
             BlockState state = station(t.stations().get(i));
             put(c, lot.x() + xx, floor + 1, lot.z() + zz, state);
         }
@@ -387,6 +393,9 @@ public final class KnownWorldC3Architecture {
                 put(c, x, y, z, BuildingBlocks.AIR);
         }
     }
+
+    // C4_7 detail layer inherits the existing C4.6 gallery/live block sink.
+    static void c47Put(ChunkAccess c,int x,int y,int z,BlockState value) { put(c,x,y,z,value); }
 
     private static void put(ChunkAccess c, int x, int y, int z, BlockState value) {
         if (y < c.getMinY() || y >= c.getMaxY()) return;

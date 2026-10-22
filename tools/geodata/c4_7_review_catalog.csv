@@ -1,0 +1,62 @@
+id,footprint_width,footprint_depth,floors,exterior,interior,notes_to_reviewer
+ADMINISTRATION,17,14,2,Monumental stone with deep slate roof,Council seating and lecterns,Inspect importance and circulation
+ARCANE_STUDY,15,13,2,Stone tower-like hall,Enchanting and brewing stations,Confirm enchanting bookcases
+ARMORY,16,13,1,Brick reinforced storage building,Weapon benches target and barred racks,No armor stand entities until safe spawn
+BAKERY,13,12,1,Service house with distinctive roof,Smokers prep tables and cauldron,Inspect oven placement
+BANK,18,15,2,Stone financial hall,Counter iron-barred vault and chests,Inspect public/secure room separation
+BARRACKS,26,19,2,Reinforced garrison,Targets bunks and training displays,No armor stand entities until safe spawn
+BOOKBINDERY,14,12,1,Trade workshop,Bookcases lecterns desks,Review variety
+BREWERY,21,17,2,Brick industrial brewery,Iron brewing vats and barrels,No unsafe hot lava
+BRICKWORKS,22,18,1,Brick industrial workshop,Clay stacks kiln and brick piles,Inspect kiln block palette
+BROTHEL,14,13,1,Timber hall,Private partitioned rooms with beds suggested by bedding blocks,Verify private-room paths
+BUTCHERY,14,13,1,Distinct butchery service,Animal holding fence and smoker,Animals are not spawned
+CAMP,15,15,1,Open timber shelter,Campfire and storage,Review minimality
+CANAL_WORKS,21,13,1,Industrial brick maintenance house,Bounded inspection shaft and equipment,No real tunnel world edits
+CARPENTRY,13,11,1,Trade workshop,More furniture and workstation,Review unique silhouette
+CART_DEPOT,17,14,1,Open timber depot,Cart model and fenced horse bay,No animal entities
+CHANDLERY,13,12,1,Terracotta retail workshop,Candle worktops and cauldron,Unlit decorative candles safer
+CITY_SERVICES,19,15,1,Administrative stone structure,Council tables and service counter,Check accessibility
+COURTYARD,29,27,1,Open paved civic space,Central sculpture and benches,Bell can remain from baseline
+DOCK,21,14,1,Port loading shed,Loading dock platform barrels and fence,Requires coastal site policy as before
+ENTERTAINMENT_HALL,25,19,2,Performance hall,Stage instruments and seating,Review guest paths
+FARM,17,15,1,Timber farming building,Hay composter and barrels,Physical fields planned separately
+FERRY_LANDING,15,12,1,Loading shed,Wharf platform and equipment,Coastal sites remain policy-gated
+FIGHTING_PIT,29,29,1,Open stone arena,Earth floor stepped stands and fencing,Open roof avoids house silhouette
+FISHERY,14,11,1,Fish processing shed,Slab tables and smokers,No live fish entities
+FOREST_CAMP,15,11,1,Forest shelter,Horizontal timber piles and workbench,Distinguish from military camp
+GARDEN,11,11,1,Open cultivated garden,Composter and planting beds,Outdoor lighting may be sparse
+GRANARY,15,13,1,Heavy timber store,Hay and storage,Check storage realism
+GREAT_HALL,37,29,2,Monumental stone hall,Banquet benches and lord seating,Inspect scale of internal tables
+GUARD_TOWER,10,10,3,Stone defensive tower,Training displays and storage,Upper floors lit
+HEALER,13,11,1,Service clinic,Treatment beds and brewing cauldron,Interior still generic beds visually
+HOUSE_MEDIUM,13,15,2,Residential building,Household seating chests and lights,Baseline structure conserved
+HOUSE_SMALL,11,12,1,Residential building,Household seating chests and lights,Baseline structure conserved
+HOUSE_URBAN,17,20,2,Urban residence,Household seating chests and lights,Baseline structure conserved
+INN,18,14,2,Timber hospitality building,Bar seating and upstairs rooms,Check residential layout
+JEWELER,13,12,1,Trade store,Stone display counter amethyst and gold,Review wealth cues
+JUSTICE_HALL,21,16,2,Monumental stone court,Court lectern public benches and side statue,Inspect judge sightlines
+KEEP,49,41,3,Large defensive stone keep,Training/storage cues and lights,Does not replace Winterfell V3 keep
+KITCHEN,14,12,1,Service cooking house,Ovens cauldron and prep tables,Check fire-free layout
+LEATHERWORKS,18,15,1,Trade workshop,Workbenches tanning cauldron and hides,Inspect distinctiveness
+MARKET,21,17,1,Market hall with broad roofing,Separated goods stalls and crates,Review aisle width
+MASONRY,17,12,1,Brick workshop,Anvil and stonecutting benches,Review roof and wall accuracy
+MILL,16,13,2,Brick mill,Vertical external-facing wheel and flour stores,Wheel does not yet turn
+MINE,15,12,1,Industrial entrance house,Five-block-deep shored shaft and ladder,Not a complete underground mine
+MONUMENT,43,43,1,Open stone monument,Civic column,Review silhouette
+PASTURE,15,12,1,Open fenced pasture,Hay feeder,No livestock generated
+POTTERY,18,14,1,Brick workshop,Terracotta and kiln,Review workstation layout
+PUBLIC_BATH,19,17,1,Stone bathing hall,Two-block-deep contained water basin,Check floor and water containment
+RITUAL_GROUND,31,31,1,Open paved ritual area,Stone pillars,Existing campfire preserved
+RUIN,35,31,1,Open ruined structure,Mossy rubble,Review random stone variation
+SCHOLASTIC_HALL,19,16,2,Institutional school hall,Books desks and lectern,Upper floors lit
+SCHOOL,16,14,2,Institutional school hall,Books desks and lectern,Upper floors lit
+SERVICE_HALL,20,13,2,Timber public hall,Bar counter and tables,Compare to tavern and inn
+SHIPYARD,29,22,1,Heavy timber shipbuilding shed,Broad exit and half-built timber ship,No ocean terrain changes
+SMITHY,13,11,1,Brick industrial smithy,Furnace anvil enclosed orange-glass forge and quench cauldron,No exposed lava
+STABLE,17,14,1,Timber livestock stable,Fenced stalls hay and water cauldrons,Check paths for animals
+TAVERN,17,14,1,Timber public house,Bar barrels tables and benches,Inspect seating density
+TEMPLE,21,19,2,Monumental stone temple,Central statue altar pews and candles,Inspect altar lighting
+TEMPORARY_CAMP,13,13,1,Open shelter,Campfire and supplies,Review distinction from forest camp
+WAREHOUSE,19,16,2,Industrial timber warehouse,Rows of storage crates,Inspect passage width
+WEAVERY,16,12,1,Trade workshop,Multiple looms and fabric bolts,Check palette
+WELL,5,5,1,Open civic well,Water and stone masonry,Existing source retained

@@ -1,0 +1,82 @@
+C4.7 source-only architecture batch, 2026-10-22T16:31:03.804842
+Existing NPCs / settlement locations / signs / saves unaffected by installation.
+
+== 61-building catalogue/static safety checks ==
+C:\Users\Sandro\AppData\Local\Python\pythoncore-3.14-64\python.exe D:\GameOfThronesMod2\tools\geodata\test_c4_7_static.py
+PASS C4.7 review IDs exactly match installed C3 architecture resource
+PASS 61 unique documented real C3 template IDs
+PASS special requests with name-bound renderer cases
+PASS no unsafe live-world mutations, fluid lava, entity spawns or foreign-chunk writes
+PASS floor-by-floor supported lantern pattern and bounded footprint writer
+
+== Java source syntax via isolated stubs ==
+C:\Users\Sandro\AppData\Local\Python\pythoncore-3.14-64\python.exe D:\GameOfThronesMod2\tools\geodata\test_c4_7_java_syntax.py
+Local Java syntax check: PASS
+PASS 61 structures, coordinate bounds and details
+Note: stubs validate Java syntax/logic only. Real Minecraft compile is still required.
+
+== C4.6.1 preflight (read-only) ==
+C:\Users\Sandro\AppData\Local\Python\pythoncore-3.14-64\python.exe D:\GameOfThronesMod2\tools\geodata\c4_7_install_architecture.py --check
+PASS C4.6 gallery + sign integration anchors
+PASS original lot geometry and C3 public API left intact
+PASS no new chunk loads or world/server references in enhancement source
+PREFLIGHT PASSED: read-only
+Rollback snapshot: D:\GameOfThronesMod2\tools\geodata\output\c4_7_architectural_review\backup_20261022_163104_650748
+
+== Install renderer ==
+C:\Users\Sandro\AppData\Local\Python\pythoncore-3.14-64\python.exe D:\GameOfThronesMod2\tools\geodata\c4_7_install_architecture.py --install
+PASS C4.6 gallery + sign integration anchors
+PASS original lot geometry and C3 public API left intact
+PASS no new chunk loads or world/server references in enhancement source
+INSTALLED C4.7 renderer. Build required before game launch.
+
+== Minecraft 26.3 Gradle build + all regression tests ==
+D:\GameOfThronesMod2\gradlew.bat build --console=plain
+
+> Configure project :
+Fabric Loom: 1.17.21
+
+> Task :compileJava
+D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC47ArchitecturalDetails.java:304: Fehler: Symbol nicht gefunden
+        c.b(mid,3,4,Blocks.ORANGE_STAINED_GLASS.defaultBlockState());
+                          ^
+  Symbol: Variable ORANGE_STAINED_GLASS
+  Ort: Klasse Blocks
+Hinweis: Einige Eingabedateien verwenden oder Ã¼berschreiben eine veraltete API.
+Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+1 Fehler
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/GameOfThronesMod2/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+  D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC47ArchitecturalDetails.java:304: Fehler: Symbol nicht gefunden
+          c.b(mid,3,4,Blocks.ORANGE_STAINED_GLASS.defaultBlockState());
+                            ^
+    Symbol: Variable ORANGE_STAINED_GLASS
+    Ort: Klasse Blocks
+  Hinweis: Einige Eingabedateien verwenden oder Ã¼berschreiben eine veraltete API.
+  1 Fehler
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 3s
+1 actionable task: 1 executed
+FAILED (exit 1)
+INSTALL STOPPED: Minecraft 26.3 Gradle build + all regression tests failed; full output: D:\GameOfThronesMod2\C4_7_INSTALL_AND_BUILD.log
+ROLLBACK COMPLETE: restored original C3 code and gallery; new detail class reverted.
+Minecraft saved worlds were not modified.
