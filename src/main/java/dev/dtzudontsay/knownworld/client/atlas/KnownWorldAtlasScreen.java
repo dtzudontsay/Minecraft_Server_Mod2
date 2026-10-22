@@ -162,7 +162,7 @@ public final class KnownWorldAtlasScreen extends Screen {
                     * KnownWorldAtlasConfig.METRES_PER_MASTER_PIXEL);
             gfx.fill(tx, ty, tx + boxWidth, ty + 98, 0xF20B1924);
             gfx.outline(tx, ty, boxWidth, 98, 0xFFB6A37C);
-            gfx.text(font, info.name(), tx + 8, ty + 8, WHITE, true);
+            gfx.text(font, info.name() + KnownWorldAtlasSiteTags.suffix(info.id()), tx + 8, ty + 8, WHITE, true);
             gfx.text(font, "Sources: " + info.sources(), tx + 8, ty + 23, FAINT, false);
             gfx.text(font, "Place key: " + info.placeId(), tx + 8, ty + 37, FAINT, false);
             gfx.text(font, "Game X/Z (unapproved): " + mx + ", " + mz,

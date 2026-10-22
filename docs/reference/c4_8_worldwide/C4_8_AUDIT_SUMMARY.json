@@ -1,0 +1,36 @@
+{
+  "sourceVersion": "C1 + C4.4 (2026-10-22)",
+  "sites": 248,
+  "mapMarkers": 253,
+  "inhabited": 198,
+  "uninhabited": 50,
+  "plannedPopulation": 3760684,
+  "plannedWorkers": 1880341,
+  "originalJobRows": 206,
+  "canonicalJobIds": 204,
+  "tierCounts": {
+    "MAJOR": 47,
+    "MEDIUM": 95,
+    "SMALL": 41,
+    "SPECIAL": 65
+  },
+  "blueprintModes": {
+    "CANAL_CITY_REQUIRE_WATER_LAYOUT": 1,
+    "COASTAL_REQUIRE_SHORE_LAYOUT": 6,
+    "GENERAL_COMPACT_SETTLEMENT": 182,
+    "MOBILE_NO_FIXED_FOOTPRINT": 1,
+    "MONUMENTAL_FORTRESS_REQUIRE_AUTHORED_BLUEPRINT": 5,
+    "PYRAMID_CITY_REQUIRE_AUTHORED_BLUEPRINT": 1,
+    "ROCK_INTEGRATED_REQUIRE_AUTHORED_BLUEPRINT": 1,
+    "RUIN_OR_LANDMARK_ONLY": 47,
+    "SHADOW_CITY_REQUIRE_AUTHORED_BLUEPRINT": 1,
+    "UNVERIFIED_NO_CONSTRUCTION": 3
+  },
+  "jobTotalMatchesEverySite": true,
+  "housingDemandNotYetActualHouseholds": true,
+  "workplacesAreDemandNotBuilt": true,
+  "terrainApprovedWorldSites": 0,
+  "generatedIndividualNpcsFromThisExporter": 0,
+  "sourceC1SHA256": "e6beb6658cda923159eefa853c3167c793b97fd6524433c1a52b1b28260b51f7",
+  "sourceC44SHA256": "55413f92c7b6a9b134bad72ec8e8269b24fd3d291a8bf93e56ab2681281dc4ad"
+}

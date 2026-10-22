@@ -1,0 +1,2031 @@
+{
+  "schemaVersion": 1,
+  "source": "C1_MARKER_GROUPS_2026_10_22",
+  "classificationOnly": true,
+  "markers": [
+    {
+      "id": "NE-001",
+      "siteId": "site_ne_001",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ib Nor"
+    },
+    {
+      "id": "NE-002",
+      "siteId": "site_ne_002",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Port of Ibben"
+    },
+    {
+      "id": "NE-003",
+      "siteId": "site_ne_003",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ib Sar"
+    },
+    {
+      "id": "NE-004",
+      "siteId": "site_ne_004",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "New Ibbish"
+    },
+    {
+      "id": "NE-005",
+      "siteId": "site_ne_005",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vaes Aresak / Ibbish"
+    },
+    {
+      "id": "NE-006",
+      "siteId": "site_ne_006",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vaes Leisi"
+    },
+    {
+      "id": "NE-007",
+      "siteId": "site_ne_007",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vaes Dothrak"
+    },
+    {
+      "id": "NE-008",
+      "siteId": "site_ne_008",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Leqse / Gornath"
+    },
+    {
+      "id": "NE-009",
+      "siteId": "site_ne_009",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Kayakayanaya"
+    },
+    {
+      "id": "NE-010",
+      "siteId": "site_ne_010",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Yalli Qamayi / Sathar"
+    },
+    {
+      "id": "NEE-001",
+      "siteId": "site_nee_001",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Nefer"
+    },
+    {
+      "id": "NEE-002",
+      "siteId": "site_nee_002",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "UNVERIFIED_NO_CONSTRUCTION",
+      "name": "K'Dath (legendary/unconfirmed)"
+    },
+    {
+      "id": "NEE-003",
+      "siteId": "site_nee_003",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Trader Town"
+    },
+    {
+      "id": "NEE-004",
+      "siteId": "site_nee_004",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "UNVERIFIED_NO_CONSTRUCTION",
+      "name": "Bonetown (reported/unconfirmed)"
+    },
+    {
+      "id": "NEE-005",
+      "siteId": "site_nee_005",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "MONUMENTAL_FORTRESS_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "The Five Forts — individual fort 1"
+    },
+    {
+      "id": "NEE-006",
+      "siteId": "site_nee_006",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "MONUMENTAL_FORTRESS_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "The Five Forts — individual fort 2"
+    },
+    {
+      "id": "NEE-007",
+      "siteId": "site_nee_007",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "MONUMENTAL_FORTRESS_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "The Five Forts — individual fort 3"
+    },
+    {
+      "id": "NEE-008",
+      "siteId": "site_nee_008",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "MONUMENTAL_FORTRESS_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "The Five Forts — individual fort 4"
+    },
+    {
+      "id": "NEE-009",
+      "siteId": "site_nee_009",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "MONUMENTAL_FORTRESS_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "The Five Forts — individual fort 5"
+    },
+    {
+      "id": "NEE-010",
+      "siteId": "site_nee_010",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Tiqui"
+    },
+    {
+      "id": "NW-001",
+      "siteId": "site_nw_001",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Thenn"
+    },
+    {
+      "id": "NW-004",
+      "siteId": "site_nw_004",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Fist of the First Men"
+    },
+    {
+      "id": "NW-005",
+      "siteId": "site_nw_005",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Hardhome"
+    },
+    {
+      "id": "NW-007",
+      "siteId": "site_nw_007",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Craster's Keep"
+    },
+    {
+      "id": "NW-008",
+      "siteId": "site_nw_008",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Castle Black"
+    },
+    {
+      "id": "NW-009",
+      "siteId": "site_nw_009",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Oakenshield"
+    },
+    {
+      "id": "NW-010",
+      "siteId": "site_nw_010",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Woodswatch-by-the-Pool"
+    },
+    {
+      "id": "NW-011",
+      "siteId": "site_nw_011",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Sable Hall"
+    },
+    {
+      "id": "NW-012",
+      "siteId": "site_nw_012",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Stonegate"
+    },
+    {
+      "id": "NW-013",
+      "siteId": "site_nw_013",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Icemark"
+    },
+    {
+      "id": "NW-014",
+      "siteId": "site_nw_014",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Deep Lake"
+    },
+    {
+      "id": "NW-015",
+      "siteId": "site_nw_015",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Hoarfrost Hill"
+    },
+    {
+      "id": "NW-016",
+      "siteId": "site_nw_016",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "The Nightfort"
+    },
+    {
+      "id": "NW-017",
+      "siteId": "site_nw_017",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Eastwatch-by-the-Sea"
+    },
+    {
+      "id": "NW-018",
+      "siteId": "site_nw_018",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Greywatch"
+    },
+    {
+      "id": "NW-019",
+      "siteId": "site_nw_019",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Shieldwatch"
+    },
+    {
+      "id": "NW-020",
+      "siteId": "site_nw_020",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Shadow Tower"
+    },
+    {
+      "id": "NW-021",
+      "siteId": "site_nw_021",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Westwatch-by-the-Bridge"
+    },
+    {
+      "id": "NW-022",
+      "siteId": "site_nw_022",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Mole's Town"
+    },
+    {
+      "id": "NW-023",
+      "siteId": "site_nw_023",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Queenscrown"
+    },
+    {
+      "id": "NW-024",
+      "siteId": "site_nw_024",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Mormont's Castle"
+    },
+    {
+      "id": "NW-025",
+      "siteId": "site_nw_025",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Last Hearth"
+    },
+    {
+      "id": "NW-026",
+      "siteId": "site_nw_026",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Karhold"
+    },
+    {
+      "id": "NW-027",
+      "siteId": "site_nw_027",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Deepwood Motte"
+    },
+    {
+      "id": "NW-028",
+      "siteId": "site_nw_028",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Dreadfort"
+    },
+    {
+      "id": "NW-029",
+      "siteId": "site_nw_029",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Winterfell"
+    },
+    {
+      "id": "NW-030",
+      "siteId": "site_nw_030",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Torrhen's Square"
+    },
+    {
+      "id": "NW-031",
+      "siteId": "site_nw_031",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ramsgate"
+    },
+    {
+      "id": "NW-032",
+      "siteId": "site_nw_032",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Widow's Watch"
+    },
+    {
+      "id": "NW-033",
+      "siteId": "site_nw_033",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Barrowton"
+    },
+    {
+      "id": "NW-034",
+      "siteId": "site_nw_034",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "COASTAL_REQUIRE_SHORE_LAYOUT",
+      "name": "White Harbor"
+    },
+    {
+      "id": "NW-035",
+      "siteId": "site_nw_035",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Moat Cailin"
+    },
+    {
+      "id": "NW-036",
+      "siteId": "site_nw_036",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Oldcastle"
+    },
+    {
+      "id": "NW-037",
+      "siteId": "site_nw_037",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Flint's Finger"
+    },
+    {
+      "id": "NW-038",
+      "siteId": "site_nw_038",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sisterton"
+    },
+    {
+      "id": "NW-039",
+      "siteId": "site_nw_039",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "MOBILE_NO_FIXED_FOOTPRINT",
+      "name": "Greywater Watch"
+    },
+    {
+      "id": "NW-042",
+      "siteId": "site_nw_042",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Coldwater Burn"
+    },
+    {
+      "id": "NW-045",
+      "siteId": "site_nw_045",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Snakewood"
+    },
+    {
+      "id": "NW-047",
+      "siteId": "site_nw_047",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Longbow Hall"
+    },
+    {
+      "id": "NW-048",
+      "siteId": "site_nw_048",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Heart's Home"
+    },
+    {
+      "id": "NW-049",
+      "siteId": "site_nw_049",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Unidentified NW-049"
+    },
+    {
+      "id": "NW-MISSING-TWINS-01",
+      "siteId": "site_nw_missing_twins_01",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "The Twins"
+    },
+    {
+      "id": "NW-MISSING-WALL-01",
+      "siteId": "site_nw_missing_wall_01",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Rimegate"
+    },
+    {
+      "id": "NW-MISSING-WALL-02",
+      "siteId": "site_nw_missing_wall_02",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Long Barrow"
+    },
+    {
+      "id": "NW-MISSING-WALL-03",
+      "siteId": "site_nw_missing_wall_03",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "The Torches"
+    },
+    {
+      "id": "NW-MISSING-WALL-04",
+      "siteId": "site_nw_missing_wall_04",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Greenguard"
+    },
+    {
+      "id": "NWE-001",
+      "siteId": "site_nwe_001",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "CANAL_CITY_REQUIRE_WATER_LAYOUT",
+      "name": "Braavos"
+    },
+    {
+      "id": "NWE-002",
+      "siteId": "site_nwe_002",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Morosh"
+    },
+    {
+      "id": "NWE-003",
+      "siteId": "site_nwe_003",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lorath"
+    },
+    {
+      "id": "NWE-004",
+      "siteId": "site_nwe_004",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Graddakh / Sarys"
+    },
+    {
+      "id": "NWE-005",
+      "siteId": "site_nwe_005",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Saath"
+    },
+    {
+      "id": "NWE-006",
+      "siteId": "site_nwe_006",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Norvos"
+    },
+    {
+      "id": "NWE-007",
+      "siteId": "site_nwe_007",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Athjikhari / Sallosh"
+    },
+    {
+      "id": "NWE-008",
+      "siteId": "site_ne_008",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Leqse / Gornath"
+    },
+    {
+      "id": "NWE-009",
+      "siteId": "site_nwe_009",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Ghoyan Drohe"
+    },
+    {
+      "id": "NWE-010",
+      "siteId": "site_nwe_010",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vojjor Samvi / Kasath"
+    },
+    {
+      "id": "NWE-011",
+      "siteId": "site_nwe_011",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Pentos"
+    },
+    {
+      "id": "NWE-012",
+      "siteId": "site_nwe_012",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Qohor"
+    },
+    {
+      "id": "NWE-013",
+      "siteId": "site_nwe_013",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Khewo / Sarnath"
+    },
+    {
+      "id": "NWE-014",
+      "siteId": "site_ne_010",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Yalli Qamayi / Sathar"
+    },
+    {
+      "id": "NWE-015",
+      "siteId": "site_nwe_015",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Ny Sar"
+    },
+    {
+      "id": "NWE-016",
+      "siteId": "site_nwe_016",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Ar Noy"
+    },
+    {
+      "id": "SE-001",
+      "siteId": "site_se_001",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Efe"
+    },
+    {
+      "id": "SE-002",
+      "siteId": "site_se_002",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Diaf / Hazdahn Mo"
+    },
+    {
+      "id": "SE-003",
+      "siteId": "site_se_003",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Jini / Yinishar"
+    },
+    {
+      "id": "SE-004",
+      "siteId": "site_se_004",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Mejhah"
+    },
+    {
+      "id": "SE-005",
+      "siteId": "site_se_005",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Krazaaj Has / Ghardaq"
+    },
+    {
+      "id": "SE-006",
+      "siteId": "site_se_006",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Adakhakileki"
+    },
+    {
+      "id": "SE-007",
+      "siteId": "site_se_007",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Samyriana"
+    },
+    {
+      "id": "SE-008",
+      "siteId": "site_se_008",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "PYRAMID_CITY_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "Meereen"
+    },
+    {
+      "id": "SE-009",
+      "siteId": "site_se_009",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Kosrak"
+    },
+    {
+      "id": "SE-010",
+      "siteId": "site_se_010",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Hesh"
+    },
+    {
+      "id": "SE-011",
+      "siteId": "site_se_011",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Yunkai"
+    },
+    {
+      "id": "SE-012",
+      "siteId": "site_se_012",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lhazosh"
+    },
+    {
+      "id": "SE-013",
+      "siteId": "site_se_013",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Bayasabhad"
+    },
+    {
+      "id": "SE-014",
+      "siteId": "site_se_014",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Tolorro"
+    },
+    {
+      "id": "SE-015",
+      "siteId": "site_se_015",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Astapor"
+    },
+    {
+      "id": "SE-016",
+      "siteId": "site_se_016",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Shirosi"
+    },
+    {
+      "id": "SE-017",
+      "siteId": "site_se_017",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Qosar / Qolahn"
+    },
+    {
+      "id": "SE-018",
+      "siteId": "site_se_018",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Vaes Orvik"
+    },
+    {
+      "id": "SE-019",
+      "siteId": "site_se_019",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Qarkash"
+    },
+    {
+      "id": "SE-020",
+      "siteId": "site_se_020",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Asabhad"
+    },
+    {
+      "id": "SE-021",
+      "siteId": "site_se_021",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Port Yhos"
+    },
+    {
+      "id": "SE-022",
+      "siteId": "site_se_022",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Qarth"
+    },
+    {
+      "id": "SE-023",
+      "siteId": "site_se_023",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Qal (harbor group)"
+    },
+    {
+      "id": "SE-024",
+      "siteId": "site_se_024",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Old Ghis"
+    },
+    {
+      "id": "SE-025",
+      "siteId": "site_se_025",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "East Qal (eastern harbor observation)"
+    },
+    {
+      "id": "SE-026",
+      "siteId": "site_se_026",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "New Ghis"
+    },
+    {
+      "id": "SE-027",
+      "siteId": "site_se_027",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Faros"
+    },
+    {
+      "id": "SE-028",
+      "siteId": "site_se_028",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vahar"
+    },
+    {
+      "id": "SE-029",
+      "siteId": "site_se_029",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Gorosh"
+    },
+    {
+      "id": "SE-030",
+      "siteId": "site_se_030",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Port Moraq"
+    },
+    {
+      "id": "SE-031",
+      "siteId": "site_se_031",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Zamettar"
+    },
+    {
+      "id": "SEE-001",
+      "siteId": "site_see_001",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "UNVERIFIED_NO_CONSTRUCTION",
+      "name": "City of the Winged Men (legendary)"
+    },
+    {
+      "id": "SEE-002",
+      "siteId": "site_see_002",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Carcosa"
+    },
+    {
+      "id": "SEE-003",
+      "siteId": "site_see_003",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Jinqi"
+    },
+    {
+      "id": "SEE-004",
+      "siteId": "site_see_004",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Leng Yi"
+    },
+    {
+      "id": "SEE-005",
+      "siteId": "site_see_005",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Yin"
+    },
+    {
+      "id": "SEE-006",
+      "siteId": "site_see_006",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Leng Ma"
+    },
+    {
+      "id": "SEE-007",
+      "siteId": "site_see_007",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Turrani"
+    },
+    {
+      "id": "SEE-008",
+      "siteId": "site_see_008",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Ulos (island/ruin)"
+    },
+    {
+      "id": "SEE-009",
+      "siteId": "site_see_009",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Stygai (ruined)"
+    },
+    {
+      "id": "SEE-010",
+      "siteId": "site_see_010",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "SHADOW_CITY_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "Asshai"
+    },
+    {
+      "id": "SI-001",
+      "siteId": "site_si_001",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Last Lament"
+    },
+    {
+      "id": "SI-002",
+      "siteId": "site_si_002",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lotus Point (map labels Lotus Port)"
+    },
+    {
+      "id": "SI-003",
+      "siteId": "site_si_003",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Tall Trees Town"
+    },
+    {
+      "id": "SI-004",
+      "siteId": "site_si_004",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ebonhead"
+    },
+    {
+      "id": "SO-001",
+      "siteId": "site_se_028",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vahar"
+    },
+    {
+      "id": "SO-002",
+      "siteId": "site_se_029",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Gorosh"
+    },
+    {
+      "id": "SO-003",
+      "siteId": "site_se_031",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Zamettar"
+    },
+    {
+      "id": "SO-004",
+      "siteId": "site_so_004",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Gogossos"
+    },
+    {
+      "id": "SO-005",
+      "siteId": "site_so_005",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Yeen"
+    },
+    {
+      "id": "SW-001",
+      "siteId": "site_sw_001",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Seagard"
+    },
+    {
+      "id": "SW-002",
+      "siteId": "site_sw_002",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Old Anchor"
+    },
+    {
+      "id": "SW-003",
+      "siteId": "site_sw_003",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "The Eyrie"
+    },
+    {
+      "id": "SW-004",
+      "siteId": "site_sw_004",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Oldstones"
+    },
+    {
+      "id": "SW-005",
+      "siteId": "site_sw_005",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ninestars Castle"
+    },
+    {
+      "id": "SW-006",
+      "siteId": "site_sw_006",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Runestone"
+    },
+    {
+      "id": "SW-007",
+      "siteId": "site_sw_007",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Bloody Gate"
+    },
+    {
+      "id": "SW-008",
+      "siteId": "site_sw_008",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Pyke"
+    },
+    {
+      "id": "SW-009",
+      "siteId": "site_sw_009",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Fairmarket"
+    },
+    {
+      "id": "SW-010",
+      "siteId": "site_sw_010",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Gulltown"
+    },
+    {
+      "id": "SW-011",
+      "siteId": "site_sw_011",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Redfort"
+    },
+    {
+      "id": "SW-012",
+      "siteId": "site_sw_012",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Banefort"
+    },
+    {
+      "id": "SW-013",
+      "siteId": "site_sw_013",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Kneeling Man's Inn"
+    },
+    {
+      "id": "SW-014",
+      "siteId": "site_sw_014",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Crossroads Inn"
+    },
+    {
+      "id": "SW-015",
+      "siteId": "site_sw_015",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Riverrun"
+    },
+    {
+      "id": "SW-016",
+      "siteId": "site_sw_016",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lord Harroway's Town"
+    },
+    {
+      "id": "SW-017",
+      "siteId": "site_sw_017",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Saltpans"
+    },
+    {
+      "id": "SW-018",
+      "siteId": "site_sw_018",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "The Crag"
+    },
+    {
+      "id": "SW-019",
+      "siteId": "site_sw_019",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Wickenden"
+    },
+    {
+      "id": "SW-020",
+      "siteId": "site_sw_020",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Harrenhal"
+    },
+    {
+      "id": "SW-021",
+      "siteId": "site_sw_021",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Quiet Isle"
+    },
+    {
+      "id": "SW-022",
+      "siteId": "site_sw_022",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ashemark"
+    },
+    {
+      "id": "SW-023",
+      "siteId": "site_sw_023",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Acorn Hall"
+    },
+    {
+      "id": "SW-024",
+      "siteId": "site_sw_024",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Faircastle"
+    },
+    {
+      "id": "SW-025",
+      "siteId": "site_sw_025",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Golden Tooth"
+    },
+    {
+      "id": "SW-026",
+      "siteId": "site_sw_026",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Maidenpool"
+    },
+    {
+      "id": "SW-027",
+      "siteId": "site_sw_027",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Pinkmaiden Castle"
+    },
+    {
+      "id": "SW-028",
+      "siteId": "site_sw_028",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sarsfield"
+    },
+    {
+      "id": "SW-029",
+      "siteId": "site_sw_029",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Rook's Rest"
+    },
+    {
+      "id": "SW-030",
+      "siteId": "site_sw_030",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Antlers"
+    },
+    {
+      "id": "SW-031",
+      "siteId": "site_sw_031",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Hornvale"
+    },
+    {
+      "id": "SW-032",
+      "siteId": "site_sw_032",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "COASTAL_REQUIRE_SHORE_LAYOUT",
+      "name": "Dragonstone"
+    },
+    {
+      "id": "SW-033",
+      "siteId": "site_sw_033",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Stoney Sept"
+    },
+    {
+      "id": "SW-035",
+      "siteId": "site_sw_035",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Driftmark"
+    },
+    {
+      "id": "SW-036",
+      "siteId": "site_sw_036",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Deep Den"
+    },
+    {
+      "id": "SW-037",
+      "siteId": "site_sw_037",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Kayce"
+    },
+    {
+      "id": "SW-038",
+      "siteId": "site_sw_038",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "ROCK_INTEGRATED_REQUIRE_AUTHORED_BLUEPRINT",
+      "name": "Casterly Rock"
+    },
+    {
+      "id": "SW-039",
+      "siteId": "site_sw_039",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Duskendale"
+    },
+    {
+      "id": "SW-040",
+      "siteId": "site_sw_040",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Feastfires"
+    },
+    {
+      "id": "SW-041",
+      "siteId": "site_sw_041",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lannisport"
+    },
+    {
+      "id": "SW-042",
+      "siteId": "site_sw_042",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sharp Point"
+    },
+    {
+      "id": "SW-043",
+      "siteId": "site_sw_043",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Silverhill"
+    },
+    {
+      "id": "SW-044",
+      "siteId": "site_sw_044",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Stonedance"
+    },
+    {
+      "id": "SW-045",
+      "siteId": "site_sw_045",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Rosby"
+    },
+    {
+      "id": "SW-046",
+      "siteId": "site_sw_046",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "King's Landing"
+    },
+    {
+      "id": "SW-047",
+      "siteId": "site_sw_047",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Cornfield"
+    },
+    {
+      "id": "SW-048",
+      "siteId": "site_sw_048",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Crakehall"
+    },
+    {
+      "id": "SW-049",
+      "siteId": "site_sw_049",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Tumbleton"
+    },
+    {
+      "id": "SW-050",
+      "siteId": "site_sw_050",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Red Lake"
+    },
+    {
+      "id": "SW-051",
+      "siteId": "site_sw_051",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Goldengrove"
+    },
+    {
+      "id": "SW-052",
+      "siteId": "site_sw_052",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Haystack Hall"
+    },
+    {
+      "id": "SW-053",
+      "siteId": "site_sw_053",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Bitterbridge"
+    },
+    {
+      "id": "SW-054",
+      "siteId": "site_sw_054",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Bronzegate"
+    },
+    {
+      "id": "SW-055",
+      "siteId": "site_sw_055",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Felwood"
+    },
+    {
+      "id": "SW-056",
+      "siteId": "site_sw_056",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Grassy Vale"
+    },
+    {
+      "id": "SW-057",
+      "siteId": "site_sw_057",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Old Oak"
+    },
+    {
+      "id": "SW-058",
+      "siteId": "site_sw_058",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Evenfall Hall"
+    },
+    {
+      "id": "SW-059",
+      "siteId": "site_sw_059",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Longtable"
+    },
+    {
+      "id": "SW-060",
+      "siteId": "site_sw_060",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Storm's End"
+    },
+    {
+      "id": "SW-061",
+      "siteId": "site_sw_061",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Cider Hall"
+    },
+    {
+      "id": "SW-062",
+      "siteId": "site_sw_062",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Griffin's Roost"
+    },
+    {
+      "id": "SW-063",
+      "siteId": "site_sw_063",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Summerhall"
+    },
+    {
+      "id": "SW-064",
+      "siteId": "site_sw_064",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ashford"
+    },
+    {
+      "id": "SW-065",
+      "siteId": "site_sw_065",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Rain House"
+    },
+    {
+      "id": "SW-066",
+      "siteId": "site_sw_066",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Crow's Nest"
+    },
+    {
+      "id": "SW-067",
+      "siteId": "site_sw_067",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Highgarden"
+    },
+    {
+      "id": "SW-068",
+      "siteId": "site_sw_068",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Stonehelm"
+    },
+    {
+      "id": "SW-069",
+      "siteId": "site_sw_069",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Mistwood"
+    },
+    {
+      "id": "SW-070",
+      "siteId": "site_sw_070",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Blackhaven"
+    },
+    {
+      "id": "SW-071",
+      "siteId": "site_sw_071",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Nightsong"
+    },
+    {
+      "id": "SW-072",
+      "siteId": "site_sw_072",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Bandallon"
+    },
+    {
+      "id": "SW-073",
+      "siteId": "site_sw_073",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Castle Clearwater"
+    },
+    {
+      "id": "SW-074",
+      "siteId": "site_sw_074",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Greenstone"
+    },
+    {
+      "id": "SW-075",
+      "siteId": "site_sw_075",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Wyl"
+    },
+    {
+      "id": "SW-076",
+      "siteId": "site_sw_076",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Weeping Town"
+    },
+    {
+      "id": "SW-077",
+      "siteId": "site_sw_077",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vulture's Roost"
+    },
+    {
+      "id": "SW-078",
+      "siteId": "site_sw_078",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Tower of Joy"
+    },
+    {
+      "id": "SW-079",
+      "siteId": "site_sw_079",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Honeyholt"
+    },
+    {
+      "id": "SW-080",
+      "siteId": "site_sw_080",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Kingsgrave"
+    },
+    {
+      "id": "SW-081",
+      "siteId": "site_sw_081",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ghaston Grey"
+    },
+    {
+      "id": "SW-082",
+      "siteId": "site_sw_082",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Blackmont"
+    },
+    {
+      "id": "SW-083",
+      "siteId": "site_sw_083",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Uplands"
+    },
+    {
+      "id": "SW-084",
+      "siteId": "site_sw_084",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "COASTAL_REQUIRE_SHORE_LAYOUT",
+      "name": "Oldtown"
+    },
+    {
+      "id": "SW-085",
+      "siteId": "site_sw_085",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Skyreach"
+    },
+    {
+      "id": "SW-086",
+      "siteId": "site_sw_086",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Yronwood"
+    },
+    {
+      "id": "SW-087",
+      "siteId": "site_sw_087",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Blackcrown"
+    },
+    {
+      "id": "SW-088",
+      "siteId": "site_sw_088",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "High Hermitage"
+    },
+    {
+      "id": "SW-089",
+      "siteId": "site_sw_089",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ghost Hill"
+    },
+    {
+      "id": "SW-090",
+      "siteId": "site_sw_090",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "The Tor"
+    },
+    {
+      "id": "SW-091",
+      "siteId": "site_sw_091",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Three Towers"
+    },
+    {
+      "id": "SW-092",
+      "siteId": "site_sw_092",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Starfall"
+    },
+    {
+      "id": "SW-093",
+      "siteId": "site_sw_093",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Godsgrace"
+    },
+    {
+      "id": "SW-094",
+      "siteId": "site_sw_094",
+      "tag": "SPECIAL",
+      "tier": "SPECIAL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Water Gardens"
+    },
+    {
+      "id": "SW-095",
+      "siteId": "site_sw_095",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sunspear"
+    },
+    {
+      "id": "SW-096",
+      "siteId": "site_sw_096",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Hellholt"
+    },
+    {
+      "id": "SW-097",
+      "siteId": "site_sw_097",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Vaith"
+    },
+    {
+      "id": "SW-098",
+      "siteId": "site_sw_098",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sandstone"
+    },
+    {
+      "id": "SW-099",
+      "siteId": "site_sw_099",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "North Arbor"
+    },
+    {
+      "id": "SW-100",
+      "siteId": "site_sw_100",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sunhouse"
+    },
+    {
+      "id": "SW-101",
+      "siteId": "site_sw_101",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Central Arbor"
+    },
+    {
+      "id": "SW-102",
+      "siteId": "site_sw_102",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lemonwood"
+    },
+    {
+      "id": "SW-103",
+      "siteId": "site_sw_103",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Salt Shore"
+    },
+    {
+      "id": "SW-104",
+      "siteId": "site_sw_104",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "South Arbor"
+    },
+    {
+      "id": "SWE-001",
+      "siteId": "site_swe_001",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "The Sorrows"
+    },
+    {
+      "id": "SWE-002",
+      "siteId": "site_swe_002",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Myr"
+    },
+    {
+      "id": "SWE-003",
+      "siteId": "site_swe_003",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Tyrosh"
+    },
+    {
+      "id": "SWE-004",
+      "siteId": "site_swe_004",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "COASTAL_REQUIRE_SHORE_LAYOUT",
+      "name": "Selhorys"
+    },
+    {
+      "id": "SWE-005",
+      "siteId": "site_swe_005",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Bhorash"
+    },
+    {
+      "id": "SWE-006",
+      "siteId": "site_swe_006",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "COASTAL_REQUIRE_SHORE_LAYOUT",
+      "name": "Valysar"
+    },
+    {
+      "id": "SWE-007",
+      "siteId": "site_swe_007",
+      "tag": "MEDIUM",
+      "tier": "MEDIUM",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Mantarys"
+    },
+    {
+      "id": "SWE-008",
+      "siteId": "site_swe_008",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Sar Mell"
+    },
+    {
+      "id": "SWE-009",
+      "siteId": "site_swe_009",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "COASTAL_REQUIRE_SHORE_LAYOUT",
+      "name": "Volon Therys"
+    },
+    {
+      "id": "SWE-010",
+      "siteId": "site_swe_010",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Lys"
+    },
+    {
+      "id": "SWE-011",
+      "siteId": "site_swe_011",
+      "tag": "MAJOR",
+      "tier": "MAJOR",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Volantis"
+    },
+    {
+      "id": "SWE-014",
+      "siteId": "site_swe_014",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Tolos"
+    },
+    {
+      "id": "SWE-015",
+      "siteId": "site_swe_015",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Elyria"
+    },
+    {
+      "id": "SWE-016",
+      "siteId": "site_swe_016",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Ghozai"
+    },
+    {
+      "id": "SWE-017",
+      "siteId": "site_swe_017",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Velos"
+    },
+    {
+      "id": "SWE-018",
+      "siteId": "site_swe_018",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Oros"
+    },
+    {
+      "id": "SWE-019",
+      "siteId": "site_swe_019",
+      "tag": "SMALL",
+      "tier": "SMALL",
+      "mode": "GENERAL_COMPACT_SETTLEMENT",
+      "name": "Tyria"
+    },
+    {
+      "id": "SWE-020",
+      "siteId": "site_swe_020",
+      "tag": "RUIN",
+      "tier": "SPECIAL",
+      "mode": "RUIN_OR_LANDMARK_ONLY",
+      "name": "Valyria"
+    }
+  ]
+}
