@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Ramsgate",
+    "homes": 110,
+    "fieldTiles": 120,
+    "lots": 279,
+    "indexedChunks": 1458,
+    "unbuilt": {}
+  },
+  {
+    "name": "Acorn Hall",
+    "homes": 219,
+    "fieldTiles": 504,
+    "lots": 839,
+    "indexedChunks": 4684,
+    "unbuilt": {
+      "BROTHEL": {
+        "buildings": 1,
+        "why": "needs site-specific physical policy, resource or architecture approval"
+      }
+    }
+  }
+]

@@ -114,7 +114,7 @@ public final class KnownWorldUniversalWorldgenC2 {
                 for (JsonElement e : p.getAsJsonArray("lots")) {
                     JsonObject b = e.getAsJsonObject();
                     int w = b.get("width").getAsInt(), d = b.get("depth").getAsInt();
-                    if (w < 5 || d < 5 || w > 33 || d > 33)
+                    if (w < 5 || d < 5 || w > 64 || d > 64)
                         throw new IllegalStateException("Unexpected C2 building size in " + id);
                     lots.add(new Lot(b.get("id").getAsString(), b.get("kind").getAsString(),
                             b.get("x").getAsInt(), b.get("z").getAsInt(), w, d,

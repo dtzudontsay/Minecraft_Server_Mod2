@@ -1,0 +1,1131 @@
+{
+  "schemaVersion": 1,
+  "source": "C1_43_MODULES",
+  "generationPolicy": "C2_SELECTED_PILOTS_ONLY",
+  "doesNotAuthoriseNewSites": true,
+  "templateCount": 61,
+  "inputDigest": "659f1573a2dbd30c7f1dc814cb54139153beb2b42f120ad411ea1859e39640ec",
+  "aliases": {
+    "HOUSE": "HOUSE_SMALL",
+    "FIELD": "GARDEN"
+  },
+  "templates": [
+    {
+      "id": "ADMINISTRATION",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 18,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "ARMORY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMITHING",
+        "GRINDSTONE",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 16,
+      "c1Depth": 13,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "BAKERY",
+      "family": "SERVICE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "FURNACE",
+        "SMOKER",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 13,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "BARRACKS",
+      "family": "BARRACKS",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 55,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMITHING",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 26,
+      "c1Depth": 19,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "BROTHEL",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": true,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 14,
+      "c1Depth": 13,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "CAMP",
+      "family": "SHELTER",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CAMPFIRE",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 15,
+      "c1Depth": 15,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "CARPENTRY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 9,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "SAW_STONE",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 13,
+      "c1Depth": 11,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "CART_DEPOT",
+      "family": "SHED",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "COURTYARD",
+      "family": "COURTYARD",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 29,
+      "c1Depth": 27,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "DOCK",
+      "family": "SHED",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 35,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 21,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "FARM",
+      "family": "FARMHOUSE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "COMPOSTER",
+        "BARREL",
+        "HAY"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 15,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "FISHERY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 9,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "SMOKER"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 14,
+      "c1Depth": 11,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "FOREST_CAMP",
+      "family": "SHELTER",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 14,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CAMPFIRE",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 15,
+      "c1Depth": 11,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "GARDEN",
+      "family": "GARDEN",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "COMPOSTER",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 11,
+      "c1Depth": 11,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "GRANARY",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 5,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "HAY"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 15,
+      "c1Depth": 13,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "GREAT_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 37,
+      "c1Depth": 29,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "GUARD_TOWER",
+      "family": "TOWER",
+      "floors": 3,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 10,
+      "c1Depth": 10,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "HEALER",
+      "family": "SERVICE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 7,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BREWING",
+        "CAULDRON",
+        "BOOKSHELF"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 13,
+      "c1Depth": 11,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "HOUSE_MEDIUM",
+      "family": "HOME",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 13,
+      "c1Depth": 15,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "HOUSE_SMALL",
+      "family": "HOME",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 11,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "HOUSE_URBAN",
+      "family": "URBAN_HOME",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 20,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "INN",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMOKER",
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 18,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "KEEP",
+      "family": "KEEP",
+      "floors": 3,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BARREL",
+        "SMITHING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 49,
+      "c1Depth": 41,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "KITCHEN",
+      "family": "SERVICE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMOKER",
+        "FURNACE",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 14,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "MARKET",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 22,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 21,
+      "c1Depth": 17,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "MASONRY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "STONECUTTER",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "MILL",
+      "family": "TOWER",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "COMPOSTER",
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 16,
+      "c1Depth": 13,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "MINE",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 20,
+      "requiresShore": false,
+      "requiresMountainResource": true,
+      "requiresPolicy": false,
+      "stations": [
+        "STONECUTTER",
+        "BLAST_FURNACE"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 15,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "MONUMENT",
+      "family": "MONUMENT",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "STONE"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 43,
+      "c1Depth": 43,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "PASTURE",
+      "family": "PASTURE",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "HAY",
+        "WATER"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 15,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "PUBLIC_BATH",
+      "family": "SERVICE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CAULDRON",
+        "WATER"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 19,
+      "c1Depth": 17,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "RITUAL_GROUND",
+      "family": "COURTYARD",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CAMPFIRE"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 31,
+      "c1Depth": 31,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "RUIN",
+      "family": "RUIN",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "STONE"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 35,
+      "c1Depth": 31,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "SCHOOL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 16,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "SERVICE_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 26,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMOKER",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 20,
+      "c1Depth": 13,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "SMITHY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BLAST_FURNACE",
+        "ANVIL",
+        "GRINDSTONE"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 13,
+      "c1Depth": 11,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "STABLE",
+      "family": "STABLE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "HAY",
+        "CAULDRON"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "TAVERN",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "SMOKER"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 17,
+      "c1Depth": 14,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "TEMPLE",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 16,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 21,
+      "c1Depth": 19,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "TEMPORARY_CAMP",
+      "family": "SHELTER",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": true,
+      "stations": [
+        "CAMPFIRE",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 13,
+      "c1Depth": 13,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "WAREHOUSE",
+      "family": "STORE",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 15,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CHEST"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 19,
+      "c1Depth": 16,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "WEAVERY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LOOM",
+        "BARREL"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 16,
+      "c1Depth": 12,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "WELL",
+      "family": "WELL",
+      "floors": 1,
+      "openAir": true,
+      "maxStaff": 0,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "WATER"
+      ],
+      "sourceEvidence": "INVENTED",
+      "c1Width": 5,
+      "c1Depth": 5,
+      "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "ARCANE_STUDY",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": true,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF",
+        "CAULDRON"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 15,
+      "c1Depth": 13,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BANK",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 9,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BARREL",
+        "BOOKSHELF"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 18,
+      "c1Depth": 15,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BOOKBINDERY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 14,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BREWERY",
+      "family": "WORKSHOP",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CAULDRON",
+        "SMOKER"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 21,
+      "c1Depth": 17,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BRICKWORKS",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 20,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "FURNACE",
+        "STONECUTTER",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 22,
+      "c1Depth": 18,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BUTCHERY",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMOKER",
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 14,
+      "c1Depth": 13,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "CANAL_WORKS",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 21,
+      "c1Depth": 13,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "CHANDLERY",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "CAULDRON",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 13,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "CITY_SERVICES",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 18,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING",
+        "LECTERN"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 19,
+      "c1Depth": 15,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "ENTERTAINMENT_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 16,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "NOTE_BLOCK",
+        "LECTERN",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 25,
+      "c1Depth": 19,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "FERRY_LANDING",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 15,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "FIGHTING_PIT",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 40,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": true,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 29,
+      "c1Depth": 29,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "JEWELER",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 7,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "SMITHING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 13,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "JUSTICE_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 21,
+      "c1Depth": 16,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "LEATHERWORKS",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CAULDRON",
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 18,
+      "c1Depth": 15,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "POTTERY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "FURNACE",
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 18,
+      "c1Depth": 14,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "SCHOLASTIC_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 19,
+      "c1Depth": 16,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "SHIPYARD",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 24,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL",
+        "SMITHING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 29,
+      "c1Depth": 22,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    }
+  ]
+}

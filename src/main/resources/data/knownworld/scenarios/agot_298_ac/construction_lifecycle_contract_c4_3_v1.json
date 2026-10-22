@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "status": "DESIGN_CONTRACT_NOT_RUNTIME_WORLD_MUTATION",
+  "scenario": "agot_298_ac",
+  "sharedAuthorities": {
+    "npcIdentity": "NpcRegistry",
+    "characterProfile": "CharacterProfileManager",
+    "familyHouseholds": "existing household affiliation and genealogy owners",
+    "politicalHoldings": "LandedHoldingManager",
+    "settlementIdentity": "SettlementManager and canonical location records",
+    "economicInventory": "existing EconomyRuntime / InventoryManager accounting",
+    "time": "CampaignCalendar",
+    "worldEvents": "WorldEventManager"
+  },
+  "startOfScenario": {
+    "populationSource": "C1 planning population only until B4 individual roster reconciliation",
+    "workerSource": "C4.3 per-site proposed work roles, never independent ghost NPCs",
+    "housingSource": "count actual households then apply urban multiunit housing capacity",
+    "Winterfell": "Preserve existing 5,000 NPC IDs / 1,136 households / existing V3 buildings",
+    "tiers": {
+      "SMALL": {"mainSeatType": "MANOR_OR_SMALL_KEEP_IF_AUTHORED", "wallPolicy": "optional local fortified court", "density": "low"},
+      "MEDIUM": {"mainSeatType": "MEDIUM_KEEP_OR_GREAT_HALL", "wallPolicy": "castle ward near the main keep", "density": "medium"},
+      "MAJOR": {"mainSeatType": "LARGE_KEEP_WITH_DISTRICTS", "wallPolicy": "multi-ward city or castle fortification", "density": "high"}
+    },
+    "note": "SMALL/MEDIUM/MAJOR determine structural architecture and geography; worker counts derive from occupation demand"
+  },
+  "roomsWithoutManualWorldCoordinates": {
+    "roomId": "stable_building_id + '/' + semantic_room_type + '/' + ordinal",
+    "relativeRoomCoordinates": "coordinates measured relative to owning BUILDING footprint and orientation",
+    "worldCoordinateRule": "building anchor + rotated relative room offset",
+    "navigation": "server verifies doors/stairs/access in active chunks before assigning a physical work destination",
+    "examples": [
+      {"parent": "KEEP", "room": "MAESTER_CHAMBER", "occupations": ["Maester"], "npcsAssigned": "from canonical household and employment manager"},
+      {"parent": "KEEP", "room": "LORDS_COURT", "occupations": ["Ruler", "Courtier", "Castellan"]},
+      {"parent": "BARRACKS", "room": "ARMORY_DESK", "occupations": ["Armory Keeper", "Quartermaster"]},
+      {"parent": "ADMINISTRATION", "room": "RECORDS_OFFICE", "occupations": ["Administrator", "Clerk", "Scribe"]}
+    ],
+    "presentStatus": "not yet spatially authored in Java or persisted per NPC"
+  },
+  "jobsAndBuildings": {
+    "onePrimaryJobPerWorker": true,
+    "additionalOfficesSecondary": true,
+    "jobCounts": "deterministic regional allocation, then replace forecasts with real employed resident IDs",
+    "buildingCounts": "ceil(assigned_workers_by_building / capacity_per_building)",
+    "sharedBuildings": "multiple occupations may work in the same building when total occupancy does not exceed capacity",
+    "missingBuildings": "backlog; do NOT invent workplaces or silently drop workers",
+    "physicalPlotApproval": "terrestrial elevation, coast, geology, legal policy, road, door and collision checks"
+  },
+  "farmPolicy": {
+    "farmHouseFootprint": [17, 15],
+    "C43StressFieldTile": [31,31],
+    "minimumVisualFieldTilesPerFarm": 24,
+    "visualAreaPerFarmM2": 23064,
+    "productionArea": "separate authoritative agricultural acreage/yield register, requiring later landscape reconciliation",
+    "topography": "terrain grade and land mask validated per field; rejected fields become explicit agricultural-land backlog",
+    "note": "C4.3 visible annex expansion does not yet prove complete farmland, yields, wages, or food self-sufficiency"
+  },
+  "persistentConstructionOperations": [
+    "RESERVE_PLOT", "COMMIT_CONSTRUCTION_PROJECT", "CONSUME_RESOURCE_AND_LABOR",
+    "BUILD_CHUNK_SAFE_STRUCTURE", "REGISTER_PROPERTY_AND_WORKSPACE",
+    "ASSIGN_WORKERS_FROM_EXISTING_NPCS", "SETTLE_PROJECT_AND_EMIT_WORLD_EVENT",
+    "EXPAND_OR_REPAIR", "ABANDON_OR_DEMOLISH"
+  ],
+  "migrationSafety": {
+    "newChunksOnlyForCurrentC43StressPilot": true,
+    "neverRebuildExistingChunksAutomatically": true,
+    "existingStructureOwnershipMustBeRecorded": true,
+    "futureLiveConstructionRequiresSavedPerPlotLedger": true,
+    "constructionIdempotenceRequired": true,
+    "authorityAndResourcesRequired": true
+  }
+}

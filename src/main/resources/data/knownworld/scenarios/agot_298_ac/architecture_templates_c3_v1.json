@@ -3,7 +3,7 @@
   "source": "C1_43_MODULES",
   "generationPolicy": "C2_SELECTED_PILOTS_ONLY",
   "doesNotAuthoriseNewSites": true,
-  "templateCount": 43,
+  "templateCount": 61,
   "inputDigest": "659f1573a2dbd30c7f1dc814cb54139153beb2b42f120ad411ea1859e39640ec",
   "aliases": {
     "HOUSE": "HOUSE_SMALL",
@@ -270,7 +270,7 @@
       "family": "STORE",
       "floors": 1,
       "openAir": false,
-      "maxStaff": 0,
+      "maxStaff": 5,
       "requiresShore": false,
       "requiresMountainResource": false,
       "requiresPolicy": false,
@@ -306,7 +306,7 @@
       "family": "TOWER",
       "floors": 3,
       "openAir": false,
-      "maxStaff": 0,
+      "maxStaff": 6,
       "requiresShore": false,
       "requiresMountainResource": false,
       "requiresPolicy": false,
@@ -562,7 +562,7 @@
       "family": "SERVICE",
       "floors": 1,
       "openAir": false,
-      "maxStaff": 0,
+      "maxStaff": 8,
       "requiresShore": false,
       "requiresMountainResource": false,
       "requiresPolicy": false,
@@ -614,7 +614,7 @@
       "family": "HALL",
       "floors": 2,
       "openAir": false,
-      "maxStaff": 0,
+      "maxStaff": 10,
       "requiresShore": false,
       "requiresMountainResource": false,
       "requiresPolicy": false,
@@ -741,7 +741,7 @@
       "family": "STORE",
       "floors": 2,
       "openAir": false,
-      "maxStaff": 0,
+      "maxStaff": 15,
       "requiresShore": false,
       "requiresMountainResource": false,
       "requiresPolicy": false,
@@ -788,6 +788,344 @@
       "c1Width": 5,
       "c1Depth": 5,
       "description": "C3 executable block grammar; C1 footprint and job constraints retained"
+    },
+    {
+      "id": "ARCANE_STUDY",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": true,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF",
+        "CAULDRON"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 15,
+      "c1Depth": 13,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BANK",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 9,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BARREL",
+        "BOOKSHELF"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 18,
+      "c1Depth": 15,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BOOKBINDERY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 14,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BREWERY",
+      "family": "WORKSHOP",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CAULDRON",
+        "SMOKER"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 21,
+      "c1Depth": 17,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BRICKWORKS",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 20,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "FURNACE",
+        "STONECUTTER",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 22,
+      "c1Depth": 18,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "BUTCHERY",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "SMOKER",
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 14,
+      "c1Depth": 13,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "CANAL_WORKS",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 21,
+      "c1Depth": 13,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "CHANDLERY",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 8,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "CAULDRON",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 13,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "CITY_SERVICES",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 18,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING",
+        "LECTERN"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 19,
+      "c1Depth": 15,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "ENTERTAINMENT_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 16,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "NOTE_BLOCK",
+        "LECTERN",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 25,
+      "c1Depth": 19,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "FERRY_LANDING",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 6,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 15,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "FIGHTING_PIT",
+      "family": "HALL",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 40,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": true,
+      "stations": [
+        "BARREL",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 29,
+      "c1Depth": 29,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "JEWELER",
+      "family": "STORE",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 7,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "SMITHING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 13,
+      "c1Depth": 12,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "JUSTICE_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 21,
+      "c1Depth": 16,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "LEATHERWORKS",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CAULDRON",
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 18,
+      "c1Depth": 15,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "POTTERY",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 10,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "FURNACE",
+        "CRAFTING",
+        "BARREL"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 18,
+      "c1Depth": 14,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "SCHOLASTIC_HALL",
+      "family": "HALL",
+      "floors": 2,
+      "openAir": false,
+      "maxStaff": 12,
+      "requiresShore": false,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "LECTERN",
+        "BOOKSHELF",
+        "CRAFTING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 19,
+      "c1Depth": 16,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
+    },
+    {
+      "id": "SHIPYARD",
+      "family": "WORKSHOP",
+      "floors": 1,
+      "openAir": false,
+      "maxStaff": 24,
+      "requiresShore": true,
+      "requiresMountainResource": false,
+      "requiresPolicy": false,
+      "stations": [
+        "CRAFTING",
+        "BARREL",
+        "SMITHING"
+      ],
+      "sourceEvidence": "MOD_ESTIMATE",
+      "c1Width": 29,
+      "c1Depth": 22,
+      "description": "C4.3 generic executable footprint pending job-specific interior refinement"
     }
   ]
 }

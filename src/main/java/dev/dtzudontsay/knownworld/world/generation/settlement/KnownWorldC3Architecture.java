@@ -87,7 +87,7 @@ public final class KnownWorldC3Architecture {
             JsonObject root = JsonParser.parseReader(new InputStreamReader(in,
                     StandardCharsets.UTF_8)).getAsJsonObject();
             if (root.get("schemaVersion").getAsInt() != 1
-                    || root.get("templateCount").getAsInt() != 43
+                    || root.get("templateCount").getAsInt() < 43
                     || !root.get("doesNotAuthoriseNewSites").getAsBoolean()
                     || !"C2_SELECTED_PILOTS_ONLY".equals(root.get("generationPolicy").getAsString())) {
                 throw new IllegalStateException("C3 architecture schema or safety policy mismatch");
@@ -107,7 +107,7 @@ public final class KnownWorldC3Architecture {
                 if (templates.putIfAbsent(t.id(), t) != null)
                     throw new IllegalStateException("Duplicate C3 template: " + t.id());
             }
-            if (templates.size() != 43) throw new IllegalStateException("Missing C3 architecture programs");
+            if (templates.size() != root.get("templateCount").getAsInt()) throw new IllegalStateException("Missing C3 architecture programs");
             return Map.copyOf(templates);
         } catch (java.io.IOException ex) {
             throw new IllegalStateException("Cannot read C3 architectural templates", ex);
