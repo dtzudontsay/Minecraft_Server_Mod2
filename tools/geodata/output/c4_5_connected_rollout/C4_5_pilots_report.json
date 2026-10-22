@@ -1,0 +1,33 @@
+{
+  "sites": [
+    {
+      "siteId": "site_nw_031",
+      "name": "Ramsgate",
+      "population": 550,
+      "workers": 275,
+      "houses": 110,
+      "buildings": 195,
+      "indexedChunks": 2145,
+      "deferredDemands": {}
+    },
+    {
+      "siteId": "site_sw_023",
+      "name": "Acorn Hall",
+      "population": 2100,
+      "workers": 1050,
+      "houses": 219,
+      "buildings": 522,
+      "indexedChunks": 7139,
+      "deferredDemands": {
+        "BROTHEL": {
+          "requested": 1,
+          "reason": "special terrain/policy or template pending"
+        }
+      }
+    }
+  ],
+  "totalBuildings": 717,
+  "totalHomes": 329,
+  "totalIndexedChunks": 9284,
+  "unapprovedTerrainWarning": true
+}

@@ -124,11 +124,11 @@ def patch_c3(src):
 
 def patch_v3(src):
     src=once(src,'''private record Building(String id, String template, int x, int z,
-                             int width, int depth, int capacity) { }''',
+                            int width, int depth, int capacity) { }''',
     '''private record Building(String id, String template, int x, int z,
-                             int width, int depth, int capacity, String label) { }''',V3)
+                            int width, int depth, int capacity, String label) { }''',V3)
     src=once(src,'''j.get("z").getAsInt(), j.get("w").getAsInt(),
-                             j.get("d").getAsInt(), j.get("cap").getAsInt()));''',
+                            j.get("d").getAsInt(), j.get("cap").getAsInt()));''',
     '''j.get("z").getAsInt(), j.get("w").getAsInt(),
                              j.get("d").getAsInt(), j.get("cap").getAsInt(),
                              j.has("label") ? j.get("label").getAsString() : j.get("t").getAsString()));''',V3)

@@ -1,0 +1,12 @@
+{
+  "relocatedHomes": 24,
+  "newInnerWorkplaces": 12,
+  "workplaceTypes": {
+    "ADMINISTRATION": 4,
+    "ARMORY": 4,
+    "TEMPLE": 4
+  },
+  "people": 5000,
+  "households": 1136,
+  "originalPlots": 1514
+}

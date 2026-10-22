@@ -134,6 +134,9 @@ public final class KnownWorldC3Architecture {
         } else {
             buildHouse(c, lot, floor, palette, template);
         }
+        // C4.5 - instance-local public building signs for new chunks only.
+        KnownWorldStructureSigns.attach(c, lot.x(), lot.z(), lot.width(),
+                lot.depth(), floor, lot.face(), requested);
     }
 
     private static BlockState regionalWall(String palette, String family) {

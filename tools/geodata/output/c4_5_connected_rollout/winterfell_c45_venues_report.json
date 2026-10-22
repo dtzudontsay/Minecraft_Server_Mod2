@@ -1,0 +1,76 @@
+{
+  "additionalWorkplaces": 387,
+  "templatesUsed": {
+    "ADMINISTRATION": 13,
+    "ARMORY": 3,
+    "BAKERY": 2,
+    "BARRACKS": 18,
+    "BOOKBINDERY": 4,
+    "BREWERY": 5,
+    "BRICKWORKS": 5,
+    "BUTCHERY": 6,
+    "CARPENTRY": 11,
+    "CART_DEPOT": 5,
+    "CHANDLERY": 5,
+    "CITY_SERVICES": 8,
+    "ENTERTAINMENT_HALL": 15,
+    "FARM": 80,
+    "FOREST_CAMP": 36,
+    "GARDEN": 25,
+    "GRANARY": 4,
+    "HEALER": 14,
+    "INN": 2,
+    "JEWELER": 5,
+    "JUSTICE_HALL": 1,
+    "KITCHEN": 3,
+    "LEATHERWORKS": 4,
+    "MARKET": 9,
+    "MASONRY": 4,
+    "MILL": 3,
+    "PASTURE": 35,
+    "POTTERY": 4,
+    "PUBLIC_BATH": 3,
+    "SCHOLASTIC_HALL": 6,
+    "SERVICE_HALL": 9,
+    "SMITHY": 11,
+    "STABLE": 9,
+    "TEMPLE": 10,
+    "WAREHOUSE": 2,
+    "WEAVERY": 8
+  },
+  "unplaced": 0,
+  "reservedInteriorJobs": {
+    "castle/ADMINISTRATION": {
+      "workers": 37,
+      "reason": "reserved for instance-relative castle rooms; no exterior duplicate"
+    },
+    "hamlet_05/BROTHEL": {
+      "workers": 1,
+      "reason": "site/policy/terrain authorization required"
+    },
+    "hamlet_08/BROTHEL": {
+      "workers": 1,
+      "reason": "site/policy/terrain authorization required"
+    },
+    "hamlet_08/KEEP": {
+      "workers": 1,
+      "reason": "site/policy/terrain authorization required"
+    },
+    "hamlet_13/KEEP": {
+      "workers": 1,
+      "reason": "site/policy/terrain authorization required"
+    },
+    "hamlet_15/BROTHEL": {
+      "workers": 1,
+      "reason": "site/policy/terrain authorization required"
+    },
+    "wintertown/BROTHEL": {
+      "workers": 14,
+      "reason": "site/policy/terrain authorization required"
+    }
+  },
+  "placementFailures": {},
+  "indexedChunks": 8278,
+  "existingV3Buildings": 1526,
+  "census": 5000
+}

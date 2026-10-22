@@ -8,10 +8,10 @@
   "residents": 5000,
   "households": 1136,
   "buildingCount": 1514,
-  "roadCentreTiles": 77213,
-  "roadSurfaceTiles": 231530,
-  "indexedChunks": 6669,
-  "layoutSha256": "9aa3a91064d0db3b880c2e58dd01bda081d6e77bc9eea60d405ee8d1c9b78041",
+  "roadCentreTiles": 78053,
+  "roadSurfaceTiles": 234018,
+  "indexedChunks": 6733,
+  "layoutSha256": "4eb1abe3b2eb492b87d9167ceb3f88d40877b860f0f49678bb8c972511ab3d48",
   "worldgenPlacement": "CHUNK_DECORATION_BEFORE_PLAYER_RENDER",
   "legacyLiveBuilder": "MUST_BE_DISABLED_IN_NEW_WORLD"
 }

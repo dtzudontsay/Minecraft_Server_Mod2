@@ -46,6 +46,7 @@ import dev.dtzudontsay.knownworld.simulation.social.relationship.GlobalRelations
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeRasterData;
 import dev.dtzudontsay.knownworld.world.biome.KnownWorldBiomeSources;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerators;
+import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldStructureSigns;
 import dev.dtzudontsay.knownworld.world.generation.settlement.WinterfellWorldgenV3;
 import dev.dtzudontsay.knownworld.world.geography.GeographicFeatureRegistry;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoData;
@@ -89,6 +90,8 @@ public final class KnownWorld implements ModInitializer {
         KnownWorldBiomeSources.register();
 
         KnownWorldChunkGenerators.register();
+
+        KnownWorldStructureSigns.register();
 
         WinterfellWorldgenV3.registerDebugCommands();
 

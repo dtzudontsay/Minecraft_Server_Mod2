@@ -90,7 +90,7 @@ public final class KnownWorldUniversalWorldgenC2 {
                     || !root.getAsJsonObject("policy").get("pilotsOnly").getAsBoolean()
                     || root.getAsJsonObject("summary").get("allMapMarkers").getAsInt() != 253
                     || root.getAsJsonObject("summary").get("allPoliticalHoldings").getAsInt() != 259
-                    || root.getAsJsonObject("summary").get("pilotCount").getAsInt() != 2)
+                    || root.getAsJsonObject("summary").get("pilotCount").getAsInt() != root.getAsJsonArray("pilots").size())
                 throw new IllegalStateException("C2 pilot manifest invalid or broad authorization attempted");
             Map<String, Pilot> all = new LinkedHashMap<>();
             for (JsonElement entry : root.getAsJsonArray("pilots")) {
@@ -149,7 +149,8 @@ public final class KnownWorldUniversalWorldgenC2 {
                 if (all.putIfAbsent(id, pilot) != null)
                     throw new IllegalStateException("Duplicate C2 pilot " + id);
             }
-            if (all.size() != 2) throw new IllegalStateException("C2 must have exactly two pilots");
+            if (all.size() != root.getAsJsonObject("summary").get("pilotCount").getAsInt())
+                throw new IllegalStateException("C4.5 site index count disagrees with manifest");
             KnownWorld.LOGGER.info("C2 pilot worldgen indexed {} sites (no NPC spawning)", all.size());
             return Map.copyOf(all);
         } catch (java.io.IOException failure) {

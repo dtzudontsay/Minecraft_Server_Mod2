@@ -35,3 +35,1149 @@ Traceback (most recent call last):
 ValueError: D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\WinterfellWorldgenV3.java: expected exactly one anchor (0 found): private record Building(String id, String template, int x, int z,
                              
 EXIT=1
+
+======== C4.5.1 PILOTS run 2026-10-22T13:27:57.052480+02:00 ========
+
+[1/10] Update outdated C3 test expectation
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_1_fix_test_contract.py', '--install']
+PASS: C3 template-count test already updated
+EXIT=0
+
+[2/10] Python geometry / job conservation
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\test_c4_5_planner.py']
+PASS Ramsgate 195 lots 2171 chunk indexes
+PASS Acorn Hall 517 lots 7095 chunk indexes
+PASS job conservation for all 248 sites
+EXIT=0
+
+[3/10] Read-only Java patch compatibility
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_patch_java.py', '--npc-visual-stress']
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldUniversalWorldgenC2.java
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC3Architecture.java
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\WinterfellWorldgenV3.java
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\simulation\casestudy\WinterfellV3Runtime.java
+READ-ONLY preflight; pass --install to write (with backups)
+EXIT=0
+
+[4/10] Generate and install PILOTS SMALL/MEDIUM worldgen first
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_connected_rollout.py', '--scope', 'pilots', '--install']
+[1/2] Ramsgate: 110 houses, 195 lots, 2145 chunks
+[2/2] Acorn Hall: 219 houses, 522 lots, 7139 chunks
+Generated D:\GameOfThronesMod2\tools\geodata\output\c4_5_connected_rollout\C4_5_pilots_preview.json size(MB)= 1.09
+INSTALLED C4.5 worldgen manifest with backup D:\GameOfThronesMod2\src\main\resources\data\knownworld\scenarios\agot_298_ac\settlement_construction_c4_v1.json.before_c4_5.bak
+EXIT=0
+
+[5/10] Assign diverse primary occupations to existing Winterfell generated adults
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_connected_rollout.py', '--only-winterfell', '--winterfell', '--install']
+{
+  "residents": 5000,
+  "generatedWorkersReassigned": 2760,
+  "C4_4WorkersEstimate": 2500,
+  "populationPlanningWorkerMismatch": -260,
+  "authoredAndNamedChanged": 0,
+  "jobCount": 141,
+  "roleTargets": {
+    "Administrator": 5,
+    "Animal Trainer": 14,
+    "Apothecary": 5,
+    "Archer": 6,
+    "Armorer": 7,
+    "Armory Keeper": 6,
+    "Baker": 4,
+    "Bard": 4,
+    "Bathhouse Keeper": 4,
+    "Beekeper": 14,
+    "Bell Ringer": 4,
+    "Blacksmith": 39,
+    "Bookbinder": 7,
+    "Bowyer": 7,
+    "Brewer": 4,
+    "Brickmaker": 7,
+    "Butcher": 4,
+    "Candle Maker": 7,
+    "Captain|MILITARY": 6,
+    "Caravan Guard": 6,
+    "Caravan Master": 14,
+    "Carpenter": 39,
+    "Cartwright": 7,
+    "Castellan": 1,
+    "Charcoal Burner": 23,
+    "Clerk": 13,
+    "Cobbler": 7,
+    "Cook": 28,
+    "Cooper": 7,
+    "Courtesan": 14,
+    "Crossbowman": 6,
+    "Dairyman": 14,
+    "Dancer": 4,
+    "Drillmaster": 6,
+    "Dyer": 7,
+    "Executioner": 1,
+    "Factor": 14,
+    "Falconer": 4,
+    "Farmer": 389,
+    "Farrier": 7,
+    "Fire Warden": 4,
+    "Fletcher": 7,
+    "Fool": 4,
+    "Forester": 172,
+    "Gamekeeper": 23,
+    "Gardener": 103,
+    "Gatekeeper": 6,
+    "Glassworker": 7,
+    "Glazier": 7,
+    "Goldsmith": 7,
+    "Grain Thresher": 14,
+    "Granary Keeper": 4,
+    "Gravedigger": 4,
+    "Guard": 49,
+    "Handmaid": 4,
+    "Harvest Overseer": 14,
+    "Healer": 4,
+    "Herbalist": 4,
+    "Herder": 123,
+    "Hunter": 23,
+    "Innkeeper": 13,
+    "Interpreter": 4,
+    "Irrigation Keeper": 14,
+    "Jeweler": 7,
+    "Knight": 6,
+    "LIVESTOCK": 123,
+    "Lamplighter": 3,
+    "Land Surveyor": 2,
+    "Leatherworker": 7,
+    "Lime Burner": 7,
+    "Locksmith": 7,
+    "Lumber Yard Keeper": 7,
+    "Maester": 2,
+    "Man-at-Arms": 6,
+    "Market Seller": 13,
+    "Mason": 6,
+    "Mercenary": 6,
+    "Merchant": 99,
+    "Messenger": 13,
+    "Midwife": 3,
+    "Miller": 3,
+    "Mummer": 3,
+    "Musician": 3,
+    "Orchardist": 14,
+    "Outrider": 6,
+    "Parchment Maker": 7,
+    "Plasterer": 7,
+    "Potter": 7,
+    "Prostitute": 3,
+    "Purser": 13,
+    "Quartermaster": 4,
+    "Road Warden": 13,
+    "Roofer": 7,
+    "Rope Maker": 7,
+    "Scholar": 3,
+    "Scout": 4,
+    "Scribe": 13,
+    "Seamstress": 7,
+    "Sellsword": 4,
+    "Septa": 12,
+    "Septon": 12,
+    "Servant": 33,
+    "Shepard": 17,
+    "Siege Carrier": 4,
+    "Siege Engineer": 4,
+    "Silent Sister": 11,
+    "Silversmith": 6,
+    "Singer": 3,
+    "Smokehouse Keeper": 3,
+    "Soap Maker": 6,
+    "Soldier": 49,
+    "Spearman": 4,
+    "Stable Master": 3,
+    "Stablehand": 3,
+    "Standard-Bearer": 4,
+    "Steward": 11,
+    "Stonecutter": 6,
+    "Storyteller": 3,
+    "Street Sweeper": 3,
+    "Tailor": 6,
+    "Tanner": 6,
+    "Tax Collector": 11,
+    "Tax Farmer": 3,
+    "Thatcher": 6,
+    "Trader": 13,
+    "Tutor": 3,
+    "Vintner": 3,
+    "Wagon Driver": 13,
+    "Warehouse Keeper": 13,
+    "Waste Collector": 3,
+    "Water Carrier": 3,
+    "Weapons Master": 4,
+    "Weaver": 39,
+    "Wet Nurse": 3,
+    "Wheelwright": 6,
+    "Wine Factor": 13,
+    "Woodcutter": 172,
+    "Wool Factor": 13,
+    "carter": 6,
+    "grain_farmer": 389,
+    "religious_attendant": 11
+  },
+  "note": "Fresh-world initial generated profiles only; existing save jobs are not overwritten."
+}
+INSTALLED src\main\resources\data\knownworld\case_study\winterfell_v2.json backup src\main\resources\data\knownworld\case_study\winterfell_v2.json.before_c4_5.bak
+{
+  "schema": 3,
+  "worldgenId": "winterfell_nw029_v3",
+  "anchor": [
+    -4050173,
+    -1976496
+  ],
+  "residents": 5000,
+  "households": 1136,
+  "buildingCount": 1514,
+  "roadCentreTiles": 77213,
+  "roadSurfaceTiles": 231530,
+  "indexedChunks": 6669,
+  "layoutSha256": "9aa3a91064d0db3b880c2e58dd01bda081d6e77bc9eea60d405ee8d1c9b78041",
+  "worldgenPlacement": "CHUNK_DECORATION_BEFORE_PLAYER_RENDER",
+  "legacyLiveBuilder": "MUST_BE_DISABLED_IN_NEW_WORLD"
+}
+Winterfell V3 base structures compiled; relocation and specialty stages follow.
+EXIT=0
+
+[6/10] Move 24 castle-ward homes nearby; replace plots with 12 inner workplaces
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_1_castle_ward_swap.py', '--install']
+INSTALLED src\main\resources\data\knownworld\case_study\winterfell_v2.json backup src\main\resources\data\knownworld\case_study\winterfell_v2.json.before_c4_5.bak
+{
+  "schema": 3,
+  "worldgenId": "winterfell_nw029_v3",
+  "anchor": [
+    -4050173,
+    -1976496
+  ],
+  "residents": 5000,
+  "households": 1136,
+  "buildingCount": 1514,
+  "roadCentreTiles": 78053,
+  "roadSurfaceTiles": 234018,
+  "indexedChunks": 6733,
+  "layoutSha256": "4eb1abe3b2eb492b87d9167ceb3f88d40877b860f0f49678bb8c972511ab3d48",
+  "worldgenPlacement": "CHUNK_DECORATION_BEFORE_PLAYER_RENDER",
+  "legacyLiveBuilder": "MUST_BE_DISABLED_IN_NEW_WORLD"
+}
+INSTALLED src\main\resources\data\knownworld\case_study\winterfell_v3_worldgen.json backup src\main\resources\data\knownworld\case_study\winterfell_v3_worldgen.json.before_c4_5.bak
+INSTALLED castle ward home-for-specialty swap: {"relocatedHomes": 24, "newInnerWorkplaces": 12, "workplaceTypes": {"ADMINISTRATION": 4, "ARMORY": 4, "TEMPLE": 4}, "people": 5000, "households": 1136, "originalPlots": 1514}
+EXIT=0
+
+[7/10] Add distributed Winterfell specialist venues
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_winterfell_venues.py', '--install']
+INSTALLED src\main\resources\data\knownworld\case_study\winterfell_v3_worldgen.json backup src\main\resources\data\knownworld\case_study\winterfell_v3_worldgen.json.before_c4_5.bak
+{
+  "additionalWorkplaces": 387,
+  "unplaced": 0,
+  "indexedChunks": 8278
+}
+EXIT=0
+
+[8/10] Install verified new-chunk building signs and Java generator guards
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_patch_java.py', '--npc-visual-stress', '--install']
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldUniversalWorldgenC2.java
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC3Architecture.java
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\WinterfellWorldgenV3.java
+PATCH READY src\main\java\dev\dtzudontsay\knownworld\simulation\casestudy\WinterfellV3Runtime.java
+INSTALLED src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldUniversalWorldgenC2.java backup src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldUniversalWorldgenC2.java.before_c4_5.bak
+INSTALLED src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC3Architecture.java backup src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldC3Architecture.java.before_c4_5.bak
+INSTALLED src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\WinterfellWorldgenV3.java backup src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\WinterfellWorldgenV3.java.before_c4_5.bak
+INSTALLED src\main\java\dev\dtzudontsay\knownworld\simulation\casestudy\WinterfellV3Runtime.java backup src\main\java\dev\dtzudontsay\knownworld\simulation\casestudy\WinterfellV3Runtime.java.before_c4_5.bak
+INSTALLED src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java backup (new)
+EXIT=0
+
+[9/10] Audit installed C4.5.1 source and geometry
+Command: ['C:\\Users\\Sandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe', 'D:\\GameOfThronesMod2\\tools\\geodata\\c4_5_1_verify.py']
+VERIFIED: 2 SMALL/MEDIUM planned sites; 5000 Winterfell residents; 1136 homes; 2760 reassigned generated occupations; 24 relocated castle homes; 1913 total Winterfell lots; 387 distributed workplaces; signs source installed.
+EXIT=0
+
+[10/10] Gradle compile and regression suite
+Command: ['cmd', '/c', 'gradlew.bat', 'build']
+
+> Configure project :
+Fabric Loom: 1.17.21
+
+> Task :compileJava
+Hinweis: Einige Eingabedateien verwenden oder überschreiben eine veraltete API.
+Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+
+> Task :processResources
+> Task :classes
+> Task :processIncludeJars UP-TO-DATE
+> Task :jar
+> Task :sourcesJar
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+
+> Task :test
+
+KnownWorldC3ArchitectureTest > farmAndBakeryHaveSeparateWorkstationsAndCapacity() PASSED
+
+KnownWorldC3ArchitectureTest > allFortyThreeC1TemplatesLoad() PASSED
+
+KnownWorldC3ArchitectureTest > specialSitesRequireFurtherAuthorization() PASSED
+
+WinterfellConversationLedgerTest > persistsAcrossNewInstanceAndSeparatesPeople() PASSED
+
+WinterfellConversationLedgerTest > corruptionDoesNotGetSilentlyOverwritten() PASSED
+
+WinterfellConversationLedgerTest > boundsRecentHistoryButKeepsTotal() PASSED
+
+WinterfellConversationLedgerTest > quotesAreConversationDataNotAuthorizedEvents() PASSED
+
+WinterfellDialogueGuardTest > doesNotFreezeRobertKingshipAfterSuccession() PASSED
+
+WinterfellDialogueGuardTest > rejectsRobertDeathWhileHeIsCurrentKing() PASSED
+
+WinterfellDialogueGuardTest > rejectsInventedAemonSnowKing() PASSED
+
+WinterfellDialogueGuardTest > refusesEmptyModelOutput() PASSED
+
+WinterfellDialogueGuardTest > rejectsLyannaChildbirthDisclosure() PASSED
+
+WinterfellDialogueGuardTest > acceptsOrdinaryCharacterSpeech() PASSED
+
+WinterfellDialogueGuardTest > rejectsFakeHouseSnow() PASSED
+
+WinterfellDialogueGuardTest > rejectsHiddenParentageDisclosure() PASSED
+
+WinterfellDialogueGuardTest > rejectsInventedRamonTullyKinship() PASSED
+
+WinterfellPlayerRelationshipStoreTest > keepsNpcAndPlayerRelationshipsSeparate() PASSED
+
+WinterfellPlayerRelationshipStoreTest > threatsIncreaseFearAndDecreaseTrust() PASSED
+
+WinterfellPlayerRelationshipStoreTest > promptKeepsFeelingsSeparateFromWorldTruth() PASSED
+
+WinterfellPlayerRelationshipStoreTest > relationshipValuesRemainBounded() PASSED
+
+WinterfellPlayerRelationshipStoreTest > completedConversationsAreIdempotent() PASSED
+
+WinterfellPlayerRelationshipStoreTest > relationshipsPersistAcrossReload() PASSED
+
+WinterfellPlayerRelationshipStoreTest > deliberateSocialActionsAreRateLimited() PASSED
+
+WinterfellPlayerRelationshipStoreTest > refusesToOverwriteCorruptedData() PASSED
+
+AgriculturalCyclePlannerTest > plannedIdsRemainUnchanged() PASSED
+
+AgriculturalCyclePlannerTest > unfavorableSeasonReducesPlannedHarvest() PASSED
+
+AgriculturalCyclePlannerTest > calculatesHarvestAndFoodRequirement() PASSED
+
+AgriculturalCyclePlannerTest > zeroAllocationDistributesNothing() PASSED
+
+AgriculturalCyclePlannerTest > calculatedPlanCanExecute() PASSED
+
+AgriculturalCyclePlannerTest > fullAllocationUsesEntireHarvest() PASSED
+
+AgriculturalCyclePlannerTest > planningNeverMutatesInventories() PASSED
+
+AgriculturalCyclePlannerTest > rejectsExcessiveAllocation() PASSED
+
+AgriculturalCyclePlannerTest > identicalPlansHaveIdenticalResults() PASSED
+
+AgriculturalCyclePlannerTest > rejectsNegativeAllocation() PASSED
+
+AgriculturalFoodCycleTest > insufficientJournalCapacityRejectsWholeCycle() PASSED
+
+AgriculturalFoodCycleTest > existingFarmStockSupportsDistribution() PASSED
+
+AgriculturalFoodCycleTest > insufficientHarvestCausesFoodShortage() PASSED
+
+AgriculturalFoodCycleTest > differentSettlementLocationsAreRejected() PASSED
+
+AgriculturalFoodCycleTest > negativeInputsAreRejected() PASSED
+
+AgriculturalFoodCycleTest > zeroCycleDoesNotCreateTransactions() PASSED
+
+AgriculturalFoodCycleTest > repeatedCyclesAccumulateRealBalances() PASSED
+
+AgriculturalFoodCycleTest > normalFarmHouseholdCycle() PASSED
+
+AgriculturalFoodCycleTest > cycleStateSurvivesSnapshotRoundTrip() PASSED
+
+AgriculturalFoodCycleTest > journalRecordsActualEconomicOperations() PASSED
+
+AgriculturalFoodCycleTest > previouslyStoredFoodCanEliminateShortage() PASSED
+
+AgriculturalFoodCycleTest > householdConsumesPreviouslyStoredGrain() PASSED
+
+AgriculturalFoodCycleTest > overflowRejectsCycleBeforeMutation() PASSED
+
+AgriculturalFoodCycleTest > sameInventoryCannotBeFarmAndHousehold() PASSED
+
+AgriculturalIntervalLedgerTest > completedIntervalCannotBeRepeated() PASSED
+
+AgriculturalIntervalLedgerTest > initializationCannotSilentlyResetExistingLedger() PASSED
+
+AgriculturalIntervalLedgerTest > interruptedWriteMarkerFailsClosed() PASSED
+
+AgriculturalIntervalLedgerTest > corruptedLedgerFailsClosed() PASSED
+
+AgriculturalIntervalLedgerTest > claimIsDurableAcrossNewLedgerInstance() PASSED
+
+AgriculturalIntervalLedgerTest > skippedIntervalIsRejected() PASSED
+
+AgriculturalIntervalLedgerTest > ledgerRequiresExplicitInitialization() PASSED
+
+AgriculturalIntervalLedgerTest > progressIsTrackedIndependentlyPerHolding() PASSED
+
+AgriculturalIntervalLedgerTest > pendingIntervalCannotBeClaimedAgain() PASSED
+
+AgriculturalIntervalLedgerTest > nextContiguousIntervalCanProceed() PASSED
+
+AgriculturalYieldModelTest > fertilityReducesProduction() PASSED
+
+AgriculturalYieldModelTest > rejectsInvalidProductivityModifier() PASSED
+
+AgriculturalYieldModelTest > rejectsNegativeInputs() PASSED
+
+AgriculturalYieldModelTest > rejectsCapacityOverflow() PASSED
+
+AgriculturalYieldModelTest > identicalInputsAreDeterministic() PASSED
+
+AgriculturalYieldModelTest > zeroWorkersProduceNoGrain() PASSED
+
+AgriculturalYieldModelTest > laborShortageReducesHarvest() PASSED
+
+AgriculturalYieldModelTest > favorableWeatherIncreasesProduction() PASSED
+
+AgriculturalYieldModelTest > normalHarvestUsesLandCapacity() PASSED
+
+AgriculturalYieldModelTest > poorSeasonReducesProduction() PASSED
+
+AgriculturalYieldModelTest > zeroLandProducesNoGrain() PASSED
+
+AgriculturalYieldModelTest > zeroWeatherModifierMeansCropFailure() PASSED
+
+CampaignAgricultureDayCoordinatorTest > duplicateBoundaryDoesNotExecuteTwice() PASSED
+
+CampaignAgricultureDayCoordinatorTest > oneCampaignDayDispatchesExactlyOnce() PASSED
+
+CampaignAgricultureDayCoordinatorTest > passiveMonitorRejectsBackwardsTime() PASSED
+
+CampaignAgricultureDayCoordinatorTest > strictModeRejectsMissingCampaignDays() PASSED
+
+CampaignAgricultureDayCoordinatorTest > mixedTimeNotificationsShareOneBoundaryState() PASSED
+
+CampaignAgricultureDayCoordinatorTest > realCalendarTickBoundaryDrivesCoordinator() PASSED
+
+CampaignAgricultureDayCoordinatorTest > passiveMonitorRecordsGapsWithoutSimulation() PASSED
+
+CampaignAgricultureDayCoordinatorTest > failedOperationBlocksAutomaticRetry() PASSED
+
+CampaignAgricultureDayCoordinatorTest > dailyWindowsRespectExistingHarvestIntervals() PASSED
+
+CampaignAgricultureDayCoordinatorTest > startingDayDoesNotTriggerFakeOperation() PASSED
+
+CampaignAgricultureDayCoordinatorTest > scheduleReusesExistingEconomyPhase() PASSED
+
+CampaignAgricultureDayOperationTest > pendingIntervalRejectsAutomaticReplay() PASSED
+
+CampaignAgricultureDayOperationTest > singleDayExecutesRealHarvestAndConsumption() PASSED
+
+CampaignAgricultureDayOperationTest > missingLedgerRejectsExecution() PASSED
+
+CampaignAgricultureDayOperationTest > twoFarmsCannotDoubleChargeOneSettlement() PASSED
+
+CampaignAgricultureDayOperationTest > missingDayBlocksStrictProgression() PASSED
+
+CampaignAgricultureDayOperationTest > invalidDayWindowIsRejected() PASSED
+
+CampaignAgricultureDayOperationTest > differentSettlementsCanBothProduce() PASSED
+
+CampaignAgricultureDayOperationTest > unassignedResidentBlocksDayBeforeMutation() PASSED
+
+CampaignAgricultureDayOperationTest > secondSettlementFailurePreventsFirstMutation() PASSED
+
+CampaignAgricultureDayOperationTest > followingDayConsumesWithoutRepeatedHarvest() PASSED
+
+CampaignAgricultureDayOperationTest > readinessIsReadOnly() PASSED
+
+CampaignAgricultureDayOperationTest > repeatedDayObservationDoesNotDuplicateHarvest() PASSED
+
+CampaignAgricultureDayOperationTest > liveAndAcceleratedStyleHaveIdenticalSnapshots() PASSED
+
+CampaignAgricultureDayOperationTest > legacyModeCannotRunStrictAgriculture() PASSED
+
+CampaignAgricultureDayOperationTest > staleRestartCannotRepeatCommittedInterval() PASSED
+
+CampaignCohortAgricultureIntegrationTest > mixedCampaignFeedsNamedAndAnonymousOnlySettlements() PASSED
+
+CampaignCohortAgricultureIntegrationTest > oldDispatcherRemainsStrictAndUnknownConfigurationsFail() PASSED
+
+CampaignCohortAgricultureIntegrationTest > unsurveyedAnonymousSettlementBlocksAllFarms() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > strictCoordinatorIgnoresDuplicateDayObservation() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > laterSettlementPreflightFailureStopsAllExecution() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > inconsistentHouseholdRequirementsBlockSettlement() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > enrollmentOrderDoesNotChangeEconomicResult() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > globalReadinessInspectionNeverMutatesState() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > groupsMultipleFarmsByExistingSettlementIdentity() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > followingDayConsumesReservesWithoutNewHarvests() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > duplicateHoldingAndInventoryEnrollmentsAreRejected() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > singleFarmUsesSameSettlementFoodEngine() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > restartWithStaleCampaignDayCannotRepeatHarvest() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > executesTwoFarmAndSingleFarmSettlementsTogether() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > liveAndAcceleratedDayPatternsProduceSameSnapshot() PASSED
+
+CampaignSettlementAgricultureDispatcherTest > missingIntervalLedgerBlocksEverySettlement() PASSED
+
+EconomicAccountingAuditTest > journalRecordsSuccessfulOperations() PASSED
+
+EconomicAccountingAuditTest > journalSupportsNewInventoriesAfterCheckpoint() PASSED
+
+EconomicAccountingAuditTest > invalidTransactionRecordsAreRejected() PASSED
+
+EconomicAccountingAuditTest > rejectedTransactionDoesNotEnterJournal() PASSED
+
+EconomicAccountingAuditTest > auditReconcilesProductionTransfersAndConsumption() PASSED
+
+EconomicAccountingAuditTest > newlyCreatedEmptyInventoryIsPermitted() PASSED
+
+EconomicAccountingAuditTest > transactionSnapshotIsImmutable() PASSED
+
+EconomicAccountingAuditTest > checkpointCanBeCreatedAfterPreviousActivity() PASSED
+
+EconomicAccountingAuditTest > loadedInventoriesBeginNewJournalSession() PASSED
+
+EconomyAuthorityServiceTest > emptyWorldRemainsLegacyCompatible() PASSED
+
+EconomyAuthorityServiceTest > matchingFilesDoNotActivateAutomatically() PASSED
+
+EconomyAuthorityServiceTest > activationRefusesLegacyOnly() PASSED
+
+EconomyAuthorityServiceTest > activationRefusesConflictingFiles() PASSED
+
+EconomyAuthorityServiceTest > secondSnapshotSaveCreatesRecoveryBackup() PASSED
+
+EconomyAuthorityServiceTest > corruptSnapshotPrimaryDoesNotSilentlyUseBackup() PASSED
+
+EconomyAuthorityServiceTest > corruptMarkerFailsClosed() PASSED
+
+EconomyAuthorityServiceTest > legacySessionCannotSaveAfterActivation() PASSED
+
+EconomyAuthorityServiceTest > snapshotSaveLeavesLegacyUntouched() PASSED
+
+EconomyAuthorityServiceTest > snapshotPrimaryCanLoadWithoutLegacyFile() PASSED
+
+EconomyAuthorityServiceTest > explicitActivationSelectsSnapshot() PASSED
+
+EconomyAuthorityServiceTest > snapshotMarkerWithMissingSnapshotFailsClosed() PASSED
+
+EconomyCheckpointSchedulerTest > schedulerCanCheckpointMoreThanOnce() PASSED
+
+EconomyCheckpointSchedulerTest > schedulerWaitsForConfiguredTickInterval() PASSED
+
+EconomyCheckpointSchedulerTest > legacyModeNeverPerformsScheduledCheckpoint() PASSED
+
+EconomyCheckpointSchedulerTest > realSnapshotSaveRotatesAtThreshold() PASSED
+
+EconomyCheckpointSchedulerTest > failedCheckpointPreservesJournal() PASSED
+
+EconomyCheckpointSchedulerTest > invalidSchedulerConfigurationIsRejected() PASSED
+
+EconomyCheckpointSchedulerTest > inspectReportsCheckpointDecision() PASSED
+
+EconomyCheckpointSchedulerTest > belowThresholdDoesNotSave() PASSED
+
+EconomyCheckpointSchedulerTest > fakeSuccessfulSaveIsRejected() PASSED
+
+EconomyInventoryProvisionerTest > rejectsInvalidLocationBeforeAllocatingId() PASSED
+
+EconomyInventoryProvisionerTest > repeatedProvisioningUsesSameInventory() PASSED
+
+EconomyInventoryProvisionerTest > reProvisionAfterReloadDoesNotDuplicate() PASSED
+
+EconomyInventoryProvisionerTest > emptyProvisionedInventorySurvivesReload() PASSED
+
+EconomyInventoryProvisionerTest > rejectsInvalidOwnerBeforeAllocatingId() PASSED
+
+EconomyInventoryProvisionerTest > rejectsUnknownHolding() PASSED
+
+EconomyInventoryProvisionerTest > acceptsRealHoldingOwner() PASSED
+
+EconomyInventoryProvisionerTest > createsEmptyInventoryForValidNpc() PASSED
+
+EconomyInventoryProvisionerTest > differentOwnersHaveDifferentInventories() PASSED
+
+EconomyJournalContinuityTest > invalidRetentionLimitIsRejected() PASSED
+
+EconomyJournalContinuityTest > returnedHistoryCannotBeModified() PASSED
+
+EconomyJournalContinuityTest > retentionDropsOldestRecordsFirst() PASSED
+
+EconomyJournalContinuityTest > previousAndCurrentHistoryAreCombined() PASSED
+
+EconomyJournalContinuityTest > emptyHistoryRemainsEmpty() PASSED
+
+EconomyJournalContinuityTest > snapshotCapturePreservesCurrentBalances() PASSED
+
+EconomyJournalContinuityTest > invalidSequenceIsRejected() PASSED
+
+EconomyJournalContinuityTest > transactionsSurviveMultipleServerSessions() PASSED
+
+EconomyJournalContinuityTest > repeatedSaveDoesNotDuplicateTransactions() PASSED
+
+EconomyJournalContinuityTest > largeCurrentSessionRetainsMostRecentRecords() PASSED
+
+EconomyJournalLimitTest > restoredInventoryBeginsWithFreshCapacity() PASSED
+
+EconomyJournalLimitTest > rejectsConsumptionWhenFullWithoutChangingBalance() PASSED
+
+EconomyJournalLimitTest > acceptsOperationsUntilLimit() PASSED
+
+EconomyJournalLimitTest > rejectedOperationDoesNotConsumeSequence() PASSED
+
+EconomyJournalLimitTest > defaultConstructorRetainsCompatibility() PASSED
+
+EconomyJournalLimitTest > rejectsTransferWhenFullWithoutPartialMutation() PASSED
+
+EconomyJournalLimitTest > checkpointRejectsMissingSessionTransactions() PASSED
+
+EconomyJournalLimitTest > rejectsProductionWhenFullWithoutChangingBalance() PASSED
+
+EconomyJournalLimitTest > invalidJournalLimitIsRejected() PASSED
+
+EconomyJournalLimitTest > checkpointCapturesAllCurrentSessionOperations() PASSED
+
+EconomyJournalRotationTest > historySnapshotIsImmutable() PASSED
+
+EconomyJournalRotationTest > failedCommitLeavesJournalAndBaselineIntact() PASSED
+
+EconomyJournalRotationTest > normalSaveCreatesRecoveryGeneration() PASSED
+
+EconomyJournalRotationTest > repeatedSaveDoesNotDuplicateHistory() PASSED
+
+EconomyJournalRotationTest > multiSessionReloadPreservesCommittedHistory() PASSED
+
+EconomyJournalRotationTest > snapshotPrimaryDoesNotModifyLegacySave() PASSED
+
+EconomyJournalRotationTest > nextTransactionSequenceRestartsAfterRotation() PASSED
+
+EconomyJournalRotationTest > verifiedSaveClearsOnlyWorkingJournal() PASSED
+
+EconomyJournalRotationTest > consecutiveCheckpointsPreserveHistory() PASSED
+
+EconomyJournalRotationTest > rotationRejectsMismatchedTransactions() PASSED
+
+EconomyLegacyMigratorTest > refusesOrphanedBackup() PASSED
+
+EconomyLegacyMigratorTest > refusesMissingLegacySave() PASSED
+
+EconomyLegacyMigratorTest > repeatMigrationIsIdempotent() PASSED
+
+EconomyLegacyMigratorTest > rejectsExistingInvalidSnapshot() PASSED
+
+EconomyLegacyMigratorTest > migratesLegacyBalancesWithoutChangingSource() PASSED
+
+EconomyLegacyMigratorTest > migratesEmptyLegacyEconomy() PASSED
+
+EconomyLegacyMigratorTest > migrationPreservesOwnerAndLocation() PASSED
+
+EconomyLegacyMigratorTest > refusesCorruptLegacySave() PASSED
+
+EconomyLegacyMigratorTest > refusesConflictingSnapshot() PASSED
+
+EconomyMigrationAssessmentTest > divergentBalancesAreRejected() PASSED
+
+EconomyMigrationAssessmentTest > matchingSaveRepresentationsAreDetected() PASSED
+
+EconomyMigrationAssessmentTest > legacyOnlyRequiresMigration() PASSED
+
+EconomyMigrationAssessmentTest > invalidJournalThresholdsAreRejected() PASSED
+
+EconomyMigrationAssessmentTest > emptyWorldIsDetected() PASSED
+
+EconomyMigrationAssessmentTest > preflightNeverWritesFiles() PASSED
+
+EconomyMigrationAssessmentTest > journalThresholdsAreExplicit() PASSED
+
+EconomyMigrationAssessmentTest > corruptionFailsClosed() PASSED
+
+EconomyMigrationAssessmentTest > snapshotOnlyIsIdentified() PASSED
+
+EconomyReferenceValidatorTest > rejectsMissingOrganizationOwner() PASSED
+
+EconomyReferenceValidatorTest > acceptsHoldingWhenValidatorSupportsIt() PASSED
+
+EconomyReferenceValidatorTest > acceptsExistingOrganizationOwner() PASSED
+
+EconomyReferenceValidatorTest > rejectsInvalidMemberOfManager() PASSED
+
+EconomyReferenceValidatorTest > acceptsExistingSettlementOwner() PASSED
+
+EconomyReferenceValidatorTest > acceptsExistingNpcOwner() PASSED
+
+EconomyReferenceValidatorTest > validatesWholeManager() PASSED
+
+EconomyReferenceValidatorTest > rejectsMissingSettlementLocation() PASSED
+
+EconomyReferenceValidatorTest > rejectsMissingNpcOwner() PASSED
+
+EconomyReferenceValidatorTest > unsupportedHoldingFailsClosed() PASSED
+
+EconomySaveSelectorTest > selectionDoesNotCreateAnySaveFiles() PASSED
+
+EconomySaveSelectorTest > orphanedBackupIsRejected() PASSED
+
+EconomySaveSelectorTest > conflictingSavesAreRejected() PASSED
+
+EconomySaveSelectorTest > corruptLegacySaveIsRejected() PASSED
+
+EconomySaveSelectorTest > snapshotOnlyIsRejected() PASSED
+
+EconomySaveSelectorTest > matchingSavesSelectLegacyWithoutWriting() PASSED
+
+EconomySaveSelectorTest > temporaryFilesAreRejected() PASSED
+
+EconomySaveSelectorTest > legacyOnlySelectsLegacy() PASSED
+
+EconomySaveSelectorTest > emptyWorldSelectsEmptyManager() PASSED
+
+EconomySnapshotCommitterTest > checkpointGuardRejectsTruncatedSession() PASSED
+
+EconomySnapshotCommitterTest > historicalEntriesArePreserved() PASSED
+
+EconomySnapshotCommitterTest > secondCommitPreservesPreviousGeneration() PASSED
+
+EconomySnapshotCommitterTest > verifiedCommitPreservesBalances() PASSED
+
+EconomySnapshotCommitterTest > checkedSnapshotDifferenceIsDetected() PASSED
+
+EconomySnapshotCommitterTest > rejectsSessionLargerThanRetainedLimit() PASSED
+
+EconomySnapshotCommitterTest > corruptPrimaryIsNotOverwritten() PASSED
+
+EconomySnapshotCommitterTest > failedCommitDoesNotClearJournal() PASSED
+
+EconomySnapshotCommitterTest > repeatedCommitDoesNotDuplicateRecords() PASSED
+
+EconomySnapshotRecoveryTest > missingPrimaryAndBackupIsAnError() PASSED
+
+EconomySnapshotRecoveryTest > refusesToSaveOverCorruptPrimary() PASSED
+
+EconomySnapshotRecoveryTest > twoInvalidGenerationsAreRejected() PASSED
+
+EconomySnapshotRecoveryTest > firstSaveCreatesPrimaryWithoutBackup() PASSED
+
+EconomySnapshotRecoveryTest > successfulSavesLeaveNoBackupTemporaryFile() PASSED
+
+EconomySnapshotRecoveryTest > missingBackupCannotBeRestored() PASSED
+
+EconomySnapshotRecoveryTest > secondSaveRetainsPreviousGeneration() PASSED
+
+EconomySnapshotRecoveryTest > explicitRestoreRepairsPrimary() PASSED
+
+EconomySnapshotRecoveryTest > corruptPrimaryFallsBackWithoutOverwritingIt() PASSED
+
+EconomySnapshotStoreTest > missingSnapshotDoesNotSilentlyReset() PASSED
+
+EconomySnapshotStoreTest > snapshotRejectsNonconsecutiveTransactions() PASSED
+
+EconomySnapshotStoreTest > snapshotPreservesNonAsciiTransactionCauses() PASSED
+
+EconomySnapshotStoreTest > emptySnapshotRoundTrips() PASSED
+
+EconomySnapshotStoreTest > snapshotIsIndependentOfLaterMutations() PASSED
+
+EconomySnapshotStoreTest > corruptSnapshotIsRejected() PASSED
+
+EconomySnapshotStoreTest > snapshotCanBeWrittenTwice() PASSED
+
+EconomySnapshotStoreTest > snapshotFileLeavesNoTemporaryFile() PASSED
+
+EconomySnapshotStoreTest > snapshotPreservesBalancesAndJournal() PASSED
+
+HoldingAgricultureCatalogTest > unprofiledAndAggregateHoldingsAreNotGivenInventedFarms() PASSED
+
+HoldingAgricultureCatalogTest > regionalAncestryWorksWithoutNamedMapFeatures() PASSED
+
+HoldingAgricultureCatalogTest > resolvesWinterfellOverrideWithoutCoordinatesOrPopulationWeights() PASSED
+
+HoldingAgricultureCatalogTest > enrollmentFeedsExistingSettlementFoodEngine() PASSED
+
+HoldingAgricultureCatalogTest > invalidCatalogCannotSilentlyProduceGrain() PASSED
+
+HouseholdFoodDemandModelTest > zeroPopulationNeedsNoFood() PASSED
+
+HouseholdFoodDemandModelTest > rejectsNegativeDays() PASSED
+
+HouseholdFoodDemandModelTest > calculatesPopulationDemand() PASSED
+
+HouseholdFoodDemandModelTest > zeroDaysNeedsNoFood() PASSED
+
+HouseholdFoodDemandModelTest > roundsFractionalKilogramsUp() PASSED
+
+HouseholdFoodDemandModelTest > demandIncreasesWithPopulation() PASSED
+
+HouseholdFoodDemandModelTest > oneKilogramRequiresNoRounding() PASSED
+
+HouseholdFoodDemandModelTest > rejectsNegativePopulation() PASSED
+
+HouseholdFoodDemandModelTest > rejectsDemandOverflow() PASSED
+
+HouseholdFoodDemandModelTest > rejectsNegativeRequirement() PASSED
+
+InventoryManagerTest > transferConservesResources() PASSED
+
+InventoryManagerTest > productionIncreasesStock() PASSED
+
+InventoryManagerTest > rejectsInvalidOperations() PASSED
+
+InventoryManagerTest > duplicateResourceDefinitionsAreRejected() PASSED
+
+InventoryManagerTest > consumptionDecreasesStock() PASSED
+
+InventoryManagerTest > insufficientBalanceLeavesStateUnchanged() PASSED
+
+InventoryManagerTest > inventoryIdentityIsStable() PASSED
+
+InventoryManagerTest > overflowLeavesStateUnchanged() PASSED
+
+InventoryManagerTest > rejectsUnknownResources() PASSED
+
+InventoryPersistenceTest > missingSaveCreatesEmptyEconomy() PASSED
+
+InventoryPersistenceTest > saveDoesNotLeaveTemporaryFile() PASSED
+
+InventoryPersistenceTest > malformedHeaderIsRejected() PASSED
+
+InventoryPersistenceTest > nextIdSurvivesSaveLoad() PASSED
+
+InventoryPersistenceTest > saveLoadPreservesOwnershipAndLocation() PASSED
+
+InventoryPersistenceTest > truncatedFileIsRejected() PASSED
+
+InventoryPersistenceTest > saveLoadPreservesBalances() PASSED
+
+InventoryPersistenceTest > loadedInventoriesRemainOperational() PASSED
+
+InventoryPersistenceTest > emptyEconomyRoundTrips() PASSED
+
+InventoryPersistenceTest > corruptedSaveIsRejected() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > strictCoordinatorUsesRealDurableOperation() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > unresolvedResidentBlocksAllFarmMutations() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > conflictingFoodRequirementsAreRejected() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > pendingHoldingBlocksEntireSettlement() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > readinessInspectionIsReadOnly() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > nextDayConsumesOnlyPreviouslyAvailableFood() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > restartRejectsACommittedDay() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > reverseEnrollmentOrderKeepsSnapshotDeterministic() PASSED
+
+MultiFarmSettlementAgricultureRunnerTest > twoHoldingsCommitOneSettlementFoodCycle() PASSED
+
+MultiFarmSettlementFoodCycleTest > insufficientJournalCapacityRejectsWholeCycle() PASSED
+
+MultiFarmSettlementFoodCycleTest > noHarvestOccursBetweenHarvestBoundaries() PASSED
+
+MultiFarmSettlementFoodCycleTest > existingHouseholdFoodReducesNewAllocation() PASSED
+
+MultiFarmSettlementFoodCycleTest > planningDoesNotMutateInventories() PASSED
+
+MultiFarmSettlementFoodCycleTest > reversedInputOrderProducesIdenticalTransactions() PASSED
+
+MultiFarmSettlementFoodCycleTest > twoHouseholdsShareScarceGrainProportionally() PASSED
+
+MultiFarmSettlementFoodCycleTest > protectedFarmReservesCannotBeDistributed() PASSED
+
+MultiFarmSettlementFoodCycleTest > duplicateHoldingOrHouseholdIsRejected() PASSED
+
+MultiFarmSettlementFoodCycleTest > sameSettlementLocationIsMandatory() PASSED
+
+MultiFarmSettlementFoodCycleTest > farmOverflowRejectsBeforeAnyMutation() PASSED
+
+MultiFarmSettlementFoodCycleTest > twoFarmsSupplyOneHouseholdOnce() PASSED
+
+SettlementAgricultureRunnerTest > nextCampaignIntervalConsumesWithoutNewHarvest() PASSED
+
+SettlementAgricultureRunnerTest > verifiedHarvestCommitsAndRecordsInterval() PASSED
+
+SettlementAgricultureRunnerTest > restartDoesNotRepeatHarvest() PASSED
+
+SettlementAgricultureRunnerTest > failedIntervalIsNotAutomaticallyRetried() PASSED
+
+SettlementAgricultureRunnerTest > unassignedResidentBlocksIntegratedSimulation() PASSED
+
+SettlementAgricultureRunnerTest > missingIntervalLedgerFailsClosed() PASSED
+
+SettlementAgricultureRunnerTest > legacyAuthorityCannotExecuteGuardedInterval() PASSED
+
+SettlementCohortFoodIntegrationTest > unplacedHoldingFoodDemandIsProjectedWithoutInventory() PASSED
+
+SettlementCohortFoodIntegrationTest > realHarvestFeedsNamedAndAnonymousPopulationOnce() PASSED
+
+SettlementCohortFoodIntegrationTest > inspectionIsReadOnlyAndRestartCannotReplayConsumption() PASSED
+
+SettlementCohortFoodIntegrationTest > surveyedEmptyCohortDoesNotInventConsumers() PASSED
+
+SettlementCohortFoodIntegrationTest > unverifiedPopulationAndWrongPantryAreRejected() PASSED
+
+SettlementFoodCycleTest > invalidSettlementLocationIsRejected() PASSED
+
+SettlementFoodCycleTest > threeHouseholdsReceiveProportionalRations() PASSED
+
+SettlementFoodCycleTest > harvestOccursOnlyOnBoundary() PASSED
+
+SettlementFoodCycleTest > identicalInputsProduceIdenticalResults() PASSED
+
+SettlementFoodCycleTest > journalCapacityFailureLeavesStocksUnchanged() PASSED
+
+SettlementFoodCycleTest > householdExistingStockReducesAllocation() PASSED
+
+SettlementFoodCycleTest > settlementCycleSurvivesSnapshotRoundTrip() PASSED
+
+SettlementFoodCycleTest > invalidIntervalsAreRejected() PASSED
+
+SettlementFoodCycleTest > intervalCrossingHarvestBoundaryProducesGrain() PASSED
+
+SettlementFoodCycleTest > duplicateHouseholdsAreRejected() PASSED
+
+SettlementFoodCycleTest > deterministicTieBreakingUsesInventoryId() PASSED
+
+SettlementFoodCycleTest > farmReservesAreProtected() PASSED
+
+SettlementFoodScenarioAdapterTest > deadResidentsDoNotConsumeFood() PASSED
+
+SettlementFoodScenarioAdapterTest > planningDoesNotChangeInventoryBalances() PASSED
+
+SettlementFoodScenarioAdapterTest > missingHouseholdInventoryIsRejected() PASSED
+
+SettlementFoodScenarioAdapterTest > unassignedResidentsAreReported() PASSED
+
+SettlementFoodScenarioAdapterTest > emptyHouseholdPopulationIsNotInvented() PASSED
+
+SettlementFoodScenarioAdapterTest > existingHouseholdMembersDeterminePopulation() PASSED
+
+SettlementFoodScenarioAdapterTest > wrongFarmOwnerIsRejected() PASSED
+
+KnownWorldHoldingGeoCandidatesTest > winterfellHasRecognizedMarkerEvidence() PASSED
+
+KnownWorldHoldingGeoCandidatesTest > markerCandidatesNeverClaimConstructionApproval() PASSED
+
+KnownWorldHoldingGeoCandidatesTest > domainRecordsRemainDifferentFromPhysicalSeats() PASSED
+
+KnownWorldHoldingGeoCandidatesTest > allHoldingsHaveUniqueAuthoredIdentities() PASSED
+
+KnownWorldPlaceScenarioTest > winterfellUsesPhysicalV3Region() PASSED
+
+KnownWorldPlaceScenarioTest > scenarioStillClassifiesWinterfellAsCastle() PASSED
+
+KnownWorldPlaceScenarioTest > domainsAreNotAssumedToBePhysicalSeats() PASSED
+
+KnownWorldPlaceScenarioTest > winterfellHasExactlyOneScenarioRecord() PASSED
+
+KnownWorldPublicKnowledgeTest > fabricatedSummaryDoesNotPass() PASSED
+
+KnownWorldPublicKnowledgeTest > hearsayCannotPrecedeActualEvent() PASSED
+
+KnownWorldPublicKnowledgeTest > verifiedDirectWitnessCanUsePublicObservation() PASSED
+
+KnownWorldPublicKnowledgeTest > hearsaySourceCannotBeListenerItself() PASSED
+
+KnownWorldPublicKnowledgeTest > secretAndNonSocialEventsAreExcluded() PASSED
+
+KnownWorldPublicKnowledgeTest > verifiedHearsayRetainsSecondhandProvenance() PASSED
+
+KnownWorldPublicKnowledgeTest > randomPrivateBeliefIsNotPublicEvidence() PASSED
+
+KnownWorldSettlementPresetsTest > preservesAllMapMarkersAndPoliticalHoldings() PASSED
+
+KnownWorldSettlementPresetsTest > specialPlacesAreNotNormalFarmingVillages() PASSED
+
+KnownWorldSettlementPresetsTest > workplaceCapacitiesAndHouseholdsRemainPlanningOnly() PASSED
+
+KnownWorldSettlementPresetsTest > allSitesRemainConstructionDisabled() PASSED
+
+KnownWorldSiteRegistryTest > originalWinterfellCoordinatesArePreserved() PASSED
+
+KnownWorldSiteRegistryTest > northRegionHasAProfileWithoutDuplicatedPopulation() PASSED
+
+KnownWorldSiteRegistryTest > noPopulationOrBuildingsSpawnAtB2B3Stage() PASSED
+
+KnownWorldSiteRegistryTest > everyCanonicalReferenceCanExistWithoutASeparateRedXMarker() PASSED
+
+KnownWorldSiteRegistryTest > nestedRedKeepDoesNotBecomeASecondKingsLanding() PASSED
+
+KnownWorldSiteRegistryTest > allFiveFortsRemainSeparateMonumentalSitesWithoutInventedHolders() PASSED
+
+KnownWorldSiteRegistryTest > domainsDoNotGenerateStandaloneTowns() PASSED
+
+KnownWorldSiteRegistryTest > everyMarkerAndHoldingIsPreserved() PASSED
+
+SocialWitnessRuntimeTest > observesRecognizedPublicSocialEvent() PASSED
+
+SocialWitnessRuntimeTest > rejectsMissingWitnessableFactKey() PASSED
+
+SocialWitnessRuntimeTest > excludesBetrayalsByDefault() PASSED
+
+SocialWitnessRuntimeTest > rejectsUnclassifiedSocialEvent() PASSED
+
+SocialWitnessRuntimeTest > beliefKeyIsScopedToActorAndTarget() PASSED
+
+SocialWitnessRuntimeTest > rejectsNullEvent() PASSED
+
+AnnualCohortDemographyTest > anonymousResidentsAgeGiveBirthAndDieWithoutChangingNamedNpcState() PASSED
+
+AnnualCohortDemographyTest > wrongCalendarBoundaryNeverChangesPopulation() PASSED
+
+AnnualCohortDemographyTest > duplicateYearIsIdempotentAndSkippingYearsFailsClosed() PASSED
+
+AnnualCohortDemographyTest > savedYearMarkerPreventsReplayAfterRestart() PASSED
+
+AnnualCohortDemographyTest > oldV2CheckpointLoadsAndUpgradesWithoutInventingProgress() PASSED
+
+CohortFoodStressIntegrationTest > missingDayBlocksMortalityAndLeavesPopulationUntouched() PASSED
+
+CohortFoodStressIntegrationTest > namedNpcFoodShortageNeverBecomesAnonymousFoodStress() PASSED
+
+CohortFoodStressIntegrationTest > damagedEvidenceFailsClosed() PASSED
+
+CohortFoodStressIntegrationTest > fullYearOfMissingFoodReducesBirthsAndRaisesDeaths() PASSED
+
+CohortFoodStressIntegrationTest > savedShortageEvidenceSurvivesRestartAndDoesNotReplay() PASSED
+
+HoldingPopulationIntegrationTest > v3CheckpointRoundTripIncludesBothLocationKinds() PASSED
+
+HoldingPopulationIntegrationTest > rejectsAggregateUnknownAndUnsurveyedHoldings() PASSED
+
+HoldingPopulationIntegrationTest > readsOriginalV1SettlementCheckpointAndUpgradesToV3() PASSED
+
+HoldingPopulationIntegrationTest > unplacedHoldingPopulationCanSupportExistingAgriculturalYield() PASSED
+
+HoldingPopulationIntegrationTest > holdingMigrationAndRelocationToARealSettlementConservePeople() PASSED
+
+PopulationCohortIntegrationTest > migrationAndDeathsConservePopulationWithoutCreatingNpcs() PASSED
+
+PopulationCohortIntegrationTest > unsurveyedSettlementsNeverAcquireInventedPopulation() PASSED
+
+PopulationCohortIntegrationTest > censusDoesNotCountRepresentedOrDeadPeopleTwice() PASSED
+
+PopulationCohortIntegrationTest > checkpointRoundTripAndMismatchedCalendarFailClosed() PASSED
+
+PopulationCohortIntegrationTest > workforceIsSplitBetweenFarmsInsteadOfRepeatedForEveryHolding() PASSED
+
+SimulationDeterminismTest > recordOrderingAffectsFingerprint() PASSED
+
+SimulationDeterminismTest > identicalContextsProduceIdenticalSequences() PASSED
+
+SimulationDeterminismTest > entityIdentityChangesSeed() PASSED
+
+SimulationDeterminismTest > changedStateChangesFingerprint() PASSED
+
+SimulationDeterminismTest > contextMatchesDirectSeedDerivation() PASSED
+
+SimulationDeterminismTest > rejectsInvalidContexts() PASSED
+
+SimulationDeterminismTest > differentDaysProduceDifferentContexts() PASSED
+
+SimulationDeterminismTest > rejectsNullFingerprintRecords() PASSED
+
+SimulationDeterminismTest > fingerprintsAreRepeatable() PASSED
+
+SimulationDeterminismTest > campaignDayChangesSeed() PASSED
+
+SimulationDeterminismTest > operationChangesSeed() PASSED
+
+CampaignDayObserverHubTest > unregisteredObserverStopsReceivingEvents() PASSED
+
+CampaignDayObserverHubTest > duplicateObserverRegistrationIsRejected() PASSED
+
+CampaignDayObserverHubTest > emptyHubAcceptsDayNotifications() PASSED
+
+CampaignDayObserverHubTest > observersExecuteInRegistrationOrder() PASSED
+
+CampaignDayObserverHubTest > clockAndCalendarOverloadCapturesRealTime() PASSED
+
+CampaignDayObserverHubTest > observerFailureIsNotSilentlyIgnored() PASSED
+
+CampaignDayObserverHubTest > subscriptionChangesDoNotCorruptCurrentDispatch() PASSED
+
+CampaignDayObserverHubTest > registeredObserverReceivesExactSnapshot() PASSED
+
+CampaignWorldClockPolicyTest > oldSaveMigrationDoesNotChangeHistoricalDate() PASSED
+
+CampaignWorldClockPolicyTest > worldClockModeUsesOneMinecraftDay() PASSED
+
+CampaignWorldClockPolicyTest > standaloneDefaultRemainsCompatible() PASSED
+
+CampaignWorldClockPolicyTest > invalidCalendarRestoreIsRejected() PASSED
+
+CampaignWorldClockPolicyTest > worldAuthorityPreventsDoubleAdvancement() PASSED
+
+CampaignWorldClockPolicyTest > historicalYearContains365Days() PASSED
+
+CampaignWorldClockPolicyTest > legacyCalendarStillAdvancesAtConfiguredRate() PASSED
+
+CampaignWorldClockPolicyTest > actualOverworldPhaseCanBeSynchronized() PASSED
+
+CampaignWorldClockPolicyTest > worldClockDurationCannotBeOverridden() PASSED
+
+SimulationTimeGradleTest > simulationTimeRegressionSuite() PASSED
+
+SettlementReconciliationTest > legacyVerticalDifferenceIsTolerated() PASSED
+
+SettlementReconciliationTest > unknownSettlementIsNotSilentlyCreated() PASSED
+
+SettlementReconciliationTest > refusesToMoveAlreadyLocatedSettlement() PASSED
+
+SettlementReconciliationTest > doesNotMoveOtherSettlements() PASSED
+
+SettlementReconciliationTest > repeatedMigrationDoesNothing() PASSED
+
+SettlementReconciliationTest > refusesCrossDimensionMigration() PASSED
+
+SettlementReconciliationTest > migratesLegacyCenterWithoutChangingIdentity() PASSED
+
+KnownWorldC4StreetGradeTest > flatStreetPreservesOriginalLevel() PASSED
+
+KnownWorldC4StreetGradeTest > medianRejectsSingleElevationSpike() PASSED
+
+KnownWorldC4StreetGradeTest > approachesApprovedDoorWithoutUnboundedPillars() PASSED
+
+KnownWorldC4StreetGradeTest > worksAtNegativeWorldCoordinatesAndForDownhillDoor() PASSED
+
+KnownWorldC4StreetGradeTest > rejectsIncorrectSampling() PASSED
+
+KnownWorldUniversalWorldgenC2ManifestTest > exactlyTwoNonWinterfellWorldgenPilots() PASSED
+
+> Task :validateAccessWidener NO-SOURCE
+> Task :check
+> Task :build
+
+[Incubating] Problems report is available at: file:///D:/GameOfThronesMod2/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 16s
+7 actionable tasks: 6 executed, 1 up-to-date
+EXIT=0

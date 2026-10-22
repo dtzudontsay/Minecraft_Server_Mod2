@@ -71,7 +71,7 @@ public final class WinterfellWorldgenV3 {
     private static final BlockState STONE = Blocks.STONE.defaultBlockState();
 
     private record Building(String id, String template, int x, int z,
-                            int width, int depth, int capacity) { }
+                            int width, int depth, int capacity, String label) { }
     private record ChunkPlan(BitSet roads, int[] buildings) { }
     private record Plan(Map<Long, ChunkPlan> chunks, List<Building> buildings,
                         String version) { }
@@ -137,6 +137,11 @@ public final class WinterfellWorldgenV3 {
             // separate 11x12 generic cottage in the north-west castle ward.
             if ("castle_home_0001".equals(b.id)) continue;
             buildingInChunk(chunk, b, wx, wz);
+            if (!b.template.startsWith("C3:") && !b.id.contains("_home_")) {
+                KnownWorldStructureSigns.attach(chunk,
+                        X + b.x, Z + b.z, b.width, b.depth,
+                        buildingFloor(b), "SOUTH", b.label);
+            }
         }
 
         // 3. Castle wall/tower/keep components, over roads and structures.
@@ -193,7 +198,8 @@ public final class WinterfellWorldgenV3 {
                     buildings.add(new Building(j.get("id").getAsString(),
                             j.get("t").getAsString(), j.get("x").getAsInt(),
                             j.get("z").getAsInt(), j.get("w").getAsInt(),
-                            j.get("d").getAsInt(), j.get("cap").getAsInt()));
+                             j.get("d").getAsInt(), j.get("cap").getAsInt(),
+                             j.has("label") ? j.get("label").getAsString() : j.get("t").getAsString()));
                 }
                 Map<Long, ChunkPlan> chunks = new HashMap<>();
                 for (JsonElement e : root.getAsJsonArray("chunks")) {
@@ -309,6 +315,25 @@ public final class WinterfellWorldgenV3 {
     }
 
     private static void buildingInChunk(ChunkAccess chunk, Building b, int chunkX0, int chunkZ0) {
+        // C4.5 specialized new-chunk structures; no change to original 1514 lots.
+        if (b.template.startsWith("C3:")) {
+            int bx = X + b.x, bz = Z + b.z;
+            int low = Integer.MAX_VALUE, high = Integer.MIN_VALUE;
+            for (int dx : new int[] {0, b.width / 2, b.width - 1}) {
+                for (int dz : new int[] {0, b.depth / 2, b.depth - 1}) {
+                    if (!naturalLand(bx + dx, bz + dz)) return;
+                    int y = naturalTopY(bx + dx, bz + dz);
+                    low = Math.min(low, y); high = Math.max(high, y);
+                }
+            }
+            if (high - low > 6) return;  // no cliff foundations
+            var plot = new KnownWorldUniversalWorldgenC2.Lot(b.id,
+                    b.template.substring(3), bx, bz, b.width, b.depth,
+                    "SOUTH", 0, 0);
+            KnownWorldC3Architecture.buildLot(chunk, plot, buildingFloor(b),
+                    "NORTHERN", "MEDIUM");
+            return;
+        }
         int x0=X+b.x, z0=Z+b.z;
         int x1=x0+b.width-1, z1=z0+b.depth-1;
         int floor = buildingFloor(b);

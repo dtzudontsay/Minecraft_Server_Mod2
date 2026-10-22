@@ -1,0 +1,53 @@
+C4.5.2 - deferred sign text hotfix, repository: D:\GameOfThronesMod2
+READY: src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java bytes= 6588
+READY: src\main\java\dev\dtzudontsay\knownworld\KnownWorld.java bytes= 11173
+PREFLIGHT ONLY: No files changed.
+READY: src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java bytes= 6588
+READY: src\main\java\dev\dtzudontsay\knownworld\KnownWorld.java bytes= 11173
+BACKUP: src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java.before_c4_5_2_sign_fix.bak
+BACKUP: src\main\java\dev\dtzudontsay\knownworld\KnownWorld.java.before_c4_5_2_sign_fix.bak
+UPDATED: src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java
+UPDATED: src\main\java\dev\dtzudontsay\knownworld\KnownWorld.java
+SIGN HOTFIX INSTALLED. Now run Gradle build and test in a FRESH WORLD.
+
+> Configure project :
+Fabric Loom: 1.17.21
+
+> Task :compileJava
+D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java:56: Fehler: Inkompatible Typen: Inkompatible Parametertypen in Lambda-Ausdruck
+        ServerChunkEvents.CHUNK_LOAD.register((level, chunk) -> {
+                                              ^
+Hinweis: Einige Eingabedateien verwenden oder überschreiben eine veraltete API.
+Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+Hinweis: Einige Meldungen wurden vereinfacht. Wiederholen Sie die Kompilierung mit -Xdiags:verbose, um die vollständige Ausgabe abzurufen
+1 Fehler
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/GameOfThronesMod2/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  Hinweis: Wiederholen Sie die Kompilierung mit -Xlint:deprecation, um Details zu erhalten.
+  D:\GameOfThronesMod2\src\main\java\dev\dtzudontsay\knownworld\world\generation\settlement\KnownWorldStructureSigns.java:56: Fehler: Inkompatible Typen: Inkompatible Parametertypen in Lambda-Ausdruck
+          ServerChunkEvents.CHUNK_LOAD.register((level, chunk) -> {
+                                                ^
+  Hinweis: Einige Eingabedateien verwenden oder überschreiben eine veraltete API.
+  Hinweis: Einige Meldungen wurden vereinfacht. Wiederholen Sie die Kompilierung mit -Xdiags:verbose, um die vollständige Ausgabe abzurufen
+  1 Fehler
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 3s
+1 actionable task: 1 executed
