@@ -1,0 +1,3743 @@
+{
+  "schemaVersion": "knownworld.b4_1a.physical_projection.v1",
+  "sourcePopulationCount": 3760684,
+  "sourceSiteCount": 248,
+  "projectionCandidateCount": 441642,
+  "uniqueHousesRepresented": 220821,
+  "physicalEntityBudget": 128,
+  "worldgenPlacementAuthority": "C4_11_RUNTIME_APPROVED_PLACEMENT_ONLY",
+  "notAnNpcRegistryImport": true,
+  "doesNotFabricateWorldEventsOrLlmMemories": true,
+  "sites": [
+    {
+      "siteId": "site_ne_001",
+      "name": "Ib Nor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_001.jsonl.gz",
+      "anchorX": 1902406,
+      "anchorZ": -2117942,
+      "bounds": [
+        1901950,
+        1902862,
+        -2118397,
+        -2117654
+      ]
+    },
+    {
+      "siteId": "site_ne_002",
+      "name": "Port of Ibben",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_002.jsonl.gz",
+      "anchorX": 1790191,
+      "anchorZ": -1731199,
+      "bounds": [
+        1789735,
+        1790535,
+        -1731654,
+        -1730857
+      ]
+    },
+    {
+      "siteId": "site_ne_003",
+      "name": "Ib Sar",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_003.jsonl.gz",
+      "anchorX": 2409095,
+      "anchorZ": -1332840,
+      "bounds": [
+        2408639,
+        2409551,
+        -1333295,
+        -1332498
+      ]
+    },
+    {
+      "siteId": "site_ne_004",
+      "name": "New Ibbish",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_004.jsonl.gz",
+      "anchorX": 1765967,
+      "anchorZ": -1170418,
+      "bounds": [
+        1765511,
+        1766423,
+        -1170873,
+        -1170130
+      ]
+    },
+    {
+      "siteId": "site_ne_005",
+      "name": "Vaes Aresak / Ibbish",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_005.jsonl.gz",
+      "anchorX": 2068653,
+      "anchorZ": -1012814,
+      "bounds": [
+        2068197,
+        2069109,
+        -1013269,
+        -1012526
+      ]
+    },
+    {
+      "siteId": "site_ne_006",
+      "name": "Vaes Leisi",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_006.jsonl.gz",
+      "anchorX": 1073507,
+      "anchorZ": -887139,
+      "bounds": [
+        1073051,
+        1073963,
+        -887594,
+        -886851
+      ]
+    },
+    {
+      "siteId": "site_ne_007",
+      "name": "Vaes Dothrak",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 226,
+      "indexedHomes": 113,
+      "availableC411Homes": 113,
+      "file": "site_ne_007.jsonl.gz",
+      "anchorX": 1707863,
+      "anchorZ": -227727,
+      "bounds": [
+        1707407,
+        1708209,
+        -228182,
+        -227381
+      ]
+    },
+    {
+      "siteId": "site_ne_008",
+      "name": "Vaes Leqse / Gornath",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_ne_009",
+      "name": "Kayakayanaya",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_ne_009.jsonl.gz",
+      "anchorX": 2803555,
+      "anchorZ": 22709,
+      "bounds": [
+        2803099,
+        2804011,
+        22254,
+        22997
+      ]
+    },
+    {
+      "siteId": "site_ne_010",
+      "name": "Yalli Qamayi / Sathar",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nee_001",
+      "name": "Nefer",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2874,
+      "indexedHomes": 1437,
+      "availableC411Homes": 1437,
+      "file": "site_nee_001.jsonl.gz",
+      "anchorX": 4554206,
+      "anchorZ": -15019,
+      "bounds": [
+        4552686,
+        4555726,
+        -16538,
+        -13665
+      ]
+    },
+    {
+      "siteId": "site_nee_002",
+      "name": "K'Dath (legendary/unconfirmed)",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nee_003",
+      "name": "Trader Town",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_nee_003.jsonl.gz",
+      "anchorX": 3564713,
+      "anchorZ": 796228,
+      "bounds": [
+        3561962,
+        3567465,
+        793478,
+        798922
+      ]
+    },
+    {
+      "siteId": "site_nee_004",
+      "name": "Bonetown (reported/unconfirmed)",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nee_005",
+      "name": "The Five Forts — individual fort 1",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 800,
+      "indexedHomes": 400,
+      "availableC411Homes": 400,
+      "file": "site_nee_005.jsonl.gz",
+      "anchorX": 4853947,
+      "anchorZ": 954816,
+      "bounds": [
+        4853211,
+        4854517,
+        954081,
+        955384
+      ]
+    },
+    {
+      "siteId": "site_nee_006",
+      "name": "The Five Forts — individual fort 2",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 800,
+      "indexedHomes": 400,
+      "availableC411Homes": 400,
+      "file": "site_nee_006.jsonl.gz",
+      "anchorX": 4899399,
+      "anchorZ": 1015733,
+      "bounds": [
+        4898663,
+        4899969,
+        1014998,
+        1016301
+      ]
+    },
+    {
+      "siteId": "site_nee_007",
+      "name": "The Five Forts — individual fort 3",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 800,
+      "indexedHomes": 400,
+      "availableC411Homes": 400,
+      "file": "site_nee_007.jsonl.gz",
+      "anchorX": 4945820,
+      "anchorZ": 1060213,
+      "bounds": [
+        4945084,
+        4946390,
+        1059478,
+        1060781
+      ]
+    },
+    {
+      "siteId": "site_nee_008",
+      "name": "The Five Forts — individual fort 4",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 800,
+      "indexedHomes": 400,
+      "availableC411Homes": 400,
+      "file": "site_nee_008.jsonl.gz",
+      "anchorX": 5013520,
+      "anchorZ": 1085353,
+      "bounds": [
+        5012784,
+        5014090,
+        1084618,
+        1085921
+      ]
+    },
+    {
+      "siteId": "site_nee_009",
+      "name": "The Five Forts — individual fort 5",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 800,
+      "indexedHomes": 400,
+      "availableC411Homes": 400,
+      "file": "site_nee_009.jsonl.gz",
+      "anchorX": 5087023,
+      "anchorZ": 1113395,
+      "bounds": [
+        5086287,
+        5087593,
+        1112660,
+        1113963
+      ]
+    },
+    {
+      "siteId": "site_nee_010",
+      "name": "Tiqui",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3334,
+      "indexedHomes": 1667,
+      "availableC411Homes": 1667,
+      "file": "site_nee_010.jsonl.gz",
+      "anchorX": 3451517,
+      "anchorZ": 1212007,
+      "bounds": [
+        3450053,
+        3452981,
+        1210544,
+        1213305
+      ]
+    },
+    {
+      "siteId": "site_nw_001",
+      "name": "Thenn",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 760,
+      "indexedHomes": 380,
+      "availableC411Homes": 380,
+      "file": "site_nw_001.jsonl.gz",
+      "anchorX": -4256539,
+      "anchorZ": -3561731,
+      "bounds": [
+        -4257219,
+        -4255859,
+        -3562410,
+        -3561053
+      ]
+    },
+    {
+      "siteId": "site_nw_004",
+      "name": "Fist of the First Men",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_005",
+      "name": "Hardhome",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_007",
+      "name": "Craster's Keep",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 4,
+      "indexedHomes": 2,
+      "availableC411Homes": 2,
+      "file": "site_nw_007.jsonl.gz",
+      "anchorX": -3811345,
+      "anchorZ": -2861819,
+      "bounds": [
+        -3811633,
+        -3811231,
+        -2862106,
+        -2861705
+      ]
+    },
+    {
+      "siteId": "site_nw_008",
+      "name": "Castle Black",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 150,
+      "indexedHomes": 75,
+      "availableC411Homes": 75,
+      "file": "site_nw_008.jsonl.gz",
+      "anchorX": -3741014,
+      "anchorZ": -2785917,
+      "bounds": [
+        -3741414,
+        -3740727,
+        -2786316,
+        -2785687
+      ]
+    },
+    {
+      "siteId": "site_nw_009",
+      "name": "Oakenshield",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_010",
+      "name": "Woodswatch-by-the-Pool",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_011",
+      "name": "Sable Hall",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_012",
+      "name": "Stonegate",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_013",
+      "name": "Icemark",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_014",
+      "name": "Deep Lake",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_015",
+      "name": "Hoarfrost Hill",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_016",
+      "name": "The Nightfort",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_017",
+      "name": "Eastwatch-by-the-Sea",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 150,
+      "indexedHomes": 75,
+      "availableC411Homes": 75,
+      "file": "site_nw_017.jsonl.gz",
+      "anchorX": -3529241,
+      "anchorZ": -2729199,
+      "bounds": [
+        -3529641,
+        -3528954,
+        -2729598,
+        -2728969
+      ]
+    },
+    {
+      "siteId": "site_nw_018",
+      "name": "Greywatch",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_019",
+      "name": "Shieldwatch",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_020",
+      "name": "Shadow Tower",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 150,
+      "indexedHomes": 75,
+      "availableC411Homes": 75,
+      "file": "site_nw_020.jsonl.gz",
+      "anchorX": -3923202,
+      "anchorZ": -2697215,
+      "bounds": [
+        -3923602,
+        -3922915,
+        -2697614,
+        -2696985
+      ]
+    },
+    {
+      "siteId": "site_nw_021",
+      "name": "Westwatch-by-the-Bridge",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_022",
+      "name": "Mole's Town",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 260,
+      "indexedHomes": 130,
+      "availableC411Homes": 130,
+      "file": "site_nw_022.jsonl.gz",
+      "anchorX": -3693852,
+      "anchorZ": -2674057,
+      "bounds": [
+        -3694308,
+        -3693396,
+        -2674512,
+        -2673715
+      ]
+    },
+    {
+      "siteId": "site_nw_023",
+      "name": "Queenscrown",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_024",
+      "name": "Mormont's Castle",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_024.jsonl.gz",
+      "anchorX": -4496140,
+      "anchorZ": -2463070,
+      "bounds": [
+        -4496708,
+        -4495571,
+        -2463637,
+        -2462504
+      ]
+    },
+    {
+      "siteId": "site_nw_025",
+      "name": "Last Hearth",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_025.jsonl.gz",
+      "anchorX": -3659462,
+      "anchorZ": -2440747,
+      "bounds": [
+        -3660030,
+        -3658893,
+        -2441314,
+        -2440181
+      ]
+    },
+    {
+      "siteId": "site_nw_026",
+      "name": "Karhold",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_026.jsonl.gz",
+      "anchorX": -3229511,
+      "anchorZ": -2233028,
+      "bounds": [
+        -3230079,
+        -3228942,
+        -2233595,
+        -2232462
+      ]
+    },
+    {
+      "siteId": "site_nw_027",
+      "name": "Deepwood Motte",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_027.jsonl.gz",
+      "anchorX": -4434571,
+      "anchorZ": -2157051,
+      "bounds": [
+        -4435139,
+        -4434002,
+        -2157618,
+        -2156485
+      ]
+    },
+    {
+      "siteId": "site_nw_028",
+      "name": "Dreadfort",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_028.jsonl.gz",
+      "anchorX": -3561125,
+      "anchorZ": -2066813,
+      "bounds": [
+        -3561693,
+        -3560556,
+        -2067380,
+        -2066247
+      ]
+    },
+    {
+      "siteId": "site_nw_029",
+      "name": "Winterfell",
+      "status": "WINTERFELL_V3",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_030",
+      "name": "Torrhen's Square",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_030.jsonl.gz",
+      "anchorX": -4367400,
+      "anchorZ": -1789507,
+      "bounds": [
+        -4367968,
+        -4366831,
+        -1790074,
+        -1788941
+      ]
+    },
+    {
+      "siteId": "site_nw_031",
+      "name": "Ramsgate",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_032",
+      "name": "Widow's Watch",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_032.jsonl.gz",
+      "anchorX": -3142324,
+      "anchorZ": -1547477,
+      "bounds": [
+        -3142892,
+        -3141755,
+        -1548044,
+        -1546911
+      ]
+    },
+    {
+      "siteId": "site_nw_033",
+      "name": "Barrowton",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_nw_033.jsonl.gz",
+      "anchorX": -4420910,
+      "anchorZ": -1535417,
+      "bounds": [
+        -4422542,
+        -4419278,
+        -1537048,
+        -1533787
+      ]
+    },
+    {
+      "siteId": "site_nw_034",
+      "name": "White Harbor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 4788,
+      "indexedHomes": 2394,
+      "availableC411Homes": 2394,
+      "file": "site_nw_034.jsonl.gz",
+      "anchorX": -3795195,
+      "anchorZ": -1485116,
+      "bounds": [
+        -3797107,
+        -3793283,
+        -1487027,
+        -1483370
+      ]
+    },
+    {
+      "siteId": "site_nw_035",
+      "name": "Moat Cailin",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 64,
+      "indexedHomes": 32,
+      "availableC411Homes": 32,
+      "file": "site_nw_035.jsonl.gz",
+      "anchorX": -4044506,
+      "anchorZ": -1375636,
+      "bounds": [
+        -4044850,
+        -4044331,
+        -1375979,
+        -1375461
+      ]
+    },
+    {
+      "siteId": "site_nw_036",
+      "name": "Oldcastle",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_036.jsonl.gz",
+      "anchorX": -3708869,
+      "anchorZ": -1306940,
+      "bounds": [
+        -3709437,
+        -3708300,
+        -1307507,
+        -1306374
+      ]
+    },
+    {
+      "siteId": "site_nw_037",
+      "name": "Flint's Finger",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_037.jsonl.gz",
+      "anchorX": -4722938,
+      "anchorZ": -1226180,
+      "bounds": [
+        -4723506,
+        -4722369,
+        -1226747,
+        -1225614
+      ]
+    },
+    {
+      "siteId": "site_nw_038",
+      "name": "Sisterton",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_nw_038.jsonl.gz",
+      "anchorX": -3624948,
+      "anchorZ": -1191887,
+      "bounds": [
+        -3626580,
+        -3623315,
+        -1193518,
+        -1190257
+      ]
+    },
+    {
+      "siteId": "site_nw_039",
+      "name": "Greywater Watch",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_042",
+      "name": "Coldwater Burn",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_042.jsonl.gz",
+      "anchorX": -3361213,
+      "anchorZ": -976168,
+      "bounds": [
+        -3361781,
+        -3360644,
+        -976735,
+        -975602
+      ]
+    },
+    {
+      "siteId": "site_nw_045",
+      "name": "Snakewood",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_045.jsonl.gz",
+      "anchorX": -3359605,
+      "anchorZ": -896266,
+      "bounds": [
+        -3360173,
+        -3359036,
+        -896833,
+        -895700
+      ]
+    },
+    {
+      "siteId": "site_nw_047",
+      "name": "Longbow Hall",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_047.jsonl.gz",
+      "anchorX": -3201370,
+      "anchorZ": -821168,
+      "bounds": [
+        -3201938,
+        -3200801,
+        -821735,
+        -820602
+      ]
+    },
+    {
+      "siteId": "site_nw_048",
+      "name": "Heart's Home",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_048.jsonl.gz",
+      "anchorX": -3453890,
+      "anchorZ": -806771,
+      "bounds": [
+        -3454458,
+        -3453321,
+        -807338,
+        -806205
+      ]
+    },
+    {
+      "siteId": "site_nw_049",
+      "name": "Unidentified NW-049",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_049.jsonl.gz",
+      "anchorX": -3672048,
+      "anchorZ": -804361,
+      "bounds": [
+        -3672616,
+        -3671479,
+        -804928,
+        -803795
+      ]
+    },
+    {
+      "siteId": "site_nw_missing_twins_01",
+      "name": "The Twins",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_nw_missing_twins_01.jsonl.gz",
+      "anchorX": -4133143,
+      "anchorZ": -843486,
+      "bounds": [
+        -4133711,
+        -4132574,
+        -844053,
+        -842920
+      ]
+    },
+    {
+      "siteId": "site_nw_missing_wall_01",
+      "name": "Rimegate",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_missing_wall_02",
+      "name": "Long Barrow",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_missing_wall_03",
+      "name": "The Torches",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_missing_wall_04",
+      "name": "Greenguard",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_001",
+      "name": "Braavos",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 11172,
+      "indexedHomes": 5586,
+      "availableC411Homes": 5586,
+      "file": "site_nwe_001.jsonl.gz",
+      "anchorX": -2527920,
+      "anchorZ": -982650,
+      "bounds": [
+        -2530784,
+        -2525056,
+        -985513,
+        -979788
+      ]
+    },
+    {
+      "siteId": "site_nwe_002",
+      "name": "Morosh",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_nwe_002.jsonl.gz",
+      "anchorX": -408209,
+      "anchorZ": -897102,
+      "bounds": [
+        -408665,
+        -407753,
+        -897557,
+        -896760
+      ]
+    },
+    {
+      "siteId": "site_nwe_003",
+      "name": "Lorath",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_nwe_003.jsonl.gz",
+      "anchorX": -2047009,
+      "anchorZ": -856898,
+      "bounds": [
+        -2048641,
+        -2045377,
+        -858529,
+        -855376
+      ]
+    },
+    {
+      "siteId": "site_nwe_004",
+      "name": "Vaes Graddakh / Sarys",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_005",
+      "name": "Saath",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 720,
+      "indexedHomes": 360,
+      "availableC411Homes": 360,
+      "file": "site_nwe_005.jsonl.gz",
+      "anchorX": -607786,
+      "anchorZ": -712557,
+      "bounds": [
+        -608466,
+        -607105,
+        -713236,
+        -711879
+      ]
+    },
+    {
+      "siteId": "site_nwe_006",
+      "name": "Norvos",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_nwe_006.jsonl.gz",
+      "anchorX": -1870302,
+      "anchorZ": -301399,
+      "bounds": [
+        -1873053,
+        -1867550,
+        -304149,
+        -298705
+      ]
+    },
+    {
+      "siteId": "site_nwe_007",
+      "name": "Vaes Athjikhari / Sallosh",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_009",
+      "name": "Ghoyan Drohe",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_010",
+      "name": "Vojjor Samvi / Kasath",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_011",
+      "name": "Pentos",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10640,
+      "indexedHomes": 5320,
+      "availableC411Homes": 5320,
+      "file": "site_nwe_011.jsonl.gz",
+      "anchorX": -2495407,
+      "anchorZ": 67659,
+      "bounds": [
+        -2498215,
+        -2492599,
+        64852,
+        70465
+      ]
+    },
+    {
+      "siteId": "site_nwe_012",
+      "name": "Qohor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 7980,
+      "indexedHomes": 3990,
+      "availableC411Homes": 3990,
+      "file": "site_nwe_012.jsonl.gz",
+      "anchorX": -1269825,
+      "anchorZ": 68707,
+      "bounds": [
+        -1272296,
+        -1267408,
+        66237,
+        71121
+      ]
+    },
+    {
+      "siteId": "site_nwe_013",
+      "name": "Vaes Khewo / Sarnath",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_015",
+      "name": "Ny Sar",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_016",
+      "name": "Ar Noy",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_001",
+      "name": "Vaes Efe",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_002",
+      "name": "Vaes Diaf / Hazdahn Mo",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_003",
+      "name": "Vaes Jini / Yinishar",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_004",
+      "name": "Vaes Mejhah",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_005",
+      "name": "Krazaaj Has / Ghardaq",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_006",
+      "name": "Adakhakileki",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_006.jsonl.gz",
+      "anchorX": 2150343,
+      "anchorZ": 733909,
+      "bounds": [
+        2149887,
+        2150799,
+        733454,
+        734197
+      ]
+    },
+    {
+      "siteId": "site_se_007",
+      "name": "Samyriana",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_007.jsonl.gz",
+      "anchorX": 2652921,
+      "anchorZ": 734658,
+      "bounds": [
+        2652465,
+        2653377,
+        734203,
+        735000
+      ]
+    },
+    {
+      "siteId": "site_se_008",
+      "name": "Meereen",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 11704,
+      "indexedHomes": 5852,
+      "availableC411Homes": 5852,
+      "file": "site_se_008.jsonl.gz",
+      "anchorX": 536298,
+      "anchorZ": 998690,
+      "bounds": [
+        533381,
+        539218,
+        995772,
+        1001608
+      ]
+    },
+    {
+      "siteId": "site_se_009",
+      "name": "Kosrak",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_009.jsonl.gz",
+      "anchorX": 1388746,
+      "anchorZ": 1014764,
+      "bounds": [
+        1388290,
+        1389202,
+        1014309,
+        1015052
+      ]
+    },
+    {
+      "siteId": "site_se_010",
+      "name": "Hesh",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_010.jsonl.gz",
+      "anchorX": 953823,
+      "anchorZ": 1017855,
+      "bounds": [
+        953367,
+        954279,
+        1017400,
+        1018143
+      ]
+    },
+    {
+      "siteId": "site_se_011",
+      "name": "Yunkai",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 9576,
+      "indexedHomes": 4788,
+      "availableC411Homes": 4788,
+      "file": "site_se_011.jsonl.gz",
+      "anchorX": 370061,
+      "anchorZ": 1155469,
+      "bounds": [
+        367422,
+        372701,
+        1152831,
+        1158053
+      ]
+    },
+    {
+      "siteId": "site_se_012",
+      "name": "Lhazosh",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 840,
+      "indexedHomes": 420,
+      "availableC411Homes": 420,
+      "file": "site_se_012.jsonl.gz",
+      "anchorX": 1131658,
+      "anchorZ": 1260576,
+      "bounds": [
+        1130922,
+        1132395,
+        1259841,
+        1261310
+      ]
+    },
+    {
+      "siteId": "site_se_013",
+      "name": "Bayasabhad",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_013.jsonl.gz",
+      "anchorX": 2867483,
+      "anchorZ": 1327533,
+      "bounds": [
+        2867027,
+        2867939,
+        1327078,
+        1327821
+      ]
+    },
+    {
+      "siteId": "site_se_014",
+      "name": "Vaes Tolorro",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_015",
+      "name": "Astapor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 9576,
+      "indexedHomes": 4788,
+      "availableC411Homes": 4788,
+      "file": "site_se_015.jsonl.gz",
+      "anchorX": 287909,
+      "anchorZ": 1557911,
+      "bounds": [
+        285270,
+        290549,
+        1555273,
+        1560495
+      ]
+    },
+    {
+      "siteId": "site_se_016",
+      "name": "Vaes Shirosi",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_017",
+      "name": "Vaes Qosar / Qolahn",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_018",
+      "name": "Vaes Orvik",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_019",
+      "name": "Qarkash",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_019.jsonl.gz",
+      "anchorX": 1855563,
+      "anchorZ": 1869674,
+      "bounds": [
+        1855107,
+        1856019,
+        1869219,
+        1869962
+      ]
+    },
+    {
+      "siteId": "site_se_020",
+      "name": "Asabhad",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_020.jsonl.gz",
+      "anchorX": 2900344,
+      "anchorZ": 1925324,
+      "bounds": [
+        2899888,
+        2900800,
+        1924869,
+        1925612
+      ]
+    },
+    {
+      "siteId": "site_se_021",
+      "name": "Port Yhos",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_021.jsonl.gz",
+      "anchorX": 1390679,
+      "anchorZ": 1947262,
+      "bounds": [
+        1390223,
+        1391135,
+        1946807,
+        1947604
+      ]
+    },
+    {
+      "siteId": "site_se_022",
+      "name": "Qarth",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 20214,
+      "indexedHomes": 10107,
+      "availableC411Homes": 10107,
+      "file": "site_se_022.jsonl.gz",
+      "anchorX": 2292419,
+      "anchorZ": 1969118,
+      "bounds": [
+        2288659,
+        2296180,
+        1965359,
+        1972876
+      ]
+    },
+    {
+      "siteId": "site_se_023",
+      "name": "Qal (harbor group)",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 314,
+      "indexedHomes": 157,
+      "availableC411Homes": 157,
+      "file": "site_se_023.jsonl.gz",
+      "anchorX": 2420962,
+      "anchorZ": 1991310,
+      "bounds": [
+        2420394,
+        2421367,
+        1990743,
+        1991710
+      ]
+    },
+    {
+      "siteId": "site_se_024",
+      "name": "Old Ghis",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_025",
+      "name": "East Qal (eastern harbor observation)",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 314,
+      "indexedHomes": 157,
+      "availableC411Homes": 157,
+      "file": "site_se_025.jsonl.gz",
+      "anchorX": 2553372,
+      "anchorZ": 2037684,
+      "bounds": [
+        2552804,
+        2553777,
+        2037117,
+        2038084
+      ]
+    },
+    {
+      "siteId": "site_se_026",
+      "name": "New Ghis",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 4584,
+      "indexedHomes": 2292,
+      "availableC411Homes": 2292,
+      "file": "site_se_026.jsonl.gz",
+      "anchorX": 462845,
+      "anchorZ": 2391666,
+      "bounds": [
+        461157,
+        464533,
+        2389979,
+        2393352
+      ]
+    },
+    {
+      "siteId": "site_se_027",
+      "name": "Faros",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_027.jsonl.gz",
+      "anchorX": 2177406,
+      "anchorZ": 2452829,
+      "bounds": [
+        2176950,
+        2177862,
+        2452374,
+        2453171
+      ]
+    },
+    {
+      "siteId": "site_se_028",
+      "name": "Vahar",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_028.jsonl.gz",
+      "anchorX": 2106852,
+      "anchorZ": 2690821,
+      "bounds": [
+        2106396,
+        2107308,
+        2690366,
+        2691109
+      ]
+    },
+    {
+      "siteId": "site_se_029",
+      "name": "Gorosh",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_029.jsonl.gz",
+      "anchorX": 1496994,
+      "anchorZ": 3023845,
+      "bounds": [
+        1496538,
+        1497450,
+        3023390,
+        3024133
+      ]
+    },
+    {
+      "siteId": "site_se_030",
+      "name": "Port Moraq",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_030.jsonl.gz",
+      "anchorX": 2672252,
+      "anchorZ": 3147151,
+      "bounds": [
+        2671796,
+        2672708,
+        3146696,
+        3147493
+      ]
+    },
+    {
+      "siteId": "site_se_031",
+      "name": "Zamettar",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_se_031.jsonl.gz",
+      "anchorX": 221221,
+      "anchorZ": 3169498,
+      "bounds": [
+        220765,
+        221677,
+        3169043,
+        3169840
+      ]
+    },
+    {
+      "siteId": "site_see_001",
+      "name": "City of the Winged Men (legendary)",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_see_002",
+      "name": "Carcosa",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_see_002.jsonl.gz",
+      "anchorX": 6003048,
+      "anchorZ": 1978634,
+      "bounds": [
+        6000297,
+        6005800,
+        1975884,
+        1981328
+      ]
+    },
+    {
+      "siteId": "site_see_003",
+      "name": "Jinqi",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_see_003.jsonl.gz",
+      "anchorX": 4399413,
+      "anchorZ": 2183678,
+      "bounds": [
+        4396662,
+        4402165,
+        2180928,
+        2186372
+      ]
+    },
+    {
+      "siteId": "site_see_004",
+      "name": "Leng Yi",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_see_004.jsonl.gz",
+      "anchorX": 4219505,
+      "anchorZ": 2351925,
+      "bounds": [
+        4219049,
+        4219961,
+        2351470,
+        2352213
+      ]
+    },
+    {
+      "siteId": "site_see_005",
+      "name": "Yin",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 24470,
+      "indexedHomes": 12235,
+      "availableC411Homes": 12235,
+      "file": "site_see_005.jsonl.gz",
+      "anchorX": 3462179,
+      "anchorZ": 2458313,
+      "bounds": [
+        3457972,
+        3466329,
+        2454107,
+        2462463
+      ]
+    },
+    {
+      "siteId": "site_see_006",
+      "name": "Leng Ma",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_see_006.jsonl.gz",
+      "anchorX": 4166293,
+      "anchorZ": 2668101,
+      "bounds": [
+        4165837,
+        4166749,
+        2667646,
+        2668389
+      ]
+    },
+    {
+      "siteId": "site_see_007",
+      "name": "Turrani",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_see_007.jsonl.gz",
+      "anchorX": 4178855,
+      "anchorZ": 2909825,
+      "bounds": [
+        4178399,
+        4179311,
+        2909370,
+        2910113
+      ]
+    },
+    {
+      "siteId": "site_see_008",
+      "name": "Ulos (island/ruin)",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_see_009",
+      "name": "Stygai (ruined)",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_see_010",
+      "name": "Asshai",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3100,
+      "indexedHomes": 1550,
+      "availableC411Homes": 1550,
+      "file": "site_see_010.jsonl.gz",
+      "anchorX": 4751413,
+      "anchorZ": 3480270,
+      "bounds": [
+        4750118,
+        4752598,
+        3478976,
+        3481456
+      ]
+    },
+    {
+      "siteId": "site_si_001",
+      "name": "Last Lament",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2084,
+      "indexedHomes": 1042,
+      "availableC411Homes": 1042,
+      "file": "site_si_001.jsonl.gz",
+      "anchorX": -2995387,
+      "anchorZ": 2514275,
+      "bounds": [
+        -2996571,
+        -2994203,
+        2513092,
+        2515293
+      ]
+    },
+    {
+      "siteId": "site_si_002",
+      "name": "Lotus Point (map labels Lotus Port)",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2084,
+      "indexedHomes": 1042,
+      "availableC411Homes": 1042,
+      "file": "site_si_002.jsonl.gz",
+      "anchorX": -2797227,
+      "anchorZ": 2655592,
+      "bounds": [
+        -2798411,
+        -2796043,
+        2654409,
+        2656610
+      ]
+    },
+    {
+      "siteId": "site_si_003",
+      "name": "Tall Trees Town",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2084,
+      "indexedHomes": 1042,
+      "availableC411Homes": 1042,
+      "file": "site_si_003.jsonl.gz",
+      "anchorX": -2570652,
+      "anchorZ": 2817097,
+      "bounds": [
+        -2571836,
+        -2569468,
+        2815914,
+        2818115
+      ]
+    },
+    {
+      "siteId": "site_si_004",
+      "name": "Ebonhead",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2084,
+      "indexedHomes": 1042,
+      "availableC411Homes": 1042,
+      "file": "site_si_004.jsonl.gz",
+      "anchorX": -2577438,
+      "anchorZ": 3787545,
+      "bounds": [
+        -2578622,
+        -2576254,
+        3786362,
+        3788563
+      ]
+    },
+    {
+      "siteId": "site_so_004",
+      "name": "Gogossos",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_so_005",
+      "name": "Yeen",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_001",
+      "name": "Seagard",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_001.jsonl.gz",
+      "anchorX": -4207698,
+      "anchorZ": -769839,
+      "bounds": [
+        -4209330,
+        -4206066,
+        -771470,
+        -768209
+      ]
+    },
+    {
+      "siteId": "site_sw_002",
+      "name": "Old Anchor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_002.jsonl.gz",
+      "anchorX": -3162034,
+      "anchorZ": -701057,
+      "bounds": [
+        -3162602,
+        -3161465,
+        -701624,
+        -700491
+      ]
+    },
+    {
+      "siteId": "site_sw_003",
+      "name": "The Eyrie",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 224,
+      "indexedHomes": 112,
+      "availableC411Homes": 112,
+      "file": "site_sw_003.jsonl.gz",
+      "anchorX": -3534527,
+      "anchorZ": -659944,
+      "bounds": [
+        -3535039,
+        -3534014,
+        -660455,
+        -659434
+      ]
+    },
+    {
+      "siteId": "site_sw_004",
+      "name": "Oldstones",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_005",
+      "name": "Ninestars Castle",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_005.jsonl.gz",
+      "anchorX": -3350527,
+      "anchorZ": -627798,
+      "bounds": [
+        -3351095,
+        -3349958,
+        -628365,
+        -627232
+      ]
+    },
+    {
+      "siteId": "site_sw_006",
+      "name": "Runestone",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_006.jsonl.gz",
+      "anchorX": -3108933,
+      "anchorZ": -607612,
+      "bounds": [
+        -3109501,
+        -3108364,
+        -608179,
+        -607046
+      ]
+    },
+    {
+      "siteId": "site_sw_007",
+      "name": "Bloody Gate",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 170,
+      "indexedHomes": 85,
+      "availableC411Homes": 85,
+      "file": "site_sw_007.jsonl.gz",
+      "anchorX": -3559961,
+      "anchorZ": -600139,
+      "bounds": [
+        -3560361,
+        -3559671,
+        -600538,
+        -599851
+      ]
+    },
+    {
+      "siteId": "site_sw_008",
+      "name": "Pyke",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_008.jsonl.gz",
+      "anchorX": -4771679,
+      "anchorZ": -594914,
+      "bounds": [
+        -4772303,
+        -4771168,
+        -595537,
+        -594456
+      ]
+    },
+    {
+      "siteId": "site_sw_009",
+      "name": "Fairmarket",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_009.jsonl.gz",
+      "anchorX": -4022958,
+      "anchorZ": -583696,
+      "bounds": [
+        -4024590,
+        -4021326,
+        -585327,
+        -582066
+      ]
+    },
+    {
+      "siteId": "site_sw_010",
+      "name": "Gulltown",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 4788,
+      "indexedHomes": 2394,
+      "availableC411Homes": 2394,
+      "file": "site_sw_010.jsonl.gz",
+      "anchorX": -3123895,
+      "anchorZ": -555283,
+      "bounds": [
+        -3125807,
+        -3121983,
+        -557194,
+        -553537
+      ]
+    },
+    {
+      "siteId": "site_sw_011",
+      "name": "Redfort",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_011.jsonl.gz",
+      "anchorX": -3399899,
+      "anchorZ": -513422,
+      "bounds": [
+        -3400467,
+        -3399330,
+        -513989,
+        -512856
+      ]
+    },
+    {
+      "siteId": "site_sw_012",
+      "name": "Banefort",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_012.jsonl.gz",
+      "anchorX": -4689407,
+      "anchorZ": -510439,
+      "bounds": [
+        -4689975,
+        -4688838,
+        -511006,
+        -509873
+      ]
+    },
+    {
+      "siteId": "site_sw_013",
+      "name": "Kneeling Man's Inn",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 32,
+      "indexedHomes": 16,
+      "availableC411Homes": 16,
+      "file": "site_sw_013.jsonl.gz",
+      "anchorX": -4085045,
+      "anchorZ": -490999,
+      "bounds": [
+        -4085333,
+        -4084922,
+        -491286,
+        -490881
+      ]
+    },
+    {
+      "siteId": "site_sw_014",
+      "name": "Crossroads Inn",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 32,
+      "indexedHomes": 16,
+      "availableC411Homes": 16,
+      "file": "site_sw_014.jsonl.gz",
+      "anchorX": -3803809,
+      "anchorZ": -447639,
+      "bounds": [
+        -3804097,
+        -3803686,
+        -447926,
+        -447521
+      ]
+    },
+    {
+      "siteId": "site_sw_015",
+      "name": "Riverrun",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_015.jsonl.gz",
+      "anchorX": -4224171,
+      "anchorZ": -427458,
+      "bounds": [
+        -4224739,
+        -4223602,
+        -428025,
+        -426892
+      ]
+    },
+    {
+      "siteId": "site_sw_016",
+      "name": "Lord Harroway's Town",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_016.jsonl.gz",
+      "anchorX": -3838217,
+      "anchorZ": -419232,
+      "bounds": [
+        -3839849,
+        -3836585,
+        -420863,
+        -417602
+      ]
+    },
+    {
+      "siteId": "site_sw_017",
+      "name": "Saltpans",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 522,
+      "indexedHomes": 261,
+      "availableC411Homes": 261,
+      "file": "site_sw_017.jsonl.gz",
+      "anchorX": -3640006,
+      "anchorZ": -378115,
+      "bounds": [
+        -3640686,
+        -3639439,
+        -378794,
+        -377601
+      ]
+    },
+    {
+      "siteId": "site_sw_018",
+      "name": "The Crag",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_018.jsonl.gz",
+      "anchorX": -4702130,
+      "anchorZ": -366908,
+      "bounds": [
+        -4702698,
+        -4701561,
+        -367475,
+        -366342
+      ]
+    },
+    {
+      "siteId": "site_sw_019",
+      "name": "Wickenden",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_019.jsonl.gz",
+      "anchorX": -3366997,
+      "anchorZ": -351202,
+      "bounds": [
+        -3368629,
+        -3365365,
+        -352833,
+        -349572
+      ]
+    },
+    {
+      "siteId": "site_sw_020",
+      "name": "Harrenhal",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 246,
+      "indexedHomes": 123,
+      "availableC411Homes": 123,
+      "file": "site_sw_020.jsonl.gz",
+      "anchorX": -3842710,
+      "anchorZ": -319807,
+      "bounds": [
+        -3843222,
+        -3842197,
+        -320318,
+        -319297
+      ]
+    },
+    {
+      "siteId": "site_sw_021",
+      "name": "Quiet Isle",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 34,
+      "indexedHomes": 17,
+      "availableC411Homes": 17,
+      "file": "site_sw_021.jsonl.gz",
+      "anchorX": -3622058,
+      "anchorZ": -315320,
+      "bounds": [
+        -3622236,
+        -3621884,
+        -315494,
+        -315202
+      ]
+    },
+    {
+      "siteId": "site_sw_022",
+      "name": "Ashemark",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_022.jsonl.gz",
+      "anchorX": -4616117,
+      "anchorZ": -289909,
+      "bounds": [
+        -4616685,
+        -4615548,
+        -290476,
+        -289343
+      ]
+    },
+    {
+      "siteId": "site_sw_023",
+      "name": "Acorn Hall",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_024",
+      "name": "Faircastle",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_024.jsonl.gz",
+      "anchorX": -4838266,
+      "anchorZ": -272717,
+      "bounds": [
+        -4838834,
+        -4837697,
+        -273284,
+        -272151
+      ]
+    },
+    {
+      "siteId": "site_sw_025",
+      "name": "Golden Tooth",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_025.jsonl.gz",
+      "anchorX": -4478491,
+      "anchorZ": -264491,
+      "bounds": [
+        -4479059,
+        -4477922,
+        -265058,
+        -263925
+      ]
+    },
+    {
+      "siteId": "site_sw_026",
+      "name": "Maidenpool",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_026.jsonl.gz",
+      "anchorX": -3539784,
+      "anchorZ": -260001,
+      "bounds": [
+        -3541416,
+        -3538152,
+        -261632,
+        -258479
+      ]
+    },
+    {
+      "siteId": "site_sw_027",
+      "name": "Pinkmaiden Castle",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_027.jsonl.gz",
+      "anchorX": -4256345,
+      "anchorZ": -229355,
+      "bounds": [
+        -4256913,
+        -4255776,
+        -229922,
+        -228789
+      ]
+    },
+    {
+      "siteId": "site_sw_028",
+      "name": "Sarsfield",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_028.jsonl.gz",
+      "anchorX": -4640805,
+      "anchorZ": -192727,
+      "bounds": [
+        -4641373,
+        -4640236,
+        -193294,
+        -192161
+      ]
+    },
+    {
+      "siteId": "site_sw_029",
+      "name": "Rook's Rest",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_029.jsonl.gz",
+      "anchorX": -3403657,
+      "anchorZ": -188234,
+      "bounds": [
+        -3404225,
+        -3403088,
+        -188801,
+        -187668
+      ]
+    },
+    {
+      "siteId": "site_sw_030",
+      "name": "Antlers",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_030.jsonl.gz",
+      "anchorX": -3651237,
+      "anchorZ": -166557,
+      "bounds": [
+        -3651805,
+        -3650668,
+        -167124,
+        -165991
+      ]
+    },
+    {
+      "siteId": "site_sw_031",
+      "name": "Hornvale",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_031.jsonl.gz",
+      "anchorX": -4475505,
+      "anchorZ": -152358,
+      "bounds": [
+        -4476073,
+        -4474936,
+        -152925,
+        -151792
+      ]
+    },
+    {
+      "siteId": "site_sw_032",
+      "name": "Dragonstone",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 182,
+      "indexedHomes": 91,
+      "availableC411Homes": 91,
+      "file": "site_sw_032.jsonl.gz",
+      "anchorX": -3215917,
+      "anchorZ": -147117,
+      "bounds": [
+        -3216429,
+        -3215568,
+        -147628,
+        -146771
+      ]
+    },
+    {
+      "siteId": "site_sw_033",
+      "name": "Stoney Sept",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_033.jsonl.gz",
+      "anchorX": -4138170,
+      "anchorZ": -136657,
+      "bounds": [
+        -4139802,
+        -4136538,
+        -138288,
+        -135027
+      ]
+    },
+    {
+      "siteId": "site_sw_035",
+      "name": "Driftmark",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_035.jsonl.gz",
+      "anchorX": -3278749,
+      "anchorZ": -109740,
+      "bounds": [
+        -3279373,
+        -3278238,
+        -110363,
+        -109282
+      ]
+    },
+    {
+      "siteId": "site_sw_036",
+      "name": "Deep Den",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_036.jsonl.gz",
+      "anchorX": -4467281,
+      "anchorZ": -92553,
+      "bounds": [
+        -4467849,
+        -4466712,
+        -93120,
+        -91987
+      ]
+    },
+    {
+      "siteId": "site_sw_037",
+      "name": "Kayce",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_037.jsonl.gz",
+      "anchorX": -4948976,
+      "anchorZ": -88071,
+      "bounds": [
+        -4949544,
+        -4948407,
+        -88638,
+        -87505
+      ]
+    },
+    {
+      "siteId": "site_sw_038",
+      "name": "Casterly Rock",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 586,
+      "indexedHomes": 293,
+      "availableC411Homes": 293,
+      "file": "site_sw_038.jsonl.gz",
+      "anchorX": -4788910,
+      "anchorZ": -86574,
+      "bounds": [
+        -4789643,
+        -4788174,
+        -87308,
+        -85840
+      ]
+    },
+    {
+      "siteId": "site_sw_039",
+      "name": "Duskendale",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_039.jsonl.gz",
+      "anchorX": -3511371,
+      "anchorZ": -66383,
+      "bounds": [
+        -3513003,
+        -3509739,
+        -68014,
+        -64861
+      ]
+    },
+    {
+      "siteId": "site_sw_040",
+      "name": "Feastfires",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_040.jsonl.gz",
+      "anchorX": -4994604,
+      "anchorZ": -64897,
+      "bounds": [
+        -4995172,
+        -4994035,
+        -65464,
+        -64331
+      ]
+    },
+    {
+      "siteId": "site_sw_041",
+      "name": "Lannisport",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 14362,
+      "indexedHomes": 7181,
+      "availableC411Homes": 7181,
+      "file": "site_sw_041.jsonl.gz",
+      "anchorX": -4791904,
+      "anchorZ": -32750,
+      "bounds": [
+        -4795104,
+        -4788704,
+        -35949,
+        -29552
+      ]
+    },
+    {
+      "siteId": "site_sw_042",
+      "name": "Sharp Point",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_042.jsonl.gz",
+      "anchorX": -3221160,
+      "anchorZ": -17042,
+      "bounds": [
+        -3221728,
+        -3220591,
+        -17609,
+        -16476
+      ]
+    },
+    {
+      "siteId": "site_sw_043",
+      "name": "Silverhill",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_043.jsonl.gz",
+      "anchorX": -4477011,
+      "anchorZ": 37522,
+      "bounds": [
+        -4477579,
+        -4476442,
+        36955,
+        38088
+      ]
+    },
+    {
+      "siteId": "site_sw_044",
+      "name": "Stonedance",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_044.jsonl.gz",
+      "anchorX": -3180773,
+      "anchorZ": 41267,
+      "bounds": [
+        -3181341,
+        -3180204,
+        40700,
+        41833
+      ]
+    },
+    {
+      "siteId": "site_sw_045",
+      "name": "Rosby",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_045.jsonl.gz",
+      "anchorX": -3620581,
+      "anchorZ": 42760,
+      "bounds": [
+        -3621149,
+        -3620012,
+        42193,
+        43326
+      ]
+    },
+    {
+      "siteId": "site_sw_046",
+      "name": "King's Landing",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 53192,
+      "indexedHomes": 26596,
+      "availableC411Homes": 26596,
+      "file": "site_sw_046.jsonl.gz",
+      "anchorX": -3677431,
+      "anchorZ": 105554,
+      "bounds": [
+        -3683542,
+        -3671319,
+        99444,
+        111608
+      ]
+    },
+    {
+      "siteId": "site_sw_047",
+      "name": "Cornfield",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_047.jsonl.gz",
+      "anchorX": -4694678,
+      "anchorZ": 158625,
+      "bounds": [
+        -4695246,
+        -4694109,
+        158058,
+        159191
+      ]
+    },
+    {
+      "siteId": "site_sw_048",
+      "name": "Crakehall",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_048.jsonl.gz",
+      "anchorX": -4898877,
+      "anchorZ": 203477,
+      "bounds": [
+        -4899445,
+        -4898308,
+        202910,
+        204043
+      ]
+    },
+    {
+      "siteId": "site_sw_049",
+      "name": "Tumbleton",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_049.jsonl.gz",
+      "anchorX": -3897342,
+      "anchorZ": 241609,
+      "bounds": [
+        -3898974,
+        -3895710,
+        239978,
+        243239
+      ]
+    },
+    {
+      "siteId": "site_sw_050",
+      "name": "Red Lake",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_050.jsonl.gz",
+      "anchorX": -4664018,
+      "anchorZ": 291690,
+      "bounds": [
+        -4664586,
+        -4663449,
+        291123,
+        292256
+      ]
+    },
+    {
+      "siteId": "site_sw_051",
+      "name": "Goldengrove",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_051.jsonl.gz",
+      "anchorX": -4471044,
+      "anchorZ": 347011,
+      "bounds": [
+        -4471612,
+        -4470475,
+        346444,
+        347577
+      ]
+    },
+    {
+      "siteId": "site_sw_052",
+      "name": "Haystack Hall",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_052.jsonl.gz",
+      "anchorX": -3376758,
+      "anchorZ": 347017,
+      "bounds": [
+        -3377326,
+        -3376189,
+        346450,
+        347583
+      ]
+    },
+    {
+      "siteId": "site_sw_053",
+      "name": "Bitterbridge",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_053.jsonl.gz",
+      "anchorX": -4107529,
+      "anchorZ": 356731,
+      "bounds": [
+        -4108097,
+        -4106960,
+        356164,
+        357297
+      ]
+    },
+    {
+      "siteId": "site_sw_054",
+      "name": "Bronzegate",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_054.jsonl.gz",
+      "anchorX": -3401444,
+      "anchorZ": 393366,
+      "bounds": [
+        -3402012,
+        -3400875,
+        392799,
+        393932
+      ]
+    },
+    {
+      "siteId": "site_sw_055",
+      "name": "Felwood",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_055.jsonl.gz",
+      "anchorX": -3524861,
+      "anchorZ": 421025,
+      "bounds": [
+        -3525429,
+        -3524292,
+        420458,
+        421591
+      ]
+    },
+    {
+      "siteId": "site_sw_056",
+      "name": "Grassy Vale",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_056.jsonl.gz",
+      "anchorX": -3934751,
+      "anchorZ": 425508,
+      "bounds": [
+        -3935319,
+        -3934182,
+        424941,
+        426074
+      ]
+    },
+    {
+      "siteId": "site_sw_057",
+      "name": "Old Oak",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_057.jsonl.gz",
+      "anchorX": -4814369,
+      "anchorZ": 442696,
+      "bounds": [
+        -4816001,
+        -4812737,
+        441065,
+        444326
+      ]
+    },
+    {
+      "siteId": "site_sw_058",
+      "name": "Evenfall Hall",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_058.jsonl.gz",
+      "anchorX": -3111982,
+      "anchorZ": 470366,
+      "bounds": [
+        -3112550,
+        -3111413,
+        469799,
+        470932
+      ]
+    },
+    {
+      "siteId": "site_sw_059",
+      "name": "Longtable",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_059.jsonl.gz",
+      "anchorX": -4183081,
+      "anchorZ": 478583,
+      "bounds": [
+        -4183649,
+        -4182512,
+        478016,
+        479149
+      ]
+    },
+    {
+      "siteId": "site_sw_060",
+      "name": "Storm's End",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 426,
+      "indexedHomes": 213,
+      "availableC411Homes": 213,
+      "file": "site_sw_060.jsonl.gz",
+      "anchorX": -3306457,
+      "anchorZ": 515218,
+      "bounds": [
+        -3307136,
+        -3305832,
+        514540,
+        515842
+      ]
+    },
+    {
+      "siteId": "site_sw_061",
+      "name": "Cider Hall",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_061.jsonl.gz",
+      "anchorX": -4307250,
+      "anchorZ": 577260,
+      "bounds": [
+        -4307818,
+        -4306681,
+        576693,
+        577826
+      ]
+    },
+    {
+      "siteId": "site_sw_062",
+      "name": "Griffin's Roost",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_062.jsonl.gz",
+      "anchorX": -3408933,
+      "anchorZ": 585488,
+      "bounds": [
+        -3409501,
+        -3408364,
+        584921,
+        586054
+      ]
+    },
+    {
+      "siteId": "site_sw_063",
+      "name": "Summerhall",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_064",
+      "name": "Ashford",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_064.jsonl.gz",
+      "anchorX": -4132225,
+      "anchorZ": 604173,
+      "bounds": [
+        -4132793,
+        -4131656,
+        603606,
+        604739
+      ]
+    },
+    {
+      "siteId": "site_sw_065",
+      "name": "Rain House",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_065.jsonl.gz",
+      "anchorX": -3106756,
+      "anchorZ": 663236,
+      "bounds": [
+        -3107324,
+        -3106187,
+        662669,
+        663802
+      ]
+    },
+    {
+      "siteId": "site_sw_066",
+      "name": "Crow's Nest",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_066.jsonl.gz",
+      "anchorX": -3483736,
+      "anchorZ": 675194,
+      "bounds": [
+        -3484304,
+        -3483167,
+        674627,
+        675760
+      ]
+    },
+    {
+      "siteId": "site_sw_067",
+      "name": "Highgarden",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 852,
+      "indexedHomes": 426,
+      "availableC411Homes": 426,
+      "file": "site_sw_067.jsonl.gz",
+      "anchorX": -4497989,
+      "anchorZ": 681917,
+      "bounds": [
+        -4498837,
+        -4497141,
+        681070,
+        682763
+      ]
+    },
+    {
+      "siteId": "site_sw_068",
+      "name": "Stonehelm",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_068.jsonl.gz",
+      "anchorX": -3568261,
+      "anchorZ": 751445,
+      "bounds": [
+        -3569893,
+        -3566629,
+        749814,
+        753075
+      ]
+    },
+    {
+      "siteId": "site_sw_069",
+      "name": "Mistwood",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_069.jsonl.gz",
+      "anchorX": -3287772,
+      "anchorZ": 776863,
+      "bounds": [
+        -3288340,
+        -3287203,
+        776296,
+        777429
+      ]
+    },
+    {
+      "siteId": "site_sw_070",
+      "name": "Blackhaven",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_070.jsonl.gz",
+      "anchorX": -3942998,
+      "anchorZ": 788073,
+      "bounds": [
+        -3943566,
+        -3942429,
+        787506,
+        788639
+      ]
+    },
+    {
+      "siteId": "site_sw_071",
+      "name": "Nightsong",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_071.jsonl.gz",
+      "anchorX": -4206285,
+      "anchorZ": 797790,
+      "bounds": [
+        -4206853,
+        -4205716,
+        797223,
+        798356
+      ]
+    },
+    {
+      "siteId": "site_sw_072",
+      "name": "Bandallon",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_072.jsonl.gz",
+      "anchorX": -4916113,
+      "anchorZ": 818717,
+      "bounds": [
+        -4916681,
+        -4915544,
+        818150,
+        819283
+      ]
+    },
+    {
+      "siteId": "site_sw_073",
+      "name": "Castle Clearwater",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_073.jsonl.gz",
+      "anchorX": -4759787,
+      "anchorZ": 820961,
+      "bounds": [
+        -4760355,
+        -4759218,
+        820394,
+        821527
+      ]
+    },
+    {
+      "siteId": "site_sw_074",
+      "name": "Greenstone",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_074.jsonl.gz",
+      "anchorX": -3138928,
+      "anchorZ": 831436,
+      "bounds": [
+        -3139496,
+        -3138359,
+        830869,
+        832002
+      ]
+    },
+    {
+      "siteId": "site_sw_075",
+      "name": "Wyl",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_075.jsonl.gz",
+      "anchorX": -3800885,
+      "anchorZ": 843393,
+      "bounds": [
+        -3801453,
+        -3800316,
+        842826,
+        843959
+      ]
+    },
+    {
+      "siteId": "site_sw_076",
+      "name": "Weeping Town",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 3512,
+      "indexedHomes": 1756,
+      "availableC411Homes": 1756,
+      "file": "site_sw_076.jsonl.gz",
+      "anchorX": -3283289,
+      "anchorZ": 871056,
+      "bounds": [
+        -3284921,
+        -3281657,
+        869425,
+        872686
+      ]
+    },
+    {
+      "siteId": "site_sw_077",
+      "name": "Vulture's Roost",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_077.jsonl.gz",
+      "anchorX": -4010320,
+      "anchorZ": 874042,
+      "bounds": [
+        -4010888,
+        -4009751,
+        873475,
+        874608
+      ]
+    },
+    {
+      "siteId": "site_sw_078",
+      "name": "Tower of Joy",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_079",
+      "name": "Honeyholt",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_079.jsonl.gz",
+      "anchorX": -4737353,
+      "anchorZ": 919639,
+      "bounds": [
+        -4737921,
+        -4736784,
+        919072,
+        920205
+      ]
+    },
+    {
+      "siteId": "site_sw_080",
+      "name": "Kingsgrave",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_080.jsonl.gz",
+      "anchorX": -4138975,
+      "anchorZ": 945059,
+      "bounds": [
+        -4139543,
+        -4138406,
+        944492,
+        945625
+      ]
+    },
+    {
+      "siteId": "site_sw_081",
+      "name": "Ghaston Grey",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_081.jsonl.gz",
+      "anchorX": -3703656,
+      "anchorZ": 986925,
+      "bounds": [
+        -3704224,
+        -3703087,
+        986358,
+        987491
+      ]
+    },
+    {
+      "siteId": "site_sw_082",
+      "name": "Blackmont",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_082.jsonl.gz",
+      "anchorX": -4367858,
+      "anchorZ": 1001124,
+      "bounds": [
+        -4368426,
+        -4367289,
+        1000557,
+        1001690
+      ]
+    },
+    {
+      "siteId": "site_sw_083",
+      "name": "Uplands",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_083.jsonl.gz",
+      "anchorX": -4634137,
+      "anchorZ": 1004113,
+      "bounds": [
+        -4634705,
+        -4633568,
+        1003546,
+        1004679
+      ]
+    },
+    {
+      "siteId": "site_sw_084",
+      "name": "Oldtown",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 22342,
+      "indexedHomes": 11171,
+      "availableC411Homes": 11171,
+      "file": "site_sw_084.jsonl.gz",
+      "anchorX": -4785228,
+      "anchorZ": 1007850,
+      "bounds": [
+        -4789212,
+        -4781243,
+        1003867,
+        1011832
+      ]
+    },
+    {
+      "siteId": "site_sw_085",
+      "name": "Skyreach",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_085.jsonl.gz",
+      "anchorX": -4123272,
+      "anchorZ": 1034766,
+      "bounds": [
+        -4123840,
+        -4122703,
+        1034199,
+        1035332
+      ]
+    },
+    {
+      "siteId": "site_sw_086",
+      "name": "Yronwood",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_086.jsonl.gz",
+      "anchorX": -3868214,
+      "anchorZ": 1057942,
+      "bounds": [
+        -3868782,
+        -3867645,
+        1057375,
+        1058508
+      ]
+    },
+    {
+      "siteId": "site_sw_087",
+      "name": "Blackcrown",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_087.jsonl.gz",
+      "anchorX": -4925851,
+      "anchorZ": 1075877,
+      "bounds": [
+        -4926419,
+        -4925282,
+        1075310,
+        1076443
+      ]
+    },
+    {
+      "siteId": "site_sw_088",
+      "name": "High Hermitage",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_088.jsonl.gz",
+      "anchorX": -4381327,
+      "anchorZ": 1100550,
+      "bounds": [
+        -4381895,
+        -4380758,
+        1099983,
+        1101116
+      ]
+    },
+    {
+      "siteId": "site_sw_089",
+      "name": "Ghost Hill",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_089.jsonl.gz",
+      "anchorX": -3195790,
+      "anchorZ": 1129711,
+      "bounds": [
+        -3196358,
+        -3195221,
+        1129144,
+        1130277
+      ]
+    },
+    {
+      "siteId": "site_sw_090",
+      "name": "The Tor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_090.jsonl.gz",
+      "anchorX": -3534622,
+      "anchorZ": 1131204,
+      "bounds": [
+        -3535190,
+        -3534053,
+        1130637,
+        1131770
+      ]
+    },
+    {
+      "siteId": "site_sw_091",
+      "name": "Three Towers",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_091.jsonl.gz",
+      "anchorX": -4873496,
+      "anchorZ": 1143905,
+      "bounds": [
+        -4874064,
+        -4872927,
+        1143338,
+        1144471
+      ]
+    },
+    {
+      "siteId": "site_sw_092",
+      "name": "Starfall",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_092.jsonl.gz",
+      "anchorX": -4467347,
+      "anchorZ": 1164839,
+      "bounds": [
+        -4467915,
+        -4466778,
+        1164272,
+        1165405
+      ]
+    },
+    {
+      "siteId": "site_sw_093",
+      "name": "Godsgrace",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_093.jsonl.gz",
+      "anchorX": -3511441,
+      "anchorZ": 1256794,
+      "bounds": [
+        -3512009,
+        -3510872,
+        1256227,
+        1257360
+      ]
+    },
+    {
+      "siteId": "site_sw_094",
+      "name": "Water Gardens",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 140,
+      "indexedHomes": 70,
+      "availableC411Homes": 70,
+      "file": "site_sw_094.jsonl.gz",
+      "anchorX": -3149423,
+      "anchorZ": 1265767,
+      "bounds": [
+        -3149823,
+        -3149135,
+        1265368,
+        1266000
+      ]
+    },
+    {
+      "siteId": "site_sw_095",
+      "name": "Sunspear",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 692,
+      "indexedHomes": 346,
+      "availableC411Homes": 346,
+      "file": "site_sw_095.jsonl.gz",
+      "anchorX": -3107537,
+      "anchorZ": 1288942,
+      "bounds": [
+        -3108328,
+        -3106745,
+        1288153,
+        1289732
+      ]
+    },
+    {
+      "siteId": "site_sw_096",
+      "name": "Hellholt",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_096.jsonl.gz",
+      "anchorX": -4024553,
+      "anchorZ": 1292674,
+      "bounds": [
+        -4025121,
+        -4023984,
+        1292107,
+        1293240
+      ]
+    },
+    {
+      "siteId": "site_sw_097",
+      "name": "Vaith",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_097.jsonl.gz",
+      "anchorX": -3711153,
+      "anchorZ": 1294918,
+      "bounds": [
+        -3711721,
+        -3710584,
+        1294351,
+        1295484
+      ]
+    },
+    {
+      "siteId": "site_sw_098",
+      "name": "Sandstone",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_098.jsonl.gz",
+      "anchorX": -4248946,
+      "anchorZ": 1295663,
+      "bounds": [
+        -4249514,
+        -4248377,
+        1295096,
+        1296229
+      ]
+    },
+    {
+      "siteId": "site_sw_099",
+      "name": "North Arbor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 880,
+      "indexedHomes": 440,
+      "availableC411Homes": 440,
+      "file": "site_sw_099.jsonl.gz",
+      "anchorX": -5042546,
+      "anchorZ": 1300144,
+      "bounds": [
+        -5043282,
+        -5041809,
+        1299409,
+        1300878
+      ]
+    },
+    {
+      "siteId": "site_sw_100",
+      "name": "Sunhouse",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_100.jsonl.gz",
+      "anchorX": -4673047,
+      "anchorZ": 1300146,
+      "bounds": [
+        -4673615,
+        -4672478,
+        1299579,
+        1300712
+      ]
+    },
+    {
+      "siteId": "site_sw_101",
+      "name": "Central Arbor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 880,
+      "indexedHomes": 440,
+      "availableC411Homes": 440,
+      "file": "site_sw_101.jsonl.gz",
+      "anchorX": -4996175,
+      "anchorZ": 1350230,
+      "bounds": [
+        -4996911,
+        -4995438,
+        1349495,
+        1350964
+      ]
+    },
+    {
+      "siteId": "site_sw_102",
+      "name": "Lemonwood",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_102.jsonl.gz",
+      "anchorX": -3233948,
+      "anchorZ": 1352483,
+      "bounds": [
+        -3234516,
+        -3233379,
+        1351916,
+        1353049
+      ]
+    },
+    {
+      "siteId": "site_sw_103",
+      "name": "Salt Shore",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 438,
+      "indexedHomes": 219,
+      "availableC411Homes": 219,
+      "file": "site_sw_103.jsonl.gz",
+      "anchorX": -3512944,
+      "anchorZ": 1385374,
+      "bounds": [
+        -3513512,
+        -3512375,
+        1384807,
+        1385940
+      ]
+    },
+    {
+      "siteId": "site_sw_104",
+      "name": "South Arbor",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 880,
+      "indexedHomes": 440,
+      "availableC411Homes": 440,
+      "file": "site_sw_104.jsonl.gz",
+      "anchorX": -4959526,
+      "anchorZ": 1389851,
+      "bounds": [
+        -4960262,
+        -4958789,
+        1389116,
+        1390585
+      ]
+    },
+    {
+      "siteId": "site_swe_001",
+      "name": "The Sorrows",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_swe_002",
+      "name": "Myr",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_swe_002.jsonl.gz",
+      "anchorX": -2276968,
+      "anchorZ": 717333,
+      "bounds": [
+        -2279664,
+        -2274272,
+        714638,
+        720027
+      ]
+    },
+    {
+      "siteId": "site_swe_003",
+      "name": "Tyrosh",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_swe_003.jsonl.gz",
+      "anchorX": -2760881,
+      "anchorZ": 802981,
+      "bounds": [
+        -2763577,
+        -2758185,
+        800286,
+        805675
+      ]
+    },
+    {
+      "siteId": "site_swe_004",
+      "name": "Selhorys",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2554,
+      "indexedHomes": 1277,
+      "availableC411Homes": 1277,
+      "file": "site_swe_004.jsonl.gz",
+      "anchorX": -1608862,
+      "anchorZ": 976082,
+      "bounds": [
+        -1610270,
+        -1607454,
+        974675,
+        977488
+      ]
+    },
+    {
+      "siteId": "site_swe_005",
+      "name": "Bhorash",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_swe_006",
+      "name": "Valysar",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2554,
+      "indexedHomes": 1277,
+      "availableC411Homes": 1277,
+      "file": "site_swe_006.jsonl.gz",
+      "anchorX": -1637742,
+      "anchorZ": 1125397,
+      "bounds": [
+        -1639150,
+        -1636334,
+        1123990,
+        1126803
+      ]
+    },
+    {
+      "siteId": "site_swe_007",
+      "name": "Mantarys",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 1460,
+      "indexedHomes": 730,
+      "availableC411Homes": 730,
+      "file": "site_swe_007.jsonl.gz",
+      "anchorX": -590267,
+      "anchorZ": 1202948,
+      "bounds": [
+        -591283,
+        -589251,
+        1201933,
+        1203798
+      ]
+    },
+    {
+      "siteId": "site_swe_008",
+      "name": "Sar Mell",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_008.jsonl.gz",
+      "anchorX": -1525230,
+      "anchorZ": 1209997,
+      "bounds": [
+        -1525686,
+        -1524774,
+        1209542,
+        1210285
+      ]
+    },
+    {
+      "siteId": "site_swe_009",
+      "name": "Volon Therys",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 2554,
+      "indexedHomes": 1277,
+      "availableC411Homes": 1277,
+      "file": "site_swe_009.jsonl.gz",
+      "anchorX": -1570038,
+      "anchorZ": 1261763,
+      "bounds": [
+        -1571446,
+        -1568630,
+        1260356,
+        1263169
+      ]
+    },
+    {
+      "siteId": "site_swe_010",
+      "name": "Lys",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 10108,
+      "indexedHomes": 5054,
+      "availableC411Homes": 5054,
+      "file": "site_swe_010.jsonl.gz",
+      "anchorX": -2467165,
+      "anchorZ": 1296681,
+      "bounds": [
+        -2469861,
+        -2464469,
+        1293986,
+        1299375
+      ]
+    },
+    {
+      "siteId": "site_swe_011",
+      "name": "Volantis",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 27660,
+      "indexedHomes": 13830,
+      "availableC411Homes": 13830,
+      "file": "site_swe_011.jsonl.gz",
+      "anchorX": -1405749,
+      "anchorZ": 1311519,
+      "bounds": [
+        -1410180,
+        -1401317,
+        1307089,
+        1315893
+      ]
+    },
+    {
+      "siteId": "site_swe_014",
+      "name": "Tolos",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_014.jsonl.gz",
+      "anchorX": -316454,
+      "anchorZ": 1355222,
+      "bounds": [
+        -316910,
+        -315998,
+        1354767,
+        1355510
+      ]
+    },
+    {
+      "siteId": "site_swe_015",
+      "name": "Elyria",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_015.jsonl.gz",
+      "anchorX": -473776,
+      "anchorZ": 1375144,
+      "bounds": [
+        -474232,
+        -473320,
+        1374689,
+        1375432
+      ]
+    },
+    {
+      "siteId": "site_swe_016",
+      "name": "Ghozai",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_016.jsonl.gz",
+      "anchorX": -157149,
+      "anchorZ": 1561259,
+      "bounds": [
+        -157605,
+        -156693,
+        1560804,
+        1561547
+      ]
+    },
+    {
+      "siteId": "site_swe_017",
+      "name": "Velos",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_017.jsonl.gz",
+      "anchorX": -112348,
+      "anchorZ": 1748393,
+      "bounds": [
+        -112804,
+        -111892,
+        1747938,
+        1748681
+      ]
+    },
+    {
+      "siteId": "site_swe_018",
+      "name": "Oros",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_018.jsonl.gz",
+      "anchorX": -645052,
+      "anchorZ": 1887797,
+      "bounds": [
+        -645508,
+        -644596,
+        1887342,
+        1888085
+      ]
+    },
+    {
+      "siteId": "site_swe_019",
+      "name": "Tyria",
+      "status": "PLANNED_HOUSE_CANDIDATES",
+      "projectedCandidates": 220,
+      "indexedHomes": 110,
+      "availableC411Homes": 110,
+      "file": "site_swe_019.jsonl.gz",
+      "anchorX": -709778,
+      "anchorZ": 2048064,
+      "bounds": [
+        -710234,
+        -709322,
+        2047609,
+        2048352
+      ]
+    },
+    {
+      "siteId": "site_swe_020",
+      "name": "Valyria",
+      "status": "NOT_GLOBAL_C411_HOUSE_PROJECTION",
+      "projectedCandidates": 0,
+      "indexedHomes": 0,
+      "file": null
+    }
+  ]
+}

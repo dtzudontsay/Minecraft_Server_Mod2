@@ -5,6 +5,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.dtzudontsay.knownworld.world.data.GeographicDataManager;
 import dev.dtzudontsay.knownworld.world.generation.settlement.WinterfellWorldgenV3;
 import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldUniversalWorldgenC2;
+import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldC410BPreviewWorldgen;
+import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldC411GlobalWorldgen;
 import dev.dtzudontsay.knownworld.world.geography.WorldCoordinate;
 import dev.dtzudontsay.knownworld.world.geography.WorldProjection;
 import dev.dtzudontsay.knownworld.world.geography.raster.KnownWorldGeoSample;
@@ -687,7 +689,9 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         boolean winterfellEstate = Math.abs(x - (-4_050_173L)) <= 4_200L
                 && Math.abs(z - (-1_976_496L)) <= 4_200L;
         if (winterfellEstate && !allowVanillaStructuresAtWinterfell) return;
-        if (KnownWorldUniversalWorldgenC2.suppressVanillaStructures(centerChunk)) return;
+        if (KnownWorldUniversalWorldgenC2.suppressVanillaStructures(centerChunk)
+                || KnownWorldC410BPreviewWorldgen.suppressVanillaStructures(centerChunk)
+                || KnownWorldC411GlobalWorldgen.suppressVanillaStructures(centerChunk)) return;
         super.createStructures(registryAccess,state,structureManager,
                 centerChunk,structureTemplateManager,level);
     }
@@ -715,7 +719,9 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         // trees/lava lakes from this or adjacent biome-decoration passes.
         // The V3 overlay still runs immediately after this conditional.
         if (!WinterfellWorldgenV3.suppressNaturalDecoration(chunk)
-                && !KnownWorldUniversalWorldgenC2.suppressNaturalDecoration(chunk)) {
+                && !KnownWorldUniversalWorldgenC2.suppressNaturalDecoration(chunk)
+                && !KnownWorldC410BPreviewWorldgen.suppressNaturalDecoration(chunk)
+                && !KnownWorldC411GlobalWorldgen.suppressNaturalDecoration(chunk)) {
             super.applyBiomeDecoration(
                     level,
                     chunk,
@@ -726,6 +732,8 @@ public final class KnownWorldChunkGenerator extends ChunkGenerator {
         // Chunk-local, deterministic Winterfell V3 settlement construction.
         WinterfellWorldgenV3.decorate(level, chunk);
         KnownWorldUniversalWorldgenC2.decorate(level, chunk);
+        KnownWorldC410BPreviewWorldgen.decorate(level, chunk);
+        KnownWorldC411GlobalWorldgen.decorate(level, chunk);
     }
 
     @Override

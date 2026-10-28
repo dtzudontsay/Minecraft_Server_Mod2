@@ -11,6 +11,7 @@ import dev.dtzudontsay.knownworld.debug.FormationDebugCommand;
 import dev.dtzudontsay.knownworld.debug.GlobalRelationshipDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldDebugCommand;
 import dev.dtzudontsay.knownworld.debug.KnownWorldGeoDebugCommand;
+import dev.dtzudontsay.knownworld.debug.KnownWorldC413ConstructionDiagnostics;
 import dev.dtzudontsay.knownworld.debug.LegalStateDebugCommand;
 import dev.dtzudontsay.knownworld.debug.LifeCycleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.NamedCharacterAuthoringDebugCommand;
@@ -35,6 +36,8 @@ import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileO
 import dev.dtzudontsay.knownworld.simulation.bootstrap.NamedCharacterAuthoringRuntime;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellV3Runtime;
+import dev.dtzudontsay.knownworld.simulation.population.KnownWorldB40PopulationIndex;
+import dev.dtzudontsay.knownworld.simulation.population.KnownWorldB41Activation;
 import dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellConversationPackets;
 import dev.dtzudontsay.knownworld.simulation.casestudy.WinterfellConversationService;
@@ -95,6 +98,8 @@ public final class KnownWorld implements ModInitializer {
         KnownWorldStructureSigns.register();
 
         WinterfellWorldgenV3.registerDebugCommands();
+
+        KnownWorldC413ConstructionDiagnostics.register();
 
         KnownWorldBlueprintGallery.register();
 
@@ -181,6 +186,8 @@ public final class KnownWorld implements ModInitializer {
         WinterfellConversationPackets.registerCommon();
         WinterfellConversationService.register();
         WinterfellV3Runtime.register();
+        KnownWorldB40PopulationIndex.register();
+        KnownWorldB41Activation.register();
 
         /*
          * Register immediately after NpcSimulation so SERVER_STARTED first

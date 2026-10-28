@@ -237,9 +237,15 @@ public final class KnownWorldAtlasScreen extends Screen {
                 double mx=centerX+(px-viewMiddleX())/scale;
                 double mz=centerY+(pz-viewMiddleY())/scale;
                 if(mx>=0 && mx<KnownWorldAtlasConfig.MAP_WIDTH && mz>=0 && mz<KnownWorldAtlasConfig.MAP_HEIGHT) {
-                    teleportTargetX=(int)Math.round((mx-KnownWorldAtlasConfig.MASTER_ORIGIN_X)
+                    // C4_13_MARKER_SNAP: source-image pixels cover kilometres.
+                    // A right click near a pin must use that marker's exact X/Z;
+                    // clicking elsewhere still targets the arbitrary map coordinate.
+                    KnownWorldAtlasMarkers.Marker pin=nearestMarker(px,pz);
+                    double targetMx=pin==null ? mx : pin.masterX();
+                    double targetMz=pin==null ? mz : pin.masterY();
+                    teleportTargetX=(int)Math.round((targetMx-KnownWorldAtlasConfig.MASTER_ORIGIN_X)
                             * KnownWorldAtlasConfig.METRES_PER_MASTER_PIXEL);
-                    teleportTargetZ=(int)Math.round((mz-KnownWorldAtlasConfig.MASTER_ORIGIN_Y)
+                    teleportTargetZ=(int)Math.round((targetMz-KnownWorldAtlasConfig.MASTER_ORIGIN_Y)
                             * KnownWorldAtlasConfig.METRES_PER_MASTER_PIXEL);
                     teleportMenuX=(int)Math.max(10,Math.min(width-TELEPORT_MENU_W-10,px));
                     teleportMenuY=(int)Math.max(HEADER+1,Math.min(height-TELEPORT_MENU_H-10,pz));

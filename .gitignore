@@ -20,5 +20,22 @@ crash-reports/
 .DS_Store
 Thumbs.db
 
-# Local source cartography
+# Local cartography inputs
 /tools/geodata/input/
+
+# Generated geodata, temporary snapshots and backups
+/tools/geodata/output/
+
+# Local Python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Temporary / backup files
+*.bak
+*.tmp
+*.orig
+*.log
+
+# Generated geodata output, ledgers and snapshots
+/tools/geodata/output/

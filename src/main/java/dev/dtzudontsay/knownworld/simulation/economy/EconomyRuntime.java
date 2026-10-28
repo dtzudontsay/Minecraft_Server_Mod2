@@ -411,6 +411,14 @@ public final class EconomyRuntime implements ModInitializer {
         }
     }
 
+    /** B4.2B.3 opt-in opening-stock grant, only on verified snapshot authority. */
+    public void commitB42B3SnapshotNow() throws IOException {
+        if (loaded == null || loaded.mode() != EconomyAuthorityService.Mode.SNAPSHOT_PRIMARY) {
+            throw new IllegalStateException("Opening stock requires SNAPSHOT_PRIMARY authority");
+        }
+        saveEconomy();
+    }
+
     private void saveEconomy() throws IOException {
 
         validator.validate(inventories);

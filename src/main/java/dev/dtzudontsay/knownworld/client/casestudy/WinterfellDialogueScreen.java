@@ -287,7 +287,7 @@ public final class WinterfellDialogueScreen extends Screen {
 
         gfx.text(
                 font,
-                "WINTERFELL  /  CONVERSATION",
+                subtitle.startsWith("Known World | ") ? "KNOWN WORLD  /  CONVERSATION" : "WINTERFELL  /  CONVERSATION",
                 x + 14,
                 y + 10,
                 GOLD,

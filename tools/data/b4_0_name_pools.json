@@ -1,0 +1,598 @@
+{
+  "schema": "knownworld.b4_0.name_pools.v1",
+  "note": "Synthetic mod-estimate phonetic/name palettes; these are NOT assertions of canonical named citizens; never assign a noble house automatically.",
+  "pools": {
+    "northman": {
+      "male": [
+        "Brandon",
+        "Rodrik",
+        "Torrhen",
+        "Jory",
+        "Benjen",
+        "Harwin",
+        "Eddric",
+        "Robett",
+        "Cregan",
+        "Harrion"
+      ],
+      "female": [
+        "Alys",
+        "Lyanna",
+        "Jeyne",
+        "Wylla",
+        "Marya",
+        "Lyarra",
+        "Dacey",
+        "Beth",
+        "Maege",
+        "Erena"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Snowfield",
+        "Pine",
+        "Stone",
+        "Frost",
+        "Hill",
+        "Wool",
+        "Brook"
+      ]
+    },
+    "riverlander": {
+      "male": [
+        "Brynden",
+        "Edmure",
+        "Lymond",
+        "Olyvar",
+        "Karyl",
+        "Lucas",
+        "Pate",
+        "Bennet"
+      ],
+      "female": [
+        "Roslin",
+        "Lysa",
+        "Catelyn",
+        "Jeyne",
+        "Alys",
+        "Marya",
+        "Minisa",
+        "Eleanor"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Brook",
+        "Ford",
+        "Reed",
+        "Miller",
+        "Hedge",
+        "Willow"
+      ]
+    },
+    "valeman": {
+      "male": [
+        "Jonos",
+        "Waymar",
+        "Denys",
+        "Harrold",
+        "Lyn",
+        "Yohn",
+        "Myrchel",
+        "Hugh"
+      ],
+      "female": [
+        "Mya",
+        "Anya",
+        "Jeyne",
+        "Sansa",
+        "Alayne",
+        "Alys",
+        "Elys"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Stone",
+        "Glen",
+        "Falcon",
+        "Ridge",
+        "Vale"
+      ]
+    },
+    "ironborn": {
+      "male": [
+        "Harras",
+        "Toron",
+        "Dagon",
+        "Quellon",
+        "Urrigon",
+        "Rodrik",
+        "Wex",
+        "Erik"
+      ],
+      "female": [
+        "Asha",
+        "Alannys",
+        "Gwynesse",
+        "Helya",
+        "Victaria",
+        "Yara"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Salt",
+        "Net",
+        "Grey",
+        "Harl",
+        "Tide"
+      ]
+    },
+    "dornish": {
+      "male": [
+        "Oberyn",
+        "Doran",
+        "Quentyn",
+        "Andrey",
+        "Garin",
+        "Trystane",
+        "Daemon",
+        "Manfrey"
+      ],
+      "female": [
+        "Arianne",
+        "Nymeria",
+        "Obara",
+        "Tyene",
+        "Ellaria",
+        "Nymella",
+        "Loreza"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Sand",
+        "Dune",
+        "Sun",
+        "Oasis",
+        "Redstone"
+      ]
+    },
+    "westerosi": {
+      "male": [
+        "Garth",
+        "Harys",
+        "Edric",
+        "Donnel",
+        "Theomar",
+        "Garlan",
+        "Martyn",
+        "Willam",
+        "Pate"
+      ],
+      "female": [
+        "Elinor",
+        "Bethany",
+        "Melesa",
+        "Alysanne",
+        "Myrielle",
+        "Serra",
+        "Margaery"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Mason",
+        "Field",
+        "Riverside",
+        "Wool",
+        "Meadow",
+        "Green"
+      ]
+    },
+    "wildling": {
+      "male": [
+        "Tormund",
+        "Jarl",
+        "Rattleshirt",
+        "Styr",
+        "Harma",
+        "Varamyr",
+        "Gendel",
+        "Karsi"
+      ],
+      "female": [
+        "Val",
+        "Dalla",
+        "Ygritte",
+        "Osha",
+        "Morna",
+        "Rowan"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Ice",
+        "Pine",
+        "Crow",
+        "Stone",
+        "Frost"
+      ]
+    },
+    "braavosi": {
+      "male": [
+        "Bessaro",
+        "Moreo",
+        "Ferrego",
+        "Nereo",
+        "Ternesio",
+        "Doreh",
+        "Syrio"
+      ],
+      "female": [
+        "Brea",
+        "Larra",
+        "Serala",
+        "Belise",
+        "Tysha",
+        "Marella"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Canal",
+        "Oar",
+        "Salt",
+        "Moor"
+      ]
+    },
+    "valyrian": {
+      "male": [
+        "Aeryn",
+        "Valarr",
+        "Gaemon",
+        "Vaelar",
+        "Daemyr",
+        "Aelor",
+        "Jacaen"
+      ],
+      "female": [
+        "Elaena",
+        "Maegelle",
+        "Vaella",
+        "Rhaena",
+        "Daena",
+        "Laena"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Silver",
+        "Flame",
+        "Glass",
+        "Harbor"
+      ]
+    },
+    "ghiscari": {
+      "male": [
+        "Hizdahr",
+        "Skahaz",
+        "Reznak",
+        "Kraznys",
+        "Grazdan",
+        "Groleo"
+      ],
+      "female": [
+        "Galazza",
+        "Daznak",
+        "Zarha",
+        "Mysara",
+        "Lharya"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Sand",
+        "Brick",
+        "Copper",
+        "Stone"
+      ]
+    },
+    "dothraki": {
+      "male": [
+        "Drogo",
+        "Jhogo",
+        "Rakharo",
+        "Mago",
+        "Aggo",
+        "Jorahk",
+        "Ogo",
+        "Khaloro"
+      ],
+      "female": [
+        "Irri",
+        "Jhiqui",
+        "Doreah",
+        "Eroeh",
+        "Rhae",
+        "Doshra"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Horse",
+        "Grass",
+        "Fire",
+        "River"
+      ]
+    },
+    "ibbenese": {
+      "male": [
+        "Hroth",
+        "Garn",
+        "Torek",
+        "Breg",
+        "Ulfr",
+        "Korr",
+        "Ebbek"
+      ],
+      "female": [
+        "Hilda",
+        "Bera",
+        "Inga",
+        "Hessa",
+        "Runa",
+        "Brida"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Wave",
+        "Iron",
+        "Stone",
+        "Ice"
+      ]
+    },
+    "summer_islander": {
+      "male": [
+        "Jalabhar",
+        "Xhondo",
+        "Talla",
+        "Bharro",
+        "Kojo",
+        "Samaro"
+      ],
+      "female": [
+        "Kojja",
+        "Talisa",
+        "Sarella",
+        "Bhala",
+        "Nala",
+        "Yalla"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Palm",
+        "Sail",
+        "Shell",
+        "Pearl"
+      ]
+    },
+    "yi_tish": {
+      "male": [
+        "Lo",
+        "Zhao",
+        "Yuan",
+        "Tao",
+        "Shan",
+        "Yin",
+        "Jin"
+      ],
+      "female": [
+        "Mei",
+        "Lan",
+        "Hua",
+        "Xiu",
+        "Lian",
+        "Lin",
+        "Yan"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Lan",
+        "Zhi",
+        "Shan",
+        "Tao",
+        "Jin"
+      ]
+    },
+    "qartheen": {
+      "male": [
+        "Xaro",
+        "Pyat",
+        "Quaithe",
+        "Trog",
+        "Belwas",
+        "Matthos"
+      ],
+      "female": [
+        "Qaira",
+        "Thessa",
+        "Maqora",
+        "Qula",
+        "Ashera"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Spice",
+        "Silk",
+        "Gate",
+        "Moon"
+      ]
+    },
+    "unknown": {
+      "male": [
+        "Aren",
+        "Maro",
+        "Taren",
+        "Jorin",
+        "Nero",
+        "Oren"
+      ],
+      "female": [
+        "Lara",
+        "Mira",
+        "Vela",
+        "Sera",
+        "Nara",
+        "Elya"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Stone",
+        "River",
+        "Field",
+        "Hill"
+      ]
+    },
+    "lhazareen": {
+      "male": [
+        "Maro",
+        "Maz",
+        "Hano",
+        "Lazi",
+        "Horu",
+        "Tali"
+      ],
+      "female": [
+        "Mirri",
+        "Lhazra",
+        "Duri",
+        "Mara",
+        "Hesi",
+        "Zaia"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Hill",
+        "Flock",
+        "River",
+        "Pasture"
+      ]
+    },
+    "naathi": {
+      "male": [
+        "Naro",
+        "Belaro",
+        "Laro",
+        "Maelo",
+        "Aro"
+      ],
+      "female": [
+        "Missandei",
+        "Naela",
+        "Lissa",
+        "Mara",
+        "Belari"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Butterfly",
+        "Garden",
+        "Lagoon",
+        "Palm"
+      ]
+    },
+    "jogos_nhai": {
+      "male": [
+        "Jho",
+        "Nhai",
+        "Joro",
+        "Sahai",
+        "Tegor"
+      ],
+      "female": [
+        "Jhaya",
+        "Nhela",
+        "Sahra",
+        "Jora",
+        "Yaha"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Wind",
+        "Horse",
+        "Grass",
+        "Dune"
+      ]
+    },
+    "sarnori": {
+      "male": [
+        "Saro",
+        "Arno",
+        "Targor",
+        "Vessar",
+        "Loro"
+      ],
+      "female": [
+        "Sarya",
+        "Nara",
+        "Vesha",
+        "Alira",
+        "Tassa"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Grass",
+        "Tower",
+        "River",
+        "Spear"
+      ]
+    },
+    "lengi": {
+      "male": [
+        "Lengar",
+        "Poro",
+        "Yeng",
+        "Saro",
+        "Tyen"
+      ],
+      "female": [
+        "Lenga",
+        "Pena",
+        "Yana",
+        "Nara",
+        "Sela"
+      ],
+      "nonNobleHouseholdLabels": [
+        "Orchid",
+        "Moon",
+        "River",
+        "Lotus"
+      ]
+    }
+  },
+  "cultureAliases": {
+    "riverlander": "riverlander",
+    "valeman": "valeman",
+    "northman": "northman",
+    "crannogman": "northman",
+    "skagosi": "northman",
+    "thenn": "wildling",
+    "free_folk": "wildling",
+    "sisterman": "valeman",
+    "vale_mountain_clan": "valeman",
+    "westerman": "westerosi",
+    "crownlander": "westerosi",
+    "reachman": "westerosi",
+    "stormlander": "westerosi",
+    "andal": "westerosi",
+    "first_men": "westerosi",
+    "stony_dornish": "dornish",
+    "sandy_dornish": "dornish",
+    "salty_dornish": "dornish",
+    "orphan_greenblood": "dornish",
+    "braavosi": "braavosi",
+    "lysene": "valyrian",
+    "pentoshi": "valyrian",
+    "myrish": "valyrian",
+    "tyroshi": "valyrian",
+    "volantene": "valyrian",
+    "norvoshi": "valyrian",
+    "qohorik": "valyrian",
+    "lorathi": "valyrian",
+    "ghiscari": "ghiscari",
+    "meereenese": "ghiscari",
+    "astapori": "ghiscari",
+    "yunkish": "ghiscari",
+    "dothraki": "dothraki",
+    "ibbenese": "ibbenese",
+    "ibben": "ibbenese",
+    "ibbenite": "ibbenese",
+    "summer_islander": "summer_islander",
+    "summer_islanders": "summer_islander",
+    "yi_tish": "yi_tish",
+    "yitish": "yi_tish",
+    "qartheen": "qartheen",
+    "asshaii": "valyrian",
+    "new_ghiscari": "ghiscari",
+    "tolosi": "ghiscari",
+    "lhazareen": "lhazareen",
+    "qaathi": "qartheen",
+    "naathi": "naathi",
+    "jogos_nhai": "jogos_nhai",
+    "sarnori": "sarnori",
+    "lengi": "lengi",
+    "hyrkooni": "yi_tish"
+  }
+}

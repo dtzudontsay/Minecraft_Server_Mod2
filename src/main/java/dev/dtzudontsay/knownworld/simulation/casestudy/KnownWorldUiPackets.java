@@ -121,154 +121,86 @@ public final class KnownWorldUiPackets {
         );
     }
 
+    /** C4_12_ATLAS_DIRECT_TERRAIN_ARRIVAL
+     * The atlas coordinate is authoritative: never reject a destination simply
+     * because nearby blocks cannot fit a player or a rescue platform.
+     * Only actual world limits and permissions can reject the request.
+     */
     private static void teleport(
             ServerPlayer player,
             MinecraftServer server,
             int requestedX,
             int requestedZ
     ) {
-
-        // Preserve existing gamemaster access restrictions.
         if (!player.isCreative()
                 || !Commands.LEVEL_GAMEMASTERS.check(
-                player.createCommandSourceStack().permissions()
-        )) {
-
+                        player.createCommandSourceStack().permissions())) {
             player.sendSystemMessage(Component.literal(
-                    "[Atlas] Teleport requires Creative mode and gamemaster permissions."
-            ));
-
+                    "[Atlas] Teleport requires Creative mode and gamemaster permissions."));
             return;
         }
 
         long now = System.nanoTime();
-
-        Long previous =
-                lastTeleportNanos.get(player.getUUID());
-
-        if (previous != null
-                && now - previous < TELEPORT_GAP_NANOS) {
-
+        Long previous = lastTeleportNanos.get(player.getUUID());
+        if (previous != null && now - previous < TELEPORT_GAP_NANOS) {
             player.sendSystemMessage(Component.literal(
-                    "[Atlas] Please wait three seconds between teleports."
-            ));
-
+                    "[Atlas] Please wait three seconds between teleports."));
             return;
         }
 
-        ServerLevel level =
-                server.getLevel(Level.OVERWORLD);
-
+        ServerLevel level = server.getLevel(Level.OVERWORLD);
         if (level == null) {
+            player.sendSystemMessage(Component.literal("[Atlas] Overworld is not available."));
             return;
         }
-
         if (Math.abs((long) requestedX) > 29_999_980L
                 || Math.abs((long) requestedZ) > 29_999_980L
-                || !withinBorder(
-                level,
-                requestedX,
-                requestedZ
-        )) {
-
+                || !withinBorder(level, requestedX, requestedZ)) {
             player.sendSystemMessage(Component.literal(
-                    "[Atlas] Destination is outside the world border."
-            ));
-
+                    "[Atlas] Destination is outside the world border."));
             return;
         }
 
-        lastTeleportNanos.put(
-                player.getUUID(),
-                now
-        );
+        // Force the destination chunk to be fully generated before sampling.
+        // A heightmap queried from an ungenerated chunk is not a reliable
+        // source for a cross-continent atlas teleport.
+        try {
+            level.getChunk(requestedX >> 4, requestedZ >> 4);
+            // MOTION_BLOCKING_NO_LEAVES yields a Y above terrain/water/buildings
+            // without requiring any free-space or collision survey. A modest
+            // vertical clearance lets Creative players inspect the structure.
+            int surfaceY = level.getHeight(
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    requestedX, requestedZ);
+            int arrivalY = Math.max(level.getMinY() + 4,
+                    Math.min(level.getMaxY() - 4, surfaceY + 5));
 
-        /*
-         * Step 1: Search for a natural walkable surface.
-         * Begin at the selected point and expand outward.
-         */
-        BlockPos landing = findNaturalLanding(
-                level,
-                requestedX,
-                requestedZ
-        );
-
-        boolean rescuePlatform = false;
-
-        /*
-         * Step 2: If no natural landing surface exists,
-         * make a small stone rescue platform just above the
-         * highest local surface.
-         *
-         * This covers open water, lava, thick vegetation,
-         * and other obstructed destinations.
-         */
-        if (landing == null) {
-
-            landing = makeRescuePlatform(
+            boolean success = player.teleportTo(
                     level,
-                    requestedX,
-                    requestedZ
-            );
-
-            rescuePlatform = true;
-        }
-
-        if (landing == null) {
-
-            player.sendSystemMessage(Component.literal(
-                    "[Atlas] The destination could not be prepared safely."
-            ));
-
-            return;
-        }
-
-        int x = landing.getX();
-        int y = landing.getY();
-        int z = landing.getZ();
-
-        boolean success = player.teleportTo(
-                level,
-                x + 0.5,
-                y,
-                z + 0.5,
-                Set.<Relative>of(),
-                player.getYRot(),
-                player.getXRot(),
-                false
-        );
-
-        if (success) {
-
-            if (rescuePlatform) {
-
+                    requestedX + 0.5,
+                    arrivalY,
+                    requestedZ + 0.5,
+                    Set.<Relative>of(),
+                    player.getYRot(),
+                    player.getXRot(),
+                    false);
+            if (success) {
+                // Creative flyers arrive ready to inspect even above water or
+                // an irregular fortification. No placement blocks are changed.
+                player.setDeltaMovement(0.0, 0.0, 0.0);
+                lastTeleportNanos.put(player.getUUID(), now);
                 player.sendSystemMessage(Component.literal(
-                        "[Atlas] Arrived at X="
-                                + x
-                                + " Y="
-                                + y
-                                + " Z="
-                                + z
-                                + ". No safe natural ground was found; a 3x3 stone rescue platform was created."
-                ));
-
+                        "[Atlas] Teleported to X=" + requestedX
+                        + " Y=" + arrivalY + " Z=" + requestedZ
+                        + " (5 blocks above terrain surface)."));
             } else {
-
                 player.sendSystemMessage(Component.literal(
-                        "[Atlas] Arrived safely at ground level: X="
-                                + x
-                                + " Y="
-                                + y
-                                + " Z="
-                                + z
-                ));
+                        "[Atlas] Minecraft rejected the teleport after chunk generation."));
             }
-
-        } else {
-
+        } catch (RuntimeException failure) {
             player.sendSystemMessage(Component.literal(
-                    "[Atlas] Minecraft rejected the destination teleport."
-            ));
+                    "[Atlas] Destination chunk or terrain lookup failed: "
+                    + failure.getClass().getSimpleName()));
         }
     }
 

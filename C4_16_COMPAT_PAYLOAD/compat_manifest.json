@@ -1,0 +1,24 @@
+{
+  "expected_original_stage": {
+    "src/main/java/dev/dtzudontsay/knownworld/simulation/population/KnownWorldB41Activation.java": {
+      "baseline": "e02ccc9b97b1aa98d821c3772c50eedbd024aa8c8bac128119bc5a479b2dde35",
+      "updated": "6fe1cb9dcf64abc3dbe145a8fd780d4859ae73555155b2f05f46a58cd4a97d98",
+      "local": "db09cf0860525b5a1c818b5047a6b1abbe739b898a6b9b45a4d4482042580869"
+    },
+    "src/main/java/dev/dtzudontsay/knownworld/simulation/population/KnownWorldB42DailyLife.java": {
+      "baseline": "cbb7a800390c0b5bc4bfb014f2e9cab9a5ddad0cdfb3c12d5329612d582e516e",
+      "updated": "9d3947902ffdb754f76722a80919bda949d2a3c0c039780c5fb175ddb464ca3d",
+      "local": "07deff736d87dca5fc9f32a1edddc0c2c666a828ca7f5f0abe30970e491979fc"
+    }
+  },
+  "replacement_stage": {
+    "src/main/java/dev/dtzudontsay/knownworld/simulation/population/KnownWorldB41Activation.java": {
+      "baseline": "db09cf0860525b5a1c818b5047a6b1abbe739b898a6b9b45a4d4482042580869",
+      "updated": "f42a3eabb113714315fecb7a589b273560032f0bf13abb043877fda837e97c2d"
+    },
+    "src/main/java/dev/dtzudontsay/knownworld/simulation/population/KnownWorldB42DailyLife.java": {
+      "baseline": "07deff736d87dca5fc9f32a1edddc0c2c666a828ca7f5f0abe30970e491979fc",
+      "updated": "785beafd395e76237fb1d021ec164a3b084553d357444a69fce742a9a02afa5a"
+    }
+  }
+}

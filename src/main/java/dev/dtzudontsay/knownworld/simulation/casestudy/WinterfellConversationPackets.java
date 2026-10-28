@@ -2,6 +2,7 @@
 package dev.dtzudontsay.knownworld.simulation.casestudy;
 
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.population.KnownWorldB41DialogueService;
 import dev.dtzudontsay.knownworld.simulation.npc.NpcId;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -105,6 +106,8 @@ public final class WinterfellConversationPackets {
     }
 
     public static void registerCommon() {
+        // B4_1B_WORLDWIDE_DIALOGUE_ROUTING
+        KnownWorldB41DialogueService.registerLifecycle();
         PayloadTypeRegistry.serverboundPlay().register(OpenRequest.TYPE, OpenRequest.CODEC);
         PayloadTypeRegistry.serverboundPlay().register(ChatRequest.TYPE, ChatRequest.CODEC);
         PayloadTypeRegistry.serverboundPlay().register(CloseRequest.TYPE, CloseRequest.CODEC);
@@ -114,15 +117,28 @@ public final class WinterfellConversationPackets {
 
         ServerPlayNetworking.registerGlobalReceiver(OpenRequest.TYPE, (request, context) -> {
             ServerPlayer player = context.player();
-            WinterfellConversationService.open(player, request.entityId());
-            lockActor(player, request.entityId());
+            KnownWorldB41DialogueService.invalidatePlayer(player);
+            if (KnownWorldB41DialogueService.isWorldwideActor(player, request.entityId())) {
+                // Worldwide B4.0 identities: separate authoritative conversation route.
+                if (KnownWorldB41DialogueService.open(player, request.entityId())) {
+                    lockActor(player, request.entityId());
+                }
+            } else {
+                WinterfellConversationService.open(player, request.entityId());
+                lockActor(player, request.entityId());
+            }
         });
-        ServerPlayNetworking.registerGlobalReceiver(ChatRequest.TYPE, (request, context) ->
-                WinterfellConversationService.send(context.player(),
-                        request.session(), request.text()));
+        ServerPlayNetworking.registerGlobalReceiver(ChatRequest.TYPE, (request, context) -> {
+            if (KnownWorldB41DialogueService.hasSession(context.player(), request.session())) {
+                KnownWorldB41DialogueService.send(context.player(), request.session(), request.text());
+            } else {
+                WinterfellConversationService.send(context.player(), request.session(), request.text());
+            }
+        });
         ServerPlayNetworking.registerGlobalReceiver(CloseRequest.TYPE, (request, context) -> {
             ServerPlayer player = context.player();
             // IMPORTANT: invalidate outstanding Ollama replies before unlocking.
+            KnownWorldB41DialogueService.close(player, request.entityId());
             WinterfellConversationService.close(player, request.entityId());
             ConversationLock lock = PLAYER_LOCKS.get(player.getUUID());
             if (lock != null && lock.entityId() == request.entityId()) {
@@ -147,21 +163,26 @@ public final class WinterfellConversationPackets {
         Entity actor = level.getEntity(entityId);
         if (!(actor instanceof Villager villager)
                 || !actor.isAlive()
-                || !actor.entityTags().contains(ACTOR_TAG)
                 || player.distanceToSqr(actor) > MAX_RANGE_SQUARED) return;
-        String authored = null;
-        for (String tag : actor.entityTags()) {
-            if (tag.startsWith(ID_PREFIX)) {
-                authored = tag.substring(ID_PREFIX.length());
-                break;
+        if (actor.entityTags().contains("kwb41_actor")) {
+            // Never freeze a forged or stale projection. Its identity must be live.
+            if (!KnownWorldB41DialogueService.validActor(player, actor)) return;
+        } else {
+            if (!actor.entityTags().contains(ACTOR_TAG)) return;
+            String authored = null;
+            for (String tag : actor.entityTags()) {
+                if (tag.startsWith(ID_PREFIX)) {
+                    authored = tag.substring(ID_PREFIX.length());
+                    break;
+                }
             }
+            if (authored == null) return;
+            NpcSimulation sim = NpcSimulation.getNullable();
+            NpcId npcId = sim == null ? null :
+                    sim.authoredIds().findNpc(authored).orElse(null);
+            if (npcId == null || sim.registry().find(npcId)
+                    .filter(npc -> npc.isAlive()).isEmpty()) return;
         }
-        if (authored == null) return;
-        NpcSimulation sim = NpcSimulation.getNullable();
-        NpcId npcId = sim == null ? null :
-                sim.authoredIds().findNpc(authored).orElse(null);
-        if (npcId == null || sim.registry().find(npcId)
-                .filter(npc -> npc.isAlive()).isEmpty()) return;
         UUID playerId = player.getUUID();
         if (PLAYER_LOCKS.containsKey(playerId)) release(playerId, level.getServer());
         UUID actorId = actor.getUUID();

@@ -1,0 +1,221 @@
+package dev.dtzudontsay.knownworld.simulation.population;
+
+import dev.dtzudontsay.knownworld.KnownWorld;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.GZIPInputStream;
+
+/**
+ * B4.0 census inspector for IMMUTABLE compressed base records.
+ *
+ * Deliberate boundary: these base records do not register a second NpcId in
+ * NpcRegistry. The live B4.1 adapter must first reconcile named characters,
+ * families and existing Winterfell's authored IDs. No Minecraft entities or
+ * LLM requests are triggered from this class.
+ *
+ * Lazy classpath reads avoid loading 3.7m JSON records into heap on boot.
+ */
+public final class KnownWorldB40PopulationIndex {
+    private static final String ROOT =
+            "/data/knownworld/scenarios/agot_298_ac/world_population_b4_v1/";
+    private static final String VERSION = "knownworld.b4_0.identity_baseline.v1";
+    private static volatile Census census;
+
+    public record Site(String id, String name, int people, int households,
+                       int modeledWorkers, String compressedResource,
+                       String status) { }
+    public record Census(int people, int households, int workers,
+                         int registeredSites, Map<String, Site> sites) { }
+    public record PersonPreview(String personId, String displayName,
+                                String occupationId, String cultureId,
+                                String religionId, String householdId) { }
+
+    private KnownWorldB40PopulationIndex() { }
+
+    public static void register() {
+        CommandRegistrationCallback.EVENT.register((dispatcher, registry, environment) ->
+                dispatcher.register(Commands.literal("kwpopulation")
+                        .then(Commands.literal("status").executes(ctx ->
+                                guarded(ctx.getSource(), "status", () -> status(ctx.getSource()))))
+                        .then(Commands.literal("diagnose").executes(ctx ->
+                                guarded(ctx.getSource(), "diagnose", () -> diagnose(ctx.getSource()))))
+                        .then(Commands.literal("site")
+                                .then(Commands.argument("id", StringArgumentType.word())
+                                        .executes(ctx -> guarded(ctx.getSource(), "site", () ->
+                                                showSite(ctx.getSource(),
+                                                        StringArgumentType.getString(ctx, "id"))))))));
+    }
+
+    @FunctionalInterface
+    private interface CommandAction { int execute(); }
+
+    /** Never let an unexpected census/resource error escape Brigadier as an
+     * opaque red chat message. Preserve the entire exception in latest.log. */
+    private static int guarded(CommandSourceStack source, String operation,
+                               CommandAction action) {
+        try {
+            return action.execute();
+        } catch (RuntimeException failure) {
+            KnownWorld.LOGGER.error("[B4.0] /kwpopulation {} failed", operation, failure);
+            Throwable root = failure;
+            for (int i = 0; i < 12 && root.getCause() != null &&
+                    root.getCause() != root; i++) root = root.getCause();
+            String detail = root.getMessage();
+            if (detail == null || detail.isBlank()) detail = "no detail";
+            if (detail.length() > 220) detail = detail.substring(0, 220) + "...";
+            source.sendFailure(Component.literal("[B4.0] " + operation + " failed: "
+                    + root.getClass().getSimpleName() + ": " + detail));
+            source.sendFailure(Component.literal("[B4.0] Full stack trace in run/logs/latest.log (or logs/latest.log)."
+                    + " Resource check: /kwpopulation diagnose"));
+            return 0;
+        }
+    }
+
+    /** Run without requiring the census loader to succeed. */
+    private static int diagnose(CommandSourceStack source) {
+        String manifestPath = ROOT + "manifest.json";
+        boolean present = KnownWorldB40PopulationIndex.class.getResource(manifestPath) != null;
+        say(source, "Manifest packaged in running mod: " + present);
+        say(source, "Classpath resource: " + manifestPath);
+        if (!present) {
+            say(source, "Run B4.0 generation BAT and rebuild Minecraft."
+                    + " Check src/main/resources and build/resources/main.");
+            return 1;
+        }
+        Census verified = index();
+        say(source, "Manifest validated: " + verified.registeredSites()
+                + " sites; " + verified.people() + " people; "
+                + verified.households() + " households; " + verified.workers() + " workers.");
+        return 1;
+    }
+
+    public static synchronized Census index() {
+        if (census != null) return census;
+        try (InputStream stream = KnownWorldB40PopulationIndex.class.getResourceAsStream(
+                ROOT + "manifest.json")) {
+            if (stream == null) return null;
+            JsonObject manifest = JsonParser.parseReader(
+                    new InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+            if (!VERSION.equals(manifest.get("schemaVersion").getAsString()))
+                throw new IllegalStateException("Unsupported worldwide population schema");
+            int total = manifest.get("peopleTotal").getAsInt();
+            int households = manifest.get("householdsTotal").getAsInt();
+            int workers = manifest.get("modeledWorkersTotal").getAsInt();
+            int count = manifest.get("siteCount").getAsInt();
+            if (count != 248 || total != 3_760_684 || households != 799_343
+                    || workers != 1_880_341)
+                throw new IllegalStateException("Worldwide population conservation audit failed");
+            Map<String, Site> byId = new HashMap<>();
+            long peopleCheck = 0L, familyCheck = 0L, workerCheck = 0L;
+            JsonArray entries = manifest.getAsJsonArray("sites");
+            for (JsonElement item : entries) {
+                JsonObject e = item.getAsJsonObject();
+                String id = e.get("siteId").getAsString();
+                int persons = e.get("personCount").getAsInt();
+                int families = e.get("householdCount").getAsInt();
+                int jobs = e.get("modeledWorkerCount").getAsInt();
+                String resource = e.get("file").isJsonNull() ? null : e.get("file").getAsString();
+                if (!id.matches("site_[a-z0-9]+(?:_[a-z0-9]+)+") ||
+                        (resource != null && !resource.equals(id + ".jsonl.gz")))
+                    throw new IllegalStateException("Unsafe population resource ID: " + id);
+                Site site = new Site(id, e.get("name").getAsString(), persons, families,
+                        jobs, resource, e.get("status").getAsString());
+                if (byId.putIfAbsent(id, site) != null)
+                    throw new IllegalStateException("Duplicate population site " + id);
+                peopleCheck += persons; familyCheck += families; workerCheck += jobs;
+            }
+            if (byId.size() != count || peopleCheck != total ||
+                    familyCheck != households || workerCheck != workers)
+                throw new IllegalStateException("Per-site population arithmetic mismatch");
+            census = new Census(total, households, workers, count, Map.copyOf(byId));
+            return census;
+        } catch (Exception e) {
+            throw new IllegalStateException("Cannot read B4.0 worldwide population manifest", e);
+        }
+    }
+
+    /** Bounded first-N preview; never materializes or mutates an NPC. */
+    public static List<PersonPreview> preview(String id, int limit) {
+        Census c = index();
+        if (c == null) return List.of();
+        Site site = c.sites().get(id);
+        if (site == null || site.compressedResource() == null) return List.of();
+        int cap = Math.max(0, Math.min(8, limit));
+        List<PersonPreview> result = new ArrayList<>();
+        try (InputStream raw = KnownWorldB40PopulationIndex.class.getResourceAsStream(
+                ROOT + site.compressedResource())) {
+            if (raw == null) throw new IllegalStateException("Missing population shard for " + id);
+            try (GZIPInputStream compressed = new GZIPInputStream(raw);
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(
+                         compressed, StandardCharsets.UTF_8))) {
+                for (int i = 0; i < cap; i++) {
+                    String line = reader.readLine();
+                    if (line == null) break;
+                    JsonObject person = JsonParser.parseString(line).getAsJsonObject();
+                    if (!id.equals(person.get("siteId").getAsString()))
+                        throw new IllegalStateException("Cross-site person in " + id);
+                    result.add(new PersonPreview(string(person,"personId"),
+                            string(person,"displayName"), string(person,"occupationId"),
+                            string(person,"cultureId"), string(person,"religionId"),
+                            string(person,"householdId")));
+                }
+            }
+        } catch (Exception problem) {
+            throw new IllegalStateException("Cannot preview compressed population shard " + id,problem);
+        }
+        return List.copyOf(result);
+    }
+
+    private static String string(JsonObject p, String key) {
+        return !p.has(key) || p.get(key).isJsonNull() ? "—" : p.get(key).getAsString();
+    }
+    private static void say(CommandSourceStack source, String text) {
+        source.sendSuccess(() -> Component.literal(text),false);
+    }
+    private static int status(CommandSourceStack source) {
+        Census c = index();
+        if (c == null) {
+            say(source,"[B4.0] No packaged worldwide roster. Run RUN_B4_0_GENERATE_WORLD_POPULATION.bat and rebuild.");
+            return 1;
+        }
+        say(source,"[B4.0] Base population: " + c.people() + " residents | "
+                + c.households() + " households | " + c.workers() + " modeled job holders | "
+                + c.registeredSites() + " physical sites.");
+        say(source,"[B4.0] All 3.76m identities are compressed on disk; ZERO new active Minecraft NPCs."
+                + " Winterfell's existing 5,000 remain authoritative."
+                + " B4.1 activation/behavior/conversation bridge PENDING.");
+        return 1;
+    }
+    private static int showSite(CommandSourceStack source, String id) {
+        Census c = index();
+        if (c == null) return status(source);
+        Site site = c.sites().get(id);
+        if (site == null) {source.sendFailure(Component.literal("Unknown site " + id));return 0;}
+        say(source,"[B4.0] " + site.name() + " (" + site.id() + "): residents="
+                + site.people() + ", households=" + site.households() +
+                ", planned workers=" + site.modeledWorkers() +
+                ", status=" + site.status());
+        for (PersonPreview person : preview(id,3)) {
+            say(source,"  " + person.displayName() + " [" + person.personId() + "]"
+                    + " | " + person.occupationId() + " | " + person.cultureId()
+                    + " / " + person.religionId() + " | " + person.householdId());
+        }
+        return 1;
+    }
+}

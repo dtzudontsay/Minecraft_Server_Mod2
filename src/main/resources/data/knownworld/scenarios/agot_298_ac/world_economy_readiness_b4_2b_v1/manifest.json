@@ -1,0 +1,2254 @@
+{
+  "schemaVersion": "knownworld.b4_2b.economic_readiness.v1",
+  "activationMode": "READ_ONLY_NO_TRANSACTIONS",
+  "authoritativeEconomicOwner": "EXISTING_ECONOMY_RUNTIME",
+  "historicalStartYearAC": 298,
+  "baselineReferenceFoodDays": 90,
+  "baselineReferenceGramsPerPersonPerDay": 1000,
+  "initialGrainActuallyCreditedKg": 0,
+  "peopleTotal": 3760684,
+  "workersTotal": 1880341,
+  "siteCount": 248,
+  "provenance": "B4.2 workplace manifest, illustrative not verified inventory quantities",
+  "guardrails": [
+    "no invented settlement stock",
+    "no duplicate initial endowment",
+    "no food consumption before calibrated source and stock",
+    "existing inventory journal remains sole resource authority",
+    "atomic cross-domain checkpoint required before autonomy"
+  ],
+  "sites": [
+    {
+      "siteId": "site_ne_001",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_002",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_003",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_004",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_005",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_006",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_007",
+      "residents": 450,
+      "workers": 225,
+      "indicativeGrainReserveKg": 40500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_008",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_009",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_ne_010",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_001",
+      "residents": 27000,
+      "workers": 13500,
+      "indicativeGrainReserveKg": 2430000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_002",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_003",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_004",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_005",
+      "residents": 1600,
+      "workers": 800,
+      "indicativeGrainReserveKg": 144000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_006",
+      "residents": 1600,
+      "workers": 800,
+      "indicativeGrainReserveKg": 144000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_007",
+      "residents": 1600,
+      "workers": 800,
+      "indicativeGrainReserveKg": 144000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_008",
+      "residents": 1600,
+      "workers": 800,
+      "indicativeGrainReserveKg": 144000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_009",
+      "residents": 1600,
+      "workers": 800,
+      "indicativeGrainReserveKg": 144000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nee_010",
+      "residents": 16000,
+      "workers": 8000,
+      "indicativeGrainReserveKg": 1440000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_001",
+      "residents": 1900,
+      "workers": 950,
+      "indicativeGrainReserveKg": 171000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_004",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_005",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_007",
+      "residents": 14,
+      "workers": 7,
+      "indicativeGrainReserveKg": 1260,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_008",
+      "residents": 300,
+      "workers": 150,
+      "indicativeGrainReserveKg": 27000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_009",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_010",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_011",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_012",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_013",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_014",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_015",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_016",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_017",
+      "residents": 300,
+      "workers": 150,
+      "indicativeGrainReserveKg": 27000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_018",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_019",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_020",
+      "residents": 300,
+      "workers": 150,
+      "indicativeGrainReserveKg": 27000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_021",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_022",
+      "residents": 650,
+      "workers": 325,
+      "indicativeGrainReserveKg": 58500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_023",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_024",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_025",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_026",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_027",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_028",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_029",
+      "residents": 5000,
+      "workers": 2500,
+      "indicativeGrainReserveKg": 450000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_030",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_031",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_032",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_033",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_034",
+      "residents": 45000,
+      "workers": 22500,
+      "indicativeGrainReserveKg": 4050000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_035",
+      "residents": 125,
+      "workers": 62,
+      "indicativeGrainReserveKg": 11250,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_036",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_037",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_038",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_039",
+      "residents": 500,
+      "workers": 250,
+      "indicativeGrainReserveKg": 45000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_042",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_045",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_047",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_048",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_049",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_missing_twins_01",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_missing_wall_01",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_missing_wall_02",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_missing_wall_03",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nw_missing_wall_04",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_001",
+      "residents": 105000,
+      "workers": 52500,
+      "indicativeGrainReserveKg": 9450000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_002",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_003",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_004",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_005",
+      "residents": 1800,
+      "workers": 900,
+      "indicativeGrainReserveKg": 162000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_006",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_007",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_009",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_010",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_011",
+      "residents": 100000,
+      "workers": 50000,
+      "indicativeGrainReserveKg": 9000000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_012",
+      "residents": 75000,
+      "workers": 37500,
+      "indicativeGrainReserveKg": 6750000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_013",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_015",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_nwe_016",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_001",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_002",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_003",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_004",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_005",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_006",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_007",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_008",
+      "residents": 110000,
+      "workers": 55000,
+      "indicativeGrainReserveKg": 9900000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_009",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_010",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_011",
+      "residents": 90000,
+      "workers": 45000,
+      "indicativeGrainReserveKg": 8100000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_012",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_013",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_014",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_015",
+      "residents": 90000,
+      "workers": 45000,
+      "indicativeGrainReserveKg": 8100000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_016",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_017",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_018",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_019",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_020",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_021",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_022",
+      "residents": 190000,
+      "workers": 95000,
+      "indicativeGrainReserveKg": 17100000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_023",
+      "residents": 1500,
+      "workers": 750,
+      "indicativeGrainReserveKg": 135000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_024",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_025",
+      "residents": 1500,
+      "workers": 750,
+      "indicativeGrainReserveKg": 135000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_026",
+      "residents": 22000,
+      "workers": 11000,
+      "indicativeGrainReserveKg": 1980000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_027",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_028",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_029",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_030",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_se_031",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_001",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_002",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_003",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_004",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_005",
+      "residents": 230000,
+      "workers": 115000,
+      "indicativeGrainReserveKg": 20700000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_006",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_007",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_008",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_009",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_see_010",
+      "residents": 6200,
+      "workers": 3100,
+      "indicativeGrainReserveKg": 558000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_si_001",
+      "residents": 10000,
+      "workers": 5000,
+      "indicativeGrainReserveKg": 900000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_si_002",
+      "residents": 10000,
+      "workers": 5000,
+      "indicativeGrainReserveKg": 900000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_si_003",
+      "residents": 10000,
+      "workers": 5000,
+      "indicativeGrainReserveKg": 900000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_si_004",
+      "residents": 10000,
+      "workers": 5000,
+      "indicativeGrainReserveKg": 900000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_so_004",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_so_005",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_001",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_002",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_003",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_004",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_005",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_006",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_007",
+      "residents": 340,
+      "workers": 170,
+      "indicativeGrainReserveKg": 30600,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_008",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_009",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_010",
+      "residents": 45000,
+      "workers": 22500,
+      "indicativeGrainReserveKg": 4050000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_011",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_012",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_013",
+      "residents": 80,
+      "workers": 40,
+      "indicativeGrainReserveKg": 7200,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_014",
+      "residents": 80,
+      "workers": 40,
+      "indicativeGrainReserveKg": 7200,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_015",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_016",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_017",
+      "residents": 2500,
+      "workers": 1250,
+      "indicativeGrainReserveKg": 225000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_018",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_019",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_020",
+      "residents": 2300,
+      "workers": 1150,
+      "indicativeGrainReserveKg": 207000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_021",
+      "residents": 65,
+      "workers": 32,
+      "indicativeGrainReserveKg": 5850,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_022",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_023",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_024",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_025",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_026",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_027",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_028",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_029",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_030",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_031",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_032",
+      "residents": 1700,
+      "workers": 850,
+      "indicativeGrainReserveKg": 153000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_033",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_035",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_036",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_037",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_038",
+      "residents": 5500,
+      "workers": 2750,
+      "indicativeGrainReserveKg": 495000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_039",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_040",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_041",
+      "residents": 135000,
+      "workers": 67500,
+      "indicativeGrainReserveKg": 12150000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_042",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_043",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_044",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_045",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_046",
+      "residents": 500000,
+      "workers": 250000,
+      "indicativeGrainReserveKg": 45000000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_047",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_048",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_049",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_050",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_051",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_052",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_053",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_054",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_055",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_056",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_057",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_058",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_059",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_060",
+      "residents": 4000,
+      "workers": 2000,
+      "indicativeGrainReserveKg": 360000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_061",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_062",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_063",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_064",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_065",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_066",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_067",
+      "residents": 8000,
+      "workers": 4000,
+      "indicativeGrainReserveKg": 720000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_068",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_069",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_070",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_071",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_072",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_073",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_074",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_075",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_076",
+      "residents": 33000,
+      "workers": 16500,
+      "indicativeGrainReserveKg": 2970000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_077",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_078",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_079",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_080",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_081",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_082",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_083",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_084",
+      "residents": 210000,
+      "workers": 105000,
+      "indicativeGrainReserveKg": 18900000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_085",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_086",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_087",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_088",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_089",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_090",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_091",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_092",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_093",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_094",
+      "residents": 280,
+      "workers": 140,
+      "indicativeGrainReserveKg": 25200,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_095",
+      "residents": 6500,
+      "workers": 3250,
+      "indicativeGrainReserveKg": 585000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_096",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_097",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_098",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_099",
+      "residents": 2200,
+      "workers": 1100,
+      "indicativeGrainReserveKg": 198000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_100",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_101",
+      "residents": 2200,
+      "workers": 1100,
+      "indicativeGrainReserveKg": 198000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_102",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_103",
+      "residents": 2100,
+      "workers": 1050,
+      "indicativeGrainReserveKg": 189000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_sw_104",
+      "residents": 2200,
+      "workers": 1100,
+      "indicativeGrainReserveKg": 198000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_001",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_002",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_003",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_004",
+      "residents": 24000,
+      "workers": 12000,
+      "indicativeGrainReserveKg": 2160000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_005",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_006",
+      "residents": 24000,
+      "workers": 12000,
+      "indicativeGrainReserveKg": 2160000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_007",
+      "residents": 7000,
+      "workers": 3500,
+      "indicativeGrainReserveKg": 630000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_008",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_009",
+      "residents": 24000,
+      "workers": 12000,
+      "indicativeGrainReserveKg": 2160000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_010",
+      "residents": 95000,
+      "workers": 47500,
+      "indicativeGrainReserveKg": 8550000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_011",
+      "residents": 260000,
+      "workers": 130000,
+      "indicativeGrainReserveKg": 23400000,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_014",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_015",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_016",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_017",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_018",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_019",
+      "residents": 550,
+      "workers": 275,
+      "indicativeGrainReserveKg": 49500,
+      "indicativeFoodDays": 90,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    },
+    {
+      "siteId": "site_swe_020",
+      "residents": 0,
+      "workers": 0,
+      "indicativeGrainReserveKg": 0,
+      "indicativeFoodDays": 0,
+      "requiresHoldingMapping": true,
+      "requiresProductionCalibration": true
+    }
+  ]
+}

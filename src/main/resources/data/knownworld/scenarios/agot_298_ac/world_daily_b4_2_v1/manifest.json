@@ -1,0 +1,1998 @@
+{
+  "schemaVersion": "knownworld.b4_2.daily_worksites.v1",
+  "sites": [
+    {
+      "siteId": "site_ne_001",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_ne_001.json.gz"
+    },
+    {
+      "siteId": "site_ne_002",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 38,
+      "file": "site_ne_002.json.gz"
+    },
+    {
+      "siteId": "site_ne_003",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_ne_003.json.gz"
+    },
+    {
+      "siteId": "site_ne_004",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_ne_004.json.gz"
+    },
+    {
+      "siteId": "site_ne_005",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 41,
+      "file": "site_ne_005.json.gz"
+    },
+    {
+      "siteId": "site_ne_006",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 41,
+      "file": "site_ne_006.json.gz"
+    },
+    {
+      "siteId": "site_ne_007",
+      "people": 450,
+      "workers": 225,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 35,
+      "file": "site_ne_007.json.gz"
+    },
+    {
+      "siteId": "site_ne_008",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_ne_009",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_ne_009.json.gz"
+    },
+    {
+      "siteId": "site_ne_010",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nee_001",
+      "people": 27000,
+      "workers": 13500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 793,
+      "file": "site_nee_001.json.gz"
+    },
+    {
+      "siteId": "site_nee_002",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nee_003",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3664,
+      "file": "site_nee_003.json.gz"
+    },
+    {
+      "siteId": "site_nee_004",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nee_005",
+      "people": 1600,
+      "workers": 800,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 53,
+      "file": "site_nee_005.json.gz"
+    },
+    {
+      "siteId": "site_nee_006",
+      "people": 1600,
+      "workers": 800,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 53,
+      "file": "site_nee_006.json.gz"
+    },
+    {
+      "siteId": "site_nee_007",
+      "people": 1600,
+      "workers": 800,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 53,
+      "file": "site_nee_007.json.gz"
+    },
+    {
+      "siteId": "site_nee_008",
+      "people": 1600,
+      "workers": 800,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 53,
+      "file": "site_nee_008.json.gz"
+    },
+    {
+      "siteId": "site_nee_009",
+      "people": 1600,
+      "workers": 800,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 53,
+      "file": "site_nee_009.json.gz"
+    },
+    {
+      "siteId": "site_nee_010",
+      "people": 16000,
+      "workers": 8000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 628,
+      "file": "site_nee_010.json.gz"
+    },
+    {
+      "siteId": "site_nw_001",
+      "people": 1900,
+      "workers": 950,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 93,
+      "file": "site_nw_001.json.gz"
+    },
+    {
+      "siteId": "site_nw_004",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_005",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_007",
+      "people": 14,
+      "workers": 7,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 5,
+      "file": "site_nw_007.json.gz"
+    },
+    {
+      "siteId": "site_nw_008",
+      "people": 300,
+      "workers": 150,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 20,
+      "file": "site_nw_008.json.gz"
+    },
+    {
+      "siteId": "site_nw_009",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_010",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_011",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_012",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_013",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_014",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_015",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_016",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_017",
+      "people": 300,
+      "workers": 150,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 20,
+      "file": "site_nw_017.json.gz"
+    },
+    {
+      "siteId": "site_nw_018",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_019",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_020",
+      "people": 300,
+      "workers": 150,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 20,
+      "file": "site_nw_020.json.gz"
+    },
+    {
+      "siteId": "site_nw_021",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_022",
+      "people": 650,
+      "workers": 325,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 48,
+      "file": "site_nw_022.json.gz"
+    },
+    {
+      "siteId": "site_nw_023",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_024",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_024.json.gz"
+    },
+    {
+      "siteId": "site_nw_025",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_025.json.gz"
+    },
+    {
+      "siteId": "site_nw_026",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 100,
+      "file": "site_nw_026.json.gz"
+    },
+    {
+      "siteId": "site_nw_027",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_027.json.gz"
+    },
+    {
+      "siteId": "site_nw_028",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_028.json.gz"
+    },
+    {
+      "siteId": "site_nw_029",
+      "people": 5000,
+      "workers": 2500,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_030",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_030.json.gz"
+    },
+    {
+      "siteId": "site_nw_031",
+      "people": 550,
+      "workers": 275,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_032",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_032.json.gz"
+    },
+    {
+      "siteId": "site_nw_033",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_nw_033.json.gz"
+    },
+    {
+      "siteId": "site_nw_034",
+      "people": 45000,
+      "workers": 22500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1310,
+      "file": "site_nw_034.json.gz"
+    },
+    {
+      "siteId": "site_nw_035",
+      "people": 125,
+      "workers": 62,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 16,
+      "file": "site_nw_035.json.gz"
+    },
+    {
+      "siteId": "site_nw_036",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_036.json.gz"
+    },
+    {
+      "siteId": "site_nw_037",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_037.json.gz"
+    },
+    {
+      "siteId": "site_nw_038",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 872,
+      "file": "site_nw_038.json.gz"
+    },
+    {
+      "siteId": "site_nw_039",
+      "people": 500,
+      "workers": 250,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_042",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_042.json.gz"
+    },
+    {
+      "siteId": "site_nw_045",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_045.json.gz"
+    },
+    {
+      "siteId": "site_nw_047",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_047.json.gz"
+    },
+    {
+      "siteId": "site_nw_048",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_048.json.gz"
+    },
+    {
+      "siteId": "site_nw_049",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_049.json.gz"
+    },
+    {
+      "siteId": "site_nw_missing_twins_01",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 101,
+      "file": "site_nw_missing_twins_01.json.gz"
+    },
+    {
+      "siteId": "site_nw_missing_wall_01",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_missing_wall_02",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_missing_wall_03",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nw_missing_wall_04",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_001",
+      "people": 105000,
+      "workers": 52500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3029,
+      "file": "site_nwe_001.json.gz"
+    },
+    {
+      "siteId": "site_nwe_002",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_nwe_002.json.gz"
+    },
+    {
+      "siteId": "site_nwe_003",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 967,
+      "file": "site_nwe_003.json.gz"
+    },
+    {
+      "siteId": "site_nwe_004",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_005",
+      "people": 1800,
+      "workers": 900,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 92,
+      "file": "site_nwe_005.json.gz"
+    },
+    {
+      "siteId": "site_nwe_006",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3667,
+      "file": "site_nwe_006.json.gz"
+    },
+    {
+      "siteId": "site_nwe_007",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_009",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_010",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_011",
+      "people": 100000,
+      "workers": 50000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2890,
+      "file": "site_nwe_011.json.gz"
+    },
+    {
+      "siteId": "site_nwe_012",
+      "people": 75000,
+      "workers": 37500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2902,
+      "file": "site_nwe_012.json.gz"
+    },
+    {
+      "siteId": "site_nwe_013",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_015",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_nwe_016",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_001",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_002",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_003",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_004",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_005",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_006",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_006.json.gz"
+    },
+    {
+      "siteId": "site_se_007",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_007.json.gz"
+    },
+    {
+      "siteId": "site_se_008",
+      "people": 110000,
+      "workers": 55000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3659,
+      "file": "site_se_008.json.gz"
+    },
+    {
+      "siteId": "site_se_009",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_009.json.gz"
+    },
+    {
+      "siteId": "site_se_010",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_010.json.gz"
+    },
+    {
+      "siteId": "site_se_011",
+      "people": 90000,
+      "workers": 45000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2995,
+      "file": "site_se_011.json.gz"
+    },
+    {
+      "siteId": "site_se_012",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_se_012.json.gz"
+    },
+    {
+      "siteId": "site_se_013",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_013.json.gz"
+    },
+    {
+      "siteId": "site_se_014",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_015",
+      "people": 90000,
+      "workers": 45000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2995,
+      "file": "site_se_015.json.gz"
+    },
+    {
+      "siteId": "site_se_016",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_017",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_018",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_019",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_019.json.gz"
+    },
+    {
+      "siteId": "site_se_020",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_020.json.gz"
+    },
+    {
+      "siteId": "site_se_021",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_021.json.gz"
+    },
+    {
+      "siteId": "site_se_022",
+      "people": 190000,
+      "workers": 95000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 5488,
+      "file": "site_se_022.json.gz"
+    },
+    {
+      "siteId": "site_se_023",
+      "people": 1500,
+      "workers": 750,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 67,
+      "file": "site_se_023.json.gz"
+    },
+    {
+      "siteId": "site_se_024",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_se_025",
+      "people": 1500,
+      "workers": 750,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 67,
+      "file": "site_se_025.json.gz"
+    },
+    {
+      "siteId": "site_se_026",
+      "people": 22000,
+      "workers": 11000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 746,
+      "file": "site_se_026.json.gz"
+    },
+    {
+      "siteId": "site_se_027",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_027.json.gz"
+    },
+    {
+      "siteId": "site_se_028",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_028.json.gz"
+    },
+    {
+      "siteId": "site_se_029",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_029.json.gz"
+    },
+    {
+      "siteId": "site_se_030",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_030.json.gz"
+    },
+    {
+      "siteId": "site_se_031",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_se_031.json.gz"
+    },
+    {
+      "siteId": "site_see_001",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_see_002",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3670,
+      "file": "site_see_002.json.gz"
+    },
+    {
+      "siteId": "site_see_003",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3670,
+      "file": "site_see_003.json.gz"
+    },
+    {
+      "siteId": "site_see_004",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_see_004.json.gz"
+    },
+    {
+      "siteId": "site_see_005",
+      "people": 230000,
+      "workers": 115000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 8869,
+      "file": "site_see_005.json.gz"
+    },
+    {
+      "siteId": "site_see_006",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_see_006.json.gz"
+    },
+    {
+      "siteId": "site_see_007",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_see_007.json.gz"
+    },
+    {
+      "siteId": "site_see_008",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_see_009",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_see_010",
+      "people": 6200,
+      "workers": 3100,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 205,
+      "file": "site_see_010.json.gz"
+    },
+    {
+      "siteId": "site_si_001",
+      "people": 10000,
+      "workers": 5000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 274,
+      "file": "site_si_001.json.gz"
+    },
+    {
+      "siteId": "site_si_002",
+      "people": 10000,
+      "workers": 5000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 274,
+      "file": "site_si_002.json.gz"
+    },
+    {
+      "siteId": "site_si_003",
+      "people": 10000,
+      "workers": 5000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 274,
+      "file": "site_si_003.json.gz"
+    },
+    {
+      "siteId": "site_si_004",
+      "people": 10000,
+      "workers": 5000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 274,
+      "file": "site_si_004.json.gz"
+    },
+    {
+      "siteId": "site_so_004",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_so_005",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_001",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1191,
+      "file": "site_sw_001.json.gz"
+    },
+    {
+      "siteId": "site_sw_002",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_002.json.gz"
+    },
+    {
+      "siteId": "site_sw_003",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_003.json.gz"
+    },
+    {
+      "siteId": "site_sw_004",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_005",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_005.json.gz"
+    },
+    {
+      "siteId": "site_sw_006",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_006.json.gz"
+    },
+    {
+      "siteId": "site_sw_007",
+      "people": 340,
+      "workers": 170,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 30,
+      "file": "site_sw_007.json.gz"
+    },
+    {
+      "siteId": "site_sw_008",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 70,
+      "file": "site_sw_008.json.gz"
+    },
+    {
+      "siteId": "site_sw_009",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_sw_009.json.gz"
+    },
+    {
+      "siteId": "site_sw_010",
+      "people": 45000,
+      "workers": 22500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1310,
+      "file": "site_sw_010.json.gz"
+    },
+    {
+      "siteId": "site_sw_011",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_011.json.gz"
+    },
+    {
+      "siteId": "site_sw_012",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_012.json.gz"
+    },
+    {
+      "siteId": "site_sw_013",
+      "people": 80,
+      "workers": 40,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 14,
+      "file": "site_sw_013.json.gz"
+    },
+    {
+      "siteId": "site_sw_014",
+      "people": 80,
+      "workers": 40,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 14,
+      "file": "site_sw_014.json.gz"
+    },
+    {
+      "siteId": "site_sw_015",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_015.json.gz"
+    },
+    {
+      "siteId": "site_sw_016",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_sw_016.json.gz"
+    },
+    {
+      "siteId": "site_sw_017",
+      "people": 2500,
+      "workers": 1250,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 86,
+      "file": "site_sw_017.json.gz"
+    },
+    {
+      "siteId": "site_sw_018",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_018.json.gz"
+    },
+    {
+      "siteId": "site_sw_019",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_sw_019.json.gz"
+    },
+    {
+      "siteId": "site_sw_020",
+      "people": 2300,
+      "workers": 1150,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 111,
+      "file": "site_sw_020.json.gz"
+    },
+    {
+      "siteId": "site_sw_021",
+      "people": 65,
+      "workers": 32,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 10,
+      "file": "site_sw_021.json.gz"
+    },
+    {
+      "siteId": "site_sw_022",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_022.json.gz"
+    },
+    {
+      "siteId": "site_sw_023",
+      "people": 2100,
+      "workers": 1050,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_024",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_024.json.gz"
+    },
+    {
+      "siteId": "site_sw_025",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_025.json.gz"
+    },
+    {
+      "siteId": "site_sw_026",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 966,
+      "file": "site_sw_026.json.gz"
+    },
+    {
+      "siteId": "site_sw_027",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_027.json.gz"
+    },
+    {
+      "siteId": "site_sw_028",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_028.json.gz"
+    },
+    {
+      "siteId": "site_sw_029",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_029.json.gz"
+    },
+    {
+      "siteId": "site_sw_030",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_030.json.gz"
+    },
+    {
+      "siteId": "site_sw_031",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_031.json.gz"
+    },
+    {
+      "siteId": "site_sw_032",
+      "people": 1700,
+      "workers": 850,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 63,
+      "file": "site_sw_032.json.gz"
+    },
+    {
+      "siteId": "site_sw_033",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_sw_033.json.gz"
+    },
+    {
+      "siteId": "site_sw_035",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 71,
+      "file": "site_sw_035.json.gz"
+    },
+    {
+      "siteId": "site_sw_036",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_036.json.gz"
+    },
+    {
+      "siteId": "site_sw_037",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_037.json.gz"
+    },
+    {
+      "siteId": "site_sw_038",
+      "people": 5500,
+      "workers": 2750,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 242,
+      "file": "site_sw_038.json.gz"
+    },
+    {
+      "siteId": "site_sw_039",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 966,
+      "file": "site_sw_039.json.gz"
+    },
+    {
+      "siteId": "site_sw_040",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_040.json.gz"
+    },
+    {
+      "siteId": "site_sw_041",
+      "people": 135000,
+      "workers": 67500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 3895,
+      "file": "site_sw_041.json.gz"
+    },
+    {
+      "siteId": "site_sw_042",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_042.json.gz"
+    },
+    {
+      "siteId": "site_sw_043",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_043.json.gz"
+    },
+    {
+      "siteId": "site_sw_044",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_044.json.gz"
+    },
+    {
+      "siteId": "site_sw_045",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_045.json.gz"
+    },
+    {
+      "siteId": "site_sw_046",
+      "people": 500000,
+      "workers": 250000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 14372,
+      "file": "site_sw_046.json.gz"
+    },
+    {
+      "siteId": "site_sw_047",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_047.json.gz"
+    },
+    {
+      "siteId": "site_sw_048",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_048.json.gz"
+    },
+    {
+      "siteId": "site_sw_049",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_sw_049.json.gz"
+    },
+    {
+      "siteId": "site_sw_050",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_050.json.gz"
+    },
+    {
+      "siteId": "site_sw_051",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_051.json.gz"
+    },
+    {
+      "siteId": "site_sw_052",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_052.json.gz"
+    },
+    {
+      "siteId": "site_sw_053",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_053.json.gz"
+    },
+    {
+      "siteId": "site_sw_054",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_054.json.gz"
+    },
+    {
+      "siteId": "site_sw_055",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_055.json.gz"
+    },
+    {
+      "siteId": "site_sw_056",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_056.json.gz"
+    },
+    {
+      "siteId": "site_sw_057",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1286,
+      "file": "site_sw_057.json.gz"
+    },
+    {
+      "siteId": "site_sw_058",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_058.json.gz"
+    },
+    {
+      "siteId": "site_sw_059",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_059.json.gz"
+    },
+    {
+      "siteId": "site_sw_060",
+      "people": 4000,
+      "workers": 2000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 186,
+      "file": "site_sw_060.json.gz"
+    },
+    {
+      "siteId": "site_sw_061",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_061.json.gz"
+    },
+    {
+      "siteId": "site_sw_062",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_062.json.gz"
+    },
+    {
+      "siteId": "site_sw_063",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_064",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_064.json.gz"
+    },
+    {
+      "siteId": "site_sw_065",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_065.json.gz"
+    },
+    {
+      "siteId": "site_sw_066",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_066.json.gz"
+    },
+    {
+      "siteId": "site_sw_067",
+      "people": 8000,
+      "workers": 4000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 354,
+      "file": "site_sw_067.json.gz"
+    },
+    {
+      "siteId": "site_sw_068",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1271,
+      "file": "site_sw_068.json.gz"
+    },
+    {
+      "siteId": "site_sw_069",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_069.json.gz"
+    },
+    {
+      "siteId": "site_sw_070",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_070.json.gz"
+    },
+    {
+      "siteId": "site_sw_071",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_071.json.gz"
+    },
+    {
+      "siteId": "site_sw_072",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_072.json.gz"
+    },
+    {
+      "siteId": "site_sw_073",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_073.json.gz"
+    },
+    {
+      "siteId": "site_sw_074",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_074.json.gz"
+    },
+    {
+      "siteId": "site_sw_075",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_075.json.gz"
+    },
+    {
+      "siteId": "site_sw_076",
+      "people": 33000,
+      "workers": 16500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 1191,
+      "file": "site_sw_076.json.gz"
+    },
+    {
+      "siteId": "site_sw_077",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_077.json.gz"
+    },
+    {
+      "siteId": "site_sw_078",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_sw_079",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_079.json.gz"
+    },
+    {
+      "siteId": "site_sw_080",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_080.json.gz"
+    },
+    {
+      "siteId": "site_sw_081",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_081.json.gz"
+    },
+    {
+      "siteId": "site_sw_082",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_082.json.gz"
+    },
+    {
+      "siteId": "site_sw_083",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_083.json.gz"
+    },
+    {
+      "siteId": "site_sw_084",
+      "people": 210000,
+      "workers": 105000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 6047,
+      "file": "site_sw_084.json.gz"
+    },
+    {
+      "siteId": "site_sw_085",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_085.json.gz"
+    },
+    {
+      "siteId": "site_sw_086",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_086.json.gz"
+    },
+    {
+      "siteId": "site_sw_087",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_087.json.gz"
+    },
+    {
+      "siteId": "site_sw_088",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 103,
+      "file": "site_sw_088.json.gz"
+    },
+    {
+      "siteId": "site_sw_089",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_089.json.gz"
+    },
+    {
+      "siteId": "site_sw_090",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_090.json.gz"
+    },
+    {
+      "siteId": "site_sw_091",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_091.json.gz"
+    },
+    {
+      "siteId": "site_sw_092",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_092.json.gz"
+    },
+    {
+      "siteId": "site_sw_093",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_093.json.gz"
+    },
+    {
+      "siteId": "site_sw_094",
+      "people": 280,
+      "workers": 140,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 27,
+      "file": "site_sw_094.json.gz"
+    },
+    {
+      "siteId": "site_sw_095",
+      "people": 6500,
+      "workers": 3250,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 280,
+      "file": "site_sw_095.json.gz"
+    },
+    {
+      "siteId": "site_sw_096",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_096.json.gz"
+    },
+    {
+      "siteId": "site_sw_097",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_097.json.gz"
+    },
+    {
+      "siteId": "site_sw_098",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_098.json.gz"
+    },
+    {
+      "siteId": "site_sw_099",
+      "people": 2200,
+      "workers": 1100,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 108,
+      "file": "site_sw_099.json.gz"
+    },
+    {
+      "siteId": "site_sw_100",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_100.json.gz"
+    },
+    {
+      "siteId": "site_sw_101",
+      "people": 2200,
+      "workers": 1100,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 108,
+      "file": "site_sw_101.json.gz"
+    },
+    {
+      "siteId": "site_sw_102",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 104,
+      "file": "site_sw_102.json.gz"
+    },
+    {
+      "siteId": "site_sw_103",
+      "people": 2100,
+      "workers": 1050,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 102,
+      "file": "site_sw_103.json.gz"
+    },
+    {
+      "siteId": "site_sw_104",
+      "people": 2200,
+      "workers": 1100,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 108,
+      "file": "site_sw_104.json.gz"
+    },
+    {
+      "siteId": "site_swe_001",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_swe_002",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2754,
+      "file": "site_swe_002.json.gz"
+    },
+    {
+      "siteId": "site_swe_003",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2754,
+      "file": "site_swe_003.json.gz"
+    },
+    {
+      "siteId": "site_swe_004",
+      "people": 24000,
+      "workers": 12000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 935,
+      "file": "site_swe_004.json.gz"
+    },
+    {
+      "siteId": "site_swe_005",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    },
+    {
+      "siteId": "site_swe_006",
+      "people": 24000,
+      "workers": 12000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 865,
+      "file": "site_swe_006.json.gz"
+    },
+    {
+      "siteId": "site_swe_007",
+      "people": 7000,
+      "workers": 3500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 281,
+      "file": "site_swe_007.json.gz"
+    },
+    {
+      "siteId": "site_swe_008",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_008.json.gz"
+    },
+    {
+      "siteId": "site_swe_009",
+      "people": 24000,
+      "workers": 12000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 935,
+      "file": "site_swe_009.json.gz"
+    },
+    {
+      "siteId": "site_swe_010",
+      "people": 95000,
+      "workers": 47500,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 2754,
+      "file": "site_swe_010.json.gz"
+    },
+    {
+      "siteId": "site_swe_011",
+      "people": 260000,
+      "workers": 130000,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 8580,
+      "file": "site_swe_011.json.gz"
+    },
+    {
+      "siteId": "site_swe_014",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_014.json.gz"
+    },
+    {
+      "siteId": "site_swe_015",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_015.json.gz"
+    },
+    {
+      "siteId": "site_swe_016",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_016.json.gz"
+    },
+    {
+      "siteId": "site_swe_017",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_017.json.gz"
+    },
+    {
+      "siteId": "site_swe_018",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_018.json.gz"
+    },
+    {
+      "siteId": "site_swe_019",
+      "people": 550,
+      "workers": 275,
+      "status": "READ_ONLY_PLANNED_WORKSITES",
+      "workplaceCount": 45,
+      "file": "site_swe_019.json.gz"
+    },
+    {
+      "siteId": "site_swe_020",
+      "people": 0,
+      "workers": 0,
+      "status": "NO_GENERIC_PROJECTION",
+      "workplaceCount": 0,
+      "file": null
+    }
+  ],
+  "siteCount": 248,
+  "peopleTotal": 3760684,
+  "workersTotal": 1880341,
+  "workplacesIndexed": 126771,
+  "winterfellV3Independent": true,
+  "fixedSourceIdentity": true,
+  "commutesArePathVerified": false,
+  "jobProductionImplemented": false,
+  "description": "Read-only work lot coordinates for lazy world-time schedule evaluation; no NPC work events or actual building verification."
+}

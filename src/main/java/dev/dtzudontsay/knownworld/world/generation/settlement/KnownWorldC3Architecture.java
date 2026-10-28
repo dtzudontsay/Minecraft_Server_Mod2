@@ -164,6 +164,12 @@ public final class KnownWorldC3Architecture {
         if ("KEEP".equals(family) || "TOWER".equals(family)) return Blocks.STONE_BRICKS.defaultBlockState();
         String p = palette.toUpperCase(Locale.ROOT);
         if (p.contains("DORN")) return Blocks.SANDSTONE.defaultBlockState();
+        // C4.15: ordinary residential stone/wood; fired bricks stay a special-building accent.
+        if ("URBAN_HOME".equals(family))
+            return p.contains("DORN") ? Blocks.SANDSTONE.defaultBlockState()
+                    : Blocks.STONE_BRICKS.defaultBlockState();
+        if ("HOME".equals(family) && (p.contains("GHISCAR") || p.contains("ESSOS_FREE")))
+            return Blocks.OAK_PLANKS.defaultBlockState();
         if (p.contains("GHISCAR") || p.contains("ESSOS_FREE")) return Blocks.BRICKS.defaultBlockState();
         if (p.contains("YITI") || p.contains("SHADOW")) return Blocks.DEEPSLATE_BRICKS.defaultBlockState();
         if (p.contains("NORTHERN") || p.contains("IBBEN") || p.contains("WALL"))

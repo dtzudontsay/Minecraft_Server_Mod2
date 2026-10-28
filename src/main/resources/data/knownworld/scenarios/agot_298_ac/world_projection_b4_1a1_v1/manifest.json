@@ -1,0 +1,6922 @@
+{
+  "schemaVersion": "knownworld.b4_1a1.household_projection.v1",
+  "physicalProjectionLimit": 256,
+  "sourcePopulationCount": 3760684,
+  "sourceHouseholdCount": 799343,
+  "indexedResidents": 3752534,
+  "indexedHouseholds": 797534,
+  "projectedExistingWinterfellIds": false,
+  "changesBasePopulation": false,
+  "sites": [
+    {
+      "siteId": "site_ne_001",
+      "name": "Ib Nor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "3715_-4137": 550
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1902406,
+      "anchorZ": -2117942,
+      "bounds": [
+        1902171,
+        1902589,
+        -2118177,
+        -2117781
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_002",
+      "name": "Port of Ibben",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "3496_-3381": 91,
+        "3496_-3382": 459
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1790191,
+      "anchorZ": -1731199,
+      "bounds": [
+        1789956,
+        1790351,
+        -1731434,
+        -1731038
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_003",
+      "name": "Ib Sar",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4704_-2603": 14,
+        "4704_-2604": 21,
+        "4705_-2603": 132,
+        "4705_-2604": 383
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2409095,
+      "anchorZ": -1332840,
+      "bounds": [
+        2408885,
+        2409306,
+        -1333050,
+        -1332679
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_004",
+      "name": "New Ibbish",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "3448_-2286": 67,
+        "3448_-2287": 67,
+        "3449_-2286": 226,
+        "3449_-2287": 190
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1765967,
+      "anchorZ": -1170418,
+      "bounds": [
+        1765732,
+        1766150,
+        -1170653,
+        -1170257
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_005",
+      "name": "Vaes Aresak / Ibbish",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4040_-1978": 189,
+        "4040_-1979": 361
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2068653,
+      "anchorZ": -1012814,
+      "bounds": [
+        2068443,
+        2068864,
+        -1013024,
+        -1012653
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_006",
+      "name": "Vaes Leisi",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "2096_-1733": 550
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1073507,
+      "anchorZ": -887139,
+      "bounds": [
+        1073297,
+        1073718,
+        -887349,
+        -886978
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_007",
+      "name": "Vaes Dothrak",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "3335_-445": 353,
+        "3335_-446": 97
+      },
+      "residentsIndexed": 450,
+      "householdsIndexed": 113,
+      "anchorX": 1707863,
+      "anchorZ": -227727,
+      "bounds": [
+        1707628,
+        1708024,
+        -227962,
+        -227566
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_008",
+      "name": "Vaes Leqse / Gornath",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_ne_009",
+      "name": "Kayakayanaya",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "5475_44": 550
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2803555,
+      "anchorZ": 22709,
+      "bounds": [
+        2803320,
+        2803738,
+        22474,
+        22870
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_ne_010",
+      "name": "Yalli Qamayi / Sathar",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nee_001",
+      "name": "Nefer",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "8893_-29": 1461,
+        "8893_-30": 1225,
+        "8893_-31": 747,
+        "8894_-29": 4244,
+        "8894_-30": 2990,
+        "8894_-31": 2865,
+        "8895_-29": 4065,
+        "8895_-30": 3588,
+        "8895_-31": 2620,
+        "8896_-29": 1173,
+        "8896_-30": 1265,
+        "8896_-31": 757
+      },
+      "residentsIndexed": 27000,
+      "householdsIndexed": 5745,
+      "anchorX": 4554206,
+      "anchorZ": -15019,
+      "bounds": [
+        4553471,
+        4554942,
+        -15754,
+        -14358
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nee_002",
+      "name": "K'Dath (legendary/unconfirmed)",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nee_003",
+      "name": "Trader Town",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "6959_1552": 19,
+        "6959_1553": 66,
+        "6959_1554": 241,
+        "6959_1555": 313,
+        "6959_1556": 480,
+        "6959_1557": 241,
+        "6960_1552": 1140,
+        "6960_1553": 3087,
+        "6960_1554": 2625,
+        "6960_1555": 3280,
+        "6960_1556": 3431,
+        "6960_1557": 2452,
+        "6961_1552": 1188,
+        "6961_1553": 4577,
+        "6961_1554": 3326,
+        "6961_1555": 3895,
+        "6961_1556": 4512,
+        "6961_1557": 2606,
+        "6962_1552": 1137,
+        "6962_1553": 4577,
+        "6962_1554": 3752,
+        "6962_1555": 2937,
+        "6962_1556": 4307,
+        "6962_1557": 2573,
+        "6963_1552": 1206,
+        "6963_1553": 4542,
+        "6963_1554": 4490,
+        "6963_1555": 4731,
+        "6963_1556": 4550,
+        "6963_1557": 2598,
+        "6964_1552": 878,
+        "6964_1553": 3426,
+        "6964_1554": 3257,
+        "6964_1555": 3402,
+        "6964_1556": 3247,
+        "6964_1557": 1911
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": 3564713,
+      "anchorZ": 796228,
+      "bounds": [
+        3563380,
+        3566024,
+        794893,
+        797539
+      ],
+      "regionId": "yi_ti",
+      "regionalValues": {
+        "TRADITIONALISM": 0.55,
+        "HIERARCHY_ACCEPTANCE": 0.6
+      },
+      "regionalNorms": {
+        "COURTLY": 0.55,
+        "BUREAUCRATIC": 0.6,
+        "URBAN": 0.45
+      }
+    },
+    {
+      "siteId": "site_nee_004",
+      "name": "Bonetown (reported/unconfirmed)",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nee_005",
+      "name": "The Five Forts — individual fort 1",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "9479_1864": 164,
+        "9479_1865": 121,
+        "9480_1864": 783,
+        "9480_1865": 532
+      },
+      "residentsIndexed": 1600,
+      "householdsIndexed": 400,
+      "anchorX": 4853947,
+      "anchorZ": 954816,
+      "bounds": [
+        4853588,
+        4854233,
+        954456,
+        955102
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nee_006",
+      "name": "The Five Forts — individual fort 2",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "9568_1983": 384,
+        "9568_1984": 260,
+        "9569_1983": 557,
+        "9569_1984": 399
+      },
+      "residentsIndexed": 1600,
+      "householdsIndexed": 400,
+      "anchorX": 4899399,
+      "anchorZ": 1015733,
+      "bounds": [
+        4899040,
+        4899685,
+        1015373,
+        1016019
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nee_007",
+      "name": "The Five Forts — individual fort 3",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "9659_2070": 695,
+        "9659_2071": 317,
+        "9660_2070": 432,
+        "9660_2071": 156
+      },
+      "residentsIndexed": 1600,
+      "householdsIndexed": 400,
+      "anchorX": 4945820,
+      "anchorZ": 1060213,
+      "bounds": [
+        4945461,
+        4946106,
+        1059853,
+        1060499
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nee_008",
+      "name": "The Five Forts — individual fort 4",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "9791_2119": 468,
+        "9791_2120": 291,
+        "9792_2119": 526,
+        "9792_2120": 315
+      },
+      "residentsIndexed": 1600,
+      "householdsIndexed": 400,
+      "anchorX": 5013520,
+      "anchorZ": 1085353,
+      "bounds": [
+        5013161,
+        5013806,
+        1084993,
+        1085639
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nee_009",
+      "name": "The Five Forts — individual fort 5",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "9935_2174": 1089,
+        "9935_2175": 274,
+        "9936_2174": 207,
+        "9936_2175": 30
+      },
+      "residentsIndexed": 1600,
+      "householdsIndexed": 400,
+      "anchorX": 5087023,
+      "anchorZ": 1113395,
+      "bounds": [
+        5086664,
+        5087309,
+        1113035,
+        1113681
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nee_010",
+      "name": "Tiqui",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "6740_2365": 54,
+        "6740_2366": 2269,
+        "6740_2367": 2386,
+        "6740_2368": 1171,
+        "6741_2365": 85,
+        "6741_2366": 2952,
+        "6741_2367": 2334,
+        "6741_2368": 1267,
+        "6742_2365": 20,
+        "6742_2366": 1392,
+        "6742_2367": 1385,
+        "6742_2368": 685
+      },
+      "residentsIndexed": 16000,
+      "householdsIndexed": 3334,
+      "anchorX": 3451517,
+      "anchorZ": 1212007,
+      "bounds": [
+        3450809,
+        3452228,
+        1211297,
+        1212643
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_001",
+      "name": "Thenn",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8314_-6956": 49,
+        "-8314_-6957": 1660,
+        "-8314_-6958": 75,
+        "-8315_-6956": 7,
+        "-8315_-6957": 103,
+        "-8315_-6958": 6
+      },
+      "residentsIndexed": 1900,
+      "householdsIndexed": 380,
+      "anchorX": -4256539,
+      "anchorZ": -3561731,
+      "bounds": [
+        -4256870,
+        -4256203,
+        -3562066,
+        -3561454
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_004",
+      "name": "Fist of the First Men",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_005",
+      "name": "Hardhome",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_007",
+      "name": "Craster's Keep",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7444_-5590": 5,
+        "-7445_-5590": 9
+      },
+      "residentsIndexed": 14,
+      "householdsIndexed": 3,
+      "anchorX": -3811345,
+      "anchorZ": -2861819,
+      "bounds": [
+        -3811526,
+        -3811231,
+        -2862004,
+        -2861705
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_008",
+      "name": "Castle Black",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7307_-5441": 36,
+        "-7307_-5442": 264
+      },
+      "residentsIndexed": 300,
+      "householdsIndexed": 75,
+      "anchorX": -3741014,
+      "anchorZ": -2785917,
+      "bounds": [
+        -3741224,
+        -3740879,
+        -2786127,
+        -2785781
+      ],
+      "regionId": "beyond_the_wall",
+      "regionalValues": {
+        "TRADITIONALISM": 0.55,
+        "PERSONAL_FREEDOM": 0.8,
+        "AUTHORITY_RESPECT": -0.6,
+        "CLAN_LOYALTY": 0.55
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "COURTLY": -0.9,
+        "RURAL": 0.85,
+        "ISOLATIONIST": 0.75,
+        "CLAN_BASED": 0.6
+      }
+    },
+    {
+      "siteId": "site_nw_009",
+      "name": "Oakenshield",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_010",
+      "name": "Woodswatch-by-the-Pool",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_011",
+      "name": "Sable Hall",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_012",
+      "name": "Stonegate",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_013",
+      "name": "Icemark",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_014",
+      "name": "Deep Lake",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_015",
+      "name": "Hoarfrost Hill",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_016",
+      "name": "The Nightfort",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_017",
+      "name": "Eastwatch-by-the-Sea",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6893_-5331": 148,
+        "-6894_-5331": 152
+      },
+      "residentsIndexed": 300,
+      "householdsIndexed": 75,
+      "anchorX": -3529241,
+      "anchorZ": -2729199,
+      "bounds": [
+        -3529451,
+        -3529105,
+        -2729409,
+        -2729063
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_018",
+      "name": "Greywatch",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_019",
+      "name": "Shieldwatch",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_020",
+      "name": "Shadow Tower",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7663_-5268": 147,
+        "-7663_-5269": 153
+      },
+      "residentsIndexed": 300,
+      "householdsIndexed": 75,
+      "anchorX": -3923202,
+      "anchorZ": -2697215,
+      "bounds": [
+        -3923412,
+        -3923067,
+        -2697425,
+        -2697079
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_021",
+      "name": "Westwatch-by-the-Bridge",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_022",
+      "name": "Mole's Town",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7215_-5223": 514,
+        "-7215_-5224": 136
+      },
+      "residentsIndexed": 650,
+      "householdsIndexed": 130,
+      "anchorX": -3693852,
+      "anchorZ": -2674057,
+      "bounds": [
+        -3694087,
+        -3693620,
+        -2674292,
+        -2673896
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_023",
+      "name": "Queenscrown",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_024",
+      "name": "Mormont's Castle",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8782_-4811": 1682,
+        "-8782_-4812": 418
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4496140,
+      "anchorZ": -2463070,
+      "bounds": [
+        -4496424,
+        -4495854,
+        -2463355,
+        -2462785
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_025",
+      "name": "Last Hearth",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7147_-4767": 62,
+        "-7147_-4768": 130,
+        "-7148_-4767": 958,
+        "-7148_-4768": 950
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3659462,
+      "anchorZ": -2440747,
+      "bounds": [
+        -3659746,
+        -3659176,
+        -2441032,
+        -2440462
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_026",
+      "name": "Karhold",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6308_-4361": 258,
+        "-6308_-4362": 1571,
+        "-6309_-4361": 36,
+        "-6309_-4362": 235
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3229511,
+      "anchorZ": -2233028,
+      "bounds": [
+        -3229795,
+        -3229225,
+        -2233313,
+        -2232743
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_027",
+      "name": "Deepwood Motte",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8661_-4213": 319,
+        "-8661_-4214": 278,
+        "-8662_-4213": 819,
+        "-8662_-4214": 684
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4434571,
+      "anchorZ": -2157051,
+      "bounds": [
+        -4434855,
+        -4434285,
+        -2157336,
+        -2156766
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_028",
+      "name": "Dreadfort",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6955_-4037": 327,
+        "-6955_-4038": 88,
+        "-6956_-4037": 1220,
+        "-6956_-4038": 465
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3561125,
+      "anchorZ": -2066813,
+      "bounds": [
+        -3561409,
+        -3560839,
+        -2067098,
+        -2066528
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_029",
+      "name": "Winterfell",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_030",
+      "name": "Torrhen's Square",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8530_-3495": 390,
+        "-8530_-3496": 582,
+        "-8531_-3495": 561,
+        "-8531_-3496": 567
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4367400,
+      "anchorZ": -1789507,
+      "bounds": [
+        -4367684,
+        -4367114,
+        -1789792,
+        -1789222
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_031",
+      "name": "Ramsgate",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_032",
+      "name": "Widow's Watch",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6137_-3022": 15,
+        "-6137_-3023": 272,
+        "-6138_-3022": 149,
+        "-6138_-3023": 1664
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3142324,
+      "anchorZ": -1547477,
+      "bounds": [
+        -3142608,
+        -3142038,
+        -1547762,
+        -1547192
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_033",
+      "name": "Barrowton",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8634_-2998": 2217,
+        "-8634_-2999": 3906,
+        "-8634_-3000": 3700,
+        "-8634_-3001": 1125,
+        "-8635_-2998": 2737,
+        "-8635_-2999": 3042,
+        "-8635_-3000": 3827,
+        "-8635_-3001": 1359,
+        "-8636_-2998": 2592,
+        "-8636_-2999": 3746,
+        "-8636_-3000": 3047,
+        "-8636_-3001": 1250,
+        "-8637_-2998": 54,
+        "-8637_-2999": 171,
+        "-8637_-3000": 156,
+        "-8637_-3001": 71
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -4420910,
+      "anchorZ": -1535417,
+      "bounds": [
+        -4421720,
+        -4420099,
+        -1536227,
+        -1534607
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_034",
+      "name": "White Harbor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7411_-2899": 85,
+        "-7411_-2900": 753,
+        "-7411_-2901": 865,
+        "-7411_-2902": 1040,
+        "-7411_-2903": 358,
+        "-7412_-2899": 447,
+        "-7412_-2900": 4287,
+        "-7412_-2901": 4466,
+        "-7412_-2902": 4246,
+        "-7412_-2903": 1456,
+        "-7413_-2899": 429,
+        "-7413_-2900": 4196,
+        "-7413_-2901": 2464,
+        "-7413_-2902": 4108,
+        "-7413_-2903": 1483,
+        "-7414_-2899": 407,
+        "-7414_-2900": 3970,
+        "-7414_-2901": 3378,
+        "-7414_-2902": 3220,
+        "-7414_-2903": 1524,
+        "-7415_-2899": 101,
+        "-7415_-2900": 622,
+        "-7415_-2901": 494,
+        "-7415_-2902": 441,
+        "-7415_-2903": 160
+      },
+      "residentsIndexed": 45000,
+      "householdsIndexed": 9575,
+      "anchorX": -3795195,
+      "anchorZ": -1485116,
+      "bounds": [
+        -3796129,
+        -3794259,
+        -1486051,
+        -1484255
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_035",
+      "name": "Moat Cailin",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7900_-2687": 125
+      },
+      "residentsIndexed": 125,
+      "householdsIndexed": 32,
+      "anchorX": -4044506,
+      "anchorZ": -1375636,
+      "bounds": [
+        -4044666,
+        -4044396,
+        -1375796,
+        -1375534
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_036",
+      "name": "Oldcastle",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7244_-2553": 1210,
+        "-7244_-2554": 131,
+        "-7245_-2553": 699,
+        "-7245_-2554": 60
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3708869,
+      "anchorZ": -1306940,
+      "bounds": [
+        -3709153,
+        -3708583,
+        -1307225,
+        -1306655
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_037",
+      "name": "Flint's Finger",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9225_-2395": 1278,
+        "-9225_-2396": 822
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4722938,
+      "anchorZ": -1226180,
+      "bounds": [
+        -4723222,
+        -4722652,
+        -1226465,
+        -1225895
+      ],
+      "regionId": "the_north",
+      "regionalValues": {
+        "TRADITIONALISM": 0.75,
+        "DUTY": 0.5,
+        "HOUSE_LOYALTY": 0.45,
+        "HOSPITALITY": 0.4
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.45,
+        "TRADITIONAL": 0.75,
+        "COURTLY": -0.2,
+        "RURAL": 0.55,
+        "CLAN_BASED": 0.3
+      }
+    },
+    {
+      "siteId": "site_nw_038",
+      "name": "Sisterton",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7079_-2327": 1176,
+        "-7079_-2328": 2030,
+        "-7079_-2329": 2011,
+        "-7079_-2330": 722,
+        "-7080_-2327": 2383,
+        "-7080_-2328": 3751,
+        "-7080_-2329": 3951,
+        "-7080_-2330": 1521,
+        "-7081_-2327": 2455,
+        "-7081_-2328": 3510,
+        "-7081_-2329": 3511,
+        "-7081_-2330": 1587,
+        "-7082_-2327": 949,
+        "-7082_-2328": 1528,
+        "-7082_-2329": 1263,
+        "-7082_-2330": 652
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3624948,
+      "anchorZ": -1191887,
+      "bounds": [
+        -3625758,
+        -3624137,
+        -1192697,
+        -1191076
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_039",
+      "name": "Greywater Watch",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_042",
+      "name": "Coldwater Burn",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6565_-1907": 1332,
+        "-6566_-1907": 710,
+        "-6566_-1908": 58
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3361213,
+      "anchorZ": -976168,
+      "bounds": [
+        -3361497,
+        -3360927,
+        -976453,
+        -975883
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_045",
+      "name": "Snakewood",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6562_-1751": 1640,
+        "-6563_-1751": 460
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3359605,
+      "anchorZ": -896266,
+      "bounds": [
+        -3359889,
+        -3359319,
+        -896551,
+        -895981
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_047",
+      "name": "Longbow Hall",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6253_-1604": 1083,
+        "-6253_-1605": 659,
+        "-6254_-1604": 275,
+        "-6254_-1605": 83
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3201370,
+      "anchorZ": -821168,
+      "bounds": [
+        -3201654,
+        -3201084,
+        -821453,
+        -820883
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_048",
+      "name": "Heart's Home",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6746_-1576": 1015,
+        "-6746_-1577": 297,
+        "-6747_-1576": 634,
+        "-6747_-1577": 154
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3453890,
+      "anchorZ": -806771,
+      "bounds": [
+        -3454174,
+        -3453604,
+        -807056,
+        -806486
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_049",
+      "name": "Unidentified NW-049",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7172_-1571": 589,
+        "-7172_-1572": 557,
+        "-7173_-1571": 532,
+        "-7173_-1572": 422
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3672048,
+      "anchorZ": -804361,
+      "bounds": [
+        -3672332,
+        -3671762,
+        -804646,
+        -804076
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nw_missing_twins_01",
+      "name": "The Twins",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8073_-1647": 146,
+        "-8073_-1648": 1954
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4133143,
+      "anchorZ": -843486,
+      "bounds": [
+        -4133427,
+        -4132857,
+        -843771,
+        -843201
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_nw_missing_wall_01",
+      "name": "Rimegate",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_missing_wall_02",
+      "name": "Long Barrow",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_missing_wall_03",
+      "name": "The Torches",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nw_missing_wall_04",
+      "name": "Greenguard",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_001",
+      "name": "Braavos",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-4935_-1917": 345,
+        "-4935_-1918": 974,
+        "-4935_-1919": 1033,
+        "-4935_-1920": 1187,
+        "-4935_-1921": 1180,
+        "-4935_-1922": 943,
+        "-4936_-1917": 1531,
+        "-4936_-1918": 4218,
+        "-4936_-1919": 4436,
+        "-4936_-1920": 4365,
+        "-4936_-1921": 4399,
+        "-4936_-1922": 3233,
+        "-4937_-1917": 1480,
+        "-4937_-1918": 4398,
+        "-4937_-1919": 4374,
+        "-4937_-1920": 4286,
+        "-4937_-1921": 4343,
+        "-4937_-1922": 3179,
+        "-4938_-1917": 1498,
+        "-4938_-1918": 4323,
+        "-4938_-1919": 3906,
+        "-4938_-1920": 2645,
+        "-4938_-1921": 4343,
+        "-4938_-1922": 3212,
+        "-4939_-1917": 1473,
+        "-4939_-1918": 4431,
+        "-4939_-1919": 3492,
+        "-4939_-1920": 3221,
+        "-4939_-1921": 3540,
+        "-4939_-1922": 3536,
+        "-4940_-1917": 1280,
+        "-4940_-1918": 3439,
+        "-4940_-1919": 2784,
+        "-4940_-1920": 2567,
+        "-4940_-1921": 2498,
+        "-4940_-1922": 2908
+      },
+      "residentsIndexed": 105000,
+      "householdsIndexed": 22341,
+      "anchorX": -2527920,
+      "anchorZ": -982650,
+      "bounds": [
+        -2529330,
+        -2526509,
+        -984060,
+        -981241
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_002",
+      "name": "Morosh",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-797_-1752": 17,
+        "-797_-1753": 35,
+        "-798_-1752": 163,
+        "-798_-1753": 335
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -408209,
+      "anchorZ": -897102,
+      "bounds": [
+        -408419,
+        -407998,
+        -897312,
+        -896941
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_003",
+      "name": "Lorath",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-3997_-1673": 1654,
+        "-3997_-1674": 1894,
+        "-3997_-1675": 1894,
+        "-3997_-1676": 198,
+        "-3998_-1673": 3713,
+        "-3998_-1674": 3467,
+        "-3998_-1675": 4099,
+        "-3998_-1676": 437,
+        "-3999_-1673": 3800,
+        "-3999_-1674": 2817,
+        "-3999_-1675": 3900,
+        "-3999_-1676": 434,
+        "-4000_-1673": 1634,
+        "-4000_-1674": 1341,
+        "-4000_-1675": 1512,
+        "-4000_-1676": 206
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -2047009,
+      "anchorZ": -856898,
+      "bounds": [
+        -2047840,
+        -2046173,
+        -857733,
+        -856137
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_004",
+      "name": "Vaes Graddakh / Sarys",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_005",
+      "name": "Saath",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-1187_-1392": 633,
+        "-1187_-1393": 142,
+        "-1188_-1392": 805,
+        "-1188_-1393": 220
+      },
+      "residentsIndexed": 1800,
+      "householdsIndexed": 360,
+      "anchorX": -607786,
+      "anchorZ": -712557,
+      "bounds": [
+        -608092,
+        -607475,
+        -712867,
+        -712249
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_006",
+      "name": "Norvos",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-3651_-587": 1711,
+        "-3651_-588": 2171,
+        "-3651_-589": 2278,
+        "-3651_-590": 2111,
+        "-3651_-591": 2253,
+        "-3651_-592": 108,
+        "-3652_-587": 3454,
+        "-3652_-588": 4508,
+        "-3652_-589": 4517,
+        "-3652_-590": 4449,
+        "-3652_-591": 4439,
+        "-3652_-592": 252,
+        "-3653_-587": 3514,
+        "-3653_-588": 4454,
+        "-3653_-589": 3378,
+        "-3653_-590": 4368,
+        "-3653_-591": 4624,
+        "-3653_-592": 274,
+        "-3654_-587": 3414,
+        "-3654_-588": 4402,
+        "-3654_-589": 3300,
+        "-3654_-590": 3898,
+        "-3654_-591": 4528,
+        "-3654_-592": 303,
+        "-3655_-587": 3480,
+        "-3655_-588": 3807,
+        "-3655_-589": 3091,
+        "-3655_-590": 2949,
+        "-3655_-591": 4106,
+        "-3655_-592": 237,
+        "-3656_-587": 1127,
+        "-3656_-588": 1249,
+        "-3656_-589": 754,
+        "-3656_-590": 643,
+        "-3656_-591": 769,
+        "-3656_-592": 80
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": -1870302,
+      "anchorZ": -301399,
+      "bounds": [
+        -1871635,
+        -1868991,
+        -302734,
+        -300088
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_007",
+      "name": "Vaes Athjikhari / Sallosh",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_009",
+      "name": "Ghoyan Drohe",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_010",
+      "name": "Vojjor Samvi / Kasath",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_011",
+      "name": "Pentos",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-4872_129": 1072,
+        "-4872_130": 3204,
+        "-4872_131": 3048,
+        "-4872_132": 3314,
+        "-4872_133": 3020,
+        "-4872_134": 2043,
+        "-4873_129": 1442,
+        "-4873_130": 3913,
+        "-4873_131": 4165,
+        "-4873_132": 4293,
+        "-4873_133": 4345,
+        "-4873_134": 2957,
+        "-4874_129": 1476,
+        "-4874_130": 4436,
+        "-4874_131": 3928,
+        "-4874_132": 3386,
+        "-4874_133": 4401,
+        "-4874_134": 3179,
+        "-4875_129": 1421,
+        "-4875_130": 4401,
+        "-4875_131": 3209,
+        "-4875_132": 3442,
+        "-4875_133": 4236,
+        "-4875_134": 2894,
+        "-4876_129": 1567,
+        "-4876_130": 3579,
+        "-4876_131": 2752,
+        "-4876_132": 3056,
+        "-4876_133": 3890,
+        "-4876_134": 3149,
+        "-4877_129": 441,
+        "-4877_130": 862,
+        "-4877_131": 879,
+        "-4877_132": 868,
+        "-4877_133": 847,
+        "-4877_134": 885
+      },
+      "residentsIndexed": 100000,
+      "householdsIndexed": 21277,
+      "anchorX": -2495407,
+      "anchorZ": 67659,
+      "bounds": [
+        -2496792,
+        -2494021,
+        66274,
+        69017
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_012",
+      "name": "Qohor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-2478_132": 209,
+        "-2478_133": 210,
+        "-2478_134": 212,
+        "-2478_135": 248,
+        "-2478_136": 71,
+        "-2479_132": 4283,
+        "-2479_133": 4368,
+        "-2479_134": 4687,
+        "-2479_135": 4361,
+        "-2479_136": 1730,
+        "-2480_132": 4313,
+        "-2480_133": 4181,
+        "-2480_134": 4035,
+        "-2480_135": 4470,
+        "-2480_136": 1735,
+        "-2481_132": 4523,
+        "-2481_133": 3776,
+        "-2481_134": 3260,
+        "-2481_135": 4306,
+        "-2481_136": 1660,
+        "-2482_132": 3734,
+        "-2482_133": 2529,
+        "-2482_134": 2708,
+        "-2482_135": 4048,
+        "-2482_136": 1847,
+        "-2483_132": 751,
+        "-2483_133": 666,
+        "-2483_134": 683,
+        "-2483_135": 880,
+        "-2483_136": 516
+      },
+      "residentsIndexed": 75000,
+      "householdsIndexed": 15958,
+      "anchorX": -1269825,
+      "anchorZ": 68707,
+      "bounds": [
+        -1271035,
+        -1268639,
+        67497,
+        69893
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_nwe_013",
+      "name": "Vaes Khewo / Sarnath",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_015",
+      "name": "Ny Sar",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_nwe_016",
+      "name": "Ar Noy",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_001",
+      "name": "Vaes Efe",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_002",
+      "name": "Vaes Diaf / Hazdahn Mo",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_003",
+      "name": "Vaes Jini / Yinishar",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_004",
+      "name": "Vaes Mejhah",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_005",
+      "name": "Krazaaj Has / Ghardaq",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_006",
+      "name": "Adakhakileki",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4199_1433": 348,
+        "4200_1433": 202
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2150343,
+      "anchorZ": 733909,
+      "bounds": [
+        2150108,
+        2150526,
+        733674,
+        734070
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_007",
+      "name": "Samyriana",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "5181_1434": 347,
+        "5181_1435": 203
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2652921,
+      "anchorZ": 734658,
+      "bounds": [
+        2652711,
+        2653132,
+        734448,
+        734819
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_008",
+      "name": "Meereen",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "1044_1947": 18,
+        "1044_1948": 279,
+        "1044_1949": 459,
+        "1044_1950": 225,
+        "1044_1951": 209,
+        "1044_1952": 395,
+        "1044_1953": 57,
+        "1045_1947": 118,
+        "1045_1948": 3617,
+        "1045_1949": 2483,
+        "1045_1950": 2927,
+        "1045_1951": 3406,
+        "1045_1952": 4405,
+        "1045_1953": 653,
+        "1046_1947": 90,
+        "1046_1948": 4140,
+        "1046_1949": 4088,
+        "1046_1950": 3775,
+        "1046_1951": 4414,
+        "1046_1952": 4458,
+        "1046_1953": 616,
+        "1047_1947": 113,
+        "1047_1948": 4162,
+        "1047_1949": 4507,
+        "1047_1950": 2426,
+        "1047_1951": 4599,
+        "1047_1952": 4722,
+        "1047_1953": 731,
+        "1048_1947": 105,
+        "1048_1948": 3832,
+        "1048_1949": 4405,
+        "1048_1950": 4541,
+        "1048_1951": 4372,
+        "1048_1952": 4688,
+        "1048_1953": 722,
+        "1049_1947": 85,
+        "1049_1948": 4264,
+        "1049_1949": 4627,
+        "1049_1950": 4607,
+        "1049_1951": 4601,
+        "1049_1952": 4595,
+        "1049_1953": 894,
+        "1050_1947": 17,
+        "1050_1948": 247,
+        "1050_1949": 340,
+        "1050_1950": 298,
+        "1050_1951": 324,
+        "1050_1952": 289,
+        "1050_1953": 55
+      },
+      "residentsIndexed": 110000,
+      "householdsIndexed": 23405,
+      "anchorX": 536298,
+      "anchorZ": 998690,
+      "bounds": [
+        534869,
+        537734,
+        997255,
+        1000101
+      ],
+      "regionId": "slavers_bay_region",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_009",
+      "name": "Kosrak",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "2712_1981": 286,
+        "2712_1982": 264
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1388746,
+      "anchorZ": 1014764,
+      "bounds": [
+        1388511,
+        1388929,
+        1014529,
+        1014925
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_010",
+      "name": "Hesh",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "1862_1987": 151,
+        "1862_1988": 153,
+        "1863_1987": 121,
+        "1863_1988": 125
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 953823,
+      "anchorZ": 1017855,
+      "bounds": [
+        953588,
+        954006,
+        1017620,
+        1018016
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_011",
+      "name": "Yunkai",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "720_2254": 1068,
+        "720_2255": 1310,
+        "720_2256": 1446,
+        "720_2257": 1560,
+        "720_2258": 2268,
+        "720_2259": 243,
+        "721_2254": 2701,
+        "721_2255": 3552,
+        "721_2256": 3178,
+        "721_2257": 3706,
+        "721_2258": 4473,
+        "721_2259": 488,
+        "722_2254": 2748,
+        "722_2255": 4413,
+        "722_2256": 2786,
+        "722_2257": 3970,
+        "722_2258": 4635,
+        "722_2259": 413,
+        "723_2254": 2654,
+        "723_2255": 4194,
+        "723_2256": 4408,
+        "723_2257": 4451,
+        "723_2258": 4736,
+        "723_2259": 440,
+        "724_2254": 2711,
+        "724_2255": 4453,
+        "724_2256": 4661,
+        "724_2257": 4388,
+        "724_2258": 4618,
+        "724_2259": 433,
+        "725_2254": 353,
+        "725_2255": 673,
+        "725_2256": 684,
+        "725_2257": 658,
+        "725_2258": 490,
+        "725_2259": 37
+      },
+      "residentsIndexed": 90000,
+      "householdsIndexed": 19149,
+      "anchorX": 370061,
+      "anchorZ": 1155469,
+      "bounds": [
+        368757,
+        371372,
+        1154159,
+        1156755
+      ],
+      "regionId": "slavers_bay_region",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_012",
+      "name": "Lhazosh",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "2209_2461": 174,
+        "2209_2462": 331,
+        "2210_2461": 706,
+        "2210_2462": 889
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 420,
+      "anchorX": 1131658,
+      "anchorZ": 1260576,
+      "bounds": [
+        1131327,
+        1131994,
+        1260241,
+        1260911
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_013",
+      "name": "Bayasabhad",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "5600_2592": 391,
+        "5600_2593": 159
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2867483,
+      "anchorZ": 1327533,
+      "bounds": [
+        2867248,
+        2867666,
+        1327298,
+        1327694
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_014",
+      "name": "Vaes Tolorro",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_015",
+      "name": "Astapor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "559_3040": 14,
+        "560_3040": 2105,
+        "560_3041": 2987,
+        "560_3042": 2684,
+        "560_3043": 3046,
+        "560_3044": 3879,
+        "560_3045": 621,
+        "561_3040": 2596,
+        "561_3041": 4262,
+        "561_3042": 3077,
+        "561_3043": 4384,
+        "561_3044": 4581,
+        "561_3045": 653,
+        "562_3040": 2458,
+        "562_3041": 4567,
+        "562_3042": 2876,
+        "562_3043": 4157,
+        "562_3044": 4398,
+        "562_3045": 635,
+        "563_3040": 2575,
+        "563_3041": 4686,
+        "563_3042": 4565,
+        "563_3043": 4684,
+        "563_3044": 4601,
+        "563_3045": 654,
+        "564_3040": 1634,
+        "564_3041": 3013,
+        "564_3042": 3121,
+        "564_3043": 3215,
+        "564_3044": 2904,
+        "564_3045": 368
+      },
+      "residentsIndexed": 90000,
+      "householdsIndexed": 19149,
+      "anchorX": 287909,
+      "anchorZ": 1557911,
+      "bounds": [
+        286605,
+        289220,
+        1556601,
+        1559197
+      ],
+      "regionId": "slavers_bay_region",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_016",
+      "name": "Vaes Shirosi",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_017",
+      "name": "Vaes Qosar / Qolahn",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_018",
+      "name": "Vaes Orvik",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_019",
+      "name": "Qarkash",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "3623_3651": 127,
+        "3623_3652": 16,
+        "3624_3651": 371,
+        "3624_3652": 36
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1855563,
+      "anchorZ": 1869674,
+      "bounds": [
+        1855328,
+        1855746,
+        1869439,
+        1869835
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_020",
+      "name": "Asabhad",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "5664_3760": 494,
+        "5665_3760": 56
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2900344,
+      "anchorZ": 1925324,
+      "bounds": [
+        2900109,
+        2900527,
+        1925089,
+        1925485
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_021",
+      "name": "Port Yhos",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "2715_3802": 10,
+        "2715_3803": 126,
+        "2716_3802": 41,
+        "2716_3803": 373
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1390679,
+      "anchorZ": 1947262,
+      "bounds": [
+        1390469,
+        1390890,
+        1947052,
+        1947423
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_022",
+      "name": "Qarth",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4473_3842": 136,
+        "4473_3843": 219,
+        "4473_3844": 220,
+        "4473_3845": 216,
+        "4473_3846": 232,
+        "4473_3847": 221,
+        "4473_3848": 241,
+        "4473_3849": 88,
+        "4474_3842": 2376,
+        "4474_3843": 2832,
+        "4474_3844": 2552,
+        "4474_3845": 2647,
+        "4474_3846": 2731,
+        "4474_3847": 3100,
+        "4474_3848": 4033,
+        "4474_3849": 2015,
+        "4475_3842": 2121,
+        "4475_3843": 3930,
+        "4475_3844": 2877,
+        "4475_3845": 2746,
+        "4475_3846": 2994,
+        "4475_3847": 3622,
+        "4475_3848": 4393,
+        "4475_3849": 1844,
+        "4476_3842": 2060,
+        "4476_3843": 4175,
+        "4476_3844": 4216,
+        "4476_3845": 3389,
+        "4476_3846": 3837,
+        "4476_3847": 4475,
+        "4476_3848": 4542,
+        "4476_3849": 1932,
+        "4477_3842": 1914,
+        "4477_3843": 4027,
+        "4477_3844": 4367,
+        "4477_3845": 3012,
+        "4477_3846": 3366,
+        "4477_3847": 4280,
+        "4477_3848": 4270,
+        "4477_3849": 1875,
+        "4478_3842": 1954,
+        "4478_3843": 4085,
+        "4478_3844": 4234,
+        "4478_3845": 4442,
+        "4478_3846": 4403,
+        "4478_3847": 4575,
+        "4478_3848": 4507,
+        "4478_3849": 1979,
+        "4479_3842": 1919,
+        "4479_3843": 3789,
+        "4479_3844": 4225,
+        "4479_3845": 4381,
+        "4479_3846": 4382,
+        "4479_3847": 4268,
+        "4479_3848": 4320,
+        "4479_3849": 1917,
+        "4480_3842": 1590,
+        "4480_3843": 3866,
+        "4480_3844": 3871,
+        "4480_3845": 3866,
+        "4480_3846": 3907,
+        "4480_3847": 3797,
+        "4480_3848": 3863,
+        "4480_3849": 1737
+      },
+      "residentsIndexed": 190000,
+      "householdsIndexed": 40426,
+      "anchorX": 2292419,
+      "anchorZ": 1969118,
+      "bounds": [
+        2290559,
+        2294280,
+        1967258,
+        1970978
+      ],
+      "regionId": "qarth_region",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.6,
+        "PRESTIGE_SEEKING": 0.55
+      },
+      "regionalNorms": {
+        "MERCANTILE": 0.85,
+        "URBAN": 0.75,
+        "COSMOPOLITAN": 0.7,
+        "COURTLY": 0.55
+      }
+    },
+    {
+      "siteId": "site_se_023",
+      "name": "Qal (harbor group)",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4727_3888": 7,
+        "4728_3888": 249,
+        "4728_3889": 1244
+      },
+      "residentsIndexed": 1500,
+      "householdsIndexed": 313,
+      "anchorX": 2420962,
+      "anchorZ": 1991310,
+      "bounds": [
+        2420678,
+        2421198,
+        1991025,
+        1991545
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_024",
+      "name": "Old Ghis",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_se_025",
+      "name": "East Qal (eastern harbor observation)",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4986_3979": 330,
+        "4986_3980": 243,
+        "4987_3979": 559,
+        "4987_3980": 368
+      },
+      "residentsIndexed": 1500,
+      "householdsIndexed": 313,
+      "anchorX": 2553372,
+      "anchorZ": 2037684,
+      "bounds": [
+        2553088,
+        2553608,
+        2037399,
+        2037919
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_026",
+      "name": "New Ghis",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "902_4669": 299,
+        "902_4670": 735,
+        "902_4671": 919,
+        "902_4672": 780,
+        "903_4669": 637,
+        "903_4670": 2581,
+        "903_4671": 2403,
+        "903_4672": 1983,
+        "904_4669": 551,
+        "904_4670": 2942,
+        "904_4671": 2586,
+        "904_4672": 1952,
+        "905_4669": 272,
+        "905_4670": 1274,
+        "905_4671": 1265,
+        "905_4672": 821
+      },
+      "residentsIndexed": 22000,
+      "householdsIndexed": 4584,
+      "anchorX": 462845,
+      "anchorZ": 2391666,
+      "bounds": [
+        462035,
+        463656,
+        2390856,
+        2392476
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_027",
+      "name": "Faros",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4252_4790": 499,
+        "4253_4790": 51
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2177406,
+      "anchorZ": 2452829,
+      "bounds": [
+        2177196,
+        2177617,
+        2452619,
+        2452990
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_028",
+      "name": "Vahar",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "4114_5255": 297,
+        "4115_5255": 253
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2106852,
+      "anchorZ": 2690821,
+      "bounds": [
+        2106617,
+        2107035,
+        2690586,
+        2690982
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_029",
+      "name": "Gorosh",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "2923_5905": 217,
+        "2923_5906": 192,
+        "2924_5905": 76,
+        "2924_5906": 65
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 1496994,
+      "anchorZ": 3023845,
+      "bounds": [
+        1496759,
+        1497177,
+        3023610,
+        3024006
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_030",
+      "name": "Port Moraq",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "5218_6146": 34,
+        "5218_6147": 18,
+        "5219_6146": 410,
+        "5219_6147": 88
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 2672252,
+      "anchorZ": 3147151,
+      "bounds": [
+        2672042,
+        2672463,
+        3146941,
+        3147312
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_se_031",
+      "name": "Zamettar",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "431_6190": 239,
+        "432_6190": 311
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 221221,
+      "anchorZ": 3169498,
+      "bounds": [
+        221011,
+        221432,
+        3169288,
+        3169659
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_see_001",
+      "name": "City of the Winged Men (legendary)",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_see_002",
+      "name": "Carcosa",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "11722_3862": 1877,
+        "11722_3863": 1585,
+        "11722_3864": 2047,
+        "11722_3865": 2314,
+        "11722_3866": 2903,
+        "11723_3862": 4026,
+        "11723_3863": 3301,
+        "11723_3864": 3142,
+        "11723_3865": 4040,
+        "11723_3866": 4356,
+        "11724_3862": 4083,
+        "11724_3863": 4464,
+        "11724_3864": 2514,
+        "11724_3865": 4428,
+        "11724_3866": 4382,
+        "11725_3862": 3869,
+        "11725_3863": 4385,
+        "11725_3864": 4310,
+        "11725_3865": 4479,
+        "11725_3866": 4262,
+        "11726_3862": 3786,
+        "11726_3863": 4371,
+        "11726_3864": 4783,
+        "11726_3865": 4442,
+        "11726_3866": 4367,
+        "11727_3862": 590,
+        "11727_3863": 581,
+        "11727_3864": 429,
+        "11727_3865": 469,
+        "11727_3866": 415
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": 6003048,
+      "anchorZ": 1978634,
+      "bounds": [
+        6001715,
+        6004359,
+        1977299,
+        1979945
+      ],
+      "regionId": "yi_ti",
+      "regionalValues": {
+        "TRADITIONALISM": 0.55,
+        "HIERARCHY_ACCEPTANCE": 0.6
+      },
+      "regionalNorms": {
+        "COURTLY": 0.55,
+        "BUREAUCRATIC": 0.6,
+        "URBAN": 0.45
+      }
+    },
+    {
+      "siteId": "site_see_003",
+      "name": "Jinqi",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "8590_4262": 1153,
+        "8590_4263": 2142,
+        "8590_4264": 2182,
+        "8590_4265": 2577,
+        "8590_4266": 3114,
+        "8590_4267": 1602,
+        "8591_4262": 1707,
+        "8591_4263": 4081,
+        "8591_4264": 2927,
+        "8591_4265": 3678,
+        "8591_4266": 4384,
+        "8591_4267": 2008,
+        "8592_4262": 1704,
+        "8592_4263": 4584,
+        "8592_4264": 3105,
+        "8592_4265": 3610,
+        "8592_4266": 4546,
+        "8592_4267": 1986,
+        "8593_4262": 1874,
+        "8593_4263": 4633,
+        "8593_4264": 4431,
+        "8593_4265": 4501,
+        "8593_4266": 4256,
+        "8593_4267": 1917,
+        "8594_4262": 1779,
+        "8594_4263": 4608,
+        "8594_4264": 4334,
+        "8594_4265": 4733,
+        "8594_4266": 4373,
+        "8594_4267": 2006,
+        "8595_4262": 21,
+        "8595_4263": 94,
+        "8595_4264": 36,
+        "8595_4265": 121,
+        "8595_4266": 137,
+        "8595_4267": 56
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": 4399413,
+      "anchorZ": 2183678,
+      "bounds": [
+        4398080,
+        4400724,
+        2182343,
+        2184989
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_see_004",
+      "name": "Leng Yi",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "8240_4593": 112,
+        "8241_4593": 438
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 4219505,
+      "anchorZ": 2351925,
+      "bounds": [
+        4219270,
+        4219688,
+        2351690,
+        2352086
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_see_005",
+      "name": "Yin",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "6758_4797": 970,
+        "6758_4798": 1776,
+        "6758_4799": 1686,
+        "6758_4800": 1503,
+        "6758_4801": 1725,
+        "6758_4802": 1798,
+        "6758_4803": 1974,
+        "6758_4804": 3001,
+        "6758_4805": 465,
+        "6759_4797": 1715,
+        "6759_4798": 3926,
+        "6759_4799": 2879,
+        "6759_4800": 2715,
+        "6759_4801": 2795,
+        "6759_4802": 2753,
+        "6759_4803": 3366,
+        "6759_4804": 4345,
+        "6759_4805": 646,
+        "6760_4797": 1749,
+        "6760_4798": 4641,
+        "6760_4799": 4185,
+        "6760_4800": 2818,
+        "6760_4801": 3086,
+        "6760_4802": 3994,
+        "6760_4803": 4555,
+        "6760_4804": 4568,
+        "6760_4805": 632,
+        "6761_4797": 1743,
+        "6761_4798": 4296,
+        "6761_4799": 4353,
+        "6761_4800": 4075,
+        "6761_4801": 3119,
+        "6761_4802": 4467,
+        "6761_4803": 4349,
+        "6761_4804": 4428,
+        "6761_4805": 618,
+        "6762_4797": 1724,
+        "6762_4798": 4445,
+        "6762_4799": 4700,
+        "6762_4800": 4467,
+        "6762_4801": 3257,
+        "6762_4802": 4494,
+        "6762_4803": 4555,
+        "6762_4804": 4535,
+        "6762_4805": 697,
+        "6763_4797": 1734,
+        "6763_4798": 4392,
+        "6763_4799": 4533,
+        "6763_4800": 4459,
+        "6763_4801": 4455,
+        "6763_4802": 4512,
+        "6763_4803": 4557,
+        "6763_4804": 4433,
+        "6763_4805": 658,
+        "6764_4797": 1680,
+        "6764_4798": 4301,
+        "6764_4799": 4474,
+        "6764_4800": 4508,
+        "6764_4801": 4732,
+        "6764_4802": 4485,
+        "6764_4803": 4590,
+        "6764_4804": 4600,
+        "6764_4805": 635,
+        "6765_4797": 1533,
+        "6765_4798": 3823,
+        "6765_4799": 3994,
+        "6765_4800": 3785,
+        "6765_4801": 3516,
+        "6765_4802": 3564,
+        "6765_4803": 3410,
+        "6765_4804": 3468,
+        "6765_4805": 581
+      },
+      "residentsIndexed": 230000,
+      "householdsIndexed": 48937,
+      "anchorX": 3462179,
+      "anchorZ": 2458313,
+      "bounds": [
+        3460144,
+        3464215,
+        2456278,
+        2460348
+      ],
+      "regionId": "yi_ti",
+      "regionalValues": {
+        "TRADITIONALISM": 0.55,
+        "HIERARCHY_ACCEPTANCE": 0.6
+      },
+      "regionalNorms": {
+        "COURTLY": 0.55,
+        "BUREAUCRATIC": 0.6,
+        "URBAN": 0.45
+      }
+    },
+    {
+      "siteId": "site_see_006",
+      "name": "Leng Ma",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "8136_5210": 10,
+        "8136_5211": 12,
+        "8137_5210": 157,
+        "8137_5211": 371
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 4166293,
+      "anchorZ": 2668101,
+      "bounds": [
+        4166058,
+        4166476,
+        2667866,
+        2668262
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_see_007",
+      "name": "Turrani",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "8161_5682": 48,
+        "8161_5683": 344,
+        "8162_5682": 13,
+        "8162_5683": 145
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": 4178855,
+      "anchorZ": 2909825,
+      "bounds": [
+        4178620,
+        4179038,
+        2909590,
+        2909986
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_see_008",
+      "name": "Ulos (island/ruin)",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_see_009",
+      "name": "Stygai (ruined)",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_see_010",
+      "name": "Asshai",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "9279_6796": 823,
+        "9279_6797": 1189,
+        "9279_6798": 729,
+        "9280_6796": 916,
+        "9280_6797": 1191,
+        "9280_6798": 739,
+        "9281_6796": 194,
+        "9281_6797": 269,
+        "9281_6798": 150
+      },
+      "residentsIndexed": 6200,
+      "householdsIndexed": 1550,
+      "anchorX": 4751413,
+      "anchorZ": 3480270,
+      "bounds": [
+        4750784,
+        4751986,
+        3479637,
+        3480831
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_si_001",
+      "name": "Last Lament",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-5850_4909": 498,
+        "-5850_4910": 1807,
+        "-5850_4911": 1296,
+        "-5851_4909": 778,
+        "-5851_4910": 2221,
+        "-5851_4911": 2039,
+        "-5852_4909": 203,
+        "-5852_4910": 563,
+        "-5852_4911": 595
+      },
+      "residentsIndexed": 10000,
+      "householdsIndexed": 2084,
+      "anchorX": -2995387,
+      "anchorZ": 2514275,
+      "bounds": [
+        -2995947,
+        -2994826,
+        2513715,
+        2514786
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_si_002",
+      "name": "Lotus Point (map labels Lotus Port)",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-5463_5185": 520,
+        "-5463_5186": 1887,
+        "-5463_5187": 1431,
+        "-5464_5185": 762,
+        "-5464_5186": 2052,
+        "-5464_5187": 2018,
+        "-5465_5185": 209,
+        "-5465_5186": 529,
+        "-5465_5187": 592
+      },
+      "residentsIndexed": 10000,
+      "householdsIndexed": 2084,
+      "anchorX": -2797227,
+      "anchorZ": 2655592,
+      "bounds": [
+        -2797787,
+        -2796666,
+        2655032,
+        2656103
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_si_003",
+      "name": "Tall Trees Town",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-5020_5501": 453,
+        "-5020_5502": 539,
+        "-5020_5503": 92,
+        "-5021_5501": 2292,
+        "-5021_5502": 2518,
+        "-5021_5503": 386,
+        "-5022_5501": 1436,
+        "-5022_5502": 1938,
+        "-5022_5503": 346
+      },
+      "residentsIndexed": 10000,
+      "householdsIndexed": 2084,
+      "anchorX": -2570652,
+      "anchorZ": 2817097,
+      "bounds": [
+        -2571212,
+        -2570091,
+        2816537,
+        2817608
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_si_004",
+      "name": "Ebonhead",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-5034_7396": 1154,
+        "-5034_7397": 2470,
+        "-5034_7398": 1471,
+        "-5035_7396": 1123,
+        "-5035_7397": 2143,
+        "-5035_7398": 1626,
+        "-5036_7398": 13
+      },
+      "residentsIndexed": 10000,
+      "householdsIndexed": 2084,
+      "anchorX": -2577438,
+      "anchorZ": 3787545,
+      "bounds": [
+        -2577998,
+        -2576877,
+        3786985,
+        3788056
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_so_004",
+      "name": "Gogossos",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_so_005",
+      "name": "Yeen",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_sw_001",
+      "name": "Seagard",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8217_-1503": 1146,
+        "-8217_-1504": 1337,
+        "-8217_-1505": 1309,
+        "-8218_-1503": 3837,
+        "-8218_-1504": 3619,
+        "-8218_-1505": 4307,
+        "-8219_-1503": 4050,
+        "-8219_-1504": 2504,
+        "-8219_-1505": 4448,
+        "-8219_-1506": 72,
+        "-8220_-1503": 2085,
+        "-8220_-1504": 2043,
+        "-8220_-1505": 2103,
+        "-8220_-1506": 140
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -4207698,
+      "anchorZ": -769839,
+      "bounds": [
+        -4208508,
+        -4206887,
+        -770649,
+        -769029
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_002",
+      "name": "Old Anchor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6176_-1369": 445,
+        "-6176_-1370": 929,
+        "-6177_-1369": 268,
+        "-6177_-1370": 458
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3162034,
+      "anchorZ": -701057,
+      "bounds": [
+        -3162318,
+        -3161748,
+        -701342,
+        -700772
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_003",
+      "name": "The Eyrie",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6903_-1289": 262,
+        "-6903_-1290": 214,
+        "-6904_-1289": 844,
+        "-6904_-1290": 780
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 447,
+      "anchorX": -3534527,
+      "anchorZ": -659944,
+      "bounds": [
+        -3534833,
+        -3534216,
+        -660254,
+        -659634
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_004",
+      "name": "Oldstones",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_sw_005",
+      "name": "Ninestars Castle",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6544_-1226": 415,
+        "-6544_-1227": 717,
+        "-6545_-1226": 421,
+        "-6545_-1227": 547
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3350527,
+      "anchorZ": -627798,
+      "bounds": [
+        -3350811,
+        -3350241,
+        -628083,
+        -627513
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_006",
+      "name": "Runestone",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6072_-1187": 681,
+        "-6072_-1188": 217,
+        "-6073_-1187": 863,
+        "-6073_-1188": 339
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3108933,
+      "anchorZ": -607612,
+      "bounds": [
+        -3109217,
+        -3108647,
+        -607897,
+        -607327
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_007",
+      "name": "Bloody Gate",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6953_-1172": 39,
+        "-6953_-1173": 118,
+        "-6954_-1172": 55,
+        "-6954_-1173": 128
+      },
+      "residentsIndexed": 340,
+      "householdsIndexed": 85,
+      "anchorX": -3559961,
+      "anchorZ": -600139,
+      "bounds": [
+        -3560171,
+        -3559801,
+        -600349,
+        -600004
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_008",
+      "name": "Pyke",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9320_-1162": 987,
+        "-9320_-1163": 872,
+        "-9321_-1162": 174,
+        "-9321_-1163": 67
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4771679,
+      "anchorZ": -594914,
+      "bounds": [
+        -4771985,
+        -4771418,
+        -595224,
+        -594653
+      ],
+      "regionId": "iron_islands",
+      "regionalValues": {
+        "TRADITIONALISM": 0.8,
+        "CLAN_LOYALTY": 0.65,
+        "MARTIAL_GLORY": 0.75,
+        "PERSONAL_FREEDOM": 0.35
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.8,
+        "NAVAL": 0.95,
+        "RAIDING": 0.9,
+        "COURTLY": -0.65,
+        "TRADITIONAL": 0.8
+      }
+    },
+    {
+      "siteId": "site_sw_009",
+      "name": "Fairmarket",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7856_-1139": 192,
+        "-7856_-1140": 433,
+        "-7856_-1141": 478,
+        "-7856_-1142": 175,
+        "-7857_-1139": 1976,
+        "-7857_-1140": 4359,
+        "-7857_-1141": 4549,
+        "-7857_-1142": 2041,
+        "-7858_-1139": 1939,
+        "-7858_-1140": 3369,
+        "-7858_-1141": 3274,
+        "-7858_-1142": 2000,
+        "-7859_-1139": 1504,
+        "-7859_-1140": 2951,
+        "-7859_-1141": 2350,
+        "-7859_-1142": 1410
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -4022958,
+      "anchorZ": -583696,
+      "bounds": [
+        -4023768,
+        -4022147,
+        -584506,
+        -582886
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_010",
+      "name": "Gulltown",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6100_-1083": 271,
+        "-6100_-1084": 1495,
+        "-6100_-1085": 1419,
+        "-6100_-1086": 1685,
+        "-6100_-1087": 376,
+        "-6101_-1083": 692,
+        "-6101_-1084": 4388,
+        "-6101_-1085": 4252,
+        "-6101_-1086": 4131,
+        "-6101_-1087": 1051,
+        "-6102_-1083": 738,
+        "-6102_-1084": 4419,
+        "-6102_-1085": 2049,
+        "-6102_-1086": 4466,
+        "-6102_-1087": 1051,
+        "-6103_-1083": 669,
+        "-6103_-1084": 3837,
+        "-6103_-1085": 3264,
+        "-6103_-1086": 3411,
+        "-6103_-1087": 1035,
+        "-6104_-1083": 40,
+        "-6104_-1084": 222,
+        "-6104_-1085": 20,
+        "-6104_-1087": 19
+      },
+      "residentsIndexed": 45000,
+      "householdsIndexed": 9575,
+      "anchorX": -3123895,
+      "anchorZ": -555283,
+      "bounds": [
+        -3124829,
+        -3122959,
+        -556218,
+        -554422
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_011",
+      "name": "Redfort",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6640_-1003": 122,
+        "-6640_-1004": 24,
+        "-6641_-1003": 1339,
+        "-6641_-1004": 615
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3399899,
+      "anchorZ": -513422,
+      "bounds": [
+        -3400183,
+        -3399613,
+        -513707,
+        -513137
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_012",
+      "name": "Banefort",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9159_-997": 624,
+        "-9159_-998": 498,
+        "-9160_-997": 598,
+        "-9160_-998": 380
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4689407,
+      "anchorZ": -510439,
+      "bounds": [
+        -4689691,
+        -4689121,
+        -510724,
+        -510154
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_013",
+      "name": "Kneeling Man's Inn",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7979_-959": 53,
+        "-7979_-960": 27
+      },
+      "residentsIndexed": 80,
+      "householdsIndexed": 16,
+      "anchorX": -4085045,
+      "anchorZ": -490999,
+      "bounds": [
+        -4085176,
+        -4084959,
+        -491132,
+        -490917
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_014",
+      "name": "Crossroads Inn",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7430_-875": 80
+      },
+      "residentsIndexed": 80,
+      "householdsIndexed": 16,
+      "anchorX": -3803809,
+      "anchorZ": -447639,
+      "bounds": [
+        -3803940,
+        -3803723,
+        -447772,
+        -447557
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_015",
+      "name": "Riverrun",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8250_-835": 253,
+        "-8250_-836": 157,
+        "-8251_-835": 1042,
+        "-8251_-836": 648
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4224171,
+      "anchorZ": -427458,
+      "bounds": [
+        -4224455,
+        -4223885,
+        -427743,
+        -427173
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_016",
+      "name": "Lord Harroway's Town",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7496_-818": 2639,
+        "-7496_-819": 4254,
+        "-7496_-820": 3945,
+        "-7496_-821": 1065,
+        "-7497_-818": 2820,
+        "-7497_-819": 2892,
+        "-7497_-820": 3852,
+        "-7497_-821": 1089,
+        "-7498_-818": 2643,
+        "-7498_-819": 3593,
+        "-7498_-820": 3119,
+        "-7498_-821": 1089
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3838217,
+      "anchorZ": -419232,
+      "bounds": [
+        -3839027,
+        -3837406,
+        -420042,
+        -418422
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_017",
+      "name": "Saltpans",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7109_-738": 14,
+        "-7109_-739": 414,
+        "-7109_-740": 20,
+        "-7110_-738": 57,
+        "-7110_-739": 1890,
+        "-7110_-740": 105
+      },
+      "residentsIndexed": 2500,
+      "householdsIndexed": 521,
+      "anchorX": -3640006,
+      "anchorZ": -378115,
+      "bounds": [
+        -3640337,
+        -3639720,
+        -378450,
+        -377831
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_018",
+      "name": "The Crag",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9184_-717": 1288,
+        "-9184_-718": 98,
+        "-9185_-717": 653,
+        "-9185_-718": 61
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4702130,
+      "anchorZ": -366908,
+      "bounds": [
+        -4702414,
+        -4701844,
+        -367193,
+        -366623
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_019",
+      "name": "Wickenden",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6575_-685": 615,
+        "-6575_-686": 1268,
+        "-6575_-687": 1230,
+        "-6575_-688": 461,
+        "-6576_-685": 2303,
+        "-6576_-686": 3996,
+        "-6576_-687": 4276,
+        "-6576_-688": 1618,
+        "-6577_-685": 2374,
+        "-6577_-686": 3534,
+        "-6577_-687": 3556,
+        "-6577_-688": 1605,
+        "-6578_-685": 1350,
+        "-6578_-686": 2165,
+        "-6578_-687": 1741,
+        "-6578_-688": 908
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3366997,
+      "anchorZ": -351202,
+      "bounds": [
+        -3367807,
+        -3366186,
+        -352012,
+        -350392
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_020",
+      "name": "Harrenhal",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7505_-625": 507,
+        "-7505_-626": 104,
+        "-7506_-625": 1222,
+        "-7506_-626": 467
+      },
+      "residentsIndexed": 2300,
+      "householdsIndexed": 490,
+      "anchorX": -3842710,
+      "anchorZ": -319807,
+      "bounds": [
+        -3843016,
+        -3842399,
+        -320117,
+        -319497
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_021",
+      "name": "Quiet Isle",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7075_-616": 65
+      },
+      "residentsIndexed": 65,
+      "householdsIndexed": 17,
+      "anchorX": -3622058,
+      "anchorZ": -315320,
+      "bounds": [
+        -3622143,
+        -3621972,
+        -315403,
+        -315237
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_022",
+      "name": "Ashemark",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9016_-566": 474,
+        "-9016_-567": 917,
+        "-9017_-566": 247,
+        "-9017_-567": 462
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4616117,
+      "anchorZ": -289909,
+      "bounds": [
+        -4616401,
+        -4615831,
+        -290194,
+        -289624
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_023",
+      "name": "Acorn Hall",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_sw_024",
+      "name": "Faircastle",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9450_-533": 1396,
+        "-9450_-534": 241,
+        "-9451_-533": 415,
+        "-9451_-534": 48
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4838266,
+      "anchorZ": -272717,
+      "bounds": [
+        -4838550,
+        -4837980,
+        -273002,
+        -272432
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_025",
+      "name": "Golden Tooth",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8747_-517": 997,
+        "-8747_-518": 20,
+        "-8748_-517": 1018,
+        "-8748_-518": 65
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4478491,
+      "anchorZ": -264491,
+      "bounds": [
+        -4478775,
+        -4478205,
+        -264776,
+        -264206
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_026",
+      "name": "Maidenpool",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6913_-507": 2585,
+        "-6913_-508": 3720,
+        "-6913_-509": 3614,
+        "-6913_-510": 893,
+        "-6914_-507": 2941,
+        "-6914_-508": 2802,
+        "-6914_-509": 3862,
+        "-6914_-510": 1094,
+        "-6915_-507": 2922,
+        "-6915_-508": 3228,
+        "-6915_-509": 3174,
+        "-6915_-510": 1006,
+        "-6916_-507": 331,
+        "-6916_-508": 423,
+        "-6916_-509": 263,
+        "-6916_-510": 142
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3539784,
+      "anchorZ": -260001,
+      "bounds": [
+        -3540594,
+        -3538973,
+        -260811,
+        -259240
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_027",
+      "name": "Pinkmaiden Castle",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8313_-448": 443,
+        "-8313_-449": 341,
+        "-8314_-448": 764,
+        "-8314_-449": 552
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4256345,
+      "anchorZ": -229355,
+      "bounds": [
+        -4256629,
+        -4256059,
+        -229640,
+        -229070
+      ],
+      "regionId": "riverlands",
+      "regionalValues": {
+        "HOUSE_LOYALTY": 0.25,
+        "HOSPITALITY": 0.2
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.25,
+        "MERCANTILE": 0.15,
+        "COSMOPOLITAN": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_028",
+      "name": "Sarsfield",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9064_-376": 49,
+        "-9064_-377": 931,
+        "-9065_-376": 76,
+        "-9065_-377": 1044
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4640805,
+      "anchorZ": -192727,
+      "bounds": [
+        -4641089,
+        -4640519,
+        -193012,
+        -192442
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_029",
+      "name": "Rook's Rest",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6648_-368": 1324,
+        "-6648_-369": 223,
+        "-6649_-368": 500,
+        "-6649_-369": 53
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3403657,
+      "anchorZ": -188234,
+      "bounds": [
+        -3403941,
+        -3403371,
+        -188519,
+        -187949
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_030",
+      "name": "Antlers",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7131_-325": 96,
+        "-7131_-326": 335,
+        "-7132_-325": 415,
+        "-7132_-326": 1254
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3651237,
+      "anchorZ": -166557,
+      "bounds": [
+        -3651521,
+        -3650951,
+        -166842,
+        -166272
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_031",
+      "name": "Hornvale",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8741_-298": 708,
+        "-8742_-298": 1382,
+        "-8742_-299": 10
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4475505,
+      "anchorZ": -152358,
+      "bounds": [
+        -4475789,
+        -4475219,
+        -152643,
+        -152073
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_032",
+      "name": "Dragonstone",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6281_-287": 165,
+        "-6281_-288": 646,
+        "-6282_-287": 266,
+        "-6282_-288": 623
+      },
+      "residentsIndexed": 1700,
+      "householdsIndexed": 362,
+      "anchorX": -3215917,
+      "anchorZ": -147117,
+      "bounds": [
+        -3216223,
+        -3215681,
+        -147427,
+        -146881
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_033",
+      "name": "Stoney Sept",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8081_-266": 188,
+        "-8081_-267": 405,
+        "-8081_-268": 327,
+        "-8081_-269": 140,
+        "-8082_-266": 2381,
+        "-8082_-267": 4511,
+        "-8082_-268": 4300,
+        "-8082_-269": 1500,
+        "-8083_-266": 2476,
+        "-8083_-267": 3176,
+        "-8083_-268": 3520,
+        "-8083_-269": 1616,
+        "-8084_-266": 1856,
+        "-8084_-267": 3045,
+        "-8084_-268": 2375,
+        "-8084_-269": 1184
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -4138170,
+      "anchorZ": -136657,
+      "bounds": [
+        -4138980,
+        -4137359,
+        -137467,
+        -135847
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_035",
+      "name": "Driftmark",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6404_-214": 370,
+        "-6404_-215": 1170,
+        "-6405_-214": 184,
+        "-6405_-215": 376
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3278749,
+      "anchorZ": -109740,
+      "bounds": [
+        -3279055,
+        -3278488,
+        -110050,
+        -109479
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_036",
+      "name": "Deep Den",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8725_-181": 575,
+        "-8725_-182": 216,
+        "-8726_-181": 932,
+        "-8726_-182": 377
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4467281,
+      "anchorZ": -92553,
+      "bounds": [
+        -4467565,
+        -4466995,
+        -92838,
+        -92268
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_037",
+      "name": "Kayce",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9666_-172": 622,
+        "-9666_-173": 556,
+        "-9667_-172": 523,
+        "-9667_-173": 399
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4948976,
+      "anchorZ": -88071,
+      "bounds": [
+        -4949260,
+        -4948690,
+        -88356,
+        -87786
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_038",
+      "name": "Casterly Rock",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9353_-169": 810,
+        "-9353_-170": 998,
+        "-9354_-169": 1812,
+        "-9354_-170": 1880
+      },
+      "residentsIndexed": 5500,
+      "householdsIndexed": 1171,
+      "anchorX": -4788910,
+      "anchorZ": -86574,
+      "bounds": [
+        -4789320,
+        -4788524,
+        -86984,
+        -86188
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_039",
+      "name": "Duskendale",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6857_-129": 1289,
+        "-6857_-130": 1444,
+        "-6857_-131": 1431,
+        "-6857_-132": 213,
+        "-6858_-129": 3761,
+        "-6858_-130": 3715,
+        "-6858_-131": 4157,
+        "-6858_-132": 596,
+        "-6859_-129": 3528,
+        "-6859_-130": 2678,
+        "-6859_-131": 3845,
+        "-6859_-132": 596,
+        "-6860_-129": 2091,
+        "-6860_-130": 1721,
+        "-6860_-131": 1662,
+        "-6860_-132": 273
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3511371,
+      "anchorZ": -66383,
+      "bounds": [
+        -3512181,
+        -3510560,
+        -67193,
+        -65622
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_040",
+      "name": "Feastfires",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9755_-127": 717,
+        "-9755_-128": 243,
+        "-9756_-127": 809,
+        "-9756_-128": 331
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4994604,
+      "anchorZ": -64897,
+      "bounds": [
+        -4994888,
+        -4994318,
+        -65182,
+        -64612
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_041",
+      "name": "Lannisport",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9357_-62": 3196,
+        "-9357_-63": 3350,
+        "-9357_-64": 3439,
+        "-9357_-65": 3424,
+        "-9357_-66": 3427,
+        "-9357_-67": 3075,
+        "-9358_-62": 4131,
+        "-9358_-63": 4235,
+        "-9358_-64": 4326,
+        "-9358_-65": 4211,
+        "-9358_-66": 4330,
+        "-9358_-67": 3600,
+        "-9359_-62": 4263,
+        "-9359_-63": 4334,
+        "-9359_-64": 4252,
+        "-9359_-65": 4261,
+        "-9359_-66": 4516,
+        "-9359_-67": 3924,
+        "-9360_-62": 4131,
+        "-9360_-63": 4257,
+        "-9360_-64": 3212,
+        "-9360_-65": 3342,
+        "-9360_-66": 4323,
+        "-9360_-67": 3472,
+        "-9361_-62": 4180,
+        "-9361_-63": 4143,
+        "-9361_-64": 3149,
+        "-9361_-65": 2622,
+        "-9361_-66": 3872,
+        "-9361_-67": 4032,
+        "-9362_-62": 4042,
+        "-9362_-63": 3368,
+        "-9362_-64": 3123,
+        "-9362_-65": 2392,
+        "-9362_-66": 2447,
+        "-9362_-67": 3303,
+        "-9363_-62": 226,
+        "-9363_-63": 202,
+        "-9363_-64": 242,
+        "-9363_-65": 219,
+        "-9363_-66": 230,
+        "-9363_-67": 177
+      },
+      "residentsIndexed": 135000,
+      "householdsIndexed": 28724,
+      "anchorX": -4791904,
+      "anchorZ": -32750,
+      "bounds": [
+        -4793488,
+        -4790318,
+        -34335,
+        -31165
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_042",
+      "name": "Sharp Point",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6291_-33": 114,
+        "-6291_-34": 328,
+        "-6292_-33": 481,
+        "-6292_-34": 1177
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3221160,
+      "anchorZ": -17042,
+      "bounds": [
+        -3221444,
+        -3220874,
+        -17327,
+        -16757
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_043",
+      "name": "Silverhill",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8744_72": 143,
+        "-8744_73": 622,
+        "-8745_72": 288,
+        "-8745_73": 1047
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4477011,
+      "anchorZ": 37522,
+      "bounds": [
+        -4477295,
+        -4476725,
+        37237,
+        37807
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_044",
+      "name": "Stonedance",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6212_80": 25,
+        "-6213_80": 1825,
+        "-6213_81": 250
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3180773,
+      "anchorZ": 41267,
+      "bounds": [
+        -3181057,
+        -3180487,
+        40982,
+        41552
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_045",
+      "name": "Rosby",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7071_83": 25,
+        "-7072_83": 2075
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3620581,
+      "anchorZ": 42760,
+      "bounds": [
+        -3620865,
+        -3620295,
+        42475,
+        43045
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_046",
+      "name": "King's Landing",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7177_200": 385,
+        "-7177_201": 850,
+        "-7177_202": 872,
+        "-7177_203": 831,
+        "-7177_204": 833,
+        "-7177_205": 875,
+        "-7177_206": 813,
+        "-7177_207": 882,
+        "-7177_208": 822,
+        "-7177_209": 862,
+        "-7177_210": 822,
+        "-7177_211": 742,
+        "-7178_200": 1791,
+        "-7178_201": 4260,
+        "-7178_202": 4464,
+        "-7178_203": 4589,
+        "-7178_204": 4448,
+        "-7178_205": 4532,
+        "-7178_206": 4436,
+        "-7178_207": 4487,
+        "-7178_208": 4369,
+        "-7178_209": 4542,
+        "-7178_210": 4350,
+        "-7178_211": 3838,
+        "-7179_200": 1662,
+        "-7179_201": 4229,
+        "-7179_202": 4175,
+        "-7179_203": 4348,
+        "-7179_204": 4238,
+        "-7179_205": 4332,
+        "-7179_206": 4230,
+        "-7179_207": 4330,
+        "-7179_208": 4144,
+        "-7179_209": 4464,
+        "-7179_210": 4231,
+        "-7179_211": 3597,
+        "-7180_200": 1834,
+        "-7180_201": 4356,
+        "-7180_202": 4080,
+        "-7180_203": 4387,
+        "-7180_204": 4497,
+        "-7180_205": 4556,
+        "-7180_206": 4338,
+        "-7180_207": 4531,
+        "-7180_208": 4391,
+        "-7180_209": 4623,
+        "-7180_210": 4337,
+        "-7180_211": 3757,
+        "-7181_200": 1841,
+        "-7181_201": 4112,
+        "-7181_202": 3745,
+        "-7181_203": 3941,
+        "-7181_204": 4289,
+        "-7181_205": 4395,
+        "-7181_206": 4315,
+        "-7181_207": 4370,
+        "-7181_208": 4248,
+        "-7181_209": 4408,
+        "-7181_210": 4199,
+        "-7181_211": 3495,
+        "-7182_200": 1736,
+        "-7182_201": 4477,
+        "-7182_202": 4230,
+        "-7182_203": 4059,
+        "-7182_204": 4392,
+        "-7182_205": 4376,
+        "-7182_206": 4596,
+        "-7182_207": 4525,
+        "-7182_208": 4327,
+        "-7182_209": 4635,
+        "-7182_210": 4327,
+        "-7182_211": 3629,
+        "-7183_200": 1752,
+        "-7183_201": 4310,
+        "-7183_202": 3975,
+        "-7183_203": 4268,
+        "-7183_204": 4102,
+        "-7183_205": 3916,
+        "-7183_206": 2764,
+        "-7183_207": 4402,
+        "-7183_208": 4277,
+        "-7183_209": 4293,
+        "-7183_210": 4261,
+        "-7183_211": 3504,
+        "-7184_200": 1926,
+        "-7184_201": 4565,
+        "-7184_202": 4178,
+        "-7184_203": 4520,
+        "-7184_204": 4261,
+        "-7184_205": 3264,
+        "-7184_206": 3223,
+        "-7184_207": 4303,
+        "-7184_208": 4110,
+        "-7184_209": 4498,
+        "-7184_210": 4183,
+        "-7184_211": 3590,
+        "-7185_200": 2024,
+        "-7185_201": 4264,
+        "-7185_202": 4084,
+        "-7185_203": 4204,
+        "-7185_204": 3032,
+        "-7185_205": 2821,
+        "-7185_206": 2947,
+        "-7185_207": 3989,
+        "-7185_208": 4241,
+        "-7185_209": 4571,
+        "-7185_210": 4439,
+        "-7185_211": 3671,
+        "-7186_200": 2003,
+        "-7186_201": 4457,
+        "-7186_202": 4161,
+        "-7186_203": 2812,
+        "-7186_204": 2315,
+        "-7186_205": 2527,
+        "-7186_206": 2419,
+        "-7186_207": 2939,
+        "-7186_208": 3678,
+        "-7186_209": 4305,
+        "-7186_210": 4286,
+        "-7186_211": 3651,
+        "-7187_200": 2154,
+        "-7187_201": 4171,
+        "-7187_202": 2785,
+        "-7187_203": 2457,
+        "-7187_204": 2396,
+        "-7187_205": 2379,
+        "-7187_206": 2472,
+        "-7187_207": 2591,
+        "-7187_208": 2453,
+        "-7187_209": 3150,
+        "-7187_210": 4148,
+        "-7187_211": 3639,
+        "-7188_200": 2113,
+        "-7188_201": 2705,
+        "-7188_202": 2288,
+        "-7188_203": 2227,
+        "-7188_204": 2238,
+        "-7188_205": 2326,
+        "-7188_206": 2398,
+        "-7188_207": 2632,
+        "-7188_208": 2575,
+        "-7188_209": 2660,
+        "-7188_210": 3314,
+        "-7188_211": 3497,
+        "-7189_200": 174,
+        "-7189_201": 332,
+        "-7189_202": 297,
+        "-7189_203": 364,
+        "-7189_204": 314,
+        "-7189_205": 278,
+        "-7189_206": 356,
+        "-7189_207": 462,
+        "-7189_208": 388,
+        "-7189_209": 335,
+        "-7189_210": 354,
+        "-7189_211": 264
+      },
+      "residentsIndexed": 500000,
+      "householdsIndexed": 106383,
+      "anchorX": -3677431,
+      "anchorZ": 105554,
+      "bounds": [
+        -3680441,
+        -3674445,
+        102544,
+        108540
+      ],
+      "regionId": "crownlands",
+      "regionalValues": {
+        "SOCIAL_MOBILITY": 0.35,
+        "PRESTIGE_SEEKING": 0.45
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.7,
+        "COSMOPOLITAN": 0.8,
+        "POLITICAL_EXPOSURE": 0.9,
+        "URBAN": 0.65
+      }
+    },
+    {
+      "siteId": "site_sw_047",
+      "name": "Cornfield",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9169_309": 336,
+        "-9169_310": 181,
+        "-9170_309": 931,
+        "-9170_310": 652
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4694678,
+      "anchorZ": 158625,
+      "bounds": [
+        -4694962,
+        -4694392,
+        158340,
+        158910
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_048",
+      "name": "Crakehall",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9568_397": 892,
+        "-9569_396": 92,
+        "-9569_397": 1116
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4898877,
+      "anchorZ": 203477,
+      "bounds": [
+        -4899161,
+        -4898591,
+        203192,
+        203762
+      ],
+      "regionId": "westerlands",
+      "regionalValues": {
+        "WEALTH_SEEKING": 0.55,
+        "PRESTIGE_SEEKING": 0.4,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.5,
+        "MERCANTILE": 0.65,
+        "DYNASTIC": 0.45
+      }
+    },
+    {
+      "siteId": "site_sw_049",
+      "name": "Tumbleton",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7611_470": 1006,
+        "-7611_471": 2005,
+        "-7611_472": 2070,
+        "-7611_473": 624,
+        "-7612_470": 2432,
+        "-7612_471": 3750,
+        "-7612_472": 4231,
+        "-7612_473": 1552,
+        "-7613_470": 2335,
+        "-7613_471": 3008,
+        "-7613_472": 4037,
+        "-7613_473": 1586,
+        "-7614_470": 893,
+        "-7614_471": 1251,
+        "-7614_472": 1591,
+        "-7614_473": 629
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3897342,
+      "anchorZ": 241609,
+      "bounds": [
+        -3898152,
+        -3896531,
+        240799,
+        242419
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_050",
+      "name": "Red Lake",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9109_569": 116,
+        "-9109_570": 29,
+        "-9110_569": 1386,
+        "-9110_570": 569
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4664018,
+      "anchorZ": 291690,
+      "bounds": [
+        -4664302,
+        -4663732,
+        291405,
+        291975
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_051",
+      "name": "Goldengrove",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8733_677": 1373,
+        "-8733_678": 727
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4471044,
+      "anchorZ": 347011,
+      "bounds": [
+        -4471328,
+        -4470758,
+        346726,
+        347296
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_052",
+      "name": "Haystack Hall",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6595_677": 538,
+        "-6595_678": 174,
+        "-6596_677": 820,
+        "-6596_678": 568
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3376758,
+      "anchorZ": 347017,
+      "bounds": [
+        -3377042,
+        -3376472,
+        346732,
+        347302
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_053",
+      "name": "Bitterbridge",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8023_696": 1448,
+        "-8023_697": 652
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4107529,
+      "anchorZ": 356731,
+      "bounds": [
+        -4107813,
+        -4107243,
+        356446,
+        357016
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_054",
+      "name": "Bronzegate",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6643_767": 11,
+        "-6643_768": 45,
+        "-6644_767": 390,
+        "-6644_768": 1654
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3401444,
+      "anchorZ": 393366,
+      "bounds": [
+        -3401728,
+        -3401158,
+        393081,
+        393651
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_055",
+      "name": "Felwood",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6885_821": 424,
+        "-6885_822": 1676
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3524861,
+      "anchorZ": 421025,
+      "bounds": [
+        -3525145,
+        -3524575,
+        420740,
+        421310
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_056",
+      "name": "Grassy Vale",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7685_830": 415,
+        "-7685_831": 556,
+        "-7686_830": 441,
+        "-7686_831": 688
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3934751,
+      "anchorZ": 425508,
+      "bounds": [
+        -3935035,
+        -3934465,
+        425223,
+        425793
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_057",
+      "name": "Old Oak",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9402_863": 1354,
+        "-9402_864": 1804,
+        "-9402_865": 1689,
+        "-9402_866": 198,
+        "-9403_863": 3412,
+        "-9403_864": 3555,
+        "-9403_865": 4375,
+        "-9403_866": 454,
+        "-9404_863": 3476,
+        "-9404_864": 2789,
+        "-9404_865": 4602,
+        "-9404_866": 449,
+        "-9405_863": 1312,
+        "-9405_864": 1397,
+        "-9405_865": 1911,
+        "-9405_866": 223
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -4814369,
+      "anchorZ": 442696,
+      "bounds": [
+        -4815179,
+        -4813558,
+        441886,
+        443506
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_058",
+      "name": "Evenfall Hall",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6078_918": 803,
+        "-6078_919": 189,
+        "-6079_918": 838,
+        "-6079_919": 270
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3111982,
+      "anchorZ": 470366,
+      "bounds": [
+        -3112266,
+        -3111696,
+        470081,
+        470651
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_059",
+      "name": "Longtable",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8170_934": 730,
+        "-8170_935": 238,
+        "-8171_934": 746,
+        "-8171_935": 386
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4183081,
+      "anchorZ": 478583,
+      "bounds": [
+        -4183365,
+        -4182795,
+        478298,
+        478868
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_060",
+      "name": "Storm's End",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6458_1005": 708,
+        "-6458_1006": 1545,
+        "-6459_1005": 494,
+        "-6459_1006": 1253
+      },
+      "residentsIndexed": 4000,
+      "householdsIndexed": 852,
+      "anchorX": -3306457,
+      "anchorZ": 515218,
+      "bounds": [
+        -3306817,
+        -3306096,
+        514858,
+        515579
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_061",
+      "name": "Cider Hall",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8413_1127": 2032,
+        "-8414_1127": 68
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4307250,
+      "anchorZ": 577260,
+      "bounds": [
+        -4307534,
+        -4306964,
+        576975,
+        577545
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_062",
+      "name": "Griffin's Roost",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6658_1143": 995,
+        "-6659_1143": 1105
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3408933,
+      "anchorZ": 585488,
+      "bounds": [
+        -3409217,
+        -3408647,
+        585203,
+        585773
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_063",
+      "name": "Summerhall",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_sw_064",
+      "name": "Ashford",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8071_1179": 753,
+        "-8071_1180": 839,
+        "-8072_1179": 148,
+        "-8072_1180": 360
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4132225,
+      "anchorZ": 604173,
+      "bounds": [
+        -4132509,
+        -4131939,
+        603888,
+        604458
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_065",
+      "name": "Rain House",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6068_1294": 93,
+        "-6068_1295": 1208,
+        "-6069_1294": 69,
+        "-6069_1295": 730
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3106756,
+      "anchorZ": 663236,
+      "bounds": [
+        -3107040,
+        -3106470,
+        662951,
+        663521
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_066",
+      "name": "Crow's Nest",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6804_1318": 636,
+        "-6804_1319": 175,
+        "-6805_1318": 824,
+        "-6805_1319": 465
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3483736,
+      "anchorZ": 675194,
+      "bounds": [
+        -3484020,
+        -3483450,
+        674909,
+        675479
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_067",
+      "name": "Highgarden",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8785_1331": 2078,
+        "-8785_1332": 1716,
+        "-8786_1331": 2051,
+        "-8786_1332": 2155
+      },
+      "residentsIndexed": 8000,
+      "householdsIndexed": 1703,
+      "anchorX": -4497989,
+      "anchorZ": 681917,
+      "bounds": [
+        -4498443,
+        -4497528,
+        681457,
+        682377
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_068",
+      "name": "Stonehelm",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6968_1466": 665,
+        "-6968_1467": 845,
+        "-6968_1468": 844,
+        "-6968_1469": 135,
+        "-6969_1466": 3349,
+        "-6969_1467": 4116,
+        "-6969_1468": 4389,
+        "-6969_1469": 534,
+        "-6970_1466": 3332,
+        "-6970_1467": 2745,
+        "-6970_1468": 4393,
+        "-6970_1469": 573,
+        "-6971_1466": 1848,
+        "-6971_1467": 2161,
+        "-6971_1468": 2698,
+        "-6971_1469": 373
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3568261,
+      "anchorZ": 751445,
+      "bounds": [
+        -3569071,
+        -3567450,
+        750635,
+        752255
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_069",
+      "name": "Mistwood",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6421_1516": 20,
+        "-6421_1517": 112,
+        "-6422_1516": 381,
+        "-6422_1517": 1587
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3287772,
+      "anchorZ": 776863,
+      "bounds": [
+        -3288056,
+        -3287486,
+        776578,
+        777148
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_070",
+      "name": "Blackhaven",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7701_1538": 251,
+        "-7701_1539": 533,
+        "-7702_1538": 446,
+        "-7702_1539": 870
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3942998,
+      "anchorZ": 788073,
+      "bounds": [
+        -3943282,
+        -3942712,
+        787788,
+        788358
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_071",
+      "name": "Nightsong",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8215_1557": 89,
+        "-8215_1558": 111,
+        "-8216_1557": 624,
+        "-8216_1558": 1276
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4206285,
+      "anchorZ": 797790,
+      "bounds": [
+        -4206569,
+        -4205999,
+        797505,
+        798075
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_072",
+      "name": "Bandallon",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9602_1598": 657,
+        "-9602_1599": 814,
+        "-9603_1598": 213,
+        "-9603_1599": 416
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4916113,
+      "anchorZ": 818717,
+      "bounds": [
+        -4916397,
+        -4915827,
+        818432,
+        819002
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_073",
+      "name": "Castle Clearwater",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9297_1603": 2100
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4759787,
+      "anchorZ": 820961,
+      "bounds": [
+        -4760071,
+        -4759501,
+        820676,
+        821246
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_074",
+      "name": "Greenstone",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6131_1623": 888,
+        "-6131_1624": 752,
+        "-6132_1623": 218,
+        "-6132_1624": 242
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3138928,
+      "anchorZ": 831436,
+      "bounds": [
+        -3139212,
+        -3138642,
+        831151,
+        831721
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_075",
+      "name": "Wyl",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7424_1646": 557,
+        "-7424_1647": 1415,
+        "-7425_1646": 10,
+        "-7425_1647": 118
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3800885,
+      "anchorZ": 843393,
+      "bounds": [
+        -3801169,
+        -3800599,
+        843108,
+        843678
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_076",
+      "name": "Weeping Town",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6412_1699": 532,
+        "-6412_1700": 3227,
+        "-6412_1701": 3502,
+        "-6412_1702": 2648,
+        "-6413_1699": 628,
+        "-6413_1700": 4019,
+        "-6413_1701": 2663,
+        "-6413_1702": 3217,
+        "-6414_1699": 805,
+        "-6414_1700": 3810,
+        "-6414_1701": 3900,
+        "-6414_1702": 3365,
+        "-6415_1699": 73,
+        "-6415_1700": 211,
+        "-6415_1701": 245,
+        "-6415_1702": 155
+      },
+      "residentsIndexed": 33000,
+      "householdsIndexed": 7022,
+      "anchorX": -3283289,
+      "anchorZ": 871056,
+      "bounds": [
+        -3284099,
+        -3282478,
+        870246,
+        871866
+      ],
+      "regionId": "stormlands",
+      "regionalValues": {
+        "MARTIAL_GLORY": 0.55,
+        "DUTY": 0.3
+      },
+      "regionalNorms": {
+        "MARTIAL": 0.65,
+        "RURAL": 0.25,
+        "COURTLY": 0.1
+      }
+    },
+    {
+      "siteId": "site_sw_077",
+      "name": "Vulture's Roost",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7833_1706": 753,
+        "-7833_1707": 1108,
+        "-7834_1706": 62,
+        "-7834_1707": 177
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4010320,
+      "anchorZ": 874042,
+      "bounds": [
+        -4010604,
+        -4010034,
+        873757,
+        874327
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_078",
+      "name": "Tower of Joy",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_sw_079",
+      "name": "Honeyholt",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9253_1795": 717,
+        "-9253_1796": 1160,
+        "-9254_1795": 45,
+        "-9254_1796": 178
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4737353,
+      "anchorZ": 919639,
+      "bounds": [
+        -4737637,
+        -4737067,
+        919354,
+        919924
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_080",
+      "name": "Kingsgrave",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8084_1845": 760,
+        "-8084_1846": 466,
+        "-8085_1845": 510,
+        "-8085_1846": 364
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4138975,
+      "anchorZ": 945059,
+      "bounds": [
+        -4139259,
+        -4138689,
+        944774,
+        945344
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_081",
+      "name": "Ghaston Grey",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7234_1927": 1607,
+        "-7234_1928": 158,
+        "-7235_1927": 317,
+        "-7235_1928": 18
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3703656,
+      "anchorZ": 986925,
+      "bounds": [
+        -3703940,
+        -3703370,
+        986640,
+        987210
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_082",
+      "name": "Blackmont",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8531_1954": 178,
+        "-8531_1955": 998,
+        "-8532_1954": 164,
+        "-8532_1955": 760
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4367858,
+      "anchorZ": 1001124,
+      "bounds": [
+        -4368142,
+        -4367572,
+        1000839,
+        1001409
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_083",
+      "name": "Uplands",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9051_1960": 385,
+        "-9051_1961": 642,
+        "-9052_1960": 370,
+        "-9052_1961": 703
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4634137,
+      "anchorZ": 1004113,
+      "bounds": [
+        -4634421,
+        -4633851,
+        1003828,
+        1004398
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_084",
+      "name": "Oldtown",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9343_1964": 279,
+        "-9343_1965": 2077,
+        "-9343_1966": 2116,
+        "-9343_1967": 2218,
+        "-9343_1968": 2084,
+        "-9343_1969": 2104,
+        "-9343_1970": 2080,
+        "-9343_1971": 2141,
+        "-9343_1972": 223,
+        "-9344_1964": 448,
+        "-9344_1965": 4484,
+        "-9344_1966": 4201,
+        "-9344_1967": 4555,
+        "-9344_1968": 4303,
+        "-9344_1969": 4470,
+        "-9344_1970": 4308,
+        "-9344_1971": 4543,
+        "-9344_1972": 392,
+        "-9345_1964": 450,
+        "-9345_1965": 4469,
+        "-9345_1966": 4035,
+        "-9345_1967": 4448,
+        "-9345_1968": 4269,
+        "-9345_1969": 4525,
+        "-9345_1970": 4247,
+        "-9345_1971": 4471,
+        "-9345_1972": 463,
+        "-9346_1964": 494,
+        "-9346_1965": 4395,
+        "-9346_1966": 4404,
+        "-9346_1967": 4358,
+        "-9346_1968": 3748,
+        "-9346_1969": 4470,
+        "-9346_1970": 4317,
+        "-9346_1971": 4566,
+        "-9346_1972": 427,
+        "-9347_1964": 459,
+        "-9347_1965": 4489,
+        "-9347_1966": 4225,
+        "-9347_1967": 4537,
+        "-9347_1968": 2505,
+        "-9347_1969": 4511,
+        "-9347_1970": 4227,
+        "-9347_1971": 4452,
+        "-9347_1972": 394,
+        "-9348_1964": 664,
+        "-9348_1965": 4505,
+        "-9348_1966": 4157,
+        "-9348_1967": 3025,
+        "-9348_1968": 2709,
+        "-9348_1969": 3623,
+        "-9348_1970": 4135,
+        "-9348_1971": 4389,
+        "-9348_1972": 434,
+        "-9349_1964": 677,
+        "-9349_1965": 4319,
+        "-9349_1966": 3012,
+        "-9349_1967": 2987,
+        "-9349_1968": 2933,
+        "-9349_1969": 3409,
+        "-9349_1970": 3687,
+        "-9349_1971": 4474,
+        "-9349_1972": 402,
+        "-9350_1964": 493,
+        "-9350_1965": 2242,
+        "-9350_1966": 1678,
+        "-9350_1967": 2154,
+        "-9350_1968": 2173,
+        "-9350_1969": 2425,
+        "-9350_1970": 2197,
+        "-9350_1971": 3382,
+        "-9350_1972": 334
+      },
+      "residentsIndexed": 210000,
+      "householdsIndexed": 44681,
+      "anchorX": -4785228,
+      "anchorZ": 1007850,
+      "bounds": [
+        -4787159,
+        -4783292,
+        1005915,
+        1009786
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_085",
+      "name": "Skyreach",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8053_2020": 243,
+        "-8053_2021": 346,
+        "-8054_2020": 647,
+        "-8054_2021": 864
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4123272,
+      "anchorZ": 1034766,
+      "bounds": [
+        -4123556,
+        -4122986,
+        1034481,
+        1035051
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_086",
+      "name": "Yronwood",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7555_2065": 158,
+        "-7555_2066": 755,
+        "-7556_2065": 232,
+        "-7556_2066": 955
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3868214,
+      "anchorZ": 1057942,
+      "bounds": [
+        -3868498,
+        -3867928,
+        1057657,
+        1058227
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_087",
+      "name": "Blackcrown",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9621_2100": 268,
+        "-9621_2101": 1176,
+        "-9622_2100": 103,
+        "-9622_2101": 553
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4925851,
+      "anchorZ": 1075877,
+      "bounds": [
+        -4926135,
+        -4925565,
+        1075592,
+        1076162
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_088",
+      "name": "High Hermitage",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8557_2149": 561,
+        "-8558_2149": 1539
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4381327,
+      "anchorZ": 1100550,
+      "bounds": [
+        -4381611,
+        -4381041,
+        1100265,
+        1100835
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_089",
+      "name": "Ghost Hill",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6242_2206": 1501,
+        "-6243_2206": 599
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3195790,
+      "anchorZ": 1129711,
+      "bounds": [
+        -3196074,
+        -3195504,
+        1129426,
+        1129996
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_090",
+      "name": "The Tor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6904_2208": 161,
+        "-6904_2209": 1869,
+        "-6905_2208": 8,
+        "-6905_2209": 62
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3534622,
+      "anchorZ": 1131204,
+      "bounds": [
+        -3534906,
+        -3534336,
+        1130919,
+        1131489
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_091",
+      "name": "Three Towers",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9519_2233": 689,
+        "-9519_2234": 1411
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4873496,
+      "anchorZ": 1143905,
+      "bounds": [
+        -4873780,
+        -4873210,
+        1143620,
+        1144190
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_092",
+      "name": "Starfall",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8725_2274": 225,
+        "-8725_2275": 330,
+        "-8726_2274": 652,
+        "-8726_2275": 893
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4467347,
+      "anchorZ": 1164839,
+      "bounds": [
+        -4467631,
+        -4467061,
+        1164554,
+        1165124
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_093",
+      "name": "Godsgrace",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6858_2454": 473,
+        "-6858_2455": 87,
+        "-6859_2454": 1190,
+        "-6859_2455": 350
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3511441,
+      "anchorZ": 1256794,
+      "bounds": [
+        -3511725,
+        -3511155,
+        1256509,
+        1257079
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_094",
+      "name": "Water Gardens",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6151_2471": 4,
+        "-6151_2472": 29,
+        "-6152_2471": 38,
+        "-6152_2472": 209
+      },
+      "residentsIndexed": 280,
+      "householdsIndexed": 70,
+      "anchorX": -3149423,
+      "anchorZ": 1265767,
+      "bounds": [
+        -3149633,
+        -3149287,
+        1265557,
+        1265902
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_095",
+      "name": "Sunspear",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6069_2516": 229,
+        "-6069_2517": 1407,
+        "-6069_2518": 184,
+        "-6070_2516": 999,
+        "-6070_2517": 2792,
+        "-6070_2518": 851,
+        "-6071_2517": 38
+      },
+      "residentsIndexed": 6500,
+      "householdsIndexed": 1383,
+      "anchorX": -3107537,
+      "anchorZ": 1288942,
+      "bounds": [
+        -3107947,
+        -3107126,
+        1288532,
+        1289328
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_096",
+      "name": "Hellholt",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7861_2524": 1359,
+        "-7861_2525": 741
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4024553,
+      "anchorZ": 1292674,
+      "bounds": [
+        -4024837,
+        -4024267,
+        1292389,
+        1292959
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_097",
+      "name": "Vaith",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-7248_2528": 116,
+        "-7248_2529": 224,
+        "-7249_2528": 612,
+        "-7249_2529": 1148
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3711153,
+      "anchorZ": 1294918,
+      "bounds": [
+        -3711437,
+        -3710867,
+        1294633,
+        1295203
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_098",
+      "name": "Sandstone",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-8299_2530": 1513,
+        "-8299_2531": 146,
+        "-8300_2530": 404,
+        "-8300_2531": 37
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4248946,
+      "anchorZ": 1295663,
+      "bounds": [
+        -4249230,
+        -4248660,
+        1295378,
+        1295948
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_099",
+      "name": "North Arbor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9849_2538": 286,
+        "-9849_2539": 1324,
+        "-9850_2538": 109,
+        "-9850_2539": 481
+      },
+      "residentsIndexed": 2200,
+      "householdsIndexed": 440,
+      "anchorX": -5042546,
+      "anchorZ": 1300144,
+      "bounds": [
+        -5042905,
+        -5042185,
+        1299784,
+        1300504
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_100",
+      "name": "Sunhouse",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9127_2538": 135,
+        "-9127_2539": 906,
+        "-9128_2538": 144,
+        "-9128_2539": 915
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -4673047,
+      "anchorZ": 1300146,
+      "bounds": [
+        -4673331,
+        -4672761,
+        1299861,
+        1300431
+      ],
+      "regionId": "the_reach",
+      "regionalValues": {
+        "TRADITIONALISM": 0.45,
+        "PRESTIGE_SEEKING": 0.35,
+        "HIERARCHY_ACCEPTANCE": 0.35
+      },
+      "regionalNorms": {
+        "COURTLY": 0.75,
+        "MERCANTILE": 0.6,
+        "RURAL": 0.4,
+        "SCHOLARLY": 0.25
+      }
+    },
+    {
+      "siteId": "site_sw_101",
+      "name": "Central Arbor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9758_2636": 285,
+        "-9758_2637": 544,
+        "-9759_2636": 505,
+        "-9759_2637": 866
+      },
+      "residentsIndexed": 2200,
+      "householdsIndexed": 440,
+      "anchorX": -4996175,
+      "anchorZ": 1350230,
+      "bounds": [
+        -4996534,
+        -4995814,
+        1349870,
+        1350590
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_sw_102",
+      "name": "Lemonwood",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6316_2641": 421,
+        "-6316_2642": 19,
+        "-6317_2641": 1551,
+        "-6317_2642": 109
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3233948,
+      "anchorZ": 1352483,
+      "bounds": [
+        -3234232,
+        -3233662,
+        1352198,
+        1352768
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_103",
+      "name": "Salt Shore",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-6861_2705": 446,
+        "-6861_2706": 211,
+        "-6862_2705": 869,
+        "-6862_2706": 574
+      },
+      "residentsIndexed": 2100,
+      "householdsIndexed": 438,
+      "anchorX": -3512944,
+      "anchorZ": 1385374,
+      "bounds": [
+        -3513250,
+        -3512633,
+        1385064,
+        1385684
+      ],
+      "regionId": "dorne",
+      "regionalValues": {
+        "PERSONAL_FREEDOM": 0.45,
+        "CULTURAL_TOLERANCE": 0.3,
+        "FAMILY_LOYALTY": 0.4
+      },
+      "regionalNorms": {
+        "COURTLY": 0.35,
+        "MARTIAL": 0.35,
+        "COSMOPOLITAN": 0.3
+      }
+    },
+    {
+      "siteId": "site_sw_104",
+      "name": "South Arbor",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-9687_2713": 6,
+        "-9687_2714": 1607,
+        "-9687_2715": 266,
+        "-9688_2713": 15,
+        "-9688_2714": 273,
+        "-9688_2715": 33
+      },
+      "residentsIndexed": 2200,
+      "householdsIndexed": 440,
+      "anchorX": -4959526,
+      "anchorZ": 1389851,
+      "bounds": [
+        -4959885,
+        -4959165,
+        1389491,
+        1390211
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_001",
+      "name": "The Sorrows",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_swe_002",
+      "name": "Myr",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-4445_1398": 418,
+        "-4445_1399": 1133,
+        "-4445_1400": 1012,
+        "-4445_1401": 1223,
+        "-4445_1402": 1164,
+        "-4445_1403": 631,
+        "-4446_1398": 1548,
+        "-4446_1399": 4551,
+        "-4446_1400": 4393,
+        "-4446_1401": 4503,
+        "-4446_1402": 4342,
+        "-4446_1403": 2301,
+        "-4447_1398": 1499,
+        "-4447_1399": 4301,
+        "-4447_1400": 3991,
+        "-4447_1401": 4169,
+        "-4447_1402": 4097,
+        "-4447_1403": 2323,
+        "-4448_1398": 1733,
+        "-4448_1399": 4593,
+        "-4448_1400": 3420,
+        "-4448_1401": 3391,
+        "-4448_1402": 4386,
+        "-4448_1403": 2354,
+        "-4449_1398": 1708,
+        "-4449_1399": 3943,
+        "-4449_1400": 2635,
+        "-4449_1401": 3209,
+        "-4449_1402": 3995,
+        "-4449_1403": 2295,
+        "-4450_1398": 921,
+        "-4450_1399": 1507,
+        "-4450_1400": 1615,
+        "-4450_1401": 2071,
+        "-4450_1402": 2340,
+        "-4450_1403": 1285
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": -2276968,
+      "anchorZ": 717333,
+      "bounds": [
+        -2278302,
+        -2275632,
+        715998,
+        718594
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_003",
+      "name": "Tyrosh",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-5390_1565": 74,
+        "-5390_1566": 485,
+        "-5390_1567": 510,
+        "-5390_1568": 548,
+        "-5390_1569": 506,
+        "-5390_1570": 398,
+        "-5391_1565": 403,
+        "-5391_1566": 4321,
+        "-5391_1567": 4448,
+        "-5391_1568": 4355,
+        "-5391_1569": 4390,
+        "-5391_1570": 3557,
+        "-5392_1565": 413,
+        "-5392_1566": 4364,
+        "-5392_1567": 4402,
+        "-5392_1568": 4382,
+        "-5392_1569": 4271,
+        "-5392_1570": 3408,
+        "-5393_1565": 482,
+        "-5393_1566": 4339,
+        "-5393_1567": 4297,
+        "-5393_1568": 2300,
+        "-5393_1569": 4358,
+        "-5393_1570": 3632,
+        "-5394_1565": 557,
+        "-5394_1566": 4235,
+        "-5394_1567": 2867,
+        "-5394_1568": 2923,
+        "-5394_1569": 4097,
+        "-5394_1570": 3390,
+        "-5395_1565": 398,
+        "-5395_1566": 2317,
+        "-5395_1567": 1920,
+        "-5395_1568": 2348,
+        "-5395_1569": 2740,
+        "-5395_1570": 2565
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": -2760881,
+      "anchorZ": 802981,
+      "bounds": [
+        -2762215,
+        -2759545,
+        801646,
+        804242
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_004",
+      "name": "Selhorys",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-3142_1905": 3400,
+        "-3142_1906": 3938,
+        "-3142_1907": 2801,
+        "-3143_1905": 3837,
+        "-3143_1906": 2420,
+        "-3143_1907": 3137,
+        "-3144_1905": 1414,
+        "-3144_1906": 1718,
+        "-3144_1907": 1335
+      },
+      "residentsIndexed": 24000,
+      "householdsIndexed": 5107,
+      "anchorX": -1608862,
+      "anchorZ": 976082,
+      "bounds": [
+        -1609570,
+        -1608151,
+        975372,
+        976789
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_005",
+      "name": "Bhorash",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    },
+    {
+      "siteId": "site_swe_006",
+      "name": "Valysar",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-3198_2196": 489,
+        "-3198_2197": 2285,
+        "-3198_2198": 2442,
+        "-3198_2199": 677,
+        "-3199_2196": 869,
+        "-3199_2197": 3563,
+        "-3199_2198": 3418,
+        "-3199_2199": 1320,
+        "-3200_2196": 757,
+        "-3200_2197": 3115,
+        "-3200_2198": 3818,
+        "-3200_2199": 1247
+      },
+      "residentsIndexed": 24000,
+      "householdsIndexed": 5107,
+      "anchorX": -1637742,
+      "anchorZ": 1125397,
+      "bounds": [
+        -1638450,
+        -1637031,
+        1124687,
+        1126104
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_007",
+      "name": "Mantarys",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-1153_2348": 871,
+        "-1153_2349": 2168,
+        "-1153_2350": 941,
+        "-1154_2348": 642,
+        "-1154_2349": 1704,
+        "-1154_2350": 674
+      },
+      "residentsIndexed": 7000,
+      "householdsIndexed": 1459,
+      "anchorX": -590267,
+      "anchorZ": 1202948,
+      "bounds": [
+        -590752,
+        -589807,
+        1202463,
+        1203359
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_008",
+      "name": "Sar Mell",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-2979_2362": 13,
+        "-2979_2363": 275,
+        "-2980_2362": 18,
+        "-2980_2363": 244
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -1525230,
+      "anchorZ": 1209997,
+      "bounds": [
+        -1525465,
+        -1525047,
+        1209762,
+        1210158
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_009",
+      "name": "Volon Therys",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-3066_2463": 3036,
+        "-3066_2464": 3489,
+        "-3066_2465": 2151,
+        "-3067_2463": 3693,
+        "-3067_2464": 2241,
+        "-3067_2465": 2787,
+        "-3068_2463": 2196,
+        "-3068_2464": 2676,
+        "-3068_2465": 1731
+      },
+      "residentsIndexed": 24000,
+      "householdsIndexed": 5107,
+      "anchorX": -1570038,
+      "anchorZ": 1261763,
+      "bounds": [
+        -1570746,
+        -1569327,
+        1261053,
+        1262470
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_010",
+      "name": "Lys",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-4817_2530": 2829,
+        "-4817_2531": 3369,
+        "-4817_2532": 3369,
+        "-4817_2533": 3403,
+        "-4817_2534": 3513,
+        "-4817_2535": 148,
+        "-4818_2530": 3727,
+        "-4818_2531": 4255,
+        "-4818_2532": 4437,
+        "-4818_2533": 4368,
+        "-4818_2534": 4502,
+        "-4818_2535": 201,
+        "-4819_2530": 3702,
+        "-4819_2531": 4237,
+        "-4819_2532": 2642,
+        "-4819_2533": 4256,
+        "-4819_2534": 4506,
+        "-4819_2535": 217,
+        "-4820_2530": 3821,
+        "-4820_2531": 3736,
+        "-4820_2532": 2986,
+        "-4820_2533": 4152,
+        "-4820_2534": 4472,
+        "-4820_2535": 208,
+        "-4821_2530": 3339,
+        "-4821_2531": 2541,
+        "-4821_2532": 2797,
+        "-4821_2533": 3282,
+        "-4821_2534": 4452,
+        "-4821_2535": 29,
+        "-4822_2530": 183,
+        "-4822_2531": 225,
+        "-4822_2532": 460,
+        "-4822_2533": 353,
+        "-4822_2534": 283
+      },
+      "residentsIndexed": 95000,
+      "householdsIndexed": 20213,
+      "anchorX": -2467165,
+      "anchorZ": 1296681,
+      "bounds": [
+        -2468499,
+        -2465829,
+        1295346,
+        1297942
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_011",
+      "name": "Volantis",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-2742_2557": 582,
+        "-2742_2558": 1811,
+        "-2742_2559": 1745,
+        "-2742_2560": 1810,
+        "-2742_2561": 1766,
+        "-2742_2562": 1724,
+        "-2742_2563": 1775,
+        "-2742_2564": 1849,
+        "-2742_2565": 996,
+        "-2743_2557": 1513,
+        "-2743_2558": 4665,
+        "-2743_2559": 4366,
+        "-2743_2560": 4501,
+        "-2743_2561": 4393,
+        "-2743_2562": 4504,
+        "-2743_2563": 4603,
+        "-2743_2564": 4361,
+        "-2743_2565": 2494,
+        "-2744_2557": 1606,
+        "-2744_2558": 4823,
+        "-2744_2559": 4580,
+        "-2744_2560": 4603,
+        "-2744_2561": 4663,
+        "-2744_2562": 4731,
+        "-2744_2563": 4574,
+        "-2744_2564": 4721,
+        "-2744_2565": 2596,
+        "-2745_2557": 1565,
+        "-2745_2558": 4526,
+        "-2745_2559": 4393,
+        "-2745_2560": 4463,
+        "-2745_2561": 4335,
+        "-2745_2562": 4492,
+        "-2745_2563": 4468,
+        "-2745_2564": 4473,
+        "-2745_2565": 2540,
+        "-2746_2557": 1618,
+        "-2746_2558": 4794,
+        "-2746_2559": 4475,
+        "-2746_2560": 4477,
+        "-2746_2561": 2357,
+        "-2746_2562": 4696,
+        "-2746_2563": 4587,
+        "-2746_2564": 4694,
+        "-2746_2565": 2567,
+        "-2747_2557": 1567,
+        "-2747_2558": 4570,
+        "-2747_2559": 4504,
+        "-2747_2560": 3714,
+        "-2747_2561": 2877,
+        "-2747_2562": 4279,
+        "-2747_2563": 4444,
+        "-2747_2564": 4461,
+        "-2747_2565": 2512,
+        "-2748_2557": 1574,
+        "-2748_2558": 4765,
+        "-2748_2559": 3696,
+        "-2748_2560": 2699,
+        "-2748_2561": 2856,
+        "-2748_2562": 3704,
+        "-2748_2563": 4381,
+        "-2748_2564": 4698,
+        "-2748_2565": 2643,
+        "-2749_2557": 1514,
+        "-2749_2558": 3800,
+        "-2749_2559": 2722,
+        "-2749_2560": 2855,
+        "-2749_2561": 2841,
+        "-2749_2562": 3006,
+        "-2749_2563": 3106,
+        "-2749_2564": 4293,
+        "-2749_2565": 2458,
+        "-2750_2557": 851,
+        "-2750_2558": 1702,
+        "-2750_2559": 1534,
+        "-2750_2560": 1643,
+        "-2750_2561": 1512,
+        "-2750_2562": 1624,
+        "-2750_2563": 1589,
+        "-2750_2564": 1782,
+        "-2750_2565": 1349
+      },
+      "residentsIndexed": 260000,
+      "householdsIndexed": 55320,
+      "anchorX": -1405749,
+      "anchorZ": 1311519,
+      "bounds": [
+        -1407909,
+        -1403588,
+        1309359,
+        1313654
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_014",
+      "name": "Tolos",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-618_2646": 146,
+        "-618_2647": 85,
+        "-619_2646": 187,
+        "-619_2647": 132
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -316454,
+      "anchorZ": 1355222,
+      "bounds": [
+        -316689,
+        -316271,
+        1354987,
+        1355383
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_015",
+      "name": "Elyria",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-926_2685": 401,
+        "-926_2686": 149
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -473776,
+      "anchorZ": 1375144,
+      "bounds": [
+        -474011,
+        -473593,
+        1374909,
+        1375305
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_016",
+      "name": "Ghozai",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-307_3049": 346,
+        "-308_3048": 5,
+        "-308_3049": 199
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -157149,
+      "anchorZ": 1561259,
+      "bounds": [
+        -157384,
+        -156966,
+        1561024,
+        1561420
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_017",
+      "name": "Velos",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-220_3414": 399,
+        "-220_3415": 151
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -112348,
+      "anchorZ": 1748393,
+      "bounds": [
+        -112583,
+        -112165,
+        1748158,
+        1748554
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_018",
+      "name": "Oros",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-1260_3686": 141,
+        "-1260_3687": 237,
+        "-1261_3686": 72,
+        "-1261_3687": 100
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -645052,
+      "anchorZ": 1887797,
+      "bounds": [
+        -645287,
+        -644869,
+        1887562,
+        1887958
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_019",
+      "name": "Tyria",
+      "status": "C4_11_HOME_CANDIDATES",
+      "tiles": {
+        "-1386_3999": 20,
+        "-1386_4000": 30,
+        "-1387_3999": 202,
+        "-1387_4000": 298
+      },
+      "residentsIndexed": 550,
+      "householdsIndexed": 110,
+      "anchorX": -709778,
+      "anchorZ": 2048064,
+      "bounds": [
+        -710013,
+        -709595,
+        2047829,
+        2048225
+      ],
+      "regionId": "unknown",
+      "regionalValues": {},
+      "regionalNorms": {}
+    },
+    {
+      "siteId": "site_swe_020",
+      "name": "Valyria",
+      "status": "DEFERRED_EXISTING_OR_NONBUILDABLE",
+      "tiles": {},
+      "residentsIndexed": 0,
+      "householdsIndexed": 0
+    }
+  ],
+  "schemaNote": "One B4 person per row; household grouping preserved; tiles lazily decoded"
+}

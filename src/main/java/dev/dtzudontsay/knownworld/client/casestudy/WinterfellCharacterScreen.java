@@ -130,6 +130,12 @@ public final class WinterfellCharacterScreen extends Screen {
                 map(rows,"publicFacts","KNOWN FACTS",false);
             }
             case 4 -> {
+                // B4_2_DAILY_LIFE_INTEGRATION: inferred schedules, NOT observed actions.
+                raw(rows,"Scheduled current activity","dailyActivity");
+                raw(rows,"Work shift (Minecraft ticks)","dailyWorkSchedule");
+                raw(rows,"Modeled workdays","modeledWorkdays");
+                raw(rows,"Estimated travel ticks","commuteTicksEstimate");
+                raw(rows,"Estimated practice gain","practiceGainEstimate");
                 array(rows,"motivations","MOTIVATIONS");array(rows,"goals","GOALS");
                 array(rows,"fears","FEARS");array(rows,"desires","DESIRES");
             }
@@ -178,7 +184,7 @@ public final class WinterfellCharacterScreen extends Screen {
         gfx.fill(x,y,x+w,y+h,0xFF1C2529);
         gfx.outline(x,y,w,h,0xFFC8A86D);
         gfx.fill(x+2,y+2,x+w-2,y+61,0xFF303936);
-        gfx.text(font,"WINTERFELL  •  CHARACTER RECORD",x+13,y+8,GOLD,true);
+        gfx.text(font,(value("id").startsWith("b4:") ? "KNOWN WORLD" : "WINTERFELL") + "  •  CHARACTER RECORD",x+13,y+8,GOLD,true);
         gfx.text(font,value("name"),x+13,y+28,LIGHT,true);
         gfx.text(font,"Age "+value("age")+"  •  "+label(value("occupation")),x+13,y+45,DIM,false);
         int top=y+100,bottom=y+h-31;
