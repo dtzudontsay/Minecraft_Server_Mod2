@@ -135,7 +135,7 @@ public final class KnownWorldB42B3StartingStock {
         return name == null ? "" : name.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]", "");
     }
 
-    private static SettlementId canonicalSettlement(String siteId) {
+    static SettlementId canonicalSettlement(String siteId) {
         var site = KnownWorldSiteRegistry.registry().site(siteId)
             .orElseThrow(() -> new IllegalStateException("Site is absent from authoritative registry"));
         NpcSimulation sim = NpcSimulation.getNullable();

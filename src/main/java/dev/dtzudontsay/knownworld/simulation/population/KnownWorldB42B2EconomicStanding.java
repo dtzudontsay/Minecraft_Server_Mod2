@@ -38,6 +38,7 @@ public final class KnownWorldB42B2EconomicStanding {
     public static void register() {
         KnownWorldB42B3StartingStock.register();
         KnownWorldB42B4HouseholdDaily.register();
+        KnownWorldB42B5HouseholdAuthority.register();
         CommandRegistrationCallback.EVENT.register((dispatcher, registry, environment) ->
             dispatcher.register(Commands.literal("kwstanding")
                     .then(Commands.literal("status").executes(c -> status(c.getSource())))));
