@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.dtzudontsay.knownworld.KnownWorld;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CharacterState;
 import dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerator;
 import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldC411GlobalWorldgen;
@@ -110,6 +111,7 @@ public final class KnownWorldB41Activation {
     public static void register() {
         // B4_2_DAILY_LIFE_INTEGRATION
         KnownWorldB42DailyLife.register();
+        KnownWorldAv2CharacterState.register();
         KnownWorldB42BPersonalEvents.register();
         KnownWorldB42BEconomyReadiness.register();
         KnownWorldB42B2EconomicStanding.register();
@@ -565,6 +567,17 @@ public final class KnownWorldB41Activation {
         sheet.add("occupations",occupations);
         JsonArray motivations=new JsonArray();motivations.add(age<16?"learning_and_family":"household_wellbeing");
         sheet.add("motivations",motivations);
+        KnownWorldAv2CharacterState.applyToSheet(sheet,p.site,p.id);
+    }
+    /** AV2A: only currently materialized canonical B4.0 identities are editable. */
+    public static String av2VisibleSite(String personId) {
+        Person person=visiblePeople.get(personId);
+        UUID uuid=projected.get(personId);
+        if(person==null || uuid==null || activeServer==null)return null;
+        ServerLevel world=activeServer.getLevel(Level.OVERWORLD);
+        Entity entity=world==null?null:world.getEntity(uuid);
+        if(entity==null || !entity.isAlive() || !entity.entityTags().contains(TAG))return null;
+        return person.site;
     }
     private static void inspect(ServerPlayer player,Entity actor) {
         if(player.distanceToSqr(actor)>64)return;
