@@ -1,5 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CExperienceJournal;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -319,9 +321,10 @@ public final class KnownWorldB41DialogueService {
         // B4_2_DAILY_LIFE_INTEGRATION
         prompt.append(KnownWorldB42DailyLife.promptFor(p.id(),p.workplace(),
                        p.occupation(),298-p.startAge()));
+        prompt.append(KnownWorldAv2CExperienceJournal.promptFor(p.id()));
         JsonObject profile=p.profile();
         prompt.append("PERSONALITY / REGIONAL INFLUENCE (estimated, for speaking style only):\n");
-        for(String key:new String[]{"personality","traits","dialogueStyle","characterValues","socialNorms","skills"}) {
+        for(String key:new String[]{"personality","traits","dialogueStyle","characterValues","socialNorms","skills","derivedTendencies"}) {
             JsonElement part=profile.get(key);
             if(part!=null)prompt.append(key).append(": ").append(trim(part.toString(),700)).append("\n");
         }

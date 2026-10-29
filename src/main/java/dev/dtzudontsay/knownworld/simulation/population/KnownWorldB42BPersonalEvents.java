@@ -1,5 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CExperienceJournal;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -102,6 +104,7 @@ public final class KnownWorldB42BPersonalEvents {
         if(skill==null)skill="none";
         people.put(id,new Person(id,workplace,skill,day,previous==null?1:previous.visits()+1));
         eventCount++;dirty=true;
+        KnownWorldAv2CExperienceJournal.observedPhysicalWork(server,id,workplace,day);
     }
     public static void enrich(JsonObject sheet,String id) {
         Person p=people.get(id);

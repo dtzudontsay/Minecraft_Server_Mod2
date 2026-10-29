@@ -1,11 +1,16 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2DChangeJournal;
+
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CExperienceJournal;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CharacterState;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2BPsychologyBridge;
 import dev.dtzudontsay.knownworld.simulation.casestudy.KnownWorldUiPackets;
 import dev.dtzudontsay.knownworld.world.generation.KnownWorldChunkGenerator;
 import dev.dtzudontsay.knownworld.world.generation.settlement.KnownWorldC411GlobalWorldgen;
@@ -112,7 +117,10 @@ public final class KnownWorldB41Activation {
         // B4_2_DAILY_LIFE_INTEGRATION
         KnownWorldB42DailyLife.register();
         KnownWorldAv2CharacterState.register();
+        KnownWorldAv2BPsychologyBridge.register();
         KnownWorldB42BPersonalEvents.register();
+        KnownWorldAv2CExperienceJournal.register();
+        KnownWorldAv2DChangeJournal.register();
         KnownWorldB42BEconomyReadiness.register();
         KnownWorldB42B2EconomicStanding.register();
         CommandRegistrationCallback.EVENT.register((dispatcher,registry,environment)->
@@ -568,6 +576,8 @@ public final class KnownWorldB41Activation {
         JsonArray motivations=new JsonArray();motivations.add(age<16?"learning_and_family":"household_wellbeing");
         sheet.add("motivations",motivations);
         KnownWorldAv2CharacterState.applyToSheet(sheet,p.site,p.id);
+        KnownWorldAv2DChangeJournal.applyToSheet(sheet,p.site,p.id);
+        KnownWorldAv2BPsychologyBridge.enrich(sheet);
     }
     /** AV2A: only currently materialized canonical B4.0 identities are editable. */
     public static String av2VisibleSite(String personId) {
@@ -595,6 +605,7 @@ public final class KnownWorldB41Activation {
         enrich(sheet,p,site);
         b42Sheet(sheet,p,site);
         KnownWorldB42BPersonalEvents.enrich(sheet,p.id);
+        KnownWorldAv2CExperienceJournal.enrich(sheet,p.site,p.id);
         KnownWorldB42B2EconomicStanding.enrich(sheet,p.site,p.household,p.workplace,p.id);
         boolean gm=player.isCreative()&&Commands.LEVEL_GAMEMASTERS.check(player.createCommandSourceStack().permissions());
         sheet.addProperty("gamemaster",gm);
