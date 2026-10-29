@@ -32,6 +32,7 @@ import dev.dtzudontsay.knownworld.debug.TitleDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldEventDebugCommand;
 import dev.dtzudontsay.knownworld.debug.WorldReferenceDebugCommand;
 import dev.dtzudontsay.knownworld.simulation.NpcSimulation;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv1Vocabulary;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.AuthoredCharacterProfileOverlayService;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.NamedCharacterAuthoringRuntime;
 import dev.dtzudontsay.knownworld.simulation.bootstrap.ScenarioStartCatalog;
@@ -188,6 +189,7 @@ public final class KnownWorld implements ModInitializer {
         WinterfellV3Runtime.register();
         KnownWorldB40PopulationIndex.register();
         KnownWorldB41Activation.register();
+        KnownWorldAv1Vocabulary.register();
 
         /*
          * Register immediately after NpcSimulation so SERVER_STARTED first

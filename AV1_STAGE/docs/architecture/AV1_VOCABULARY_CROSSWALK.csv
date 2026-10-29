@@ -1,0 +1,762 @@
+﻿Excel row,Source label,Domain,Canonical ID,Kind,Owner,Aliases,Status,Runtime assignable,AV workstream
+2,Character Skills:,CHARACTER_SKILL,,SECTION,,,HEADING,False,
+3,MARTIAL,CHARACTER_SKILL,MARTIAL,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+4,DIPLOMACY,CHARACTER_SKILL,DIPLOMACY,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+5,STEWARDSHIP,CHARACTER_SKILL,STEWARDSHIP,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+6,INTRIGUE,CHARACTER_SKILL,INTRIGUE,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+7,LEARNING,CHARACTER_SKILL,LEARNING,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+8,COMBAT,CHARACTER_SKILL,COMBAT,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+9,LEADERSHIP,CHARACTER_SKILL,LEADERSHIP,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+10,RIDING,CHARACTER_SKILL,RIDING,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+11,SAILING,CHARACTER_SKILL,SAILING,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+12,NAVIGATION,CHARACTER_SKILL,NAVIGATION,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+13,TRADE,CHARACTER_SKILL,TRADE,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+14,CRAFTING,CHARACTER_SKILL,CRAFTING,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+15,AGRICULTURE,CHARACTER_SKILL,AGRICULTURE,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+16,HUNTING,CHARACTER_SKILL,HUNTING,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+17,MEDICINE,CHARACTER_SKILL,MEDICINE,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+18,RELIGIOUS_STUDY,CHARACTER_SKILL,RELIGIOUS_STUDY,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+19,LANGUAGE,CHARACTER_SKILL,LANGUAGE,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+20,PERFORMANCE,CHARACTER_SKILL,PERFORMANCE,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+21,COMMAND,CHARACTER_SKILL,COMMAND,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+22,LOGISTICS,CHARACTER_SKILL,LOGISTICS,ENUM,CharacterSkill,,EXACT ENUM,False,AV2+
+23,Natural Aptitudes:,NATURAL_APTITUDE,,SECTION,,,HEADING,False,
+24,MARTIAL,NATURAL_APTITUDE,MARTIAL,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+25,DIPLOMACY,NATURAL_APTITUDE,DIPLOMACY,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+26,STEWARDSHIP,NATURAL_APTITUDE,STEWARDSHIP,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+27,INTRIGUE,NATURAL_APTITUDE,INTRIGUE,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+28,LEARNING,NATURAL_APTITUDE,LEARNING,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+29,COMBAT,NATURAL_APTITUDE,COMBAT,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+30,LEADERSHIP,NATURAL_APTITUDE,LEADERSHIP,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+31,RIDING,NATURAL_APTITUDE,RIDING,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+32,SAILING,NATURAL_APTITUDE,SAILING,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+33,NAVIGATION,NATURAL_APTITUDE,NAVIGATION,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+34,TRADE,NATURAL_APTITUDE,TRADE,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+35,CRAFTING,NATURAL_APTITUDE,CRAFTING,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+36,AGRICULTURE,NATURAL_APTITUDE,AGRICULTURE,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+37,HUNTING,NATURAL_APTITUDE,HUNTING,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+38,MEDICINE,NATURAL_APTITUDE,MEDICINE,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+39,RELIGIOUS_STUDY,NATURAL_APTITUDE,RELIGIOUS_STUDY,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+40,LANGUAGES,NATURAL_APTITUDE,LANGUAGES,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+41,PERFORMANCE,NATURAL_APTITUDE,PERFORMANCE,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+42,COMMAND,NATURAL_APTITUDE,COMMAND,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+43,LOGISTICS,NATURAL_APTITUDE,LOGISTICS,ENUM,CharacterAptitude,,EXACT ENUM,False,AV2+
+44,Personality:,PERSONALITY_SCALE,,SECTION,,,HEADING,False,
+45,Courage (Fearful / Brave),PERSONALITY_SCALE,courage,RECORD_FIELD,NpcPersonality,Courage (Fearful / Brave),EXACT RECORD FIELD,False,AV2+
+46,Ambition (Avoids Power / High Ambitions),PERSONALITY_SCALE,ambition,RECORD_FIELD,NpcPersonality,Ambition (Avoids Power / High Ambitions),EXACT RECORD FIELD,False,AV2+
+47,Compassion (Callous / Compassionate),PERSONALITY_SCALE,compassion,RECORD_FIELD,NpcPersonality,Compassion (Callous / Compassionate),EXACT RECORD FIELD,False,AV2+
+48,Honor (Opportunistic / Strongly Honorable),PERSONALITY_SCALE,honor,RECORD_FIELD,NpcPersonality,Honor (Opportunistic / Strongly Honorable),EXACT RECORD FIELD,False,AV2+
+49,Patience (Impulsive / Patient),PERSONALITY_SCALE,patience,RECORD_FIELD,NpcPersonality,Patience (Impulsive / Patient),EXACT RECORD FIELD,False,AV2+
+50,Sociability (Withdrawn / Highly Sociable),PERSONALITY_SCALE,sociability,RECORD_FIELD,NpcPersonality,Sociability (Withdrawn / Highly Sociable),EXACT RECORD FIELD,False,AV2+
+51,Dispositions:,DISPOSITION,,SECTION,,,HEADING,False,
+52,-Agency and self-control:,DISPOSITION,,SECTION,,,HEADING,False,
+53,INDEPENDENCE,DISPOSITION,INDEPENDENCE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+54,ASSERTIVENESS,DISPOSITION,ASSERTIVENESS,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+55,IMPULSIVITY,DISPOSITION,IMPULSIVITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+56,DISCIPLINE,DISPOSITION,DISCIPLINE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+57,CURIOSITY,DISPOSITION,CURIOSITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+58,RISK_TOLERANCE,DISPOSITION,RISK_TOLERANCE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+59,EMOTIONAL_STABILITY,DISPOSITION,EMOTIONAL_STABILITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+60,ADAPTABILITY,DISPOSITION,ADAPTABILITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+61,PERSISTENCE,DISPOSITION,PERSISTENCE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+62,-Social and moral Tendencies:,DISPOSITION,,SECTION,,,HEADING,False,
+63,SUSPICIOUSNESS,DISPOSITION,SUSPICIOUSNESS,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+64,EMPATHY,DISPOSITION,EMPATHY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+65,AGGRESSION,DISPOSITION,AGGRESSION,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+66,PRIDE,DISPOSITION,PRIDE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+67,HUMILITY,DISPOSITION,HUMILITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+68,GREED,DISPOSITION,GREED,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+69,GENEROSITY,DISPOSITION,GENEROSITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+70,FORGIVENESS,DISPOSITION,FORGIVENESS,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+71,VINDICTIVENESS,DISPOSITION,VINDICTIVENESS,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+72,DECEITFULNESS,DISPOSITION,DECEITFULNESS,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+73,GULLIBILITY,DISPOSITION,GULLIBILITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+74,-Authority and interpersonal Behaviour:,DISPOSITION,,SECTION,,,HEADING,False,
+75,CONFORMITY,DISPOSITION,CONFORMITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+76,DOMINANCE,DISPOSITION,DOMINANCE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+77,OBEDIENCE,DISPOSITION,OBEDIENCE,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+78,JEALOUSY,DISPOSITION,JEALOUSY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+79,ROMANTICISM,DISPOSITION,ROMANTICISM,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+80,SENSUALITY,DISPOSITION,SENSUALITY,ENUM,CharacterDisposition,,EXACT ENUM,False,AV2+
+81,Character Values:,CHARACTER_VALUE,,SECTION,,,HEADING,False,
+82,-Family and Loyalty:,CHARACTER_VALUE,,SECTION,,,HEADING,False,
+83,DUTY,CHARACTER_VALUE,DUTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+84,FAMILY_LOYALTY,CHARACTER_VALUE,FAMILY_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+85,HOUSE_LOYALTY,CHARACTER_VALUE,HOUSE_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+86,DYNASTIC_LOYALTY,CHARACTER_VALUE,DYNASTIC_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+87,CLAN_LOYALTY,CHARACTER_VALUE,CLAN_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+88,FRIENDSHIP_LOYALTY,CHARACTER_VALUE,FRIENDSHIP_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+89,-Government and social Order:,CHARACTER_VALUE,,SECTION,,,HEADING,False,
+90,PERSONAL_FREEDOM,CHARACTER_VALUE,PERSONAL_FREEDOM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+91,AUTHORITY_RESPECT,CHARACTER_VALUE,AUTHORITY_RESPECT,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+92,HIERARCHY_ACCEPTANCE,CHARACTER_VALUE,HIERARCHY_ACCEPTANCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+93,EGALITARISM,CHARACTER_VALUE,EGALITARIANISM,ENUM,CharacterValue,EGALITARISM,ALIAS / TYPO TO REVIEW,False,AV2+
+94,TRADITIONALISM,CHARACTER_VALUE,TRADITIONALISM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+95,INNOVATION,CHARACTER_VALUE,INNOVATION,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+96,POLITICAL_STABILITY,CHARACTER_VALUE,POLITICAL_STABILITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+97,SOCIAL_MOBILITY,CHARACTER_VALUE,SOCIAL_MOBILITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+98,COMMUNAL_SOLIDARITY,CHARACTER_VALUE,COMMUNAL_SOLIDARITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+99,INDIVIDUALISM,CHARACTER_VALUE,INDIVIDUALISM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+100,-Religion and culture:,CHARACTER_VALUE,,SECTION,,,HEADING,False,
+101,RELIGIOSITY,CHARACTER_VALUE,RELIGIOSITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+102,RELIGIOUS_TOLERANCE,CHARACTER_VALUE,RELIGIOUS_TOLERANCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+103,CULTURAL_TOLERANCE,CHARACTER_VALUE,CULTURAL_TOLERANCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+104,HONOR_CULTURE,CHARACTER_VALUE,HONOR_CULTURE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+105,HOSPITALITY,CHARACTER_VALUE,HOSPITALITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+106,-Ethics:,CHARACTER_VALUE,,SECTION,,,HEADING,False,
+107,MERCY,CHARACTER_VALUE,MERCY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+108,VENGEANCE,CHARACTER_VALUE,VENGEANCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+109,JUSTICE,CHARACTER_VALUE,JUSTICE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+110,LAW_OBEDIENCE,CHARACTER_VALUE,LAW_OBEDIENCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+111,PACIFISM,CHARACTER_VALUE,PACIFISM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+112,Social Norms:,SOCIAL_NORM,,SECTION,,,HEADING,False,
+113,- Military and social Tradition:,SOCIAL_NORM,,SECTION,,,HEADING,False,
+114,MARTIAL,SOCIAL_NORM,MARTIAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+115,COURTLY,SOCIAL_NORM,COURTLY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+116,MERCANTILE,SOCIAL_NORM,MERCANTILE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+117,NAVAL,SOCIAL_NORM,NAVAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+118,RAIDING,SOCIAL_NORM,RAIDING,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+119,SCHOLARY,SOCIAL_NORM,SCHOLARLY,ENUM,CharacterSocialNorm,SCHOLARY,ALIAS / TYPO TO REVIEW,False,AV2+
+120,EQUESTRIAN,SOCIAL_NORM,EQUESTRIAN,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+121,CLAN_BASED,SOCIAL_NORM,CLAN_BASED,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+122,DYNASTIC,SOCIAL_NORM,DYNASTIC,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+123,RELIGIOUS,SOCIAL_NORM,RELIGIOUS,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+124,-social organization:,SOCIAL_NORM,,SECTION,,,HEADING,False,
+125,HOSPITALITY,SOCIAL_NORM,HOSPITALITY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+126,VENGEANCE,SOCIAL_NORM,VENGEANCE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+127,BUREAUCRATIC,SOCIAL_NORM,BUREAUCRATIC,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+128,URBAN,SOCIAL_NORM,URBAN,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+129,RURAL,SOCIAL_NORM,RURAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+130,COSMOPOLITAN,SOCIAL_NORM,COSMOPOLITAN,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+131,ISOLATIONIST,SOCIAL_NORM,ISOLATIONIST,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+132,COLLECTIVIST,SOCIAL_NORM,COLLECTIVIST,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+133,INDIVIDUALIST,SOCIAL_NORM,INDIVIDUALIST,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+134,-Authority and mobility:,SOCIAL_NORM,,SECTION,,,HEADING,False,
+135,SOCIAL_MOBILITY,SOCIAL_NORM,SOCIAL_MOBILITY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+136,AUTHORITY,SOCIAL_NORM,AUTHORITY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+137,TRADITIONAL,SOCIAL_NORM,TRADITIONAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+138,FOREIGN_EXPOSURE,SOCIAL_NORM,FOREIGN_EXPOSURE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+139,POLITICAL_EXPOSURE,SOCIAL_NORM,POLITICAL_EXPOSURE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+140,MIGRATORY,SOCIAL_NORM,MIGRATORY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+141,Character Traits:,TRAIT_TAG,,SECTION,,,HEADING,False,
+142,administratively_disinterested,TRAIT_TAG,administratively_disinterested,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+143,administrator,TRAIT_TAG,administrator,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+144,adventurous,TRAIT_TAG,adventurous,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+145,ambitious,TRAIT_TAG,ambitious,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+146,austere,TRAIT_TAG,austere,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+147,bitter,TRAIT_TAG,bitter,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+148,blind,TRAIT_TAG,blind,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+149,blunt,TRAIT_TAG,blunt,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+150,boastful,TRAIT_TAG,boastful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+151,boisterous,TRAIT_TAG,boisterous,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+152,brave,TRAIT_TAG,brave,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+153,careful,TRAIT_TAG,careful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+154,charismatic,TRAIT_TAG,charismatic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+155,climber,TRAIT_TAG,climber,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+156,commander,TRAIT_TAG,commander,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+157,compassionate,TRAIT_TAG,compassionate,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+158,competetive,TRAIT_TAG,competetive,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+159,conservative,TRAIT_TAG,conservative,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+160,courteous,TRAIT_TAG,courteous,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+161,curious,TRAIT_TAG,curious,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+162,cynical,TRAIT_TAG,cynical,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+163,determined,TRAIT_TAG,determined,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+164,devout,TRAIT_TAG,devout,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+165,disciplinariean,TRAIT_TAG,disciplinariean,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+166,disciplined,TRAIT_TAG,disciplined,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+167,dutiful,TRAIT_TAG,dutiful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+168,emotional,TRAIT_TAG,emotional,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+169,empathetic_to_outcasts,TRAIT_TAG,empathetic_to_outcasts,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+170,energetic,TRAIT_TAG,energetic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+171,exceptional_swordsman,TRAIT_TAG,exceptional_swordsman,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+172,experienced_commander,TRAIT_TAG,experienced_commander,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+173,experienced_knight,TRAIT_TAG,experienced_knight,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+174,experienced_wilderness_traveler,TRAIT_TAG,experienced_wilderness_traveler,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+175,family_oriented,TRAIT_TAG,family_oriented,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+176,generous_to_friends,TRAIT_TAG,generous_to_friends,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+177,gregarious,TRAIT_TAG,gregarious,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+178,harsh,TRAIT_TAG,harsh,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+179,hedonistic,TRAIT_TAG,hedonistic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+180,honorable,TRAIT_TAG,honorable,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+181,humble,TRAIT_TAG,humble,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+182,idealistic,TRAIT_TAG,idealistic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+183,imaginative,TRAIT_TAG,imaginative,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+184,impatient,TRAIT_TAG,impatient,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+185,independent,TRAIT_TAG,independent,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+186,indulgent,TRAIT_TAG,indulgent,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+187,insecure,TRAIT_TAG,insecure,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+188,intelligent,TRAIT_TAG,intelligent,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+189,just,TRAIT_TAG,just,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+190,kind,TRAIT_TAG,kind,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+191,learned,TRAIT_TAG,learned,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+192,legendary_ranger,TRAIT_TAG,legendary_ranger,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+193,loyal,TRAIT_TAG,loyal,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+194,loyal_to_cersei,TRAIT_TAG,loyal_to_cersei,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+195,lustful,TRAIT_TAG,lustful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+196,maimed,TRAIT_TAG,maimed,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+197,martial,TRAIT_TAG,martial,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+198,naive,TRAIT_TAG,naive,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+199,nonconformist,TRAIT_TAG,nonconformist,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+200,nostalgic,TRAIT_TAG,nostalgic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+201,observant,TRAIT_TAG,observant,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+202,patient,TRAIT_TAG,patient,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+203,politically_aware,TRAIT_TAG,politically_aware,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+204,posessive,TRAIT_TAG,posessive,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+205,practical,TRAIT_TAG,practical,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+206,pragmatic,TRAIT_TAG,pragmatic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+207,protective,TRAIT_TAG,protective,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+208,protective_of_children,TRAIT_TAG,protective_of_children,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+209,proud,TRAIT_TAG,proud,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+210,quiet,TRAIT_TAG,quiet,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+211,reckless,TRAIT_TAG,reckless,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+212,reluctant_politician,TRAIT_TAG,reluctant_politician,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+213,resentful,TRAIT_TAG,resentful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+214,resentful_targaryan_loyalist,TRAIT_TAG,resentful_targaryan_loyalist,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+215,reserved,TRAIT_TAG,reserved,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+216,resourceful,TRAIT_TAG,resourceful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+217,responsible,TRAIT_TAG,responsible,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+218,romantic,TRAIT_TAG,romantic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+219,sarcastic,TRAIT_TAG,sarcastic,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+220,seasoned_ranger,TRAIT_TAG,seasoned_ranger,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+221,self_denial,TRAIT_TAG,self_denial,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+222,sensitive_to_status,TRAIT_TAG,sensitive_to_status,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+223,skilled_ranger,TRAIT_TAG,skilled_ranger,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+224,social,TRAIT_TAG,social,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+225,socially_observant,TRAIT_TAG,socially_observant,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+226,status_conscious,TRAIT_TAG,status_conscious,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+227,stern,TRAIT_TAG,stern,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+228,stubborn,TRAIT_TAG,stubborn,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+229,suspicious,TRAIT_TAG,suspicious,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+230,tough,TRAIT_TAG,tough,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+231,vengeful,TRAIT_TAG,vengeful,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+232,wandering_crow,TRAIT_TAG,wandering_crow,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+233,watch_loyalist,TRAIT_TAG,watch_loyalist,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+234,well_mannered,TRAIT_TAG,well_mannered,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+235,wilderness_master,TRAIT_TAG,wilderness_master,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+236,wise,TRAIT_TAG,wise,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+237,witty,TRAIT_TAG,witty,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+238,young,TRAIT_TAG,young,LEGACY_UNTYPED_TRAIT,CharacterProfile.traits (legacy free-form),,FREEFORM PROFILE TAG,False,AV2+
+239,Cultures:,CULTURE,,SECTION,,,HEADING,False,
+240,-Westeros:,CULTURE,,SECTION,,,HEADING,False,
+241,first_men,CULTURE,first_men,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+242,andal,CULTURE,andal,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+243,rhoynar,CULTURE,rhoynar,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+244,westerosi,CULTURE,westerosi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+245,northman,CULTURE,northman,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+246,crannogman,CULTURE,crannogman,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+247,skagosi,CULTURE,skagosi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+248,wildling,CULTURE,wildling,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+249,thenn,CULTURE,thenn,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+250,valeman,CULTURE,valeman,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+251,sisterman,CULTURE,sisterman,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+252,vale_mountain_clan,CULTURE,vale_mountain_clan,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+253,riverlander,CULTURE,riverlander,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+254,ironborn,CULTURE,ironborn,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+255,westerman,CULTURE,westerman,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+256,crownlander,CULTURE,crownlander,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+257,reachman,CULTURE,reachman,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+258,stormlander,CULTURE,stormlander,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+259,dornish,CULTURE,dornish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+260,stony_dornish,CULTURE,stony_dornish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+261,sandy_dornish,CULTURE,sandy_dornish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+262,salty_dornish,CULTURE,salty_dornish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+263,orphan_greenblood,CULTURE,orphan_greenblood,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+264,-Essos and Valyrian:,CULTURE,,SECTION,,,HEADING,False,
+265,valyrian,CULTURE,valyrian,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+266,braavosi,CULTURE,braavosi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+267,pentoshi,CULTURE,pentoshi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+268,volantene,CULTURE,volantene,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+269,lysene,CULTURE,lysene,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+270,tyroshi,CULTURE,tyroshi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+271,myrish,CULTURE,myrish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+272,lorathi,CULTURE,lorathi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+273,norvoshi,CULTURE,norvoshi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+274,qohorik,CULTURE,qohorik,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+275,dothraki,CULTURE,dothraki,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+276,ghiscari,CULTURE,ghiscari,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+277,astapori,CULTURE,astapori,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+278,yunkish,CULTURE,yunkish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+279,meerenese,CULTURE,meereenese,REFERENCE,cultures.json,meerenese,ALIAS / TYPO TO REVIEW,False,AV2+
+280,new_ghiscari,CULTURE,new_ghiscari,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+281,tolosi,CULTURE,tolosi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+282,lhazareen,CULTURE,lhazareen,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+283,qaathi,CULTURE,qaathi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+284,qartheen,CULTURE,qartheen,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+285,ibbenese,CULTURE,ibbenese,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+286,-Wider Known World:,CULTURE,,SECTION,,,HEADING,False,
+287,summer_islander,CULTURE,summer_islander,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+288,naathi,CULTURE,naathi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+289,asshaii,CULTURE,asshaii,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+290,seroni,CULTURE,sarnori,REFERENCE,cultures.json,seroni,ALIAS / TYPO TO REVIEW,False,AV2+
+291,yi_tish,CULTURE,yi_tish,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+292,jogos_nhai,CULTURE,jogos_nhai,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+293,lengi,CULTURE,lengi,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+294,hyrkooni,CULTURE,hyrkooni,REFERENCE,cultures.json,,REFERENCE CATALOG ID,False,AV2+
+295,Religions:,RELIGION,,SECTION,,,HEADING,False,
+296,faith_of_the_seven,RELIGION,faith_of_the_seven,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+297,old_gods,RELIGION,old_gods,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+298,drowned_god,RELIGION,drowned_god,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+299,rhllor,RELIGION,rhllor,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+300,many_faced_god,RELIGION,many_faced_god,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+301,great_stallion,RELIGION,great_stallion,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+302,great_shepard,RELIGION,great_shepherd,REFERENCE,religions.json,great_shepard,ALIAS / TYPO TO REVIEW,False,AV2+
+303,moonsingers,RELIGION,moonsingers,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+304,black_goat,RELIGION,black_goat,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+305,bearded_priests,RELIGION,bearded_priests,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+306,naathi_butterfly_god,RELIGION,naathi_butterfly_god,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+307,mother_rhoyne,RELIGION,mother_rhoyne,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+308,old_gods_of_valyria,RELIGION,old_gods_of_valyria,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+309,boash,RELIGION,boash,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+310,aquan_red_bull,RELIGION,aquan_red_bull,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+311,bakkalon,RELIGION,bakkalon,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+312,hooded_wayfarer,RELIGION,hooded_wayfarer,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+313,lady_of_spears,RELIGION,lady_of_spears,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+314,lion_of_night,RELIGION,lion_of_night,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+315,merling_king,RELIGION,merling_king,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+316,moon_pale_maiden,RELIGION,moon_pale_maiden,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+317,pattern,RELIGION,pattern,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+318,semosh_and_selloso,RELIGION,semosh_and_selloso,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+319,silent_god,RELIGION,silent_god,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+320,stone_cow_of_faros,RELIGION,stone_cow_of_faros,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+321,trios,RELIGION,trios,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+322,weeping_lady,RELIGION,weeping_lady,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+323,father_of_waters,RELIGION,father_of_waters,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+324,yndros_of_twilight,RELIGION,yndros_of_twilight,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+325,saagael,RELIGION,saagael,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+326,pantera,RELIGION,pantera,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+327,church_of_starry_wisdom,RELIGION,church_of_starry_wisdom,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+328,unknown_religion,RELIGION,unknown_religion,REFERENCE,religions.json,,REFERENCE CATALOG ID,False,AV2+
+329,Religious Attributes:,FAITH_ATTRIBUTE,,SECTION,,,HEADING,False,
+330,religion.devotion,FAITH_ATTRIBUTE,religion.devotion,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+331,religion.doctrinal_knowledge,FAITH_ATTRIBUTE,religion.doctrinal_knowledge,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+332,religion.identity_importance,FAITH_ATTRIBUTE,religion.identity_importance,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+333,religion.tolerance,FAITH_ATTRIBUTE,religion.tolerance,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+334,religion.conversion_openness,FAITH_ATTRIBUTE,religion.conversion_openness,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+335,religion.concealment_willingness,FAITH_ATTRIBUTE,religion.concealment_willingness,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+336,religion.syncretism,FAITH_ATTRIBUTE,religion.syncretism,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+337,religion.observance,FAITH_ATTRIBUTE,religion.observance,CUSTOM_FIELD,ReligionService,,EXACT CUSTOM VALUE KEY,False,AV2+
+338,Languages:,LANGUAGE,,SECTION,,,HEADING,False,
+339,common_tongue,LANGUAGE,common_tongue,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+340,old_tongue,LANGUAGE,old_tongue,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+341,rhoynish,LANGUAGE,rhoynish,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+342,high_valyrian,LANGUAGE,high_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+343,low_valyrian,LANGUAGE,low_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+344,braavosi_valyrian,LANGUAGE,braavosi_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+345,pentoshi_valyrian,LANGUAGE,pentoshi_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+346,volantene_valyrian,LANGUAGE,volantene_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+347,myrish_valyrian,LANGUAGE,myrish_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+348,tyroshi_valyrian,LANGUAGE,tyroshi_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+349,lysene_valyrian,LANGUAGE,lysene_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+350,norvoshi_valyrian,LANGUAGE,norvoshi_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+351,qohorik_valyrian,LANGUAGE,qohorik_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+352,lorathi_valyrian,LANGUAGE,lorathi_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+353,slavers_bay_valyrian,LANGUAGE,slavers_bay_valyrian,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+354,old_ghiscari,LANGUAGE,old_ghiscari,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+355,ghiscari,LANGUAGE,ghiscari,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+356,dothraki,LANGUAGE,dothraki,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+357,lhazareen,LANGUAGE,lhazareen,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+358,qartheen,LANGUAGE,qartheen,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+359,ibbenese,LANGUAGE,ibbenese,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+360,summer_tongue,LANGUAGE,summer_tongue,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+361,asshaii,LANGUAGE,asshaii,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+362,trade_talk,LANGUAGE,trade_talk,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+363,yi_tish,LANGUAGE,yi_tish,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+364,jogos_nhai,LANGUAGE,jogos_nhai,REFERENCE,languages.json,,REFERENCE CATALOG ID,False,AV2+
+365,Culture-Specific additional values:,CULTURE_ATTRIBUTE,,SECTION,,,HEADING,False,
+366,culture.identity_importance,CULTURE_ATTRIBUTE,culture.identity_importance,CUSTOM_FIELD,CultureService,,EXACT CUSTOM KEY/PREFIX,False,AV2+
+367,culture.heritage_attachment,CULTURE_ATTRIBUTE,culture.heritage_attachment,CUSTOM_FIELD,CultureService,,EXACT CUSTOM KEY/PREFIX,False,AV2+
+368,culture.assimilation_openness,CULTURE_ATTRIBUTE,culture.assimilation_openness,CUSTOM_FIELD,CultureService,,EXACT CUSTOM KEY/PREFIX,False,AV2+
+369,culture.multicultural_identity,CULTURE_ATTRIBUTE,culture.multicultural_identity,CUSTOM_FIELD,CultureService,,EXACT CUSTOM KEY/PREFIX,False,AV2+
+370,culture.affinity.<culture_id>,CULTURE_ATTRIBUTE,culture.affinity.<culture_id>,CUSTOM_FIELD,CultureService,,EXACT CUSTOM KEY/PREFIX,False,AV2+
+371,culture.transition_momentum.<culture_id>,CULTURE_ATTRIBUTE,culture.transition_momentum.<culture_id>,CUSTOM_FIELD,CultureService,,EXACT CUSTOM KEY/PREFIX,False,AV2+
+372,Occupations and Professions:,OCCUPATION,,SECTION,,,HEADING,False,
+373,"- Government, law and administration:",OCCUPATION,,SECTION,,,HEADING,False,
+374,ruler,OCCUPATION,ruler,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+375,administrator,OCCUPATION,administrator,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+376,courtier,OCCUPATION,courtier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+377,steward,OCCUPATION,steward,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+378,castellan,OCCUPATION,castellan,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+379,scribe,OCCUPATION,scribe,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+380,clerk,OCCUPATION,clerk,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+381,messenger,OCCUPATION,messenger,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+382,tax_collector,OCCUPATION,tax_collector,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+383,tax_farmer,OCCUPATION,tax_farmer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+384,toll_collector,OCCUPATION,toll_collector,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+385,customs_officer,OCCUPATION,customs_officer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+386,executioner,OCCUPATION,executioner,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+387,torturer,OCCUPATION,torturer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+388,interpreter,OCCUPATION,interpreter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+389,public_notary,OCCUPATION,public_notary,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+390,market_inspector,OCCUPATION,market_inspector,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+391,spy,OCCUPATION,spy,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+392,- Soldiers and military personnel:,OCCUPATION,,SECTION,,,HEADING,False,
+393,soldier,OCCUPATION,soldier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+394,man_at_arms,OCCUPATION,man_at_arms,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+395,guard,OCCUPATION,guard,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+396,knight,OCCUPATION,knight,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+397,archer,OCCUPATION,archer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+398,crossbowman,OCCUPATION,crossbowman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+399,spearman,OCCUPATION,spearman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+400,scout,OCCUPATION,scout,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+401,outrider,OCCUPATION,outrider,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+402,siege_engineer,OCCUPATION,siege_engineer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+403,weapons_master,OCCUPATION,weapons_master,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+404,drillmaster,OCCUPATION,drillmaster,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+405,standard_bearer,OCCUPATION,standard_bearer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+406,sellsword,OCCUPATION,sellsword,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+407,mercenary_captain,OCCUPATION,mercenary_captain,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+408,quartermaster,OCCUPATION,quartermaster,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+409,armory_keeper,OCCUPATION,armory_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+410,siege_carrier,OCCUPATION,siege_carrier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+411,caravan_guard,OCCUPATION,caravan_guard,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+412,road_warden,OCCUPATION,road_warden,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+413,-Maritime professions:,OCCUPATION,,SECTION,,,HEADING,False,
+414,sailor,OCCUPATION,sailor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+415,captain,OCCUPATION,captain,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+416,fisherman,OCCUPATION,fisherman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+417,shipwright,OCCUPATION,shipwright,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+418,oarsman,OCCUPATION,oarsman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+419,dockworker,OCCUPATION,dockworker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+420,harbormaster,OCCUPATION,harbormaster,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+421,navigator,OCCUPATION,navigator,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+422,pilot,OCCUPATION,pilot,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+423,galley_master,OCCUPATION,galley_master,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+424,pirate,OCCUPATION,pirate,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+425,corsair,OCCUPATION,corsair,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+426,reaver,OCCUPATION,reaver,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+427,ferryman,OCCUPATION,ferryman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+428,fishmonger,OCCUPATION,fishmonger,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+429,salt_worker,OCCUPATION,salt_worker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+430,smokehouse_keeper,OCCUPATION,smokehouse_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+431,canal_keeper,OCCUPATION,canal_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+432,"-Scholarship, healing and religion:",OCCUPATION,,SECTION,,,HEADING,False,
+433,maester,OCCUPATION,maester,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+434,scholar,OCCUPATION,scholar,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+435,healer,OCCUPATION,healer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+436,tutor,OCCUPATION,tutor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+437,midwife,OCCUPATION,midwife,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+438,herbalist,OCCUPATION,herbalist,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+439,apothecary,OCCUPATION,apothecary,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+440,septon,OCCUPATION,septon,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+441,septa,OCCUPATION,septa,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+442,red_priest,OCCUPATION,red_priest,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+443,drowned_man,OCCUPATION,drowned_man,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+444,moonsinger,OCCUPATION,moonsinger,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+445,woods_witch,OCCUPATION,woods_witch,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+446,fortune_teller,OCCUPATION,fortune_teller,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+447,eunuch_healer,OCCUPATION,eunuch_healer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+448,dothraki_herbwoman,OCCUPATION,dothraki_herbwoman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+449,godswife,OCCUPATION,godswife,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+450,-Commerce and hospitality:,OCCUPATION,,SECTION,,,HEADING,False,
+451,merchant,OCCUPATION,merchant,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+452,merchant_prince,OCCUPATION,merchant_prince,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+453,innkeeper,OCCUPATION,innkeeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+454,banker,OCCUPATION,banker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+455,moneylender,OCCUPATION,moneylender,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+456,moneychanger,OCCUPATION,moneychanger,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+457,factor,OCCUPATION,factor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+458,wine_factor,OCCUPATION,wine_factor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+459,wool_factor,OCCUPATION,wool_factor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+460,purser,OCCUPATION,purser,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+461,warehouse_keeper,OCCUPATION,warehouse_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+462,granary_keeper,OCCUPATION,granary_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+463,bathhouse_keeper,OCCUPATION,bathhouse_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+464,bathhouse_attendant,OCCUPATION,bathhouse_attendant,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+465,water_carrier,OCCUPATION,water_carrier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+466,caravan_master,OCCUPATION,caravan_master,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+467,wagon_driver,OCCUPATION,wagon_driver,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+468,lumber_yard_keeper,OCCUPATION,lumber_yard_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+469,"- Crafting, construction and industry:",OCCUPATION,,SECTION,,,HEADING,False,
+470,blacksmith,OCCUPATION,blacksmith,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+471,armorer,OCCUPATION,armorer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+472,carpenter,OCCUPATION,carpenter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+473,mason,OCCUPATION,mason,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+474,weaver,OCCUPATION,weaver,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+475,tailor,OCCUPATION,tailor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+476,seamstress,OCCUPATION,seamstress,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+477,tanner,OCCUPATION,tanner,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+478,leatherworker,OCCUPATION,leatherworker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+479,cobbler,OCCUPATION,cobbler,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+480,potter,OCCUPATION,potter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+481,cooper,OCCUPATION,cooper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+482,fletcher,OCCUPATION,fletcher,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+483,bowyer,OCCUPATION,bowyer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+484,goldsmith,OCCUPATION,goldsmith,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+485,silversmith,OCCUPATION,silversmith,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+486,jeweler,OCCUPATION,jeweler,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+487,glassworker,OCCUPATION,glassworker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+488,rope_marker,OCCUPATION,rope_maker,REFERENCE,occupations.json + occupations_extensions.json,rope_marker,ALIAS / TYPO TO REVIEW,False,AV2+
+489,wheelwright,OCCUPATION,wheelwright,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+490,cartwright,OCCUPATION,cartwright,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+491,dyer,OCCUPATION,dyer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+492,stonecutter,OCCUPATION,stonecutter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+493,thatcher,OCCUPATION,thatcher,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+494,roofer,OCCUPATION,roofer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+495,forester,OCCUPATION,forester,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+496,woodcutter,OCCUPATION,woodcutter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+497,charcoal_burner,OCCUPATION,charcoal_burner,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+498,brickmaker,OCCUPATION,brickmaker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+499,lime_burner,OCCUPATION,lime_burner,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+500,plasterer,OCCUPATION,plasterer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+501,glazier,OCCUPATION,glazier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+502,locksmith,OCCUPATION,locksmith,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+503,farrier,OCCUPATION,farrier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+504,stone_quarryman,OCCUPATION,stone_quarryman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+505,mine_overseer,OCCUPATION,mine_overseer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+506,land_surveyor,OCCUPATION,land_surveyor,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+507,candle_maker,OCCUPATION,candle_maker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+508,soap_maker,OCCUPATION,soap_maker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+509,parchment_maker,OCCUPATION,parchment_maker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+510,bookbinder,OCCUPATION,bookbinder,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+511,"-Agriculture, animals and food:",OCCUPATION,,SECTION,,,HEADING,False,
+512,farmer,OCCUPATION,farmer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+513,herder,OCCUPATION,herder,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+514,shepard,OCCUPATION,shepherd,REFERENCE,occupations.json + occupations_extensions.json,shepard,ALIAS / TYPO TO REVIEW,False,AV2+
+515,hunter,OCCUPATION,hunter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+516,miller,OCCUPATION,miller,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+517,baker,OCCUPATION,baker,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+518,butcher,OCCUPATION,butcher,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+519,brewer,OCCUPATION,brewer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+520,vintner,OCCUPATION,vintner,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+521,beekeeper,OCCUPATION,beekeeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+522,dairyman,OCCUPATION,dairyman,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+523,orchardist,OCCUPATION,orchardist,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+524,gardener,OCCUPATION,gardener,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+525,gamekeeper,OCCUPATION,gamekeeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+526,grain_thresher,OCCUPATION,grain_thresher,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+527,irrigation_keeper,OCCUPATION,irrigation_keeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+528,harvest_overseer,OCCUPATION,harvest_overseer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+529,beekeeper_apprentice,OCCUPATION,beekeeper_apprentice,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+530,stable_master,OCCUPATION,stable_master,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+531,falconer,OCCUPATION,falconer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+532,animal_trainer,OCCUPATION,animal_trainer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+533,elephant_handler,OCCUPATION,elephant_handler,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+534,camel_rider,OCCUPATION,camel_rider,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+535,-Households and entertainment:,OCCUPATION,,SECTION,,,HEADING,False,
+536,servant,OCCUPATION,servant,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+537,cook,OCCUPATION,cook,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+538,stablehand,OCCUPATION,stablehand,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+539,wet_nurse,OCCUPATION,wet_nurse,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+540,singer,OCCUPATION,singer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+541,musician,OCCUPATION,musician,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+542,fool,OCCUPATION,fool,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+543,storyteller,OCCUPATION,storyteller,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+544,mummer,OCCUPATION,mummer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+545,dancer,OCCUPATION,dancer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+546,bard,OCCUPATION,bard,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+547,courtesan,OCCUPATION,courtesan,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+548,prostitute,OCCUPATION,prostitute,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+549,handmaid,OCCUPATION,handmaid,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+550,bell_ringer,OCCUPATION,bell_ringer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+551,gravedigger,OCCUPATION,gravedigger,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+552,lamplighter,OCCUPATION,lamplighter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+553,street_sweeper,OCCUPATION,street_sweeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+554,"-Crime, warbands and exceptional roles:",OCCUPATION,,SECTION,,,HEADING,False,
+555,smuggler,OCCUPATION,smuggler,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+556,bandit,OCCUPATION,bandit,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+557,thief,OCCUPATION,thief,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+558,assassin,OCCUPATION,assassin,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+559,poacher,OCCUPATION,poacher,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+560,fence,OCCUPATION,fence,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+561,beggar,OCCUPATION,beggar,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+562,slaver,OCCUPATION,slaver,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+563,slave_trader,OCCUPATION,slave_trader,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+564,pit_fighter,OCCUPATION,pit_fighter,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+565,unsullied_soldier,OCCUPATION,unsullied_soldier,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+566,jaqqa_rhan,OCCUPATION,jaqqa_rhan,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+567,bridge_warden,OCCUPATION,bridge_warden,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+568,gatekeeper,OCCUPATION,gatekeeper,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+569,-Magical and other specialized roles:,OCCUPATION,,SECTION,,,HEADING,False,
+570,alchemist,OCCUPATION,alchemist,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+571,pyromancer,OCCUPATION,pyromancer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+572,warlock,OCCUPATION,warlock,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+573,shadowbinder,OCCUPATION,shadowbinder,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+574,bloodmage,OCCUPATION,bloodmage,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+575,necromancer,OCCUPATION,necromancer,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+576,waste_collector,OCCUPATION,waste_collector,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+577,fire_warden,OCCUPATION,fire_warden,REFERENCE,occupations.json + occupations_extensions.json,,REFERENCE CATALOG ID,False,AV2+
+578,NPC Attributes and statuses:,HEALTH_STATE,,SECTION,,,HEADING,False,
+579,- Health:,HEALTH_STATE,,SECTION,,,HEADING,False,
+580,HEALTHY,HEALTH_STATE,HEALTHY,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+581,MINORITY_ILL,HEALTH_STATE,MINORLY_ILL,ENUM,CharacterHealthState,MINORITY_ILL,ALIAS / TYPO TO REVIEW,False,AV2+
+582,SERIOUSLY_ILL,HEALTH_STATE,SERIOUSLY_ILL,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+583,CRITICALLY_ILL,HEALTH_STATE,CRITICALLY_ILL,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+584,INJURED,HEALTH_STATE,INJURED,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+585,SEVERELY_INJURED,HEALTH_STATE,SEVERELY_INJURED,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+586,RECOVERING,HEALTH_STATE,RECOVERING,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+587,CHRONIC_CONDITION,HEALTH_STATE,CHRONIC_CONDITION,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+588,UNKNOWN,HEALTH_STATE,UNKNOWN,ENUM,CharacterHealthState,,EXACT ENUM,False,AV2+
+589,-Legal Status:,LEGAL_STATUS,,SECTION,,,HEADING,False,
+590,UNSPECIFIED,LEGAL_STATUS,UNSPECIFIED,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+591,FREE,LEGAL_STATUS,FREE,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+592,FREEBORN,LEGAL_STATUS,FREEBORN,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+593,FREEDPERSON,LEGAL_STATUS,FREEDPERSON,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+594,ENSLAVED,LEGAL_STATUS,ENSLAVED,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+595,THRALL,LEGAL_STATUS,THRALL,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+596,LEGITIMATE,LEGAL_STATUS,LEGITIMATE,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+597,ACKNOWLEDGED_BASTARD,LEGAL_STATUS,ACKNOWLEDGED_BASTARD,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+598,UNACKNOWLEDGED_BASTARD,LEGAL_STATUS,UNACKNOWLEDGED_BASTARD,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+599,LEGITIMIZED,LEGAL_STATUS,LEGITIMIZED,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+600,DISINHERITED,LEGAL_STATUS,DISINHERITED,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+601,OUTLAW,LEGAL_STATUS,OUTLAW,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+602,EXILE,LEGAL_STATUS,EXILE,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+603,HOSTAGE,LEGAL_STATUS,HOSTAGE,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+604,WARD,LEGAL_STATUS,WARD,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+605,PRISONER,LEGAL_STATUS,PRISONER,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+606,CONDEMNED,LEGAL_STATUS,CONDEMNED,ENUM,CharacterLegalStatus,,EXACT ENUM,False,AV2+
+607,Orientation:,ORIENTATION,,SECTION,,,HEADING,False,
+608,UNSPECIFIED,ORIENTATION,UNSPECIFIED,ENUM,CharacterOrientation,,EXACT ENUM,False,AV2+
+609,HETEROSEXUAL,ORIENTATION,HETEROSEXUAL,ENUM,CharacterOrientation,,EXACT ENUM,False,AV2+
+610,HOMOSEXUAL,ORIENTATION,HOMOSEXUAL,ENUM,CharacterOrientation,,EXACT ENUM,False,AV2+
+611,BISEXUAL,ORIENTATION,BISEXUAL,ENUM,CharacterOrientation,,EXACT ENUM,False,AV2+
+612,ASEXUAL,ORIENTATION,ASEXUAL,ENUM,CharacterOrientation,,EXACT ENUM,False,AV2+
+613,Generic NPC Routine Roles:,ROUTINE_ROLE,,SECTION,,,HEADING,False,
+614,UNASSIGNED,ROUTINE_ROLE,UNASSIGNED,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+615,LORD,ROUTINE_ROLE,LORD,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+616,LADY,ROUTINE_ROLE,LADY,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+617,GUARD,ROUTINE_ROLE,GUARD,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+618,SOLDIER,ROUTINE_ROLE,SOLDIER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+619,SERVANT,ROUTINE_ROLE,SERVANT,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+620,FARMER,ROUTINE_ROLE,FARMER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+621,MERCHANT,ROUTINE_ROLE,MERCHANT,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+622,CRAFTSMAN,ROUTINE_ROLE,CRAFTSMAN,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+623,INNKEEPER,ROUTINE_ROLE,INNKEEPER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+624,MAESTER,ROUTINE_ROLE,MAESTER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+625,SEPTON,ROUTINE_ROLE,SEPTON,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+626,SAILOR,ROUTINE_ROLE,SAILOR,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+627,HUNTER,ROUTINE_ROLE,HUNTER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+628,LABORER,ROUTINE_ROLE,LABORER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+629,COMMONER,ROUTINE_ROLE,COMMONER,ENUM,NpcRoleType,,EXACT ENUM,False,AV2+
+630,Education:,EDUCATION,,SECTION,,,HEADING,False,
+631,early_childhood,EDUCATION,early_childhood,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+632,noble_childhood,EDUCATION,noble_childhood,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+633,noble_courtley,EDUCATION,noble_courtly,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),noble_courtley,FREEFORM PROFILE IDENTIFIER,False,AV2+
+634,noble_martial,EDUCATION,noble_martial,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+635,noble_scholary,EDUCATION,noble_scholarly,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),noble_scholary,FREEFORM PROFILE IDENTIFIER,False,AV2+
+636,elite_martial,EDUCATION,elite_martial,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+637,martial,EDUCATION,martial,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+638,stewardship,EDUCATION,stewardship,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+639,commoner_practical,EDUCATION,commoner_practical,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+640,childhood,EDUCATION,childhood,PROPOSED_EDUCATION_ID,CharacterProfile.education (legacy string),,FREEFORM PROFILE IDENTIFIER,False,AV2+
+641,Other Assignable Values:,PROFILE_FIELD,,SECTION,,,HEADING,False,
+642,Wealth (Numerical),PROFILE_FIELD,wealth,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Wealth (Numerical),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+643,Social status (Numerical),PROFILE_FIELD,social_status,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Social status (Numerical),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+644,Reputation (Numerical),PROFILE_FIELD,reputation,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Reputation (Numerical),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+645,Political Preferences (Open-ended Numerical),PROFILE_FIELD,political_preferences,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Political Preferences (Open-ended Numerical),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+646,Motivations (Text),PROFILE_FIELD,motivations,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Motivations (Text),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+647,Goals (Text),PROFILE_FIELD,goals,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Goals (Text),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+648,Fears (Text),PROFILE_FIELD,fears,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Fears (Text),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+649,Desires (Text),PROFILE_FIELD,desires,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Desires (Text),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+650,Known and personal secrets (identifiers),PROFILE_FIELD,secrets_and_known_secrets,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Known and personal secrets (identifiers),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+651,Public and private facts (structured text),PROFILE_FIELD,public_and_private_facts,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Public and private facts (structured text),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+652,"occupations, offices and court roles (sets of identifiers)",PROFILE_FIELD,occupation_office_and_court_roles,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,"occupations, offices and court roles (sets of identifiers)",EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+653,military roles and combat specialities (Sets of identifiers),PROFILE_FIELD,military_roles_and_combat_specialties,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,military roles and combat specialities (Sets of identifiers),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+654,Birthplace and Upbringing (Location Ids),PROFILE_FIELD,birthplace_and_upbringing,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,Birthplace and Upbringing (Location Ids),EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+655,"Appearance, Hair, Eyes and build (Text)",PROFILE_FIELD,appearance,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,"Appearance, Hair, Eyes and build (Text)",EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+656,"Relationships (Affection, trust, respect, fear, familiarity)",PROFILE_FIELD,relationships,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,"Relationships (Affection, trust, respect, fear, familiarity)",EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+657,"Dialogue Personality (Formaility, verbosity, warmth, directness,…)",PROFILE_FIELD,dialogue_persona,COMPOSITE_FIELD_FAMILY,CharacterProfile and specialized authoritative services,"Dialogue Personality (Formaility, verbosity, warmth, directness,…)",EXISTING PROFILE FIELD FAMILY,False,AV2+ (each subfield has separate owner)
+658,Settlement Types:,SETTLEMENT_TYPE,,SECTION,,,HEADING,False,
+659,HAMLET,SETTLEMENT_TYPE,HAMLET,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+660,VILLAGE,SETTLEMENT_TYPE,VILLAGE,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+661,TOWN,SETTLEMENT_TYPE,TOWN,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+662,CITY,SETTLEMENT_TYPE,CITY,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+663,CASTLE,SETTLEMENT_TYPE,CASTLE,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+664,FORTRESS,SETTLEMENT_TYPE,FORTRESS,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+665,HOLDFAST,SETTLEMENT_TYPE,HOLDFAST,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+666,PORT,SETTLEMENT_TYPE,PORT,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+667,CAMP,SETTLEMENT_TYPE,CAMP,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+668,OTHER,SETTLEMENT_TYPE,OTHER,ENUM,SettlementType,,EXACT ENUM,False,AV2+
+669,Settlement Types (Worldwide Planner):,PLANNER_TIER,,SECTION,,,HEADING,False,
+670,SMALL,PLANNER_TIER,SMALL,PLANNER_CLASS,C1 / C4.11 construction tier,,PLANNER CATEGORY,False,AV2+
+671,MEDIUM,PLANNER_TIER,MEDIUM,PLANNER_CLASS,C1 / C4.11 construction tier,,PLANNER CATEGORY,False,AV2+
+672,MAJOR ,PLANNER_TIER,MAJOR,PLANNER_CLASS,C1 / C4.11 construction tier,,PLANNER CATEGORY,False,AV2+
+673,SPECIAL,PLANNER_TIER,SPECIAL,PLANNER_CLASS,C1 / C4.11 construction tier,,PLANNER CATEGORY,False,AV2+
+674,RUIN,PLANNER_TIER,RUIN_OR_LANDMARK_ONLY,BLUEPRINT_CLASS,C4.11 blueprint-mode policy,RUIN,CATEGORY COLLISION: NOT TIER,False,AV2+
+675,Residential House Types:,HOUSE_TEMPLATE,,SECTION,,,HEADING,False,
+676,HOUSE_SMALL,HOUSE_TEMPLATE,HOUSE_SMALL,REFERENCE,architecture_templates_c3_v1.json,,EXACT C3 TEMPLATE ID,False,AV2+
+677,HOUSE_MEDIUM,HOUSE_TEMPLATE,HOUSE_MEDIUM,REFERENCE,architecture_templates_c3_v1.json,,EXACT C3 TEMPLATE ID,False,AV2+
+678,HOUSE_URBAN,HOUSE_TEMPLATE,HOUSE_URBAN,REFERENCE,architecture_templates_c3_v1.json,,EXACT C3 TEMPLATE ID,False,AV2+
+679,"Political, Ruling and holding types:",HOLDING_TYPE,,SECTION,,,HEADING,False,
+680,- Landed Holdings:,HOLDING_TYPE,,SECTION,,,HEADING,False,
+681,REGION,HOLDING_TYPE,REGION,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+682,TERRITORY,HOLDING_TYPE,TERRITORY,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+683,CASTLE,HOLDING_TYPE,CASTLE,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+684,FORTRESS,HOLDING_TYPE,FORTRESS,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+685,CITY,HOLDING_TYPE,CITY,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+686,TOWN,HOLDING_TYPE,TOWN,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+687,VILLAGE,HOLDING_TYPE,VILLAGE,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+688,PORT,HOLDING_TYPE,PORT,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+689,ESTATE,HOLDING_TYPE,ESTATE,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+690,OTHER,HOLDING_TYPE,OTHER,ENUM,HoldingType,,EXACT ENUM,False,AV2+
+691,- Title Categories:,TITLE_TYPE,,SECTION,,,HEADING,False,
+692,ROYAL,TITLE_TYPE,ROYAL,ENUM,TitleType,,EXACT ENUM,False,AV2+
+693,NOBLE,TITLE_TYPE,NOBLE,ENUM,TitleType,,EXACT ENUM,False,AV2+
+694,RULER,TITLE_TYPE,RULER,ENUM,TitleType,,EXACT ENUM,False,AV2+
+695,CIVIC,TITLE_TYPE,CIVIC,ENUM,TitleType,,EXACT ENUM,False,AV2+
+696,OFFICE,TITLE_TYPE,OFFICE,ENUM,TitleType,,EXACT ENUM,False,AV2+
+697,MILITARY,TITLE_TYPE,MILITARY,ENUM,TitleType,,EXACT ENUM,False,AV2+
+698,RELIGIOUS,TITLE_TYPE,RELIGIOUS,ENUM,TitleType,,EXACT ENUM,False,AV2+
+699,HONORARY,TITLE_TYPE,HONORARY,ENUM,TitleType,,EXACT ENUM,False,AV2+
+700,-Currently implemented succession laws:,SUCCESSION_LAW,,SECTION,,,HEADING,False,
+701,NONE,SUCCESSION_LAW,NONE,ENUM,SuccessionLaw,,EXACT ENUM,False,AV2+
+702,MALE_PREFERENCE_PRIMOGENITURE,SUCCESSION_LAW,MALE_PREFERENCE_PRIMOGENITURE,ENUM,SuccessionLaw,,EXACT ENUM,False,AV2+
+703,ABSOLUTE_PRIMOGENITURE,SUCCESSION_LAW,ABSOLUTE_PRIMOGENITURE,ENUM,SuccessionLaw,,EXACT ENUM,False,AV2+
+704,MALE_ONLY_PRIMOGENITURE,SUCCESSION_LAW,MALE_ONLY_PRIMOGENITURE,ENUM,SuccessionLaw,,EXACT ENUM,False,AV2+
+705,- Non-dynastic society types:,SOCIETY_TYPE,,SECTION,,,HEADING,False,
+706,KHALASAR,SOCIETY_TYPE,KHALASAR,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+707,FREE_FOLK_CLAN,SOCIETY_TYPE,FREE_FOLK_CLAN,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+708,FREE_FOLK_BAND,SOCIETY_TYPE,FREE_FOLK_BAND,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+709,FREE_FOLK_CONFEDERATION,SOCIETY_TYPE,FREE_FOLK_CONFEDERATION,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+710,JOGOS_NHAI_BAND,SOCIETY_TYPE,JOGOS_NHAI_BAND,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+711,TRIBAL_CLAN,SOCIETY_TYPE,TRIBAL_CLAN,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+712,MOBILE_WARBAND,SOCIETY_TYPE,MOBILE_WARBAND,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+713,OTHER,SOCIETY_TYPE,OTHER,ENUM,NonDynasticSocietyType,,EXACT ENUM,False,AV2+
+714,-Religious institution categories:,RELIGIOUS_INSTITUTION_TYPE,,SECTION,,,HEADING,False,
+715,CLERGY,RELIGIOUS_INSTITUTION_TYPE,CLERGY,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+716,MONASTIC,RELIGIOUS_INSTITUTION_TYPE,MONASTIC,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+717,RELIGIOUS_ORDER,RELIGIOUS_INSTITUTION_TYPE,RELIGIOUS_ORDER,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+718,MILITANT_ORDER,RELIGIOUS_INSTITUTION_TYPE,MILITANT_ORDER,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+719,FUNERARY_ORDER,RELIGIOUS_INSTITUTION_TYPE,FUNERARY_ORDER,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+720,MYSTERY_ORDER,RELIGIOUS_INSTITUTION_TYPE,MYSTERY_ORDER,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+721,OTHER,RELIGIOUS_INSTITUTION_TYPE,OTHER,ENUM,ReligiousOrderCategory,,EXACT ENUM,False,AV2+
+722,Regional Profiles:,REGIONAL_CHARACTER_VALUE,,SECTION,,,HEADING,False,
+723,TRADITIONALISM,REGIONAL_CHARACTER_VALUE,TRADITIONALISM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+724,PERSONAL_FREEDOM,REGIONAL_CHARACTER_VALUE,PERSONAL_FREEDOM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+725,AUTHORITY_RESPECT,REGIONAL_CHARACTER_VALUE,AUTHORITY_RESPECT,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+726,CLAN_LOYALTY,REGIONAL_CHARACTER_VALUE,CLAN_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+727,DUTY,REGIONAL_CHARACTER_VALUE,DUTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+728,HOUSE_LOYALTY,REGIONAL_CHARACTER_VALUE,HOUSE_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+729,HOSPITALITY,REGIONAL_CHARACTER_VALUE,HOSPITALITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+730,MARTIAL_GLORY,REGIONAL_CHARACTER_VALUE,MARTIAL_GLORY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+731,HONOR_CULTURE,REGIONAL_CHARACTER_VALUE,HONOR_CULTURE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+732,HIERARCHY_ACCEPTANCE,REGIONAL_CHARACTER_VALUE,HIERARCHY_ACCEPTANCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+733,WEALTH _SEEKING,REGIONAL_CHARACTER_VALUE,WEALTH_SEEKING,ENUM,CharacterValue,WEALTH _SEEKING,ALIAS / TYPO TO REVIEW,False,AV2+
+734,PRESTIGE_SEEKING,REGIONAL_CHARACTER_VALUE,PRESTIGE_SEEKING,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+735,SOCIAL_MOBILITY,REGIONAL_CHARACTER_VALUE,SOCIAL_MOBILITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+736,CULTURAL_TOLERANCE,REGIONAL_CHARACTER_VALUE,CULTURAL_TOLERANCE,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+737,FAMILY_LOYALTY,REGIONAL_CHARACTER_VALUE,FAMILY_LOYALTY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+738,POLITICAL_STABILITY,REGIONAL_CHARACTER_VALUE,POLITICAL_STABILITY,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+739,PACIFISM,REGIONAL_CHARACTER_VALUE,PACIFISM,ENUM,CharacterValue,,EXACT ENUM,False,AV2+
+740,RELIGIOUSITY,REGIONAL_CHARACTER_VALUE,RELIGIOSITY,ENUM,CharacterValue,RELIGIOUSITY,ALIAS / TYPO TO REVIEW,False,AV2+
+741,Social Norms:,REGIONAL_SOCIAL_NORM,,SECTION,,,HEADING,False,
+742,MARTIAL,REGIONAL_SOCIAL_NORM,MARTIAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+743,COURTLEY,REGIONAL_SOCIAL_NORM,COURTLY,ENUM,CharacterSocialNorm,COURTLEY,ALIAS / TYPO TO REVIEW,False,AV2+
+744,RURAL,REGIONAL_SOCIAL_NORM,RURAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+745,ISOLATIONIST,REGIONAL_SOCIAL_NORM,ISOLATIONIST,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+746,CLAN_BASED,REGIONAL_SOCIAL_NORM,CLAN_BASED,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+747,TRADITIONAL,REGIONAL_SOCIAL_NORM,TRADITIONAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+748,NAVAL,REGIONAL_SOCIAL_NORM,NAVAL,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+749,RAIDING,REGIONAL_SOCIAL_NORM,RAIDING,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+750,MERCANTILE,REGIONAL_SOCIAL_NORM,MERCANTILE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+751,COSMOPOLITAN,REGIONAL_SOCIAL_NORM,COSMOPOLITAN,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+752,DYNASTIC,REGIONAL_SOCIAL_NORM,DYNASTIC,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+753,POLITICAL_EXPOSURE,REGIONAL_SOCIAL_NORM,POLITICAL_EXPOSURE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+754,URBAN,REGIONAL_SOCIAL_NORM,URBAN,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+755,SCHOLARY,REGIONAL_SOCIAL_NORM,SCHOLARLY,ENUM,CharacterSocialNorm,SCHOLARY,ALIAS / TYPO TO REVIEW,False,AV2+
+756,FOREIGN_EXPOSURE,REGIONAL_SOCIAL_NORM,FOREIGN_EXPOSURE,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+757,EQUESTRIAN,REGIONAL_SOCIAL_NORM,EQUESTRIAN,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+758,MIGRATORY,REGIONAL_SOCIAL_NORM,MIGRATORY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+759,RELIGIOUS,REGIONAL_SOCIAL_NORM,RELIGIOUS,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+760,BUREAUCRATIC,REGIONAL_SOCIAL_NORM,BUREAUCRATIC,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+761,AUTHORITY,REGIONAL_SOCIAL_NORM,AUTHORITY,ENUM,CharacterSocialNorm,,EXACT ENUM,False,AV2+
+762,Extra Information:,NOTES_HEADING,,SECTION,,,HEADING,False,
