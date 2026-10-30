@@ -1,0 +1,125 @@
+﻿Java enum,AV1 domain,Canonical ID,In supplied Excel,AV3 effect,Note
+CharacterSkill,CHARACTER_SKILL,MARTIAL,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,DIPLOMACY,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,STEWARDSHIP,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,INTRIGUE,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,LEARNING,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,COMBAT,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,LEADERSHIP,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,RIDING,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,SAILING,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,NAVIGATION,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,TRADE,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,CRAFTING,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,AGRICULTURE,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,HUNTING,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,MEDICINE,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,RELIGIOUS_STUDY,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,LANGUAGE,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,PERFORMANCE,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,COMMAND,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterSkill,CHARACTER_SKILL,LOGISTICS,True,"B4 legacy age/occupation starting skill, unchanged by AV3",Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,MARTIAL,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,DIPLOMACY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,STEWARDSHIP,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,INTRIGUE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,LEARNING,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,COMBAT,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,LEADERSHIP,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,RIDING,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,SAILING,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,NAVIGATION,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,TRADE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,CRAFTING,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,AGRICULTURE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,HUNTING,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,MEDICINE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,RELIGIOUS_STUDY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,LANGUAGES,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,PERFORMANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,COMMAND,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterAptitude,NATURAL_APTITUDE,LOGISTICS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,INDEPENDENCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,ASSERTIVENESS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,IMPULSIVITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,DISCIPLINE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,CURIOSITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,RISK_TOLERANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,EMOTIONAL_STABILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,SUSPICIOUSNESS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,EMPATHY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,AGGRESSION,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,ADAPTABILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,PERSISTENCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,PRIDE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,HUMILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,GREED,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,GENEROSITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,FORGIVENESS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,VINDICTIVENESS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,DECEITFULNESS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,GULLIBILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,CONFORMITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,DOMINANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,OBEDIENCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,JEALOUSY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,ROMANTICISM,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterDisposition,DISPOSITION,SENSUALITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,DUTY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,FAMILY_LOYALTY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,HOUSE_LOYALTY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,DYNASTIC_LOYALTY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,CLAN_LOYALTY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,FRIENDSHIP_LOYALTY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,PERSONAL_FREEDOM,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,AUTHORITY_RESPECT,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,HIERARCHY_ACCEPTANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,EGALITARIANISM,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,TRADITIONALISM,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,INNOVATION,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,RELIGIOSITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,RELIGIOUS_TOLERANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,CULTURAL_TOLERANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,HONOR_CULTURE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,HOSPITALITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,MERCY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,VENGEANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,JUSTICE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,LAW_OBEDIENCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,WEALTH_SEEKING,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,PRESTIGE_SEEKING,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,POWER_SEEKING,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,KNOWLEDGE_SEEKING,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,MARTIAL_GLORY,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,PACIFISM,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,FAMILY_FORMATION,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,ROMANTIC_LOVE,False,AV3 deterministic starting prior,Java enum authoritative even where Excel omits an axis
+CharacterValue,CHARACTER_VALUE,POLITICAL_STABILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,SOCIAL_MOBILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,COMMUNAL_SOLIDARITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterValue,CHARACTER_VALUE,INDIVIDUALISM,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,MARTIAL,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,COURTLY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,MERCANTILE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,NAVAL,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,RAIDING,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,SCHOLARLY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,EQUESTRIAN,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,CLAN_BASED,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,DYNASTIC,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,RELIGIOUS,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,HOSPITALITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,VENGEANCE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,BUREAUCRATIC,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,URBAN,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,RURAL,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,COSMOPOLITAN,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,ISOLATIONIST,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,COLLECTIVIST,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,INDIVIDUALIST,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,SOCIAL_MOBILITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,AUTHORITY,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,TRADITIONAL,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,FOREIGN_EXPOSURE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,POLITICAL_EXPOSURE,True,AV3 deterministic starting prior,Excel lineage retained
+CharacterSocialNorm,SOCIAL_NORM,MIGRATORY,True,AV3 deterministic starting prior,Excel lineage retained

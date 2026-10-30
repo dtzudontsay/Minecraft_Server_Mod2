@@ -1,5 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4Decisions;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -336,8 +338,11 @@ public final class KnownWorldB42DailyLife {
                 role="WORK:"+work.id();
             }else if(activity.equals("FREE_TIME")||activity.equals("HOME_AND_FREE_TIME")||
                      activity.equals("REST_DAY")) {
-                Work leisure=leisurePlace(personId,siteId,homeX,homeZ,offsetX,offsetZ,
-                                          year()-birthYear<16);
+                var av4=KnownWorldAv4Decisions.choose(personId,siteId,day());
+            Work leisure=(av4==null || av4.action()==
+                    dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4DecisionRules.Action.PUBLIC_LEISURE)
+                    ?leisurePlace(personId,siteId,homeX,homeZ,offsetX,offsetZ,
+                                          year()-birthYear<16):null;
                 if(leisure!=null){tx=leisure.x()+leisure.w()/2+offsetX;
                     tz=leisure.z()+leisure.d()+2+offsetZ;role="VISIT:"+leisure.id();}
                 else {
@@ -345,7 +350,9 @@ public final class KnownWorldB42DailyLife {
                     // A small deterministic share of free-time actors physically
                     // visits another currently visible resident. This is a social
                     // *meeting intent*, not a witnessed friendship or memory.
-                    if(Math.floorMod(personId.hashCode()+(int)day(),7)==0 &&
+                    if((av4!=null && av4.action()==
+                            dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4DecisionRules.Action.NEIGHBOR_VISIT ||
+                         av4==null && Math.floorMod(personId.hashCode()+(int)day(),7)==0) &&
                        villager.level() instanceof ServerLevel local) {
                         Villager friend=null;double nearest=18*18;
                         for(Villager candidate:local.getEntitiesOfClass(Villager.class,

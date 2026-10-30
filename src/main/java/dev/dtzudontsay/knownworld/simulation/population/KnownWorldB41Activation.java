@@ -1,5 +1,9 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4Decisions;
+
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv3Formation;
+
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2DChangeJournal;
 
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CExperienceJournal;
@@ -121,6 +125,8 @@ public final class KnownWorldB41Activation {
         KnownWorldB42BPersonalEvents.register();
         KnownWorldAv2CExperienceJournal.register();
         KnownWorldAv2DChangeJournal.register();
+        KnownWorldAv3Formation.register();
+        KnownWorldAv4Decisions.register();
         KnownWorldB42BEconomyReadiness.register();
         KnownWorldB42B2EconomicStanding.register();
         CommandRegistrationCallback.EVENT.register((dispatcher,registry,environment)->
@@ -477,6 +483,7 @@ public final class KnownWorldB41Activation {
         if(site==null || !site.id.equals(p.site))return null;
         JsonObject profile=new JsonObject();
         enrich(profile,p,site); // Same deterministic personality as right-click inspection.
+        KnownWorldAv4Decisions.enrich(profile,p.id);
         b42Sheet(profile,p,site);
         KnownWorldB42B2EconomicStanding.enrich(profile,p.site,p.household,p.workplace,p.id);
         return new DialogueIdentity(p.id,p.name,show(p.occupation),show(p.culture),
@@ -575,10 +582,23 @@ public final class KnownWorldB41Activation {
         sheet.add("occupations",occupations);
         JsonArray motivations=new JsonArray();motivations.add(age<16?"learning_and_family":"household_wellbeing");
         sheet.add("motivations",motivations);
+        KnownWorldAv3Formation.applyToSheet(sheet,p.site,p.id,p.culture,p.religion,
+            p.household,p.mother,p.father,p.birthYear);
         KnownWorldAv2CharacterState.applyToSheet(sheet,p.site,p.id);
         KnownWorldAv2DChangeJournal.applyToSheet(sheet,p.site,p.id);
         KnownWorldAv2BPsychologyBridge.enrich(sheet);
     }
+    /** AV4: current visible B4 identity only; never allocate a legacy NpcId. */
+    public static JsonObject av4ProfileFor(String personId,String siteId) {
+        if(siteId==null || !siteId.equals(av2VisibleSite(personId)))return null;
+        Person person=visiblePeople.get(personId);
+        Site site=visibleSites.get(personId);
+        if(person==null || site==null || !siteId.equals(person.site) || !siteId.equals(site.id))return null;
+        JsonObject profile=new JsonObject();
+        enrich(profile,person,site);
+        return profile;
+    }
+
     /** AV2A: only currently materialized canonical B4.0 identities are editable. */
     public static String av2VisibleSite(String personId) {
         Person person=visiblePeople.get(personId);
@@ -603,6 +623,7 @@ public final class KnownWorldB41Activation {
         sheet.addProperty("householdLabel",show(p.household));sheet.addProperty("homeLabel",show(p.home));
         sheet.addProperty("workplaceLabel",show(p.workplace));
         enrich(sheet,p,site);
+        KnownWorldAv4Decisions.enrich(sheet,p.id);
         b42Sheet(sheet,p,site);
         KnownWorldB42BPersonalEvents.enrich(sheet,p.id);
         KnownWorldAv2CExperienceJournal.enrich(sheet,p.site,p.id);
