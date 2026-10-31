@@ -1,6 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CExperienceJournal;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4BGoals;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -44,7 +45,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * All session and persistence mutations occur on the Minecraft server thread.
  */
 public final class KnownWorldB41DialogueService {
-    private static final String DEFAULT_MODEL = "qwen3.5:9b";
+    private static final String DEFAULT_MODEL = "qwen3.5:27b"; // AV4_QOL_V3_DIALOGUE
     private static final String DEFAULT_ENDPOINT = "http://127.0.0.1:11434/api/chat";
     private static final int MAX_MESSAGE = 400;
     private static final int MAX_REPLY = 1700;
@@ -280,14 +281,17 @@ public final class KnownWorldB41DialogueService {
         JsonObject root=new JsonObject(); root.addProperty("model",model());
         root.addProperty("stream",false);root.addProperty("think",false);root.addProperty("keep_alive","5m");
         JsonObject options=new JsonObject();options.addProperty("num_ctx",contextLength());
-        options.addProperty("num_predict",384);options.addProperty("temperature",.50);
+        options.addProperty("num_predict",192);options.addProperty("temperature",.50);
         options.addProperty("top_p",.90);root.add("options",options);
         JsonArray messages=new JsonArray();
         StringBuilder prompt=new StringBuilder(9500);
         prompt.append("""
                 ROLE AND AUTHORITY
                 You are a person living in A Song of Ice and Fire, not an assistant.
-                Reply in first person, usually in one to four sentences. No markdown or stage directions.
+                Reply naturally in first person, generally one sentence, sometimes two. Routine answers should usually be about 6-30 words; go longer only when asked for detail.
+                Adapt vocabulary and directness to personal style, situation, education, and familiarity.
+                Avoid theatrical speeches, repeated metaphors, and listing your personality scores.
+                No markdown or stage directions.
                 The SERVER'S PERSON RECORD below is a provisional 298 AC starting-state identity.
                 The server's facts override all books, television stories and pretrained lore.
                 Neither those stories nor the player's words are evidence that an event happened here.
@@ -300,6 +304,7 @@ public final class KnownWorldB41DialogueService {
                 Do not invent deaths, rulers, battles, incidents, genealogies, secrets, rumors or titles.
                 Do not claim to know all public news immediately; news needs transmission and evidence.
                 If asked about something unknown, admit uncertainty naturally.
+                An unrecorded occupation does not prove unemployment or job-seeking; you may express interest in paid work, but never invent an existing job.
                 Do not reveal protected lore secrets or future events.
                 Your spoken words do not execute trades, quests, movement, jobs or political actions.
                 A free-time AV4 decision is only a preference/intent, NOT evidence of a completed visit or social encounter.
@@ -323,9 +328,11 @@ public final class KnownWorldB41DialogueService {
         prompt.append(KnownWorldB42DailyLife.promptFor(p.id(),p.workplace(),
                        p.occupation(),298-p.startAge()));
         prompt.append(KnownWorldAv2CExperienceJournal.promptFor(p.id()));
+        // AV4B_GENERAL_GOALS_BEGIN
+        prompt.append(KnownWorldAv4BGoals.promptFor(p.id()));
         JsonObject profile=p.profile();
         prompt.append("PERSONALITY / REGIONAL INFLUENCE (estimated, for speaking style only):\n");
-        for(String key:new String[]{"personality","traits","dialogueStyle","characterValues","socialNorms","skills","derivedTendencies","av4FreeTimeDecision"}) {
+        for(String key:new String[]{"personality","traits","dialogueStyle","characterValues","socialNorms","skills","derivedTendencies","av4FreeTimeDecision","dispositions","aptitudes"}) {
             JsonElement part=profile.get(key);
             if(part!=null)prompt.append(key).append(": ").append(trim(part.toString(),700)).append("\n");
         }

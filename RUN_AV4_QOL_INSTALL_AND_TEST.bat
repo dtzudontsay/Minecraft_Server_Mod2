@@ -1,5 +1,5 @@
 @echo off
+setlocal
 cd /d "%~dp0"
-py -3 "QOL_STAGE\tools\qol\install_qol.py" --repo "%CD%" --install
-if errorlevel 1 exit /b 1
-exit /b 0
+py -3 tools\av4_qol3\av4_qol3.py --install
+exit /b %errorlevel%

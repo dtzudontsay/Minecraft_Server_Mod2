@@ -1,6 +1,8 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4Decisions;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4BGoals;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4BGoalRules;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -319,6 +321,13 @@ public final class KnownWorldB42DailyLife {
             boolean shift=activity.equals("MODELED_WORK_SHIFT")||activity.equals("COMMUTING_TO_WORK");
             int[] home=homeActivityPoint(personId,homeX,homeZ);
             int tx=home[0],tz=home[1];String role=activity;
+            // AV4B_GENERAL_GOALS_BEGIN
+            if(!(activity.equals("FREE_TIME")||activity.equals("HOME_AND_FREE_TIME")||
+                 activity.equals("REST_DAY"))) {
+                var context=new KnownWorldAv4BGoalRules.Context(activity,work!=null,
+                        false,false,year()-birthYear>=16,0.35);
+                KnownWorldAv4BGoals.choose(personId,siteId,day(),context);
+            }
             if(shift && work==null){unassignedWorksites++;return;}
             if(shift && work!=null) {
                 int h=personId.hashCode()&0x7fffffff;
@@ -338,36 +347,61 @@ public final class KnownWorldB42DailyLife {
                 role="WORK:"+work.id();
             }else if(activity.equals("FREE_TIME")||activity.equals("HOME_AND_FREE_TIME")||
                      activity.equals("REST_DAY")) {
+                // AV4A remains available as a diagnostic / fallback decision, not
+                // an authority that overrides the AV4B feasible-goal policy.
                 var av4=KnownWorldAv4Decisions.choose(personId,siteId,day());
-            Work leisure=(av4==null || av4.action()==
-                    dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4DecisionRules.Action.PUBLIC_LEISURE)
-                    ?leisurePlace(personId,siteId,homeX,homeZ,offsetX,offsetZ,
-                                          year()-birthYear<16):null;
-                if(leisure!=null){tx=leisure.x()+leisure.w()/2+offsetX;
-                    tz=leisure.z()+leisure.d()+2+offsetZ;role="VISIT:"+leisure.id();}
-                else {
-                    role="HOUSEHOLD:"+personId;
-                    // A small deterministic share of free-time actors physically
-                    // visits another currently visible resident. This is a social
-                    // *meeting intent*, not a witnessed friendship or memory.
-                    if((av4!=null && av4.action()==
-                            dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4DecisionRules.Action.NEIGHBOR_VISIT ||
-                         av4==null && Math.floorMod(personId.hashCode()+(int)day(),7)==0) &&
-                       villager.level() instanceof ServerLevel local) {
-                        Villager friend=null;double nearest=18*18;
-                        for(Villager candidate:local.getEntitiesOfClass(Villager.class,
-                                villager.getBoundingBox().inflate(18.0))) {
-                            if(candidate==villager||!candidate.entityTags().contains("kwb41_actor"))continue;
-                            double dist=villager.distanceToSqr(candidate);
-                            if(dist>9 && dist<nearest){friend=candidate;nearest=dist;}
-                        }
-                        if(friend!=null) {
-                            tx=(int)Math.floor(friend.getX())+2;
-                            tz=(int)Math.floor(friend.getZ())+1;
-                            role="VISIT_NEIGHBOR:"+friend.getUUID();
-                        }
+                Work leisure=leisurePlace(personId,siteId,homeX,homeZ,offsetX,offsetZ,
+                                         year()-birthYear<16);
+                Villager neighbor=null;
+                if(villager.level() instanceof ServerLevel local) {
+                    double closest=18.0*18.0;
+                    for(Villager candidate:local.getEntitiesOfClass(Villager.class,
+                            villager.getBoundingBox().inflate(18.0))) {
+                        if(candidate==villager||!candidate.isAlive()||
+                            !candidate.entityTags().contains("kwb41_actor"))continue;
+                        double distance=villager.distanceToSqr(candidate);
+                        if(distance>9 && distance<closest){neighbor=candidate;closest=distance;}
                     }
                 }
+                double recovery=activity.equals("HOME_AND_FREE_TIME") &&
+                        phase((ServerLevel)villager.level())>=r.end()?0.63:
+                        activity.equals("REST_DAY")?0.36:0.26;
+                var context=new KnownWorldAv4BGoalRules.Context(activity,work!=null,
+                        leisure!=null,neighbor!=null,year()-birthYear>=16,recovery);
+                var goal=KnownWorldAv4BGoals.choose(personId,siteId,day(),context);
+                KnownWorldAv4BGoalRules.Goal selected=goal==null?null:goal.goal();
+                if(selected==KnownWorldAv4BGoalRules.Goal.OPTIONAL_WORK && work!=null) {
+                    // Work opportunity means a registered worksite reservation only.
+                    // THIS MUST NOT call observedAtWork, apply wages or mint receipts.
+                    tx=work.x()+offsetX+work.w()/2;tz=work.z()+offsetZ+work.d()+2;
+                    role="AV4B:OPTIONAL_WORK_INTENT:"+work.id();
+                }else if(selected==KnownWorldAv4BGoalRules.Goal.PUBLIC_LEISURE && leisure!=null) {
+                    tx=leisure.x()+leisure.w()/2+offsetX;
+                    tz=leisure.z()+leisure.d()+2+offsetZ;
+                    role="AV4B:PUBLIC_LEISURE_INTENT:"+leisure.id();
+                }else if(selected==KnownWorldAv4BGoalRules.Goal.SOCIAL_VISIT && neighbor!=null) {
+                    tx=(int)Math.floor(neighbor.getX())+2;
+                    tz=(int)Math.floor(neighbor.getZ())+1;
+                    role="AV4B:SOCIAL_VISIT_INTENT:"+neighbor.getUUID();
+                }else if(selected!=null) {
+                    role=selected==KnownWorldAv4BGoalRules.Goal.RECOVER?
+                            "AV4B:RECOVERY_AT_HOME_INTENT:"+personId:
+                            "AV4B:HOUSEHOLD_ACTIVITY_INTENT:"+personId;
+                }else {
+                    // Fail open: preserve AV4A movement if profile or state is blocked.
+                    if(leisure!=null && (av4==null || av4.action()==
+                         dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4DecisionRules.Action.PUBLIC_LEISURE)) {
+                        tx=leisure.x()+leisure.w()/2+offsetX;
+                        tz=leisure.z()+leisure.d()+2+offsetZ;role="VISIT:"+leisure.id();
+                    }else if(neighbor!=null && (av4!=null && av4.action()==
+                         dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4DecisionRules.Action.NEIGHBOR_VISIT ||
+                         av4==null && Math.floorMod(personId.hashCode()+(int)day(),7)==0)) {
+                        tx=(int)Math.floor(neighbor.getX())+2;
+                        tz=(int)Math.floor(neighbor.getZ())+1;
+                        role="VISIT_NEIGHBOR:"+neighbor.getUUID();
+                    }else role="HOUSEHOLD:"+personId;
+                }
+
             }
             int[] fort=KnownWorldC411GlobalWorldgen.b42FortificationForInspection(siteId);
             long when=day()*KnownWorldB42Schedule.DAY+phase((ServerLevel)villager.level());

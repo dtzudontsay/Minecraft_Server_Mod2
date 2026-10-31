@@ -1,6 +1,7 @@
 package dev.dtzudontsay.knownworld.simulation.population;
 
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4Decisions;
+import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv4BGoals;
 
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv3Formation;
 
@@ -12,6 +13,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import dev.dtzudontsay.knownworld.KnownWorld;
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2CharacterState;
 import dev.dtzudontsay.knownworld.simulation.attributes.KnownWorldAv2BPsychologyBridge;
@@ -127,12 +129,29 @@ public final class KnownWorldB41Activation {
         KnownWorldAv2DChangeJournal.register();
         KnownWorldAv3Formation.register();
         KnownWorldAv4Decisions.register();
+        // AV4B_GENERAL_GOALS_BEGIN
+        KnownWorldAv4BGoals.register();
         KnownWorldB42BEconomyReadiness.register();
         KnownWorldB42B2EconomicStanding.register();
         CommandRegistrationCallback.EVENT.register((dispatcher,registry,environment)->
                 dispatcher.register(Commands.literal("kwactors")
                         .then(Commands.literal("status").executes(ctx->status(ctx.getSource())))
-                        .then(Commands.literal("nearby").executes(ctx->nearby(ctx.getSource())))));
+                        .then(Commands.literal("nearby").executes(ctx->nearby(ctx.getSource())))
+                        .then(Commands.literal("list")
+                            .requires(src -> Commands.LEVEL_GAMEMASTERS.check(src.permissions()))
+                            .executes(ctx -> qolList(ctx.getSource())))
+                        .then(Commands.literal("where")
+                            .requires(src -> Commands.LEVEL_GAMEMASTERS.check(src.permissions()))
+                            .then(Commands.argument("personId", StringArgumentType.string())
+                                .executes(ctx -> qolWhere(ctx.getSource(), StringArgumentType.getString(ctx, "personId")))))
+                        .then(Commands.literal("goto")
+                            .requires(src -> Commands.LEVEL_GAMEMASTERS.check(src.permissions()))
+                            .then(Commands.argument("personId", StringArgumentType.string())
+                                .executes(ctx -> qolGoto(ctx.getSource(), StringArgumentType.getString(ctx, "personId")))))
+                        .then(Commands.literal("sheet")
+                            .requires(src -> Commands.LEVEL_GAMEMASTERS.check(src.permissions()))
+                            .then(Commands.argument("personId", StringArgumentType.string())
+                                .executes(ctx -> qolSheet(ctx.getSource(), StringArgumentType.getString(ctx, "personId")))))));
         ServerTickEvents.END_SERVER_TICK.register(KnownWorldB41Activation::tick);
         ServerEntityEvents.ENTITY_LOAD.register((entity,world)->{
             if(entity.entityTags().contains(TAG) && !freshlySpawned.remove(entity.getUUID()))
@@ -484,6 +503,7 @@ public final class KnownWorldB41Activation {
         JsonObject profile=new JsonObject();
         enrich(profile,p,site); // Same deterministic personality as right-click inspection.
         KnownWorldAv4Decisions.enrich(profile,p.id);
+        KnownWorldAv4BGoals.enrich(profile,p.id);
         b42Sheet(profile,p,site);
         KnownWorldB42B2EconomicStanding.enrich(profile,p.site,p.household,p.workplace,p.id);
         return new DialogueIdentity(p.id,p.name,show(p.occupation),show(p.culture),
@@ -609,8 +629,9 @@ public final class KnownWorldB41Activation {
         if(entity==null || !entity.isAlive() || !entity.entityTags().contains(TAG))return null;
         return person.site;
     }
-    private static void inspect(ServerPlayer player,Entity actor) {
-        if(player.distanceToSqr(actor)>64)return;
+    private static void inspect(ServerPlayer player,Entity actor) { inspect(player, actor, false); }
+    private static void inspect(ServerPlayer player,Entity actor,boolean remoteAuthorized) {
+        if(!remoteAuthorized && player.distanceToSqr(actor)>64)return;
         Person p=forActor(actor);if(p==null)return;
         Site site=visibleSites.get(p.id);if(site==null)return;
         JsonObject sheet=new JsonObject();
@@ -624,6 +645,7 @@ public final class KnownWorldB41Activation {
         sheet.addProperty("workplaceLabel",show(p.workplace));
         enrich(sheet,p,site);
         KnownWorldAv4Decisions.enrich(sheet,p.id);
+        KnownWorldAv4BGoals.enrich(sheet,p.id);
         b42Sheet(sheet,p,site);
         KnownWorldB42BPersonalEvents.enrich(sheet,p.id);
         KnownWorldAv2CExperienceJournal.enrich(sheet,p.site,p.id);
@@ -639,6 +661,165 @@ public final class KnownWorldB41Activation {
         ServerPlayNetworking.send(player,new KnownWorldUiPackets.CharacterSheet(sheet.toString()));
         player.sendSystemMessage(Component.literal("[B4.2B.2] "+KnownWorldB42B2EconomicStanding.shortDescription(sheet)));
     }
+    // AV4_QOL_V3_BEGIN - bounded operator lookup of existing authoritative B4 projections.
+    // Never creates a person, entity, memory, relationship, or economic transaction.
+    private static final int QOL_SOURCE_SCAN_BUDGET = 80000;
+    private record QolFound(Person person, Site site, String reason) { }
+
+    private static boolean qolValidId(String id) {
+        return id != null && id.matches("b4:site_[a-z][a-z0-9_]{1,90}:[A-Za-z0-9_-]{1,100}");
+    }
+    private static Entity qolLiveActor(ServerLevel world, String id) {
+        if(world == null || visiblePeople.get(id) == null) return null;
+        UUID uuid = projected.get(id);
+        Entity actor = uuid == null ? null : world.getEntity(uuid);
+        return actor != null && actor.isAlive() && actor.entityTags().contains(TAG)
+                && actor.entityTags().contains(ID_PREFIX + id) ? actor : null;
+    }
+    /** Lookup is site-scoped, operator-only, and bounded; no global census expansion. */
+    private static QolFound qolFind(String id) {
+        if(!qolValidId(id)) return new QolFound(null, null, "INVALID_B4_PERSON_ID");
+        Person visible = visiblePeople.get(id);
+        if(visible != null) {
+            Site s = visibleSites.get(id);
+            if(s != null && s.id.equals(visible.site)) return new QolFound(visible, s, "PROJECTED_RECORD");
+        }
+        int first = id.indexOf(':'), last = id.lastIndexOf(':');
+        if(first < 0 || last <= first) return new QolFound(null, null, "INVALID_B4_PERSON_ID");
+        String siteId = id.substring(first + 1, last);
+        Site site = siteIndex().get(siteId);
+        if(site == null) return new QolFound(null, null, "NO_APPROVED_PROJECTION_SITE");
+        int inspected = 0;
+        for(String tileId : site.tiles.keySet().stream().sorted().toList()) {
+            int size = site.tiles.get(tileId);
+            if(size > QOL_SOURCE_SCAN_BUDGET - inspected)
+                return new QolFound(null, site, "BOUNDED_SCAN_LIMIT_80000");
+            for(Person p : tile(site, tileId)) {
+                if(id.equals(p.id)) return new QolFound(p, site, "SOURCE_HOME_RECORD_ONLY");
+            }
+            inspected += size;
+        }
+        return new QolFound(null, site, "PERSON_NOT_FOUND_IN_APPROVED_PROJECTION");
+    }
+    private static void qolFail(CommandSourceStack src, String message) {
+        src.sendFailure(Component.literal("[AV4-QOL] " + message));
+    }
+    private static int qolList(CommandSourceStack src) {
+        List<Person> people = visiblePeople.values().stream()
+                .sorted(Comparator.comparing((Person p) -> p.name).thenComparing(p -> p.id))
+                .toList();
+        say(src, "[AV4-QOL] " + people.size() + " currently projected B4 people; showing up to 40:");
+        for(Person p : people.stream().limit(40).toList())
+            say(src, "  " + p.name + " | " + p.id + " | " + p.site);
+        if(people.size() > 40) say(src, "[AV4-QOL] More projected people exist; use an exact ID with /kwactors where.");
+        return 1;
+    }
+    private static int qolWhere(CommandSourceStack src, String id) {
+        QolFound f = qolFind(id);
+        if(f.person == null) {
+            qolFail(src, "Cannot locate " + id + ": " + f.reason);
+            return 0;
+        }
+        ServerLevel world = src.getServer().getLevel(Level.OVERWORLD);
+        Entity actor = qolLiveActor(world, id);
+        if(actor != null) {
+            say(src, "[AV4-QOL] LIVE " + f.person.name + " | " + id + " | " +
+                    actor.blockPosition() + " | " + f.site.name);
+            return 1;
+        }
+        int[] approved = KnownWorldC411GlobalWorldgen.b41ApprovedPlacementForInspection(f.site.id);
+        if(approved == null) {
+            qolFail(src, "Identity located, but its site has no approved physical placement: " + f.site.id);
+            return 0;
+        }
+        int x = f.person.x + f.person.width / 2 + approved[0] - f.site.anchorX;
+        int z = f.person.z + f.person.depth + 2 + approved[1] - f.site.anchorZ;
+        say(src, "[AV4-QOL] SOURCE HOME ONLY for " + f.person.name + " | " + id +
+                " | approximate X=" + x + " Z=" + z + " | " + f.site.name +
+                ". This is NOT a verified live NPC coordinate.");
+        return 1;
+    }
+    private static int qolGoto(CommandSourceStack src, String id) {
+        if(!(src.getEntity() instanceof ServerPlayer player)) {
+            qolFail(src, "This teleport command must be used by an in-game player.");
+            return 0;
+        }
+        ServerLevel world = src.getServer().getLevel(Level.OVERWORLD);
+        if(world == null || player.level() != world) {
+            qolFail(src, "Go to the Known World Overworld before using this command.");
+            return 0;
+        }
+        QolFound f = qolFind(id);
+        if(f.person == null) {
+            qolFail(src, "Cannot locate " + id + ": " + f.reason);
+            return 0;
+        }
+        Entity actor = qolLiveActor(world, id);
+        boolean exact = actor != null;
+        int x, z;
+        if(exact) {
+            x = actor.blockPosition().getX(); z = actor.blockPosition().getZ();
+        } else {
+            int[] approved = KnownWorldC411GlobalWorldgen.b41ApprovedPlacementForInspection(f.site.id);
+            if(approved == null) {
+                qolFail(src, "No approved source-home location for " + f.site.id);
+                return 0;
+            }
+            x = f.person.x + f.person.width / 2 + approved[0] - f.site.anchorX;
+            z = f.person.z + f.person.depth + 2 + approved[1] - f.site.anchorZ;
+        }
+        // One explicitly requested destination chunk may be loaded/generated.
+        // Refuse to teleport if a solid, dry, collision-safe foothold cannot be found.
+        try {
+            world.getChunkAt(new BlockPos(x, 64, z));
+            BlockPos destination = safeSpawn(world, x, z, id.hashCode(), new HashSet<>());
+            if(destination == null) {
+                qolFail(src, "No validated safe landing near " + x + ", " + z + "; no teleport performed.");
+                return 0;
+            }
+            String command = String.format(Locale.ROOT, "tp %.1f %d %.1f",
+                    destination.getX() + .5, destination.getY(), destination.getZ() + .5);
+            // Minecraft 26.3 returns void from performPrefixedCommand.
+            // Check the actual player's server-side position instead of a return code.
+            src.getServer().getCommands().performPrefixedCommand(src, command);
+            if(player.level() != world ||
+                    Math.abs(player.getX() - (destination.getX() + .5)) > 1.0 ||
+                    Math.abs(player.getY() - destination.getY()) > 2.0 ||
+                    Math.abs(player.getZ() - (destination.getZ() + .5)) > 1.0) {
+                qolFail(src, "Vanilla teleport did not reach the validated landing; no alternate teleport attempted.");
+                return 0;
+            }
+            say(src, exact ?
+                    "[AV4-QOL] Teleported near LIVE NPC " + f.person.name + " (" + id + ")." :
+                    "[AV4-QOL] Teleported near SOURCE HOME for " + f.person.name +
+                    " (" + id + "). NPC may not be physically projected yet; wait for nearby projection.");
+            return 1;
+        } catch(RuntimeException ex) {
+            qolFail(src, "Could not safely load or validate destination: " + ex.getClass().getSimpleName());
+            return 0;
+        }
+    }
+    private static int qolSheet(CommandSourceStack src, String id) {
+        if(!(src.getEntity() instanceof ServerPlayer player)) {
+            qolFail(src, "Character sheets require an in-game player.");
+            return 0;
+        }
+        ServerLevel world = src.getServer().getLevel(Level.OVERWORLD);
+        if(world == null || player.level() != world) {
+            qolFail(src, "Use this command in the Known World Overworld.");
+            return 0;
+        }
+        if(!qolValidId(id)) { qolFail(src, "Invalid B4 person ID."); return 0; }
+        Entity actor = qolLiveActor(world, id);
+        if(actor == null) {
+            qolFail(src, "NPC is not currently projected. Use /kwactors where or goto first; no fictional live sheet created.");
+            return 0;
+        }
+        inspect(player, actor, true); // Authorized remote view of an actually projected NPC only.
+        return 1;
+    }
+    // AV4_QOL_V3_END
+
     private static void say(CommandSourceStack src,String s){src.sendSuccess(()->Component.literal(s),false);}
     private static int status(CommandSourceStack src) {
         if(siteIndex().isEmpty()) {
